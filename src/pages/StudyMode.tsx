@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useQuiz } from '../context/QuizContext';
 import { type QuizQuestion } from '../types';
-import { Check, X, Brain, Ban, ArrowLeft } from 'lucide-react';
+import { Check, X, Brain, Ban, ArrowLeft, Flag } from 'lucide-react';
+import { ReportModal } from '../components/ui/ReportModal';
 import './StudyMode.css';
 
 interface LocationState {
@@ -19,6 +20,7 @@ const StudyMode: React.FC = () => {
     const [selectedOption, setSelectedOption] = useState<string | null>(null);
     const [excludedOptions, setExcludedOptions] = useState<string[]>([]);
     const [isFinished, setIsFinished] = useState(false);
+    const [isReportModalOpen, setIsReportModalOpen] = useState(false);
 
     // Get category from navigation state
     const state = location.state as LocationState;
@@ -73,6 +75,10 @@ const StudyMode: React.FC = () => {
         }
     };
 
+    const openReportModal = () => {
+        setIsReportModalOpen(true);
+    };
+
     // EV Calculator Logic
     const calculateStrategy = (totalOptions: number, excludedCount: number) => {
         const remaining = totalOptions - excludedCount;
@@ -113,6 +119,13 @@ const StudyMode: React.FC = () => {
 
     return (
         <div className="study-container">
+            <ReportModal
+                isOpen={isReportModalOpen}
+                onClose={() => setIsReportModalOpen(false)}
+                questionId={currentQuestion.id}
+                category={currentQuestion.category}
+            />
+
             <div className="study-header">
                 <button
                     className="back-btn"
@@ -135,7 +148,18 @@ const StudyMode: React.FC = () => {
 
             <div className="flashcard-container">
                 <div className="flashcard">
-                    <div className="category-tag">{currentQuestion.category}</div>
+                    <div className="flashcard-header">
+                        <div className="category-tag">{currentQuestion.category}</div>
+                        <button
+                            className="report-btn"
+                            onClick={openReportModal}
+                            title="Segnala errore in questa domanda"
+                            aria-label="Segnala errore"
+                        >
+                            <Flag size={16} />
+                        </button>
+                    </div>
+
                     <h3 className="question-text">{currentQuestion.question}</h3>
 
                     {/* Strategy Advisor */}

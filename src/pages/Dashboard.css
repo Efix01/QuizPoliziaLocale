@@ -18,10 +18,11 @@
 
 .hero-section {
     position: relative;
-    background: radial-gradient(ellipse at center bottom, var(--bosco-notte) 0%, var(--pino-marittimo) 100%);
-    padding: var(--space-xl) var(--content-padding);
+    background: radial-gradient(ellipse at center bottom, #0D2818 0%, #1E5631 100%);
+    padding-left: var(--content-padding);
+    padding-right: var(--content-padding);
     padding-top: calc(var(--space-xl) + 20px);
-    padding-bottom: 80px;
+    padding-bottom: 160px;
     text-align: center;
     overflow: hidden;
 }
@@ -146,18 +147,27 @@
 }
 
 .countdown-date {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: var(--space-xs);
+    gap: var(--space-sm);
     font-size: var(--text-sm);
-    font-weight: 500;
+    font-weight: 600;
     color: var(--oro-sardegna);
+    background: rgba(13, 40, 24, 0.4);
+    backdrop-filter: blur(8px);
+    padding: var(--space-sm) var(--space-lg);
+    border-radius: var(--radius-pill);
+    border: 1px solid rgba(201, 162, 39, 0.2);
+    margin-top: var(--space-lg);
+    position: relative;
+    z-index: 5;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .countdown-date svg {
-    width: 14px;
-    height: 14px;
+    width: 16px;
+    height: 16px;
 }
 
 /* ─────────────────────────────────────────────

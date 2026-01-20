@@ -13,6 +13,7 @@ import ForgotPassword from './pages/ForgotPassword';
 import Onboarding from './pages/Onboarding';
 import TermsOfService from './pages/TermsOfService';
 import PrivacyPolicy from './pages/PrivacyPolicy';
+import ChiSiamo from './pages/ChiSiamo';
 import { ToastProvider } from './context/ToastContext';
 import { AuthProvider } from './context/AuthContext';
 import { NotificationProvider } from './context/NotificationContext';
@@ -34,6 +35,7 @@ function App() {
                   <Route path="/welcome" element={<Onboarding />} />
                   <Route path="/terms" element={<TermsOfService />} />
                   <Route path="/privacy" element={<PrivacyPolicy />} />
+                  <Route path="/chi-siamo" element={<ChiSiamo />} />
 
                   {/* Auth pages outside Layout (full-screen) */}
                   <Route path="/login" element={<Login />} />

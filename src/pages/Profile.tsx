@@ -6,7 +6,7 @@ import { useToast } from '../context/ToastContext';
 import { useQuiz } from '../context/QuizContext';
 import { useAuth } from '../context/AuthContext';
 import { useNotifications } from '../context/NotificationContext';
-import { User, LogOut, Trash2, ChevronRight } from 'lucide-react';
+import { User, LogOut, Trash2, ChevronRight, Info, FileText } from 'lucide-react';
 import './Profile.css';
 
 const Profile: React.FC = () => {
@@ -159,6 +159,32 @@ const Profile: React.FC = () => {
                     </div>
                 </>
             )}
+
+            {/* Info Section */}
+            <span className="section-label">Informazioni</span>
+            <div className="account-card">
+                <button
+                    className="account-row"
+                    onClick={() => navigate('/chi-siamo')}
+                >
+                    <div className="account-row-left">
+                        <Info className="account-icon account-icon--info" />
+                        <span>Chi Siamo</span>
+                    </div>
+                    <ChevronRight className="account-chevron" />
+                </button>
+
+                <button
+                    className="account-row"
+                    onClick={() => navigate('/privacy')}
+                >
+                    <div className="account-row-left">
+                        <FileText className="account-icon account-icon--info" />
+                        <span>Privacy Policy</span>
+                    </div>
+                    <ChevronRight className="account-chevron" />
+                </button>
+            </div>
 
             {/* Modals */}
             <LogoutModal

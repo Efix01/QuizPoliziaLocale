@@ -1,0 +1,433 @@
+/* ============================================
+   CHI SIAMO PAGE - Premium Institutional Design
+   ============================================ */
+
+/* ─────────────────────────────────────────────
+   CONTAINER
+   ───────────────────────────────────────────── */
+
+.chi-siamo-container {
+    min-height: 100vh;
+    background: #FAF8F5;
+    padding-bottom: 32px;
+}
+
+/* ─────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────── */
+
+.chi-siamo-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background: #FAF8F5;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    border-bottom: 1px solid rgba(31, 41, 55, 0.08);
+}
+
+.chi-siamo-header h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: 18px;
+    color: #1F2937;
+    margin: 0;
+}
+
+.back-button {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border: 1px solid rgba(31, 41, 55, 0.1);
+    border-radius: 12px;
+    color: #1F2937;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.back-button:hover {
+    background: #1E5631;
+    color: white;
+    border-color: #1E5631;
+}
+
+.header-spacer {
+    width: 44px;
+}
+
+/* ─────────────────────────────────────────────
+   HERO SECTION
+   ───────────────────────────────────────────── */
+
+.hero-section {
+    text-align: center;
+    padding: 48px 24px 40px;
+    background: linear-gradient(180deg, #FAF8F5 0%, #F5F3EE 100%);
+}
+
+.hero-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 24px;
+    background: linear-gradient(135deg, #1E5631 0%, #2D7A47 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 8px 24px rgba(30, 86, 49, 0.25);
+}
+
+.hero-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 1.3;
+    color: #1F2937;
+    margin: 0 0 16px 0;
+}
+
+.hero-title span {
+    color: #1E5631;
+}
+
+.hero-subtitle {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    font-size: 16px;
+    color: #6B7280;
+    max-width: 320px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* ─────────────────────────────────────────────
+   BIO SECTION
+   ───────────────────────────────────────────── */
+
+.bio-section {
+    padding: 0 20px;
+    margin-bottom: 32px;
+}
+
+.bio-card {
+    background: white;
+    border-radius: 20px;
+    padding: 28px 24px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(31, 41, 55, 0.05);
+}
+
+.bio-avatar {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 20px;
+    background: linear-gradient(135deg, #C9A227 0%, #D4AF37 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    box-shadow: 0 4px 16px rgba(201, 162, 39, 0.3);
+}
+
+.bio-content {
+    text-align: center;
+}
+
+.bio-greeting {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 20px;
+    color: #1F2937;
+    margin: 0 0 16px 0;
+}
+
+.bio-content p {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #4B5563;
+    margin: 0 0 16px 0;
+}
+
+.bio-content p:last-child {
+    margin-bottom: 0;
+}
+
+.bio-content strong {
+    color: #1F2937;
+    font-weight: 600;
+}
+
+/* ─────────────────────────────────────────────
+   PHILOSOPHY SECTION
+   ───────────────────────────────────────────── */
+
+.philosophy-section {
+    padding: 0 20px;
+    margin-bottom: 32px;
+}
+
+.section-title {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #1F2937;
+    text-align: center;
+    margin: 0 0 20px 0;
+}
+
+.philosophy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.philosophy-card {
+    background: white;
+    border-radius: 16px;
+    padding: 24px 16px;
+    text-align: center;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+    border: 1px solid rgba(31, 41, 55, 0.05);
+    transition: all 0.3s ease;
+}
+
+.philosophy-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+
+.philosophy-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 16px;
+    background: rgba(30, 86, 49, 0.1);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1E5631;
+}
+
+.philosophy-icon.powered {
+    background: rgba(201, 162, 39, 0.15);
+    color: #B8941F;
+}
+
+.philosophy-card h4 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #1F2937;
+    margin: 0 0 10px 0;
+}
+
+.philosophy-card p {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #6B7280;
+    margin: 0;
+}
+
+/* ─────────────────────────────────────────────
+   DISCLAIMER SECTION
+   ───────────────────────────────────────────── */
+
+.disclaimer-section {
+    padding: 0 20px;
+    margin-bottom: 32px;
+}
+
+.disclaimer-box {
+    background: #F3F4F6;
+    border-radius: 16px;
+    border-left: 5px solid #C9A227;
+    overflow: hidden;
+}
+
+.disclaimer-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 20px;
+    background: rgba(201, 162, 39, 0.08);
+    border-bottom: 1px solid rgba(201, 162, 39, 0.15);
+}
+
+.disclaimer-header svg {
+    color: #C9A227;
+    flex-shrink: 0;
+}
+
+.disclaimer-header span {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    color: #1F2937;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+}
+
+.disclaimer-content {
+    padding: 20px;
+}
+
+.disclaimer-content p {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    font-size: 14px;
+    line-height: 1.65;
+    color: #4B5563;
+    margin: 0 0 16px 0;
+}
+
+.disclaimer-declaration {
+    font-weight: 600;
+    color: #1F2937 !important;
+}
+
+.disclaimer-content ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.disclaimer-content li {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    font-size: 13px;
+    line-height: 1.7;
+    color: #4B5563;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+.disclaimer-content li:last-child {
+    margin-bottom: 0;
+}
+
+.disclaimer-content li::marker {
+    color: #C9A227;
+}
+
+.disclaimer-content strong {
+    color: #1F2937;
+    font-weight: 600;
+}
+
+/* ─────────────────────────────────────────────
+   SIGNATURE SECTION
+   ───────────────────────────────────────────── */
+
+.signature-section {
+    padding: 24px 20px 32px;
+    text-align: center;
+}
+
+.signature-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.signature-heart {
+    color: #E53E3E;
+    animation: heartbeat 2s ease-in-out infinite;
+}
+
+@keyframes heartbeat {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.15);
+    }
+}
+
+.signature-text {
+    font-family: 'Fraunces', Georgia, serif;
+    font-style: italic;
+    font-size: 18px;
+    color: #1F2937;
+    margin: 0;
+}
+
+.signature-author {
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: #1E5631;
+    margin: 0;
+}
+
+/* ─────────────────────────────────────────────
+   FOOTER ACTION
+   ───────────────────────────────────────────── */
+
+.footer-action {
+    padding: 0 20px 40px;
+}
+
+.home-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 16px 24px;
+    background: linear-gradient(135deg, #1E5631 0%, #2D7A47 100%);
+    border: none;
+    border-radius: 14px;
+    font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(30, 86, 49, 0.25);
+    transition: all 0.2s ease;
+}
+
+.home-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 24px rgba(30, 86, 49, 0.35);
+}
+
+.home-button:active {
+    transform: translateY(0);
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────── */
+
+@media (max-width: 400px) {
+    .philosophy-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero-title {
+        font-size: 24px;
+    }
+}
+
+@media (min-width: 600px) {
+    .chi-siamo-container {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .hero-title {
+        font-size: 32px;
+    }
+
+    .bio-card {
+        padding: 36px 32px;
+    }
+}

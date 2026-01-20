@@ -147,7 +147,8 @@ const Dashboard: React.FC = () => {
             <section
                 className="hero-section"
                 style={{
-                    backgroundPositionY: `${parallaxOffset}px`
+                    backgroundPositionY: `${parallaxOffset}px`,
+                    background: 'radial-gradient(ellipse at center bottom, #0D2818 0%, #1E5631 100%)',
                 }}
             >
                 <div className={`hero-content ${pageLoaded ? 'animate-scale-in' : ''}`}>

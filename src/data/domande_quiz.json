@@ -8944,5 +8944,285 @@
         "correct_answer": "C",
         "explanation": "Mentre per i reclami l'Art. 9 prevede l'avocazione del Ministero, per la decisione sulla trasformazione (Art. 21) il testo fornito non specifica la conseguenza del ritardo, ma il principio generale di avocazione è applicabile.",
         "source": "R.D. 16 maggio 1926, n. 1126, Art. 21 (e principio generale Art. 9)"
+    },
+    {
+        "id": 642,
+        "category": "Aree Protette (L. 394/1991)",
+        "question": "Secondo l'Art. 1 della L. 394/1991, quale NON è una delle finalità principali del regime speciale di tutela applicato ai territori di rilevante valore naturalistico?",
+        "options": {
+            "A": "La conservazione di specie animali o vegetali e di singolarità geologiche.",
+            "B": "La promozione di attività di educazione, di formazione e di ricerca scientifica.",
+            "C": "La massimizzazione dello sfruttamento turistico-commerciale delle risorse naturali.",
+            "D": "L'applicazione di metodi di gestione o di restauro ambientale per l'integrazione tra uomo e ambiente."
+        },
+        "correct_answer": "C",
+        "explanation": "L'Art. 1 elenca tra le finalità la conservazione, l'applicazione di metodi di gestione per l'integrazione uomo-ambiente, la promozione di attività educative e scientifiche e la difesa degli equilibri idrogeologici. Non menziona la massimizzazione dello sfruttamento commerciale.",
+        "source": "Art. 1, comma 3, L. 394/1991"
+    },
+    {
+        "id": 643,
+        "category": "Aree Protette (L. 394/1991)",
+        "question": "In base all'Art. 2, come viene definito un Parco Nazionale?",
+        "options": {
+            "A": "Un'area di rilevanza regionale che costituisce un sistema omogeneo di valori paesaggistici e culturali.",
+            "B": "Un'area terrestre, fluviale, lacuale o marina contenente ecosistemi intatti o parzialmente alterati di rilievo internazionale o nazionale, la cui conservazione richiede l'intervento dello Stato.",
+            "C": "Un'area marina istituita unicamente per dare attuazione alla convenzione di Ramsar.",
+            "D": "Un'area contenente specie di flora o fauna rilevanti, la cui tutela è di competenza esclusiva regionale."
+        },
+        "correct_answer": "B",
+        "explanation": "L'Art. 2, comma 1, definisce i Parchi Nazionali come aree con ecosistemi di rilievo internazionale o nazionale che necessitano dell'intervento dello Stato per la loro conservazione.",
+        "source": "Art. 2, comma 1, L. 394/1991"
+    },
+    {
+        "id": 644,
+        "category": "Aree Protette (L. 394/1991)",
+        "question": "Quale organo ha sostituito il \"Comitato per le aree naturali protette\" nelle sue funzioni a seguito del D.Lgs. 281/1997?",
+        "options": {
+            "A": "La Consulta tecnica per le aree naturali protette.",
+            "B": "Il Ministero dell'Ambiente tramite un commissario ad acta.",
+            "C": "La Conferenza Stato-Regioni.",
+            "D": "Un comitato interministeriale presieduto dal Presidente del Consiglio."
+        },
+        "correct_answer": "C",
+        "explanation": "Il testo specifica che il D.Lgs. 281/1997 ha soppresso il Comitato e le sue funzioni sono oggi esercitate dalla Conferenza Stato-Regioni, come indicato nelle note all'Art. 3.",
+        "source": "Art. 3 (come modificato dal D.Lgs. 281/1997)"
+    },
+    {
+        "id": 645,
+        "category": "Aree Protette (L. 394/1991)",
+        "question": "Cosa NON rientra tra i contenuti del Programma triennale per le aree naturali protette, secondo l'Art. 4?",
+        "options": {
+            "A": "La specifica dei territori e la delimitazione dei confini delle aree da istituire.",
+            "B": "Il riparto delle disponibilità finanziarie tra le diverse aree protette.",
+            "C": "La nomina dei Presidenti degli Enti Parco nazionali.",
+            "D": "L'indicazione dei termini per l'istituzione di nuove aree o l'ampliamento di quelle esistenti."
+        },
+        "correct_answer": "C",
+        "explanation": "L'Art. 4, comma 1, elenca i contenuti del Programma, che includono la delimitazione, i termini per l'istituzione e il riparto dei fondi. La nomina dei Presidenti non è un contenuto del Programma.",
+        "source": "Art. 4, comma 1, L. 394/1991"
+    },
+    {
+        "id": 646,
+        "category": "Aree Protette (L. 394/1991)",
+        "question": "Ai sensi dell'Art. 10, su quale dei seguenti atti il parere della Comunità del Parco è obbligatorio?",
+        "options": {
+            "A": "Sulle nomine del personale di sorveglianza.",
+            "B": "Sull'autorizzazione per prelievi faunistici.",
+            "C": "Sul regolamento del parco, sul piano per il parco e sul bilancio.",
+            "D": "Sull'applicazione di sanzioni amministrative."
+        },
+        "correct_answer": "C",
+        "explanation": "L'Art. 10 stabilisce che il parere della Comunità del Parco è obbligatorio su atti fondamentali quali il regolamento, il piano e il bilancio dell'Ente.",
+        "source": "Art. 10, L. 394/1991"
+    },
+    {
+        "id": 647,
+        "category": "Aree Protette (L. 394/1991)",
+        "question": "Nella zonizzazione del Piano per il Parco (Art. 12), come è definita la 'zona B'?",
+        "options": {
+            "A": "Riserva integrale, dove l'ambiente è conservato nella sua integrità.",
+            "B": "Area di protezione, dove possono continuare le attività agro-silvo-pastorali.",
+            "C": "Area di promozione economica e sociale per la fruizione turistica.",
+            "D": "Riserva generale orientata, dove è vietato costruire nuove opere edilizie."
+        },
+        "correct_answer": "D",
+        "explanation": "L'Art. 12, comma 2, lettera b), definisce la 'zona B' come 'Riserve generali orientate', dove è vietato costruire nuove opere edilizie, ma sono consentite attività tradizionali e interventi di gestione.",
+        "source": "Art. 12, comma 2, lettera b), L. 394/1991"
+    },
+    {
+        "id": 648,
+        "category": "Aree Protette (L. 394/1991)",
+        "question": "Quale tra i seguenti è un divieto generale valido in tutto il parco, secondo l'Art. 11, comma 3?",
+        "options": {
+            "A": "L'accesso pedonale ai sentieri.",
+            "B": "La raccolta di funghi per i residenti.",
+            "C": "Il sorvolo di velivoli non autorizzato.",
+            "D": "Lo svolgimento di attività agro-silvo-pastorali tradizionali."
+        },
+        "correct_answer": "C",
+        "explanation": "L'Art. 11, comma 3, elenca una serie di divieti generali, tra cui esplicitamente 'Il sorvolo di velivoli non autorizzato'.",
+        "source": "Art. 11, comma 3, L. 394/1991"
+    },
+    {
+        "id": 649,
+        "category": "Aree Protette (L. 394/1991)",
+        "question": "Cosa accade se l'Ente Parco non si pronuncia su una richiesta di Nulla Osta entro il termine di 60 giorni previsto dall'Art. 13?",
+        "options": {
+            "A": "La richiesta si intende respinta (silenzio-rigetto).",
+            "B": "La richiesta si intende concessa (silenzio-assenso).",
+            "C": "Il termine viene prorogato automaticamente di altri 60 giorni.",
+            "D": "La competenza passa al Ministero dell'Ambiente."
+        },
+        "correct_answer": "B",
+        "explanation": "L'Art. 13 stabilisce che il nulla osta deve essere reso entro 60 giorni e che, in caso di silenzio, l'autorizzazione si intende concessa.",
+        "source": "Art. 13, L. 394/1991"
+    },
+    {
+        "id": 650,
+        "category": "Aree Protette (L. 394/1991)",
+        "question": "Nei parchi regionali, in caso di squilibri ecologici, da chi devono essere effettuati preferenzialmente gli abbattimenti selettivi secondo l'Art. 22?",
+        "options": {
+            "A": "Dal Corpo Forestale e di V.A..",
+            "B": "Da cacciatori non residenti con alta specializzazione.",
+            "C": "Dal personale dipendente dell'ente gestore.",
+            "D": "Da cacciatori residenti nel territorio del parco, previo corso di formazione."
+        },
+        "correct_answer": "D",
+        "explanation": "L'Art. 22, comma 6, stabilisce che gli abbattimenti selettivi sono attuati dal personale dell'ente o da persone autorizzate, scelte con preferenza tra 'cacciatori residenti nel territorio del parco, previo opportuni corsi di formazione'.",
+        "source": "Art. 22, comma 6, L. 394/1991"
+    },
+    {
+        "id": 651,
+        "category": "Aree Protette (L. 394/1991)",
+        "question": "Quale regime venatorio speciale vige nelle 'aree contigue' secondo l'Art. 32?",
+        "options": {
+            "A": "La caccia è vietata come all'interno del parco.",
+            "B": "La caccia è libera e non soggetta a restrizioni.",
+            "C": "La caccia è consentita solo in forma controllata e riservata ai residenti dei comuni dell'area protetta e dell'area contigua.",
+            "D": "È permessa solo la caccia di selezione a specie non autoctone."
+        },
+        "correct_answer": "C",
+        "explanation": "L'Art. 32 definisce le aree contigue come zone cuscinetto in cui la caccia è permessa unicamente come 'caccia controllata', riservata ai soli residenti.",
+        "source": "Art. 32, L. 394/1991"
+    },
+    {
+        "id": 652,
+        "category": "Aree Protette (L. 394/1991)",
+        "question": "Quale parco nazionale è stato istituito direttamente dalla Legge 394/1991 in Sardegna, secondo l'Art. 34?",
+        "options": {
+            "A": "Il Parco nazionale dell'Asinara.",
+            "B": "Il Parco nazionale dell'Arcipelago di La Maddalena.",
+            "C": "Il Parco nazionale del Golfo di Orosei e del Gennargentu.",
+            "D": "Il Parco regionale di Porto Conte."
+        },
+        "correct_answer": "C",
+        "explanation": "L'Art. 34, comma 2, stabilisce esplicitamente: 'È istituito, d'intesa con la regione Sardegna [...] il Parco nazionale del Golfo di Orosei e del Gennargentu'.",
+        "source": "Art. 34, comma 2, L. 394/1991"
+    },
+    {
+        "id": 653,
+        "category": "Aree Protette (L. 394/1991)",
+        "question": "Quale organo dell'Ente Parco ha la rappresentanza legale dell'ente e ne coordina le attività?",
+        "options": {
+            "A": "Il Presidente.",
+            "B": "Il Consiglio Direttivo.",
+            "C": "La Comunità del Parco.",
+            "D": "Il Collegio dei Revisori dei Conti."
+        },
+        "correct_answer": "A",
+        "explanation": "Secondo la struttura organizzativa dell'Art. 9, comma 2, il Presidente 'ha la rappresentanza legale dell'Ente, ne coordina le attività e adotta i provvedimenti urgenti'.",
+        "source": "Art. 9, comma 2, L. 394/1991"
+    },
+    {
+        "id": 654,
+        "category": "Aree Protette (L. 394/1991)",
+        "question": "In caso di accertamento di un'attività illecita, quale potere conferisce l'Art. 29 al legale rappresentante dell'organismo di gestione?",
+        "options": {
+            "A": "Emettere una sanzione pecuniaria immediata.",
+            "B": "Disporre l'immediata sospensione dell'attività e ordinare la riduzione in pristino.",
+            "C": "Revocare la licenza commerciale del trasgressore.",
+            "D": "Segnalare l'illecito alla Corte dei Conti."
+        },
+        "correct_answer": "B",
+        "explanation": "L'Art. 29 stabilisce che il rappresentante legale può disporre l'immediata sospensione dell'attività illecita e ordinare il ripristino dello stato dei luoghi a spese del trasgressore.",
+        "source": "Art. 29, L. 394/1991"
+    },
+    {
+        "id": 655,
+        "category": "Aree Protette (L. 394/1991)",
+        "question": "Qual è la sanzione penale per la violazione dei divieti generali nel parco (es. cattura animali, uso di fuochi) secondo l'Art. 30?",
+        "options": {
+            "A": "Arresto fino a sei mesi o ammenda da € 103,29 a € 25.822,84.",
+            "B": "Arresto fino a dodici mesi e ammenda da € 103,29 a € 25.822,84.",
+            "C": "Solo un'ammenda da € 103,29 a € 2.000,00.",
+            "D": "La reclusione da uno a tre anni."
+        },
+        "correct_answer": "A",
+        "explanation": "La tabella riassuntiva basata sull'Art. 30 indica, per la violazione dei divieti dell'Art. 11 comma 3, la pena dell'arresto fino a sei mesi o un'ammenda da € 103,29 a € 25.822,84.",
+        "source": "Art. 30 in relazione all'Art. 11, comma 3, L. 394/1991"
+    },
+    {
+        "id": 656,
+        "category": "Aree Protette (L. 394/1991)",
+        "question": "Entro quale termine dall'approvazione del Piano va adottato il Regolamento del Parco (Art. 11)?",
+        "options": {
+            "A": "Dodici mesi.",
+            "B": "Sessanta giorni.",
+            "C": "Tre mesi.",
+            "D": "Sei mesi."
+        },
+        "correct_answer": "D",
+        "explanation": "La sezione sul Regolamento del Parco (Art. 11) specifica che esso 'deve essere adottato entro sei mesi dall'approvazione del Piano'.",
+        "source": "Art. 11, L. 394/1991"
+    },
+    {
+        "id": 657,
+        "category": "Aree Protette (L. 394/1991)",
+        "question": "Cosa sono le 'Misure di Salvaguardia' previste dall'Art. 6?",
+        "options": {
+            "A": "Incentivi economici per le attività compatibili.",
+            "B": "Divieti temporanei (es. di nuove costruzioni) che si applicano in aree individuate per diventare parchi ma non ancora istituite.",
+            "C": "Le sanzioni penali per chi danneggia l'ambiente del parco.",
+            "D": "Le norme che regolano la zonizzazione interna del parco."
+        },
+        "correct_answer": "B",
+        "explanation": "L'Art. 6 introduce le Misure di Salvaguardia come divieti temporanei validi nelle aree in attesa di essere formalmente istituite come parchi, per preservarne l'integrità.",
+        "source": "Art. 6, L. 394/1991"
+    },
+    {
+        "id": 658,
+        "category": "Aree Protette (L. 394/1991)",
+        "question": "In cosa consiste la principale distinzione operativa tra il Piano (Art. 12) e il Regolamento (Art. 11) del parco?",
+        "options": {
+            "A": "Il Piano è nazionale, il Regolamento è regionale.",
+            "B": "Il Piano definisce la zonizzazione (cosa e dove), il Regolamento disciplina le attività e i divieti (come).",
+            "C": "Il Piano è redatto dall'Ente Parco, il Regolamento dal Ministero.",
+            "D": "Il Piano ha una durata triennale, il Regolamento è a tempo indeterminato."
+        },
+        "correct_answer": "B",
+        "explanation": "La guida sottolinea che il Piano (Art. 12) è la mappa strategica con la zonizzazione, mentre il Regolamento (Art. 11) è il manuale d'uso che stabilisce come svolgere le attività e i divieti.",
+        "source": "Interpretazione degli Art. 11 e 12, L. 394/1991"
+    },
+    {
+        "id": 659,
+        "category": "Aree Protette (L. 394/1991)",
+        "question": "Secondo l'Art. 7, i comuni con territorio in un parco hanno priorità nell'accesso a finanziamenti per quale tipo di intervento?",
+        "options": {
+            "A": "Costruzione di nuove strade a grande scorrimento.",
+            "B": "Realizzazione di grandi complessi industriali.",
+            "C": "Restauro di centri storici, opere igieniche e agriturismo.",
+            "D": "Apertura di nuove cave e miniere."
+        },
+        "correct_answer": "C",
+        "explanation": "L'Art. 7 prevede misure di incentivazione con priorità di accesso a finanziamenti per interventi di sviluppo sostenibile come il restauro, opere igieniche, agriturismo e energie rinnovabili.",
+        "source": "Art. 7, L. 394/1991"
+    },
+    {
+        "id": 660,
+        "category": "Aree Protette (L. 394/1991)",
+        "question": "Cosa prevede l'Art. 30 in caso di recidiva per le violazioni penali?",
+        "options": {
+            "A": "Le pene sono raddoppiate.",
+            "B": "Si applica una sanzione amministrativa aggiuntiva.",
+            "C": "La competenza passa alla magistratura superiore.",
+            "D": "Le pene sono aumentate di un terzo."
+        },
+        "correct_answer": "A",
+        "explanation": "Il testo, commentando l'Art. 30, specifica chiaramente che 'Le pene sono raddoppiate in caso di recidiva'.",
+        "source": "Art. 30, L. 394/1991"
+    },
+    {
+        "id": 661,
+        "category": "Aree Protette (L. 394/1991)",
+        "question": "Quale caratteristica definisce una Riserva Naturale ai sensi dell'Art. 2?",
+        "options": {
+            "A": "È un sistema omogeneo di assetti naturali e valori paesaggistici di competenza regionale.",
+            "B": "Richiede l'intervento dello Stato per la sua rilevanza internazionale.",
+            "C": "Contiene specie di flora/fauna rilevanti o ecosistemi importanti per la diversità biologica o le risorse genetiche.",
+            "D": "È un'area marina definita da accordi internazionali specifici."
+        },
+        "correct_answer": "C",
+        "explanation": "L'Art. 2, comma 3, definisce le Riserve Naturali come aree che contengono specie naturalisticamente rilevanti o ecosistemi importanti per la biodiversità o la conservazione delle risorse genetiche.",
+        "source": "Art. 2, comma 3, L. 394/1991"
     }
 ]

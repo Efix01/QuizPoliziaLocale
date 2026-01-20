@@ -100,9 +100,15 @@
     animation: scaleIn var(--transition-normal) ease-out;
 }
 
+.flashcard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--space-md);
+}
+
 .category-tag {
     display: inline-flex;
-    align-self: flex-start;
     padding: var(--space-xs) var(--space-md);
     background: linear-gradient(135deg, var(--pino-marittimo), var(--bosco-notte));
     color: white;
@@ -111,7 +117,24 @@
     text-transform: uppercase;
     letter-spacing: 0.05em;
     border-radius: var(--radius-pill);
-    margin-bottom: var(--space-md);
+}
+
+.report-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    color: var(--nebbia);
+    transition: all var(--transition-fast);
+    opacity: 0.6;
+}
+
+.report-btn:hover {
+    background-color: rgba(155, 44, 44, 0.1);
+    color: var(--errore);
+    opacity: 1;
 }
 
 .question-text {

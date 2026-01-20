@@ -334,3 +334,8 @@
 .account-row--danger:hover {
     background: #FEF2F2;
 }
+
+/* Info Row (Chi Siamo, Privacy) */
+.account-icon--info {
+    color: #1E5631;
+}
