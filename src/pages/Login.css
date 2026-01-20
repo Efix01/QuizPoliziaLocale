@@ -1,0 +1,867 @@
+/* ============================================
+   LOGIN PAGE - Premium Authentication Experience
+   Quiz Concorso Agenti CFVA
+   ============================================ */
+
+/* ─────────────────────────────────────────────
+   FULL PAGE CONTAINER
+   ───────────────────────────────────────────── */
+
+.login-page {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 24px;
+}
+
+/* ─────────────────────────────────────────────
+   BACKGROUND LAYERS
+   ───────────────────────────────────────────── */
+
+.login-background {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+/* Layer 1: Gradient Base */
+.login-background::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            #0D2818 0%,
+            #1E5631 50%,
+            #0D2818 100%);
+}
+
+/* Layer 2: Pattern Texture */
+.login-pattern {
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+/* Layer 3: Vignette Overlay */
+.login-background::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+}
+
+/* Layer 4: Floating Particles (Fireflies) */
+.login-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    animation: float 10s ease-in-out infinite;
+}
+
+.particle:nth-child(1) {
+    left: 10%;
+    top: 20%;
+    animation-delay: 0s;
+}
+
+.particle:nth-child(2) {
+    left: 25%;
+    top: 60%;
+    animation-delay: 2s;
+}
+
+.particle:nth-child(3) {
+    left: 50%;
+    top: 30%;
+    animation-delay: 4s;
+}
+
+.particle:nth-child(4) {
+    left: 70%;
+    top: 70%;
+    animation-delay: 1s;
+}
+
+.particle:nth-child(5) {
+    left: 85%;
+    top: 40%;
+    animation-delay: 3s;
+}
+
+.particle:nth-child(6) {
+    left: 40%;
+    top: 80%;
+    animation-delay: 5s;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.15;
+    }
+
+    50% {
+        transform: translateY(-30px) scale(1.2);
+        opacity: 0.3;
+    }
+}
+
+/* ─────────────────────────────────────────────
+   CONTAINER
+   ───────────────────────────────────────────── */
+
+.login-container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 420px;
+}
+
+/* ─────────────────────────────────────────────
+   BACK BUTTON
+   ───────────────────────────────────────────── */
+
+.back-button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 24px;
+    transition: all 0.2s ease;
+}
+
+.back-button:hover {
+    color: white;
+    transform: translateX(-4px);
+}
+
+.back-button svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* ─────────────────────────────────────────────
+   LOGIN CARD
+   ───────────────────────────────────────────── */
+
+.login-card {
+    background: white;
+    border-radius: 32px;
+    padding: 48px 32px;
+    box-shadow:
+        0 25px 50px rgba(0, 0, 0, 0.25),
+        0 10px 20px rgba(0, 0, 0, 0.15);
+    animation: cardEnter 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardEnter {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ─────────────────────────────────────────────
+   LOGO & HEADER
+   ───────────────────────────────────────────── */
+
+.login-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.login-logo-img {
+    max-width: 240px;
+    width: 100%;
+    height: auto;
+    animation: logoBounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) 0.3s forwards;
+    opacity: 0;
+    transform: scale(0);
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+}
+
+@keyframes logoBounce {
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.login-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 26px;
+    color: #0D2818;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.login-subtitle {
+    font-size: 16px;
+    color: #6B7280;
+    text-align: center;
+    margin-bottom: 32px;
+}
+
+/* ─────────────────────────────────────────────
+   GOOGLE BUTTON - The Hero
+   ───────────────────────────────────────────── */
+
+.google-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    width: 100%;
+    height: 56px;
+    padding: 0 24px;
+    background: white;
+    border: 2px solid #E5E7EB;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    font-weight: 600;
+    font-size: 16px;
+    color: #2D3436;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.google-button:hover {
+    background: #F9FAFB;
+    border-color: #D1D5DB;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.google-button:active {
+    background: #F3F4F6;
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+}
+
+.google-button:focus-visible {
+    outline: 3px solid rgba(30, 86, 49, 0.3);
+    outline-offset: 2px;
+}
+
+.google-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.google-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────
+   DIVIDER
+   ───────────────────────────────────────────── */
+
+.divider {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: #E5E7EB;
+}
+
+.divider span {
+    font-size: 13px;
+    font-weight: 500;
+    color: #9CA3AF;
+    text-transform: lowercase;
+    letter-spacing: 0.5px;
+}
+
+/* ─────────────────────────────────────────────
+   ERROR MESSAGE
+   ───────────────────────────────────────────── */
+
+.error-message {
+    background: #FEE2E2;
+    border: 1px solid #FECACA;
+    color: #DC2626;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: center;
+    animation: shake 0.4s ease;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    25% {
+        transform: translateX(-8px);
+    }
+
+    75% {
+        transform: translateX(8px);
+    }
+}
+
+/* ─────────────────────────────────────────────
+   FORM
+   ───────────────────────────────────────────── */
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Input Groups */
+.input-group {
+    position: relative;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.input-group input {
+    width: 100%;
+    height: 56px;
+    padding: 0 16px 0 48px;
+    background: #F9FAFB;
+    border: 2px solid #E5E7EB;
+    border-radius: 12px;
+    font-size: 16px;
+    /* Prevents zoom on iOS */
+    color: #1F2937;
+    transition: all 0.2s ease;
+}
+
+.input-group input:focus {
+    outline: none;
+    background: white;
+    border-color: #1E5631;
+    box-shadow: 0 0 0 4px rgba(30, 86, 49, 0.1);
+}
+
+.input-group input:focus+.input-icon,
+.input-group input:not(:placeholder-shown)+.input-icon {
+    color: #1E5631;
+}
+
+.input-group input::placeholder {
+    color: #9CA3AF;
+}
+
+/* Input Icons */
+.input-icon {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: #9CA3AF;
+    pointer-events: none;
+    transition: color 0.2s ease;
+}
+
+/* Has Label - Adjust icon position */
+.input-group:has(label) .input-icon {
+    top: calc(50% + 11px);
+}
+
+/* Password Toggle */
+.toggle-password {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    color: #9CA3AF;
+    transition: color 0.2s ease;
+}
+
+.toggle-password:hover {
+    color: #6B7280;
+}
+
+.toggle-password svg {
+    width: 20px;
+    height: 20px;
+}
+
+.input-group:has(label) .toggle-password {
+    top: calc(50% + 11px);
+}
+
+/* ─────────────────────────────────────────────
+   SUBMIT BUTTON
+   ───────────────────────────────────────────── */
+
+.submit-button {
+    width: 100%;
+    height: 56px;
+    margin-top: 4px;
+    background: linear-gradient(135deg, #1E5631 0%, #0D2818 100%);
+    border: none;
+    border-radius: 14px;
+    box-shadow:
+        0 4px 14px rgba(13, 40, 24, 0.4),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    font-weight: 700;
+    font-size: 16px;
+    color: white;
+    letter-spacing: 0.3px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.submit-button:hover {
+    background: linear-gradient(135deg, #2D6A4F 0%, #1E5631 100%);
+    transform: translateY(-2px);
+    box-shadow:
+        0 8px 20px rgba(13, 40, 24, 0.5),
+        inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.submit-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(13, 40, 24, 0.3);
+}
+
+.submit-button:disabled {
+    background: #9CA3AF;
+    box-shadow: none;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* Loading State */
+.submit-button.loading {
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+/* ─────────────────────────────────────────────
+   TOGGLE MODE (Login/Register)
+   ───────────────────────────────────────────── */
+
+.toggle-mode {
+    text-align: center;
+    font-size: 14px;
+    color: #6B7280;
+    margin-top: 32px;
+}
+
+.toggle-mode button {
+    color: #1E5631;
+    font-weight: 600;
+    text-decoration: none;
+    transition: text-decoration 0.2s ease;
+}
+
+.toggle-mode button:hover {
+    text-decoration: underline;
+}
+
+/* ─────────────────────────────────────────────
+   GUEST BUTTON
+   ───────────────────────────────────────────── */
+
+.divider-thin {
+    width: 60%;
+    height: 1px;
+    background: #E5E7EB;
+    margin: 20px auto;
+}
+
+.guest-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 100%;
+    padding: 12px;
+    background: transparent;
+    border: none;
+    color: #9CA3AF;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.guest-button:hover {
+    color: #6B7280;
+}
+
+.guest-button:hover .guest-arrow {
+    transform: translateX(4px);
+}
+
+.guest-arrow {
+    transition: transform 0.2s ease;
+}
+
+/* ─────────────────────────────────────────────
+   PASSWORD HINT
+   ───────────────────────────────────────────── */
+
+.password-hint {
+    font-size: 12px;
+    color: #9CA3AF;
+    margin-top: 6px;
+    margin-left: 2px;
+}
+
+/* Forgot Password Link */
+.forgot-link {
+    display: block;
+    margin-top: 8px;
+    text-align: right;
+    font-size: 13px;
+    font-weight: 500;
+    color: #1E5631;
+    background: none;
+    border: none;
+    cursor: pointer;
+    transition: text-decoration 0.2s ease;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+    .login-page {
+        padding: 16px;
+        align-items: flex-start;
+        padding-top: 40px;
+    }
+
+    .login-card {
+        padding: 40px 24px;
+        border-radius: 24px;
+    }
+
+    .login-title {
+        font-size: 22px;
+    }
+
+    .logo-icon {
+        font-size: 48px;
+    }
+}
+
+/* ─────────────────────────────────────────────
+   LOADING SPINNER
+   ───────────────────────────────────────────── */
+
+.spinner {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Form disabled during loading */
+.login-form.is-loading {
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.login-form.is-loading input,
+.login-form.is-loading button {
+    cursor: not-allowed;
+}
+
+/* ─────────────────────────────────────────────
+   SUCCESS STATE
+   ───────────────────────────────────────────── */
+
+.submit-button.success {
+    background: #2D6A4F;
+    pointer-events: none;
+}
+
+.submit-button.success .check-icon {
+    display: inline-block;
+    animation: checkPop 0.3s ease forwards;
+}
+
+@keyframes checkPop {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Card exit animation after success */
+.login-card.success-exit {
+    animation: cardExit 0.4s ease forwards;
+}
+
+@keyframes cardExit {
+    to {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+}
+
+/* ─────────────────────────────────────────────
+   INPUT ERROR STATE
+   ───────────────────────────────────────────── */
+
+.input-group.has-error input {
+    border-color: #DC2626;
+    background: #FEF2F2;
+    animation: inputShake 0.3s ease;
+}
+
+.input-group.has-error input:focus {
+    box-shadow: 0 0 0 4px rgba(220, 38, 38, 0.1);
+    border-color: #DC2626;
+}
+
+.input-group.has-error .input-icon {
+    color: #DC2626;
+}
+
+@keyframes inputShake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-6px);
+    }
+
+    40% {
+        transform: translateX(6px);
+    }
+
+    60% {
+        transform: translateX(-4px);
+    }
+
+    80% {
+        transform: translateX(4px);
+    }
+}
+
+.input-error {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    font-size: 13px;
+    color: #DC2626;
+}
+
+.input-error svg {
+    width: 14px;
+    height: 14px;
+    flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────
+   TOAST NOTIFICATION
+   ───────────────────────────────────────────── */
+
+.login-toast {
+    position: fixed;
+    top: 24px;
+    left: 50%;
+    transform: translateX(-50%) translateY(-100px);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.login-toast.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.login-toast.error {
+    background: #FEF2F2;
+    border: 1px solid #FECACA;
+}
+
+.login-toast.success {
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+}
+
+.login-toast-icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+}
+
+.login-toast.error .login-toast-icon {
+    color: #DC2626;
+}
+
+.login-toast.success .login-toast-icon {
+    color: #16A34A;
+}
+
+.login-toast-message {
+    font-size: 14px;
+    font-weight: 500;
+    color: #1F2937;
+}
+
+.login-toast-close {
+    background: none;
+    border: none;
+    padding: 4px;
+    cursor: pointer;
+    color: #9CA3AF;
+    transition: color 0.2s ease;
+}
+
+.login-toast-close:hover {
+    color: #6B7280;
+}
+
+.login-toast-close svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ─────────────────────────────────────────────
+   PASSWORD STRENGTH INDICATOR
+   ───────────────────────────────────────────── */
+
+.password-strength {
+    display: flex;
+    gap: 4px;
+    margin-top: 8px;
+}
+
+.strength-bar {
+    flex: 1;
+    height: 4px;
+    background: #E5E7EB;
+    border-radius: 2px;
+    transition: background 0.3s ease;
+}
+
+.strength-bar.weak {
+    background: #DC2626;
+}
+
+.strength-bar.fair {
+    background: #F59E0B;
+}
+
+.strength-bar.good {
+    background: #84CC16;
+}
+
+.strength-bar.strong {
+    background: #16A34A;
+}
+
+.strength-label {
+    font-size: 11px;
+    margin-top: 4px;
+    color: #9CA3AF;
+}
+
+.strength-label.weak {
+    color: #DC2626;
+}
+
+.strength-label.fair {
+    color: #F59E0B;
+}
+
+.strength-label.good {
+    color: #84CC16;
+}
+
+.strength-label.strong {
+    color: #16A34A;
+}

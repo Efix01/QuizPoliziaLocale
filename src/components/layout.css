@@ -1,0 +1,266 @@
+/* ============================================
+   LAYOUT - La Foresta Digitale
+   ============================================ */
+
+/* ─────────────────────────────────────────────
+   APP CONTAINER
+   ───────────────────────────────────────────── */
+
+.app-container {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--carta-antica);
+}
+
+/* ─────────────────────────────────────────────
+   MAIN CONTENT
+   ───────────────────────────────────────────── */
+
+.content {
+    flex: 1;
+    padding-bottom: calc(var(--bottom-nav-height) + var(--safe-area-bottom) + 16px);
+    overflow-y: auto;
+}
+
+/* ─────────────────────────────────────────────
+   BOTTOM NAVIGATION
+   ───────────────────────────────────────────── */
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(var(--bottom-nav-height) + var(--safe-area-bottom));
+    padding-bottom: var(--safe-area-bottom);
+    background: white;
+    box-shadow: 0 -4px 24px rgba(13, 40, 24, 0.06);
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+    z-index: 100;
+}
+
+/* ─────────────────────────────────────────────
+   NAV ITEMS
+   ───────────────────────────────────────────── */
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    padding: var(--space-sm) var(--space-md);
+    min-width: 64px;
+    min-height: 48px;
+    color: var(--nebbia);
+    text-decoration: none;
+    transition: all var(--transition-normal);
+    position: relative;
+    border-radius: var(--radius-md);
+}
+
+.nav-item span {
+    font-size: var(--text-xs);
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+.nav-item svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 1.75;
+    transition: transform var(--transition-bounce);
+}
+
+/* Hover state */
+.nav-item:hover {
+    color: var(--pino-marittimo);
+}
+
+.nav-item:hover svg {
+    transform: translateY(-2px);
+}
+
+/* Active state */
+.nav-item.active {
+    color: var(--bosco-notte);
+}
+
+.nav-item.active svg {
+    transform: scale(1);
+}
+
+/* Active indicator dot */
+.nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background: var(--oro-sardegna);
+    border-radius: 50%;
+    box-shadow: 0 0 8px rgba(201, 162, 39, 0.5);
+    animation: scaleIn var(--transition-normal) ease-out;
+}
+
+/* Tap animation */
+.nav-item:active svg {
+    transform: scale(0.9);
+}
+
+/* ─────────────────────────────────────────────
+   HEADER FLOTTANTE (per future implementazioni)
+   ───────────────────────────────────────────── */
+
+.floating-header {
+    position: fixed;
+    top: var(--space-md);
+    left: var(--space-md);
+    right: var(--space-md);
+    height: var(--header-height);
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-elevation-2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 var(--space-lg);
+    z-index: 90;
+    transition: all var(--transition-normal);
+}
+
+.floating-header.scrolled {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: var(--shadow-elevation-3);
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+}
+
+.header-logo svg {
+    width: 28px;
+    height: 28px;
+    color: var(--bosco-notte);
+}
+
+.header-logo-text {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--text-lg);
+    color: var(--bosco-notte);
+}
+
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.header-icon-btn {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: var(--inchiostro);
+    transition: all var(--transition-fast);
+}
+
+.header-icon-btn:hover {
+    background: var(--macchia-chiara);
+    color: var(--bosco-notte);
+}
+
+.header-icon-btn svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 1.75;
+}
+
+.header-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: var(--pino-marittimo);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: var(--text-sm);
+}
+
+/* Notification badge */
+.notification-badge {
+    position: relative;
+}
+
+.notification-badge::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 8px;
+    height: 8px;
+    background: var(--errore);
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+/* ─────────────────────────────────────────────
+   NAV AVATAR & LOGIN
+   ───────────────────────────────────────────── */
+
+.nav-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--pino-marittimo);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.nav-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nav-avatar-initials {
+    font-size: 11px;
+    font-weight: 600;
+    color: white;
+}
+
+.nav-login {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.nav-login svg {
+    color: var(--pino-marittimo);
+}
+
+.nav-login span {
+    color: var(--pino-marittimo);
+    font-weight: 600;
+}

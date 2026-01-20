@@ -1,0 +1,253 @@
+.privacy-page {
+    min-height: 100vh;
+    background: #f8f9fa;
+}
+
+/* Header */
+.privacy-header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    background: #1a472a;
+    color: #fff;
+    z-index: 100;
+}
+
+.privacy-header .back-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+    padding: 10px 16px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.privacy-header .back-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Content */
+.privacy-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+}
+
+.privacy-content h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1a472a;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+}
+
+.privacy-date {
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+/* Data Controller Box */
+.data-controller {
+    background: #e8f5e9;
+    border-left: 4px solid #1a472a;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.5rem;
+}
+
+.data-controller h3 {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: #1a472a;
+    margin: 0 0 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.data-controller p {
+    margin: 0.25rem 0;
+    color: #333;
+}
+
+.data-controller a {
+    color: #1a472a;
+    font-weight: 600;
+}
+
+.privacy-intro {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+/* Sections */
+.privacy-content section {
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.privacy-content section:last-child {
+    border-bottom: none;
+}
+
+.privacy-content h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #1a472a;
+    margin: 0 0 1rem;
+}
+
+.privacy-content h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #2d5a3d;
+    margin: 1rem 0 0.5rem;
+}
+
+.privacy-content p {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #444;
+    margin: 0 0 0.75rem;
+}
+
+.privacy-content ul,
+.privacy-content ol {
+    margin: 0.5rem 0 1rem;
+    padding-left: 1.5rem;
+}
+
+.privacy-content li {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #444;
+    margin-bottom: 0.5rem;
+}
+
+.privacy-content li::marker {
+    color: #1a472a;
+}
+
+.privacy-content a {
+    color: #1a472a;
+    text-decoration: underline;
+}
+
+.privacy-content a:hover {
+    color: #0d2818;
+}
+
+/* Contact Info */
+.privacy-content .contact-info {
+    background: #e8f5e9;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+}
+
+.privacy-content .contact-info a {
+    font-weight: 600;
+}
+
+/* Cookie Table */
+.cookie-table-container {
+    overflow-x: auto;
+    margin: 1rem 0;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.cookie-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    min-width: 600px;
+}
+
+.cookie-table th,
+.cookie-table td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e8e8e8;
+}
+
+.cookie-table th {
+    background: #1a472a;
+    color: white;
+    font-weight: 600;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.cookie-table tbody tr:nth-child(even) {
+    background: #f8f9fa;
+}
+
+.cookie-table tbody tr:hover {
+    background: #e8f5e9;
+}
+
+.cookie-table code {
+    background: #e8f5e9;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    color: #1a472a;
+}
+
+.cookie-table td strong {
+    color: #c9a227;
+}
+
+/* Cookie Preferences Button */
+.cookie-preferences-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: linear-gradient(135deg, #1a472a, #0d2818);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 12px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: all 0.2s ease;
+}
+
+.cookie-preferences-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(26, 71, 42, 0.3);
+}
+
+.cookie-preferences-btn:active {
+    transform: translateY(0);
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .privacy-content {
+        padding: 1.5rem 1rem 3rem;
+    }
+
+    .privacy-content h1 {
+        font-size: 1.5rem;
+    }
+
+    .privacy-intro {
+        font-size: 1rem;
+    }
+}

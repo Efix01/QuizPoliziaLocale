@@ -1,0 +1,286 @@
+/* ============================================
+   STUDY LIBRARY - Piano di Studio
+   Premium Edition
+   ============================================ */
+
+.study-library {
+    min-height: 100vh;
+    padding: var(--space-lg) var(--content-padding);
+    padding-bottom: calc(var(--bottom-nav-height) + var(--safe-area-bottom) + 32px);
+    background: var(--carta-antica);
+}
+
+/* ─────────────────────────────────────────────
+   HEADER
+   ───────────────────────────────────────────── */
+
+.library-header {
+    margin-bottom: var(--space-xl);
+}
+
+.library-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: var(--text-2xl);
+    color: var(--bosco-notte);
+    margin-bottom: var(--space-xs);
+}
+
+.library-subtitle {
+    font-size: var(--text-base);
+    color: var(--nebbia);
+}
+
+/* ─────────────────────────────────────────────
+   OVERALL PROGRESS
+   ───────────────────────────────────────────── */
+
+.overall-progress-card {
+    background: linear-gradient(135deg, var(--pino-marittimo) 0%, var(--bosco-notte) 100%);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-xl);
+    color: white;
+}
+
+.overall-progress-info {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.overall-icon {
+    width: 32px;
+    height: 32px;
+    opacity: 0.9;
+}
+
+.overall-label {
+    display: block;
+    font-size: var(--text-sm);
+    opacity: 0.8;
+    margin-bottom: 2px;
+}
+
+.overall-count {
+    font-size: var(--text-lg);
+    font-weight: 700;
+}
+
+.overall-progress-bar {
+    height: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.overall-progress-fill {
+    height: 100%;
+    background: white;
+    border-radius: var(--radius-full);
+    transition: width 0.5s ease;
+}
+
+/* ─────────────────────────────────────────────
+   SUBJECTS LIST
+   ───────────────────────────────────────────── */
+
+.subjects-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+}
+
+.subject-card {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-elevation-1);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.subject-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-elevation-2);
+}
+
+.subject-card--complete {
+    background: linear-gradient(to right, rgba(22, 163, 74, 0.05), white);
+}
+
+/* Colored Left Border */
+.subject-border {
+    width: 5px;
+    align-self: stretch;
+    flex-shrink: 0;
+}
+
+.subject-border--legis_forestale {
+    background: linear-gradient(180deg, #1E5631, #2D8B4E);
+}
+
+.subject-border--botanica {
+    background: linear-gradient(180deg, #16A34A, #22C55E);
+}
+
+.subject-border--fauna {
+    background: linear-gradient(180deg, #EA580C, #F97316);
+}
+
+.subject-border--incendi {
+    background: linear-gradient(180deg, #DC2626, #EF4444);
+}
+
+.subject-border--diritto_penale {
+    background: linear-gradient(180deg, #7C3AED, #8B5CF6);
+}
+
+.subject-content {
+    flex: 1;
+    padding: var(--space-md) var(--space-lg);
+    min-width: 0;
+}
+
+.subject-header {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--space-md);
+    margin-bottom: var(--space-sm);
+}
+
+.subject-icon {
+    font-size: 28px;
+    flex-shrink: 0;
+}
+
+.subject-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.subject-title {
+    font-size: var(--text-base);
+    font-weight: 700;
+    color: var(--inchiostro);
+    margin: 0 0 4px 0;
+}
+
+.subject-description {
+    font-size: var(--text-sm);
+    color: var(--nebbia);
+    margin: 0;
+    line-height: 1.4;
+}
+
+.subject-check {
+    width: 24px;
+    height: 24px;
+    color: #16A34A;
+    flex-shrink: 0;
+}
+
+.subject-meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    font-size: var(--text-sm);
+    color: var(--nebbia);
+    margin-bottom: var(--space-sm);
+}
+
+.subject-chapters {
+    font-weight: 600;
+    color: var(--pino-marittimo);
+}
+
+.subject-time {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.subject-progress {
+    height: 4px;
+    background: #E5E7EB;
+    border-radius: var(--radius-full);
+    overflow: hidden;
+}
+
+.subject-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--pino-marittimo), var(--successo));
+    border-radius: var(--radius-full);
+    transition: width 0.3s ease;
+}
+
+.subject-arrow {
+    width: 20px;
+    height: 20px;
+    color: #9CA3AF;
+    margin-right: var(--space-md);
+    flex-shrink: 0;
+}
+
+/* ─────────────────────────────────────────────
+   LOCKED STATE (Unauthenticated)
+   ───────────────────────────────────────────── */
+
+.library-locked {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: var(--space-2xl);
+    margin-top: var(--space-xl);
+}
+
+.locked-icon {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
+    border-radius: 50%;
+    color: #D97706;
+    margin-bottom: var(--space-xl);
+}
+
+.library-locked h2 {
+    font-family: var(--font-display);
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--inchiostro);
+    margin: 0 0 var(--space-md) 0;
+}
+
+.library-locked p {
+    font-size: var(--text-base);
+    color: var(--nebbia);
+    line-height: 1.6;
+    max-width: 320px;
+    margin: 0 0 var(--space-xl) 0;
+}
+
+.locked-btn {
+    padding: var(--space-md) var(--space-2xl);
+    background: linear-gradient(135deg, var(--pino-marittimo), var(--bosco-notte));
+    color: white;
+    border: none;
+    border-radius: var(--radius-lg);
+    font-weight: 700;
+    font-size: var(--text-base);
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(30, 86, 49, 0.3);
+    transition: all var(--transition-fast);
+}
+
+.locked-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(30, 86, 49, 0.4);
+}

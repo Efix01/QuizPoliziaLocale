@@ -1,0 +1,84 @@
+/* ============================================
+   BOTTOM SHEET - La Foresta Digitale
+   ============================================ */
+
+.bottom-sheet-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(13, 40, 24, 0.5);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    z-index: 200;
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-normal);
+}
+
+.bottom-sheet-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.bottom-sheet {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    border-radius: var(--radius-2xl) var(--radius-2xl) 0 0;
+    padding: var(--space-lg);
+    padding-bottom: calc(var(--space-lg) + var(--safe-area-bottom));
+    max-height: 85vh;
+    overflow-y: auto;
+    z-index: 201;
+    transform: translateY(100%);
+    transition: transform var(--transition-slow) cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.bottom-sheet-overlay.open .bottom-sheet {
+    transform: translateY(0);
+}
+
+.bottom-sheet-handle {
+    width: 40px;
+    height: 4px;
+    background: #E5E7EB;
+    border-radius: var(--radius-pill);
+    margin: 0 auto var(--space-md);
+}
+
+.bottom-sheet-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: var(--space-lg);
+}
+
+.bottom-sheet-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--text-xl);
+    color: var(--bosco-notte);
+    margin: 0;
+}
+
+.bottom-sheet-close {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #F3F4F6;
+    border-radius: 50%;
+    color: var(--nebbia);
+    transition: all var(--transition-fast);
+}
+
+.bottom-sheet-close:hover {
+    background: #E5E7EB;
+    color: var(--inchiostro);
+}
+
+.bottom-sheet-content {
+    /* Content styling handled by parent components */
+}

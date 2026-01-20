@@ -1,0 +1,229 @@
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useQuiz } from '../context/QuizContext';
+import { type QuizQuestion } from '../types';
+import { Check, X, Brain, Ban, ArrowLeft } from 'lucide-react';
+import './StudyMode.css';
+
+interface LocationState {
+    category?: string;
+}
+
+const StudyMode: React.FC = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { getQuestionsForStudy, answerQuestion } = useQuiz();
+    const [sessionQuestions, setSessionQuestions] = useState<QuizQuestion[]>([]);
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const [showAnswer, setShowAnswer] = useState(false);
+    const [selectedOption, setSelectedOption] = useState<string | null>(null);
+    const [excludedOptions, setExcludedOptions] = useState<string[]>([]);
+    const [isFinished, setIsFinished] = useState(false);
+
+    // Get category from navigation state
+    const state = location.state as LocationState;
+    const categoryFilter = state?.category;
+
+    useEffect(() => {
+        // Load questions for this session, filtered by category if provided
+        // 20 questions for category-specific study, 10 for quick quiz
+        const categoryList = categoryFilter ? [categoryFilter] : undefined;
+        const questionCount = categoryFilter ? 20 : 10;
+        const questions = getQuestionsForStudy(questionCount, categoryList);
+        setSessionQuestions(questions);
+    }, [categoryFilter]);
+
+
+    const handleOptionSelect = (key: string) => {
+        if (showAnswer) return;
+        if (excludedOptions.includes(key)) return; // Prevents selection of excluded option
+        setSelectedOption(key);
+    };
+
+    const toggleExclusion = (e: React.MouseEvent, key: string) => {
+        e.stopPropagation(); // Stop bubble if clicked inside button
+        if (showAnswer) return;
+
+        if (excludedOptions.includes(key)) {
+            setExcludedOptions(prev => prev.filter(k => k !== key));
+        } else {
+            setExcludedOptions(prev => [...prev, key]);
+            if (selectedOption === key) setSelectedOption(null); // Deselect if excluded
+        }
+    };
+
+    const handleCheck = () => {
+        setShowAnswer(true);
+    };
+
+    const handleFeedback = (correct: boolean) => {
+        if (!currentQuestion) return;
+
+        // Save Result
+        answerQuestion(currentQuestion.id, correct);
+
+        // Go next
+        if (currentIndex < sessionQuestions.length - 1) {
+            setCurrentIndex(prev => prev + 1);
+            setShowAnswer(false);
+            setSelectedOption(null);
+            setExcludedOptions([]);
+        } else {
+            setIsFinished(true);
+        }
+    };
+
+    // EV Calculator Logic
+    const calculateStrategy = (totalOptions: number, excludedCount: number) => {
+        const remaining = totalOptions - excludedCount;
+        if (remaining <= 0) return null;
+        if (remaining === 1) return { type: 'positive', ev: 0.50, text: "Risposta Certa (+0.50)" };
+
+        const prob = 1 / remaining;
+        const ev = (prob * 0.50) + ((1 - prob) * -0.17);
+
+        if (ev > 0.1) return { type: 'positive', ev, text: `EV Positivo (+${ev.toFixed(2)}). Conviene Tentare!` };
+        if (ev > -0.01) return { type: 'neutral', ev, text: `EV Marginale (${ev.toFixed(2)}). Rischio Medio.` };
+        return { type: 'negative', ev, text: `EV Negativo (${ev.toFixed(2)}). Meglio lasciare in bianco.` };
+    };
+
+    if (sessionQuestions.length === 0) {
+        return (
+            <div className="study-container">
+                <h2>Tutto fatto!</h2>
+                <p>Non ci sono domande {categoryFilter ? `di ${categoryFilter}` : ''} da ripassare al momento.</p>
+                <button className="btn-reveal" onClick={() => navigate('/')}>Torna alla Home</button>
+            </div>
+        );
+    }
+
+    if (isFinished) {
+        return (
+            <div className="study-container">
+                <h2>Sessione Completata!</h2>
+                <p>Hai ripassato {sessionQuestions.length} domande{categoryFilter ? ` di ${categoryFilter}` : ''}.</p>
+                <button className="btn-reveal" onClick={() => navigate('/')}>Torna alla Dashboard</button>
+            </div>
+        );
+    }
+
+    const currentQuestion = sessionQuestions[currentIndex];
+    const progress = ((currentIndex) / sessionQuestions.length) * 100;
+    const strategy = calculateStrategy(4, excludedOptions.length);
+
+    return (
+        <div className="study-container">
+            <div className="study-header">
+                <button
+                    className="back-btn"
+                    onClick={() => navigate('/')}
+                    aria-label="Torna alla Home"
+                >
+                    <ArrowLeft size={20} />
+                </button>
+                <div className="progress-bar">
+                    <div className="progress-fill" style={{ width: `${progress}%` }}></div>
+                </div>
+                <span className="question-counter">{currentIndex + 1}/{sessionQuestions.length}</span>
+            </div>
+
+            {categoryFilter && (
+                <div className="category-filter-badge">
+                    Argomento: {categoryFilter}
+                </div>
+            )}
+
+            <div className="flashcard-container">
+                <div className="flashcard">
+                    <div className="category-tag">{currentQuestion.category}</div>
+                    <h3 className="question-text">{currentQuestion.question}</h3>
+
+                    {/* Strategy Advisor */}
+                    {!showAnswer && strategy && (
+                        <div className={`strategy-advisor strategy-${strategy.type}`}>
+                            <div className="advisor-icon"><Brain size={20} /></div>
+                            <div>
+                                <span className="advisor-stats">
+                                    {4 - excludedOptions.length} Opz. Rimaste
+                                </span>
+                                {strategy.text}
+                            </div>
+                        </div>
+                    )}
+
+                    <div className="options-list">
+                        {Object.entries(currentQuestion.options).map(([key, text]) => {
+                            const isSelected = selectedOption === key;
+                            const isExcluded = excludedOptions.includes(key);
+                            const isCorrect = key === currentQuestion.correct_answer;
+
+                            let className = 'option-item';
+                            if (isExcluded) className += ' excluded';
+
+                            if (showAnswer) {
+                                if (isCorrect) className += ' correct';
+                                else if (isSelected) className += ' wrong';
+                            } else {
+                                if (isSelected) className += ' selected';
+                            }
+
+                            return (
+                                <div className="option-wrapper" key={key}>
+                                    {!showAnswer && (
+                                        <button
+                                            className={`exclude-btn ${isExcluded ? 'active' : ''}`}
+                                            onClick={(e) => toggleExclusion(e, key)}
+                                            title="Escludi opzione"
+                                        >
+                                            <Ban size={16} />
+                                        </button>
+                                    )}
+                                    <div
+                                        className={className}
+                                        onClick={() => handleOptionSelect(key)}
+                                    >
+                                        <span style={{ fontWeight: 600, marginRight: '0.5rem' }}>{key}.</span>
+                                        {text}
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
+
+                    {showAnswer && (
+                        <div className="explanation-box">
+                            <strong>Spiegazione:</strong> {currentQuestion.explanation}
+                            <div style={{ marginTop: '0.5rem', fontSize: '0.8rem', opacity: 0.8 }}>
+                                Fonte: {currentQuestion.source}
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </div>
+
+            <div className="controls-area">
+                {!showAnswer ? (
+                    <button
+                        className="btn-reveal"
+                        onClick={handleCheck}
+                        disabled={!selectedOption}
+                        style={{ opacity: selectedOption ? 1 : 0.5 }}
+                    >
+                        Verifica Risposta
+                    </button>
+                ) : (
+                    <>
+                        <button className="btn-feedback btn-wrong" onClick={() => handleFeedback(false)}>
+                            <X size={20} /> Non sapevo
+                        </button>
+                        <button className="btn-feedback btn-correct" onClick={() => handleFeedback(true)}>
+                            <Check size={20} /> Sapevo
+                        </button>
+                    </>
+                )}
+            </div>
+        </div>
+    );
+};
+
+export default StudyMode;
