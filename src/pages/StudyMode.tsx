@@ -70,6 +70,8 @@ const StudyMode: React.FC = () => {
             setShowAnswer(false);
             setSelectedOption(null);
             setExcludedOptions([]);
+            // Scroll to top for next question
+            window.scrollTo(0, 0);
         } else {
             setIsFinished(true);
         }
