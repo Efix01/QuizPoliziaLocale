@@ -123,18 +123,18 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 32px;
-    height: 32px;
+    width: 36px;
+    height: 36px;
     border-radius: 50%;
-    color: var(--nebbia);
+    background: rgba(180, 83, 9, 0.1);
+    color: #B45309;
     transition: all var(--transition-fast);
-    opacity: 0.6;
 }
 
 .report-btn:hover {
-    background-color: rgba(155, 44, 44, 0.1);
-    color: var(--errore);
-    opacity: 1;
+    background-color: rgba(180, 83, 9, 0.2);
+    color: #92400E;
+    transform: scale(1.1);
 }
 
 .question-text {
