@@ -86,16 +86,33 @@ export function useStaggerAnimation(
 
 /**
  * Hook per parallax effect
+ * Disabilitato su mobile per performance ottimali
  */
 export function useParallax(speed: number = 0.5): number {
     const [offset, setOffset] = useState(0);
 
     useEffect(() => {
+        // Disable parallax on mobile devices for better scroll performance
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+        if (isMobile || prefersReducedMotion) {
+            return;
+        }
+
+        let ticking = false;
+
         const handleScroll = () => {
-            const scrollY = window.scrollY;
-            // Limit parallax to hero area (first 400px of scroll)
-            if (scrollY < 400) {
-                setOffset(scrollY * speed);
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    const scrollY = window.scrollY;
+                    // Limit parallax to hero area (first 400px of scroll)
+                    if (scrollY < 400) {
+                        setOffset(scrollY * speed);
+                    }
+                    ticking = false;
+                });
+                ticking = true;
             }
         };
 

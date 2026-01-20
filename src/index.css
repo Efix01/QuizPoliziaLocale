@@ -150,6 +150,8 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  /* Smooth scrolling behavior */
+  scroll-behavior: smooth;
 }
 
 body {
@@ -162,6 +164,22 @@ body {
   min-height: 100vh;
   min-height: 100dvh;
   overflow-x: hidden;
+  /* Mobile scroll performance optimizations */
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Disable smooth scroll on mobile for better native scroll feel */
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* Reduce animation complexity during scroll */
+  .hover-lift:active,
+  .hover-scale:active {
+    transform: none !important;
+    transition: none !important;
+  }
 }
 
 /* ─────────────────────────────────────────────
