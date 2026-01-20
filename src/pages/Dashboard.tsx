@@ -9,6 +9,7 @@ import {
     ArrowRight,
     Calendar,
     ChevronRight,
+    ChevronLeft,
     TreePine,
     Leaf,
     Bug,
@@ -58,8 +59,7 @@ const CATEGORIES = [
     { id: 'legislazione', name: 'Legislazione Forestale', icon: BookOpen, gradient: 'inglese' },
     { id: 'aree', name: 'Aree Protette (L. 394/1991)', icon: TreePine, gradient: 'ecologia' },
     { id: 'incendi', name: 'Incendi Boschivi (L. 353/2000)', icon: Flame, gradient: 'incendi' },
-    { id: 'penale', name: 'Diritto Penale', icon: Scale, gradient: 'diritto' },
-    { id: 'procedura', name: 'Procedura Penale', icon: Scale, gradient: 'diritto' },
+    { id: 'penale', name: 'Diritto Penale e Procedura Penale', icon: Scale, gradient: 'diritto' },
     { id: 'reati', name: 'Reati Ambientali', icon: Flame, gradient: 'incendi' },
     { id: 'fauna', name: 'Fauna (L. 157/1992)', icon: Bug, gradient: 'fauna' },
     { id: 'informatica', name: 'Informatica', icon: Target, gradient: 'informatica' },
@@ -86,6 +86,18 @@ const Dashboard: React.FC = () => {
     const [progressRef, progressVisible] = useScrollAnimation<HTMLElement>();
     const [categoriesRef, categoriesVisible] = useScrollAnimation<HTMLElement>();
     const [challengeRef, challengeVisible] = useScrollAnimation<HTMLElement>();
+
+    // Categories scroll ref and navigation
+    const categoriesScrollRef = React.useRef<HTMLDivElement>(null);
+    const scrollCategories = (direction: 'left' | 'right') => {
+        if (categoriesScrollRef.current) {
+            const scrollAmount = 320; // ~2 cards
+            categoriesScrollRef.current.scrollBy({
+                left: direction === 'left' ? -scrollAmount : scrollAmount,
+                behavior: 'smooth'
+            });
+        }
+    };
 
     // Page load animation state
     const [pageLoaded, setPageLoaded] = useState(false);
@@ -304,52 +316,72 @@ const Dashboard: React.FC = () => {
                     <h2 className="section-title">Esplora per argomento</h2>
                 </div>
 
-                <div className="categories-scroll">
-                    {CATEGORIES.map((cat, index) => {
-                        const count = getCategoryCount(cat.id);
-                        const Icon = cat.icon;
-                        const isFreeCategory = FREE_CATEGORY_IDS.includes(cat.id);
-                        const isLocked = !isAuthenticated && !isFreeCategory;
+                <div className="categories-wrapper">
+                    {/* Left Arrow */}
+                    <button
+                        className="categories-arrow categories-arrow--left"
+                        onClick={() => scrollCategories('left')}
+                        aria-label="Scorri a sinistra"
+                    >
+                        <ChevronLeft />
+                    </button>
 
-                        return (
-                            <div
-                                key={cat.id}
-                                className={`category-card category-card--${cat.gradient} hover-scale`}
-                                onClick={() => {
-                                    if (isLocked) {
-                                        navigate('/login');
-                                    } else {
-                                        navigate('/study', { state: { category: cat.name } });
-                                    }
-                                }}
-                                role="button"
-                                tabIndex={0}
-                                style={{
-                                    transitionDelay: categoriesVisible ? `${index * 0.05}s` : '0s',
-                                    position: 'relative'
-                                }}
-                            >
-                                {/* Locked Overlay for premium categories */}
-                                {isLocked && (
-                                    <div className="category-locked">
-                                        <span className="category-lock-icon">🔒</span>
+                    <div className="categories-scroll" ref={categoriesScrollRef}>
+                        {CATEGORIES.map((cat, index) => {
+                            const count = getCategoryCount(cat.id);
+                            const Icon = cat.icon;
+                            const isFreeCategory = FREE_CATEGORY_IDS.includes(cat.id);
+                            const isLocked = !isAuthenticated && !isFreeCategory;
+
+                            return (
+                                <div
+                                    key={cat.id}
+                                    className={`category-card category-card--${cat.gradient} hover-scale`}
+                                    onClick={() => {
+                                        if (isLocked) {
+                                            navigate('/login');
+                                        } else {
+                                            navigate('/study', { state: { category: cat.name } });
+                                        }
+                                    }}
+                                    role="button"
+                                    tabIndex={0}
+                                    style={{
+                                        transitionDelay: categoriesVisible ? `${index * 0.05}s` : '0s',
+                                        position: 'relative'
+                                    }}
+                                >
+                                    {/* Locked Overlay for premium categories */}
+                                    {isLocked && (
+                                        <div className="category-locked">
+                                            <span className="category-lock-icon">🔒</span>
+                                        </div>
+                                    )}
+
+                                    <div className="category-icon">
+                                        <Icon />
                                     </div>
-                                )}
+                                    <span className="category-title">{cat.name}</span>
+                                    <span className="category-count">{count} domande</span>
+                                    <div className="category-progress">
+                                        <div
+                                            className="category-progress-fill"
+                                            style={{ width: `${Math.random() * 60 + 10}%` }}
+                                        />
+                                    </div>
+                                </div>
+                            );
+                        })}
+                    </div>
 
-                                <div className="category-icon">
-                                    <Icon />
-                                </div>
-                                <span className="category-title">{cat.name}</span>
-                                <span className="category-count">{count} domande</span>
-                                <div className="category-progress">
-                                    <div
-                                        className="category-progress-fill"
-                                        style={{ width: `${Math.random() * 60 + 10}%` }}
-                                    />
-                                </div>
-                            </div>
-                        );
-                    })}
+                    {/* Right Arrow */}
+                    <button
+                        className="categories-arrow categories-arrow--right"
+                        onClick={() => scrollCategories('right')}
+                        aria-label="Scorri a destra"
+                    >
+                        <ChevronRight />
+                    </button>
                 </div>
             </section>
 

@@ -184,6 +184,17 @@ const Profile: React.FC = () => {
                     </div>
                     <ChevronRight className="account-chevron" />
                 </button>
+
+                <button
+                    className="account-row"
+                    onClick={() => navigate('/terms')}
+                >
+                    <div className="account-row-left">
+                        <FileText className="account-icon account-icon--info" />
+                        <span>Termini di Servizio</span>
+                    </div>
+                    <ChevronRight className="account-chevron" />
+                </button>
             </div>
 
             {/* Modals */}

@@ -44,7 +44,7 @@ const ChiSiamo: React.FC = () => {
                     <div className="bio-content">
                         <p className="bio-greeting">Ciao, sono <strong>Efisio</strong>.</p>
                         <p>
-                            Nella vita professionale sono un <strong>Agente del Corpo Forestale</strong>.
+                            Nella vita professionale sono un <strong>Assistente Capo del Corpo Forestale</strong>.
                             Nel tempo libero, sono un appassionato di programmazione, intelligenza artificiale,
                             fotografia e video.
                         </p>

@@ -1079,7 +1079,7 @@
     },
     {
         "id": 78,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "A norma del Codice Penale, art. 210, l'estinzione del reato impedisce l'applicazione delle misure di sicurezza?",
         "options": {
             "A": "No, salvo che si tratti di particolari casi espressamente indicati dalla legge",
@@ -1093,7 +1093,7 @@
     },
     {
         "id": 79,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Il passeggero di un mezzo pubblico che rifiuta di fornire al controllore di pubblici servizi di trasporto il documento di viaggio incorre nella contravvenzione di cui all'art. 651 c.p.?",
         "options": {
             "A": "Sì, ma solo se insulta verbalmente il controllore",
@@ -1107,7 +1107,7 @@
     },
     {
         "id": 80,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "In base al Codice Penale, in quali casi colui che cagiona un incendio a una cosa propria viene punito?",
         "options": {
             "A": "Sempre",
@@ -1121,7 +1121,7 @@
     },
     {
         "id": 81,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo il Codice Penale, NON costituisce necessariamente reato di maltrattamento di animali:",
         "options": {
             "A": "Sottoporre gli animali a lavori sopportabili per le loro caratteristiche etologiche",
@@ -1135,7 +1135,7 @@
     },
     {
         "id": 82,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "In caso di condanna per il delitto di inquinamento o disastro ambientale, il giudice ordina (Art. 452-undecies):",
         "options": {
             "A": "Il sequestro temporaneo",
@@ -1149,7 +1149,7 @@
     },
     {
         "id": 83,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Cosa prevede l'art. 452-quaterdecies (Attività organizzate per il traffico illecito di rifiuti)?",
         "options": {
             "A": "L'arresto fino a 3 mesi per abbandono occasionale",
@@ -1163,7 +1163,7 @@
     },
     {
         "id": 84,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "I delitti di inquinamento e disastro ambientale sono punibili:",
         "options": {
             "A": "Solo a titolo di colpa",
@@ -1177,7 +1177,7 @@
     },
     {
         "id": 85,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Il 'Ravvedimento operoso' previsto dall'art. 452-decies c.p. comporta una diminuzione di pena se:",
         "options": {
             "A": "Il colpevole chiede scusa pubblicamente",
@@ -1191,7 +1191,7 @@
     },
     {
         "id": 86,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Il delitto di 'Omessa bonifica' (art. 452-terdecies c.p.) si configura quando:",
         "options": {
             "A": "Si scaricano acque domestiche in fogna senza pagare la tariffa",
@@ -1205,7 +1205,7 @@
     },
     {
         "id": 87,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "In base all'art. 452-bis c.p., quando si configura il delitto di 'Inquinamento ambientale'?",
         "options": {
             "A": "Solo quando si verifica un danno irreversibile all'ambiente",
@@ -1219,7 +1219,7 @@
     },
     {
         "id": 88,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "La circostanza aggravante ambientale (Art. 452-bis, comma 2) si applica se l'inquinamento è prodotto:",
         "options": {
             "A": "Di notte",
@@ -1233,7 +1233,7 @@
     },
     {
         "id": 89,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Nel delitto di 'Morte o lesioni come conseguenza del delitto di inquinamento ambientale' (art. 452-ter), se deriva la morte di più persone, la pena:",
         "options": {
             "A": "È l'ergastolo",
@@ -1247,7 +1247,7 @@
     },
     {
         "id": 90,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Quale elemento distingue il 'Disastro ambientale' (art. 452-quater c.p.) dall''Inquinamento ambientale'?",
         "options": {
             "A": "Il disastro si applica solo alle aree marine, l'inquinamento alle aree terrestri",
@@ -1261,7 +1261,7 @@
     },
     {
         "id": 91,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "L'art. 452-septies punisce chi, negando l'accesso o predisponendo ostacoli:",
         "options": {
             "A": "Chiude il cancello aziendale di notte",
@@ -1275,7 +1275,7 @@
     },
     {
         "id": 92,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "I reati ambientali possono comportare la responsabilità amministrativa degli enti (D.Lgs. 231/2001)?",
         "options": {
             "A": "No, solo le persone fisiche possono commettere reati",
@@ -1793,7 +1793,7 @@
     },
     {
         "id": 129,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "L'art. 727 c.p. punisce l'abbandono di animali domestici. Il secondo comma punisce anche:",
         "options": {
             "A": "Chi non raccoglie le deiezioni",
@@ -1807,7 +1807,7 @@
     },
     {
         "id": 130,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "L'art. 544-bis c.p. punisce l'uccisione di animali. La condotta è punibile:",
         "options": {
             "A": "Sempre, anche se avviene per necessità alimentare",
@@ -1821,7 +1821,7 @@
     },
     {
         "id": 131,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "L'art. 672 c.p. (Omessa custodia e malgoverno di animali):",
         "options": {
             "A": "Si applica solo ai cani pericolosi",
@@ -1835,7 +1835,7 @@
     },
     {
         "id": 132,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'art. 53 c.p., l'uso legittimo delle armi da parte del Pubblico Ufficiale è consentito:",
         "options": {
             "A": "Al fine di adempiere un dovere del proprio ufficio, quando è costretto dalla necessità di respingere una violenza o di vincere una resistenza all'Autorità (e altri casi previsti)",
@@ -1849,7 +1849,7 @@
     },
     {
         "id": 133,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Quando più persone concorrono nel medesimo reato (Art. 110 c.p.):",
         "options": {
             "A": "Viene punito solo l'esecutore materiale",
@@ -1863,7 +1863,7 @@
     },
     {
         "id": 134,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Chiunque detiene armi o munizioni senza farne denuncia all'Autorità locale di pubblica sicurezza commette il reato di cui all'art. 697 c.p. (Detenzione abusiva di armi). Si tratta di:",
         "options": {
             "A": "Un illecito amministrativo",
@@ -1877,7 +1877,7 @@
     },
     {
         "id": 135,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Il rifiuto di fornire le generalità a un Pubblico Ufficiale nell'esercizio delle sue funzioni (Art. 651 c.p.) è un reato che si consuma:",
         "options": {
             "A": "Quando ci si rifiuta di dare le indicazioni sulla propria identità personale, stato o qualità",
@@ -1891,7 +1891,7 @@
     },
     {
         "id": 136,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "L'art. 650 c.p. (Inosservanza dei provvedimenti dell'Autorità) è una norma:",
         "options": {
             "A": "Speciale, che prevale sempre sulle altre norme",
@@ -1905,7 +1905,7 @@
     },
     {
         "id": 137,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'art. 43 c.p., il delitto è 'colposo' (o contro l'intenzione) quando:",
         "options": {
             "A": "L'agente accetta il rischio che l'evento si verifichi pur non volendolo direttamente",
@@ -1919,7 +1919,7 @@
     },
     {
         "id": 138,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "L'art. 727-bis c.p. punisce l'uccisione, distruzione, cattura, prelievo o detenzione di esemplari di specie animali o vegetali selvatiche protette. Si tratta di:",
         "options": {
             "A": "Un illecito amministrativo",
@@ -1933,7 +1933,7 @@
     },
     {
         "id": 139,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Nessuno può essere punito per un fatto preveduto dalla legge come reato se, al momento in cui lo ha commesso, non era imputabile (Art. 85 c.p.). È imputabile:",
         "options": {
             "A": "Chi ha la cittadinanza italiana",
@@ -1947,7 +1947,7 @@
     },
     {
         "id": 140,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "L'Incaricato di Pubblico Servizio (art. 358 c.p.) si distingue dal Pubblico Ufficiale perché:",
         "options": {
             "A": "Svolge un servizio pubblico privo dei poteri autoritativi e certificativi tipici della pubblica funzione",
@@ -1961,7 +1961,7 @@
     },
     {
         "id": 141,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Quali sono le pene principali per i 'delitti'?",
         "options": {
             "A": "Ergastolo, Reclusione, Multa",
@@ -1975,7 +1975,7 @@
     },
     {
         "id": 142,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Agli effetti della legge penale (art. 357 c.p.), sono Pubblici Ufficiali:",
         "options": {
             "A": "Coloro che svolgono un'attività materiale o manuale per la P.A.",
@@ -1989,7 +1989,7 @@
     },
     {
         "id": 143,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Qual è la differenza sanzionatoria principale tra il 'Maltrattamento di animali' (art. 544-ter c.p.) e l''Abbandono di animali' (art. 727 c.p.)?",
         "options": {
             "A": "Il maltrattamento è punibile solo a querela, l'abbandono è d'ufficio",
@@ -2003,7 +2003,7 @@
     },
     {
         "id": 144,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "L'art. 423-bis c.p. (Incendio boschivo) punisce:",
         "options": {
             "A": "Solo chi cagiona l'incendio con dolo (intenzionalmente)",
@@ -2017,7 +2017,7 @@
     },
     {
         "id": 145,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Il Pubblico Ufficiale che, indebitamente, rifiuta un atto del suo ufficio che, per ragioni di giustizia o sicurezza pubblica, deve essere compiuto senza ritardo, commette il reato di:",
         "options": {
             "A": "Interruzione di pubblico servizio",
@@ -2031,7 +2031,7 @@
     },
     {
         "id": 146,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Il Pubblico Ufficiale che si appropria di denaro o altra cosa mobile altrui di cui ha il possesso per ragione del suo ufficio commette:",
         "options": {
             "A": "Appropriazione indebita",
@@ -2045,7 +2045,7 @@
     },
     {
         "id": 147,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Chi usa violenza o minaccia per opporsi a un Pubblico Ufficiale mentre compie un atto di ufficio commette il reato di:",
         "options": {
             "A": "Lesioni personali",
@@ -2059,7 +2059,7 @@
     },
     {
         "id": 148,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Non è punibile chi ha commesso il fatto per esservi stato costretto dalla necessità di difendere un diritto proprio o altrui contro il pericolo attuale di un'offesa ingiusta. Questa è la definizione di:",
         "options": {
             "A": "Stato di necessità (Art. 54 c.p.)",
@@ -3571,7 +3571,7 @@
     },
     {
         "id": 257,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "A norma della legge 689/1981, la violazione amministrativa, quando è possibile, deve essere contestata immediatamente:",
         "options": {
             "A": "Solo al trasgressore",
@@ -3585,7 +3585,7 @@
     },
     {
         "id": 258,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi dell'art. 20 della legge 689/1981, può essere disposta la confisca amministrativa delle cose che servirono o furono destinate a commettere la violazione?",
         "options": {
             "A": "Sì, purché le cose appartengano a una delle persone cui è ingiunto il pagamento",
@@ -3599,7 +3599,7 @@
     },
     {
         "id": 259,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi dell'art. 7 della legge 689/1981, l'obbligazione di pagare la somma dovuta per una violazione si trasmette agli eredi?",
         "options": {
             "A": "Sì, ma solo se si tratta di eredi testamentari",
@@ -3613,7 +3613,7 @@
     },
     {
         "id": 260,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi della legge 689/1981, nella determinazione della sanzione amministrativa pecuniaria, sono tenute in considerazione le condizioni economiche del soggetto che ha commesso la violazione?",
         "options": {
             "A": "Sì, così come è tenuta in considerazione la personalità dello stesso",
@@ -3627,7 +3627,7 @@
     },
     {
         "id": 261,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "In materia di illecito amministrativo (legge 689/1981), nel caso in cui la violazione è commessa per errore sul fatto, l'agente:",
         "options": {
             "A": "È responsabile solo se l'errore è determinato da sua colpa grave",
@@ -3641,7 +3641,7 @@
     },
     {
         "id": 262,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'articolo 2 della legge 689/1981, una persona che commette una violazione senza avere la capacità di intendere e di volere:",
         "options": {
             "A": "Può essere assoggettata solo a sanzioni amministrative accessorie",
@@ -4747,7 +4747,7 @@
     },
     {
         "id": 341,
-        "category": "Procedura Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi dell'art. 386 del Codice di Procedura Penale, la Polizia Giudiziaria, in caso di arresto o di fermo, è tenuta a:",
         "options": {
             "A": "Darne immediata notizia al Pubblico Ministero del luogo di residenza del soggetto arrestato o fermato",
@@ -4761,7 +4761,7 @@
     },
     {
         "id": 342,
-        "category": "Procedura Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "In base al Codice di Procedura Penale, il reato di omicidio colposo è di competenza:",
         "options": {
             "A": "Del tribunale in composizione collegiale",
@@ -4775,7 +4775,7 @@
     },
     {
         "id": 343,
-        "category": "Procedura Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "L'art. 354 c.p.p. autorizza la PG a compiere accertamenti urgenti sui luoghi, sulle cose e sulle persone quando:",
         "options": {
             "A": "C'è il pericolo che le cose, le tracce e i luoghi del reato si alterino, si disperdano o si modifichino e il PM non può intervenire tempestivamente",
@@ -4789,7 +4789,7 @@
     },
     {
         "id": 344,
-        "category": "Procedura Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "L'arresto in flagranza di reato è:",
         "options": {
             "A": "Una misura precautelare di competenza della Polizia Giudiziaria (e in casi eccezionali dei privati)",
@@ -4803,7 +4803,7 @@
     },
     {
         "id": 345,
-        "category": "Procedura Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "La Polizia Giudiziaria può avvalersi di persone idonee (es. tecnici, esperti) per compiere atti che richiedono specifiche competenze (Art. 348 c.p.p.)?",
         "options": {
             "A": "Sì, può avvalersi di ausiliari che non assumono la qualifica di PG ma operano sotto la sua direzione",
@@ -4817,7 +4817,7 @@
     },
     {
         "id": 346,
-        "category": "Procedura Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Dopo aver eseguito un arresto in flagranza, la PG deve porre l'arrestato a disposizione del PM al più presto e comunque:",
         "options": {
             "A": "Entro 24 ore",
@@ -4831,7 +4831,7 @@
     },
     {
         "id": 347,
-        "category": "Procedura Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Il difensore dell'indagato ha diritto di assistere agli atti di perquisizione e sequestro compiuti dalla PG?",
         "options": {
             "A": "Sì, ha diritto di assistere senza preventivo avviso (deve essere avvertito l'indagato se presente di farsi assistere, ma non si deve aspettare l'arrivo del difensore se non è lì)",
@@ -4845,7 +4845,7 @@
     },
     {
         "id": 348,
-        "category": "Procedura Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Si considera in stato di flagranza (Art. 382 c.p.p.):",
         "options": {
             "A": "Chi viene colto nell'atto di commetterlo, o chi, subito dopo il reato, è inseguito dalla PG/persona offesa o è sorpreso con cose/tracce che dimostrino che ha commesso il reato immediatamente prima",
@@ -4859,7 +4859,7 @@
     },
     {
         "id": 349,
-        "category": "Procedura Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Qual è una delle funzioni principali della Polizia Giudiziaria indicate all'art. 55 c.p.p.?",
         "options": {
             "A": "Emettere sentenze di condanna",
@@ -4873,7 +4873,7 @@
     },
     {
         "id": 350,
-        "category": "Procedura Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Se una persona nei cui confronti vengono svolte le indagini rifiuta di farsi identificare, la Polizia Giudiziaria:",
         "options": {
             "A": "Non può fare nulla se non ha i documenti",
@@ -4887,7 +4887,7 @@
     },
     {
         "id": 351,
-        "category": "Procedura Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "La 'querela' è:",
         "options": {
             "A": "Un atto con cui la PG segnala un reato (informativa)",
@@ -4901,7 +4901,7 @@
     },
     {
         "id": 352,
-        "category": "Procedura Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "I Pubblici Ufficiali che hanno notizia di un reato perseguibile d'ufficio devono farne denuncia (informativa):",
         "options": {
             "A": "Entro 5 giorni dalla notizia",
@@ -4915,7 +4915,7 @@
     },
     {
         "id": 353,
-        "category": "Procedura Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "La Polizia Giudiziaria può procedere a perquisizione personale o locale d'iniziativa (senza decreto preventivo del PM)?",
         "options": {
             "A": "Solo se autorizzata dal Sindaco",
@@ -4929,7 +4929,7 @@
     },
     {
         "id": 354,
-        "category": "Procedura Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "La Polizia Giudiziaria, in caso di urgenza, può procedere al sequestro del corpo del reato e delle cose pertinenti al reato (Art. 354 c.p.p.). Entro quanto tempo deve trasmettere il verbale al PM per la convalida?",
         "options": {
             "A": "Entro 5 giorni",
@@ -4943,7 +4943,7 @@
     },
     {
         "id": 355,
-        "category": "Procedura Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "La Polizia Giudiziaria può assumere sommarie informazioni dalla persona nei cui confronti vengono svolte le indagini (indagato)?",
         "options": {
             "A": "No, è vietato",
@@ -4957,7 +4957,7 @@
     },
     {
         "id": 356,
-        "category": "Procedura Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Nell'ambito del Corpo Forestale regionale (o equiparati), chi riveste la qualifica di Ufficiale di Polizia Giudiziaria ai sensi dell'art. 57 c.p.p.?",
         "options": {
             "A": "I soggetti ai quali l'ordinamento dell'amministrazione di appartenenza riconosce tale qualità (solitamente dai sovrintendenti/ispettori in su), mentre gli altri sono Agenti",
@@ -4971,7 +4971,7 @@
     },
     {
         "id": 357,
-        "category": "Procedura Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Quando la PG compie atti come perquisizioni o sequestri, deve redigere:",
         "options": {
             "A": "Un post sui social media",
@@ -5475,7 +5475,7 @@
     },
     {
         "id": 393,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Chi abbatte, cattura o detiene esemplari di orso, stambecco, camoscio d'Abruzzo o muflone sardo, commette:",
         "options": {
             "A": "Nessuna violazione se ha la licenza",
@@ -5489,7 +5489,7 @@
     },
     {
         "id": 394,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "La caccia esercitata in periodo di divieto generale (caccia chiusa) comporta:",
         "options": {
             "A": "Solo una sanzione amministrativa",
@@ -5503,7 +5503,7 @@
     },
     {
         "id": 395,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "La violazione delle disposizioni della Legge 394/1991, del Regolamento o del Piano del Parco comporta:",
         "options": {
             "A": "L'arresto immediato in ogni caso",
@@ -5517,7 +5517,7 @@
     },
     {
         "id": 396,
-        "category": "Diritto Penale",
+        "category": "Diritto Penale e Procedura Penale",
         "question": "Chi è responsabile del pagamento della sanzione amministrativa in caso di estrazione abusiva o mal eseguita?",
         "options": {
             "A": "Solo l'esecutore materiale (l'operaio)",
@@ -9224,5 +9224,985 @@
         "correct_answer": "C",
         "explanation": "L'Art. 2, comma 3, definisce le Riserve Naturali come aree che contengono specie naturalisticamente rilevanti o ecosistemi importanti per la biodiversità o la conservazione delle risorse genetiche.",
         "source": "Art. 2, comma 3, L. 394/1991"
+    },
+    {
+        "id": 662,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Qual è la finalità principale della Legge 21 novembre 2000, n. 353?",
+        "options": {
+            "A": "La conservazione del patrimonio boschivo nazionale come bene insostituibile.",
+            "B": "Stabilire le sanzioni per chi abbandona rifiuti nei boschi.",
+            "C": "La gestione della fauna selvatica all'interno delle aree protette.",
+            "D": "La regolamentazione del taglio e della vendita del legname."
+        },
+        "correct_answer": "A",
+        "explanation": "L'articolo 1 della legge stabilisce che l'obiettivo cardine è la conservazione del patrimonio boschivo, considerato un bene primario per la qualità della vita.",
+        "source": "Art. 1, L. 353/2000"
+    },
+    {
+        "id": 663,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Secondo l'art. 2 della L. 353/2000, cosa si intende per 'incendio boschivo'?",
+        "options": {
+            "A": "Qualsiasi fuoco che bruci almeno un ettaro di superficie boscata.",
+            "B": "Un fuoco che si sviluppa solo su alberi ad alto fusto.",
+            "C": "Un fuoco con suscettività a espandersi su aree boscate, cespugliate o arborate, incluse strutture antropizzate e terreni limitrofi.",
+            "D": "Esclusivamente un incendio di origine dolosa che minaccia centri abitati."
+        },
+        "correct_answer": "C",
+        "explanation": "La legge adotta una definizione molto ampia per consentire un intervento tempestivo, includendo non solo il bosco ma anche aree limitrofe e infrastrutture che possono favorire la propagazione delle fiamme.",
+        "source": "Art. 2, L. 353/2000"
+    },
+    {
+        "id": 664,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Con quale frequenza deve essere revisionato il 'Piano regionale di previsione, prevenzione e lotta attiva contro gli incendi boschivi' (Piano AIB)?",
+        "options": {
+            "A": "Ogni cinque anni.",
+            "B": "Ogni due anni.",
+            "C": "Annualmente.",
+            "D": "Solo in caso di eventi eccezionali."
+        },
+        "correct_answer": "C",
+        "explanation": "L'articolo 3 stabilisce che il Piano AIB è soggetto a una revisione annuale per adeguarlo alle mutevoli condizioni del territorio e all'analisi dei dati della stagione precedente.",
+        "source": "Art. 3, L. 353/2000"
+    },
+    {
+        "id": 665,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Quale dei seguenti elementi NON è un contenuto obbligatorio del Piano AIB secondo l'art. 3?",
+        "options": {
+            "A": "La mappatura delle aree a rischio.",
+            "B": "La localizzazione di risorse umane e mezzi disponibili.",
+            "C": "Un elenco di tutte le specie animali presenti nel territorio regionale.",
+            "D": "L'identificazione dei periodi a rischio durante l'anno."
+        },
+        "correct_answer": "C",
+        "explanation": "L'articolo 3, comma 3, elenca dettagliatamente i contenuti del piano, che includono analisi delle cause, cartografia, aree e periodi a rischio, ma non un censimento faunistico completo.",
+        "source": "Art. 3, comma 3, L. 353/2000"
+    },
+    {
+        "id": 666,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Qual è la differenza fondamentale tra 'previsione' e 'prevenzione' secondo l'art. 4 della L. 353/2000?",
+        "options": {
+            "A": "Non c'è nessuna differenza, sono sinonimi.",
+            "B": "La previsione è un'attività conoscitiva per identificare i rischi, la prevenzione è l'azione pratica per ridurli.",
+            "C": "La previsione riguarda solo i dati meteo, la prevenzione riguarda solo la pulizia dei boschi.",
+            "D": "La previsione è di competenza statale, la prevenzione è di competenza comunale."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 4 distingue nettamente la previsione (attività conoscitiva per identificare aree e periodi a rischio) dalla prevenzione (azioni mirate a ridurre le cause e mitigare i danni, come la vigilanza).",
+        "source": "Art. 4, L. 353/2000"
+    },
+    {
+        "id": 667,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Chi coordina la flotta aerea antincendio dello Stato (es. Canadair) secondo la L. 353/2000?",
+        "options": {
+            "A": "La SOUP (Sala Operativa Unificata Permanente) di ogni Regione.",
+            "B": "Il COAU (Centro Operativo Aereo Unificato) presso la Protezione Civile.",
+            "C": "Il Corpo Nazionale dei Vigili del Fuoco in autonomia.",
+            "D": "Il Ministero delle Politiche Agricole e Forestali."
+        },
+        "correct_answer": "B",
+        "explanation": "L'articolo 7 affida al COAU, struttura nazionale gestita dal Dipartimento della Protezione Civile, il coordinamento della flotta aerea dello Stato, che interviene su richiesta delle Regioni.",
+        "source": "Art. 7, L. 353/2000"
+    },
+    {
+        "id": 668,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Qual è il ruolo della SOUP (Sala Operativa Unificata Permanente) nella lotta attiva agli incendi?",
+        "options": {
+            "A": "Pilotare gli elicotteri pesanti dello Stato.",
+            "B": "Coordinare tutte le forze di spegnimento a terra a livello regionale.",
+            "C": "Gestire esclusivamente le squadre di volontariato.",
+            "D": "Emettere le previsioni di pericolosità a livello nazionale."
+        },
+        "correct_answer": "B",
+        "explanation": "L'articolo 7 definisce la SOUP come la centrale operativa regionale che coordina tutte le forze a terra (Corpo Forestale, Vigili del Fuoco, volontari) e, se necessario, richiede l'intervento aereo al COAU.",
+        "source": "Art. 7, L. 353/2000"
+    },
+    {
+        "id": 669,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Per quanto tempo vige il divieto di modificare la destinazione d'uso preesistente su un soprassuolo percorso dal fuoco?",
+        "options": {
+            "A": "10 anni",
+            "B": "5 anni",
+            "C": "15 anni",
+            "D": "Permanentemente"
+        },
+        "correct_answer": "C",
+        "explanation": "L'articolo 10, comma 1, impone un vincolo di 15 anni sulla destinazione d'uso di un'area percorsa dal fuoco per impedire speculazioni.",
+        "source": "Art. 10, comma 1, L. 353/2000"
+    },
+    {
+        "id": 670,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Per quanti anni è vietata l'edificazione sui soprassuoli percorsi dal fuoco?",
+        "options": {
+            "A": "15 anni",
+            "B": "10 anni",
+            "C": "20 anni",
+            "D": "5 anni"
+        },
+        "correct_answer": "B",
+        "explanation": "L'articolo 10, comma 1, stabilisce un divieto di edificazione della durata di 10 anni per stroncare sul nascere ogni tentativo di speculazione edilizia.",
+        "source": "Art. 10, comma 1, L. 353/2000"
+    },
+    {
+        "id": 671,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Il divieto di pascolo e caccia sui soprassuoli delle zone boscate percorsi dal fuoco dura:",
+        "options": {
+            "A": "5 anni",
+            "B": "15 anni",
+            "C": "10 anni",
+            "D": "3 anni"
+        },
+        "correct_answer": "C",
+        "explanation": "L'articolo 10 impone un divieto di 10 anni per pascolo e caccia per permettere la rinnovazione naturale della vegetazione e il ripopolamento faunistico.",
+        "source": "Art. 10, comma 1, L. 353/2000"
+    },
+    {
+        "id": 672,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Qual è la pena per chi cagiona colposamente (per negligenza o imprudenza) un incendio boschivo secondo l'art. 423-bis c.p.?",
+        "options": {
+            "A": "La reclusione da 4 a 10 anni.",
+            "B": "La reclusione da 1 a 5 anni.",
+            "C": "Solo una sanzione amministrativa.",
+            "D": "L'arresto fino a 6 mesi."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 423-bis del Codice Penale, introdotto dall'art. 11 della L. 353/2000, punisce l'incendio boschivo colposo con la reclusione da 1 a 5 anni.",
+        "source": "Art. 11, L. 353/2000"
+    },
+    {
+        "id": 673,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Cosa accade se un atto di compravendita di un terreno percorso da incendio, stipulato entro 15 anni, non menziona il vincolo di inedificabilità?",
+        "options": {
+            "A": "L'atto è valido ma l'acquirente paga una sanzione.",
+            "B": "L'atto è nullo.",
+            "C": "L'atto è annullabile solo su richiesta del venditore.",
+            "D": "L'atto è valido, ma il vincolo si trasferisce al nuovo proprietario."
+        },
+        "correct_answer": "B",
+        "explanation": "L'articolo 10 della legge prevede la nullità degli atti stipulati in violazione dei divieti, se non viene menzionato esplicitamente il vincolo, per garantire massima trasparenza.",
+        "source": "Art. 10, L. 353/2000"
+    },
+    {
+        "id": 674,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "A quanto ammonta la sanzione amministrativa per chi compie azioni che possono innescare incendi (es. gettare un mozzicone) nelle aree a rischio?",
+        "options": {
+            "A": "Da € 206,58 a € 413,16",
+            "B": "Da € 30,98 a € 61,97",
+            "C": "Da € 1.032,91 a € 10.329,13",
+            "D": "Una sanzione fissa di € 500"
+        },
+        "correct_answer": "C",
+        "explanation": "L'articolo 10, comma 6, prevede una sanzione pecuniaria significativa, da 1.032,91 a 10.329,13 euro, per chiunque tenga comportamenti a rischio di innesco incendio.",
+        "source": "Art. 10, comma 6, L. 353/2000"
+    },
+    {
+        "id": 675,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Come vengono gestiti i piani antincendio per le Aree Naturali Protette secondo l'art. 8?",
+        "options": {
+            "A": "Sono redatti in autonomia dagli enti gestori dei parchi.",
+            "B": "Costituiscono una sezione apposita e dedicata del Piano Regionale AIB.",
+            "C": "Non sono previste disposizioni specifiche, si applica il piano generico.",
+            "D": "Sono di esclusiva competenza del Ministero dell'Ambiente."
+        },
+        "correct_answer": "B",
+        "explanation": "L'articolo 8 riconosce la vulnerabilità di parchi e riserve, prevedendo che i loro piani AIB siano una sezione specifica del Piano Regionale, definita in accordo con gli enti gestori.",
+        "source": "Art. 8, L. 353/2000"
+    },
+    {
+        "id": 676,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Cosa succede se a commettere un'azione a rischio incendio (art. 10 c. 6) è un operatore addetto alla lotta attiva?",
+        "options": {
+            "A": "La sanzione è dimezzata.",
+            "B": "Viene applicata la stessa sanzione di un cittadino comune.",
+            "C": "Non è prevista alcuna sanzione, ma solo un richiamo disciplinare.",
+            "D": "La sanzione amministrativa è raddoppiata."
+        },
+        "correct_answer": "D",
+        "explanation": "A causa della sua maggiore consapevolezza del rischio, la legge prevede il raddoppio delle sanzioni se il responsabile appartiene a categorie di personale addetto alla prevenzione e lotta attiva (Art. 7, c. 3 e 6).",
+        "source": "Art. 10, comma 6, L. 353/2000"
+    },
+    {
+        "id": 677,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "La pena per chi cagiona volontariamente (con dolo) un incendio su boschi, selve o foreste è:",
+        "options": {
+            "A": "La reclusione da 1 a 5 anni.",
+            "B": "L'arresto fino a 3 anni.",
+            "C": "La reclusione da 2 a 7 anni.",
+            "D": "La reclusione da 4 a 10 anni."
+        },
+        "correct_answer": "D",
+        "explanation": "L'articolo 423-bis del Codice Penale stabilisce una pena severa, la reclusione da 4 a 10 anni, per chi appicca volontariamente un incendio boschivo.",
+        "source": "Art. 11, L. 353/2000"
+    },
+    {
+        "id": 678,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Quale delle seguenti è una circostanza aggravante per il reato di incendio boschivo?",
+        "options": {
+            "A": "Se l'incendio avviene di notte.",
+            "B": "Se l'incendio causa un danno grave, esteso e persistente all'ambiente.",
+            "C": "Se l'autore del reato è minorenne.",
+            "D": "Se l'incendio brucia meno di un ettaro di bosco."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 423-bis c.p. prevede un aumento della pena se dall'incendio deriva un danno grave, esteso e persistente all'ambiente, riconoscendo l'impatto sull'ecosistema.",
+        "source": "Art. 11, L. 353/2000"
+    },
+    {
+        "id": 679,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "L'attività di 'lotta attiva' (art. 7) contro gli incendi boschivi comprende:",
+        "options": {
+            "A": "Solo lezioni di educazione ambientale nelle scuole.",
+            "B": "Ricognizione, avvistamento, allarme e spegnimento.",
+            "C": "Esclusivamente la redazione di mappe di rischio.",
+            "D": "La pulizia preventiva del sottobosco."
+        },
+        "correct_answer": "B",
+        "explanation": "L'articolo 7 definisce la lotta attiva come l'insieme delle operazioni dirette di intervento, che partono dalla ricognizione e arrivano allo spegnimento effettivo dell'incendio.",
+        "source": "Art. 7, L. 353/2000"
+    },
+    {
+        "id": 680,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "La Legge 353/2000, oltre alla lotta attiva, promuove altre due macro-attività. Quali sono?",
+        "options": {
+            "A": "Turismo e agricoltura sostenibile.",
+            "B": "Formazione e informazione, ed educazione ambientale.",
+            "C": "Costruzione di infrastrutture e vigilanza edilizia.",
+            "D": "Censimento della flora e vendita di legname."
+        },
+        "correct_answer": "B",
+        "explanation": "L'articolo 1 chiarisce che per raggiungere le finalità di conservazione, gli enti devono svolgere in modo coordinato, oltre alla lotta attiva, anche attività di formazione, informazione ed educazione ambientale.",
+        "source": "Art. 1, L. 353/2000"
+    },
+    {
+        "id": 681,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Il divieto di rimboschimento con fondi pubblici su aree percorse da incendio, salvo deroghe, ha una durata di:",
+        "options": {
+            "A": "10 anni",
+            "B": "15 anni",
+            "C": "2 anni",
+            "D": "5 anni"
+        },
+        "correct_answer": "D",
+        "explanation": "L'articolo 10 impone un divieto di 5 anni per i rimboschimenti con fondi pubblici, per favorire il recupero naturale dell'ecosistema e evitare interventi non idonei.",
+        "source": "Art. 10, L. 353/2000"
+    },
+    {
+        "id": 682,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "A quale sanzione è soggetto chi viola il divieto di pascolo su un'area percorsa dal fuoco?",
+        "options": {
+            "A": "Una sanzione da € 206,58 a € 413,16 per ogni capo.",
+            "B": "Una sanzione da € 30,98 a € 61,97 per ogni capo.",
+            "C": "L'arresto da 1 a 6 mesi.",
+            "D": "Una sanzione fissa di € 100 per l'intera mandria."
+        },
+        "correct_answer": "B",
+        "explanation": "L'articolo 10, comma 4, specifica una sanzione amministrativa da 30,98 a 61,97 euro per ogni capo di bestiame sorpreso a pascolare nelle aree vincolate.",
+        "source": "Art. 10, comma 4, L. 353/2000"
+    },
+    {
+        "id": 683,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "L'art. 423-bis c.p. si applica anche se l'incendio è appiccato a 'vivai forestali destinati al rimboschimento'?",
+        "options": {
+            "A": "No, si applica solo a boschi e foreste naturali.",
+            "B": "Sì, la norma li include esplicitamente.",
+            "C": "Sì, ma solo se i vivai sono di proprietà pubblica.",
+            "D": "No, per i vivai si applica il reato di danneggiamento semplice."
+        },
+        "correct_answer": "B",
+        "explanation": "La formulazione dell'articolo 423-bis c.p. specifica che il reato si configura per chiunque cagioni un incendio su 'boschi, selve o foreste ovvero su vivai forestali destinati al rimboschimento'.",
+        "source": "Art. 11, L. 353/2000"
+    },
+    {
+        "id": 684,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Quale ente è responsabile della richiesta di intervento della flotta aerea statale al COAU?",
+        "options": {
+            "A": "Il singolo Comune colpito dall'incendio.",
+            "B": "La Prefettura.",
+            "C": "La Regione, tramite la sua SOUP.",
+            "D": "Il Corpo Nazionale dei Vigili del Fuoco, direttamente."
+        },
+        "correct_answer": "C",
+        "explanation": "La SOUP è la centrale regionale che coordina le forze a terra ed è la struttura deputata a richiedere il supporto della flotta aerea nazionale gestita dal COAU.",
+        "source": "Art. 7, L. 353/2000"
+    },
+    {
+        "id": 685,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "L'attività di previsione, secondo la L. 353/2000, include anche:",
+        "options": {
+            "A": "La punizione dei colpevoli.",
+            "B": "L'approntamento dei dispositivi e delle risorse per la lotta attiva.",
+            "C": "La vendita all'asta del legname bruciato.",
+            "D": "La nomina dei direttori delle operazioni di spegnimento."
+        },
+        "correct_answer": "B",
+        "explanation": "L'articolo 4 stabilisce che l'attività di previsione non è solo analisi, ma comprende anche l'approntamento di risorse e dispositivi, legando la fase di studio a quella di preparazione operativa.",
+        "source": "Art. 4, L. 353/2000"
+    },
+    {
+        "id": 686,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Perché la definizione di 'incendio boschivo' (art. 2) è volutamente ampia?",
+        "options": {
+            "A": "Per poter multare anche chi accende un barbecue in giardino.",
+            "B": "Per legittimare un intervento tempestivo anche quando le fiamme sono in aree limitrofe al bosco.",
+            "C": "Per aumentare il numero di reati contestabili.",
+            "D": "Per una ragione puramente stilistica e letteraria."
+        },
+        "correct_answer": "B",
+        "explanation": "L'ampiezza della definizione è strategica, in quanto consente agli agenti operativi di intervenire anche su fuochi in terreni coltivati o pascoli che minacciano di estendersi al bosco.",
+        "source": "Art. 2, L. 353/2000"
+    },
+    {
+        "id": 687,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Un aumento di pena per il reato di incendio boschivo è previsto se:",
+        "options": {
+            "A": "L'incendio è di piccole dimensioni.",
+            "B": "L'incendio non causa danni a cose o persone.",
+            "C": "Dall'incendio deriva un pericolo per edifici o un danno a un'area protetta.",
+            "D": "L'autore del reato si costituisce immediatamente."
+        },
+        "correct_answer": "C",
+        "explanation": "L'articolo 423-bis del Codice Penale prevede specifiche circostanze aggravanti, tra cui il pericolo per edifici e il danno recato a un'area protetta.",
+        "source": "Art. 11, L. 353/2000"
+    },
+    {
+        "id": 688,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Quale delle seguenti attività rientra nella 'prevenzione' degli incendi boschivi (art. 4)?",
+        "options": {
+            "A": "Lo spegnimento con i Canadair.",
+            "B": "L'emissione di bollettini di allerta.",
+            "C": "Interventi selvicolturali come la pulizia del sottobosco.",
+            "D": "Il coordinamento delle squadre a terra durante l'emergenza."
+        },
+        "correct_answer": "C",
+        "explanation": "La prevenzione consiste nell'insieme di azioni mirate a ridurre le cause d'innesco e a mitigare i danni, tra cui la vigilanza e gli interventi selvicolturali per ridurre il carico di combustibile.",
+        "source": "Art. 4, L. 353/2000"
+    },
+    {
+        "id": 689,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "La violazione del divieto di caccia su aree percorse dal fuoco comporta una sanzione amministrativa che va da:",
+        "options": {
+            "A": "€ 1.032,91 a € 10.329,13",
+            "B": "€ 30,98 a € 61,97",
+            "C": "€ 500 a € 1.000",
+            "D": "€ 206,58 a € 413,16"
+        },
+        "correct_answer": "D",
+        "explanation": "L'articolo 10, comma 5, punisce l'esercizio venatorio nelle zone vincolate con una sanzione amministrativa compresa tra 206,58 e 413,16 euro.",
+        "source": "Art. 10, comma 5, L. 353/2000"
+    },
+    {
+        "id": 690,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "La L. 353/2000 impone di promuovere l'educazione ambientale:",
+        "options": {
+            "A": "Solo tra gli agricoltori e i pastori.",
+            "B": "Specialmente nelle scuole.",
+            "C": "Solo attraverso i telegiornali nazionali.",
+            "D": "Unicamente per il personale del Corpo Forestale."
+        },
+        "correct_answer": "B",
+        "explanation": "Gli articoli 1 e 5 pongono un accento particolare sull'importanza dell'educazione ambientale, da promuovere specialmente in ambito scolastico per formare cittadini consapevoli.",
+        "source": "Art. 1 e Art. 5, L. 353/2000"
+    },
+    {
+        "id": 691,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Qual è l'acronimo della struttura che coordina le forze di spegnimento a terra a livello regionale?",
+        "options": {
+            "A": "COAU",
+            "B": "AIB",
+            "C": "SOUP",
+            "D": "CFVA"
+        },
+        "correct_answer": "C",
+        "explanation": "La SOUP (Sala Operativa Unificata Permanente) è la centrale operativa regionale che, ai sensi dell'art. 7, ha il compito di coordinare tutte le forze antincendio che operano a terra.",
+        "source": "Art. 7, L. 353/2000"
+    },
+    {
+        "id": 692,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Il Piano AIB Regionale, tra le altre cose, deve contenere:",
+        "options": {
+            "A": "I nomi di tutti i proprietari dei terreni boscati.",
+            "B": "La cartografia delle aree percorse dal fuoco nell'anno precedente.",
+            "C": "Il bilancio economico delle aziende agricole della regione.",
+            "D": "Un piano per l'introduzione di nuove specie vegetali."
+        },
+        "correct_answer": "B",
+        "explanation": "L'articolo 3, comma 3, elenca tra i contenuti obbligatori del Piano AIB la cartografia delle aree percorse dal fuoco nell'anno precedente, per creare una memoria storica del fenomeno.",
+        "source": "Art. 3, comma 3, L. 353/2000"
+    },
+    {
+        "id": 693,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "L'introduzione dell'art. 423-bis nel Codice Penale ha avuto come effetto:",
+        "options": {
+            "A": "La depenalizzazione del reato di incendio boschivo.",
+            "B": "La definizione di una specifica e più grave fattispecie di reato per l'incendio boschivo.",
+            "C": "La riduzione delle pene per l'incendio colposo.",
+            "D": "L'attribuzione della competenza esclusiva ai giudici di pace."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 11 della L. 353/2000, introducendo l'art. 423-bis c.p., ha creato una figura di reato specifica e autonoma, con pene più severe rispetto al generico reato di incendio.",
+        "source": "Art. 11, L. 353/2000"
+    },
+    {
+        "id": 694,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "Quale vincolo temporale ha una durata di 15 anni sui soprassuoli percorsi da incendio?",
+        "options": {
+            "A": "Il divieto di caccia e pascolo.",
+            "B": "Il divieto di edificazione.",
+            "C": "Il divieto di cambio di destinazione d'uso.",
+            "D": "Il divieto di rimboschimento con fondi pubblici."
+        },
+        "correct_answer": "C",
+        "explanation": "L'articolo 10, comma 1, stabilisce che il vincolo più lungo, di 15 anni, riguarda il mantenimento della destinazione d'uso preesistente all'incendio.",
+        "source": "Art. 10, comma 1, L. 353/2000"
+    },
+    {
+        "id": 695,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "La L. 353/2000 è definita una 'legge-quadro' perché:",
+        "options": {
+            "A": "È stata approvata in un solo giorno dal Parlamento.",
+            "B": "Si applica solo alla regione Lazio, dove si trova Roma Capitale.",
+            "C": "È composta da soli quattro articoli.",
+            "D": "Stabilisce i principi e le strategie fondamentali, demandando alle Regioni l'attuazione specifica."
+        },
+        "correct_answer": "D",
+        "explanation": "Una 'legge-quadro' fissa i principi generali e gli obiettivi, lasciando alle Regioni il compito di legiferare nel dettaglio per adattare la norma alle specificità dei loro territori, come nel caso del Piano AIB.",
+        "source": "Introduzione (concetto generale della legge)"
+    },
+    {
+        "id": 696,
+        "category": "Incendi Boschivi (L. 353/2000)",
+        "question": "In quali casi il divieto di rimboschimento con fondi pubblici per 5 anni può essere derogato?",
+        "options": {
+            "A": "Mai, il divieto è assoluto.",
+            "B": "Per aree a rischio di dissesto idrogeologico.",
+            "C": "Se il rimboschimento è richiesto da un'associazione privata.",
+            "D": "Se l'area bruciata è inferiore a un ettaro."
+        },
+        "correct_answer": "B",
+        "explanation": "L'articolo 10 prevede la possibilità di derogare al divieto quinquennale di rimboschimento con fondi pubblici per specifiche aree dove è necessario un intervento per prevenire rischi idrogeologici.",
+        "source": "Art. 10, L. 353/2000"
+    },
+    {
+        "id": 697,
+        "category": "Reati Ambientali",
+        "question": "Quale provvedimento normativo ha introdotto nel Codice Penale il Titolo VI-bis, 'Dei delitti contro l'ambiente'?",
+        "options": {
+            "A": "Il Decreto Legislativo 3 aprile 2006, n. 152 (Testo Unico Ambientale).",
+            "B": "La Legge 22 maggio 2015, n. 68.",
+            "C": "Il Decreto Legislativo n. 231/2001 sulla responsabilità degli enti.",
+            "D": "Il Codice Penale originario del 1930."
+        },
+        "correct_answer": "B",
+        "explanation": "La Legge 22 maggio 2015, n. 68 ha segnato una svolta epocale, introducendo specifici delitti ambientali, i cosiddetti 'ecoreati', nel Codice Penale attraverso il Titolo VI-bis.",
+        "source": "Legge 22 maggio 2015, n. 68"
+    },
+    {
+        "id": 698,
+        "category": "Reati Ambientali",
+        "question": "Secondo l'art. 452-bis c.p., cosa si intende per 'inquinamento ambientale'?",
+        "options": {
+            "A": "Qualsiasi immissione di sostanze nell'ambiente, a prescindere dal danno.",
+            "B": "Una compromissione o un deterioramento non misurabile di un ecosistema.",
+            "C": "Una compromissione o un deterioramento significativo e misurabile delle acque, dell'aria, o del suolo.",
+            "D": "L'abbandono di un singolo rifiuto sul suolo pubblico."
+        },
+        "correct_answer": "C",
+        "explanation": "L'articolo 452-bis c.p. punisce chi abusivamente cagiona una compromissione o un deterioramento che sia 'significativo e misurabile' a carico delle matrici ambientali o di un ecosistema.",
+        "source": "art. 452-bis c.p."
+    },
+    {
+        "id": 699,
+        "category": "Reati Ambientali",
+        "question": "Qual è la pena base prevista per il delitto di disastro ambientale (art. 452-quater c.p.)?",
+        "options": {
+            "A": "L'arresto da uno a tre anni.",
+            "B": "La reclusione da sei mesi a cinque anni.",
+            "C": "La reclusione da cinque a quindici anni.",
+            "D": "La reclusione fino a venti anni."
+        },
+        "correct_answer": "C",
+        "explanation": "Il delitto di disastro ambientale, che punisce alterazioni irreversibili o particolarmente onerose da eliminare, è sanzionato con la pena severa della reclusione da 5 a 15 anni.",
+        "source": "art. 452-quater c.p."
+    },
+    {
+        "id": 700,
+        "category": "Reati Ambientali",
+        "question": "L'art. 452-septies c.p. (Impedimento del controllo) quale bene giuridico tutela primariamente?",
+        "options": {
+            "A": "La salute pubblica.",
+            "B": "L'integrità degli ecosistemi.",
+            "C": "Le funzioni di vigilanza e controllo in materia ambientale.",
+            "D": "Il patrimonio dello Stato."
+        },
+        "correct_answer": "C",
+        "explanation": "Questa norma è posta a tutela diretta delle funzioni di vigilanza, punendo chi ostacola o elude l'attività degli organi di controllo ambientale, come il Corpo Forestale.",
+        "source": "art. 452-septies c.p."
+    },
+    {
+        "id": 701,
+        "category": "Reati Ambientali",
+        "question": "Cosa punisce specificamente il reato di 'Omessa bonifica' ai sensi dell'art. 452-terdecies c.p.?",
+        "options": {
+            "A": "Chiunque non provveda alla pulizia di un'area di sua proprietà.",
+            "B": "Chiunque, essendovi obbligato per legge, ordine del giudice o di un'autorità pubblica, non provvede alla bonifica.",
+            "C": "L'amministratore pubblico che non stanzia i fondi per una bonifica.",
+            "D": "Il cittadino che non segnala un'area da bonificare."
+        },
+        "correct_answer": "B",
+        "explanation": "Il reato di omessa bonifica sanziona la mancata esecuzione di un obbligo giuridico specifico di bonifica, ripristino o recupero dello stato dei luoghi.",
+        "source": "art. 452-terdecies c.p."
+    },
+    {
+        "id": 702,
+        "category": "Reati Ambientali",
+        "question": "Ai sensi dell'art. 256, comma 1, del D.Lgs. 152/2006, quale sanzione si applica per la gestione non autorizzata di rifiuti NON pericolosi?",
+        "options": {
+            "A": "La reclusione da uno a cinque anni.",
+            "B": "La sanzione amministrativa da 2.600 a 26.000 euro.",
+            "C": "L'arresto da tre mesi a un anno o l'ammenda da 2.600 a 26.000 euro.",
+            "D": "La reclusione da due a sei anni."
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 256, c.1, TUA configura un'ipotesi contravvenzionale per la gestione illecita di rifiuti non pericolosi, punita con pena alternativa dell'arresto o dell'ammenda.",
+        "source": "Art. 256, comma 1, D.Lgs. 152/2006"
+    },
+    {
+        "id": 703,
+        "category": "Reati Ambientali",
+        "question": "Quale pena si applica, ai sensi dell'art. 256, comma 1, TUA, per la gestione non autorizzata di rifiuti PERICOLOSI?",
+        "options": {
+            "A": "L'arresto da sei mesi a due anni.",
+            "B": "La reclusione da uno a cinque anni.",
+            "C": "L'ammenda da 10.000 a 100.000 euro.",
+            "D": "L'arresto da tre mesi a un anno."
+        },
+        "correct_answer": "B",
+        "explanation": "Per la gestione illecita di rifiuti pericolosi, l'art. 256, c.1, TUA prevede un'ipotesi delittuosa, punita con la pena ben più grave della reclusione da uno a cinque anni.",
+        "source": "Art. 256, comma 1, D.Lgs. 152/2006"
+    },
+    {
+        "id": 704,
+        "category": "Reati Ambientali",
+        "question": "Cosa succede alla pena per gestione di rifiuti non pericolosi se dal fatto deriva pericolo di compromissione di un ecosistema (art. 256, comma 1-bis TUA)?",
+        "options": {
+            "A": "La pena non cambia, ma si applica una sanzione accessoria.",
+            "B": "La pena diventa della reclusione da uno a cinque anni.",
+            "C": "La pena dell'arresto è raddoppiata.",
+            "D": "Si applica solo un'ammenda più elevata."
+        },
+        "correct_answer": "B",
+        "explanation": "In presenza della circostanza aggravante speciale del pericolo concreto per l'ambiente, la contravvenzione per la gestione di rifiuti non pericolosi si trasforma in un delitto, punito con la reclusione da uno a cinque anni.",
+        "source": "Art. 256, comma 1-bis, D.Lgs. 152/2006"
+    },
+    {
+        "id": 705,
+        "category": "Reati Ambientali",
+        "question": "La realizzazione di una discarica non autorizzata destinata a rifiuti PERICOLOSI, quale pena comporta secondo l'art. 256, comma 3, TUA?",
+        "options": {
+            "A": "La reclusione da uno a cinque anni.",
+            "B": "L'arresto da sei mesi a due anni.",
+            "C": "La reclusione da un anno e sei mesi a cinque anni e sei mesi.",
+            "D": "La sola confisca dell'area."
+        },
+        "correct_answer": "C",
+        "explanation": "La realizzazione o gestione di una discarica non autorizzata per rifiuti pericolosi è un reato grave, punito con la reclusione da un anno e sei mesi a cinque anni e sei mesi.",
+        "source": "Art. 256, comma 3, D.Lgs. 152/2006"
+    },
+    {
+        "id": 706,
+        "category": "Reati Ambientali",
+        "question": "Un soggetto autorizzato alla gestione di rifiuti che non rispetta una prescrizione del titolo abilitativo, quale reato commette secondo l'art. 256 TUA?",
+        "options": {
+            "A": "Nessun reato, ma solo un illecito amministrativo.",
+            "B": "Il reato di gestione di rifiuti non autorizzata (comma 1).",
+            "C": "Il reato di inosservanza delle prescrizioni (comma 4).",
+            "D": "Il delitto di inquinamento ambientale (art. 452-bis c.p.)."
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 256, comma 4, TUA punisce specificamente chi, pur essendo autorizzato, non rispetta le modalità e le condizioni contenute nel provvedimento autorizzativo.",
+        "source": "Art. 256, comma 4, D.Lgs. 152/2006"
+    },
+    {
+        "id": 707,
+        "category": "Reati Ambientali",
+        "question": "Secondo la giurisprudenza della Cassazione, la responsabilità penale del proprietario di un'area per una discarica abusiva commessa da terzi:",
+        "options": {
+            "A": "Sussiste sempre per omessa vigilanza.",
+            "B": "Sorge solo se fornisce un contributo causale consapevole all'illecito.",
+            "C": "È esclusa se il proprietario non è l'autore materiale.",
+            "D": "Sorge solo in caso di mancata rimozione dei rifiuti dopo un'ordinanza."
+        },
+        "correct_answer": "B",
+        "explanation": "La Cassazione ha stabilito che la mera inerzia non è sufficiente; la responsabilità penale del proprietario a titolo di concorso richiede un suo contributo causale e consapevole (es. Cass. pen. n. 27692/2019).",
+        "source": "Giurisprudenza (Cass. pen. n. 27692/2019)"
+    },
+    {
+        "id": 708,
+        "category": "Reati Ambientali",
+        "question": "Il reato di trasporto abusivo di rifiuti (art. 256, c. 1, TUA) è considerato dalla giurisprudenza un reato:",
+        "options": {
+            "A": "Permanente, che cessa con il sequestro del mezzo.",
+            "B": "Istantaneo, per cui ogni singolo viaggio costituisce un reato a sé.",
+            "C": "Continuato, che si prescrive solo dall'ultimo trasporto.",
+            "D": "Abituale, che richiede una serie di trasporti."
+        },
+        "correct_answer": "B",
+        "explanation": "La Cassazione (es. n. 8966/2019) qualifica il trasporto illecito di rifiuti come reato istantaneo, con la conseguenza che ogni singolo trasporto è un reato autonomo con un proprio termine di prescrizione.",
+        "source": "Giurisprudenza (Cass. pen. n. 8966/2019)"
+    },
+    {
+        "id": 709,
+        "category": "Reati Ambientali",
+        "question": "La confisca del veicolo utilizzato per il trasporto illecito di rifiuti, secondo la Cassazione:",
+        "options": {
+            "A": "È sempre facoltativa e a discrezione del giudice.",
+            "B": "È esclusa se il veicolo appartiene a un terzo.",
+            "C": "È obbligatoria, e spetta al terzo proprietario dimostrare la sua assoluta buona fede per evitarla.",
+            "D": "Si applica solo se il veicolo è stato modificato per il trasporto."
+        },
+        "correct_answer": "C",
+        "explanation": "La giurisprudenza (es. Cass. pen. n. 46012/2008) afferma che la confisca del mezzo è obbligatoria e che l'onere di provare la buona fede e la diligenza per impedirne l'uso illecito grava sul terzo proprietario.",
+        "source": "Giurisprudenza (Cass. pen. n. 46012/2008)"
+    },
+    {
+        "id": 710,
+        "category": "Reati Ambientali",
+        "question": "Qual è la distinzione fondamentale tra delitti e contravvenzioni in termini di pene edittali?",
+        "options": {
+            "A": "I delitti sono puniti con arresto e ammenda, le contravvenzioni con reclusione e multa.",
+            "B": "I delitti sono puniti con reclusione e/o multa, le contravvenzioni con arresto e/o ammenda.",
+            "C": "Non c'è differenza nella pena, ma solo nel rito processuale.",
+            "D": "I delitti sono sempre dolosi, le contravvenzioni sempre colpose."
+        },
+        "correct_answer": "B",
+        "explanation": "Questa è la distinzione fondamentale: i delitti, reati più gravi, sono puniti con reclusione e multa, mentre le contravvenzioni, meno gravi, sono punite con arresto e ammenda.",
+        "source": "Principi Generali del Diritto Penale"
+    },
+    {
+        "id": 711,
+        "category": "Reati Ambientali",
+        "question": "La responsabilità amministrativa degli enti per reati ambientali, prevista dal D.Lgs. 231/2001, si applica:",
+        "options": {
+            "A": "Solo alla persona fisica che ha commesso il reato (es. dipendente).",
+            "B": "Solo all'amministratore della società.",
+            "C": "Anche all'azienda nel cui interesse o a cui vantaggio il reato è stato commesso.",
+            "D": "Solo in caso di reati contravvenzionali."
+        },
+        "correct_answer": "C",
+        "explanation": "Il D.Lgs. 231/2001 estende la responsabilità all'ente (azienda) quando il reato ambientale è commesso da suoi rappresentanti o dipendenti nel suo interesse o a suo vantaggio, prevedendo sanzioni pecuniarie e interdittive.",
+        "source": "D.Lgs. 231/2001"
+    },
+    {
+        "id": 712,
+        "category": "Reati Ambientali",
+        "question": "Quando la gestione illecita di rifiuti PERICOLOSI (art. 256, c.1, TUA) provoca un pericolo per la vita o l'incolumità delle persone (comma 1-bis)?",
+        "options": {
+            "A": "La pena della reclusione rimane da uno a cinque anni.",
+            "B": "Si applica una sanzione amministrativa aggiuntiva.",
+            "C": "La pena aumenta e diventa della reclusione da due anni a sei anni e sei mesi.",
+            "D": "Si configura automaticamente il delitto di disastro ambientale."
+        },
+        "correct_answer": "C",
+        "explanation": "Il comma 1-bis dell'art. 256 TUA prevede un'aggravante speciale. Se la gestione riguarda rifiuti pericolosi e deriva un pericolo per le persone, la pena è della reclusione da due anni a sei anni e sei mesi.",
+        "source": "Art. 256, comma 1-bis, D.Lgs. 152/2006"
+    },
+    {
+        "id": 713,
+        "category": "Reati Ambientali",
+        "question": "La violazione delle norme sul deposito temporaneo di rifiuti sanitari pericolosi per quantitativi NON superiori a 200 litri (art. 256, c. 6, TUA) costituisce:",
+        "options": {
+            "A": "Un delitto punito con la reclusione.",
+            "B": "Un illecito amministrativo punito con sanzione pecuniaria.",
+            "C": "Una contravvenzione punita con l'arresto.",
+            "D": "Un fatto non sanzionato dalla legge."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 256, comma 6, TUA opera una distinzione cruciale in base al quantitativo: sotto i 200 litri, la violazione è un illecito amministrativo, non penale.",
+        "source": "Art. 256, comma 6, D.Lgs. 152/2006"
+    },
+    {
+        "id": 714,
+        "category": "Reati Ambientali",
+        "question": "Quale reato commette chi, per trarne profitto, cede, riceve, trasporta o gestisce materiale ad alta radioattività senza autorizzazione?",
+        "options": {
+            "A": "Inquinamento ambientale (art. 452-bis c.p.).",
+            "B": "Disastro ambientale (art. 452-quater c.p.).",
+            "C": "Traffico e abbandono di materiale ad alta radioattività (art. 452-sexies c.p.).",
+            "D": "Attività di gestione di rifiuti non autorizzata (art. 256 TUA)."
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 452-sexies c.p., introdotto dalla L. 68/2015, ha colmato una lacuna punendo specificamente la gestione illecita di materiale radioattivo, che non sempre era classificabile come 'rifiuto'.",
+        "source": "art. 452-sexies c.p."
+    },
+    {
+        "id": 715,
+        "category": "Reati Ambientali",
+        "question": "Secondo la Legge 68/2015, le pene detentive per i nuovi ecoreati, in assenza di aggravanti, variano:",
+        "options": {
+            "A": "Da 3 mesi a 5 anni.",
+            "B": "Da 6 mesi a 15 anni.",
+            "C": "Da 1 anno a 10 anni.",
+            "D": "Sempre fino a un massimo di 20 anni."
+        },
+        "correct_answer": "B",
+        "explanation": "Le sanzioni per i delitti del Titolo VI-bis c.p. sono molto severe, spaziando dalla reclusione di 6 mesi per l'impedimento del controllo fino ai 15 anni per il disastro ambientale.",
+        "source": "Legge 68/2015 - Analisi delle Pene"
+    },
+    {
+        "id": 716,
+        "category": "Reati Ambientali",
+        "question": "Qual è una delle principali differenze introdotte dalla L. 68/2015 rispetto alla normativa precedente?",
+        "options": {
+            "A": "Ha depenalizzato la maggior parte dei reati ambientali, trasformandoli in illeciti amministrativi.",
+            "B": "Ha introdotto nel Codice Penale delitti caratterizzati da un 'evento di danno' concreto, superando il modello basato solo su contravvenzioni di 'pericolo astratto'.",
+            "C": "Ha ridotto le pene per i reati ambientali per favorire la messa alla prova.",
+            "D": "Ha trasferito tutte le competenze penali ambientali al Testo Unico Ambientale."
+        },
+        "correct_answer": "B",
+        "explanation": "La L. 68/2015 ha rappresentato una 'rivoluzione copernicana' introducendo delitti con evento di danno, più efficaci e deterrenti rispetto alle precedenti contravvenzioni basate sul pericolo astratto.",
+        "source": "Lezione 2: Contesto Strategico della Legge 68/2015"
+    },
+    {
+        "id": 717,
+        "category": "Reati Ambientali",
+        "question": "Secondo la giurisprudenza, quando un'area adibita a discarica abusiva può essere confiscata?",
+        "options": {
+            "A": "Sempre, anche se appartiene a un terzo estraneo al reato.",
+            "B": "Solo se è di proprietà dell'autore del reato o di un suo complice.",
+            "C": "Mai, può essere solo sottoposta a sequestro preventivo.",
+            "D": "Solo se la discarica contiene rifiuti pericolosi."
+        },
+        "correct_answer": "B",
+        "explanation": "La Cassazione (es. n. 22236/2010) ha chiarito che la confisca dell'area è possibile solo se questa appartiene a chi ha commesso il reato o a un suo complice, non potendo pregiudicare il terzo estraneo.",
+        "source": "Giurisprudenza (Cass. pen. n. 22236/2010)"
+    },
+    {
+        "id": 718,
+        "category": "Reati Ambientali",
+        "question": "Ai sensi dell'art. 256 TUA, la miscelazione non consentita di categorie diverse di rifiuti pericolosi è punita con:",
+        "options": {
+            "A": "Una sanzione amministrativa pecuniaria.",
+            "B": "L'arresto da sei mesi a due anni o l'ammenda da 2.600 a 26.000 euro.",
+            "C": "La reclusione da uno a tre anni.",
+            "D": "La sospensione dell'autorizzazione."
+        },
+        "correct_answer": "B",
+        "explanation": "Il comma 5 dell'art. 256 TUA sanziona penalmente, con una contravvenzione, l'attività di miscelazione non autorizzata di rifiuti.",
+        "source": "Art. 256, comma 5, D.Lgs. 152/2006"
+    },
+    {
+        "id": 719,
+        "category": "Reati Ambientali",
+        "question": "Quale sanzione accessoria si applica al conducente se il reato di cui all'art. 256, c. 1, TUA è commesso utilizzando un veicolo a motore?",
+        "options": {
+            "A": "Nessuna sanzione accessoria.",
+            "B": "La revoca definitiva della patente.",
+            "C": "La decurtazione di 10 punti dalla patente.",
+            "D": "La sospensione della patente di guida da tre a nove mesi."
+        },
+        "correct_answer": "D",
+        "explanation": "L'art. 256, comma 1-ter, del TUA prevede specificamente la sanzione accessoria della sospensione della patente per il conducente del veicolo utilizzato per commettere il reato.",
+        "source": "Art. 256, comma 1-ter, D.Lgs. 152/2006"
+    },
+    {
+        "id": 720,
+        "category": "Reati Ambientali",
+        "question": "Quando la realizzazione di una discarica non autorizzata (art. 256, c. 3, TUA) è destinata anche solo in parte a rifiuti pericolosi e avviene in un sito contaminato (comma 3-bis)?",
+        "options": {
+            "A": "La pena rimane invariata.",
+            "B": "La pena è della reclusione da due anni e sei mesi a sette anni.",
+            "C": "Si applica una multa aggiuntiva.",
+            "D": "La pena è della reclusione da uno a cinque anni."
+        },
+        "correct_answer": "B",
+        "explanation": "Il comma 3-bis dell'art. 256 prevede una forte aggravante in queste circostanze, elevando la pena alla reclusione da due anni e sei mesi a sette anni.",
+        "source": "Art. 256, comma 3-bis, D.Lgs. 152/2006"
+    },
+    {
+        "id": 721,
+        "category": "Reati Ambientali",
+        "question": "Quale principio fondamentale del diritto penale stabilisce che nessuno può essere punito per un fatto non espressamente previsto dalla legge come reato?",
+        "options": {
+            "A": "Il principio di offensività.",
+            "B": "Il principio di legalità (o di riserva di legge).",
+            "C": "Il principio del ne bis in idem.",
+            "D": "Il principio di colpevolezza."
+        },
+        "correct_answer": "B",
+        "explanation": "Il principio di legalità, sancito dalla Costituzione e dal Codice Penale, è un cardine dell'ordinamento secondo cui una condotta, per essere reato, deve essere espressamente prevista come tale da una legge preesistente.",
+        "source": "Lezione 1: Definizione di Reato Ambientale"
+    },
+    {
+        "id": 722,
+        "category": "Reati Ambientali",
+        "question": "Un'attività di gestione di rifiuti non autorizzata (art. 256 TUA) che provoca un'alterazione irreversibile dell'equilibrio di un ecosistema, può integrare anche il reato di:",
+        "options": {
+            "A": "Solo la violazione dell'art. 256 TUA.",
+            "B": "Disastro ambientale (art. 452-quater c.p.).",
+            "C": "Impedimento del controllo (art. 452-septies c.p.).",
+            "D": "Traffico di rifiuti (art. 452-quaterdecies c.p.)."
+        },
+        "correct_answer": "B",
+        "explanation": "Un fatto che parte da una violazione del TUA può superare la soglia di gravità e integrare un ecoreato più grave. Un'alterazione irreversibile di un ecosistema è la condotta tipica del disastro ambientale.",
+        "source": "Lezione 5: Distinzione Fondamentale: Delitti e Contravvenzioni"
+    },
+    {
+        "id": 723,
+        "category": "Reati Ambientali",
+        "question": "Secondo la giurisprudenza, come si distingue la violazione del comma 1 (gestione senza autorizzazione) da quella del comma 4 (inosservanza prescrizioni) dell'art. 256 TUA?",
+        "options": {
+            "A": "Non c'è differenza, si applica sempre il comma 1.",
+            "B": "Il comma 4 si applica solo per violazioni formali, come la mancata comunicazione di dati.",
+            "C": "Si applica il comma 1 quando la violazione è così sostanziale da rendere il titolo inesistente (es. gestione di rifiuti totalmente diversi).",
+            "D": "Il comma 1 si applica solo ai rifiuti pericolosi, il comma 4 ai non pericolosi."
+        },
+        "correct_answer": "C",
+        "explanation": "La Cassazione (es. n. 5817/2019) chiarisce che si ricade nella più grave ipotesi del comma 1 quando la violazione è talmente radicale da rendere l'autorizzazione di fatto inefficace per l'attività svolta.",
+        "source": "Giurisprudenza (Cass. pen. n. 5817/2019)"
+    },
+    {
+        "id": 724,
+        "category": "Reati Ambientali",
+        "question": "L'agente di Polizia Giudiziaria, una volta acquisita una notizia di reato ambientale, quale atto NON può compiere autonomamente?",
+        "options": {
+            "A": "Eseguire il sequestro del corpo del reato.",
+            "B": "Emettere un decreto di condanna.",
+            "C": "Effettuare ispezioni e sopralluoghi.",
+            "D": "Procedere a perquisizione in caso di flagranza."
+        },
+        "correct_answer": "B",
+        "explanation": "La PG compie atti per assicurare le fonti di prova, ma la direzione delle indagini e l'esercizio dell'azione penale spettano al Pubblico Ministero, e la condanna al giudice.",
+        "source": "Lezione 5: Il Ruolo della Polizia Giudiziaria"
+    },
+    {
+        "id": 725,
+        "category": "Reati Ambientali",
+        "question": "Qual è la pena prevista per il reato di impedimento del controllo (art. 452-septies c.p.)?",
+        "options": {
+            "A": "La reclusione da sei mesi a tre anni.",
+            "B": "La reclusione da uno a cinque anni.",
+            "C": "L'arresto fino a un anno.",
+            "D": "La sola ammenda da 10.000 a 50.000 euro."
+        },
+        "correct_answer": "A",
+        "explanation": "Il delitto di impedimento del controllo è punito con la reclusione da sei mesi a tre anni per chi ostacola o elude l'attività degli organi di vigilanza ambientale.",
+        "source": "art. 452-septies c.p."
+    },
+    {
+        "id": 726,
+        "category": "Reati Ambientali",
+        "question": "In quali circostanze le pene per gli ecoreati della Legge 68/2015 possono raggiungere i 20 anni di reclusione?",
+        "options": {
+            "A": "Mai, il massimo è 15 anni.",
+            "B": "Quando il reato è commesso da un'associazione a delinquere.",
+            "C": "In presenza di specifiche circostanze aggravanti previste dalla legge.",
+            "D": "Quando il reato è commesso in un'area naturale protetta."
+        },
+        "correct_answer": "C",
+        "explanation": "La lezione sulle pene della Legge 68/2015 menziona esplicitamente che 'in presenza di circostanze aggravanti, la pena detentiva può raggiungere i 20 anni di reclusione'.",
+        "source": "Lezione 2: Analisi delle Pene"
+    },
+    {
+        "id": 727,
+        "category": "Reati Ambientali",
+        "question": "La gestione non autorizzata di rifiuti è una contravvenzione se riguarda rifiuti non pericolosi (art. 256 TUA). In quale caso questa stessa condotta diventa un delitto?",
+        "options": {
+            "A": "Se il quantitativo supera i 100 kg.",
+            "B": "Se dal fatto deriva pericolo di compromissione o deterioramento di acque o aria (art. 256, c. 1-bis).",
+            "C": "Se viene commessa di notte.",
+            "D": "Mai, rimane sempre una contravvenzione."
+        },
+        "correct_answer": "B",
+        "explanation": "La circostanza aggravante speciale prevista dal comma 1-bis dell'art. 256 TUA 'trasforma' la contravvenzione in delitto, punito con la reclusione da uno a cinque anni, quando la condotta genera un pericolo concreto per l'ambiente.",
+        "source": "Art. 256, comma 1-bis, D.Lgs. 152/2006"
+    },
+    {
+        "id": 728,
+        "category": "Reati Ambientali",
+        "question": "Tra le sanzioni applicabili all'azienda ai sensi del D.Lgs. 231/01 per reati ambientali, NON è prevista:",
+        "options": {
+            "A": "La confisca del profitto del reato.",
+            "B": "L'arresto dell'amministratore delegato come sanzione diretta all'ente.",
+            "C": "Sanzioni pecuniarie.",
+            "D": "Il sequestro di beni, titoli o liquidità."
+        },
+        "correct_answer": "B",
+        "explanation": "Il D.Lgs. 231/01 prevede sanzioni pecuniarie e patrimoniali a carico dell'ente, non pene detentive come l'arresto, che sono riservate alle persone fisiche responsabili del reato.",
+        "source": "Lezione 5: La Responsabilità delle Aziende (D.Lgs. 231/01)"
+    },
+    {
+        "id": 729,
+        "category": "Reati Ambientali",
+        "question": "Quale norma rappresenta il 'pilastro' della legislazione ambientale italiana e il principale riferimento per la gestione e repressione degli illeciti in materia di rifiuti?",
+        "options": {
+            "A": "Il Codice Penale, Titolo VI-bis.",
+            "B": "La Legge 22 maggio 2015, n. 68.",
+            "C": "Il Decreto Legislativo 3 aprile 2006, n. 152 (Testo Unico Ambientale).",
+            "D": "Il Decreto Legislativo n. 231/2001."
+        },
+        "correct_answer": "C",
+        "explanation": "Il Testo Unico Ambientale (D.Lgs. 152/2006) è definito nella guida come il 'pilastro della legislazione ambientale italiana' e il punto di riferimento imprescindibile, in particolare per la Parte IV, Titolo VI, sulla gestione dei rifiuti.",
+        "source": "Lezione 3: Introduzione alla Sezione"
+    },
+    {
+        "id": 730,
+        "category": "Reati Ambientali",
+        "question": "La definizione giuridica di 'reato ambientale' richiede che la condotta dannosa:",
+        "options": {
+            "A": "Sia percepita come dannosa dall'opinione pubblica.",
+            "B": "Provochi un danno economico ad un privato.",
+            "C": "Sia espressamente definita come reato dalla legge.",
+            "D": "Sia commessa con dolo specifico di nuocere all'ambiente."
+        },
+        "correct_answer": "C",
+        "explanation": "In base al principio di legalità, un comportamento, per quanto dannoso, è considerato reato solo se è espressamente definito come tale da una norma di legge entrata in vigore prima della sua commissione.",
+        "source": "Lezione 1: Definizione di Reato Ambientale"
+    },
+    {
+        "id": 731,
+        "category": "Reati Ambientali",
+        "question": "In base all'art. 256, comma 3, del TUA, qual è la pena per la realizzazione di una discarica non autorizzata di rifiuti NON pericolosi?",
+        "options": {
+            "A": "L'arresto da tre mesi a un anno.",
+            "B": "La reclusione da uno a cinque anni.",
+            "C": "La sola ammenda da 2.600 a 26.000 euro.",
+            "D": "La reclusione da sei mesi a due anni."
+        },
+        "correct_answer": "B",
+        "explanation": "Il comma 3 dell'art. 256 TUA qualifica la realizzazione di una discarica non autorizzata come un reato grave, punendolo con la reclusione da uno a cinque anni anche se riguarda rifiuti non pericolosi.",
+        "source": "Art. 256, comma 3, D.Lgs. 152/2006"
     }
 ]

@@ -456,6 +456,80 @@
     position: relative;
 }
 
+/* ─────────────────────────────────────────────
+   CATEGORIES WRAPPER with Navigation Arrows
+   ───────────────────────────────────────────── */
+
+.categories-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.categories-arrow {
+    display: none;
+    /* Hidden on mobile by default */
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: white;
+    border: 1px solid var(--nebbia);
+    box-shadow: var(--shadow-elevation-1);
+    cursor: pointer;
+    z-index: 10;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-fast);
+}
+
+.categories-arrow:hover {
+    background: var(--pino-marittimo);
+    color: white;
+    border-color: var(--pino-marittimo);
+    box-shadow: var(--shadow-elevation-2);
+}
+
+.categories-arrow:active {
+    transform: translateY(-50%) scale(0.95);
+}
+
+.categories-arrow svg {
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+}
+
+.categories-arrow--left {
+    left: 8px;
+}
+
+.categories-arrow--right {
+    right: 8px;
+}
+
+/* Show arrows only on larger screens (desktop) */
+@media (min-width: 768px) {
+    .categories-arrow {
+        display: flex;
+    }
+
+    .categories-wrapper {
+        padding: 0 48px;
+        /* Make room for arrows */
+    }
+
+    .categories-arrow--left {
+        left: 0;
+    }
+
+    .categories-arrow--right {
+        right: 0;
+    }
+}
+
 .category-card {
     flex-shrink: 0;
     width: 140px;
