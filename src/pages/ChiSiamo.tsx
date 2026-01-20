@@ -31,7 +31,7 @@ const ChiSiamo: React.FC = () => {
                     <span>al servizio della Natura</span>
                 </h2>
                 <p className="hero-subtitle">
-                    Il progetto Silva nasce per supportare i futuri custodi della Sardegna.
+                    Il progetto Quiz CFVA nasce per supportare i futuri custodi della Sardegna.
                 </p>
             </section>
 
