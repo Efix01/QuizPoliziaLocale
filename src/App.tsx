@@ -1,6 +1,7 @@
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from './components/Layout';
+import ScrollToTop from './components/ScrollToTop';
 import Dashboard from './pages/Dashboard';
 import StudyMode from './pages/StudyMode';
 import SimulationMode from './pages/SimulationMode';
@@ -30,6 +31,7 @@ function App() {
           <StudyMaterialProvider>
             <ToastProvider>
               <Router>
+                <ScrollToTop />
                 <Routes>
                   {/* Onboarding - First time users */}
                   <Route path="/welcome" element={<Onboarding />} />
