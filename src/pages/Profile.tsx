@@ -197,6 +197,18 @@ const Profile: React.FC = () => {
                 </button>
             </div>
 
+            {/* Weekly Promise */}
+            <div className="promise-card">
+                <div className="promise-icon">🗓️</div>
+                <h3 className="promise-title">Sempre Aggiornato</h3>
+                <p className="promise-text">
+                    Se l'app dovesse avere un buon riscontro, mi impegno a implementare nuove
+                    <strong> Pillole di Studio</strong> e <strong>Quiz</strong> con cadenza settimanale,
+                    per accompagnarti fino al concorso!
+                </p>
+                <p className="promise-signature">In bocca al lupo! 🍀</p>
+            </div>
+
             {/* Modals */}
             <LogoutModal
                 isOpen={showLogoutModal}
