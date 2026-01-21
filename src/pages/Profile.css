@@ -1,0 +1,400 @@
+/* ============================================
+   PROFILE PAGE - La Foresta Digitale
+   Premium Edition
+   ============================================ */
+
+/* ─────────────────────────────────────────────
+   PROFILE CONTAINER
+   ───────────────────────────────────────────── */
+
+.profile-container {
+    min-height: 100vh;
+    padding: var(--space-lg) var(--content-padding);
+    padding-bottom: calc(var(--bottom-nav-height) + var(--safe-area-bottom) + 32px);
+    background: var(--carta-antica);
+}
+
+.profile-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--text-2xl);
+    color: var(--bosco-notte);
+    margin-bottom: var(--space-lg);
+}
+
+/* ─────────────────────────────────────────────
+   USER CARD
+   ───────────────────────────────────────────── */
+
+.user-card {
+    background: white;
+    border-radius: var(--radius-2xl);
+    padding: var(--space-lg);
+    margin-bottom: var(--space-lg);
+    box-shadow: var(--shadow-elevation-1);
+}
+
+.user-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-md);
+}
+
+.user-avatar {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--pino-marittimo), var(--bosco-notte));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    flex-shrink: 0;
+}
+
+.user-avatar svg {
+    width: 32px;
+    height: 32px;
+    stroke-width: 1.5;
+}
+
+.user-info h2 {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: var(--inchiostro);
+    margin: 0 0 var(--space-xs) 0;
+}
+
+.user-info .user-id {
+    font-size: var(--text-sm);
+    color: var(--nebbia);
+}
+
+.user-details-btn {
+    width: 100%;
+    padding: var(--space-md);
+    background: transparent;
+    border: 1px solid #E5E7EB;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    color: var(--pino-marittimo);
+    transition: all var(--transition-fast);
+}
+
+.user-details-btn:hover {
+    background: rgba(164, 195, 162, 0.1);
+    border-color: var(--pino-marittimo);
+}
+
+/* User Avatar with Image */
+.user-avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.user-avatar-initials {
+    font-size: var(--text-xl);
+    font-weight: 700;
+    color: white;
+}
+
+/* Logout Button */
+.user-logout-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    width: 100%;
+    padding: var(--space-md);
+    background: transparent;
+    border: 1px solid #FEE2E2;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    color: #DC2626;
+    transition: all var(--transition-fast);
+}
+
+.user-logout-btn:hover {
+    background: #FEE2E2;
+    border-color: #FECACA;
+}
+
+/* ─────────────────────────────────────────────
+   SECTION TITLES
+   ───────────────────────────────────────────── */
+
+.section-label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--nebbia);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-md);
+}
+
+/* ─────────────────────────────────────────────
+   SETTINGS CARD
+   ───────────────────────────────────────────── */
+
+.settings-card {
+    background: white;
+    border-radius: var(--radius-2xl);
+    padding: 0 var(--space-lg);
+    box-shadow: var(--shadow-elevation-1);
+    margin-bottom: var(--space-lg);
+}
+
+/* ─────────────────────────────────────────────
+   STATS CARD
+   ───────────────────────────────────────────── */
+
+.stats-card {
+    background: white;
+    border-radius: var(--radius-2xl);
+    padding: var(--space-lg);
+    box-shadow: var(--shadow-elevation-1);
+    margin-bottom: var(--space-lg);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+}
+
+.stats-item {
+    text-align: center;
+    padding: var(--space-md);
+    background: rgba(164, 195, 162, 0.1);
+    border-radius: var(--radius-lg);
+}
+
+.stats-item-value {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: var(--text-2xl);
+    color: var(--bosco-notte);
+    display: block;
+    margin-bottom: var(--space-xs);
+}
+
+.stats-item-label {
+    font-size: var(--text-sm);
+    color: var(--nebbia);
+}
+
+/* ─────────────────────────────────────────────
+   ADMIN LINK
+   ───────────────────────────────────────────── */
+
+.admin-link-container {
+    text-align: center;
+    margin-top: var(--space-xl);
+}
+
+.admin-link {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--nebbia);
+    font-size: var(--text-sm);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+}
+
+.admin-link:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--inchiostro);
+}
+
+/* ─────────────────────────────────────────────
+   BOTTOM SHEET IMPROVEMENTS
+   ───────────────────────────────────────────── */
+
+.details-row {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid #F3F4F6;
+}
+
+.details-row:last-child {
+    border-bottom: none;
+}
+
+.details-label {
+    color: var(--nebbia);
+    font-size: var(--text-sm);
+}
+
+.details-value {
+    font-weight: 500;
+    color: var(--inchiostro);
+}
+
+.details-value--verified {
+    color: var(--successo);
+    font-weight: 700;
+}
+
+.score-summary {
+    margin-top: var(--space-md);
+    background: rgba(164, 195, 162, 0.15);
+    padding: var(--space-md);
+    border-radius: var(--radius-md);
+}
+
+.score-summary h4 {
+    margin: 0 0 var(--space-sm) 0;
+    font-size: var(--text-sm);
+    color: var(--inchiostro);
+}
+
+.score-summary .score-big {
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: var(--text-2xl);
+    color: var(--pino-marittimo);
+}
+
+.score-summary .score-note {
+    font-size: var(--text-xs);
+    color: var(--nebbia);
+    margin-top: var(--space-xs);
+}
+
+/* ─────────────────────────────────────────────
+   ACCOUNT SECTION
+   ───────────────────────────────────────────── */
+
+.account-card {
+    background: white;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-elevation-1);
+    margin-bottom: var(--space-lg);
+}
+
+.account-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    padding: 16px 20px;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #F3F4F6;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.account-row:last-child {
+    border-bottom: none;
+}
+
+.account-row:hover {
+    background: #F9FAFB;
+}
+
+.account-row-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.account-row .account-icon {
+    width: 20px;
+    height: 20px;
+    color: #6B7280;
+}
+
+.account-row span {
+    font-size: 15px;
+    font-weight: 500;
+    color: #374151;
+}
+
+.account-row .account-chevron {
+    width: 20px;
+    height: 20px;
+    color: #9CA3AF;
+}
+
+/* Danger Row (Delete Account) */
+.account-row--danger .account-icon,
+.account-row--danger span,
+.account-row--danger .account-chevron {
+    color: #DC2626;
+}
+
+.account-row--danger:hover {
+    background: #FEF2F2;
+}
+
+/* Info Row (Chi Siamo, Privacy) */
+.account-icon--info {
+    color: #1E5631;
+}
+
+/* ─────────────────────────────────────────────
+   WEEKLY PROMISE CARD
+   ───────────────────────────────────────────── */
+
+.promise-card {
+    background: linear-gradient(135deg, #1E5631 0%, #0D2818 100%);
+    border-radius: var(--radius-2xl);
+    padding: var(--space-lg);
+    margin-top: var(--space-lg);
+    margin-bottom: var(--space-xl);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--shadow-elevation-2);
+}
+
+.promise-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+.promise-icon {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-sm);
+}
+
+.promise-title {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: var(--text-xl);
+    color: white;
+    margin-bottom: var(--space-sm);
+}
+
+.promise-text {
+    font-size: var(--text-base);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: var(--space-md);
+}
+
+.promise-text strong {
+    color: var(--oro-sardegna);
+    font-weight: 600;
+}
+
+.promise-signature {
+    font-size: var(--text-sm);
+    color: rgba(255, 255, 255, 0.7);
+    font-style: italic;
+    margin: 0;
+}

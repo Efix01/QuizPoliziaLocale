@@ -1,0 +1,169 @@
+.report-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(13, 40, 24, 0.6);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.report-modal-card {
+    background: white;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 400px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    animation: scaleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.report-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    color: var(--nebbia);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    z-index: 10;
+}
+
+.report-modal-close:hover {
+    background: #F3F4F6;
+    color: var(--inchiostro);
+}
+
+.report-modal-header {
+    background: linear-gradient(135deg, rgba(201, 162, 39, 0.1), rgba(201, 162, 39, 0.05));
+    padding: 32px 24px 24px;
+    text-align: center;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.report-modal-icon {
+    width: 56px;
+    height: 56px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px;
+    color: var(--oro-sardegna);
+    box-shadow: 0 4px 12px rgba(201, 162, 39, 0.15);
+}
+
+.report-modal-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--bosco-notte);
+    margin: 0 0 4px;
+}
+
+.report-modal-subtitle {
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    color: var(--nebbia);
+    margin: 0;
+}
+
+.report-modal-content {
+    padding: 24px;
+    color: var(--inchiostro);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+}
+
+.report-modal-text {
+    margin-bottom: 12px;
+}
+
+.report-modal-text:last-child {
+    margin-bottom: 0;
+}
+
+.report-modal-footer {
+    padding: 0 24px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 12px;
+    width: 100%;
+}
+
+.btn-cancel {
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #E5E7EB;
+    background: white;
+    color: var(--inchiostro);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    order: 2;
+    /* Put cancel at bottom on mobile/small layouts if needed, but here we just stack */
+}
+
+.btn-cancel:hover {
+    background: #F9FAFB;
+    border-color: #D1D5DB;
+}
+
+.btn-confirm {
+    flex: 1;
+    padding: 12px;
+    border-radius: 12px;
+    border: none;
+    background: var(--oro-sardegna);
+    color: white;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+    box-shadow: 0 4px 12px rgba(201, 162, 39, 0.2);
+    font-size: 0.9rem;
+}
+
+.btn-confirm:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 16px rgba(201, 162, 39, 0.3);
+}
+
+.btn-gmail {
+    background: #EA4335;
+    /* Gmail Red */
+    box-shadow: 0 4px 12px rgba(234, 67, 53, 0.2);
+}
+
+.btn-gmail:hover {
+    background: #D93025;
+    box-shadow: 0 6px 16px rgba(234, 67, 53, 0.3);
+}
+
+.btn-confirm:active {
+    transform: translateY(0);
+}
