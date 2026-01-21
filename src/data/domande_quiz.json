@@ -10204,5 +10204,775 @@
         "correct_answer": "B",
         "explanation": "Il comma 3 dell'art. 256 TUA qualifica la realizzazione di una discarica non autorizzata come un reato grave, punendolo con la reclusione da uno a cinque anni anche se riguarda rifiuti non pericolosi.",
         "source": "Art. 256, comma 3, D.Lgs. 152/2006"
+    },
+    {
+        "id": 732,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Ai sensi dell'art. 347 c.p.p., entro quale termine la polizia giudiziaria deve riferire al pubblico ministero la notizia di reato?",
+        "options": {
+            "A": "Entro 72 ore dalla acquisizione della notizia",
+            "B": "Entro 48 ore dalla acquisizione della notizia",
+            "C": "Senza ritardo",
+            "D": "Entro 24 ore dalla acquisizione della notizia"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 347 c.p.p. stabilisce che la polizia giudiziaria deve riferire la notizia di reato al pubblico ministero 'senza ritardo', con termini specifici solo per particolari situazioni.",
+        "source": "Art. 347 c.p.p."
+    },
+    {
+        "id": 733,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "L'art. 727 c.p. (Abbandono di animali) punisce anche la detenzione in condizioni incompatibili. Quale tra le seguenti condotte rientra nella fattispecie?",
+        "options": {
+            "A": "Cagionare una lesione a un animale per crudeltà o senza necessità",
+            "B": "Detenere animali in condizioni incompatibili con la loro natura, e produttive di gravi sofferenze",
+            "C": "Uccidere un animale senza necessità",
+            "D": "Sottoporre l'animale a sevizie"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 727 c.p. punisce l'abbandono di animali domestici (o abituati alla cattività) e, alla stessa pena, la detenzione in condizioni incompatibili con la loro natura e produttive di gravi sofferenze; la norma prevede arresto fino a un anno o ammenda (nel testo vigente su Brocardi) e ulteriori conseguenze in casi specifici.",
+        "source": "Art. 727 c.p. (testo vigente)"
+    },
+    {
+        "id": 734,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'art. 330 c.p.p., cosa si intende per notizia di reato?",
+        "options": {
+            "A": "Solo la denuncia presentata dal privato cittadino",
+            "B": "Esclusivamente il referto medico",
+            "C": "Ogni informazione acquisita dal PM o dalla PG relativa alla commissione di un reato",
+            "D": "Solo la querela della persona offesa"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 330 c.p.p. definisce la notizia di reato come qualsiasi informazione, comunque acquisita, relativa alla commissione di un reato perseguibile d'ufficio.",
+        "source": "Art. 330 c.p.p."
+    },
+    {
+        "id": 735,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Ai sensi dell'art. 650 c.p., chi non osserva un provvedimento legalmente dato dall'Autorità per ragioni di giustizia o sicurezza pubblica è punito con:",
+        "options": {
+            "A": "Reclusione fino a 3 mesi",
+            "B": "Arresto fino a tre mesi o ammenda fino a 206 euro",
+            "C": "Multa fino a 500 euro",
+            "D": "Reclusione da 6 mesi a 2 anni"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 650 c.p. prevede per l'inosservanza dei provvedimenti dell'Autorità la pena dell'arresto fino a tre mesi o dell'ammenda fino a 206 euro.",
+        "source": "Art. 650 c.p."
+    },
+    {
+        "id": 736,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Quale tra i seguenti NON è un requisito della legittima difesa ai sensi dell'art. 52 c.p.?",
+        "options": {
+            "A": "La necessità di difendere un diritto proprio o altrui",
+            "B": "L'attualità del pericolo",
+            "C": "La proporzionalità tra difesa e offesa",
+            "D": "L'autorizzazione preventiva dell'Autorità giudiziaria"
+        },
+        "correct_answer": "D",
+        "explanation": "L'art. 52 c.p. richiede per la legittima difesa: pericolo attuale, ingiustizia dell'offesa, necessità della difesa e proporzionalità. Non è richiesta alcuna autorizzazione.",
+        "source": "Art. 52 c.p."
+    },
+    {
+        "id": 737,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Ai sensi dell'art. 354 c.p.p., gli ufficiali di polizia giudiziaria possono compiere accertamenti urgenti sui luoghi e sulle cose quando:",
+        "options": {
+            "A": "Solo dopo autorizzazione del PM",
+            "B": "Vi è pericolo che le cose, le tracce o i luoghi si alterino o si disperdano",
+            "C": "Sono trascorse almeno 24 ore dal fatto",
+            "D": "La persona offesa lo richiede espressamente"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 354 c.p.p. consente alla PG di compiere accertamenti urgenti e rilievi sui luoghi, cose o persone quando vi è pericolo di alterazione, dispersione o modifica.",
+        "source": "Art. 354 c.p.p."
+    },
+    {
+        "id": 738,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "L'art. 727-bis c.p. punisce l'uccisione, cattura o detenzione di esemplari di specie animali selvatiche protette. Quando il reato NON sussiste?",
+        "options": {
+            "A": "Quando l'animale è ferito",
+            "B": "Quando si tratta di quantità trascurabili e l'impatto sul conservazione è trascurabile",
+            "C": "Quando l'autore è un cacciatore autorizzato",
+            "D": "Quando l'animale si trova in proprietà privata"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 727-bis c.p. esclude il reato quando la condotta riguarda una quantità trascurabile di esemplari e ha un impatto trascurabile sullo stato di conservazione della specie.",
+        "source": "Art. 727-bis c.p."
+    },
+    {
+        "id": 739,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'art. 42 c.p., quale elemento soggettivo è richiesto per l'esistenza del delitto?",
+        "options": {
+            "A": "Sempre la preterintenzione",
+            "B": "Sempre il dolo, salvo i casi di delitto preterintenzionale o colposo espressamente previsti dalla legge",
+            "C": "Sempre la colpa",
+            "D": "L'elemento soggettivo non è mai richiesto"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 42 c.p. stabilisce che nessuno può essere punito per un'azione od omissione preveduta dalla legge come reato se non l'ha commessa con dolo, salvo i casi espressamente previsti.",
+        "source": "Art. 42 c.p."
+    },
+    {
+        "id": 740,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Ai sensi dell'art. 331 c.p.p., chi ha l'obbligo di presentare denuncia per i reati procedibili d'ufficio di cui ha notizia nell'esercizio delle funzioni?",
+        "options": {
+            "A": "Solo i magistrati",
+            "B": "Solo i privati cittadini",
+            "C": "I pubblici ufficiali e gli incaricati di pubblico servizio",
+            "D": "Solo gli avvocati"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 331 c.p.p. prevede l'obbligo di denuncia (per iscritto) per i pubblici ufficiali e gli incaricati di pubblico servizio quando, nell'esercizio o a causa delle funzioni/servizio, hanno notizia di un reato perseguibile d'ufficio.",
+        "source": "Art. 331 c.p.p."
+    },
+    {
+        "id": 741,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "L'art. 697 c.p. punisce la detenzione abusiva di armi. Quale pena è prevista?",
+        "options": {
+            "A": "Reclusione da 1 a 3 anni",
+            "B": "Multa fino a 10.000 euro",
+            "C": "Arresto da tre a dodici mesi o ammenda fino a 371 euro",
+            "D": "Reclusione da 6 mesi a 2 anni"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 697 c.p. prevede, per la detenzione di armi/caricatori soggetti a denuncia o munizioni senza averne fatto denuncia quando richiesta, l'arresto da tre a dodici mesi o l'ammenda fino a 371 euro.",
+        "source": "Art. 697 c.p."
+    },
+    {
+        "id": 742,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'art. 348 c.p.p., dopo la comunicazione della notizia di reato, la polizia giudiziaria:",
+        "options": {
+            "A": "Deve cessare ogni attività investigativa",
+            "B": "Può compiere solo atti delegati dal PM",
+            "C": "Continua a svolgere le funzioni indicate nell'art. 55 anche di propria iniziativa",
+            "D": "Deve attendere le direttive del GIP"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 348 c.p.p. prevede che la PG, anche successivamente alla comunicazione della notizia di reato, continua a svolgere le funzioni dell'art. 55, raccogliendo elementi utili.",
+        "source": "Art. 348 c.p.p."
+    },
+    {
+        "id": 743,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Ai sensi dell'art. 43 c.p., quando ricorre il dolo?",
+        "options": {
+            "A": "Quando l'evento dannoso è previsto ma non voluto",
+            "B": "Quando l'evento dannoso è preveduto e voluto come conseguenza della propria azione od omissione",
+            "C": "Quando l'evento è causato da negligenza o imprudenza",
+            "D": "Quando l'evento è più grave di quello voluto"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 43 c.p. definisce il dolo quando l'evento dannoso o pericoloso è dall'agente preveduto e voluto come conseguenza della propria azione od omissione.",
+        "source": "Art. 43 c.p."
+    },
+    {
+        "id": 744,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "L'art. 651 c.p. punisce il rifiuto d'indicazioni sulla propria identità personale. A chi può essere richiesta l'indicazione?",
+        "options": {
+            "A": "Solo ai pregiudicati",
+            "B": "A chiunque, da parte di un pubblico ufficiale",
+            "C": "Solo ai conducenti di veicoli",
+            "D": "Solo agli stranieri"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 651 c.p. punisce chiunque, richiesto da un pubblico ufficiale nell'esercizio delle sue funzioni, rifiuta di dare indicazioni sulla propria identità personale.",
+        "source": "Art. 651 c.p."
+    },
+    {
+        "id": 745,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Ai sensi dell'art. 352 c.p.p., quando la polizia giudiziaria può procedere a perquisizione personale o locale di propria iniziativa?",
+        "options": {
+            "A": "Mai, serve sempre il decreto del PM",
+            "B": "In flagranza di reato o evasione, quando vi è fondato motivo di ritenere che si trovino occultati il corpo del reato o cose pertinenti",
+            "C": "Solo con il consenso dell'interessato",
+            "D": "Entro 72 ore dal reato"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 352 c.p.p. consente la perquisizione d'iniziativa della PG in flagranza o evasione, quando sussiste il fondato motivo di ritenere occultate cose pertinenti al reato.",
+        "source": "Art. 352 c.p.p."
+    },
+    {
+        "id": 746,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'art. 56 c.p., quando si configura il tentativo di delitto?",
+        "options": {
+            "A": "Quando il soggetto manifesta l'intenzione di commettere un reato",
+            "B": "Quando il soggetto compie atti idonei diretti in modo non equivoco a commettere un delitto, che non si compie",
+            "C": "Quando il soggetto prepara i mezzi per commettere il reato",
+            "D": "Quando il reato viene consumato ma senza danni"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 56 c.p. definisce il tentativo quando il soggetto compie atti idonei, diretti in modo non equivoco a commettere un delitto, se l'azione non si compie o l'evento non si verifica.",
+        "source": "Art. 56 c.p."
+    },
+    {
+        "id": 747,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "L'art. 672 c.p. riguarda l'omessa custodia e malgoverno di animali. Quale condotta è punita?",
+        "options": {
+            "A": "Solo la vendita di animali pericolosi",
+            "B": "Lasciare liberi o non custodire con le debite cautele animali pericolosi",
+            "C": "Il trasporto di animali senza autorizzazione",
+            "D": "L'allevamento intensivo"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 672 c.p. punisce chi lascia liberi o non custodisce con le debite cautele animali pericolosi da lui posseduti, o ne affida la custodia a persona inesperta.",
+        "source": "Art. 672 c.p."
+    },
+    {
+        "id": 748,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Ai sensi dell'art. 349 c.p.p., l'identificazione della persona nei cui confronti vengono svolte le indagini può avvenire:",
+        "options": {
+            "A": "Solo mediante documenti d'identità",
+            "B": "Anche mediante rilievi dattiloscopici, fotografici e antropometrici",
+            "C": "Solo attraverso testimoni",
+            "D": "Esclusivamente presso la Questura"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 349 c.p.p. prevede che la PG procede all'identificazione anche mediante rilievi dattiloscopici, fotografici e antropometrici, oltre che con altri accertamenti.",
+        "source": "Art. 349 c.p.p."
+    },
+    {
+        "id": 749,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'art. 110 c.p., quando più persone concorrono nel medesimo reato:",
+        "options": {
+            "A": "Risponde solo chi ha materialmente eseguito il fatto",
+            "B": "Ciascuna di esse soggiace alla pena per questo stabilita, salve le disposizioni degli articoli seguenti",
+            "C": "Risponde solo l'istigatore",
+            "D": "La pena è divisa equamente tra i concorrenti"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 110 c.p. stabilisce il principio generale del concorso di persone: quando più persone concorrono nel medesimo reato, ciascuna soggiace alla pena stabilita.",
+        "source": "Art. 110 c.p."
+    },
+    {
+        "id": 750,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "L'art. 698 c.p. punisce l'omessa denuncia di materie esplodenti. Chi ha l'obbligo della denuncia?",
+        "options": {
+            "A": "Solo i commercianti di armi",
+            "B": "Chiunque detiene materie esplodenti di qualsiasi specie",
+            "C": "Solo le forze dell'ordine",
+            "D": "Solo i titolari di licenza di caccia"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 698 c.p. prevede l'obbligo di denuncia per chiunque detiene materie esplodenti di qualsiasi specie, punendo l'omessa denuncia all'Autorità.",
+        "source": "Art. 698 c.p."
+    },
+    {
+        "id": 751,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Ai sensi dell'art. 353 c.p.p., la polizia giudiziaria può procedere all'acquisizione di plichi o di corrispondenza?",
+        "options": {
+            "A": "Sì, in qualsiasi momento e senza limiti",
+            "B": "No, mai",
+            "C": "Sì, quando vi è fondato motivo di ritenere che siano spediti dall'indagato o a lui diretti, procedendo ad ordine di esibizione all'ufficio postale",
+            "D": "Solo con mandato del Tribunale"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 353 c.p.p. consente alla PG di ordinare che gli addetti al servizio postale consegnino plichi o corrispondenza quando vi è fondato motivo di connessione con l'indagato.",
+        "source": "Art. 353 c.p.p."
+    },
+    {
+        "id": 752,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'art. 59 c.p., le circostanze attenuanti sono valutate:",
+        "options": {
+            "A": "Solo se conosciute dall'agente",
+            "B": "A favore dell'agente anche se da lui non conosciute o ritenute per errore inesistenti",
+            "C": "Solo se provate dalla difesa",
+            "D": "Solo nei delitti colposi"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 59 c.p. stabilisce che le circostanze che attenuano la pena sono valutate a favore dell'agente anche se da lui non conosciute.",
+        "source": "Art. 59 c.p."
+    },
+    {
+        "id": 753,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "L'art. 699 c.p. riguarda il porto abusivo di armi. È punito:",
+        "options": {
+            "A": "Chi porta armi solo fuori dalla propria abitazione",
+            "B": "Chi porta armi per cui non è ammessa licenza o senza licenza dell'Autorità",
+            "C": "Solo chi porta armi da fuoco",
+            "D": "Solo i minori di 18 anni"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 699 c.p. punisce chi porta un'arma per cui non è ammessa licenza, ovvero porta l'arma senza la prescritta licenza dell'Autorità.",
+        "source": "Art. 699 c.p."
+    },
+    {
+        "id": 754,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Ai sensi dell'art. 357 c.p.p., la documentazione dell'attività di polizia giudiziaria è effettuata mediante:",
+        "options": {
+            "A": "Solo verbali redatti dal PM",
+            "B": "Annotazioni e verbali",
+            "C": "Esclusivamente registrazioni audiovisive",
+            "D": "Relazioni scritte dal questore"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 357 c.p.p. prevede che la PG documenta la propria attività mediante annotazioni e, per gli atti specificamente indicati, mediante verbale.",
+        "source": "Art. 357 c.p.p."
+    },
+    {
+        "id": 755,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'art. 17 c.p., le pene principali stabilite per i delitti sono:",
+        "options": {
+            "A": "Arresto e ammenda",
+            "B": "Ergastolo, reclusione e multa",
+            "C": "Solo la reclusione",
+            "D": "Detenzione domiciliare e lavoro di pubblica utilità"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 17 c.p. elenca le pene principali per i delitti: ergastolo, reclusione e multa. L'arresto e l'ammenda sono invece previsti per le contravvenzioni.",
+        "source": "Art. 17 c.p."
+    },
+    {
+        "id": 756,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "L'art. 452-bis c.p. (Titolo VI-bis) riguarda l'inquinamento ambientale. Chi ne è responsabile:",
+        "options": {
+            "A": "È punito con la reclusione da due a sei anni e con la multa",
+            "B": "È punito con l'ammenda fino a 10.000 euro",
+            "C": "È punito solo con sanzione amministrativa",
+            "D": "È punito con l'arresto fino a 6 mesi"
+        },
+        "correct_answer": "A",
+        "explanation": "L'art. 452-bis c.p. punisce l'inquinamento ambientale con la reclusione da due a sei anni e con la multa da euro 10.000 a euro 100.000.",
+        "source": "Art. 452-bis c.p."
+    },
+    {
+        "id": 757,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Ai sensi dell'art. 350 c.p.p., le sommarie informazioni dalla persona nei cui confronti vengono svolte le indagini (che non si trovi in stato di arresto o di fermo) sono assunte:",
+        "options": {
+            "A": "Con le modalità dell'art. 64 e con la necessaria assistenza del difensore, previo invito a nominarne uno",
+            "B": "Sempre senza difensore, purché sul luogo o nell'immediatezza del fatto",
+            "C": "Solo dopo formale interrogatorio del PM",
+            "D": "Sempre e comunque utilizzabili nel dibattimento"
+        },
+        "correct_answer": "A",
+        "explanation": "L'art. 350 c.p.p. prevede che le sommarie informazioni dall'indagato siano assunte con le modalità dell'art. 64 e con assistenza necessaria del difensore (commi 1-3); la norma disciplina separatamente le attività sul luogo/immediatezza (comma 5) e le dichiarazioni spontanee (comma 7).",
+        "source": "Art. 350 c.p.p."
+    },
+    {
+        "id": 758,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'art. 85 c.p., perché un soggetto sia imputabile è necessario:",
+        "options": {
+            "A": "Che abbia compiuto 14 anni",
+            "B": "Che sia capace di intendere e di volere al momento del fatto",
+            "C": "Che abbia la cittadinanza italiana",
+            "D": "Che non abbia precedenti penali"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 85 c.p. stabilisce che nessuno può essere punito per un fatto preveduto dalla legge come reato se, al momento in cui lo ha commesso, non era imputabile, ovvero capace di intendere e di volere.",
+        "source": "Art. 85 c.p."
+    },
+    {
+        "id": 759,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "L'art. 544-ter c.p. (Titolo IX-bis) punisce il maltrattamento di animali. Quale pena è prevista?",
+        "options": {
+            "A": "Ammenda fino a 1.000 euro",
+            "B": "Reclusione da tre mesi a diciotto mesi o multa",
+            "C": "Arresto fino a 6 mesi",
+            "D": "Solo sanzione amministrativa"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 544-ter c.p. punisce chi per crudeltà o senza necessità cagiona una lesione a un animale o lo sottopone a sevizie con la reclusione da tre a diciotto mesi o con multa.",
+        "source": "Art. 544-ter c.p."
+    },
+    {
+        "id": 760,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Ai sensi dell'art. 355 c.p.p., il sequestro operato dalla polizia giudiziaria deve essere convalidato dal PM entro:",
+        "options": {
+            "A": "24 ore dalla comunicazione",
+            "B": "72 ore dalla comunicazione",
+            "C": "48 ore dalla esecuzione del sequestro",
+            "D": "10 giorni dalla esecuzione"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 355 c.p.p. prevede che il PM, entro 48 ore dall'esecuzione del sequestro ad iniziativa della PG, lo convalida con decreto motivato se ne ricorrono i presupposti.",
+        "source": "Art. 355 c.p.p."
+    },
+    {
+        "id": 761,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'art. 337 c.p.p., la denuncia presentata oralmente deve essere:",
+        "options": {
+            "A": "Confermata per iscritto entro 10 giorni",
+            "B": "Ricevuta a verbale",
+            "C": "Presentata in duplice copia",
+            "D": "Sottoscritta da due testimoni"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 337 c.p.p. stabilisce che la denuncia è presentata oralmente o per iscritto; quando è presentata oralmente, viene ricevuta a verbale dall'Autorità.",
+        "source": "Art. 337 c.p.p."
+    },
+    {
+        "id": 762,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'Art. 1 del Codice Penale, quale principio fondamentale è espresso dalla locuzione latina 'nullum crimen, nulla poena sine lege'?",
+        "options": {
+            "A": "Principio di legalità",
+            "B": "Principio di territorialità",
+            "C": "Principio di obbligatorietà",
+            "D": "Principio di proporzionalità"
+        },
+        "correct_answer": "A",
+        "explanation": "Il Principio di Legalità, espresso dall'Art. 1 c.p., stabilisce che nessuno può essere punito per un fatto che non sia espressamente preveduto come reato dalla legge, né con pene che non siano da essa stabilite.",
+        "source": "Art. 1 c.p."
+    },
+    {
+        "id": 763,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'Art. 2 c.p., se una nuova legge abolisce un reato e il soggetto è già stato condannato, cosa accade?",
+        "options": {
+            "A": "La condanna rimane valida e viene eseguita",
+            "B": "Cessano l'esecuzione e gli effetti penali della condanna",
+            "C": "Il soggetto deve presentare istanza di revisione",
+            "D": "La pena viene solo dimezzata"
+        },
+        "correct_answer": "B",
+        "explanation": "L'Art. 2 c.p. stabilisce che se una nuova legge abolisce un reato, nessuno può essere punito per averlo commesso e, se vi è stata condanna, ne cessano l'esecuzione e gli effetti penali (principio del favor rei).",
+        "source": "Art. 2 c.p."
+    },
+    {
+        "id": 764,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Quale limite incontra l'applicazione della legge più favorevole al reo in caso di successione di leggi penali?",
+        "options": {
+            "A": "Non si applica mai ai reati ambientali",
+            "B": "Si applica solo ai cittadini italiani",
+            "C": "Non opera quando sia già stata emessa una sentenza irrevocabile",
+            "D": "Non opera per i reati puniti con pena superiore a 5 anni"
+        },
+        "correct_answer": "C",
+        "explanation": "L'Art. 2 c.p. prevede che la legge più favorevole si applichi sempre, con l'unica eccezione del caso in cui sia già stata emessa una sentenza definitiva e irrevocabile.",
+        "source": "Art. 2 c.p."
+    },
+    {
+        "id": 765,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'Art. 3 c.p., la legge penale italiana obbliga il corretto rispetto delle norme a:",
+        "options": {
+            "A": "Tutti coloro che, cittadini o stranieri, si trovano nel territorio dello Stato",
+            "B": "Solo i cittadini italiani che si trovano nel territorio dello Stato",
+            "C": "Solo gli stranieri residenti regolarmente",
+            "D": "Solo i maggiorenni presenti sul territorio nazionale"
+        },
+        "correct_answer": "A",
+        "explanation": "L'Art. 3 c.p. sancisce il principio di obbligatorietà: la legge penale italiana obbliga tutti coloro che, cittadini o stranieri, si trovano nel territorio dello Stato, senza distinzioni di nazionalità.",
+        "source": "Art. 3 c.p."
+    },
+    {
+        "id": 766,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "L'Art. 5 c.p. stabilisce che 'Nessuno può invocare a propria scusa l'ignoranza della legge penale'. Secondo la Corte Costituzionale, quando tale principio NON si applica?",
+        "options": {
+            "A": "Quando il soggetto è straniero",
+            "B": "Quando si tratta di contravvenzioni",
+            "C": "Quando il soggetto ha meno di 21 anni",
+            "D": "Nei casi di ignoranza inevitabile"
+        },
+        "correct_answer": "D",
+        "explanation": "La Corte Costituzionale ha precisato che l'inescusabilità dell'ignoranza della legge non si applica nei casi di 'ignoranza inevitabile', ovvero quando un cittadino, pur agendo con la massima diligenza, non avrebbe potuto venire a conoscenza della norma violata.",
+        "source": "Art. 5 c.p. - Interpretazione della Corte Costituzionale"
+    },
+    {
+        "id": 767,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Ai sensi dell'Art. 4 c.p., le navi e gli aeromobili italiani sono considerati:",
+        "options": {
+            "A": "Territorio italiano a tutti gli effetti, ovunque si trovino nel mondo",
+            "B": "Territorio italiano solo quando si trovano in acque o spazi aerei internazionali",
+            "C": "Territorio italiano solo quando trasportano cittadini italiani",
+            "D": "Territorio dello Stato di bandiera solo in caso di reati gravi"
+        },
+        "correct_answer": "A",
+        "explanation": "L'Art. 4 c.p. stabilisce che le navi e gli aeromobili italiani sono considerati a tutti gli effetti territorio italiano, ovunque si trovino, salvo che siano soggetti a legge territoriale straniera secondo il diritto internazionale.",
+        "source": "Art. 4 c.p."
+    },
+    {
+        "id": 768,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Per la punibilità di un delitto politico commesso all'estero (Art. 8 c.p.), quale condizione è SEMPRE necessaria?",
+        "options": {
+            "A": "La querela della persona offesa",
+            "B": "L'autorizzazione del Parlamento",
+            "C": "La presenza del reo nel territorio dello Stato",
+            "D": "La richiesta del Ministro della Giustizia"
+        },
+        "correct_answer": "D",
+        "explanation": "L'Art. 8 c.p. prevede che per la punibilità di un delitto politico commesso all'estero sia sempre necessaria la richiesta del Ministro della Giustizia. La querela è richiesta solo in aggiunta, se il delitto è punibile a querela.",
+        "source": "Art. 8 c.p."
+    },
+    {
+        "id": 769,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'Art. 43 c.p., quando ricorre il DOLO?",
+        "options": {
+            "A": "Quando l'evento dannoso è dall'agente preveduto e voluto come conseguenza della propria condotta",
+            "B": "Quando l'evento non è voluto ma si verifica per negligenza",
+            "C": "Quando dall'azione deriva un evento più grave di quello voluto",
+            "D": "Quando l'evento si verifica per inosservanza di regolamenti"
+        },
+        "correct_answer": "A",
+        "explanation": "L'Art. 43 c.p. definisce il dolo come la situazione in cui l'evento dannoso o pericoloso è dall'agente preveduto e voluto come conseguenza della propria azione od omissione.",
+        "source": "Art. 43 c.p."
+    },
+    {
+        "id": 770,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'Art. 357 c.p., quali caratteristiche definiscono la 'pubblica funzione amministrativa'?",
+        "options": {
+            "A": "Solo l'esercizio di poteri certificativi",
+            "B": "Solo l'emissione di atti di natura economica",
+            "C": "L'appartenenza a un'amministrazione centrale dello Stato",
+            "D": "La formazione della volontà della P.A. o lo svolgersi per mezzo di poteri autoritativi o certificativi"
+        },
+        "correct_answer": "D",
+        "explanation": "L'Art. 357 c.p. definisce pubblica la funzione amministrativa caratterizzata dalla formazione e manifestazione della volontà della P.A. o dal suo svolgersi per mezzo di poteri autoritativi o certificativi.",
+        "source": "Art. 357 c.p."
+    },
+    {
+        "id": 771,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "L'Art. 51 c.p. esclude la punibilità di chi agisce nell'adempimento di un dovere. Per l'agente forestale, quale attività rientra tipicamente in questa scriminante?",
+        "options": {
+            "A": "L'uso dell'arma per difesa personale fuori servizio",
+            "B": "La requisizione di beni privati per uso personale",
+            "C": "L'esecuzione di un arresto, sequestro o perquisizione nel rispetto della legge",
+            "D": "L'omissione di un controllo per motivi di convenienza"
+        },
+        "correct_answer": "C",
+        "explanation": "L'Art. 51 c.p. esclude la punibilità per chi agisce nell'adempimento di un dovere imposto da una norma giuridica. Per l'agente forestale, l'esecuzione di arresti, sequestri o perquisizioni sono atti doverosi e quindi leciti.",
+        "source": "Art. 51 c.p."
+    },
+    {
+        "id": 772,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'Art. 52 c.p., la difesa legittima richiede che la difesa sia:",
+        "options": {
+            "A": "Proporzionata all'offesa",
+            "B": "Superiore all'offesa per garantire l'efficacia",
+            "C": "Preventiva rispetto all'aggressione",
+            "D": "Autorizzata da un superiore gerarchico"
+        },
+        "correct_answer": "A",
+        "explanation": "L'Art. 52 c.p. richiede per la legittima difesa che la difesa sia proporzionata all'offesa, senza mai eccedere i limiti della necessità.",
+        "source": "Art. 52 c.p."
+    },
+    {
+        "id": 773,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "L'Art. 53 c.p. disciplina l'uso legittimo delle armi da parte del pubblico ufficiale. In quali casi è ammesso?",
+        "options": {
+            "A": "In qualsiasi situazione di servizio, a discrezione dell'agente",
+            "B": "Quando vi è costretto dalla necessità di respingere una violenza o vincere una resistenza all'Autorità",
+            "C": "Solo previa autorizzazione del superiore gerarchico",
+            "D": "Esclusivamente per la protezione di beni patrimoniali di valore"
+        },
+        "correct_answer": "B",
+        "explanation": "L'Art. 53 c.p. ammette l'uso delle armi quando il pubblico ufficiale vi è costretto dalla necessità di respingere una violenza o vincere una resistenza all'Autorità, come extrema ratio.",
+        "source": "Art. 53 c.p."
+    },
+    {
+        "id": 774,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "L'Art. 423-bis c.p. punisce l'incendio boschivo. Quale pena è prevista per la forma DOLOSA?",
+        "options": {
+            "A": "Reclusione da 2 a 5 anni",
+            "B": "Arresto fino a 3 anni e ammenda",
+            "C": "Reclusione da 6 a 10 anni",
+            "D": "Reclusione da 1 a 4 anni"
+        },
+        "correct_answer": "C",
+        "explanation": "L'Art. 423-bis c.p. prevede per l'incendio boschivo doloso la reclusione da 6 a 10 anni, mentre per la forma colposa la reclusione da 2 a 5 anni.",
+        "source": "Art. 423-bis c.p."
+    },
+    {
+        "id": 775,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "L'incendio boschivo (Art. 423-bis c.p.) è aggravato con aumento della pena della metà quando:",
+        "options": {
+            "A": "Deriva un danno grave, esteso e persistente all'ambiente",
+            "B": "È commesso di notte",
+            "C": "È commesso in zona urbana",
+            "D": "L'autore è recidivo"
+        },
+        "correct_answer": "A",
+        "explanation": "L'Art. 423-bis c.p. prevede l'aggravante con aumento della metà della pena quando dall'incendio deriva un danno grave, esteso e persistente all'ambiente.",
+        "source": "Art. 423-bis c.p."
+    },
+    {
+        "id": 776,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'Art. 423-bis c.p., quale condotta NON rientra nella fattispecie criminosa di incendio boschivo?",
+        "options": {
+            "A": "Cagionare un incendio in una selva",
+            "B": "Cagionare un incendio in un vivaio forestale destinato al rimboschimento",
+            "C": "Cagionare un incendio su boschi di proprietà propria",
+            "D": "L'uso legittimo di tecniche di controfuoco e fuoco prescritto"
+        },
+        "correct_answer": "D",
+        "explanation": "L'Art. 423-bis c.p. esclude dalla fattispecie criminosa l'uso legittimo di tecniche di controfuoco e di fuoco prescritto, ossia tecniche di gestione del territorio con fuoco controllato.",
+        "source": "Art. 423-bis c.p."
+    },
+    {
+        "id": 777,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "L'Art. 727-bis c.p. punisce l'uccisione, cattura o detenzione di esemplari di specie animale selvatica protetta. Quando NON è punibile il fatto?",
+        "options": {
+            "A": "Quando l'autore è un cacciatore con regolare licenza",
+            "B": "Quando la quantità degli esemplari è trascurabile E l'impatto sulla conservazione della specie è trascurabile",
+            "C": "Quando l'animale si trova in proprietà privata",
+            "D": "Quando l'azione è compiuta per scopi scientifici"
+        },
+        "correct_answer": "B",
+        "explanation": "L'Art. 727-bis c.p. prevede l'esclusione della punibilità quando ricorrono cumulativamente due condizioni: quantità trascurabile degli esemplari e impatto trascurabile sullo stato di conservazione della specie.",
+        "source": "Art. 727-bis c.p."
+    },
+    {
+        "id": 778,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "L'Art. 452-bis c.p. (inquinamento ambientale) richiede che il danno sia 'significativo e misurabile'. Cosa significa 'abusivamente' in questo contesto?",
+        "options": {
+            "A": "Che il danno deve essere causato con violenza",
+            "B": "Che l'autore deve avere precedenti penali",
+            "C": "Che la condotta deve essere posta in essere in violazione di legge, regolamenti o autorizzazioni",
+            "D": "Che il danno deve superare una soglia economica minima"
+        },
+        "correct_answer": "C",
+        "explanation": "Per l'Art. 452-bis c.p., 'abusivamente' significa che la compromissione deve derivare da condotta illecita, ossia in violazione di legge, regolamenti, o in assenza/violazione di autorizzazioni.",
+        "source": "Art. 452-bis c.p."
+    },
+    {
+        "id": 779,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "L'inquinamento ambientale (Art. 452-bis c.p.) è aggravato da 1/3 alla metà quando:",
+        "options": {
+            "A": "L'inquinamento avviene in area naturale protetta o sottoposta a vincolo",
+            "B": "L'autore è recidivo",
+            "C": "Il fatto è commesso di notte",
+            "D": "Il danno è reversibile"
+        },
+        "correct_answer": "A",
+        "explanation": "L'Art. 452-bis c.p. prevede l'aggravante da 1/3 alla metà quando l'inquinamento avviene in area naturale protetta o sottoposta a vincolo paesaggistico, ambientale, storico, artistico, architettonico o archeologico.",
+        "source": "Art. 452-bis c.p."
+    },
+    {
+        "id": 780,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Il 'peculato d'uso' (Art. 314 c.p.) si distingue dal peculato ordinario perché:",
+        "options": {
+            "A": "Riguarda solo beni immobili",
+            "B": "Richiede la complicità di un privato",
+            "C": "È punito più gravemente del peculato ordinario",
+            "D": "L'agente agisce al solo scopo di fare un uso momentaneo della cosa, restituendola immediatamente dopo"
+        },
+        "correct_answer": "D",
+        "explanation": "L'Art. 314 c.p. prevede la fattispecie attenuata del 'peculato d'uso' quando l'agente agisce al solo scopo di fare un uso momentaneo della cosa, restituendola immediatamente dopo.",
+        "source": "Art. 314 c.p."
+    },
+    {
+        "id": 781,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'Art. 336 c.p., la violenza o minaccia a pubblico ufficiale per costringerlo a un atto CONTRARIO ai doveri d'ufficio è punita con:",
+        "options": {
+            "A": "Reclusione fino a tre anni",
+            "B": "Arresto fino a 18 mesi",
+            "C": "Reclusione da sei mesi a cinque anni",
+            "D": "Multa fino a 10.000 euro"
+        },
+        "correct_answer": "C",
+        "explanation": "L'Art. 336 comma 1 c.p. prevede la reclusione da sei mesi a cinque anni per chi usa violenza o minaccia per costringere il pubblico ufficiale a un atto contrario ai doveri o a un'omissione.",
+        "source": "Art. 336 c.p."
+    },
+    {
+        "id": 782,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Qual è la differenza operativa fondamentale tra l'Art. 336 c.p. (violenza o minaccia) e l'Art. 337 c.p. (resistenza)?",
+        "options": {
+            "A": "L'Art. 336 riguarda solo la violenza fisica, l'Art. 337 solo la minaccia",
+            "B": "L'Art. 336 si applica 'a monte' per costringere a cambiare decisione, l'Art. 337 'durante' per impedire l'atto in corso",
+            "C": "L'Art. 336 si applica solo ai militari, l'Art. 337 a tutti i pubblici ufficiali",
+            "D": "Non vi è alcuna differenza sostanziale tra le due norme"
+        },
+        "correct_answer": "B",
+        "explanation": "La distinzione operativa è: l'Art. 336 c.p. punisce chi agisce 'a monte' per costringere l'agente a cambiare decisione su un atto futuro, mentre l'Art. 337 c.p. punisce chi agisce 'durante' per impedire l'atto che l'agente sta già compiendo.",
+        "source": "Artt. 336 e 337 c.p."
+    },
+    {
+        "id": 783,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "L'Art. 697 c.p. (detenzione abusiva di armi) punisce chi detiene armi senza denuncia. Qual è l'elemento soggettivo richiesto?",
+        "options": {
+            "A": "Solo il dolo specifico",
+            "B": "La preterintenzione",
+            "C": "Il dolo eventuale",
+            "D": "È sufficiente la colpa, trattandosi di contravvenzione, ma è richiesto l'animus detinendi"
+        },
+        "correct_answer": "D",
+        "explanation": "Trattandosi di contravvenzione, l'Art. 697 c.p. richiede come elemento soggettivo la colpa, tuttavia è necessario l'animus detinendi, ossia la volontà di tenere la cosa in proprio potere.",
+        "source": "Art. 697 c.p."
+    },
+    {
+        "id": 784,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "L'Art. 650 c.p. punisce l'inosservanza dei provvedimenti dell'Autorità. Per quali ragioni deve essere stato emesso il provvedimento?",
+        "options": {
+            "A": "Per qualsiasi ragione di interesse pubblico",
+            "B": "Solo per ragioni di giustizia, sicurezza pubblica, ordine pubblico o igiene",
+            "C": "Per ragioni economiche o fiscali",
+            "D": "Per ragioni di tutela del patrimonio privato"
+        },
+        "correct_answer": "B",
+        "explanation": "L'Art. 650 c.p. si applica solo quando il provvedimento è stato emesso per ragioni tassative: giustizia, sicurezza pubblica, ordine pubblico o igiene. Provvedimenti per ragioni diverse non rientrano nella norma.",
+        "source": "Art. 650 c.p."
+    },
+    {
+        "id": 785,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Ai sensi dell'Art. 347 c.p.p., la Polizia Giudiziaria, acquisita la notizia di reato, deve riferire al Pubblico Ministero:",
+        "options": {
+            "A": "Entro 48 ore",
+            "B": "Entro 72 ore",
+            "C": "Senza ritardo e per iscritto",
+            "D": "Entro 10 giorni"
+        },
+        "correct_answer": "C",
+        "explanation": "L'Art. 347 c.p.p. stabilisce che la Polizia Giudiziaria deve riferire senza ritardo e per iscritto al Pubblico Ministero, indicando gli elementi essenziali del fatto, le fonti di prova e le attività compiute.",
+        "source": "Art. 347 c.p.p."
+    },
+    {
+        "id": 786,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'Art. 352 c.p.p., la perquisizione d'iniziativa della Polizia Giudiziaria richiede come presupposti cumulativi:",
+        "options": {
+            "A": "Solo il consenso della persona da perquisire",
+            "B": "Flagranza di reato o evasione e fondato motivo di ritenere che vi siano cose o tracce che possono essere disperse",
+            "C": "Flagranza di reato e preventiva autorizzazione del PM",
+            "D": "Decreto motivato dell'Autorità Giudiziaria"
+        },
+        "correct_answer": "B",
+        "explanation": "L'Art. 352 c.p.p. prevede che la perquisizione d'iniziativa della PG richieda cumulativamente: flagranza di reato o evasione e fondato motivo di ritenere che sul luogo o sulla persona vi siano cose o tracce che possono essere disperse.",
+        "source": "Art. 352 c.p.p."
     }
 ]
