@@ -551,11 +551,11 @@
         "question": "L'Isola dell'Asinara costituisce:",
         "options": {
             "A": "Un Parco Regionale Naturale",
-            "B": "A",
+            "B": "Un Parco Nazionale",
             "C": "Un'area militare interdetta senza status ambientale",
             "D": "Una Riserva di Caccia Privata"
         },
-        "correct_answer": null,
+        "correct_answer": "B",
         "explanation": "L'Asinara è stata istituita come Parco Nazionale con Legge 344/1997 e D.P.R. del 2002.",
         "source": "Legge 344/1997 e D.P.R. 3 ottobre 2002"
     },
@@ -1054,14 +1054,14 @@
         "category": "Geografia della Sardegna",
         "question": "Qual è il vento dominante in Sardegna che influenza maggiormente la vegetazione e la morfologia costiera?",
         "options": {
-            "A": "Grecale (proveniente da Nord-Est)",
-            "B": "Libeccio (proveniente da Sud-Ovest)",
-            "C": "Scirocco (proveniente da Sud-Est)",
-            "D": "A"
+            "A": "Maestrale (proveniente da Nord-Ovest)",
+            "B": "Grecale (proveniente da Nord-Est)",
+            "C": "Libeccio (proveniente da Sud-Ovest)",
+            "D": "Scirocco (proveniente da Sud-Est)"
         },
-        "correct_answer": null,
-        "explanation": "Il Maestrale è il vento che soffia con maggiore frequenza e intensità, modellando il paesaggio (es. alberi bandiera) e rinfrescando il clima.",
-        "source": "Atlante Climatico della Sardegna"
+        "correct_answer": "A",
+        "explanation": "Il Maestrale è il vento dominante in Sardegna, proveniente da Nord-Ovest, che soffia con maggiore frequenza e intensità modellando la vegetazione (es. alberi 'a bandiera') e la morfologia costiera occidentale attraverso erosione eolica.",
+        "source": "Atlante Climatico della Sardegna, ARPAS Sardegna"
     },
     {
         "id": 77,
@@ -2240,7 +2240,7 @@
         "source": "Pedologia Forestale"
     },
     {
-        "id": 162,
+        "id": 161,
         "category": "Ecologia e Selvicoltura",
         "question": "Qual è la funzione principale del sottobosco e della lettiera forestale nel ciclo idrologico?",
         "options": {
@@ -2254,7 +2254,7 @@
         "source": "Idraulica Agraria e Forestale"
     },
     {
-        "id": 163,
+        "id": 162,
         "category": "Ecologia e Selvicoltura",
         "question": "Quale termine definisce la formazione vegetale arbustiva, tipica della Sardegna, che deriva spesso dalla degradazione della foresta mediterranea?",
         "options": {
@@ -2268,7 +2268,7 @@
         "source": "Botanica e Geobotanica applicata"
     },
     {
-        "id": 164,
+        "id": 163,
         "category": "Ecologia e Selvicoltura",
         "question": "Quali piante sono definite 'pirofite'?",
         "options": {
@@ -2282,7 +2282,7 @@
         "source": "Ecologia degli incendi forestali"
     },
     {
-        "id": 165,
+        "id": 164,
         "category": "Ecologia e Selvicoltura",
         "question": "Cosa si intende con la definizione \"macchia bassa\"?",
         "options": {
@@ -2296,7 +2296,7 @@
         "source": "Fisionomia della vegetazione mediterranea"
     },
     {
-        "id": 166,
+        "id": 165,
         "category": "Aree Protette (L. 394/1991)",
         "question": "L'Ente Parco, gestore del Parco Nazionale, ha personalità giuridica?",
         "options": {
@@ -2310,7 +2310,7 @@
         "source": "L. 394/1991, Art. 9, comma 1"
     },
     {
-        "id": 167,
+        "id": 166,
         "category": "Legislazione Forestale",
         "question": "Possono essere esclusi dal vincolo idrogeologico i terreni:",
         "options": {
@@ -2324,7 +2324,7 @@
         "source": "R.D.L. 3267/1923, Art. 1 e Art. 6"
     },
     {
-        "id": 168,
+        "id": 167,
         "category": "Legislazione Forestale",
         "question": "Chi può eseguire le opere di rimboschimento obbligatorio imposte per la stabilità dei terreni?",
         "options": {
@@ -2338,7 +2338,7 @@
         "source": "R.D.L. 3267/1923, Artt. 40-42"
     },
     {
-        "id": 169,
+        "id": 168,
         "category": "Legislazione Forestale",
         "question": "Quale tra i seguenti interventi NON richiede l'autorizzazione alla trasformazione del bosco (art. 17)?",
         "options": {
@@ -2352,7 +2352,7 @@
         "source": "L.R. 8/2016, Art. 17"
     },
     {
-        "id": 170,
+        "id": 169,
         "category": "Legislazione Forestale",
         "question": "Secondo l'art. 7, in quale ambito il personale del Corpo esercita le proprie funzioni?",
         "options": {
@@ -2366,7 +2366,7 @@
         "source": "L.R. 26/1985, Art. [...](asc_slot://start-slot-22)7"
     },
     {
-        "id": 171,
+        "id": 170,
         "category": "Fauna (L. 157/1992)",
         "question": "L'esercizio venatorio è consentito in forma vagante:",
         "options": {
@@ -2380,7 +2380,7 @@
         "source": "L. 157/1992, Art. 21, comma 1, lett. m"
     },
     {
-        "id": 172,
+        "id": 171,
         "category": "Legislazione Forestale",
         "question": "L'estrazione del sughero sui rami è consentita?",
         "options": {
@@ -2394,7 +2394,7 @@
         "source": "L.R. 4/1994, Art. 16 (Dettaglio misure)"
     },
     {
-        "id": 173,
+        "id": 172,
         "category": "Fauna (L. 157/1992)",
         "question": "L'introduzione di fauna selvatica estranea alla fauna indigena (alloctona) è:",
         "options": {
@@ -2408,7 +2408,7 @@
         "source": "L. 157/1992, Art. 20 (interpretato con norme attuali)"
     },
     {
-        "id": 174,
+        "id": 173,
         "category": "Ecologia e Selvicoltura",
         "question": "L'art. 10 promuove l'associazionismo fondiario. Perché?",
         "options": {
@@ -2422,7 +2422,7 @@
         "source": "D.Lgs. 34/2018, Art. 10"
     },
     {
-        "id": 175,
+        "id": 174,
         "category": "Legislazione Forestale",
         "question": "L'art. 1 della L. 353/2000 dichiara che la conservazione e la difesa del patrimonio boschivo sono:",
         "options": {
@@ -2436,7 +2436,7 @@
         "source": "L. 353/2000, Art. 1, comma 1"
     },
     {
-        "id": 176,
+        "id": 175,
         "category": "Legislazione Forestale",
         "question": "Ai sensi dell'art. 1 del R.D.L. 3267/1923, quali sono le condizioni affinché un terreno possa essere sottoposto a vincolo idrogeologico?",
         "options": {
@@ -2450,7 +2450,7 @@
         "source": "R.D.L. 3267/1923, Art. 1"
     },
     {
-        "id": 177,
+        "id": 176,
         "category": "Fauna (L. 157/1992)",
         "question": "Un proprietario terriero può vietare la caccia nel proprio fondo?",
         "options": {
@@ -2464,7 +2464,7 @@
         "source": "L. 157/1992, Art. 15"
     },
     {
-        "id": 178,
+        "id": 177,
         "category": "Legislazione Forestale",
         "question": "Chi cura l'attività di formazione del personale addetto alla lotta attiva agli incendi (Art. 5)?",
         "options": {
@@ -2478,7 +2478,7 @@
         "source": "L. 353/2000, Art. 5, comma 1"
     },
     {
-        "id": 179,
+        "id": 178,
         "category": "Botanica",
         "question": "Le aree coperte da vegetazione arbustiva (macchia mediterranea) sono considerate 'bosco'?",
         "options": {
@@ -2492,7 +2492,7 @@
         "source": "D.Lgs. 34/2018, Art. 3, comma 3"
     },
     {
-        "id": 180,
+        "id": 179,
         "category": "Legislazione Forestale",
         "question": "Tra le finalità della L.R. 8/2016 (art. 1), quale delle seguenti NON è esplicitamente citata come prioritaria?",
         "options": {
@@ -2506,7 +2506,7 @@
         "source": "L.R. 8/2016, Art. 1"
     },
     {
-        "id": 181,
+        "id": 180,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "Quali tipologie specifiche di polizia sono citate nell'elenco delle materie di competenza all'art. 1?",
         "options": {
@@ -2520,7 +2520,7 @@
         "source": "L.R. 26/1985, Art. [...](asc_slot://start-slot-10)1"
     },
     {
-        "id": 182,
+        "id": 181,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "Riguardo al materiale vivaistico, cosa prevede l'art. 1?",
         "options": {
@@ -2534,7 +2534,7 @@
         "source": "L.R. 26/1985, Art. [...](asc_slot://start-slot-36)1"
     },
     {
-        "id": 183,
+        "id": 182,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "In merito alla tutela dei beni silvo-pastorali, cosa prevede l'art. 1 della L.R. 26/1985?",
         "options": {
@@ -2548,7 +2548,7 @@
         "source": "L.R. 26/1985, Art. [...](asc_slot://start-slot-4)1"
     },
     {
-        "id": 184,
+        "id": 183,
         "category": "Geografia della Sardegna",
         "question": "Le Bocche di Bonifacio separano la Sardegna da:",
         "options": {
@@ -2562,7 +2562,7 @@
         "source": "Geografia del Mediterraneo"
     },
     {
-        "id": 185,
+        "id": 184,
         "category": "Geografia della Sardegna",
         "question": "Cosa sono le 'Giare' (es. Giara di Gesturi)?",
         "options": {
@@ -2576,7 +2576,7 @@
         "source": "Geomorfologia vulcanica della Sardegna"
     },
     {
-        "id": 186,
+        "id": 185,
         "category": "Geografia della Sardegna",
         "question": "La 'Costa Verde' si trova:",
         "options": {
@@ -2590,7 +2590,7 @@
         "source": "Guida alle coste della Sardegna"
     },
     {
-        "id": 187,
+        "id": 186,
         "category": "Geografia della Sardegna",
         "question": "L'isola di Tavolara, situata nel nord-est, è costituita geologicamente da:",
         "options": {
@@ -2604,7 +2604,7 @@
         "source": "Area Marina Protetta Tavolara"
     },
     {
-        "id": 188,
+        "id": 187,
         "category": "Geografia della Sardegna",
         "question": "Qual è la seconda isola più grande della Sardegna (dopo l'isola madre) e dove si trova?",
         "options": {
@@ -2618,7 +2618,7 @@
         "source": "Dati ISTAT - Superficie territoriale"
     },
     {
-        "id": 189,
+        "id": 188,
         "category": "Geografia della Sardegna",
         "question": "Qual è il punto più settentrionale della Sardegna?",
         "options": {
@@ -2632,7 +2632,7 @@
         "source": "Coordinate geografiche punti estremi"
     },
     {
-        "id": 190,
+        "id": 189,
         "category": "Geografia della Sardegna",
         "question": "La regione storica della 'Barbagia' si trova:",
         "options": {
@@ -2646,7 +2646,7 @@
         "source": "Regioni storiche della Sardegna"
     },
     {
-        "id": 191,
+        "id": 190,
         "category": "Geografia della Sardegna",
         "question": "Qual è la natura geologica prevalente della Gallura (Nord-Est Sardegna)?",
         "options": {
@@ -2660,7 +2660,7 @@
         "source": "Carta Geologica della Sardegna"
     },
     {
-        "id": 192,
+        "id": 191,
         "category": "Geografia della Sardegna",
         "question": "Il Montiferru è:",
         "options": {
@@ -2674,7 +2674,7 @@
         "source": "Carta Vulcanologica della Sardegna"
     },
     {
-        "id": 193,
+        "id": 192,
         "category": "Geografia della Sardegna",
         "question": "Il 'Supramonte' è un complesso montuoso caratterizzato prevalentemente da:",
         "options": {
@@ -2688,7 +2688,7 @@
         "source": "Geologia del Supramonte"
     },
     {
-        "id": 194,
+        "id": 193,
         "category": "Geografia della Sardegna",
         "question": "Dove si trova il Golfo di Orosei e qual è la sua caratteristica geologica principale?",
         "options": {
@@ -2702,7 +2702,7 @@
         "source": "PPR - Piano Paesaggistico Regionale - Ambito 9"
     },
     {
-        "id": 195,
+        "id": 194,
         "category": "Geografia della Sardegna",
         "question": "Il fenomeno geologico noto come 'Tafoni' (o roccia bucata) è tipico di quale tipo di roccia in Sardegna?",
         "options": {
@@ -2716,21 +2716,21 @@
         "source": "Geomorfologia dei graniti"
     },
     {
-        "id": 196,
+        "id": 195,
         "category": "Geografia della Sardegna",
         "question": "Qual è la più vasta pianura della Sardegna e qual è la sua origine geologica?",
         "options": {
-            "A": "La Nurra; è una pianura di erosione marina",
-            "B": "La Piana del Sele; è di origine vulcanica",
-            "C": "L'Agro di Chilivani; è un altopiano basaltico",
-            "D": "A"
+            "A": "Il Campidano; è un Graben tettonico riempito da depositi alluvionali",
+            "B": "La Nurra; è una pianura di erosione marina",
+            "C": "La Piana del Sele; è di origine vulcanica",
+            "D": "L'Agro di Chilivani; è un altopiano basaltico"
         },
-        "correct_answer": null,
-        "explanation": "Il Campidano attraversa la Sardegna dal Golfo di Oristano a quello di Cagliari; è un Graben (fossa di sprofondamento) riempito da depositi alluvionali.",
-        "source": "Geologia strutturale della Sardegna"
+        "correct_answer": "A",
+        "explanation": "Il Campidano è la più vasta pianura della Sardegna (circa 1.850 km²), che attraversa l'isola dal Golfo di Oristano a quello di Cagliari; si tratta di un graben (fossa tettonica di sprofondamento) colmato da depositi alluvionali e fluviali.",
+        "source": "Geologia strutturale della Sardegna, Wikipedia Campidano"
     },
     {
-        "id": 197,
+        "id": 196,
         "category": "Legislazione Forestale",
         "question": "A chi è affidata la gestione del patrimonio silvo-pastorale di proprietà della Regione Sardegna (Art. 24)?",
         "options": {
@@ -2744,7 +2744,7 @@
         "source": "L.R. 8/2016, Art. 24"
     },
     {
-        "id": 198,
+        "id": 197,
         "category": "Informatica",
         "question": "Qual è il vantaggio principale dell'utilizzo del formato PDF per i documenti?",
         "options": {
@@ -2758,7 +2758,7 @@
         "source": "Standard ISO 32000-1"
     },
     {
-        "id": 199,
+        "id": 198,
         "category": "Informatica",
         "question": "Quale estensione file identifica solitamente un documento in formato compresso?",
         "options": {
@@ -2772,7 +2772,7 @@
         "source": "Sillabo ECDL/ICDL - Modulo Computer Essentials"
     },
     {
-        "id": 200,
+        "id": 199,
         "category": "Ecologia e Selvicoltura",
         "question": "La 'Gestione Forestale Sostenibile' (GFS) mira a:",
         "options": {
@@ -2786,7 +2786,7 @@
         "source": "D.Lgs. 34/2018, Art. 3, comma 2, lett. b)"
     },
     {
-        "id": 201,
+        "id": 200,
         "category": "Fauna (L. 157/1992)",
         "question": "Quante giornate di caccia settimanali può scegliere il cacciatore in via esclusiva?",
         "options": {
@@ -2800,7 +2800,7 @@
         "source": "L. 157/1992, Art. 18, comma 5 e 6"
     },
     {
-        "id": 202,
+        "id": 201,
         "category": "Lingua Inglese",
         "question": "Come si forma l'avverbio di modo dall'aggettivo 'careful'?",
         "options": {
@@ -2814,7 +2814,7 @@
         "source": "CEFR Level B1 - Adverbs of manner"
     },
     {
-        "id": 203,
+        "id": 202,
         "category": "Lingua Inglese",
         "question": "Si usa l'articolo 'The' davanti ai nomi di singole regioni o isole (es. Sardinia)?",
         "options": {
@@ -2828,7 +2828,7 @@
         "source": "CEFR Level B1 - Articles with geographical names"
     },
     {
-        "id": 204,
+        "id": 203,
         "category": "Lingua Inglese",
         "question": "Qual è il comparativo di maggioranza corretto di 'old' (vecchio)?",
         "options": {
@@ -2842,7 +2842,7 @@
         "source": "CEFR Level B1 - Comparatives"
     },
     {
-        "id": 205,
+        "id": 204,
         "category": "Lingua Inglese",
         "question": "Completa la frase ipotetica (First Conditional): 'Se pioverà domani, resteremo alla stazione.'",
         "options": {
@@ -2856,7 +2856,7 @@
         "source": "CEFR Level B1 - First Conditional"
     },
     {
-        "id": 206,
+        "id": 205,
         "category": "Lingua Inglese",
         "question": "Quale forma futura si usa per una previsione basata su un'evidenza presente (es. nuvole nere)?",
         "options": {
@@ -2870,7 +2870,7 @@
         "source": "CEFR Level B1 - Future forms"
     },
     {
-        "id": 207,
+        "id": 206,
         "category": "Lingua Inglese",
         "question": "Per dire 'fare rumore', quale verbo si usa?",
         "options": {
@@ -2884,7 +2884,7 @@
         "source": "CEFR Level B1 - Collocations"
     },
     {
-        "id": 208,
+        "id": 207,
         "category": "Lingua Inglese",
         "question": "Quale verbo modale useresti per tradurre 'Non devi accendere fuochi qui' (divieto assoluto)?",
         "options": {
@@ -2898,7 +2898,7 @@
         "source": "CEFR Level B1 - Modals of prohibition"
     },
     {
-        "id": 209,
+        "id": 208,
         "category": "Lingua Inglese",
         "question": "Il sostantivo 'police' (polizia) in inglese vuole il verbo al:",
         "options": {
@@ -2912,7 +2912,7 @@
         "source": "CEFR Level B1 - Plural nouns"
     },
     {
-        "id": 210,
+        "id": 209,
         "category": "Lingua Inglese",
         "question": "Trasforma al passivo: 'They planted these trees last month.'",
         "options": {
@@ -2926,7 +2926,7 @@
         "source": "CEFR Level B1 - Passive Voice"
     },
     {
-        "id": 211,
+        "id": 210,
         "category": "Lingua Inglese",
         "question": "Completa la frase: 'Mentre camminavo (azione lunga), ho trovato (azione breve) un uccello.'",
         "options": {
@@ -2940,7 +2940,7 @@
         "source": "CEFR Level B1 - Past Continuous vs Past Simple"
     },
     {
-        "id": 212,
+        "id": 211,
         "category": "Lingua Inglese",
         "question": "Quale preposizione si usa davanti agli anni (es. 1822)?",
         "options": {
@@ -2954,7 +2954,7 @@
         "source": "CEFR Level B1 - Prepositions of time"
     },
     {
-        "id": 213,
+        "id": 212,
         "category": "Lingua Inglese",
         "question": "Traduci: 'Vivo in Sardegna da dieci anni.' (l'azione continua ancora)",
         "options": {
@@ -2968,7 +2968,7 @@
         "source": "CEFR Level B1 - Present Perfect"
     },
     {
-        "id": 214,
+        "id": 213,
         "category": "Lingua Inglese",
         "question": "Completa con il pronome possessivo: 'Questa uniforme è tua? No, è mia.' -> 'Is this uniform _______? No, it's mine.'",
         "options": {
@@ -2982,7 +2982,7 @@
         "source": "CEFR Level B1 - Possessive Pronouns"
     },
     {
-        "id": 215,
+        "id": 214,
         "category": "Lingua Inglese",
         "question": "Quale quantificatore si usa nelle frasi negative con sostantivi non numerabili (es. water)?",
         "options": {
@@ -2996,7 +2996,7 @@
         "source": "CEFR Level B1 - Quantifiers"
     },
     {
-        "id": 216,
+        "id": 215,
         "category": "Lingua Inglese",
         "question": "Completa la Question Tag: 'You are an agent, _______?'",
         "options": {
@@ -3010,7 +3010,7 @@
         "source": "CEFR Level B1 - Question Tags"
     },
     {
-        "id": 217,
+        "id": 216,
         "category": "Lingua Inglese",
         "question": "Quale parola interrogativa significa 'Di chi' (possesso)?",
         "options": {
@@ -3024,7 +3024,7 @@
         "source": "CEFR Level B1 - Wh- questions"
     },
     {
-        "id": 218,
+        "id": 217,
         "category": "Lingua Inglese",
         "question": "Quale pronome relativo si usa per riferirsi alle persone?",
         "options": {
@@ -3038,7 +3038,7 @@
         "source": "CEFR Level B1 - Relative Pronouns"
     },
     {
-        "id": 219,
+        "id": 218,
         "category": "Lingua Inglese",
         "question": "Nel discorso indiretto, se il verbo introduttivo è al passato ('He said...'), il Present Simple ('I am tired') diventa:",
         "options": {
@@ -3052,7 +3052,7 @@
         "source": "CEFR Level B1 - Reported Speech"
     },
     {
-        "id": 220,
+        "id": 219,
         "category": "Lingua Inglese",
         "question": "Quale espressione si usa per fare una proposta del tipo 'Andiamo al lago?' (usando 'we')?",
         "options": {
@@ -3066,7 +3066,7 @@
         "source": "CEFR Level B1 - Suggestions"
     },
     {
-        "id": 221,
+        "id": 220,
         "category": "Lingua Inglese",
         "question": "Qual è la traduzione corretta di: 'Ieri ho visto un incendio boschivo'?",
         "options": {
@@ -3080,7 +3080,7 @@
         "source": "CEFR Level B1 - Past Simple usage"
     },
     {
-        "id": 222,
+        "id": 221,
         "category": "Lingua Inglese",
         "question": "Il verbo 'permit' (permettere) è seguito da quale costruzione?",
         "options": {
@@ -3094,7 +3094,7 @@
         "source": "CEFR Level B1 - Gerunds and Infinitives"
     },
     {
-        "id": 223,
+        "id": 222,
         "category": "Lingua Sarda",
         "question": "Nella variante campidanese, qual è l'articolo determinativo plurale (maschile e femminile)?",
         "options": {
@@ -3108,7 +3108,7 @@
         "source": "Grammatica sarda di base"
     },
     {
-        "id": 224,
+        "id": 223,
         "category": "Lingua Sarda",
         "question": "Come si traduce 'Andrò' (futuro) in sardo?",
         "options": {
@@ -3122,7 +3122,7 @@
         "source": "Morfologia verbale"
     },
     {
-        "id": 225,
+        "id": 224,
         "category": "Lingua Sarda",
         "question": "Come si esprime la negazione 'non' davanti a un verbo che inizia per consonante (es. 'fueddai' - parlare) in campidanese?",
         "options": {
@@ -3136,7 +3136,7 @@
         "source": "Sintassi della lingua sarda"
     },
     {
-        "id": 226,
+        "id": 225,
         "category": "Lingua Sarda",
         "question": "Come si forma generalmente il plurale dei sostantivi in sardo?",
         "options": {
@@ -3150,7 +3150,7 @@
         "source": "Grammatica storica del sardo"
     },
     {
-        "id": 227,
+        "id": 226,
         "category": "Lingua Sarda",
         "question": "In sardo, l'aggettivo possessivo (mio, tuo, suo) viene generalmente collocato:",
         "options": {
@@ -3164,7 +3164,7 @@
         "source": "Sintassi sarda"
     },
     {
-        "id": 228,
+        "id": 227,
         "category": "Lingua Sarda",
         "question": "La preposizione articolata 'nella' (in + la) in logudorese si traduce:",
         "options": {
@@ -3178,7 +3178,7 @@
         "source": "Sintassi sarda"
     },
     {
-        "id": 229,
+        "id": 228,
         "category": "Lingua Sarda",
         "question": "Qual è il pronome personale soggetto di prima persona singolare (Io) in sardo?",
         "options": {
@@ -3192,7 +3192,7 @@
         "source": "Morfologia sarda"
     },
     {
-        "id": 230,
+        "id": 229,
         "category": "Lingua Sarda",
         "question": "Il verbo ausiliare 'Hae' o 'Ai' (avere) in sardo è utilizzato:",
         "options": {
@@ -3206,7 +3206,7 @@
         "source": "Morfologia verbale sarda"
     },
     {
-        "id": 231,
+        "id": 230,
         "category": "Aree Protette (L. 394/1991)",
         "question": "Il personale di sorveglianza dell'Ente Parco (Guardiaparco) ha qualifica di:",
         "options": {
@@ -3220,7 +3220,7 @@
         "source": "L. 394/1991, Art. 21"
     },
     {
-        "id": 232,
+        "id": 231,
         "category": "Informatica",
         "question": "Qual è la funzione principale della RAM (Random Access Memory) in un computer?",
         "options": {
@@ -3234,7 +3234,7 @@
         "source": "Sillabo ECDL/ICDL - Modulo Computer Essentials"
     },
     {
-        "id": 233,
+        "id": 232,
         "category": "Informatica",
         "question": "Quale interfaccia è diventata lo standard universale per collegare periferiche esterne (mouse, stampanti, memorie) al computer?",
         "options": {
@@ -3248,7 +3248,7 @@
         "source": "Sillabo ECDL/ICDL - Modulo Computer Essentials"
     },
     {
-        "id": 234,
+        "id": 233,
         "category": "Informatica",
         "question": "Quale delle seguenti è una periferica di 'Input' (Ingresso)?",
         "options": {
@@ -3262,7 +3262,7 @@
         "source": "Sillabo ECDL/ICDL - Modulo Computer Essentials"
     },
     {
-        "id": 235,
+        "id": 234,
         "category": "Informatica",
         "question": "A quanti bit corrisponde 1 Byte?",
         "options": {
@@ -3276,7 +3276,7 @@
         "source": "Fondamenti di Informatica"
     },
     {
-        "id": 236,
+        "id": 235,
         "category": "Geografia della Sardegna",
         "question": "Il fiume Flumendosa è storicamente importante per l'approvvigionamento idrico. Dove sfocia?",
         "options": {
@@ -3290,7 +3290,7 @@
         "source": "Idrografia regionale"
     },
     {
-        "id": 237,
+        "id": 236,
         "category": "Geografia della Sardegna",
         "question": "Qual è il fiume più lungo della Sardegna e dove sfocia?",
         "options": {
@@ -3304,7 +3304,7 @@
         "source": "Piano di Tutela delle Acque della Regione Sardegna"
     },
     {
-        "id": 238,
+        "id": 237,
         "category": "Geografia della Sardegna",
         "question": "Quale fiume sardo è l'unico parzialmente navigabile per un tratto significativo (circa 6 km)?",
         "options": {
@@ -3318,7 +3318,7 @@
         "source": "Geografia umana ed economica della Sardegna"
     },
     {
-        "id": 239,
+        "id": 238,
         "category": "Geografia della Sardegna",
         "question": "Qual è l'unico lago naturale della Sardegna?",
         "options": {
@@ -3332,7 +3332,7 @@
         "source": "Geografia fisica della Sardegna"
     },
     {
-        "id": 240,
+        "id": 239,
         "category": "Geografia della Sardegna",
         "question": "Il Lago Omodeo è formato dallo sbarramento di quale fiume?",
         "options": {
@@ -3346,7 +3346,7 @@
         "source": "Ente Acque della Sardegna (ENAS)"
     },
     {
-        "id": 241,
+        "id": 240,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Nelle zone boscate percorse dal fuoco, la caccia è vietata:",
         "options": {
@@ -3360,7 +3360,7 @@
         "source": "L. 157/1992, Art. 21 e L. 353/2000"
     },
     {
-        "id": 242,
+        "id": 241,
         "category": "Legislazione Forestale",
         "question": "L'imposizione del vincolo idrogeologico dà diritto a un'indennità per il proprietario del terreno?",
         "options": {
@@ -3374,7 +3374,7 @@
         "source": "R.D.L. 3267/1923, Principi generali e Art. 1"
     },
     {
-        "id": 243,
+        "id": 242,
         "category": "Legislazione Forestale",
         "question": "I danni provocati dalla fauna selvatica del Parco alle colture o al bestiame:",
         "options": {
@@ -3388,7 +3388,7 @@
         "source": "L. 394/1991, Art. 15"
     },
     {
-        "id": 244,
+        "id": 243,
         "category": "Legislazione Forestale",
         "question": "Gli 'indici di pericolosità' elaborati nella fase di previsione servono a:",
         "options": {
@@ -3402,7 +3402,7 @@
         "source": "L. 353/2000, Art. 4, comma 1"
     },
     {
-        "id": 245,
+        "id": 244,
         "category": "Legislazione Forestale",
         "question": "L'attività di informazione alla popolazione sui rischi di incendio (Art. 5) è rivolta in particolare:",
         "options": {
@@ -3416,7 +3416,7 @@
         "source": "L. 353/2000, Art. 5, comma 2"
     },
     {
-        "id": 246,
+        "id": 245,
         "category": "Fauna (L. 157/1992)",
         "question": "Quale ente nazionale fornisce pareri obbligatori sui calendari venatori e sulla gestione faunistica?",
         "options": {
@@ -3430,7 +3430,7 @@
         "source": "L. 157/1992, Art. 7"
     },
     {
-        "id": 247,
+        "id": 246,
         "category": "Legislazione Forestale",
         "question": "La definizione di incendio boschivo all'art. 2 comprende anche gli incendi di 'interfaccia'? Cosa sono?",
         "options": {
@@ -3444,7 +3444,7 @@
         "source": "L. 353/2000, Art. 2 (interpretazione)"
     },
     {
-        "id": 248,
+        "id": 247,
         "category": "Informatica",
         "question": "Cosa si intende con il termine 'Cloud Computing'?",
         "options": {
@@ -3458,7 +3458,7 @@
         "source": "Sillabo ECDL/ICDL - Modulo Online Collaboration"
     },
     {
-        "id": 249,
+        "id": 248,
         "category": "Informatica",
         "question": "Cosa sono i 'Cookie' nel contesto della navigazione web?",
         "options": {
@@ -3472,7 +3472,7 @@
         "source": "Sillabo ECDL/ICDL - Modulo Web Browsing"
     },
     {
-        "id": 250,
+        "id": 249,
         "category": "Fauna (L. 157/1992)",
         "question": "È consentita l'introduzione di specie estranee (alloctone) all'interno del Parco?",
         "options": {
@@ -3486,7 +3486,7 @@
         "source": "L. 394/1991, Art. 11, comma 3, lett. e"
     },
     {
-        "id": 251,
+        "id": 250,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "Ai sensi dell'art. 1 della L.R. 26/1985, quale ente viene istituito?",
         "options": {
@@ -3500,7 +3500,7 @@
         "source": "L.R. 26/1985, Art. [...](asc_slot://start-slot-2)1"
     },
     {
-        "id": 252,
+        "id": 251,
         "category": "Fauna (L. 157/1992)",
         "question": "Ai sensi dell'art. 12 della legge 157/1992, costituisce, tra gli altri, esercizio venatorio:",
         "options": {
@@ -3514,7 +3514,7 @@
         "source": "L. 157/1992, Art. 12"
     },
     {
-        "id": 253,
+        "id": 252,
         "category": "Fauna (L. 157/1992)",
         "question": "In base all'art. 27 della legge 157/1992, gli agenti dipendenti degli Enti locali a cui è affidata la vigilanza venatoria svolgono le proprie funzioni:",
         "options": {
@@ -3528,7 +3528,7 @@
         "source": "L. 157/1992, Art. 27"
     },
     {
-        "id": 254,
+        "id": 253,
         "category": "Fauna (L. 157/1992)",
         "question": "La legge 157/1992 (Legge Quadro per la protezione della fauna selvatica e l'esercizio della caccia) fa divieto di cacciare sparando da veicoli a motore?",
         "options": {
@@ -3542,7 +3542,7 @@
         "source": "L. 157/1992, Art. 21"
     },
     {
-        "id": 255,
+        "id": 254,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Ai sensi della legge 353/2000 (Legge Quadro in materia di incendi boschivi), le zone boscate e i pascoli i cui soprassuoli siano stati percorsi dal fuoco:",
         "options": {
@@ -3556,7 +3556,7 @@
         "source": "L. 353/2000, Art. 10"
     },
     {
-        "id": 256,
+        "id": 255,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "In base all'art. 3 della legge 353/2000, il Piano regionale di previsione, prevenzione e lotta attiva contro gli incendi boschivi individua tutti i seguenti, TRANNE:",
         "options": {
@@ -3570,7 +3570,7 @@
         "source": "L. 353/2000, Art. 3"
     },
     {
-        "id": 257,
+        "id": 256,
         "category": "Diritto Penale e Procedura Penale",
         "question": "A norma della legge 689/1981, la violazione amministrativa, quando è possibile, deve essere contestata immediatamente:",
         "options": {
@@ -3584,7 +3584,7 @@
         "source": "L. 689/1981, Art. 14"
     },
     {
-        "id": 258,
+        "id": 257,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi dell'art. 20 della legge 689/1981, può essere disposta la confisca amministrativa delle cose che servirono o furono destinate a commettere la violazione?",
         "options": {
@@ -3598,7 +3598,7 @@
         "source": "L. 689/1981, Art. 20"
     },
     {
-        "id": 259,
+        "id": 258,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi dell'art. 7 della legge 689/1981, l'obbligazione di pagare la somma dovuta per una violazione si trasmette agli eredi?",
         "options": {
@@ -3612,7 +3612,7 @@
         "source": "L. 689/1981, Art. 7"
     },
     {
-        "id": 260,
+        "id": 259,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi della legge 689/1981, nella determinazione della sanzione amministrativa pecuniaria, sono tenute in considerazione le condizioni economiche del soggetto che ha commesso la violazione?",
         "options": {
@@ -3626,7 +3626,7 @@
         "source": "L. 689/1981, Art. 11"
     },
     {
-        "id": 261,
+        "id": 260,
         "category": "Diritto Penale e Procedura Penale",
         "question": "In materia di illecito amministrativo (legge 689/1981), nel caso in cui la violazione è commessa per errore sul fatto, l'agente:",
         "options": {
@@ -3640,7 +3640,7 @@
         "source": "L. 689/1981, Art. 3"
     },
     {
-        "id": 262,
+        "id": 261,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'articolo 2 della legge 689/1981, una persona che commette una violazione senza avere la capacità di intendere e di volere:",
         "options": {
@@ -3654,7 +3654,7 @@
         "source": "L. 689/1981, Art. 2"
     },
     {
-        "id": 263,
+        "id": 262,
         "category": "Fauna (L. 157/1992)",
         "question": "In base all'art. 3 della legge 23/1998 della Regione Sardegna, la tutela della fauna selvatica è finalizzata:",
         "options": {
@@ -3668,7 +3668,7 @@
         "source": "L.R. 23/1998, Art. 3"
     },
     {
-        "id": 264,
+        "id": 263,
         "category": "Fauna (L. 157/1992)",
         "question": "In base all'art. 40 della legge 23/1998 della Regione Sardegna, costituisce esercizio di caccia ogni atto diretto:",
         "options": {
@@ -3682,7 +3682,7 @@
         "source": "L.R. 23/1998, Art. 40"
     },
     {
-        "id": 265,
+        "id": 264,
         "category": "Fauna (L. 157/1992)",
         "question": "In base alla legge 23/1998 della Regione Sardegna, l'addestramento di cani sui terreni non soggetti a vincoli venatori può essere effettuato:",
         "options": {
@@ -3696,7 +3696,7 @@
         "source": "L.R. 23/1998"
     },
     {
-        "id": 266,
+        "id": 265,
         "category": "Legislazione Forestale",
         "question": "In base alla legge 8/2016 della Regione Sardegna (legge forestale della Sardegna), la pianificazione forestale è basata sui principi:",
         "options": {
@@ -3710,7 +3710,7 @@
         "source": "L.R. 8/2016"
     },
     {
-        "id": 267,
+        "id": 266,
         "category": "Legislazione Forestale",
         "question": "In base alla legge 8/2016 della Regione Sardegna, sono attribuiti alla Regione le funzioni e i compiti in materia di boschi e foreste:",
         "options": {
@@ -3724,7 +3724,7 @@
         "source": "L.R. 8/2016"
     },
     {
-        "id": 268,
+        "id": 267,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "La legge 26/1985 della Regione Sardegna prevede che nelle funzioni da essa assegnate, nell'articolo 1, al Corpo forestale e di vigilanza ambientale della Regione Sarda, quest'ultimo svolga compiti:",
         "options": {
@@ -3738,7 +3738,7 @@
         "source": "L.R. 26/1985, Art. 1"
     },
     {
-        "id": 269,
+        "id": 268,
         "category": "Lingua Sarda",
         "question": "Se un terreno è definito 'aresti', significa che è:",
         "options": {
@@ -3752,7 +3752,7 @@
         "source": "Dizionario sardo-italiano"
     },
     {
-        "id": 270,
+        "id": 269,
         "category": "Lingua Sarda",
         "question": "Che cos'è 'Sa leppa'?",
         "options": {
@@ -3766,7 +3766,7 @@
         "source": "Etnografia sarda"
     },
     {
-        "id": 271,
+        "id": 270,
         "category": "Fauna (L. 157/1992)",
         "question": "Come si traduce in sardo il termine 'Cinghiale'?",
         "options": {
@@ -3780,7 +3780,7 @@
         "source": "Vocabolario naturalistico sardo"
     },
     {
-        "id": 272,
+        "id": 271,
         "category": "Fauna (L. 157/1992)",
         "question": "Cos'è 'Su Boe'? ",
         "options": {
@@ -3794,7 +3794,7 @@
         "source": "Lessico zootecnico"
     },
     {
-        "id": 273,
+        "id": 272,
         "category": "Fauna (L. 157/1992)",
         "question": "Il termine 'Astore' o 'Astore puddarzu' si riferisce a:",
         "options": {
@@ -3808,7 +3808,7 @@
         "source": "Ornitologia sarda"
     },
     {
-        "id": 274,
+        "id": 273,
         "category": "Fauna (L. 157/1992)",
         "question": "Il termine 'Mori' o 'Margiani' indica:",
         "options": {
@@ -3822,7 +3822,7 @@
         "source": "Zoologia sarda"
     },
     {
-        "id": 275,
+        "id": 274,
         "category": "Botanica",
         "question": "A quale albero corrisponde il termine sardo 'Elighe' o 'Elixi'?",
         "options": {
@@ -3836,7 +3836,7 @@
         "source": "Botanica etnobotanica sarda"
     },
     {
-        "id": 276,
+        "id": 275,
         "category": "Botanica",
         "question": "Cosa indica il termine 'Chessu' o 'Chessatonda'?",
         "options": {
@@ -3850,7 +3850,7 @@
         "source": "Vocabolario botanico"
     },
     {
-        "id": 277,
+        "id": 276,
         "category": "Botanica",
         "question": "La pianta del 'Corbezzolo' in sardo è chiamata:",
         "options": {
@@ -3864,7 +3864,7 @@
         "source": "Vocabolario botanico"
     },
     {
-        "id": 278,
+        "id": 277,
         "category": "Lingua Sarda",
         "question": "Come si traduce 'Sughera' in sardo?",
         "options": {
@@ -3878,7 +3878,7 @@
         "source": "Vocabolario forestale"
     },
     {
-        "id": 279,
+        "id": 278,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Qual è il termine sardo comunemente usato per indicare il 'fuoco' o l'incendio?",
         "options": {
@@ -3892,7 +3892,7 @@
         "source": "Lessico di base"
     },
     {
-        "id": 280,
+        "id": 279,
         "category": "Lingua Sarda",
         "question": "Se un agente forestale dice 'Est proende', cosa sta succedendo?",
         "options": {
@@ -3906,7 +3906,7 @@
         "source": "Lessico meteorologico"
     },
     {
-        "id": 281,
+        "id": 280,
         "category": "Lingua Sarda",
         "question": "Cosa significa il termine geografico 'Gennargentu'?",
         "options": {
@@ -3920,7 +3920,7 @@
         "source": "Toponomastica sarda"
     },
     {
-        "id": 282,
+        "id": 281,
         "category": "Fauna (L. 157/1992)",
         "question": "Per esercitare la caccia è necessario il porto di fucile per uso di caccia. Qual è la durata della licenza e dell'assicurazione obbligatoria?",
         "options": {
@@ -3934,7 +3934,7 @@
         "source": "L. 157/1992, Art. 12"
     },
     {
-        "id": 283,
+        "id": 282,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "In caso di incendio boschivo, le squadre a terra:",
         "options": {
@@ -3948,7 +3948,7 @@
         "source": "L. 353/2000, Art. 7, comma 3"
     },
     {
-        "id": 284,
+        "id": 283,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Quali fasi comprende l'attività di 'lotta attiva' secondo l'art. 6?",
         "options": {
@@ -3962,7 +3962,7 @@
         "source": "L. 353/2000, Art. 6, comma 1"
     },
     {
-        "id": 285,
+        "id": 284,
         "category": "Lingua Sarda",
         "question": "Cosa indica l'acronimo LSC in ambito linguistico regionale?",
         "options": {
@@ -3976,7 +3976,7 @@
         "source": "Delibera Giunta Regionale n. 16/14 del 2006"
     },
     {
-        "id": 286,
+        "id": 285,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Chi coordina la flotta aerea antincendio statale (es. Canadair) quando interviene a supporto delle Regioni?",
         "options": {
@@ -3990,7 +3990,7 @@
         "source": "L. 353/2000, Art. 7, comma 2"
     },
     {
-        "id": 287,
+        "id": 286,
         "category": "Fauna (L. 157/1992)",
         "question": "È consentito l'uso di richiami acustici elettronici o meccanici per la caccia?",
         "options": {
@@ -4004,7 +4004,7 @@
         "source": "L. 157/1992, Art. 21, comma 1, lett. r"
     },
     {
-        "id": 288,
+        "id": 287,
         "category": "Fauna (L. 157/1992)",
         "question": "L'uso di trappole, reti, vischio, lacci e balestre è:",
         "options": {
@@ -4018,7 +4018,7 @@
         "source": "L. 157/1992, Art. 21, comma 1, lett. u"
     },
     {
-        "id": 289,
+        "id": 288,
         "category": "Legislazione Forestale",
         "question": "La misurazione della circonferenza di 60 cm per la demaschiatura deve essere effettuata:",
         "options": {
@@ -4032,7 +4032,7 @@
         "source": "L.R. 4/1994, Art. 15"
     },
     {
-        "id": 290,
+        "id": 289,
         "category": "Legislazione Forestale",
         "question": "Cosa accade nel periodo intercorrente tra l'istituzione del Parco e l'approvazione del Piano?",
         "options": {
@@ -4046,7 +4046,7 @@
         "source": "L. 394/1991, Art. 6 e 8"
     },
     {
-        "id": 291,
+        "id": 290,
         "category": "Legislazione Forestale",
         "question": "Il manico dell'accetta utilizzata per l'estrazione deve avere una caratteristica specifica per legge. Quale?",
         "options": {
@@ -4060,7 +4060,7 @@
         "source": "L.R. 4/1994, Art. 19"
     },
     {
-        "id": 292,
+        "id": 291,
         "category": "Fauna (L. 157/1992)",
         "question": "Quale tipo di munizione è vietata per la caccia agli ungulati?",
         "options": {
@@ -4074,7 +4074,7 @@
         "source": "L. 157/1992, Art. 21 (o Regolamenti attuativi regionali su mezzi non consentiti/inadeguati)"
     },
     {
-        "id": 293,
+        "id": 292,
         "category": "Legislazione Forestale",
         "question": "La Legge 482/1999 (norma statale) consente negli uffici pubblici della Sardegna:",
         "options": {
@@ -4088,7 +4088,7 @@
         "source": "L. 482/1999"
     },
     {
-        "id": 294,
+        "id": 293,
         "category": "Lingua Sarda",
         "question": "Quale legge regionale disciplina la 'Tutela e valorizzazione della lingua e della cultura della Sardegna'?",
         "options": {
@@ -4102,7 +4102,7 @@
         "source": "L.R. 22/2018"
     },
     {
-        "id": 295,
+        "id": 294,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "In base alle Prescrizioni di contrasto agli incendi della Regione Sardegna (Allegato alla Delib.G.R. n. 15/1 del 2.5.2022), chiunque avvisti un incendio:",
         "options": {
@@ -4116,7 +4116,7 @@
         "source": "Prescrizioni Regionali Antincendio Sardegna"
     },
     {
-        "id": 296,
+        "id": 295,
         "category": "Legislazione Forestale",
         "question": "Chi rilascia il nulla osta per opere, impianti o interventi da realizzare all'interno del Parco Nazionale?",
         "options": {
@@ -4130,7 +4130,7 @@
         "source": "L. 394/1991, Art. 13"
     },
     {
-        "id": 297,
+        "id": 296,
         "category": "Legislazione Forestale",
         "question": "Dopo l'estrazione, cosa deve fare l'operatore riguardo al sughero estratto?",
         "options": {
@@ -4144,7 +4144,7 @@
         "source": "L.R. 4/1994, Art. 19 (e norme collegate)"
     },
     {
-        "id": 298,
+        "id": 297,
         "category": "Legislazione Forestale",
         "question": "Per l'esecuzione delle opere di sistemazione idraulico-forestale, l'Amministrazione può procedere a:",
         "options": {
@@ -4158,7 +4158,7 @@
         "source": "R.D.L. 3267/1923, Art. 48"
     },
     {
-        "id": 299,
+        "id": 298,
         "category": "Legislazione Forestale",
         "question": "Se lo Stato esegue opere di sistemazione idraulico-forestale su terreni privati, la proprietà del terreno:",
         "options": {
@@ -4172,7 +4172,7 @@
         "source": "R.D.L. 3267/1923, Titolo II"
     },
     {
-        "id": 300,
+        "id": 299,
         "category": "Legislazione Forestale",
         "question": "Chi può presentare opposizione contro la proposta di vincolo idrogeologico?",
         "options": {
@@ -4186,7 +4186,7 @@
         "source": "R.D.L. 3267/1923, Art. 2"
     },
     {
-        "id": 301,
+        "id": 300,
         "category": "Fauna (L. 157/1992)",
         "question": "L'esercizio venatorio è consentito, di regola, in quale orario?",
         "options": {
@@ -4200,7 +4200,7 @@
         "source": "L. 157/1992, Art. 18, comma 2"
     },
     {
-        "id": 302,
+        "id": 301,
         "category": "Geografia della Sardegna",
         "question": "Qual è la vetta più alta della Sardegna e qual è la sua altitudine?",
         "options": {
@@ -4214,7 +4214,7 @@
         "source": "Cartografia IGM - Istituto Geografico Militare"
     },
     {
-        "id": 303,
+        "id": 302,
         "category": "Geografia della Sardegna",
         "question": "Qual è il massiccio montuoso principale della Sardegna sud-occidentale (Sulcis-Iglesiente)?",
         "options": {
@@ -4228,7 +4228,7 @@
         "source": "Orografia regionale"
     },
     {
-        "id": 304,
+        "id": 303,
         "category": "Legislazione Forestale",
         "question": "Quale atto giuridico istituisce un Parco Nazionale?",
         "options": {
@@ -4242,7 +4242,7 @@
         "source": "L. 394/1991, Art. 8"
     },
     {
-        "id": 305,
+        "id": 304,
         "category": "Legislazione Forestale",
         "question": "Chi istituisce un Parco Naturale Regionale?",
         "options": {
@@ -4256,7 +4256,7 @@
         "source": "L. 394/1991, Art. 22"
     },
     {
-        "id": 306,
+        "id": 305,
         "category": "Legislazione Forestale",
         "question": "In merito al pascolo nei boschi vincolati, cosa dispone la legge 3267/1923?",
         "options": {
@@ -4270,7 +4270,7 @@
         "source": "R.D.L. 3267/1923, Art. 9"
     },
     {
-        "id": 307,
+        "id": 306,
         "category": "Legislazione Forestale",
         "question": "Secondo l'art. 21, come è regolato il pascolo nei boschi demaniali regionali?",
         "options": {
@@ -4284,7 +4284,7 @@
         "source": "L.R. 8/2016, Art. 21"
     },
     {
-        "id": 308,
+        "id": 307,
         "category": "Legislazione Forestale",
         "question": "Ai sensi dell'art. 1 della Legge 157/1992, la fauna selvatica omeoterma è considerata:",
         "options": {
@@ -4298,7 +4298,7 @@
         "source": "L. 157/1992, Art. 1, comma 1"
     },
     {
-        "id": 309,
+        "id": 308,
         "category": "Legislazione Forestale",
         "question": "Cosa si intende per 'perimetro di sistemazione' nel contesto del Titolo II?",
         "options": {
@@ -4312,7 +4312,7 @@
         "source": "R.D.L. 3267/1923, Art. 39"
     },
     {
-        "id": 310,
+        "id": 309,
         "category": "Legislazione Forestale",
         "question": "Chi individua i 'periodi a rischio' di incendio boschivo (Art. 4)?",
         "options": {
@@ -4326,7 +4326,7 @@
         "source": "L. 353/2000, Art. 4, comma 1"
     },
     {
-        "id": 311,
+        "id": 310,
         "category": "Legislazione Forestale",
         "question": "Qual è il periodo ordinario in cui è consentita l'estrazione del sughero, salvo variazioni stagionali decretate dall'Assessorato?",
         "options": {
@@ -4340,7 +4340,7 @@
         "source": "L.R. 4/1994, Art. 18"
     },
     {
-        "id": 312,
+        "id": 311,
         "category": "Legislazione Forestale",
         "question": "Cosa accade se una Regione non approva il Piano regionale antincendi previsto dall'art. 3?",
         "options": {
@@ -4354,7 +4354,7 @@
         "source": "L. 353/2000, Art. 3, comma 4"
     },
     {
-        "id": 313,
+        "id": 312,
         "category": "Legislazione Forestale",
         "question": "Il Piano regionale antincendi deve contenere obbligatoriamente (Art. 3):",
         "options": {
@@ -4368,7 +4368,7 @@
         "source": "L. 353/2000, Art. 3, comma 3, lett. h"
     },
     {
-        "id": 314,
+        "id": 313,
         "category": "Legislazione Forestale",
         "question": "Il Piano regionale per la programmazione delle attività di previsione, prevenzione e lotta attiva (Art. 3) ha validità:",
         "options": {
@@ -4382,7 +4382,7 @@
         "source": "L. 353/2000, Art. 3, comma 1"
     },
     {
-        "id": 315,
+        "id": 314,
         "category": "Legislazione Forestale",
         "question": "Le aree naturali protette statali (Parchi Nazionali) devono essere incluse nel Piano regionale antincendi?",
         "options": {
@@ -4396,7 +4396,7 @@
         "source": "L. 353/2000, Art. 3, comma 3"
     },
     {
-        "id": 316,
+        "id": 315,
         "category": "Legislazione Forestale",
         "question": "Qual è la durata del Piano Forestale Regionale (PFR)?",
         "options": {
@@ -4410,7 +4410,7 @@
         "source": "L.R. 8/2016, Art. 8, comma 4"
     },
     {
-        "id": 317,
+        "id": 316,
         "category": "Legislazione Forestale",
         "question": "Quale percentuale del territorio agro-silvo-pastorale di ogni regione deve essere destinata a protezione della fauna (oasi, ZRC, parchi)?",
         "options": {
@@ -4424,7 +4424,7 @@
         "source": "L. 157/1992, Art. 10, comma 3"
     },
     {
-        "id": 318,
+        "id": 317,
         "category": "Legislazione Forestale",
         "question": "Qual è lo strumento di indirizzo nazionale previsto dall'art. 6 del D.Lgs. 34/2018 con durata ventennale?",
         "options": {
@@ -4438,7 +4438,7 @@
         "source": "D.Lgs. 34/2018, Art. 6"
     },
     {
-        "id": 319,
+        "id": 318,
         "category": "Legislazione Forestale",
         "question": "Qual è lo strumento fondamentale di indirizzo e programmazione del settore forestale regionale previsto dall'art. 8?",
         "options": {
@@ -4452,7 +4452,7 @@
         "source": "L.R. 8/2016, Art. 8"
     },
     {
-        "id": 320,
+        "id": 319,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "In base al Piano regionale di previsione, prevenzione e lotta attiva contro gli incendi boschivi 2020-2022 della Regione Sardegna, determinati soggetti statali concorrono in Sardegna a costituire il modello organizzativo dell'apparato antincendi. NON figurano tra essi:",
         "options": {
@@ -4466,7 +4466,7 @@
         "source": "Piano Regionale Antincendi 2020-2022"
     },
     {
-        "id": 321,
+        "id": 320,
         "category": "Legislazione Forestale",
         "question": "Il Piano pluriennale economico e sociale (PPES) serve a:",
         "options": {
@@ -4480,7 +4480,7 @@
         "source": "L. 394/1991, Art. 14"
     },
     {
-        "id": 322,
+        "id": 321,
         "category": "Botanica",
         "question": "Dopo un incendio, l'estrazione del sughero dalle piante colpite:",
         "options": {
@@ -4494,7 +4494,7 @@
         "source": "L.R. 4/1994, Art. 20 (e norme collegate incendi)"
     },
     {
-        "id": 323,
+        "id": 322,
         "category": "Ecologia e Selvicoltura",
         "question": "Le PMPF regolano l'ubicazione delle carbonaie. Generalmente:",
         "options": {
@@ -4508,7 +4508,7 @@
         "source": "PMPF - Prevenzione incendi e carbonizzazione"
     },
     {
-        "id": 324,
+        "id": 323,
         "category": "Ecologia e Selvicoltura",
         "question": "Durante il taglio del bosco, come deve essere effettuato il taglio sulla ceppaia secondo le buone regole delle PMPF?",
         "options": {
@@ -4522,7 +4522,7 @@
         "source": "PMPF - Modalità di taglio"
     },
     {
-        "id": 325,
+        "id": 324,
         "category": "Ecologia e Selvicoltura",
         "question": "Qual è la differenza tra 'fustaia' e 'ceduo' nelle PMPF?",
         "options": {
@@ -4536,7 +4536,7 @@
         "source": "PMPF - Definizioni generali"
     },
     {
-        "id": 326,
+        "id": 325,
         "category": "Ecologia e Selvicoltura",
         "question": "In base alle PMPF generali, il pascolo delle capre nei boschi cedui:",
         "options": {
@@ -4550,7 +4550,7 @@
         "source": "PMPF - Norme sul pascolo"
     },
     {
-        "id": 327,
+        "id": 326,
         "category": "Ecologia e Selvicoltura",
         "question": "Cosa prescrivono generalmente le PMPF riguardo all'accensione di fuochi nei boschi (es. per ripulire dai residui)?",
         "options": {
@@ -4564,7 +4564,7 @@
         "source": "PMPF - Norme prevenzione incendi"
     },
     {
-        "id": 328,
+        "id": 327,
         "category": "Ecologia e Selvicoltura",
         "question": "Le PMPF prevedono solitamente limitazioni al taglio lungo le sponde dei corsi d'acqua. Perché?",
         "options": {
@@ -4578,7 +4578,7 @@
         "source": "PMPF - Polizia fluviale"
     },
     {
-        "id": 329,
+        "id": 328,
         "category": "Ecologia e Selvicoltura",
         "question": "Dopo il taglio del bosco, entro quando deve avvenire lo sgombero del legname e la sistemazione della frasca?",
         "options": {
@@ -4592,7 +4592,7 @@
         "source": "PMPF - Sgombero tagliate"
     },
     {
-        "id": 330,
+        "id": 329,
         "category": "Ecologia e Selvicoltura",
         "question": "Nelle Prescrizioni di Massima, cosa sono le 'matricine'?",
         "options": {
@@ -4606,7 +4606,7 @@
         "source": "PMPF (Prescrizioni di Massima e Polizia Forestale)"
     },
     {
-        "id": 331,
+        "id": 330,
         "category": "Ecologia e Selvicoltura",
         "question": "Cosa indica il 'turno minimo' stabilito dalle PMPF per i boschi cedui?",
         "options": {
@@ -4620,7 +4620,7 @@
         "source": "PMPF - Norme sui turni"
     },
     {
-        "id": 332,
+        "id": 331,
         "category": "Ecologia e Selvicoltura",
         "question": "Per l'apertura di nuove strade o piste forestali in zona vincolata, le PMPF richiedono:",
         "options": {
@@ -4634,7 +4634,7 @@
         "source": "PMPF - Movimento terra"
     },
     {
-        "id": 333,
+        "id": 332,
         "category": "Ecologia e Selvicoltura",
         "question": "In base alle Prescrizioni di massima e di polizia forestale approvate con decreto del 31 marzo 2021, n. 3022/3 dell'Assessore della difesa dell'Ambiente della Regione Sardegna, in caso di esecuzione di tagli intercalari di fustaie coetanee, il prelievo della massa legnosa NON può superare:",
         "options": {
@@ -4648,7 +4648,7 @@
         "source": "PMPF Sardegna 2021"
     },
     {
-        "id": 334,
+        "id": 333,
         "category": "Ecologia e Selvicoltura",
         "question": "In base alle Prescrizioni di massima e di polizia forestale approvate con decreto del 31 marzo 2021, n. 3022/3 dell'Assessore della difesa dell'Ambiente della Regione Sardegna, è vietata la conversione:",
         "options": {
@@ -4662,7 +4662,7 @@
         "source": "PMPF Sardegna 2021"
     },
     {
-        "id": 335,
+        "id": 334,
         "category": "Legislazione Forestale",
         "question": "L'alterazione del ciclo delle acque e l'apertura di nuove captazioni nei Parchi Nazionali:",
         "options": {
@@ -4676,7 +4676,7 @@
         "source": "L. 394/1991, Art. 11, comma 3, lett. c"
     },
     {
-        "id": 336,
+        "id": 335,
         "category": "Legislazione Forestale",
         "question": "Che funzione hanno le 'Prescrizioni di Massima e di Polizia Forestale' previste dal R.D.L. 3267/1923?",
         "options": {
@@ -4690,7 +4690,7 @@
         "source": "R.D.L. 3267/1923, Artt. 8-9"
     },
     {
-        "id": 337,
+        "id": 336,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Le attività selvicolturali di pulitura e manutenzione del bosco sono considerate:",
         "options": {
@@ -4704,7 +4704,7 @@
         "source": "L. 353/2000, Art. 4, comma 2"
     },
     {
-        "id": 338,
+        "id": 337,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Le vasche di approvvigionamento idrico e le prese d'acqua per mezzi aerei sono considerate:",
         "options": {
@@ -4718,7 +4718,7 @@
         "source": "L. 353/2000, Art. 4, comma 2, lett. c"
     },
     {
-        "id": 339,
+        "id": 338,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Come definisce l'art. 1 la competenza del Corpo in materia di incendi?",
         "options": {
@@ -4732,7 +4732,7 @@
         "source": "L.R. 26/1985, Art. [...](asc_slot://start-slot-8)1"
     },
     {
-        "id": 340,
+        "id": 339,
         "category": "Legislazione Forestale",
         "question": "La proposta di imposizione del vincolo idrogeologico deve essere pubblicata. Dove e per quanto tempo?",
         "options": {
@@ -4746,7 +4746,7 @@
         "source": "R.D.L. 3267/1923, Art. 2"
     },
     {
-        "id": 341,
+        "id": 340,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi dell'art. 386 del Codice di Procedura Penale, la Polizia Giudiziaria, in caso di arresto o di fermo, è tenuta a:",
         "options": {
@@ -4760,7 +4760,7 @@
         "source": "Codice di Procedura Penale, Art. 386"
     },
     {
-        "id": 342,
+        "id": 341,
         "category": "Diritto Penale e Procedura Penale",
         "question": "In base al Codice di Procedura Penale, il reato di omicidio colposo è di competenza:",
         "options": {
@@ -4774,7 +4774,7 @@
         "source": "Codice di Procedura Penale, Art. 33-ter"
     },
     {
-        "id": 343,
+        "id": 342,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'art. 354 c.p.p. autorizza la PG a compiere accertamenti urgenti sui luoghi, sulle cose e sulle persone quando:",
         "options": {
@@ -4788,7 +4788,7 @@
         "source": "Codice di Procedura Penale, Art. 354"
     },
     {
-        "id": 344,
+        "id": 343,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'arresto in flagranza di reato è:",
         "options": {
@@ -4802,7 +4802,7 @@
         "source": "Codice di Procedura Penale, Art. 380 e segg."
     },
     {
-        "id": 345,
+        "id": 344,
         "category": "Diritto Penale e Procedura Penale",
         "question": "La Polizia Giudiziaria può avvalersi di persone idonee (es. tecnici, esperti) per compiere atti che richiedono specifiche competenze (Art. 348 c.p.p.)?",
         "options": {
@@ -4816,7 +4816,7 @@
         "source": "Codice di Procedura Penale, Art. 348"
     },
     {
-        "id": 346,
+        "id": 345,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Dopo aver eseguito un arresto in flagranza, la PG deve porre l'arrestato a disposizione del PM al più presto e comunque:",
         "options": {
@@ -4830,7 +4830,7 @@
         "source": "Codice di Procedura Penale, Art. 386"
     },
     {
-        "id": 347,
+        "id": 346,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Il difensore dell'indagato ha diritto di assistere agli atti di perquisizione e sequestro compiuti dalla PG?",
         "options": {
@@ -4844,7 +4844,7 @@
         "source": "Codice di Procedura Penale, Art. 356"
     },
     {
-        "id": 348,
+        "id": 347,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Si considera in stato di flagranza (Art. 382 c.p.p.):",
         "options": {
@@ -4858,7 +4858,7 @@
         "source": "Codice di Procedura Penale, Art. 382"
     },
     {
-        "id": 349,
+        "id": 348,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Qual è una delle funzioni principali della Polizia Giudiziaria indicate all'art. 55 c.p.p.?",
         "options": {
@@ -4872,7 +4872,7 @@
         "source": "Codice di Procedura Penale, Art. 55"
     },
     {
-        "id": 350,
+        "id": 349,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Se una persona nei cui confronti vengono svolte le indagini rifiuta di farsi identificare, la Polizia Giudiziaria:",
         "options": {
@@ -4886,7 +4886,7 @@
         "source": "Codice di Procedura Penale, Art. 349"
     },
     {
-        "id": 351,
+        "id": 350,
         "category": "Diritto Penale e Procedura Penale",
         "question": "La 'querela' è:",
         "options": {
@@ -4900,7 +4900,7 @@
         "source": "Codice di Procedura Penale, Art. 336"
     },
     {
-        "id": 352,
+        "id": 351,
         "category": "Diritto Penale e Procedura Penale",
         "question": "I Pubblici Ufficiali che hanno notizia di un reato perseguibile d'ufficio devono farne denuncia (informativa):",
         "options": {
@@ -4914,7 +4914,7 @@
         "source": "Codice di Procedura Penale, Art. 331"
     },
     {
-        "id": 353,
+        "id": 352,
         "category": "Diritto Penale e Procedura Penale",
         "question": "La Polizia Giudiziaria può procedere a perquisizione personale o locale d'iniziativa (senza decreto preventivo del PM)?",
         "options": {
@@ -4928,7 +4928,7 @@
         "source": "Codice di Procedura Penale, Art. 352"
     },
     {
-        "id": 354,
+        "id": 353,
         "category": "Diritto Penale e Procedura Penale",
         "question": "La Polizia Giudiziaria, in caso di urgenza, può procedere al sequestro del corpo del reato e delle cose pertinenti al reato (Art. 354 c.p.p.). Entro quanto tempo deve trasmettere il verbale al PM per la convalida?",
         "options": {
@@ -4942,7 +4942,7 @@
         "source": "Codice di Procedura Penale, Art. 355"
     },
     {
-        "id": 355,
+        "id": 354,
         "category": "Diritto Penale e Procedura Penale",
         "question": "La Polizia Giudiziaria può assumere sommarie informazioni dalla persona nei cui confronti vengono svolte le indagini (indagato)?",
         "options": {
@@ -4956,7 +4956,7 @@
         "source": "Codice di Procedura Penale, Art. 350"
     },
     {
-        "id": 356,
+        "id": 355,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Nell'ambito del Corpo Forestale regionale (o equiparati), chi riveste la qualifica di Ufficiale di Polizia Giudiziaria ai sensi dell'art. 57 c.p.p.?",
         "options": {
@@ -4970,7 +4970,7 @@
         "source": "Codice di Procedura Penale, Art. 57"
     },
     {
-        "id": 357,
+        "id": 356,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Quando la PG compie atti come perquisizioni o sequestri, deve redigere:",
         "options": {
@@ -4984,7 +4984,7 @@
         "source": "Codice di Procedura Penale, Art. 357"
     },
     {
-        "id": 358,
+        "id": 357,
         "category": "Botanica",
         "question": "Come disciplina il T.U. (art. 10) la raccolta dei prodotti forestali spontanei non legnosi (es. tartufi, funghi, bacche)?",
         "options": {
@@ -4998,7 +4998,7 @@
         "source": "D.Lgs. 34/2018, Art. 10, comma 3"
     },
     {
-        "id": 359,
+        "id": 358,
         "category": "Legislazione Forestale",
         "question": "La raccolta dei prodotti secondari del bosco (funghi, tartufi, erbe officinali) disciplinata dall'art. 22:",
         "options": {
@@ -5012,7 +5012,7 @@
         "source": "L.R. 8/2016, Art. 22"
     },
     {
-        "id": 360,
+        "id": 359,
         "category": "Legislazione Forestale",
         "question": "Quale attività promozionale è assegnata al Corpo dall'art. 1?",
         "options": {
@@ -5026,7 +5026,7 @@
         "source": "L.R. 26/1985, Art. [...](asc_slot://start-slot-38)1"
     },
     {
-        "id": 361,
+        "id": 360,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Qual è il ruolo del Corpo in materia di protezione civile secondo il testo dell'art. 1 della L.R. 26/1985?",
         "options": {
@@ -5040,7 +5040,7 @@
         "source": "L.R. 26/1985, Art. [...](asc_slot://start-slot-16)1"
     },
     {
-        "id": 362,
+        "id": 361,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "A quale normativa fa riferimento l'art. 7 per la qualifica di agente di pubblica sicurezza del personale?",
         "options": {
@@ -5054,7 +5054,7 @@
         "source": "L.R. 26/1985, Art. [...](asc_slot://start-slot-30)7"
     },
     {
-        "id": 363,
+        "id": 362,
         "category": "Legislazione Forestale",
         "question": "In base al R.D. 1126/1926, l'applicazione del vincolo idrogeologico, ai sensi del R.D. 3267/1923, può essere limitata a singole zone?",
         "options": {
@@ -5068,7 +5068,7 @@
         "source": "R.D. 1126/1926"
     },
     {
-        "id": 364,
+        "id": 363,
         "category": "Legislazione Forestale",
         "question": "In base al R.D. 1126/1926, se gli Enti indicati nell'art. 130 del R.D. 3267/1923 richiedono all'Ispettorato forestale di eseguire i progetti di utilizzazione dei boschi a loro appartenenti, le spese:",
         "options": {
@@ -5082,7 +5082,7 @@
         "source": "R.D. 1126/1926"
     },
     {
-        "id": 365,
+        "id": 364,
         "category": "Legislazione Forestale",
         "question": "L'autorizzazione per la riduzione a coltura agraria (disboscamento) di un terreno vincolato può essere revocata?",
         "options": {
@@ -5096,7 +5096,7 @@
         "source": "R.D. 1126/1926, Art. 102"
     },
     {
-        "id": 366,
+        "id": 365,
         "category": "Legislazione Forestale",
         "question": "L'art. 98 specifica che i terreni vincolati già coltivati agrariamente:",
         "options": {
@@ -5110,7 +5110,7 @@
         "source": "R.D. 1126/1926, Art. 98"
     },
     {
-        "id": 367,
+        "id": 366,
         "category": "Legislazione Forestale",
         "question": "Nella proposta di vincolo, come devono essere indicati i confini della zona vincolata?",
         "options": {
@@ -5124,7 +5124,7 @@
         "source": "R.D. 1126/1926, Art. 3"
     },
     {
-        "id": 368,
+        "id": 367,
         "category": "Legislazione Forestale",
         "question": "Se, dopo la pubblicazione degli elenchi, si scopre un errore materiale nella descrizione dei confini, come si procede?",
         "options": {
@@ -5138,7 +5138,7 @@
         "source": "R.D. 1126/1926, Art. 6-7"
     },
     {
-        "id": 369,
+        "id": 368,
         "category": "Legislazione Forestale",
         "question": "Per autorizzare un dissodamento (art. 100), quale fattore tecnico viene valutato prioritariamente?",
         "options": {
@@ -5152,7 +5152,7 @@
         "source": "R.D. 1126/1926, Art. 100"
     },
     {
-        "id": 370,
+        "id": 369,
         "category": "Legislazione Forestale",
         "question": "Secondo l'art. 100 (Titolo IV) del R.D. 1126/1926, quando è permessa la dissodazione di terreni vincolati?",
         "options": {
@@ -5166,7 +5166,7 @@
         "source": "R.D. 1126/1926, Art. 100"
     },
     {
-        "id": 371,
+        "id": 370,
         "category": "Legislazione Forestale",
         "question": "Gli elenchi definitivi dei terreni vincolati sono approvati da:",
         "options": {
@@ -5180,7 +5180,7 @@
         "source": "R.D. 1126/1926, Titolo I Capo II"
     },
     {
-        "id": 372,
+        "id": 371,
         "category": "Legislazione Forestale",
         "question": "Durante la fase di ricognizione per la proposta di vincolo, i funzionari forestali:",
         "options": {
@@ -5194,7 +5194,7 @@
         "source": "R.D. 1126/1926, Principi generali istruttoria"
     },
     {
-        "id": 373,
+        "id": 372,
         "category": "Legislazione Forestale",
         "question": "Su quale base fondata può essere presentato reclamo contro il vincolo idrogeologico?",
         "options": {
@@ -5208,7 +5208,7 @@
         "source": "R.D. 1126/1926, Art. 5 (in rel. Art. 1 RDL 3267)"
     },
     {
-        "id": 374,
+        "id": 373,
         "category": "Legislazione Forestale",
         "question": "La notificazione del vincolo ai singoli proprietari è necessaria per la validità dello stesso?",
         "options": {
@@ -5222,7 +5222,7 @@
         "source": "R.D. 1126/1926, Art. 4-5"
     },
     {
-        "id": 375,
+        "id": 374,
         "category": "Legislazione Forestale",
         "question": "Il pascolo esercitato in violazione delle norme (es. in boschi giovani o su terreni in dissesto) è considerato:",
         "options": {
@@ -5236,7 +5236,7 @@
         "source": "R.D. 1126/1926 in rel. art. 24 RDL 3267"
     },
     {
-        "id": 376,
+        "id": 375,
         "category": "Legislazione Forestale",
         "question": "Secondo l'art. 2 del R.D. 1126/1926, chi ha il compito di riconoscere le zone da sottoporre a vincolo e formulare le proposte?",
         "options": {
@@ -5250,7 +5250,7 @@
         "source": "R.D. 1126/1926, Art. 2"
     },
     {
-        "id": 377,
+        "id": 376,
         "category": "Legislazione Forestale",
         "question": "Per quanto tempo deve rimanere affisso all'albo pretorio del Comune l'elenco dei terreni proposti per il vincolo idrogeologico?",
         "options": {
@@ -5264,7 +5264,7 @@
         "source": "R.D. 1126/1926, Art. 4"
     },
     {
-        "id": 378,
+        "id": 377,
         "category": "Legislazione Forestale",
         "question": "Qual è il termine perentorio entro il quale gli interessati possono presentare reclamo contro la proposta di vincolo idrogeologico?",
         "options": {
@@ -5278,7 +5278,7 @@
         "source": "R.D. 1126/1926, Art. 5"
     },
     {
-        "id": 379,
+        "id": 378,
         "category": "Legislazione Forestale",
         "question": "Secondo l'art. 105, chi vuole trasformare un bosco vincolato in terreno a pascolo deve:",
         "options": {
@@ -5292,7 +5292,7 @@
         "source": "R.D. 1126/1926, Art. 105"
     },
     {
-        "id": 380,
+        "id": 379,
         "category": "Legislazione Forestale",
         "question": "Ai sensi dell'art. 17 del R.D. 30 dicembre del 1923 n. 3267, a che cosa hanno diritto i proprietari e i possessori di boschi, sottoposti a limitazione d'uso, che difendono terreni o fabbricati dalle valanghe?",
         "options": {
@@ -5306,7 +5306,7 @@
         "source": "R.D. 3267/1923, Art. 17"
     },
     {
-        "id": 381,
+        "id": 380,
         "category": "Legislazione Forestale",
         "question": "Ai sensi dell'art. 9 del R.D. 3267/1923 e per effetto dei vincoli imposti dallo stesso decreto, è ammesso il pascolo nei boschi di nuovo impianto?",
         "options": {
@@ -5320,7 +5320,7 @@
         "source": "R.D. 3267/1923, Art. 9"
     },
     {
-        "id": 382,
+        "id": 381,
         "category": "Aree Protette (L. 394/1991)",
         "question": "Il Regolamento del Parco disciplina:",
         "options": {
@@ -5334,7 +5334,7 @@
         "source": "L. 394/1991, Art. 11"
     },
     {
-        "id": 383,
+        "id": 382,
         "category": "Fauna (L. 157/1992)",
         "question": "Il cacciatore ha diritto di accesso agli Ambiti Territoriali di Caccia (ATC):",
         "options": {
@@ -5348,7 +5348,7 @@
         "source": "L. 157/1992, Art. 14"
     },
     {
-        "id": 384,
+        "id": 383,
         "category": "Informatica",
         "question": "Quale dispositivo hardware è essenziale per collegare più computer in una rete locale (LAN) e gestire il traffico dati tra loro?",
         "options": {
@@ -5362,7 +5362,7 @@
         "source": "Teoria delle Reti di Calcolatori"
     },
     {
-        "id": 385,
+        "id": 384,
         "category": "Informatica",
         "question": "Cosa indica la 'S' nel protocollo HTTPS visibile nella barra degli indirizzi del browser?",
         "options": {
@@ -5376,7 +5376,7 @@
         "source": "Sillabo ECDL/ICDL - Modulo Web Browsing"
     },
     {
-        "id": 386,
+        "id": 385,
         "category": "Informatica",
         "question": "Cosa indica l'acronimo 'URL'?",
         "options": {
@@ -5390,7 +5390,7 @@
         "source": "Standard Internet / W3C"
     },
     {
-        "id": 387,
+        "id": 386,
         "category": "Legislazione Forestale",
         "question": "Con quale periodicità deve essere revisionato il Piano regionale antincendi?",
         "options": {
@@ -5404,7 +5404,7 @@
         "source": "L. 353/2000, Art. 3, comma 1"
     },
     {
-        "id": 388,
+        "id": 387,
         "category": "Legislazione Forestale",
         "question": "È possibile rivedere i perimetri delle zone vincolate?",
         "options": {
@@ -5418,7 +5418,7 @@
         "source": "R.D.L. 3267/1923, Art. 6"
     },
     {
-        "id": 389,
+        "id": 388,
         "category": "Legislazione Forestale",
         "question": "Sebbene il RDL 3267 non parli esplicitamente di 'compensazione' moderna, qual è il principio sotteso alla trasformazione dei boschi?",
         "options": {
@@ -5432,7 +5432,7 @@
         "source": "R.D.L. 3267/1923, Art. 7"
     },
     {
-        "id": 390,
+        "id": 389,
         "category": "Aree Protette (L. 394/1991)",
         "question": "La gestione delle Riserve Naturali Statali è affidata solitamente a:",
         "options": {
@@ -5446,7 +5446,7 @@
         "source": "L. 394/1991, Art. 16-17"
     },
     {
-        "id": 391,
+        "id": 390,
         "category": "Legislazione Forestale",
         "question": "Il Piano regionale deve indicare le risorse finanziarie necessarie per la sua attuazione?",
         "options": {
@@ -5460,7 +5460,7 @@
         "source": "L. 353/2000, Art. 3, comma 3, lett. i"
     },
     {
-        "id": 392,
+        "id": 391,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Chi abbatte, cattura o detiene esemplari di orso, stambecco, camoscio d'Abruzzo o muflone sardo, commette:",
         "options": {
@@ -5474,7 +5474,7 @@
         "source": "L. 157/1992, Art. 30, comma 1"
     },
     {
-        "id": 393,
+        "id": 392,
         "category": "Diritto Penale e Procedura Penale",
         "question": "La caccia esercitata in periodo di divieto generale (caccia chiusa) comporta:",
         "options": {
@@ -5488,7 +5488,7 @@
         "source": "L. 157/1992, Art. 30, comma 1, lett. a"
     },
     {
-        "id": 394,
+        "id": 393,
         "category": "Diritto Penale e Procedura Penale",
         "question": "La violazione delle disposizioni della Legge 394/1991, del Regolamento o del Piano del Parco comporta:",
         "options": {
@@ -5502,7 +5502,7 @@
         "source": "L. 394/1991, Art. 30"
     },
     {
-        "id": 395,
+        "id": 394,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Chi è responsabile del pagamento della sanzione amministrativa in caso di estrazione abusiva o mal eseguita?",
         "options": {
@@ -5516,7 +5516,7 @@
         "source": "L.R. 4/1994, Norme sanzionatorie"
     },
     {
-        "id": 396,
+        "id": 395,
         "category": "Legislazione Forestale",
         "question": "Qual è la conseguenza principale per chi trasforma un bosco vincolato senza autorizzazione, oltre alla sanzione amministrativa?",
         "options": {
@@ -5530,7 +5530,7 @@
         "source": "R.D.L. 3267/1923, Art. 24-26"
     },
     {
-        "id": 397,
+        "id": 396,
         "category": "Legislazione Forestale",
         "question": "Quale dei seguenti scopi NON è sufficiente da solo per imporre il vincolo idrogeologico ai sensi dell'art. 1?",
         "options": {
@@ -5544,7 +5544,7 @@
         "source": "R.D.L. 3267/1923, Art. 1"
     },
     {
-        "id": 398,
+        "id": 397,
         "category": "Ecologia e Selvicoltura",
         "question": "Come si chiama quella forma di governo del bosco ceduo nella quale le piante vengono recise a una certa altezza, stimolando così l'emissione di polloni laterali?",
         "options": {
@@ -5558,7 +5558,7 @@
         "source": "Elementi di Selvicoltura"
     },
     {
-        "id": 399,
+        "id": 398,
         "category": "Ecologia e Selvicoltura",
         "question": "Il rinnovamento di una fustaia avviene:",
         "options": {
@@ -5572,7 +5572,7 @@
         "source": "Selvicoltura generale"
     },
     {
-        "id": 400,
+        "id": 399,
         "category": "Ecologia e Selvicoltura",
         "question": "Che cos'è il 'taglio a raso'?",
         "options": {
@@ -5586,7 +5586,7 @@
         "source": "Tecniche Selvicolturali"
     },
     {
-        "id": 401,
+        "id": 400,
         "category": "Ecologia e Selvicoltura",
         "question": "Cos'è la 'rinnovazione naturale'?",
         "options": {
@@ -5600,7 +5600,7 @@
         "source": "Selvicoltura naturalistica"
     },
     {
-        "id": 402,
+        "id": 401,
         "category": "Ecologia e Selvicoltura",
         "question": "Cosa si intende per 'diradamento'?",
         "options": {
@@ -5614,7 +5614,7 @@
         "source": "Manuale di Selvicoltura"
     },
     {
-        "id": 403,
+        "id": 402,
         "category": "Ecologia e Selvicoltura",
         "question": "Cosa si intende per 'turno' in ambito selvicolturale?",
         "options": {
@@ -5628,7 +5628,7 @@
         "source": "Elementi di Assestamento Forestale"
     },
     {
-        "id": 404,
+        "id": 403,
         "category": "Ecologia e Selvicoltura",
         "question": "Cosa sono le 'matricine' nel governo a ceduo?",
         "options": {
@@ -5642,7 +5642,7 @@
         "source": "Normativa forestale e consuetudini selvicolturali"
     },
     {
-        "id": 405,
+        "id": 404,
         "category": "Ecologia e Selvicoltura",
         "question": "Qual è il principale vantaggio della 'fustaia disetanea' rispetto alla 'coetanea'?",
         "options": {
@@ -5656,7 +5656,7 @@
         "source": "Selvicoltura sistemica"
     },
     {
-        "id": 406,
+        "id": 405,
         "category": "Ecologia e Selvicoltura",
         "question": "Qual è la differenza fondamentale tra 'fustaia' e 'ceduo' nella gestione forestale?",
         "options": {
@@ -5670,7 +5670,7 @@
         "source": "Principi di Selvicoltura Generale"
     },
     {
-        "id": 407,
+        "id": 406,
         "category": "Ecologia e Selvicoltura",
         "question": "Qual è lo scopo dell'avviamento all'alto fusto (conversione)?",
         "options": {
@@ -5684,7 +5684,7 @@
         "source": "Pianificazione Forestale"
     },
     {
-        "id": 408,
+        "id": 407,
         "category": "Ecologia e Selvicoltura",
         "question": "Quale caratteristica distingue la Quercus pubescens (Roverella) rispetto al Leccio?",
         "options": {
@@ -5698,7 +5698,7 @@
         "source": "Botanica sistematica"
     },
     {
-        "id": 409,
+        "id": 408,
         "category": "Ecologia e Selvicoltura",
         "question": "Con il termine \"demaschiatura\" si intende:",
         "options": {
@@ -5712,7 +5712,7 @@
         "source": "Tecnologia del sughero"
     },
     {
-        "id": 410,
+        "id": 409,
         "category": "Ecologia e Selvicoltura",
         "question": "Il 'Pascolo alberato' o 'Dehesa' è un sistema agro-silvo-pastorale tipico della Sardegna. Su quale specie si basa prevalentemente?",
         "options": {
@@ -5726,7 +5726,7 @@
         "source": "Sistemi Agro-silvo-pastorali in Sardegna"
     },
     {
-        "id": 411,
+        "id": 410,
         "category": "Ecologia e Selvicoltura",
         "question": "Il Tasso (Taxus baccata), presente in Sardegna, è noto per essere:",
         "options": {
@@ -5740,7 +5740,7 @@
         "source": "Specie protette e monumentali"
     },
     {
-        "id": 412,
+        "id": 411,
         "category": "Ecologia e Selvicoltura",
         "question": "In riferimento alla Quercus suber (Sughera), cos'è la 'demaschiatura'?",
         "options": {
@@ -5754,7 +5754,7 @@
         "source": "Tecnica colturale della Sughera"
     },
     {
-        "id": 413,
+        "id": 412,
         "category": "Informatica",
         "question": "Cosa indica il termine 'Backup'?",
         "options": {
@@ -5768,7 +5768,7 @@
         "source": "Sillabo ECDL/ICDL - Modulo IT Security"
     },
     {
-        "id": 414,
+        "id": 413,
         "category": "Informatica",
         "question": "Cosa si intende per 'Phishing'?",
         "options": {
@@ -5782,7 +5782,7 @@
         "source": "Sillabo ECDL/ICDL - Modulo IT Security"
     },
     {
-        "id": 415,
+        "id": 414,
         "category": "Informatica",
         "question": "Cosa si intende per 'Ransomware'?",
         "options": {
@@ -5796,7 +5796,7 @@
         "source": "Sillabo ECDL/ICDL - Modulo IT Security"
     },
     {
-        "id": 416,
+        "id": 415,
         "category": "Informatica",
         "question": "Quale delle seguenti è una 'buona pratica' per la gestione delle password?",
         "options": {
@@ -5810,7 +5810,7 @@
         "source": "Sillabo ECDL/ICDL - Modulo IT Security"
     },
     {
-        "id": 418,
+        "id": 416,
         "category": "Legislazione Forestale",
         "question": "Per il rilascio del nulla osta dell'Ente Parco (art. 13), se l'Ente non risponde entro 60 giorni:",
         "options": {
@@ -5824,7 +5824,7 @@
         "source": "L. 394/1991, Art. 13, comma 1"
     },
     {
-        "id": 419,
+        "id": 417,
         "category": "Legislazione Forestale",
         "question": "Qual è lo scopo principale delle opere di sistemazione idraulico-forestale previste dal Titolo II?",
         "options": {
@@ -5838,7 +5838,7 @@
         "source": "R.D.L. 3267/1923, Art. 39"
     },
     {
-        "id": 420,
+        "id": 418,
         "category": "Informatica",
         "question": "In un programma di videoscrittura (es. Word), a cosa serve la funzione 'Giustifica'?",
         "options": {
@@ -5852,7 +5852,7 @@
         "source": "Sillabo ECDL/ICDL - Modulo Word Processing"
     },
     {
-        "id": 421,
+        "id": 419,
         "category": "Informatica",
         "question": "Cosa succede se in una cella di Excel inseriamo il simbolo '$' prima della lettera della colonna e del numero di riga (es. $A$1)?",
         "options": {
@@ -5866,7 +5866,7 @@
         "source": "Sillabo ECDL/ICDL - Modulo Spreadsheets"
     },
     {
-        "id": 422,
+        "id": 420,
         "category": "Informatica",
         "question": "In un foglio di calcolo (es. Excel), quale simbolo deve precedere necessariamente una formula?",
         "options": {
@@ -5880,7 +5880,7 @@
         "source": "Sillabo ECDL/ICDL - Modulo Spreadsheets"
     },
     {
-        "id": 423,
+        "id": 421,
         "category": "Informatica",
         "question": "Quale tasto della tastiera si usa comunemente per avviare una presentazione (es. PowerPoint) dalla prima diapositiva?",
         "options": {
@@ -5894,7 +5894,7 @@
         "source": "Sillabo ECDL/ICDL - Modulo Presentation"
     },
     {
-        "id": 424,
+        "id": 422,
         "category": "Informatica",
         "question": "Quale combinazione di tasti si usa generalmente per 'Tagliare' un testo selezionato?",
         "options": {
@@ -5908,7 +5908,7 @@
         "source": "Standard scorciatoie da tastiera Windows/Office"
     },
     {
-        "id": 425,
+        "id": 423,
         "category": "Informatica",
         "question": "Quale tra i seguenti è un Sistema Operativo Open Source?",
         "options": {
@@ -5922,7 +5922,7 @@
         "source": "Teoria generale del Software / Licenze GNU GPL"
     },
     {
-        "id": 426,
+        "id": 424,
         "category": "Legislazione Forestale",
         "question": "Il sorvolo non autorizzato sui Parchi Nazionali è:",
         "options": {
@@ -5936,7 +5936,7 @@
         "source": "L. 394/1991, Art. 11, comma 3, lett. h"
     },
     {
-        "id": 427,
+        "id": 425,
         "category": "Legislazione Forestale",
         "question": "Se la Regione non predispone il Piano antincendi, quali conseguenze finanziarie subisce?",
         "options": {
@@ -5950,7 +5950,7 @@
         "source": "L. 353/2000, Art. 3 (Principio generale di programmazione)"
     },
     {
-        "id": 428,
+        "id": 426,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Per il coordinamento delle attività antincendio, le Regioni si avvalgono di:",
         "options": {
@@ -5964,7 +5964,7 @@
         "source": "L. 353/2000, Art. 7, comma 2"
     },
     {
-        "id": 429,
+        "id": 427,
         "category": "Fauna (L. 157/1992)",
         "question": "Quale delle seguenti specie è considerata 'particolarmente protetta' ai sensi dell'art. 2 della L. 157/1992?",
         "options": {
@@ -5978,7 +5978,7 @@
         "source": "L. 157/1992, Art. 2"
     },
     {
-        "id": 430,
+        "id": 428,
         "category": "Geografia della Sardegna",
         "question": "La Grotta di Nettuno, una delle più famose della Sardegna, si apre:",
         "options": {
@@ -5992,7 +5992,7 @@
         "source": "Catasto Speleologico Regionale"
     },
     {
-        "id": 431,
+        "id": 429,
         "category": "Legislazione Forestale",
         "question": "Qual è lo strumento principale che disciplina la tutela dei valori naturali e ambientali del Parco, suddividendo il territorio in zone?",
         "options": {
@@ -6006,7 +6006,7 @@
         "source": "L. 394/1991, Art. 12"
     },
     {
-        "id": 432,
+        "id": 430,
         "category": "Legislazione Forestale",
         "question": "Il Corpo può avanzare proposte di soluzione agli organi competenti in merito a quali problemi (Art. [...](asc_slot://start-slot-42)1)?",
         "options": {
@@ -6020,7 +6020,7 @@
         "source": "L.R. 26/1985, Art. [...](asc_slot://start-slot-44)1"
     },
     {
-        "id": 433,
+        "id": 431,
         "category": "Legislazione Forestale",
         "question": "Riguardo all'estrazione del sughero, la L.R. 8/2016 (art. 20) prevede che:",
         "options": {
@@ -6034,7 +6034,7 @@
         "source": "L.R. 8/2016, Art. 20"
     },
     {
-        "id": 434,
+        "id": 432,
         "category": "Legislazione Forestale",
         "question": "La potatura delle querce da sughero (deseppatura o rimonda):",
         "options": {
@@ -6048,7 +6048,7 @@
         "source": "L.R. 4/1994, Art. 14"
     },
     {
-        "id": 435,
+        "id": 433,
         "category": "Legislazione Forestale",
         "question": "Il taglio colturale del bosco (utilizzazione ordinaria) in zona vincolata:",
         "options": {
@@ -6062,7 +6062,7 @@
         "source": "R.D.L. 3267/1923, Art. 8-9"
     },
     {
-        "id": 436,
+        "id": 434,
         "category": "Fauna (L. 157/1992)",
         "question": "L'imbalsamazione e la tassidermia sono consentite:",
         "options": {
@@ -6076,7 +6076,7 @@
         "source": "L. 157/1992, Art. 6"
     },
     {
-        "id": 437,
+        "id": 435,
         "category": "Ecologia e Selvicoltura",
         "question": "A fini commerciali, il legno di carpino nero è considerato:",
         "options": {
@@ -6090,7 +6090,7 @@
         "source": "Manuale di tecnologia del legno"
     },
     {
-        "id": 438,
+        "id": 436,
         "category": "Legislazione Forestale",
         "question": "Cosa prevede l'art. 12 riguardo ai terreni forestali 'silenti' (di cui non sia individuabile o reperibile il proprietario)?",
         "options": {
@@ -6104,7 +6104,7 @@
         "source": "D.Lgs. 34/2018, Art. 12"
     },
     {
-        "id": 439,
+        "id": 437,
         "category": "Legislazione Forestale",
         "question": "L'art. 7 vieta, senza autorizzazione, la 'dissodazione' di quali terreni vincolati?",
         "options": {
@@ -6118,7 +6118,7 @@
         "source": "R.D.L. 3267/1923, Art. 7"
     },
     {
-        "id": 440,
+        "id": 438,
         "category": "Lingua Sarda",
         "question": "Come vengono chiamate le guardie campestri o compagnie barracellari nella tradizione sarda?",
         "options": {
@@ -6132,7 +6132,7 @@
         "source": "Storia delle istituzioni sarde"
     },
     {
-        "id": 441,
+        "id": 439,
         "category": "Legislazione Forestale",
         "question": "Cosa prevede l'art. 7 del R.D.L. 3267/1923 riguardo alla trasformazione dei boschi vincolati in altre qualità di coltura?",
         "options": {
@@ -6146,7 +6146,7 @@
         "source": "R.D.L. 3267/1923, Art. 7"
     },
     {
-        "id": 442,
+        "id": 440,
         "category": "Legislazione Forestale",
         "question": "La trasformazione del bosco in altra destinazione d'uso (disboscamento) comporta l'obbligo di compensazione. A carico di chi sono gli interventi compensativi?",
         "options": {
@@ -6160,7 +6160,7 @@
         "source": "D.Lgs. 34/2018, Art. 8, comma 3"
     },
     {
-        "id": 443,
+        "id": 441,
         "category": "Legislazione Forestale",
         "question": "La trasformazione del bosco è vietata, ai sensi dell'art. 16, in quale dei seguenti casi?",
         "options": {
@@ -6174,7 +6174,7 @@
         "source": "L.R. 8/2016, Art. 16, comma 2"
     },
     {
-        "id": 444,
+        "id": 442,
         "category": "Reati Ambientali",
         "question": "Chi effettua scarichi industriali contenenti sostanze pericolose in violazione delle prescrizioni dell'autorizzazione è punito (Art. 137 c. 3):",
         "options": {
@@ -6188,7 +6188,7 @@
         "source": "D.Lgs. 152/2006, Art. 137, comma 3"
     },
     {
-        "id": 445,
+        "id": 443,
         "category": "Reati Ambientali",
         "question": "Danneggiare o manomettere gli impianti di depurazione pubblica è:",
         "options": {
@@ -6202,7 +6202,7 @@
         "source": "D.Lgs. 152/2006, Art. 137, comma 4"
     },
     {
-        "id": 446,
+        "id": 444,
         "category": "Reati Ambientali",
         "question": "L'apertura di uno scarico di acque reflue industriali senza autorizzazione costituisce:",
         "options": {
@@ -6216,7 +6216,7 @@
         "source": "D.Lgs. 152/2006, Art. 137, comma 1"
     },
     {
-        "id": 447,
+        "id": 445,
         "category": "Reati Ambientali",
         "question": "L'inosservanza del divieto di scarico sul suolo (art. 103) è punita:",
         "options": {
@@ -6230,7 +6230,7 @@
         "source": "D.Lgs. 152/2006, Art. 137, comma 11"
     },
     {
-        "id": 448,
+        "id": 446,
         "category": "Reati Ambientali",
         "question": "Lo scarico di acque reflue domestiche (es. abitazione privata) non in pubblica fognatura senza autorizzazione è:",
         "options": {
@@ -6244,7 +6244,7 @@
         "source": "D.Lgs. 152/2006, Art. 133, comma 2"
     },
     {
-        "id": 449,
+        "id": 447,
         "category": "Reati Ambientali",
         "question": "Se uno scarico di acque reflue industriali supera i valori limite tabellari per le sostanze pericolose (Tabella 5, Allegato 5), la sanzione prevista dall'art. 137 è:",
         "options": {
@@ -6258,7 +6258,7 @@
         "source": "D.Lgs. 152/2006, Art. 137, comma 5"
     },
     {
-        "id": 450,
+        "id": 448,
         "category": "Reati Ambientali",
         "question": "Ai sensi dell'art. 256, comma 3, chi realizza o gestisce una discarica non autorizzata è punito con:",
         "options": {
@@ -6272,7 +6272,7 @@
         "source": "D.Lgs. 152/2006, Art. 256, comma 3"
     },
     {
-        "id": 451,
+        "id": 449,
         "category": "Reati Ambientali",
         "question": "Chi effettua il trasporto di rifiuti pericolosi senza il Formulario di Identificazione Rifiuti (FIR) o con dati incompleti/inesatti è punito ex art. 258 con:",
         "options": {
@@ -6286,7 +6286,7 @@
         "source": "D.Lgs. 152/2006, Art. 258, comma 4"
     },
     {
-        "id": 452,
+        "id": 450,
         "category": "Reati Ambientali",
         "question": "Chi inquina il suolo, il sottosuolo o le acque superficiali/sotterranee con rifiuti (art. 257 - Bonifica):",
         "options": {
@@ -6300,7 +6300,7 @@
         "source": "D.Lgs. 152/2006, Art. 257"
     },
     {
-        "id": 453,
+        "id": 451,
         "category": "Reati Ambientali",
         "question": "Cosa si intende per 'miscelazione vietata' di rifiuti (art. 187 TUA) la cui violazione è sanzionata penalmente dall'art. 256?",
         "options": {
@@ -6314,7 +6314,7 @@
         "source": "D.Lgs. 152/2006, Art. 256, comma 5 (in rel. art. 187)"
     },
     {
-        "id": 454,
+        "id": 452,
         "category": "Reati Ambientali",
         "question": "Il deposito temporaneo di rifiuti, se effettuato nel rispetto delle condizioni di legge (art. 183 bb), è:",
         "options": {
@@ -6328,7 +6328,7 @@
         "source": "D.Lgs. 152/2006, Art. 183"
     },
     {
-        "id": 455,
+        "id": 453,
         "category": "Reati Ambientali",
         "question": "Il produttore iniziale di rifiuti pericolosi che non tiene il registro di carico e scarico:",
         "options": {
@@ -6342,7 +6342,7 @@
         "source": "D.Lgs. 152/2006, Art. 258"
     },
     {
-        "id": 456,
+        "id": 454,
         "category": "Reati Ambientali",
         "question": "In caso di condanna per traffico organizzato di rifiuti (452-quaterdecies CP ex 260 TUA), è prevista la sanzione accessoria del:",
         "options": {
@@ -6356,7 +6356,7 @@
         "source": "Codice Penale / D.Lgs. 152/2006"
     },
     {
-        "id": 457,
+        "id": 455,
         "category": "Reati Ambientali",
         "question": "In seguito alle modifiche della L. 137/2023, l'abbandono di rifiuti compiuto da un semplice cittadino privato (art. 255, comma 1):",
         "options": {
@@ -6370,7 +6370,7 @@
         "source": "D.Lgs. 152/2006, Art. 255, comma 1"
     },
     {
-        "id": 458,
+        "id": 456,
         "category": "Reati Ambientali",
         "question": "L'abbandono di veicoli fuori uso (art. 231) da parte di un soggetto non impresa è sanzionato:",
         "options": {
@@ -6384,7 +6384,7 @@
         "source": "D.Lgs. 152/2006, Art. 255, comma 3"
     },
     {
-        "id": 459,
+        "id": 457,
         "category": "Reati Ambientali",
         "question": "L'art. 256-bis punisce la 'combustione illecita di rifiuti' (cd. Terra dei fuochi). Qual è la condotta sanzionata?",
         "options": {
@@ -6398,7 +6398,7 @@
         "source": "D.Lgs. 152/2006, Art. 256-bis"
     },
     {
-        "id": 460,
+        "id": 458,
         "category": "Reati Ambientali",
         "question": "La realizzazione di una discarica abusiva in area protetta o vincolata comporta:",
         "options": {
@@ -6412,7 +6412,7 @@
         "source": "D.Lgs. 152/2006, Art. 256, comma 3"
     },
     {
-        "id": 461,
+        "id": 459,
         "category": "Reati Ambientali",
         "question": "Qual è la pena per chi esercita un'attività di gestione rifiuti in carenza dei requisiti tecnici richiesti per l'iscrizione all'Albo Gestori Ambientali (Art. 256, c. 4)?",
         "options": {
@@ -6426,7 +6426,7 @@
         "source": "D.Lgs. 152/2006, Art. 256, comma 4"
     },
     {
-        "id": 462,
+        "id": 460,
         "category": "Reati Ambientali",
         "question": "Qual è la sanzione prevista dall'art. 256, comma 1, del D.Lgs. 152/2006 per chiunque effettua attività di gestione di rifiuti (raccolta, trasporto, recupero, smaltimento) in mancanza della prescritta autorizzazione?",
         "options": {
@@ -6440,7 +6440,7 @@
         "source": "D.Lgs. 152/2006, Art. 256, comma 1"
     },
     {
-        "id": 463,
+        "id": 461,
         "category": "Legislazione Forestale",
         "question": "Qual è il turno minimo di estrazione stabilito dall'art. 17 per la raccolta del sughero gentile?",
         "options": {
@@ -6454,7 +6454,7 @@
         "source": "L.R. 4/1994, Art. 17"
     },
     {
-        "id": 464,
+        "id": 462,
         "category": "Legislazione Forestale",
         "question": "In relazione ai pascoli, quale funzione specifica è attribuita al Corpo dall'art. 1?",
         "options": {
@@ -6468,7 +6468,7 @@
         "source": "L.R. 26/1985, Art. [...](asc_slot://start-slot-12)1"
     },
     {
-        "id": 465,
+        "id": 463,
         "category": "Aree Protette (L. 394/1991)",
         "question": "In merito alle aree protette, cosa tutela il Corpo secondo l'art. 1?",
         "options": {
@@ -6482,7 +6482,7 @@
         "source": "L.R. 26/1985, Art. 1"
     },
     {
-        "id": 466,
+        "id": 464,
         "category": "Botanica",
         "question": "È consentito estrarre sughero da piante che non hanno raggiunto i 60 cm di circonferenza?",
         "options": {
@@ -6496,7 +6496,7 @@
         "source": "L.R. 4/1994, Art. 15"
     },
     {
-        "id": 467,
+        "id": 465,
         "category": "Legislazione Forestale",
         "question": "Secondo l'art. 9 del D.Lgs. 34/2018, la viabilità forestale è destinata:",
         "options": {
@@ -6510,7 +6510,7 @@
         "source": "D.Lgs. 34/2018, Art. 9"
     },
     {
-        "id": 468,
+        "id": 466,
         "category": "Legislazione Forestale",
         "question": "A chi è affidata, storicamente e secondo la legge del 1923, la sorveglianza tecnica sull'applicazione del vincolo?",
         "options": {
@@ -6524,7 +6524,7 @@
         "source": "R.D.L. 3267/1923, Art. 28"
     },
     {
-        "id": 469,
+        "id": 467,
         "category": "Legislazione Forestale",
         "question": "A quale corpo spetta in via prioritaria la vigilanza sul rispetto della L.R. 8/2016?",
         "options": {
@@ -6538,7 +6538,7 @@
         "source": "L.R. 8/2016, Art. 34 (implicitamente e per competenza istituzionale CFVA)"
     },
     {
-        "id": 470,
+        "id": 468,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Qual è il ruolo del Corpo Nazionale dei Vigili del Fuoco nella lotta agli incendi boschivi secondo l'art. 7?",
         "options": {
@@ -6552,7 +6552,7 @@
         "source": "L. 353/2000, Art. 7"
     },
     {
-        "id": 471,
+        "id": 469,
         "category": "Lingua Inglese",
         "question": "Come si chiama un 'branco' di lupi in inglese?",
         "options": {
@@ -6566,7 +6566,7 @@
         "source": "CEFR Level B1 - Collective nouns"
     },
     {
-        "id": 472,
+        "id": 470,
         "category": "Lingua Inglese",
         "question": "Come si traduce 'inquinare' in inglese?",
         "options": {
@@ -6580,7 +6580,7 @@
         "source": "CEFR Level B1 - Vocabulary"
     },
     {
-        "id": 473,
+        "id": 471,
         "category": "Lingua Inglese",
         "question": "Qual è il plurale corretto di 'information'?",
         "options": {
@@ -6594,7 +6594,7 @@
         "source": "CEFR Level B1 - Uncountable nouns"
     },
     {
-        "id": 474,
+        "id": 472,
         "category": "Lingua Inglese",
         "question": "Quale phrasal verb significa 'spegnere un fuoco'?",
         "options": {
@@ -6608,7 +6608,7 @@
         "source": "CEFR Level B1 - Phrasal Verbs"
     },
     {
-        "id": 475,
+        "id": 473,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Qual è il ruolo delle organizzazioni di volontariato nella lotta agli incendi boschivi (Art. 7)?",
         "options": {
@@ -6622,7 +6622,7 @@
         "source": "L. 353/2000, Art. 7, comma 5"
     },
     {
-        "id": 476,
+        "id": 474,
         "category": "Legislazione Forestale",
         "question": "Nella Zona faunistica delle Alpi, la caccia è consentita:",
         "options": {
@@ -6636,7 +6636,7 @@
         "source": "L. 157/1992, Art. 11 (e leggi regionali attuative)"
     },
     {
-        "id": 477,
+        "id": 475,
         "category": "Geografia della Sardegna",
         "question": "Lo stagno di Molentargius è famoso a livello internazionale perché:",
         "options": {
@@ -6650,7 +6650,7 @@
         "source": "Convenzione di Ramsar / Parco Naturale Molentargius-Saline"
     },
     {
-        "id": 478,
+        "id": 476,
         "category": "Aree Protette (L. 394/1991)",
         "question": "Nel Piano del Parco, cosa caratterizza le 'Zone A' (Riserva Integrale)?",
         "options": {
@@ -6664,7 +6664,7 @@
         "source": "L. 394/1991, Art. 12, comma 2"
     },
     {
-        "id": 479,
+        "id": 477,
         "category": "Zoologia",
         "question": "I Geotritoni sardi (genere Speleomantes) hanno una particolarità fisiologica unica. Quale?",
         "options": {
@@ -6678,7 +6678,7 @@
         "source": "Herpetologia sarda"
     },
     {
-        "id": 480,
+        "id": 478,
         "category": "Zoologia",
         "question": "Quale caratteristica rende unico l'Euprotto sardo (Euproctus platycephalus) rispetto agli altri tritoni europei?",
         "options": {
@@ -6692,7 +6692,7 @@
         "source": "Direttiva Habitat 92/43/CEE"
     },
     {
-        "id": 481,
+        "id": 479,
         "category": "Zoologia",
         "question": "Il 'Pollo sultano' (Porphyrio porphyrio) è stato oggetto di un progetto di reintroduzione in Sardegna. Qual è il suo habitat tipico?",
         "options": {
@@ -6706,7 +6706,7 @@
         "source": "Ecologia delle zone umide"
     },
     {
-        "id": 482,
+        "id": 480,
         "category": "Zoologia",
         "question": "Il Falco della Regina (Falco eleonorae) è un migratore che nidifica in Sardegna. Qual è la sua peculiarità riproduttiva?",
         "options": {
@@ -6720,7 +6720,7 @@
         "source": "Ornitologia italiana"
     },
     {
-        "id": 483,
+        "id": 481,
         "category": "Zoologia",
         "question": "L'Astore sardo (Accipiter gentilis arrigonii) è un rapace forestale. Qual è il suo habitat elettivo?",
         "options": {
@@ -6734,7 +6734,7 @@
         "source": "Biologia della conservazione dei rapaci"
     },
     {
-        "id": 484,
+        "id": 482,
         "category": "Zoologia",
         "question": "Quale grande rapace necrofago nidifica ancora in Sardegna, in particolare nella zona di Bosa e Capo Caccia?",
         "options": {
@@ -6748,7 +6748,7 @@
         "source": "Progetto Life 'Under Griffon Wings'"
     },
     {
-        "id": 485,
+        "id": 483,
         "category": "Zoologia",
         "question": "I pipistrelli (Chirotteri) presenti in Sardegna sono tutti:",
         "options": {
@@ -6762,7 +6762,7 @@
         "source": "Accordo EUROBATS"
     },
     {
-        "id": 486,
+        "id": 484,
         "category": "Zoologia",
         "question": "La Lymantria dispar è un lepidottero defogliatore che periodicamente infesta i boschi sardi. Qual è la pianta ospite principale che viene danneggiata?",
         "options": {
@@ -6776,7 +6776,7 @@
         "source": "Entomologia agraria e forestale"
     },
     {
-        "id": 487,
+        "id": 485,
         "category": "Zoologia",
         "question": "Quale lepidottero (farfalla), endemico di Sardegna e Corsica, è rigorosamente protetto dalla Convenzione di Berna e dalla Direttiva Habitat?",
         "options": {
@@ -6790,7 +6790,7 @@
         "source": "Direttiva 92/43/CEE - Allegato II"
     },
     {
-        "id": 488,
+        "id": 486,
         "category": "Zoologia",
         "question": "Il 'Cavallino della Giara' non è una specie distinta, ma una popolazione caratteristica. Qual è la sua origine probabile?",
         "options": {
@@ -6804,7 +6804,7 @@
         "source": "Studi genetici sul Cavallo della Giara"
     },
     {
-        "id": 489,
+        "id": 487,
         "category": "Zoologia",
         "question": "Il Cinghiale sardo (Sus scrofa meridionalis) differisce dal Cinghiale continentale principalmente per:",
         "options": {
@@ -6818,7 +6818,7 @@
         "source": "Fauna d'Italia - Mammalia"
     },
     {
-        "id": 490,
+        "id": 488,
         "category": "Zoologia",
         "question": "Qual è il nome scientifico del Cervo sardo, sottospecie endemica della Sardegna e della Corsica?",
         "options": {
@@ -6832,7 +6832,7 @@
         "source": "Zoologia sistematica dei Vertebrati"
     },
     {
-        "id": 491,
+        "id": 489,
         "category": "Zoologia",
         "question": "Quale mammifero marino, un tempo diffuso lungo le coste sarde (es. Grotta del Bue Marino), è oggi considerato 'Critically Endangered' nel Mediterraneo?",
         "options": {
@@ -6846,7 +6846,7 @@
         "source": "Red List IUCN"
     },
     {
-        "id": 492,
+        "id": 490,
         "category": "Zoologia",
         "question": "La Testuggine marginata (Testudo marginata) si distingue dalla Testuggine di Hermann (Testudo hermanni) per:",
         "options": {
@@ -6860,7 +6860,7 @@
         "source": "Rettili d'Italia"
     },
     {
-        "id": 493,
+        "id": 491,
         "category": "Zoologia",
         "question": "La Tartaruga palustre americana (Trachemys scripta) rinvenuta negli stagni sardi è considerata:",
         "options": {
@@ -6874,7 +6874,7 @@
         "source": "Regolamento UE sulle specie esotiche invasive"
     },
     {
-        "id": 494,
+        "id": 492,
         "category": "Ecologia e Selvicoltura",
         "question": "Quale percentuale della Sardegna era coperta da foreste primarie nella prima metà dell'Ottocento?",
         "options": {
@@ -6888,7 +6888,7 @@
         "source": "Testo fornito – Evoluzione della vegetazione forestale in Sardegna"
     },
     {
-        "id": 495,
+        "id": 493,
         "category": "Ecologia e Selvicoltura",
         "question": "In quale periodo iniziarono i disboscamenti che cancellarono quasi completamente le foreste primarie sarde?",
         "options": {
@@ -6902,7 +6902,7 @@
         "source": "Testo fornito – Evoluzione storica delle foreste sarde"
     },
     {
-        "id": 496,
+        "id": 494,
         "category": "Ecologia e Selvicoltura",
         "question": "Per quale utilizzo principale fu impiegato il legname proveniente dai disboscamenti ottocenteschi in Sardegna?",
         "options": {
@@ -6916,7 +6916,7 @@
         "source": "Testo fornito – Disboscamenti storici"
     },
     {
-        "id": 497,
+        "id": 495,
         "category": "Ecologia e Selvicoltura",
         "question": "Quale fattore ha favorito l'espansione della vegetazione naturale in Sardegna nel secondo dopoguerra?",
         "options": {
@@ -6930,7 +6930,7 @@
         "source": "Testo fornito – Evoluzione recente della vegetazione"
     },
     {
-        "id": 498,
+        "id": 496,
         "category": "Ecologia e Selvicoltura",
         "question": "Qual è l'estensione approssimativa delle foreste sarde attuali escluse macchie e boscaglie?",
         "options": {
@@ -6944,7 +6944,7 @@
         "source": "Testo fornito – Situazione attuale delle foreste sarde"
     },
     {
-        "id": 499,
+        "id": 497,
         "category": "Ecologia e Selvicoltura",
         "question": "Qual è la tipologia di vegetazione forestale più diffusa in Sardegna?",
         "options": {
@@ -6958,7 +6958,7 @@
         "source": "Testo fornito – Tipologie forestali"
     },
     {
-        "id": 500,
+        "id": 498,
         "category": "Ecologia e Selvicoltura",
         "question": "Fino a quale altitudine si rinvengono le leccete in Sardegna?",
         "options": {
@@ -6972,7 +6972,7 @@
         "source": "Testo fornito – Leccete"
     },
     {
-        "id": 501,
+        "id": 499,
         "category": "Ecologia e Selvicoltura",
         "question": "Quale percentuale della copertura nazionale dei boschi a sughera è presente in Sardegna?",
         "options": {
@@ -6986,7 +6986,7 @@
         "source": "Testo fornito – Boschi a sughera"
     },
     {
-        "id": 502,
+        "id": 500,
         "category": "Ecologia e Selvicoltura",
         "question": "Su quali substrati sono presenti prevalentemente i boschi a sughera in Sardegna?",
         "options": {
@@ -7000,7 +7000,7 @@
         "source": "Testo fornito – Sugherete"
     },
     {
-        "id": 503,
+        "id": 501,
         "category": "Ecologia e Selvicoltura",
         "question": "In quale area della Sardegna sono prevalentemente localizzati i boschi a carpino nero?",
         "options": {
@@ -7014,7 +7014,7 @@
         "source": "Testo fornito – Boschi a carpino nero"
     },
     {
-        "id": 504,
+        "id": 502,
         "category": "Ecologia e Selvicoltura",
         "question": "A quale quota altimetrica si trovano prevalentemente le tassete in Sardegna?",
         "options": {
@@ -7028,7 +7028,7 @@
         "source": "Testo fornito – Tassete"
     },
     {
-        "id": 505,
+        "id": 503,
         "category": "Ecologia e Selvicoltura",
         "question": "Con quali specie sono generalmente associate le formazioni a tasso?",
         "options": {
@@ -7042,7 +7042,7 @@
         "source": "Testo fornito – Tassete"
     },
     {
-        "id": 506,
+        "id": 504,
         "category": "Ecologia e Selvicoltura",
         "question": "Qual è l'origine dei castagneti in Sardegna secondo il testo?",
         "options": {
@@ -7056,7 +7056,7 @@
         "source": "Testo fornito – Castagneti"
     },
     {
-        "id": 507,
+        "id": 505,
         "category": "Ecologia e Selvicoltura",
         "question": "Qual è la fascia altimetrica tipica delle boscaglie di olivastro?",
         "options": {
@@ -7070,7 +7070,7 @@
         "source": "Testo fornito – Boscaglie di olivastro"
     },
     {
-        "id": 508,
+        "id": 506,
         "category": "Ecologia e Selvicoltura",
         "question": "Le boscaglie di ginepro rappresentano spesso:",
         "options": {
@@ -7084,7 +7084,7 @@
         "source": "Testo fornito – Boscaglie di ginepro"
     },
     {
-        "id": 509,
+        "id": 507,
         "category": "Ecologia e Selvicoltura",
         "question": "Dove sono localizzate le pinete naturali della Sardegna?",
         "options": {
@@ -7098,7 +7098,7 @@
         "source": "Testo fornito – Pinete"
     },
     {
-        "id": 510,
+        "id": 508,
         "category": "Ecologia e Selvicoltura",
         "question": "Che cosa costituisce un ecosistema?",
         "options": {
@@ -7112,7 +7112,7 @@
         "source": "Testo fornito – Ecosistemi"
     },
     {
-        "id": 511,
+        "id": 509,
         "category": "Ecologia e Selvicoltura",
         "question": "Qual è la principale fonte di energia che fa funzionare un ecosistema?",
         "options": {
@@ -7126,7 +7126,7 @@
         "source": "Testo fornito – Ecosistemi"
     },
     {
-        "id": 512,
+        "id": 510,
         "category": "Ecologia e Selvicoltura",
         "question": "Quale livello trofico è rappresentato da funghi e batteri?",
         "options": {
@@ -7140,7 +7140,7 @@
         "source": "Testo fornito – Livelli trofici"
     },
     {
-        "id": 513,
+        "id": 511,
         "category": "Ecologia e Selvicoltura",
         "question": "Che cosa indica la biodiversità genetica?",
         "options": {
@@ -7154,7 +7154,7 @@
         "source": "Testo fornito – Biodiversità"
     },
     {
-        "id": 514,
+        "id": 512,
         "category": "Ecologia e Selvicoltura",
         "question": "Quante grandi estinzioni di massa si sono verificate prima dell'attuale crisi di biodiversità?",
         "options": {
@@ -7168,7 +7168,7 @@
         "source": "Testo fornito – Perdita di biodiversità"
     },
     {
-        "id": 515,
+        "id": 513,
         "category": "Ecologia e Selvicoltura",
         "question": "L'attuale crisi di biodiversità viene definita come:",
         "options": {
@@ -7182,7 +7182,7 @@
         "source": "Testo fornito – Perdita di biodiversità"
     },
     {
-        "id": 516,
+        "id": 514,
         "category": "Ecologia e Selvicoltura",
         "question": "Di quante volte l'attuale tasso di estinzione supera quello naturale?",
         "options": {
@@ -7196,7 +7196,7 @@
         "source": "Testo fornito – Perdita di biodiversità"
     },
     {
-        "id": 517,
+        "id": 515,
         "category": "Ecologia e Selvicoltura",
         "question": "Quale tra i seguenti NON è indicato come servizio ecosistemico nel testo?",
         "options": {
@@ -7210,7 +7210,7 @@
         "source": "Testo fornito – Valore della biodiversità"
     },
     {
-        "id": 518,
+        "id": 516,
         "category": "Ecologia e Selvicoltura",
         "question": "Quale delle seguenti è indicata come minaccia alla biodiversità?",
         "options": {
@@ -7224,7 +7224,7 @@
         "source": "Testo fornito – Minacce alla biodiversità"
     },
     {
-        "id": 519,
+        "id": 517,
         "category": "Ecologia e Selvicoltura",
         "question": "Qual è il ruolo principale del bosco come ecosistema secondo le nozioni di ecologia forestale?",
         "options": {
@@ -7238,7 +7238,7 @@
         "source": "PMPF; L.R. 8/2016 art. 1"
     },
     {
-        "id": 520,
+        "id": 518,
         "category": "Ecologia e Selvicoltura",
         "question": "Quale specie domina le leccete sarde, formazioni tipiche fino a 1400 m?",
         "options": {
@@ -7252,7 +7252,7 @@
         "source": "PFAR; PMPF"
     },
     {
-        "id": 521,
+        "id": 519,
         "category": "Ecologia e Selvicoltura",
         "question": "La Sardegna ospita circa il 90% delle sugherete italiane. Qual è la specie principale?",
         "options": {
@@ -7266,7 +7266,7 @@
         "source": "L.R. 4/1994 Capo II"
     },
     {
-        "id": 522,
+        "id": 520,
         "category": "Ecologia e Selvicoltura",
         "question": "Quale strato del bosco comprende gli arbusti e i giovani alberi?",
         "options": {
@@ -7280,7 +7280,7 @@
         "source": "PMPF"
     },
     {
-        "id": 523,
+        "id": 521,
         "category": "Ecologia e Selvicoltura",
         "question": "Cosa si intende per successione forestale in Sardegna?",
         "options": {
@@ -7294,7 +7294,7 @@
         "source": "PFAR"
     },
     {
-        "id": 524,
+        "id": 522,
         "category": "Ecologia e Selvicoltura",
         "question": "Qual è la differenza principale tra ceduo e fustaia?",
         "options": {
@@ -7308,7 +7308,7 @@
         "source": "PMPF; R.D. 1126/1926"
     },
     {
-        "id": 525,
+        "id": 523,
         "category": "Ecologia e Selvicoltura",
         "question": "Quale trattamento selvicolturale prevede l'eliminazione graduale degli alberi?",
         "options": {
@@ -7322,7 +7322,7 @@
         "source": "PMPF"
     },
     {
-        "id": 526,
+        "id": 524,
         "category": "Ecologia e Selvicoltura",
         "question": "Quale fattore principale limita i boschi sardi?",
         "options": {
@@ -7336,7 +7336,7 @@
         "source": "L.R. 8/2016 Tit. IV"
     },
     {
-        "id": 527,
+        "id": 525,
         "category": "Ecologia e Selvicoltura",
         "question": "Nelle sugherete sarde, quale pratica è essenziale per la produzione?",
         "options": {
@@ -7350,7 +7350,7 @@
         "source": "L.R. 4/1994 Capo II"
     },
     {
-        "id": 528,
+        "id": 526,
         "category": "Ecologia e Selvicoltura",
         "question": "Cosa è la selvicoltura preventiva negli incendi boschivi?",
         "options": {
@@ -7364,7 +7364,7 @@
         "source": "L.R. 8/2016 art. 22; L. 353/2000"
     },
     {
-        "id": 529,
+        "id": 527,
         "category": "Ecologia e Selvicoltura",
         "question": "Quale ciclo è cruciale per il ruolo del bosco contro i cambiamenti climatici?",
         "options": {
@@ -7378,7 +7378,7 @@
         "source": "D.Lgs. 34/2018"
     },
     {
-        "id": 530,
+        "id": 528,
         "category": "Ecologia e Selvicoltura",
         "question": "In un bosco coetaneo, gli alberi hanno:",
         "options": {
@@ -7392,7 +7392,7 @@
         "source": "PMPF"
     },
     {
-        "id": 531,
+        "id": 529,
         "category": "Ecologia e Selvicoltura",
         "question": "La gariga deriva tipicamente da:",
         "options": {
@@ -7406,7 +7406,7 @@
         "source": "PFAR"
     },
     {
-        "id": 532,
+        "id": 530,
         "category": "Ecologia e Selvicoltura",
         "question": "Il 'turno' in selvicoltura indica:",
         "options": {
@@ -7420,7 +7420,7 @@
         "source": "PMPF"
     },
     {
-        "id": 533,
+        "id": 531,
         "category": "Ecologia e Selvicoltura",
         "question": "I rimboschimenti sardi hanno principalmente funzione:",
         "options": {
@@ -7434,7 +7434,7 @@
         "source": "PFAR"
     },
     {
-        "id": 534,
+        "id": 532,
         "category": "Ecologia e Selvicoltura",
         "question": "Per le leccete sarde si privilegia spesso:",
         "options": {
@@ -7448,7 +7448,7 @@
         "source": "L.R. 8/2016 art. 19"
     },
     {
-        "id": 535,
+        "id": 533,
         "category": "Ecologia e Selvicoltura",
         "question": "Secondo la L.R. 8/2016 art. 22, la prevenzione incendi include:",
         "options": {
@@ -7462,7 +7462,7 @@
         "source": "L.R. 8/2016 art. 22"
     },
     {
-        "id": 536,
+        "id": 534,
         "category": "Ecologia e Selvicoltura",
         "question": "La macchia alta è vicina al:",
         "options": {
@@ -7476,7 +7476,7 @@
         "source": "PFAR"
     },
     {
-        "id": 537,
+        "id": 535,
         "category": "Ecologia e Selvicoltura",
         "question": "La resilienza del bosco è la capacità di:",
         "options": {
@@ -7490,7 +7490,7 @@
         "source": "PMPF"
     },
     {
-        "id": 538,
+        "id": 536,
         "category": "Ecologia e Selvicoltura",
         "question": "Il diradamento in selvicoltura serve a:",
         "options": {
@@ -7504,7 +7504,7 @@
         "source": "PMPF"
     },
     {
-        "id": 539,
+        "id": 537,
         "category": "Ecologia e Selvicoltura",
         "question": "Quale bosco sardo è sensibile alla decorticazione?",
         "options": {
@@ -7518,7 +7518,7 @@
         "source": "L.R. 4/1994"
     },
     {
-        "id": 540,
+        "id": 538,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "Qual è la data esatta di entrata in vigore della L.R. n. 26/1985 che istituisce il Corpo forestale e di vigilanza ambientale della Regione Sardegna?",
         "options": {
@@ -7532,7 +7532,7 @@
         "source": "L.R. 5 novembre 1985, n. 26, Art. 1"
     },
     {
-        "id": 541,
+        "id": 539,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "Quale patrimonio principale tutela il Corpo forestale secondo l'Art. 1 della L.R. 26/1985?",
         "options": {
@@ -7546,7 +7546,7 @@
         "source": "L.R. 26/1985, Art. 1"
     },
     {
-        "id": 542,
+        "id": 540,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "Quale attività di vigilanza è espressamente attribuita al Corpo dall'Art. 1 L.R. 26/1985?",
         "options": {
@@ -7560,7 +7560,7 @@
         "source": "L.R. 26/1985, Art. 1"
     },
     {
-        "id": 543,
+        "id": 541,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "Secondo l'Art. 7 L.R. 26/1985, il personale del Corpo possiede qualifica di:",
         "options": {
@@ -7574,7 +7574,7 @@
         "source": "L.R. 26/1985, Art. 7"
     },
     {
-        "id": 544,
+        "id": 542,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "Nell'Art. 1, la lotta agli incendi è limitata a:",
         "options": {
@@ -7588,7 +7588,7 @@
         "source": "L.R. 26/1985, Art. 1"
     },
     {
-        "id": 545,
+        "id": 543,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "Quale tipo di polizia esercita il Corpo ex Art. 1?",
         "options": {
@@ -7602,7 +7602,7 @@
         "source": "L.R. 26/1985, Art. 1"
     },
     {
-        "id": 546,
+        "id": 544,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "Tra le mansioni dell'Art. 7, quali qualifiche sono menzionate per l'assegnazione dei compiti?",
         "options": {
@@ -7616,7 +7616,7 @@
         "source": "L.R. 26/1985, Art. 7"
     },
     {
-        "id": 547,
+        "id": 545,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "Quale ecosistema è tutelato dal Corpo secondo l'Art. 1?",
         "options": {
@@ -7630,7 +7630,7 @@
         "source": "L.R. 26/1985, Art. 1"
     },
     {
-        "id": 548,
+        "id": 546,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "L'Art. 1 attribuisce al Corpo compiti di:",
         "options": {
@@ -7644,7 +7644,7 @@
         "source": "L.R. 26/1985, Art. 1"
     },
     {
-        "id": 549,
+        "id": 547,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "Secondo l'Art. 7, le funzioni sono esercitate entro:",
         "options": {
@@ -7658,7 +7658,7 @@
         "source": "L.R. 26/1985, Art. 7"
     },
     {
-        "id": 550,
+        "id": 548,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "Quale attività statistica rientra nelle funzioni dell'Art. 1?",
         "options": {
@@ -7672,7 +7672,7 @@
         "source": "L.R. 26/1985, Art. 1"
     },
     {
-        "id": 551,
+        "id": 549,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "Il Corpo collabora in quale ambito secondo l'Art. 1?",
         "options": {
@@ -7686,7 +7686,7 @@
         "source": "L.R. 26/1985, Art. 1"
     },
     {
-        "id": 552,
+        "id": 550,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "L'Art. 1 include la tutela di:",
         "options": {
@@ -7700,7 +7700,7 @@
         "source": "L.R. 26/1985, Art. 1"
     },
     {
-        "id": 553,
+        "id": 551,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "Quale polizia specialistica esercita il Corpo ex Art. 1?",
         "options": {
@@ -7714,7 +7714,7 @@
         "source": "L.R. 26/1985, Art. 1"
     },
     {
-        "id": 554,
+        "id": 552,
         "category": "Istituzionale (L.R. 26/1985)",
         "question": "Secondo l'Art. 7, il Corpo esercita anche funzioni attribuite da:",
         "options": {
@@ -7728,7 +7728,7 @@
         "source": "L.R. 26/1985, Art. 7"
     },
     {
-        "id": 555,
+        "id": 553,
         "category": "Botanica",
         "question": "In riferimento alla tutela delle sugherete in Sardegna, quale delle seguenti affermazioni sulla decortica (estrazione del sughero) è corretta?",
         "options": {
@@ -7742,7 +7742,7 @@
         "source": "L.R. Sardegna 9 febbraio 1994, n. 4"
     },
     {
-        "id": 556,
+        "id": 554,
         "category": "Zoologia",
         "question": "Qual è lo status giuridico del Cervo sardo (Cervus elaphus corsicanus) ai sensi della L.R. n. 23/1998?",
         "options": {
@@ -7756,7 +7756,7 @@
         "source": "L.R. Sardegna 29 luglio 1998, n. 23, Allegato 1"
     },
     {
-        "id": 557,
+        "id": 555,
         "category": "Botanica",
         "question": "Quale caratteristica morfologica permette di distinguere inequivocabilmente il Leccio (Quercus ilex) dalla Roverella (Quercus pubescens) in inverno?",
         "options": {
@@ -7770,7 +7770,7 @@
         "source": "Manuale di Botanica Forestale - Chiavi dicotomiche"
     },
     {
-        "id": 558,
+        "id": 556,
         "category": "Zoologia",
         "question": "L'Euprotto sardo (Euproctus platycephalus) è un bioindicatore di quale tipologia ambientale?",
         "options": {
@@ -7784,7 +7784,7 @@
         "source": "Direttiva Habitat 92/43/CEE - Schede specie prioritarie"
     },
     {
-        "id": 559,
+        "id": 557,
         "category": "Botanica",
         "question": "Dove è localizzato l'unico areale naturale noto del Ribes sardoum (Ribes sardo)?",
         "options": {
@@ -7798,7 +7798,7 @@
         "source": "IUCN Red List / Banca del Germoplasma della Sardegna"
     },
     {
-        "id": 560,
+        "id": 558,
         "category": "Zoologia",
         "question": "Quale caratteristica rende unico il Falco della Regina (Falco eleonorae) rispetto agli altri rapaci sardi?",
         "options": {
@@ -7812,7 +7812,7 @@
         "source": "Biologia dell'Avifauna Sarda"
     },
     {
-        "id": 561,
+        "id": 559,
         "category": "Botanica",
         "question": "In ambito forestale, cosa distingue tecnicamente la 'Gariga' dalla 'Macchia mediterranea'?",
         "options": {
@@ -7826,7 +7826,7 @@
         "source": "Ecologia Vegetale - Successioni ecologiche"
     },
     {
-        "id": 562,
+        "id": 560,
         "category": "Zoologia",
         "question": "Come si distinguono i palchi (corna) del Cervo sardo da quelli del Daino?",
         "options": {
@@ -7840,7 +7840,7 @@
         "source": "Manuale di Zoologia applicata alla caccia"
     },
     {
-        "id": 563,
+        "id": 561,
         "category": "Zoologia",
         "question": "Quale delle seguenti testuggini terrestri è presente in Sardegna ed è protetta dalla Convenzione di Washington (CITES)?",
         "options": {
@@ -7854,7 +7854,7 @@
         "source": "Convenzione CITES / Regolamento CE 338/97"
     },
     {
-        "id": 564,
+        "id": 562,
         "category": "Botanica",
         "question": "La Posidonia oceanica, fondamentale per l'ecosistema costiero sardo, è:",
         "options": {
@@ -7868,7 +7868,7 @@
         "source": "Biologia Marina del Mediterraneo"
     },
     {
-        "id": 565,
+        "id": 563,
         "category": "Zoologia",
         "question": "Il Geotritone sardo (Speleomantes spp.) possiede una caratteristica fisiologica unica tra gli anfibi europei. Quale?",
         "options": {
@@ -7882,7 +7882,7 @@
         "source": "Erpetologia Sarda"
     },
     {
-        "id": 566,
+        "id": 564,
         "category": "Zoologia",
         "question": "Quale differenza morfologica distingue il Cinghiale sardo (Sus scrofa meridionalis) da quello continentale?",
         "options": {
@@ -7896,7 +7896,7 @@
         "source": "Zoologia dei Vertebrati"
     },
     {
-        "id": 567,
+        "id": 565,
         "category": "Botanica",
         "question": "Il Fiordaliso spinoso (Centaurea horrida) è un endemismo sardo-corso caratteristico di quale ambiente?",
         "options": {
@@ -7910,7 +7910,7 @@
         "source": "Flora d'Italia (Pignatti) / Direttiva Habitat"
     },
     {
-        "id": 568,
+        "id": 566,
         "category": "Zoologia",
         "question": "Dove si trova l'unica colonia autoctona e storica di Grifone (Gyps fulvus) in Sardegna?",
         "options": {
@@ -7924,7 +7924,7 @@
         "source": "Piano d'Azione Nazionale per il Grifone"
     },
     {
-        "id": 569,
+        "id": 567,
         "category": "Zoologia",
         "question": "La Trachemys scripta (Testuggine palustre americana) è considerata:",
         "options": {
@@ -7938,7 +7938,7 @@
         "source": "Regolamento UE 1143/2014 sulle specie invasive"
     },
     {
-        "id": 570,
+        "id": 568,
         "category": "Botanica",
         "question": "Quale specie di pino è considerata l'unica parzialmente autoctona o storicizzata nelle zone montane sarde (Limbara, Gennargentu)?",
         "options": {
@@ -7952,7 +7952,7 @@
         "source": "Botanica sistematica e forestale"
     },
     {
-        "id": 571,
+        "id": 569,
         "category": "Zoologia",
         "question": "L'Astore sardo (Accipiter gentilis arrigonii) è un rapace specializzato nella caccia in quale ambiente?",
         "options": {
@@ -7966,7 +7966,7 @@
         "source": "Manuale di riconoscimento Rapaci Diurni"
     },
     {
-        "id": 572,
+        "id": 570,
         "category": "Botanica",
         "question": "Quali delle seguenti triadi di specie è rappresentativa della Macchia Mediterranea?",
         "options": {
@@ -7980,7 +7980,7 @@
         "source": "Vegetazione della Sardegna"
     },
     {
-        "id": 573,
+        "id": 571,
         "category": "Zoologia",
         "question": "Il Muflone (Ovis aries musimon) è caratterizzato da:",
         "options": {
@@ -7994,7 +7994,7 @@
         "source": "Zoologia - Classe Mammiferi"
     },
     {
-        "id": 574,
+        "id": 572,
         "category": "Botanica",
         "question": "Secondo la legislazione forestale, il taglio del Ginepro (Juniperus spp.) in Sardegna è:",
         "options": {
@@ -8008,7 +8008,7 @@
         "source": "Prescrizioni di Massima e Polizia Forestale"
     },
     {
-        "id": 575,
+        "id": 573,
         "category": "Zoologia",
         "question": "Il Pollo sultano (Porphyrio porphyrio) è una specie caratteristica di quale habitat sardo?",
         "options": {
@@ -8022,7 +8022,7 @@
         "source": "Atlante degli uccelli nidificanti"
     },
     {
-        "id": 576,
+        "id": 574,
         "category": "Zoologia",
         "question": "Quale di queste specie di mammiferi NON è autoctona della Sardegna ma è stata introdotta dall'uomo?",
         "options": {
@@ -8036,7 +8036,7 @@
         "source": "Elenco specie alloctone invasive"
     },
     {
-        "id": 577,
+        "id": 575,
         "category": "Botanica",
         "question": "Sebbene non siano piante, i funghi sono vitali per il bosco. Il 'Porcino nero' (Boletus aereus) vive in simbiosi (micorriza) preferibilmente con:",
         "options": {
@@ -8050,7 +8050,7 @@
         "source": "Micologia forestale"
     },
     {
-        "id": 578,
+        "id": 576,
         "category": "Zoologia",
         "question": "La Lepre sarda (Lepus capensis mediterraneus) si differenzia dalla Lepre europea per:",
         "options": {
@@ -8064,7 +8064,7 @@
         "source": "Fauna d'Italia - Lagomorfi"
     },
     {
-        "id": 579,
+        "id": 577,
         "category": "Fauna (L. 157/1992)",
         "question": "La Legge Regionale n. 23 del 1998 in Sardegna disciplina:",
         "options": {
@@ -8078,7 +8078,7 @@
         "source": "L.R. Sardegna 29 luglio 1998, n. 23"
     },
     {
-        "id": 580,
+        "id": 578,
         "category": "Geografia della Sardegna",
         "question": "Qual è la superficie approssimativa della Sardegna?",
         "options": {
@@ -8092,7 +8092,7 @@
         "source": "Wikipedia Sardegna; Skuola.net"
     },
     {
-        "id": 581,
+        "id": 579,
         "category": "Geografia della Sardegna",
         "question": "Qual è il punto più elevato della Sardegna?",
         "options": {
@@ -8106,7 +8106,7 @@
         "source": "Skuola.net geografia fisica Sardegna; Wikipedia"
     },
     {
-        "id": 582,
+        "id": 580,
         "category": "Geografia della Sardegna",
         "question": "Che percentuale del territorio sardo è collinare o montuoso?",
         "options": {
@@ -8120,7 +8120,7 @@
         "source": "Skuola.net; Treccani Enciclopedia"
     },
     {
-        "id": 583,
+        "id": 581,
         "category": "Geografia della Sardegna",
         "question": "Qual è il clima prevalente in Sardegna?",
         "options": {
@@ -8134,7 +8134,7 @@
         "source": "Skuola.net; Ispra"
     },
     {
-        "id": 584,
+        "id": 582,
         "category": "Geografia della Sardegna",
         "question": "Quale fiume è il più lungo della Sardegna?",
         "options": {
@@ -8148,7 +8148,7 @@
         "source": "Treccani; Skuola.net"
     },
     {
-        "id": 585,
+        "id": 583,
         "category": "Geografia della Sardegna",
         "question": "Le coste sarde sono prevalentemente:",
         "options": {
@@ -8162,7 +8162,7 @@
         "source": "Cittacapitali; Global Geografia"
     },
     {
-        "id": 586,
+        "id": 584,
         "category": "Geografia della Sardegna",
         "question": "In quale massiccio si trova Bruncu Spina?",
         "options": {
@@ -8176,7 +8176,7 @@
         "source": "Skuola.net; Raccolta quesiti"
     },
     {
-        "id": 587,
+        "id": 585,
         "category": "Geografia della Sardegna",
         "question": "Quale provincia ospita il Monte Limbara?",
         "options": {
@@ -8190,7 +8190,7 @@
         "source": "Raccolta quesiti; Wikipedia"
     },
     {
-        "id": 588,
+        "id": 586,
         "category": "Geografia della Sardegna",
         "question": "Il regime dei fiumi sardi è principalmente:",
         "options": {
@@ -8204,7 +8204,7 @@
         "source": "Treccani; Ispra"
     },
     {
-        "id": 589,
+        "id": 587,
         "category": "Geografia della Sardegna",
         "question": "Quale è una principale pianura costiera?",
         "options": {
@@ -8218,7 +8218,7 @@
         "source": "Skuola.net; Cittacapitali"
     },
     {
-        "id": 590,
+        "id": 588,
         "category": "Geografia della Sardegna",
         "question": "Le precipitazioni medie annue sulle coste sarde sono circa:",
         "options": {
@@ -8232,7 +8232,7 @@
         "source": "Cittacapitali; Ispra"
     },
     {
-        "id": 591,
+        "id": 589,
         "category": "Geografia della Sardegna",
         "question": "Quale arcipelago è vicino alle coste settentrionali?",
         "options": {
@@ -8246,7 +8246,7 @@
         "source": "Wikipedia; Skuola.net"
     },
     {
-        "id": 592,
+        "id": 590,
         "category": "Geografia della Sardegna",
         "question": "Lo stagno di Cabras si trova in:",
         "options": {
@@ -8260,7 +8260,7 @@
         "source": "Wikipedia; Treccani"
     },
     {
-        "id": 593,
+        "id": 591,
         "category": "Geografia della Sardegna",
         "question": "I 'tacchi' sardi sono altopiani di rocce:",
         "options": {
@@ -8274,7 +8274,7 @@
         "source": "Raccolta quesiti"
     },
     {
-        "id": 594,
+        "id": 592,
         "category": "Geografia della Sardegna",
         "question": "Quale catena montuosa è nel Supramonte?",
         "options": {
@@ -8288,7 +8288,7 @@
         "source": "Raccolta quesiti; Skuola.net"
     },
     {
-        "id": 595,
+        "id": 593,
         "category": "Geografia della Sardegna",
         "question": "Il Monte Linas si trova in provincia di:",
         "options": {
@@ -8302,7 +8302,7 @@
         "source": "Raccolta quesiti"
     },
     {
-        "id": 596,
+        "id": 594,
         "category": "Geografia della Sardegna",
         "question": "Le piogge più abbondanti si concentrano in:",
         "options": {
@@ -8316,7 +8316,7 @@
         "source": "Cittacapitali; Ispra"
     },
     {
-        "id": 597,
+        "id": 595,
         "category": "Geografia della Sardegna",
         "question": "Quale è un lago importante per invaso?",
         "options": {
@@ -8330,7 +8330,7 @@
         "source": "Treccani"
     },
     {
-        "id": 598,
+        "id": 596,
         "category": "Geografia della Sardegna",
         "question": "Le zone montuose ricevono fino a:",
         "options": {
@@ -8344,7 +8344,7 @@
         "source": "Cittacapitali"
     },
     {
-        "id": 599,
+        "id": 597,
         "category": "Geografia della Sardegna",
         "question": "Il Monte Rasu è in provincia di:",
         "options": {
@@ -8358,7 +8358,7 @@
         "source": "Raccolta quesiti"
     },
     {
-        "id": 600,
+        "id": 598,
         "category": "Geografia della Sardegna",
         "question": "Le opere idrauliche principali sono:",
         "options": {
@@ -8372,7 +8372,7 @@
         "source": "Treccani; Cittacapitali"
     },
     {
-        "id": 601,
+        "id": 599,
         "category": "Geografia della Sardegna",
         "question": "Quale tratto costiero ha scogliere granitiche?",
         "options": {
@@ -8386,7 +8386,7 @@
         "source": "Cittacapitali; Wikipedia"
     },
     {
-        "id": 602,
+        "id": 600,
         "category": "Legislazione Forestale",
         "question": "Secondo l'Art. 1 del R.D.L. 3267/1923, qual è lo scopo primario del vincolo per scopi idrogeologici?",
         "options": {
@@ -8400,7 +8400,7 @@
         "source": "R.D.L. 30 dicembre 1923, n. 3267, Art. 1"
     },
     {
-        "id": 603,
+        "id": 601,
         "category": "Legislazione Forestale",
         "question": "Quale attività è di norma vietata nei boschi vincolati ai sensi dell'Art. 9 del R.D.L. 3267/1923 a causa dei danni alla rinnovazione forestale?",
         "options": {
@@ -8414,7 +8414,7 @@
         "source": "R.D.L. 30 dicembre 1923, n. 3267, Art. 9"
     },
     {
-        "id": 604,
+        "id": 602,
         "category": "Legislazione Forestale",
         "question": "A differenza del vincolo idrogeologico, il vincolo per altri scopi (Art. 17) conferisce ai proprietari un diritto specifico. Quale?",
         "options": {
@@ -8428,7 +8428,7 @@
         "source": "R.D.L. 30 dicembre 1923, n. 3267, Artt. 17 e 21"
     },
     {
-        "id": 605,
+        "id": 603,
         "category": "Legislazione Forestale",
         "question": "In base all'Art. 24, quale conseguenza principale affronta chi esegue una trasformazione colturale non autorizzata su un terreno vincolato?",
         "options": {
@@ -8442,7 +8442,7 @@
         "source": "R.D.L. 30 dicembre 1923, n. 3267, Art. 24"
     },
     {
-        "id": 606,
+        "id": 604,
         "category": "Legislazione Forestale",
         "question": "L'Art. 26 del R.D.L. 3267/1923 come quantifica la sanzione per chi taglia o danneggia piante in violazione delle prescrizioni?",
         "options": {
@@ -8456,7 +8456,7 @@
         "source": "R.D.L. 30 dicembre 1923, n. 3267, Art. 26"
     },
     {
-        "id": 607,
+        "id": 605,
         "category": "Legislazione Forestale",
         "question": "Entro quale termine, dalla notifica del verbale, il trasgressore può fare domanda di conciliazione ai sensi degli Artt. 35-36?",
         "options": {
@@ -8470,7 +8470,7 @@
         "source": "R.D.L. 30 dicembre 1923, n. 3267, Artt. 35-36"
     },
     {
-        "id": 608,
+        "id": 606,
         "category": "Legislazione Forestale",
         "question": "Secondo l'Art. 58, quale incentivo fiscale è previsto per i proprietari che rimboschiscono i propri terreni con boschi di alto fusto?",
         "options": {
@@ -8484,7 +8484,7 @@
         "source": "R.D.L. 30 dicembre 1923, n. 3267, Art. 58"
     },
     {
-        "id": 609,
+        "id": 607,
         "category": "Legislazione Forestale",
         "question": "Quale conseguenza giuridica immediata scatta per i terreni inclusi nella perimetrazione di un bacino montano da sistemare (Art. 47)?",
         "options": {
@@ -8498,7 +8498,7 @@
         "source": "R.D.L. 30 dicembre 1923, n. 3267, Art. 47"
     },
     {
-        "id": 610,
+        "id": 608,
         "category": "Legislazione Forestale",
         "question": "In base all'Art. 88, la norma speciale per la Sardegna prevede che i lavori di rimboschimento sui terreni ex-ademprivili siano eseguiti:",
         "options": {
@@ -8512,7 +8512,7 @@
         "source": "R.D.L. 30 dicembre 1923, n. 3267, Art. 88"
     },
     {
-        "id": 611,
+        "id": 609,
         "category": "Legislazione Forestale",
         "question": "Quale delle seguenti finalità NON rientra nel vincolo 'per altri scopi' secondo l'Art. 17 del R.D.L. 3267/1923?",
         "options": {
@@ -8526,7 +8526,7 @@
         "source": "R.D.L. 30 dicembre 1923, n. 3267, Artt. 1 e 17"
     },
     {
-        "id": 612,
+        "id": 610,
         "category": "Legislazione Forestale",
         "question": "Secondo l'Art. 7, la trasformazione di un bosco vincolato in altra qualità di coltura è:",
         "options": {
@@ -8540,7 +8540,7 @@
         "source": "R.D.L. 30 dicembre 1923, n. 3267, Art. 7"
     },
     {
-        "id": 613,
+        "id": 611,
         "category": "Legislazione Forestale",
         "question": "Cosa prevede l'Art. 27 del R.D.L. 3267/1923 per gli amministratori di enti morali (es. Comuni) che commettono un'infrazione?",
         "options": {
@@ -8554,7 +8554,7 @@
         "source": "R.D.L. 30 dicembre 1923, n. 3267, Art. 27"
     },
     {
-        "id": 614,
+        "id": 612,
         "category": "Legislazione Forestale",
         "question": "Una volta ultimate le opere di sistemazione idraulico-forestale, cosa sono tenuti a fare i proprietari dei terreni secondo l'Art. 54?",
         "options": {
@@ -8568,7 +8568,7 @@
         "source": "R.D.L. 30 dicembre 1923, n. 3267, Art. 54"
     },
     {
-        "id": 615,
+        "id": 613,
         "category": "Legislazione Forestale",
         "question": "Secondo l'Art. 76, se i proprietari dei terreni vincolati non intendono eseguire i lavori di rimboschimento ritenuti necessari, cosa può fare l'amministrazione?",
         "options": {
@@ -8582,7 +8582,7 @@
         "source": "R.D.L. 30 dicembre 1923, n. 3267, Art. 76"
     },
     {
-        "id": 616,
+        "id": 614,
         "category": "Legislazione Forestale",
         "question": "Perché il 'vincolo per altri scopi' (Art. 17) prevede un indennizzo, a differenza di quello idrogeologico?",
         "options": {
@@ -8596,7 +8596,7 @@
         "source": "R.D.L. 30 dicembre 1923, n. 3267, Principio giuridico Artt. 17-21"
     },
     {
-        "id": 617,
+        "id": 615,
         "category": "Legislazione Forestale",
         "question": "Cosa si intende per 'prescrizioni di massima' ai sensi dell'Art. 8?",
         "options": {
@@ -8610,7 +8610,7 @@
         "source": "R.D.L. 30 dicembre 1923, n. 3267, Art. 8"
     },
     {
-        "id": 618,
+        "id": 616,
         "category": "Legislazione Forestale",
         "question": "L'indennità annua corrisposta ai proprietari per l'occupazione dei terreni durante i lavori di sistemazione (Art. 50) a cosa serve?",
         "options": {
@@ -8624,7 +8624,7 @@
         "source": "R.D.L. 30 dicembre 1923, n. 3267, Art. 50"
     },
     {
-        "id": 619,
+        "id": 617,
         "category": "Legislazione Forestale",
         "question": "Ai sensi dell'Art. 9 del R.D. 1126/1926, quale è il termine massimo entro cui il Comitato Forestale deve deliberare sui reclami presentati contro una proposta di vincolo?",
         "options": {
@@ -8638,7 +8638,7 @@
         "source": "R.D. 16 maggio 1926, n. 1126, Art. 9"
     },
     {
-        "id": 620,
+        "id": 618,
         "category": "Legislazione Forestale",
         "question": "In base all'Art. 13 del R.D. 1126/1926, i terreni che erano vincolati da leggi precedenti ma sono esclusi dalla nuova delimitazione definitiva:",
         "options": {
@@ -8652,7 +8652,7 @@
         "source": "R.D. 16 maggio 1926, n. 1126, Art. 13"
     },
     {
-        "id": 621,
+        "id": 619,
         "category": "Legislazione Forestale",
         "question": "Le Prescrizioni di Massima e di Polizia Forestale (Art. 19, R.D. 1126/1926) per i terreni a coltura agraria vincolati prevedono che le lavorazioni:",
         "options": {
@@ -8666,7 +8666,7 @@
         "source": "R.D. 16 maggio 1926, n. 1126, Art. 19"
     },
     {
-        "id": 622,
+        "id": 620,
         "category": "Legislazione Forestale",
         "question": "Secondo l'Art. 21 del R.D. 1126/1926, per quanto tempo deve essere pubblicata all'albo pretorio la domanda di un proprietario per la trasformazione di un bosco in altra coltura?",
         "options": {
@@ -8680,7 +8680,7 @@
         "source": "R.D. 16 maggio 1926, n. 1126, Art. 21"
     },
     {
-        "id": 623,
+        "id": 621,
         "category": "Legislazione Forestale",
         "question": "Quale dei seguenti requisiti definisce una 'sughereta' ai sensi dell'Art. 9 della L.R. 4/1994?",
         "options": {
@@ -8694,7 +8694,7 @@
         "source": "L.R. 4/1994, Art. 9"
     },
     {
-        "id": 624,
+        "id": 622,
         "category": "Legislazione Forestale",
         "question": "In base all'Art. 6 della L.R. 4/1994, se l'Ispettorato Forestale non risponde a una domanda di abbattimento di sughere entro 30 giorni, cosa succede?",
         "options": {
@@ -8708,7 +8708,7 @@
         "source": "L.R. 4/1994, Art. 6"
     },
     {
-        "id": 625,
+        "id": 623,
         "category": "Legislazione Forestale",
         "question": "L'Art. 8 della L.R. 4/1994 vieta la recisione di rami di sughera se l'operazione danneggia la pianta. Quando si configura il danno?",
         "options": {
@@ -8722,7 +8722,7 @@
         "source": "L.R. 4/1994, Art. 8"
     },
     {
-        "id": 626,
+        "id": 624,
         "category": "Legislazione Forestale",
         "question": "Secondo l'Art. 22 della L.R. 4/1994, qual è l'intervallo minimo (turno) tra due estrazioni di sughero successive sulla stessa pianta?",
         "options": {
@@ -8736,7 +8736,7 @@
         "source": "L.R. 4/1994, Art. 22"
     },
     {
-        "id": 627,
+        "id": 625,
         "category": "Legislazione Forestale",
         "question": "In assenza di un decreto assessoriale, l'Art. 27 della L.R. 4/1994 stabilisce che il periodo di estrazione del sughero va:",
         "options": {
@@ -8750,7 +8750,7 @@
         "source": "L.R. 4/1994, Art. 27"
     },
     {
-        "id": 628,
+        "id": 626,
         "category": "Legislazione Forestale",
         "question": "Cosa prevede l'Art. 28 della L.R. 4/1994 in caso di recidiva nella violazione delle norme sulla tutela della sughera?",
         "options": {
@@ -8764,7 +8764,7 @@
         "source": "L.R. 4/1994, Art. 28"
     },
     {
-        "id": 629,
+        "id": 627,
         "category": "Legislazione Forestale",
         "question": "Secondo le PMPF (Art. 19, R.D. 1126/1926), per quale tipologia di terreno sono previste norme per il dissodamento e la successiva sistemazione agraria?",
         "options": {
@@ -8778,7 +8778,7 @@
         "source": "R.D. 16 maggio 1926, n. 1126, Art. 19"
     },
     {
-        "id": 630,
+        "id": 628,
         "category": "Legislazione Forestale",
         "question": "L'Art. 16 della L.R. 4/1994 stabilisce che l'autorizzazione al pascolo in una sughereta ha una durata massima di:",
         "options": {
@@ -8792,7 +8792,7 @@
         "source": "L.R. 4/1994, Art. 16"
     },
     {
-        "id": 631,
+        "id": 629,
         "category": "Legislazione Forestale",
         "question": "Ai sensi dell'Art. 20 della L.R. 4/1994, la prima estrazione di sughero (demaschiatura) non può superare in altezza:",
         "options": {
@@ -8806,7 +8806,7 @@
         "source": "L.R. 4/1994, Art. 20"
     },
     {
-        "id": 632,
+        "id": 630,
         "category": "Legislazione Forestale",
         "question": "L'Art. 12 del R.D. 1126/1926 prevede che una copia della mappa delle zone vincolate e dell'elenco dei terreni sia conservata:",
         "options": {
@@ -8820,7 +8820,7 @@
         "source": "R.D. 16 maggio 1926, n. 1126, Art. 12"
     },
     {
-        "id": 633,
+        "id": 631,
         "category": "Legislazione Forestale",
         "question": "In base all'Art. 17 del R.D. 1126/1926, se le ragioni di un'esenzione dal vincolo vengono a mancare, l'Ispettorato Forestale può avviare la revoca. Quanti giorni hanno gli interessati per presentare controdeduzioni?",
         "options": {
@@ -8834,7 +8834,7 @@
         "source": "R.D. 16 maggio 1926, n. 1126, Art. 17"
     },
     {
-        "id": 634,
+        "id": 632,
         "category": "Legislazione Forestale",
         "question": "Le PMPF (Art. 19, R.D. 1126/1926) per i boschi cedui, al fine di garantirne la rigenerazione, prevedono l'obbligo di conservare:",
         "options": {
@@ -8848,7 +8848,7 @@
         "source": "R.D. 16 maggio 1926, n. 1126, Art. 19"
     },
     {
-        "id": 635,
+        "id": 633,
         "category": "Legislazione Forestale",
         "question": "Secondo l'Art. 14 della L.R. 4/1994, le lavorazioni agricole all'interno delle sugherete sono:",
         "options": {
@@ -8862,7 +8862,7 @@
         "source": "L.R. 4/1994, Art. 14"
     },
     {
-        "id": 636,
+        "id": 634,
         "category": "Legislazione Forestale",
         "question": "Qual è la sanzione per l'abbattimento non autorizzato di una sughera secondo l'Art. 7 della L.R. 4/1994?",
         "options": {
@@ -8876,7 +8876,7 @@
         "source": "L.R. 4/1994, Art. 7"
     },
     {
-        "id": 637,
+        "id": 635,
         "category": "Legislazione Forestale",
         "question": "Ai sensi dell'Art. 14 del R.D. 1126/1926, per quanto tempo deve essere pubblicata la domanda di un proprietario per ottenere l'esenzione dal vincolo idrogeologico?",
         "options": {
@@ -8890,7 +8890,7 @@
         "source": "R.D. 16 maggio 1926, n. 1126, Art. 14"
     },
     {
-        "id": 638,
+        "id": 636,
         "category": "Legislazione Forestale",
         "question": "Le Prescrizioni di Massima e di Polizia Forestale (R.D. 1126/1926) si applicano:",
         "options": {
@@ -8904,7 +8904,7 @@
         "source": "R.D. 16 maggio 1926, n. 1126, Titolo I, Capo II"
     },
     {
-        "id": 639,
+        "id": 637,
         "category": "Legislazione Forestale",
         "question": "L'Art. 18 della L.R. 4/1994 consente il decespugliamento senza autorizzazione:",
         "options": {
@@ -8918,7 +8918,7 @@
         "source": "L.R. 4/1994, Art. 18"
     },
     {
-        "id": 640,
+        "id": 638,
         "category": "Legislazione Forestale",
         "question": "Cosa accade se il Comitato Forestale non delibera sulla domanda di trasformazione di un bosco entro 180 giorni (Art. 21, R.D. 1126/1926)?",
         "options": {
@@ -8932,7 +8932,7 @@
         "source": "R.D. 16 maggio 1926, n. 1126, Art. 21 (e principio generale Art. 9)"
     },
     {
-        "id": 641,
+        "id": 639,
         "category": "Aree Protette (L. 394/1991)",
         "question": "Secondo l'Art. 1 della L. 394/1991, quale NON è una delle finalità principali del regime speciale di tutela applicato ai territori di rilevante valore naturalistico?",
         "options": {
@@ -8946,7 +8946,7 @@
         "source": "Art. 1, comma 3, L. 394/1991"
     },
     {
-        "id": 642,
+        "id": 640,
         "category": "Aree Protette (L. 394/1991)",
         "question": "In base all'Art. 2, come viene definito un Parco Nazionale?",
         "options": {
@@ -8960,7 +8960,7 @@
         "source": "Art. 2, comma 1, L. 394/1991"
     },
     {
-        "id": 643,
+        "id": 641,
         "category": "Aree Protette (L. 394/1991)",
         "question": "Quale organo ha sostituito il \"Comitato per le aree naturali protette\" nelle sue funzioni a seguito del D.Lgs. 281/1997?",
         "options": {
@@ -8974,7 +8974,7 @@
         "source": "Art. 3 (come modificato dal D.Lgs. 281/1997)"
     },
     {
-        "id": 644,
+        "id": 642,
         "category": "Aree Protette (L. 394/1991)",
         "question": "Cosa NON rientra tra i contenuti del Programma triennale per le aree naturali protette, secondo l'Art. 4?",
         "options": {
@@ -8988,7 +8988,7 @@
         "source": "Art. 4, comma 1, L. 394/1991"
     },
     {
-        "id": 645,
+        "id": 643,
         "category": "Aree Protette (L. 394/1991)",
         "question": "Ai sensi dell'Art. 10, su quale dei seguenti atti il parere della Comunità del Parco è obbligatorio?",
         "options": {
@@ -9002,7 +9002,7 @@
         "source": "Art. 10, L. 394/1991"
     },
     {
-        "id": 646,
+        "id": 644,
         "category": "Aree Protette (L. 394/1991)",
         "question": "Nella zonizzazione del Piano per il Parco (Art. 12), come è definita la 'zona B'?",
         "options": {
@@ -9016,7 +9016,7 @@
         "source": "Art. 12, comma 2, lettera b), L. 394/1991"
     },
     {
-        "id": 647,
+        "id": 645,
         "category": "Aree Protette (L. 394/1991)",
         "question": "Quale tra i seguenti è un divieto generale valido in tutto il parco, secondo l'Art. 11, comma 3?",
         "options": {
@@ -9030,7 +9030,7 @@
         "source": "Art. 11, comma 3, L. 394/1991"
     },
     {
-        "id": 648,
+        "id": 646,
         "category": "Aree Protette (L. 394/1991)",
         "question": "Cosa accade se l'Ente Parco non si pronuncia su una richiesta di Nulla Osta entro il termine di 60 giorni previsto dall'Art. 13?",
         "options": {
@@ -9044,7 +9044,7 @@
         "source": "Art. 13, L. 394/1991"
     },
     {
-        "id": 649,
+        "id": 647,
         "category": "Aree Protette (L. 394/1991)",
         "question": "Nei parchi regionali, in caso di squilibri ecologici, da chi devono essere effettuati preferenzialmente gli abbattimenti selettivi secondo l'Art. 22?",
         "options": {
@@ -9058,7 +9058,7 @@
         "source": "Art. 22, comma 6, L. 394/1991"
     },
     {
-        "id": 650,
+        "id": 648,
         "category": "Aree Protette (L. 394/1991)",
         "question": "Quale regime venatorio speciale vige nelle 'aree contigue' secondo l'Art. 32?",
         "options": {
@@ -9072,7 +9072,7 @@
         "source": "Art. 32, L. 394/1991"
     },
     {
-        "id": 651,
+        "id": 649,
         "category": "Aree Protette (L. 394/1991)",
         "question": "Quale parco nazionale è stato istituito direttamente dalla Legge 394/1991 in Sardegna, secondo l'Art. 34?",
         "options": {
@@ -9086,7 +9086,7 @@
         "source": "Art. 34, comma 2, L. 394/1991"
     },
     {
-        "id": 652,
+        "id": 650,
         "category": "Aree Protette (L. 394/1991)",
         "question": "Quale organo dell'Ente Parco ha la rappresentanza legale dell'ente e ne coordina le attività?",
         "options": {
@@ -9100,7 +9100,7 @@
         "source": "Art. 9, comma 2, L. 394/1991"
     },
     {
-        "id": 653,
+        "id": 651,
         "category": "Aree Protette (L. 394/1991)",
         "question": "In caso di accertamento di un'attività illecita, quale potere conferisce l'Art. 29 al legale rappresentante dell'organismo di gestione?",
         "options": {
@@ -9114,7 +9114,7 @@
         "source": "Art. 29, L. 394/1991"
     },
     {
-        "id": 654,
+        "id": 652,
         "category": "Aree Protette (L. 394/1991)",
         "question": "Qual è la sanzione penale per la violazione dei divieti generali nel parco (es. cattura animali, uso di fuochi) secondo l'Art. 30?",
         "options": {
@@ -9128,7 +9128,7 @@
         "source": "Art. 30 in relazione all'Art. 11, comma 3, L. 394/1991"
     },
     {
-        "id": 655,
+        "id": 653,
         "category": "Aree Protette (L. 394/1991)",
         "question": "Entro quale termine dall'approvazione del Piano va adottato il Regolamento del Parco (Art. 11)?",
         "options": {
@@ -9142,7 +9142,7 @@
         "source": "Art. 11, L. 394/1991"
     },
     {
-        "id": 656,
+        "id": 654,
         "category": "Aree Protette (L. 394/1991)",
         "question": "Cosa sono le 'Misure di Salvaguardia' previste dall'Art. 6?",
         "options": {
@@ -9156,7 +9156,7 @@
         "source": "Art. 6, L. 394/1991"
     },
     {
-        "id": 657,
+        "id": 655,
         "category": "Aree Protette (L. 394/1991)",
         "question": "In cosa consiste la principale distinzione operativa tra il Piano (Art. 12) e il Regolamento (Art. 11) del parco?",
         "options": {
@@ -9170,7 +9170,7 @@
         "source": "Interpretazione degli Art. 11 e 12, L. 394/1991"
     },
     {
-        "id": 658,
+        "id": 656,
         "category": "Aree Protette (L. 394/1991)",
         "question": "Secondo l'Art. 7, i comuni con territorio in un parco hanno priorità nell'accesso a finanziamenti per quale tipo di intervento?",
         "options": {
@@ -9184,7 +9184,7 @@
         "source": "Art. 7, L. 394/1991"
     },
     {
-        "id": 659,
+        "id": 657,
         "category": "Aree Protette (L. 394/1991)",
         "question": "Cosa prevede l'Art. 30 in caso di recidiva per le violazioni penali?",
         "options": {
@@ -9198,7 +9198,7 @@
         "source": "Art. 30, L. 394/1991"
     },
     {
-        "id": 660,
+        "id": 658,
         "category": "Aree Protette (L. 394/1991)",
         "question": "Quale caratteristica definisce una Riserva Naturale ai sensi dell'Art. 2?",
         "options": {
@@ -9212,7 +9212,7 @@
         "source": "Art. 2, comma 3, L. 394/1991"
     },
     {
-        "id": 661,
+        "id": 659,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Qual è la finalità principale della Legge 21 novembre 2000, n. 353?",
         "options": {
@@ -9226,7 +9226,7 @@
         "source": "Art. 1, L. 353/2000"
     },
     {
-        "id": 662,
+        "id": 660,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Secondo l'art. 2 della L. 353/2000, cosa si intende per 'incendio boschivo'?",
         "options": {
@@ -9240,7 +9240,7 @@
         "source": "Art. 2, L. 353/2000"
     },
     {
-        "id": 663,
+        "id": 661,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Con quale frequenza deve essere revisionato il 'Piano regionale di previsione, prevenzione e lotta attiva contro gli incendi boschivi' (Piano AIB)?",
         "options": {
@@ -9254,7 +9254,7 @@
         "source": "Art. 3, L. 353/2000"
     },
     {
-        "id": 664,
+        "id": 662,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Quale dei seguenti elementi NON è un contenuto obbligatorio del Piano AIB secondo l'art. 3?",
         "options": {
@@ -9268,7 +9268,7 @@
         "source": "Art. 3, comma 3, L. 353/2000"
     },
     {
-        "id": 665,
+        "id": 663,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Qual è la differenza fondamentale tra 'previsione' e 'prevenzione' secondo l'art. 4 della L. 353/2000?",
         "options": {
@@ -9282,7 +9282,7 @@
         "source": "Art. 4, L. 353/2000"
     },
     {
-        "id": 666,
+        "id": 664,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Chi coordina la flotta aerea antincendio dello Stato (es. Canadair) secondo la L. 353/2000?",
         "options": {
@@ -9296,7 +9296,7 @@
         "source": "Art. 7, L. 353/2000"
     },
     {
-        "id": 667,
+        "id": 665,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Qual è il ruolo della SOUP (Sala Operativa Unificata Permanente) nella lotta attiva agli incendi?",
         "options": {
@@ -9310,7 +9310,7 @@
         "source": "Art. 7, L. 353/2000"
     },
     {
-        "id": 668,
+        "id": 666,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Per quanto tempo vige il divieto di modificare la destinazione d'uso preesistente su un soprassuolo percorso dal fuoco?",
         "options": {
@@ -9324,7 +9324,7 @@
         "source": "Art. 10, comma 1, L. 353/2000"
     },
     {
-        "id": 669,
+        "id": 667,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Per quanti anni è vietata l'edificazione sui soprassuoli percorsi dal fuoco?",
         "options": {
@@ -9338,7 +9338,7 @@
         "source": "Art. 10, comma 1, L. 353/2000"
     },
     {
-        "id": 670,
+        "id": 668,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Il divieto di pascolo e caccia sui soprassuoli delle zone boscate percorsi dal fuoco dura:",
         "options": {
@@ -9352,7 +9352,7 @@
         "source": "Art. 10, comma 1, L. 353/2000"
     },
     {
-        "id": 671,
+        "id": 669,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Qual è la pena per chi cagiona colposamente (per negligenza o imprudenza) un incendio boschivo secondo l'art. 423-bis c.p.?",
         "options": {
@@ -9366,7 +9366,7 @@
         "source": "Art. 11, L. 353/2000"
     },
     {
-        "id": 672,
+        "id": 670,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Cosa accade se un atto di compravendita di un terreno percorso da incendio, stipulato entro 15 anni, non menziona il vincolo di inedificabilità?",
         "options": {
@@ -9380,7 +9380,7 @@
         "source": "Art. 10, L. 353/2000"
     },
     {
-        "id": 673,
+        "id": 671,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "A quanto ammonta la sanzione amministrativa per chi compie azioni che possono innescare incendi (es. gettare un mozzicone) nelle aree a rischio?",
         "options": {
@@ -9394,7 +9394,7 @@
         "source": "Art. 10, comma 6, L. 353/2000"
     },
     {
-        "id": 674,
+        "id": 672,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Come vengono gestiti i piani antincendio per le Aree Naturali Protette secondo l'art. 8?",
         "options": {
@@ -9408,7 +9408,7 @@
         "source": "Art. 8, L. 353/2000"
     },
     {
-        "id": 675,
+        "id": 673,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Cosa succede se a commettere un'azione a rischio incendio (art. 10 c. 6) è un operatore addetto alla lotta attiva?",
         "options": {
@@ -9422,7 +9422,7 @@
         "source": "Art. 10, comma 6, L. 353/2000"
     },
     {
-        "id": 676,
+        "id": 674,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "La pena per chi cagiona volontariamente (con dolo) un incendio su boschi, selve o foreste è:",
         "options": {
@@ -9436,7 +9436,7 @@
         "source": "Art. 11, L. 353/2000"
     },
     {
-        "id": 677,
+        "id": 675,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Quale delle seguenti è una circostanza aggravante per il reato di incendio boschivo?",
         "options": {
@@ -9450,7 +9450,7 @@
         "source": "Art. 11, L. 353/2000"
     },
     {
-        "id": 678,
+        "id": 676,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "L'attività di 'lotta attiva' (art. 7) contro gli incendi boschivi comprende:",
         "options": {
@@ -9464,7 +9464,7 @@
         "source": "Art. 7, L. 353/2000"
     },
     {
-        "id": 679,
+        "id": 677,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "La Legge 353/2000, oltre alla lotta attiva, promuove altre due macro-attività. Quali sono?",
         "options": {
@@ -9478,7 +9478,7 @@
         "source": "Art. 1, L. 353/2000"
     },
     {
-        "id": 680,
+        "id": 678,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Il divieto di rimboschimento con fondi pubblici su aree percorse da incendio, salvo deroghe, ha una durata di:",
         "options": {
@@ -9492,7 +9492,7 @@
         "source": "Art. 10, L. 353/2000"
     },
     {
-        "id": 681,
+        "id": 679,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "A quale sanzione è soggetto chi viola il divieto di pascolo su un'area percorsa dal fuoco?",
         "options": {
@@ -9506,7 +9506,7 @@
         "source": "Art. 10, comma 4, L. 353/2000"
     },
     {
-        "id": 682,
+        "id": 680,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "L'art. 423-bis c.p. si applica anche se l'incendio è appiccato a 'vivai forestali destinati al rimboschimento'?",
         "options": {
@@ -9520,7 +9520,7 @@
         "source": "Art. 11, L. 353/2000"
     },
     {
-        "id": 683,
+        "id": 681,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Quale ente è responsabile della richiesta di intervento della flotta aerea statale al COAU?",
         "options": {
@@ -9534,7 +9534,7 @@
         "source": "Art. 7, L. 353/2000"
     },
     {
-        "id": 684,
+        "id": 682,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "L'attività di previsione, secondo la L. 353/2000, include anche:",
         "options": {
@@ -9548,7 +9548,7 @@
         "source": "Art. 4, L. 353/2000"
     },
     {
-        "id": 685,
+        "id": 683,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Perché la definizione di 'incendio boschivo' (art. 2) è volutamente ampia?",
         "options": {
@@ -9562,7 +9562,7 @@
         "source": "Art. 2, L. 353/2000"
     },
     {
-        "id": 686,
+        "id": 684,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Un aumento di pena per il reato di incendio boschivo è previsto se:",
         "options": {
@@ -9576,7 +9576,7 @@
         "source": "Art. 11, L. 353/2000"
     },
     {
-        "id": 687,
+        "id": 685,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Quale delle seguenti attività rientra nella 'prevenzione' degli incendi boschivi (art. 4)?",
         "options": {
@@ -9590,7 +9590,7 @@
         "source": "Art. 4, L. 353/2000"
     },
     {
-        "id": 688,
+        "id": 686,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "La violazione del divieto di caccia su aree percorse dal fuoco comporta una sanzione amministrativa che va da:",
         "options": {
@@ -9604,7 +9604,7 @@
         "source": "Art. 10, comma 5, L. 353/2000"
     },
     {
-        "id": 689,
+        "id": 687,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "La L. 353/2000 impone di promuovere l'educazione ambientale:",
         "options": {
@@ -9618,7 +9618,7 @@
         "source": "Art. 1 e Art. 5, L. 353/2000"
     },
     {
-        "id": 690,
+        "id": 688,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Qual è l'acronimo della struttura che coordina le forze di spegnimento a terra a livello regionale?",
         "options": {
@@ -9632,7 +9632,7 @@
         "source": "Art. 7, L. 353/2000"
     },
     {
-        "id": 691,
+        "id": 689,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Il Piano AIB Regionale, tra le altre cose, deve contenere:",
         "options": {
@@ -9646,7 +9646,7 @@
         "source": "Art. 3, comma 3, L. 353/2000"
     },
     {
-        "id": 692,
+        "id": 690,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "L'introduzione dell'art. 423-bis nel Codice Penale ha avuto come effetto:",
         "options": {
@@ -9660,7 +9660,7 @@
         "source": "Art. 11, L. 353/2000"
     },
     {
-        "id": 693,
+        "id": 691,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "Quale vincolo temporale ha una durata di 15 anni sui soprassuoli percorsi da incendio?",
         "options": {
@@ -9674,7 +9674,7 @@
         "source": "Art. 10, comma 1, L. 353/2000"
     },
     {
-        "id": 694,
+        "id": 692,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "La L. 353/2000 è definita una 'legge-quadro' perché:",
         "options": {
@@ -9688,7 +9688,7 @@
         "source": "Introduzione (concetto generale della legge)"
     },
     {
-        "id": 695,
+        "id": 693,
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "In quali casi il divieto di rimboschimento con fondi pubblici per 5 anni può essere derogato?",
         "options": {
@@ -9702,7 +9702,7 @@
         "source": "Art. 10, L. 353/2000"
     },
     {
-        "id": 696,
+        "id": 694,
         "category": "Reati Ambientali",
         "question": "Quale provvedimento normativo ha introdotto nel Codice Penale il Titolo VI-bis, 'Dei delitti contro l'ambiente'?",
         "options": {
@@ -9716,7 +9716,7 @@
         "source": "Legge 22 maggio 2015, n. 68"
     },
     {
-        "id": 697,
+        "id": 695,
         "category": "Reati Ambientali",
         "question": "Secondo l'art. 452-bis c.p., cosa si intende per 'inquinamento ambientale'?",
         "options": {
@@ -9730,7 +9730,7 @@
         "source": "art. 452-bis c.p."
     },
     {
-        "id": 698,
+        "id": 696,
         "category": "Reati Ambientali",
         "question": "Qual è la pena base prevista per il delitto di disastro ambientale (art. 452-quater c.p.)?",
         "options": {
@@ -9744,7 +9744,7 @@
         "source": "art. 452-quater c.p."
     },
     {
-        "id": 699,
+        "id": 697,
         "category": "Reati Ambientali",
         "question": "L'art. 452-septies c.p. (Impedimento del controllo) quale bene giuridico tutela primariamente?",
         "options": {
@@ -9758,7 +9758,7 @@
         "source": "art. 452-septies c.p."
     },
     {
-        "id": 700,
+        "id": 698,
         "category": "Reati Ambientali",
         "question": "Cosa punisce specificamente il reato di 'Omessa bonifica' ai sensi dell'art. 452-terdecies c.p.?",
         "options": {
@@ -9772,7 +9772,7 @@
         "source": "art. 452-terdecies c.p."
     },
     {
-        "id": 701,
+        "id": 699,
         "category": "Reati Ambientali",
         "question": "Ai sensi dell'art. 256, comma 1, del D.Lgs. 152/2006, quale sanzione si applica per la gestione non autorizzata di rifiuti NON pericolosi?",
         "options": {
@@ -9786,7 +9786,7 @@
         "source": "Art. 256, comma 1, D.Lgs. 152/2006"
     },
     {
-        "id": 702,
+        "id": 700,
         "category": "Reati Ambientali",
         "question": "Quale pena si applica, ai sensi dell'art. 256, comma 1, TUA, per la gestione non autorizzata di rifiuti PERICOLOSI?",
         "options": {
@@ -9800,7 +9800,7 @@
         "source": "Art. 256, comma 1, D.Lgs. 152/2006"
     },
     {
-        "id": 703,
+        "id": 701,
         "category": "Reati Ambientali",
         "question": "Cosa succede alla pena per gestione di rifiuti non pericolosi se dal fatto deriva pericolo di compromissione di un ecosistema (art. 256, comma 1-bis TUA)?",
         "options": {
@@ -9814,7 +9814,7 @@
         "source": "Art. 256, comma 1-bis, D.Lgs. 152/2006"
     },
     {
-        "id": 704,
+        "id": 702,
         "category": "Reati Ambientali",
         "question": "La realizzazione di una discarica non autorizzata destinata a rifiuti PERICOLOSI, quale pena comporta secondo l'art. 256, comma 3, TUA?",
         "options": {
@@ -9828,7 +9828,7 @@
         "source": "Art. 256, comma 3, D.Lgs. 152/2006"
     },
     {
-        "id": 705,
+        "id": 703,
         "category": "Reati Ambientali",
         "question": "Un soggetto autorizzato alla gestione di rifiuti che non rispetta una prescrizione del titolo abilitativo, quale reato commette secondo l'art. 256 TUA?",
         "options": {
@@ -9842,7 +9842,7 @@
         "source": "Art. 256, comma 4, D.Lgs. 152/2006"
     },
     {
-        "id": 706,
+        "id": 704,
         "category": "Reati Ambientali",
         "question": "Secondo la giurisprudenza della Cassazione, la responsabilità penale del proprietario di un'area per una discarica abusiva commessa da terzi:",
         "options": {
@@ -9856,7 +9856,7 @@
         "source": "Giurisprudenza (Cass. pen. n. 27692/2019)"
     },
     {
-        "id": 707,
+        "id": 705,
         "category": "Reati Ambientali",
         "question": "Il reato di trasporto abusivo di rifiuti (art. 256, c. 1, TUA) è considerato dalla giurisprudenza un reato:",
         "options": {
@@ -9870,7 +9870,7 @@
         "source": "Giurisprudenza (Cass. pen. n. 8966/2019)"
     },
     {
-        "id": 708,
+        "id": 706,
         "category": "Reati Ambientali",
         "question": "La confisca del veicolo utilizzato per il trasporto illecito di rifiuti, secondo la Cassazione:",
         "options": {
@@ -9884,7 +9884,7 @@
         "source": "Giurisprudenza (Cass. pen. n. 46012/2008)"
     },
     {
-        "id": 709,
+        "id": 707,
         "category": "Reati Ambientali",
         "question": "Qual è la distinzione fondamentale tra delitti e contravvenzioni in termini di pene edittali?",
         "options": {
@@ -9898,7 +9898,7 @@
         "source": "Principi Generali del Diritto Penale"
     },
     {
-        "id": 710,
+        "id": 708,
         "category": "Reati Ambientali",
         "question": "La responsabilità amministrativa degli enti per reati ambientali, prevista dal D.Lgs. 231/2001, si applica:",
         "options": {
@@ -9912,7 +9912,7 @@
         "source": "D.Lgs. 231/2001"
     },
     {
-        "id": 711,
+        "id": 709,
         "category": "Reati Ambientali",
         "question": "Quando la gestione illecita di rifiuti PERICOLOSI (art. 256, c.1, TUA) provoca un pericolo per la vita o l'incolumità delle persone (comma 1-bis)?",
         "options": {
@@ -9926,7 +9926,7 @@
         "source": "Art. 256, comma 1-bis, D.Lgs. 152/2006"
     },
     {
-        "id": 712,
+        "id": 710,
         "category": "Reati Ambientali",
         "question": "La violazione delle norme sul deposito temporaneo di rifiuti sanitari pericolosi per quantitativi NON superiori a 200 litri (art. 256, c. 6, TUA) costituisce:",
         "options": {
@@ -9940,7 +9940,7 @@
         "source": "Art. 256, comma 6, D.Lgs. 152/2006"
     },
     {
-        "id": 713,
+        "id": 711,
         "category": "Reati Ambientali",
         "question": "Quale reato commette chi, per trarne profitto, cede, riceve, trasporta o gestisce materiale ad alta radioattività senza autorizzazione?",
         "options": {
@@ -9954,7 +9954,7 @@
         "source": "art. 452-sexies c.p."
     },
     {
-        "id": 714,
+        "id": 712,
         "category": "Reati Ambientali",
         "question": "Secondo la Legge 68/2015, le pene detentive per i nuovi ecoreati, in assenza di aggravanti, variano:",
         "options": {
@@ -9968,7 +9968,7 @@
         "source": "Legge 68/2015 - Analisi delle Pene"
     },
     {
-        "id": 715,
+        "id": 713,
         "category": "Reati Ambientali",
         "question": "Qual è una delle principali differenze introdotte dalla L. 68/2015 rispetto alla normativa precedente?",
         "options": {
@@ -9982,7 +9982,7 @@
         "source": "Lezione 2: Contesto Strategico della Legge 68/2015"
     },
     {
-        "id": 716,
+        "id": 714,
         "category": "Reati Ambientali",
         "question": "Secondo la giurisprudenza, quando un'area adibita a discarica abusiva può essere confiscata?",
         "options": {
@@ -9996,7 +9996,7 @@
         "source": "Giurisprudenza (Cass. pen. n. 22236/2010)"
     },
     {
-        "id": 717,
+        "id": 715,
         "category": "Reati Ambientali",
         "question": "Ai sensi dell'art. 256 TUA, la miscelazione non consentita di categorie diverse di rifiuti pericolosi è punita con:",
         "options": {
@@ -10010,7 +10010,7 @@
         "source": "Art. 256, comma 5, D.Lgs. 152/2006"
     },
     {
-        "id": 718,
+        "id": 716,
         "category": "Reati Ambientali",
         "question": "Quale sanzione accessoria si applica al conducente se il reato di cui all'art. 256, c. 1, TUA è commesso utilizzando un veicolo a motore?",
         "options": {
@@ -10024,7 +10024,7 @@
         "source": "Art. 256, comma 1-ter, D.Lgs. 152/2006"
     },
     {
-        "id": 719,
+        "id": 717,
         "category": "Reati Ambientali",
         "question": "Quando la realizzazione di una discarica non autorizzata (art. 256, c. 3, TUA) è destinata anche solo in parte a rifiuti pericolosi e avviene in un sito contaminato (comma 3-bis)?",
         "options": {
@@ -10038,7 +10038,7 @@
         "source": "Art. 256, comma 3-bis, D.Lgs. 152/2006"
     },
     {
-        "id": 720,
+        "id": 718,
         "category": "Reati Ambientali",
         "question": "Quale principio fondamentale del diritto penale stabilisce che nessuno può essere punito per un fatto non espressamente previsto dalla legge come reato?",
         "options": {
@@ -10052,7 +10052,7 @@
         "source": "Lezione 1: Definizione di Reato Ambientale"
     },
     {
-        "id": 721,
+        "id": 719,
         "category": "Reati Ambientali",
         "question": "Un'attività di gestione di rifiuti non autorizzata (art. 256 TUA) che provoca un'alterazione irreversibile dell'equilibrio di un ecosistema, può integrare anche il reato di:",
         "options": {
@@ -10066,7 +10066,7 @@
         "source": "Lezione 5: Distinzione Fondamentale: Delitti e Contravvenzioni"
     },
     {
-        "id": 722,
+        "id": 720,
         "category": "Reati Ambientali",
         "question": "Secondo la giurisprudenza, come si distingue la violazione del comma 1 (gestione senza autorizzazione) da quella del comma 4 (inosservanza prescrizioni) dell'art. 256 TUA?",
         "options": {
@@ -10080,7 +10080,7 @@
         "source": "Giurisprudenza (Cass. pen. n. 5817/2019)"
     },
     {
-        "id": 723,
+        "id": 721,
         "category": "Reati Ambientali",
         "question": "L'agente di Polizia Giudiziaria, una volta acquisita una notizia di reato ambientale, quale atto NON può compiere autonomamente?",
         "options": {
@@ -10094,7 +10094,7 @@
         "source": "Lezione 5: Il Ruolo della Polizia Giudiziaria"
     },
     {
-        "id": 724,
+        "id": 722,
         "category": "Reati Ambientali",
         "question": "Qual è la pena prevista per il reato di impedimento del controllo (art. 452-septies c.p.)?",
         "options": {
@@ -10108,7 +10108,7 @@
         "source": "art. 452-septies c.p."
     },
     {
-        "id": 725,
+        "id": 723,
         "category": "Reati Ambientali",
         "question": "In quali circostanze le pene per gli ecoreati della Legge 68/2015 possono raggiungere i 20 anni di reclusione?",
         "options": {
@@ -10122,7 +10122,7 @@
         "source": "Lezione 2: Analisi delle Pene"
     },
     {
-        "id": 726,
+        "id": 724,
         "category": "Reati Ambientali",
         "question": "La gestione non autorizzata di rifiuti è una contravvenzione se riguarda rifiuti non pericolosi (art. 256 TUA). In quale caso questa stessa condotta diventa un delitto?",
         "options": {
@@ -10136,7 +10136,7 @@
         "source": "Art. 256, comma 1-bis, D.Lgs. 152/2006"
     },
     {
-        "id": 727,
+        "id": 725,
         "category": "Reati Ambientali",
         "question": "Tra le sanzioni applicabili all'azienda ai sensi del D.Lgs. 231/01 per reati ambientali, NON è prevista:",
         "options": {
@@ -10150,7 +10150,7 @@
         "source": "Lezione 5: La Responsabilità delle Aziende (D.Lgs. 231/01)"
     },
     {
-        "id": 728,
+        "id": 726,
         "category": "Reati Ambientali",
         "question": "Quale norma rappresenta il 'pilastro' della legislazione ambientale italiana e il principale riferimento per la gestione e repressione degli illeciti in materia di rifiuti?",
         "options": {
@@ -10164,7 +10164,7 @@
         "source": "Lezione 3: Introduzione alla Sezione"
     },
     {
-        "id": 729,
+        "id": 727,
         "category": "Reati Ambientali",
         "question": "La definizione giuridica di 'reato ambientale' richiede che la condotta dannosa:",
         "options": {
@@ -10178,7 +10178,7 @@
         "source": "Lezione 1: Definizione di Reato Ambientale"
     },
     {
-        "id": 730,
+        "id": 728,
         "category": "Reati Ambientali",
         "question": "In base all'art. 256, comma 3, del TUA, qual è la pena per la realizzazione di una discarica non autorizzata di rifiuti NON pericolosi?",
         "options": {
@@ -10192,7 +10192,7 @@
         "source": "Art. 256, comma 3, D.Lgs. 152/2006"
     },
     {
-        "id": 731,
+        "id": 729,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi dell'art. 347 c.p.p., entro quale termine la polizia giudiziaria deve riferire al pubblico ministero la notizia di reato?",
         "options": {
@@ -10206,7 +10206,7 @@
         "source": "Art. 347 c.p.p."
     },
     {
-        "id": 732,
+        "id": 730,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'art. 727 c.p. (Abbandono di animali) punisce anche la detenzione in condizioni incompatibili. Quale tra le seguenti condotte rientra nella fattispecie?",
         "options": {
@@ -10220,7 +10220,7 @@
         "source": "Art. 727 c.p. (testo vigente)"
     },
     {
-        "id": 733,
+        "id": 731,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'art. 330 c.p.p., cosa si intende per notizia di reato?",
         "options": {
@@ -10234,7 +10234,7 @@
         "source": "Art. 330 c.p.p."
     },
     {
-        "id": 734,
+        "id": 732,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi dell'art. 650 c.p., chi non osserva un provvedimento legalmente dato dall'Autorità per ragioni di giustizia o sicurezza pubblica è punito con:",
         "options": {
@@ -10248,7 +10248,7 @@
         "source": "Art. 650 c.p."
     },
     {
-        "id": 735,
+        "id": 733,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Quale tra i seguenti NON è un requisito della legittima difesa ai sensi dell'art. 52 c.p.?",
         "options": {
@@ -10262,7 +10262,7 @@
         "source": "Art. 52 c.p."
     },
     {
-        "id": 736,
+        "id": 734,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi dell'art. 354 c.p.p., gli ufficiali di polizia giudiziaria possono compiere accertamenti urgenti sui luoghi e sulle cose quando:",
         "options": {
@@ -10276,7 +10276,7 @@
         "source": "Art. 354 c.p.p."
     },
     {
-        "id": 737,
+        "id": 735,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'art. 727-bis c.p. punisce l'uccisione, cattura o detenzione di esemplari di specie animali selvatiche protette. Quando il reato NON sussiste?",
         "options": {
@@ -10290,7 +10290,7 @@
         "source": "Art. 727-bis c.p."
     },
     {
-        "id": 738,
+        "id": 736,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'art. 42 c.p., quale elemento soggettivo è richiesto per l'esistenza del delitto?",
         "options": {
@@ -10304,7 +10304,7 @@
         "source": "Art. 42 c.p."
     },
     {
-        "id": 739,
+        "id": 737,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi dell'art. 331 c.p.p., chi ha l'obbligo di presentare denuncia per i reati procedibili d'ufficio di cui ha notizia nell'esercizio delle funzioni?",
         "options": {
@@ -10318,7 +10318,7 @@
         "source": "Art. 331 c.p.p."
     },
     {
-        "id": 740,
+        "id": 738,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'art. 697 c.p. punisce la detenzione abusiva di armi. Quale pena è prevista?",
         "options": {
@@ -10332,7 +10332,7 @@
         "source": "Art. 697 c.p."
     },
     {
-        "id": 741,
+        "id": 739,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'art. 348 c.p.p., dopo la comunicazione della notizia di reato, la polizia giudiziaria:",
         "options": {
@@ -10346,7 +10346,7 @@
         "source": "Art. 348 c.p.p."
     },
     {
-        "id": 742,
+        "id": 740,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi dell'art. 43 c.p., quando ricorre il dolo?",
         "options": {
@@ -10360,7 +10360,7 @@
         "source": "Art. 43 c.p."
     },
     {
-        "id": 743,
+        "id": 741,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'art. 651 c.p. punisce il rifiuto d'indicazioni sulla propria identità personale. A chi può essere richiesta l'indicazione?",
         "options": {
@@ -10374,7 +10374,7 @@
         "source": "Art. 651 c.p."
     },
     {
-        "id": 744,
+        "id": 742,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi dell'art. 352 c.p.p., quando la polizia giudiziaria può procedere a perquisizione personale o locale di propria iniziativa?",
         "options": {
@@ -10388,7 +10388,7 @@
         "source": "Art. 352 c.p.p."
     },
     {
-        "id": 745,
+        "id": 743,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'art. 56 c.p., quando si configura il tentativo di delitto?",
         "options": {
@@ -10402,7 +10402,7 @@
         "source": "Art. 56 c.p."
     },
     {
-        "id": 746,
+        "id": 744,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'art. 672 c.p. riguarda l'omessa custodia e malgoverno di animali. Quale condotta è punita?",
         "options": {
@@ -10416,7 +10416,7 @@
         "source": "Art. 672 c.p."
     },
     {
-        "id": 747,
+        "id": 745,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi dell'art. 349 c.p.p., l'identificazione della persona nei cui confronti vengono svolte le indagini può avvenire:",
         "options": {
@@ -10430,7 +10430,7 @@
         "source": "Art. 349 c.p.p."
     },
     {
-        "id": 748,
+        "id": 746,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'art. 110 c.p., quando più persone concorrono nel medesimo reato:",
         "options": {
@@ -10444,7 +10444,7 @@
         "source": "Art. 110 c.p."
     },
     {
-        "id": 749,
+        "id": 747,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'art. 698 c.p. punisce l'omessa denuncia di materie esplodenti. Chi ha l'obbligo della denuncia?",
         "options": {
@@ -10458,7 +10458,7 @@
         "source": "Art. 698 c.p."
     },
     {
-        "id": 750,
+        "id": 748,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi dell'art. 353 c.p.p., la polizia giudiziaria può procedere all'acquisizione di plichi o di corrispondenza?",
         "options": {
@@ -10472,7 +10472,7 @@
         "source": "Art. 353 c.p.p."
     },
     {
-        "id": 751,
+        "id": 749,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'art. 59 c.p., le circostanze attenuanti sono valutate:",
         "options": {
@@ -10486,7 +10486,7 @@
         "source": "Art. 59 c.p."
     },
     {
-        "id": 752,
+        "id": 750,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'art. 699 c.p. riguarda il porto abusivo di armi. È punito:",
         "options": {
@@ -10500,7 +10500,7 @@
         "source": "Art. 699 c.p."
     },
     {
-        "id": 753,
+        "id": 751,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi dell'art. 357 c.p.p., la documentazione dell'attività di polizia giudiziaria è effettuata mediante:",
         "options": {
@@ -10514,7 +10514,7 @@
         "source": "Art. 357 c.p.p."
     },
     {
-        "id": 754,
+        "id": 752,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'art. 17 c.p., le pene principali stabilite per i delitti sono:",
         "options": {
@@ -10528,7 +10528,7 @@
         "source": "Art. 17 c.p."
     },
     {
-        "id": 755,
+        "id": 753,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'art. 452-bis c.p. (Titolo VI-bis) riguarda l'inquinamento ambientale. Chi ne è responsabile:",
         "options": {
@@ -10542,7 +10542,7 @@
         "source": "Art. 452-bis c.p."
     },
     {
-        "id": 756,
+        "id": 754,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi dell'art. 350 c.p.p., le sommarie informazioni dalla persona nei cui confronti vengono svolte le indagini (che non si trovi in stato di arresto o di fermo) sono assunte:",
         "options": {
@@ -10556,7 +10556,7 @@
         "source": "Art. 350 c.p.p."
     },
     {
-        "id": 757,
+        "id": 755,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'art. 85 c.p., perché un soggetto sia imputabile è necessario:",
         "options": {
@@ -10570,7 +10570,7 @@
         "source": "Art. 85 c.p."
     },
     {
-        "id": 758,
+        "id": 756,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'art. 544-ter c.p. (Titolo IX-bis) punisce il maltrattamento di animali. Quale pena è prevista?",
         "options": {
@@ -10584,7 +10584,7 @@
         "source": "Art. 544-ter c.p."
     },
     {
-        "id": 759,
+        "id": 757,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi dell'art. 355 c.p.p., il sequestro operato dalla polizia giudiziaria deve essere convalidato dal PM entro:",
         "options": {
@@ -10598,7 +10598,7 @@
         "source": "Art. 355 c.p.p."
     },
     {
-        "id": 760,
+        "id": 758,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'art. 337 c.p.p., la denuncia presentata oralmente deve essere:",
         "options": {
@@ -10612,7 +10612,7 @@
         "source": "Art. 337 c.p.p."
     },
     {
-        "id": 761,
+        "id": 759,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'Art. 1 del Codice Penale, quale principio fondamentale è espresso dalla locuzione latina 'nullum crimen, nulla poena sine lege'?",
         "options": {
@@ -10626,7 +10626,7 @@
         "source": "Art. 1 c.p."
     },
     {
-        "id": 762,
+        "id": 760,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'Art. 2 c.p., se una nuova legge abolisce un reato e il soggetto è già stato condannato, cosa accade?",
         "options": {
@@ -10640,7 +10640,7 @@
         "source": "Art. 2 c.p."
     },
     {
-        "id": 763,
+        "id": 761,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Quale limite incontra l'applicazione della legge più favorevole al reo in caso di successione di leggi penali?",
         "options": {
@@ -10654,7 +10654,7 @@
         "source": "Art. 2 c.p."
     },
     {
-        "id": 764,
+        "id": 762,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'Art. 3 c.p., la legge penale italiana obbliga il corretto rispetto delle norme a:",
         "options": {
@@ -10668,7 +10668,7 @@
         "source": "Art. 3 c.p."
     },
     {
-        "id": 765,
+        "id": 763,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'Art. 5 c.p. stabilisce che 'Nessuno può invocare a propria scusa l'ignoranza della legge penale'. Secondo la Corte Costituzionale, quando tale principio NON si applica?",
         "options": {
@@ -10682,7 +10682,7 @@
         "source": "Art. 5 c.p. - Interpretazione della Corte Costituzionale"
     },
     {
-        "id": 766,
+        "id": 764,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi dell'Art. 4 c.p., le navi e gli aeromobili italiani sono considerati:",
         "options": {
@@ -10696,7 +10696,7 @@
         "source": "Art. 4 c.p."
     },
     {
-        "id": 767,
+        "id": 765,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Per la punibilità di un delitto politico commesso all'estero (Art. 8 c.p.), quale condizione è SEMPRE necessaria?",
         "options": {
@@ -10710,7 +10710,7 @@
         "source": "Art. 8 c.p."
     },
     {
-        "id": 768,
+        "id": 766,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'Art. 43 c.p., quando ricorre il DOLO?",
         "options": {
@@ -10724,7 +10724,7 @@
         "source": "Art. 43 c.p."
     },
     {
-        "id": 769,
+        "id": 767,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'Art. 357 c.p., quali caratteristiche definiscono la 'pubblica funzione amministrativa'?",
         "options": {
@@ -10738,7 +10738,7 @@
         "source": "Art. 357 c.p."
     },
     {
-        "id": 770,
+        "id": 768,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'Art. 51 c.p. esclude la punibilità di chi agisce nell'adempimento di un dovere. Per l'agente forestale, quale attività rientra tipicamente in questa scriminante?",
         "options": {
@@ -10752,7 +10752,7 @@
         "source": "Art. 51 c.p."
     },
     {
-        "id": 771,
+        "id": 769,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'Art. 52 c.p., la difesa legittima richiede che la difesa sia:",
         "options": {
@@ -10766,7 +10766,7 @@
         "source": "Art. 52 c.p."
     },
     {
-        "id": 772,
+        "id": 770,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'Art. 53 c.p. disciplina l'uso legittimo delle armi da parte del pubblico ufficiale. In quali casi è ammesso?",
         "options": {
@@ -10780,7 +10780,7 @@
         "source": "Art. 53 c.p."
     },
     {
-        "id": 773,
+        "id": 771,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'Art. 423-bis c.p. punisce l'incendio boschivo. Quale pena è prevista per la forma DOLOSA?",
         "options": {
@@ -10794,7 +10794,7 @@
         "source": "Art. 423-bis c.p."
     },
     {
-        "id": 774,
+        "id": 772,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'incendio boschivo (Art. 423-bis c.p.) è aggravato con aumento della pena della metà quando:",
         "options": {
@@ -10808,7 +10808,7 @@
         "source": "Art. 423-bis c.p."
     },
     {
-        "id": 775,
+        "id": 773,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'Art. 423-bis c.p., quale condotta NON rientra nella fattispecie criminosa di incendio boschivo?",
         "options": {
@@ -10822,7 +10822,7 @@
         "source": "Art. 423-bis c.p."
     },
     {
-        "id": 776,
+        "id": 774,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'Art. 727-bis c.p. punisce l'uccisione, cattura o detenzione di esemplari di specie animale selvatica protetta. Quando NON è punibile il fatto?",
         "options": {
@@ -10836,7 +10836,7 @@
         "source": "Art. 727-bis c.p."
     },
     {
-        "id": 777,
+        "id": 775,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'Art. 452-bis c.p. (inquinamento ambientale) richiede che il danno sia 'significativo e misurabile'. Cosa significa 'abusivamente' in questo contesto?",
         "options": {
@@ -10850,7 +10850,7 @@
         "source": "Art. 452-bis c.p."
     },
     {
-        "id": 778,
+        "id": 776,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'inquinamento ambientale (Art. 452-bis c.p.) è aggravato da 1/3 alla metà quando:",
         "options": {
@@ -10864,7 +10864,7 @@
         "source": "Art. 452-bis c.p."
     },
     {
-        "id": 779,
+        "id": 777,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Il 'peculato d'uso' (Art. 314 c.p.) si distingue dal peculato ordinario perché:",
         "options": {
@@ -10878,7 +10878,7 @@
         "source": "Art. 314 c.p."
     },
     {
-        "id": 780,
+        "id": 778,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'Art. 336 c.p., la violenza o minaccia a pubblico ufficiale per costringerlo a un atto CONTRARIO ai doveri d'ufficio è punita con:",
         "options": {
@@ -10892,7 +10892,7 @@
         "source": "Art. 336 c.p."
     },
     {
-        "id": 781,
+        "id": 779,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Qual è la differenza operativa fondamentale tra l'Art. 336 c.p. (violenza o minaccia) e l'Art. 337 c.p. (resistenza)?",
         "options": {
@@ -10906,7 +10906,7 @@
         "source": "Artt. 336 e 337 c.p."
     },
     {
-        "id": 782,
+        "id": 780,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'Art. 697 c.p. (detenzione abusiva di armi) punisce chi detiene armi senza denuncia. Qual è l'elemento soggettivo richiesto?",
         "options": {
@@ -10920,7 +10920,7 @@
         "source": "Art. 697 c.p."
     },
     {
-        "id": 783,
+        "id": 781,
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'Art. 650 c.p. punisce l'inosservanza dei provvedimenti dell'Autorità. Per quali ragioni deve essere stato emesso il provvedimento?",
         "options": {
@@ -10934,7 +10934,7 @@
         "source": "Art. 650 c.p."
     },
     {
-        "id": 784,
+        "id": 782,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Ai sensi dell'Art. 347 c.p.p., la Polizia Giudiziaria, acquisita la notizia di reato, deve riferire al Pubblico Ministero:",
         "options": {
@@ -10948,7 +10948,7 @@
         "source": "Art. 347 c.p.p."
     },
     {
-        "id": 785,
+        "id": 783,
         "category": "Diritto Penale e Procedura Penale",
         "question": "Secondo l'Art. 352 c.p.p., la perquisizione d'iniziativa della Polizia Giudiziaria richiede come presupposti cumulativi:",
         "options": {
