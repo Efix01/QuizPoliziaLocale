@@ -2096,8 +2096,8 @@
             "D": "Sì, se non passa nessuno"
         },
         "correct_answer": "B",
-        "explanation": "Vige il divieto di sparo da o in direzione di strade a meno di 150 metri (o una distanza pari a una volta e mezza la gittata massima per armi diverse).",
-        "source": "L. 157/1992, Art. 21, comma 1, lett. e"
+        "explanation": "L'art. 21, comma 1, lett. f) L. 157/1992 vieta di sparare a distanza inferiore a 150 metri (o una distanza pari a una volta e mezza la gittata massima per armi diverse) in direzione di vie di comunicazione ferroviaria e strade carrozzabili. Nota: i 50 metri (lett. e) riguardano il divieto di esercizio venatorio vicino alle strade, non il tiro in direzione.",
+        "source": "L. 157/1992, Art. 21, comma 1, lett. f)"
     },
     {
         "id": 151,
@@ -9045,17 +9045,17 @@
     },
     {
         "id": 647,
-        "category": "Aree Protette (L. 394/1991)",
-        "question": "Nei parchi regionali, in caso di squilibri ecologici, da chi devono essere effettuati preferenzialmente gli abbattimenti selettivi secondo l'Art. 22?",
+        "category": "Legislazione Forestale",
+        "question": "Nei parchi regionali, in caso di squilibri ecologici, da chi devono essere effettuati preferenzialmente gli abbattimenti selettivi secondo l'Art. 22 L. 394/91?",
         "options": {
-            "A": "Dal Corpo Forestale e di V.A..",
-            "B": "Da cacciatori non residenti con alta specializzazione.",
-            "C": "Dal personale dipendente dell'ente gestore.",
-            "D": "Da cacciatori residenti nel territorio del parco, previo corso di formazione."
+            "A": "Dalle guardie provinciali",
+            "B": "Dal personale dell'organismo di gestione del parco",
+            "C": "Dai cacciatori locali autorizzati",
+            "D": "Dal Corpo Forestale dello Stato"
         },
-        "correct_answer": "D",
-        "explanation": "L'Art. 22, comma 6, stabilisce che gli abbattimenti selettivi sono attuati dal personale dell'ente o da persone autorizzate, scelte con preferenza tra 'cacciatori residenti nel territorio del parco, previo opportuni corsi di formazione'.",
-        "source": "Art. 22, comma 6, L. 394/1991"
+        "correct_answer": "B",
+        "explanation": "Art. 22, comma 6 L. 394/91: gli abbattimenti selettivi sono effettuati dal personale dell'organismo di gestione del parco o da persone da esso autorizzate, sotto la sua responsabilità e sorveglianza.",
+        "source": "L. 394/1991, Art. 22, comma 6"
     },
     {
         "id": 648,
@@ -10180,7 +10180,7 @@
     {
         "id": 728,
         "category": "Reati Ambientali",
-        "question": "In base all'art. 256, comma 3, del TUA, qual è la pena per la realizzazione di una discarica non autorizzata di rifiuti NON pericolosi?",
+        "question": "In base all'art. 256, comma 3, del TUA (D.Lgs. 152/2006), qual è la pena per la realizzazione di una discarica non autorizzata di rifiuti NON pericolosi?",
         "options": {
             "A": "L'arresto da tre mesi a un anno.",
             "B": "La reclusione da uno a cinque anni.",
@@ -10188,8 +10188,10 @@
             "D": "La reclusione da sei mesi a due anni."
         },
         "correct_answer": "B",
-        "explanation": "Il comma 3 dell'art. 256 TUA qualifica la realizzazione di una discarica non autorizzata come un reato grave, punendolo con la reclusione da uno a cinque anni anche se riguarda rifiuti non pericolosi.",
-        "source": "Art. 256, comma 3, D.Lgs. 152/2006"
+        "explanation": "Secondo l'art. 256, comma 3, TUA, la realizzazione di una discarica non autorizzata è punita con la reclusione da uno a cinque anni, indipendentemente dal tipo di rifiuti (pericolosi o non pericolosi). La norma è stata confermata dal D.L. 116/2025 che ha insprito ulteriormente le sanzioni per i reati ambientali. Nel caso di discarica non autorizzata con rifiuti pericolosi, la pena sale a 1-5 anni e 6 mesi.",
+        "source": "Art. 256, comma 3, D.Lgs. 152/2006 e D.L. 116/2025",
+        "last_updated": "2026-01-23",
+        "notes": "La pena è identica per rifiuti pericolosi e non pericolosi nel comma 3, con aggravanti ulteriori nel comma 4 per rifiuti pericolosi specifici."
     },
     {
         "id": 729,
