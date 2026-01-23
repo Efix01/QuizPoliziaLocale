@@ -21,6 +21,8 @@ import { NotificationProvider } from './context/NotificationContext';
 import { StudyMaterialProvider } from './context/StudyMaterialContext';
 import { CookieProvider } from './context/CookieContext';
 import CookieBanner from './components/ui/CookieBanner';
+import { QuizProvider } from './context/QuizContext';
+import WhatsNewModal from './components/ui/WhatsNewModal';
 import './components/ui/Toast.css';
 
 function App() {
@@ -29,37 +31,40 @@ function App() {
       <AuthProvider>
         <NotificationProvider>
           <StudyMaterialProvider>
-            <ToastProvider>
-              <Router>
-                <ScrollToTop />
-                <Routes>
-                  {/* Onboarding - First time users */}
-                  <Route path="/welcome" element={<Onboarding />} />
-                  <Route path="/terms" element={<TermsOfService />} />
-                  <Route path="/privacy" element={<PrivacyPolicy />} />
-                  <Route path="/chi-siamo" element={<ChiSiamo />} />
+            <QuizProvider>
+              <ToastProvider>
+                <Router>
+                  <ScrollToTop />
+                  <Routes>
+                    {/* Onboarding - First time users */}
+                    <Route path="/welcome" element={<Onboarding />} />
+                    <Route path="/terms" element={<TermsOfService />} />
+                    <Route path="/privacy" element={<PrivacyPolicy />} />
+                    <Route path="/chi-siamo" element={<ChiSiamo />} />
 
-                  {/* Auth pages outside Layout (full-screen) */}
-                  <Route path="/login" element={<Login />} />
-                  <Route path="/forgot-password" element={<ForgotPassword />} />
+                    {/* Auth pages outside Layout (full-screen) */}
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/forgot-password" element={<ForgotPassword />} />
 
-                  {/* Lesson Reader - Full screen without navbar */}
-                  <Route path="/manual/:subjectId/:chapterId" element={<LessonReader />} />
-                  <Route path="/manual/:subjectId" element={<LessonReader />} />
+                    {/* Lesson Reader - Full screen without navbar */}
+                    <Route path="/manual/:subjectId/:chapterId" element={<LessonReader />} />
+                    <Route path="/manual/:subjectId" element={<LessonReader />} />
 
-                  {/* Main app with Layout */}
-                  <Route path="/" element={<Layout />}>
-                    <Route index element={<Dashboard />} />
-                    <Route path="study" element={<StudyMode />} />
-                    <Route path="simulation" element={<SimulationMode />} />
-                    <Route path="physical" element={<PhysicalPrep />} />
-                    <Route path="manual" element={<StudyLibrary />} />
-                    <Route path="profile" element={<Profile />} />
-                  </Route>
-                </Routes>
-                <CookieBanner />
-              </Router>
-            </ToastProvider>
+                    {/* Main app with Layout */}
+                    <Route path="/" element={<Layout />}>
+                      <Route index element={<Dashboard />} />
+                      <Route path="study" element={<StudyMode />} />
+                      <Route path="simulation" element={<SimulationMode />} />
+                      <Route path="physical" element={<PhysicalPrep />} />
+                      <Route path="manual" element={<StudyLibrary />} />
+                      <Route path="profile" element={<Profile />} />
+                    </Route>
+                  </Routes>
+                  <CookieBanner />
+                  <WhatsNewModal />
+                </Router>
+              </ToastProvider>
+            </QuizProvider>
           </StudyMaterialProvider>
         </NotificationProvider>
       </AuthProvider>

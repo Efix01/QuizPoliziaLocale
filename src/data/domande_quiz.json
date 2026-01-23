@@ -2582,7 +2582,7 @@
         "options": {
             "A": "Nella Sardegna sud-occidentale (Arbus), caratterizzata da grandi dune di sabbia (es. Piscinas)",
             "B": "Nella Sardegna nord-occidentale (Stintino)",
-            "C": "A",
+            "C": "Nella costa nord-orientale, in Gallura",
             "D": "Nella Sardegna nord-orientale (Olbia), caratterizzata da rocce rosa"
         },
         "correct_answer": "A",
@@ -2595,7 +2595,7 @@
         "question": "L'isola di Tavolara, situata nel nord-est, è costituita geologicamente da:",
         "options": {
             "A": "Basalto nero di origine vulcanica",
-            "B": "A",
+            "B": "Conglomerato, che deriva dalla litificazione di ghiaia o ciottoli",
             "C": "Calcari e dolomie (roccia sedimentaria chiara) che poggiano su un basamento granitico",
             "D": "Esclusivamente granito rosa"
         },
@@ -2610,7 +2610,7 @@
         "options": {
             "A": "Isola di San Pietro, a Sud-Ovest",
             "B": "Isola di Sant'Antioco, a Sud-Ovest",
-            "C": "A",
+            "C": "L'isola dell'Asinara",
             "D": "Isola di La Maddalena, a Nord-Est"
         },
         "correct_answer": "B",
@@ -2623,7 +2623,7 @@
         "question": "Qual è il punto più settentrionale della Sardegna?",
         "options": {
             "A": "Capo Comino",
-            "B": "A",
+            "B": "Capo Carbonara",
             "C": "Capo Teulada",
             "D": "Punta Falcone (Santa Teresa Gallura)"
         },
@@ -2639,7 +2639,7 @@
             "A": "Nell'arcipelago del Sulcis",
             "B": "Nella zona montuosa centrale della Sardegna, attorno al Gennargentu",
             "C": "Nella pianura del Campidano",
-            "D": "A"
+            "D": "Nell'area pianeggiante della Nurra, nel nord-ovest"
         },
         "correct_answer": "B",
         "explanation": "La Barbagia è la regione storica e geografica coincidente con il cuore montuoso dell'isola (Gennargentu e Supramonte).",
@@ -2666,7 +2666,7 @@
         "options": {
             "A": "Una pianura alluvionale",
             "B": "Un antico complesso vulcanico spento situato nella Sardegna centro-occidentale",
-            "C": "A",
+            "C": "Un vulcano attivo situato nella Sardegna orientale",
             "D": "Un massiccio granitico"
         },
         "correct_answer": "B",
@@ -2681,7 +2681,7 @@
             "A": "Dune sabbiose fossili",
             "B": "Rocce scistose impermeabili",
             "C": "Rocce carbonatiche (calcari) e fenomeni carsici (doline, forre, grotte)",
-            "D": "A"
+            "D": "Un altopiano sottomarino situato al largo della costa"
         },
         "correct_answer": "C",
         "explanation": "Il Supramonte è un vasto altopiano carsico (calcari mesozoici) caratterizzato da assenza di idrografia superficiale e grandi fenomeni ipogei.",
@@ -2695,7 +2695,7 @@
             "A": "Costa settentrionale; è caratterizzato da rocce granitiche e coste basse",
             "B": "Costa sud-occidentale; è una zona lagunare sabbiosa",
             "C": "Costa centro-orientale; è caratterizzato da alte falesie calcaree e assenza di strade litoranee",
-            "D": "A"
+            "D": "Sulla costa occidentale, di fronte al Golfo di Oristano"
         },
         "correct_answer": "C",
         "explanation": "Il Golfo di Orosei si estende sulla costa orientale ed è famoso per il Supramonte marino, costituito da rocce carbonatiche (calcari e dolomie) che formano falesie a picco sul mare.",
@@ -2706,7 +2706,7 @@
         "category": "Geografia della Sardegna",
         "question": "Il fenomeno geologico noto come 'Tafoni' (o roccia bucata) è tipico di quale tipo di roccia in Sardegna?",
         "options": {
-            "A": "A",
+            "A": "Una specie di corallo raro che cresce sulle scogliere",
             "B": "Calcare",
             "C": "Granito",
             "D": "Scisto"
@@ -3283,7 +3283,7 @@
             "A": "Nel Mare di Sardegna, presso Bosa",
             "B": "Nel Mar Tirreno, presso Muravera/Villaputzu",
             "C": "Nel Golfo di Cagliari",
-            "D": "A"
+            "D": "Attraversa esclusivamente la provincia di Sassari"
         },
         "correct_answer": "B",
         "explanation": "Il Flumendosa, secondo fiume sardo per lunghezza, scorre verso sud-est e sfocia sulla costa orientale nel Tirreno.",
@@ -3296,7 +3296,7 @@
         "options": {
             "A": "Coghinas , sfocia nel Golfo dell'Asinara",
             "B": "Temo , sfocia a Bosa Marina",
-            "C": "A",
+            "C": "Il fiume Coghinas",
             "D": "Tirso , sfocia nel Golfo di Oristano (Mare di Sardegna)"
         },
         "correct_answer": "D",
@@ -3322,7 +3322,7 @@
         "category": "Geografia della Sardegna",
         "question": "Qual è l'unico lago naturale della Sardegna?",
         "options": {
-            "A": "A",
+            "A": "Il Lago Omodeo",
             "B": "Lago Omodeo",
             "C": "Lago di Gusana",
             "D": "Lago di Baratz"
@@ -3336,7 +3336,7 @@
         "category": "Geografia della Sardegna",
         "question": "Il Lago Omodeo è formato dallo sbarramento di quale fiume?",
         "options": {
-            "A": "A",
+            "A": "Flumineddu",
             "B": "Coghinas",
             "C": "Temo",
             "D": "Tirso"
@@ -5984,7 +5984,7 @@
         "options": {
             "A": "Nel cuore del massiccio del Gennargentu a 1000 metri di quota",
             "B": "A livello del mare, nel promontorio calcareo di Capo Caccia (Alghero)",
-            "C": "A",
+            "C": "Sulla costa orientale, nel territorio di Baunei",
             "D": "Nell'isola di Tavolara"
         },
         "correct_answer": "B",
@@ -6403,7 +6403,7 @@
         "question": "La realizzazione di una discarica abusiva in area protetta o vincolata comporta:",
         "options": {
             "A": "Nessuna aggravante",
-            "B": "C",
+            "B": "È considerata un'illecito amministrativo punito solo con una sanzione pecuniaria",
             "C": "L'aumento della pena (arresto e ammenda)",
             "D": "Una pena accessoria di confisca dell'area se di proprietà dell'autore"
         },
@@ -8354,7 +8354,7 @@
             "D": "Oristano"
         },
         "correct_answer": "B",
-        "explanation": "Monte Rasu (1.259 m) si trova in provincia di Sassari.",
+        "explanation": "Monte Rasu (1.259 m) si trova in provincia di Sassari.Ricade nei territori comunali di Bottidda e Bono. ",
         "source": "Raccolta quesiti"
     },
     {

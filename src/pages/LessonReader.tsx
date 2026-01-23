@@ -5,17 +5,16 @@ import { useAuth } from '../context/AuthContext';
 import { useStudyMaterial } from '../context/StudyMaterialContext';
 import './LessonReader.css';
 
-const STORAGE_KEY = 'quiz_study_progress';
+
 
 const LessonReader: React.FC = () => {
     const { subjectId, chapterId } = useParams<{ subjectId: string; chapterId?: string }>();
     const navigate = useNavigate();
     const { isAuthenticated } = useAuth();
-    const { getSubjectById, loading } = useStudyMaterial();
+    const { getSubjectById, loading, markAsRead: contextMarkAsRead, isRead: contextIsRead } = useStudyMaterial();
     const contentRef = useRef<HTMLDivElement>(null);
 
-    const [readChapters, setReadChapters] = useState<Set<string>>(new Set());
-    const [showMarkAsRead, setShowMarkAsRead] = useState(false);
+
 
     // Redirect to login if not authenticated
     useEffect(() => {
@@ -31,38 +30,11 @@ const LessonReader: React.FC = () => {
     ) ?? 0;
     const chapter = subject?.chapters[currentChapterIndex];
 
-    // Load progress
-    useEffect(() => {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) {
-            setReadChapters(new Set(JSON.parse(saved)));
-        }
-    }, []);
-
-    // Scroll detection for "Mark as Read"
-    useEffect(() => {
-        const handleScroll = () => {
-            if (!contentRef.current) return;
-            const { scrollTop, scrollHeight, clientHeight } = contentRef.current;
-            const isNearBottom = scrollTop + clientHeight >= scrollHeight - 100;
-            setShowMarkAsRead(isNearBottom);
-        };
-
-        const el = contentRef.current;
-        if (el) {
-            el.addEventListener('scroll', handleScroll);
-            return () => el.removeEventListener('scroll', handleScroll);
-        }
-    }, [chapter]);
-
     // Mark chapter as read
     const markAsRead = () => {
         if (!subject || !chapter) return;
         const key = `${subject.id}_${chapter.id}`;
-        const newSet = new Set(readChapters);
-        newSet.add(key);
-        setReadChapters(newSet);
-        localStorage.setItem(STORAGE_KEY, JSON.stringify([...newSet]));
+        contextMarkAsRead(key);
 
         // Go to next chapter or back to library
         if (currentChapterIndex < subject.chapters.length - 1) {
@@ -105,7 +77,7 @@ const LessonReader: React.FC = () => {
         );
     }
 
-    const isRead = readChapters.has(`${subject.id}_${chapter.id}`);
+    const isRead = contextIsRead(`${subject.id}_${chapter.id}`);
 
     return (
         <div className="lesson-reader">
@@ -127,7 +99,7 @@ const LessonReader: React.FC = () => {
                 {subject.chapters.map((ch, index) => {
                     const chKey = `${subject.id}_${ch.id}`;
                     const isActive = ch.id === chapter.id;
-                    const isComplete = readChapters.has(chKey);
+                    const isComplete = contextIsRead(chKey);
 
                     return (
                         <button
@@ -190,7 +162,7 @@ const LessonReader: React.FC = () => {
             </div>
 
             {/* Bottom Action Bar */}
-            <div className={`reader-bottom-bar ${showMarkAsRead ? 'visible' : ''}`}>
+            <div className="reader-bottom-bar">
                 {!isRead ? (
                     <button className="mark-read-btn" onClick={markAsRead}>
                         <CheckCircle size={20} />

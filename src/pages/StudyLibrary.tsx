@@ -1,25 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { BookOpen, Clock, ChevronRight, CheckCircle, Lock } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useStudyMaterial, type Subject, type Chapter } from '../context/StudyMaterialContext';
 import './StudyLibrary.css';
 
-const STORAGE_KEY = 'quiz_study_progress';
-
 const StudyLibrary: React.FC = () => {
     const navigate = useNavigate();
     const { isAuthenticated } = useAuth();
-    const { subjects, loading } = useStudyMaterial();
-    const [readChapters, setReadChapters] = useState<Set<string>>(new Set());
-
-    // Load progress from localStorage
-    useEffect(() => {
-        const saved = localStorage.getItem(STORAGE_KEY);
-        if (saved) {
-            setReadChapters(new Set(JSON.parse(saved)));
-        }
-    }, []);
+    const { subjects, loading, isRead, resetSubjectProgress } = useStudyMaterial();
 
     // Calculate total read time for a subject
     const getTotalReadTime = (chapters: Chapter[]) => {
@@ -31,11 +20,12 @@ const StudyLibrary: React.FC = () => {
         return totalMinutes;
     };
 
-    // Calculate progress for a subject
+    // Calculate progress for a subject using global context
     const getProgress = (subject: Subject) => {
         const readCount = subject.chapters.filter(ch =>
-            readChapters.has(`${subject.id}_${ch.id}`)
+            isRead(`${subject.id}_${ch.id}`)
         ).length;
+
         return {
             read: readCount,
             total: subject.chapters.length,
@@ -50,13 +40,20 @@ const StudyLibrary: React.FC = () => {
         subjects.forEach(subject => {
             totalChapters += subject.chapters.length;
             readCount += subject.chapters.filter(ch =>
-                readChapters.has(`${subject.id}_${ch.id}`)
+                isRead(`${subject.id}_${ch.id}`)
             ).length;
         });
         return { read: readCount, total: totalChapters };
     };
 
     const overall = getOverallProgress();
+
+    const handleReset = async (e: React.MouseEvent, subjectId: string) => {
+        e.stopPropagation();
+        if (window.confirm('Vuoi davvero resettare i progressi di questa materia?')) {
+            await resetSubjectProgress(subjectId);
+        }
+    };
 
     // Show loading state
     if (loading) {
@@ -122,7 +119,7 @@ const StudyLibrary: React.FC = () => {
                 <div className="overall-progress-bar">
                     <div
                         className="overall-progress-fill"
-                        style={{ width: `${(overall.read / overall.total) * 100}%` }}
+                        style={{ width: `${overall.total > 0 ? (overall.read / overall.total) * 100 : 0}%` }}
                     />
                 </div>
             </div>
@@ -132,7 +129,7 @@ const StudyLibrary: React.FC = () => {
                 {subjects.map((subject) => {
                     const progress = getProgress(subject);
                     const totalTime = getTotalReadTime(subject.chapters);
-                    const isComplete = progress.read === progress.total;
+                    const isComplete = progress.read === progress.total && progress.total > 0;
 
                     return (
                         <div
@@ -151,7 +148,10 @@ const StudyLibrary: React.FC = () => {
                                         <p className="subject-description">{subject.description}</p>
                                     </div>
                                     {isComplete && (
-                                        <CheckCircle className="subject-check" />
+                                        <div className="subject-badge">
+                                            <CheckCircle size={16} />
+                                            <span>Letto</span>
+                                        </div>
                                     )}
                                 </div>
 
@@ -171,9 +171,18 @@ const StudyLibrary: React.FC = () => {
                                         style={{ width: `${progress.percentage}%` }}
                                     />
                                 </div>
+
+                                {isComplete && (
+                                    <button
+                                        className="study-again-btn"
+                                        onClick={(e) => handleReset(e, subject.id)}
+                                    >
+                                        Studia di nuovo
+                                    </button>
+                                )}
                             </div>
 
-                            <ChevronRight className="subject-arrow" />
+                            {!isComplete && <ChevronRight className="subject-arrow" />}
                         </div>
                     );
                 })}

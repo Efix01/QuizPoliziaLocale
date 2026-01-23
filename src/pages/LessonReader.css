@@ -294,14 +294,10 @@
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
     border-top: 1px solid #E5E7EB;
-    transform: translateY(100%);
-    opacity: 0;
-    transition: all 0.3s ease;
-}
-
-.reader-bottom-bar.visible {
     transform: translateY(0);
     opacity: 1;
+    transition: all 0.3s ease;
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.05);
 }
 
 .mark-read-btn,

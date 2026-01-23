@@ -284,3 +284,38 @@
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(30, 86, 49, 0.4);
 }
+
+/* ─────────────────────────────────────────────
+   NEW UI ELEMENTS
+   ───────────────────────────────────────────── */
+
+.subject-badge {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 10px;
+    background: #DCFCE7;
+    color: #16A34A;
+    font-size: var(--text-xs);
+    font-weight: 700;
+    border-radius: var(--radius-full);
+}
+
+.study-again-btn {
+    margin-top: var(--space-md);
+    padding: 6px 12px;
+    background: white;
+    border: 1px solid #E5E7EB;
+    border-radius: var(--radius-md);
+    color: var(--inchiostro);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.study-again-btn:hover {
+    background: #F3F4F6;
+    border-color: #D1D5DB;
+    color: var(--bosco-notte);
+}
