@@ -9385,13 +9385,13 @@
         "question": "A quanto ammonta la sanzione amministrativa per chi compie azioni che possono innescare incendi (es. gettare un mozzicone) nelle aree a rischio?",
         "options": {
             "A": "Da € 206,58 a € 413,16",
-            "B": "Da € 30,98 a € 61,97",
-            "C": "Da € 1.032,91 a € 10.329,13",
+            "B": "Da € 1.032,91 a € 10.329,13",
+            "C": "Da € 5.000 a € 50.000",
             "D": "Una sanzione fissa di € 500"
         },
         "correct_answer": "C",
-        "explanation": "L'articolo 10, comma 6, prevede una sanzione pecuniaria significativa, da 1.032,91 a 10.329,13 euro, per chiunque tenga comportamenti a rischio di innesco incendio.",
-        "source": "Art. 10, comma 6, L. 353/2000"
+        "explanation": "L'articolo 10, comma 6, come modificato dalla L. 155/2021, prevede una sanzione pecuniaria significativa, da 5.000 a 50.000 euro, per chiunque tenga comportamenti a rischio di innesco incendio. Le sanzioni sono raddoppiate in caso di recidiva.",
+        "source": "Art. 10, comma 6, L. 353/2000, modificato dall'art. 5 della L. 155/2021"
     },
     {
         "id": 672,
