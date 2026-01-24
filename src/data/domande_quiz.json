@@ -10962,5 +10962,481 @@
         "correct_answer": "B",
         "explanation": "L'Art. 352 c.p.p. prevede che la perquisizione d'iniziativa della PG richieda cumulativamente: flagranza di reato o evasione e fondato motivo di ritenere che sul luogo o sulla persona vi siano cose o tracce che possono essere disperse.",
         "source": "Art. 352 c.p.p."
+    },
+    {
+        "id": 784,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Secondo l'Art. 1 della Legge 157/92, la fauna selvatica è considerata:",
+        "options": {
+            "A": "Bene di proprietà esclusiva delle Regioni",
+            "B": "Patrimonio indisponibile dello Stato",
+            "C": "Risorsa liberamente disponibile per i cacciatori",
+            "D": "Proprietà dei comuni territorialmente competenti"
+        },
+        "correct_answer": "B",
+        "explanation": "L'Art. 1 della Legge 157/92 stabilisce il principio cardine secondo cui la fauna selvatica è 'patrimonio indisponibile dello Stato', tutelata nell'interesse della comunità nazionale e internazionale.",
+        "source": "Art. 1, Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 785,
+        "category": "Fauna (L. 157/1992)",
+        "question": "L'esercizio della caccia in periodo di divieto generale è punito ai sensi dell'Art. 30, comma 1, lettera a) con:",
+        "options": {
+            "A": "Arresto da tre mesi ad un anno e ammenda da euro 929,00 a euro 2.582,00",
+            "B": "Solo ammenda da euro 929,00 a euro 2.582,00",
+            "C": "Arresto da tre mesi ad un anno o ammenda da euro 929,00 a euro 2.582,00",
+            "D": "Sanzione amministrativa pecuniaria da euro 929,00 a euro 2.582,00"
+        },
+        "correct_answer": "C",
+        "explanation": "La lettera a) dell'Art. 30 prevede una pena disgiuntiva (arresto O ammenda), che lascia al giudice un margine di valutazione sulla sanzione da applicare.",
+        "source": "Art. 30, comma 1, lettera a), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 786,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Quale tra le seguenti specie è espressamente menzionata nell'Art. 30, comma 1, lettera c) come particolarmente protetta?",
+        "options": {
+            "A": "Muflone sardo",
+            "B": "Lepre sarda",
+            "C": "Pernice sarda",
+            "D": "Cinghiale sardo"
+        },
+        "correct_answer": "A",
+        "explanation": "L'Art. 30, comma 1, lettera c) elenca tassativamente orso, stambecco, camoscio d'Abruzzo e muflone sardo come specie la cui caccia è punita con la massima severità.",
+        "source": "Art. 30, comma 1, lettera c), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 787,
+        "category": "Fauna (L. 157/1992)",
+        "question": "La sanzione per l'abbattimento di un esemplare di muflone sardo prevede:",
+        "options": {
+            "A": "Arresto da tre mesi ad un anno o ammenda da euro 1.032,00 a euro 6.197,00",
+            "B": "Solo ammenda da euro 1.032,00 a euro 6.197,00",
+            "C": "Arresto fino a sei mesi e ammenda da euro 464,00 a euro 1.549,00",
+            "D": "Arresto da tre mesi ad un anno e ammenda da euro 1.032,00 a euro 6.197,00"
+        },
+        "correct_answer": "D",
+        "explanation": "La lettera c) dell'Art. 30 prevede la pena CONGIUNTA (arresto E ammenda), a testimonianza della massima gravità attribuita dal legislatore all'abbattimento di queste specie-simbolo.",
+        "source": "Art. 30, comma 1, lettera c), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 788,
+        "category": "Fauna (L. 157/1992)",
+        "question": "L'esercizio della caccia all'interno di un parco naturale regionale è punito con:",
+        "options": {
+            "A": "Arresto fino a sei mesi e ammenda da euro 464,00 a euro 1.549,00",
+            "B": "Arresto fino a sei mesi o ammenda da euro 464,00 a euro 1.549,00",
+            "C": "Sanzione amministrativa pecuniaria",
+            "D": "Solo ammenda da euro 464,00 a euro 1.549,00"
+        },
+        "correct_answer": "A",
+        "explanation": "La lettera d) dell'Art. 30 prevede la pena CONGIUNTA (arresto E ammenda) per la caccia in aree protette, evidenziando la particolare tutela riservata a questi territori.",
+        "source": "Art. 30, comma 1, lettera d), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 789,
+        "category": "Fauna (L. 157/1992)",
+        "question": "La caccia nei giorni di silenzio venatorio è punita con:",
+        "options": {
+            "A": "Arresto fino a sei mesi e ammenda fino a euro 516,00",
+            "B": "Arresto fino a un anno o ammenda fino a euro 1.549,00",
+            "C": "Arresto fino a tre mesi o ammenda fino a euro 516,00",
+            "D": "Solo sanzione amministrativa pecuniaria"
+        },
+        "correct_answer": "C",
+        "explanation": "La lettera f) dell'Art. 30 prevede per questa violazione la pena più lieve tra quelle contemplate dall'articolo: arresto fino a tre mesi O ammenda fino a euro 516,00.",
+        "source": "Art. 30, comma 1, lettera f), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 790,
+        "category": "Fauna (L. 157/1992)",
+        "question": "L'esercizio dell'uccellagione è punito ai sensi dell'Art. 30, comma 1, lettera e) con:",
+        "options": {
+            "A": "Solo ammenda fino a euro 774,00",
+            "B": "Arresto fino ad un anno o ammenda da euro 774,00 a euro 2.065,00",
+            "C": "Arresto fino a sei mesi e ammenda da euro 774,00 a euro 2.065,00",
+            "D": "Sanzione amministrativa con confisca degli strumenti"
+        },
+        "correct_answer": "B",
+        "explanation": "La lettera e) dell'Art. 30 punisce l'uccellagione, ossia la cattura indiscriminata di uccelli con mezzi vietati, con arresto fino ad un anno O ammenda da euro 774,00 a euro 2.065,00.",
+        "source": "Art. 30, comma 1, lettera e), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 791,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Cosa si intende per 'uccellagione' secondo la Legge 157/92?",
+        "options": {
+            "A": "La caccia agli uccelli acquatici in zone umide",
+            "B": "L'abbattimento di uccelli migratori durante il loro passaggio",
+            "C": "L'allevamento illegale di uccelli da richiamo",
+            "D": "La cattura indiscriminata di uccelli con mezzi vietati come reti o trappole"
+        },
+        "correct_answer": "D",
+        "explanation": "L'uccellagione è definita come ogni forma di cattura indiscriminata di uccelli con mezzi vietati, tipicamente reti e trappole tradizionali come le 'laqueddas'.",
+        "source": "Art. 30, comma 1, lettera e), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 792,
+        "category": "Fauna (L. 157/1992)",
+        "question": "La caccia sparando da autoveicoli è punita ai sensi dell'Art. 30, comma 1, lettera i) con:",
+        "options": {
+            "A": "Arresto fino a tre mesi e ammenda fino a euro 2.065,00",
+            "B": "Solo sanzione amministrativa e ritiro della licenza",
+            "C": "Arresto fino a tre mesi o ammenda fino a euro 2.065,00",
+            "D": "Arresto da due a otto mesi o ammenda da euro 774,00 a euro 2.065,00"
+        },
+        "correct_answer": "C",
+        "explanation": "La lettera i) dell'Art. 30 prevede per la caccia da autoveicoli, natanti o aeromobili la pena di arresto fino a tre mesi O ammenda fino a euro 2.065,00.",
+        "source": "Art. 30, comma 1, lettera i), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 793,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Il commercio illegale di fauna selvatica è punito dall'Art. 30, comma 1, lettera l) con:",
+        "options": {
+            "A": "Arresto da due a sei mesi o ammenda da euro 516,00 a euro 2.065,00",
+            "B": "Solo ammenda da euro 516,00 a euro 2.065,00",
+            "C": "Arresto da tre mesi ad un anno e ammenda da euro 1.032,00 a euro 6.197,00",
+            "D": "Sanzione amministrativa pecuniaria da euro 516,00 a euro 2.065,00"
+        },
+        "correct_answer": "A",
+        "explanation": "La lettera l) dell'Art. 30 punisce il commercio o la detenzione per il commercio di fauna selvatica con arresto da due a sei mesi O ammenda da euro 516,00 a euro 2.065,00.",
+        "source": "Art. 30, comma 1, lettera l), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 794,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Le pene per il commercio illegale di fauna selvatica sono raddoppiate quando il fatto riguarda:",
+        "options": {
+            "A": "Le specie di cui alle lettere a), d) ed e)",
+            "B": "Esclusivamente il muflone sardo",
+            "C": "Tutte le specie protette senza distinzione",
+            "D": "Le specie di cui alle lettere b), c) e g)"
+        },
+        "correct_answer": "D",
+        "explanation": "L'Art. 30, comma 1, lettera l) prevede espressamente il raddoppio delle pene quando il commercio illegale riguarda le specie di cui alle lettere b), c) e g).",
+        "source": "Art. 30, comma 1, lettera l), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 795,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Il tassidermista che prepara le spoglie di un animale illecitamente abbattuto risponde:",
+        "options": {
+            "A": "Solo di una sanzione amministrativa per esercizio abusivo della professione",
+            "B": "Delle medesime sanzioni previste per l'abbattimento dell'animale",
+            "C": "Di una contravvenzione minore rispetto al cacciatore",
+            "D": "Solo se ha materialmente partecipato alla caccia"
+        },
+        "correct_answer": "B",
+        "explanation": "L'Art. 30, comma 2 stabilisce che per le violazioni in materia di tassidermia si applicano le medesime sanzioni comminate per l'abbattimento degli animali le cui spoglie sono oggetto del trattamento.",
+        "source": "Art. 30, comma 2, Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 796,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Oltre alle sanzioni penali, quali conseguenze può subire il tassidermista che viola la legge?",
+        "options": {
+            "A": "Solo l'obbligo di risarcimento del danno ambientale",
+            "B": "L'iscrizione in un apposito registro nazionale dei trasgressori",
+            "C": "La sospensione o revoca dell'autorizzazione regionale all'esercizio dell'attività",
+            "D": "La chiusura definitiva del laboratorio disposta dall'autorità giudiziaria"
+        },
+        "correct_answer": "C",
+        "explanation": "L'Art. 30, comma 2 prevede che le Regioni possano disciplinare i casi e le modalità di sospensione e revoca dell'autorizzazione all'esercizio dell'attività di tassidermia e imbalsamazione.",
+        "source": "Art. 30, comma 2, Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 797,
+        "category": "Fauna (L. 157/1992)",
+        "question": "L'abbattimento di mammiferi o uccelli protetti di cui all'Art. 2 della Legge 157/92 è punito con:",
+        "options": {
+            "A": "Arresto da tre mesi ad un anno e ammenda da euro 1.032,00 a euro 6.197,00",
+            "B": "Arresto da due a otto mesi o ammenda da euro 774,00 a euro 2.065,00",
+            "C": "Solo ammenda fino a euro 3.098,00",
+            "D": "Arresto fino a sei mesi e ammenda da euro 464,00 a euro 1.549,00"
+        },
+        "correct_answer": "B",
+        "explanation": "La lettera b) dell'Art. 30 punisce l'abbattimento, cattura o detenzione di specie protette (diverse da quelle della lett. c) con arresto da due a otto mesi O ammenda da euro 774,00 a euro 2.065,00.",
+        "source": "Art. 30, comma 1, lettera b), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 798,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Qual è la differenza tra la lettera b) e la lettera c) dell'Art. 30 in termini di sanzione?",
+        "options": {
+            "A": "La lettera b) prevede pena disgiuntiva, la lettera c) pena congiunta",
+            "B": "Entrambe prevedono la sola ammenda",
+            "C": "La lettera b) prevede pena congiunta, la lettera c) pena disgiuntiva",
+            "D": "Non vi è alcuna differenza sostanziale nelle sanzioni"
+        },
+        "correct_answer": "A",
+        "explanation": "La lettera b) prevede arresto O ammenda (pena disgiuntiva), mentre la lettera c) per le specie particolarmente protette prevede arresto E ammenda (pena congiunta), evidenziando la maggiore gravità.",
+        "source": "Art. 30, comma 1, lettere b) e c), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 799,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Chi abbatte, cattura o detiene fringillidi in numero superiore a cinque è punito ai sensi dell'Art. 30, comma 1, lettera h) con:",
+        "options": {
+            "A": "Arresto fino a tre mesi o ammenda fino a euro 516,00",
+            "B": "Arresto fino ad un anno o ammenda da euro 774,00 a euro 2.065,00",
+            "C": "Arresto da due a sei mesi o ammenda da euro 516,00 a euro 2.065,00",
+            "D": "Ammenda fino a euro 1.549,00"
+        },
+        "correct_answer": "D",
+        "explanation": "La lettera h) dell'Art. 30 prevede per chi abbatte, cattura o detiene fringillidi in numero superiore a cinque l'ammenda fino a euro 1.549,00. La stessa sanzione si applica a chi esercita la caccia con mezzi o richiami vietati, con confisca dei richiami in quest'ultimo caso.",
+        "source": "Art. 30, comma 1, lettera h), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 800,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Quale delle seguenti fattispecie prevede esclusivamente la pena dell'ammenda?",
+        "options": {
+            "A": "Esercizio della caccia in periodo di divieto generale",
+            "B": "Esercizio dell'uccellagione",
+            "C": "Abbattimento di fauna stanziale alpina protetta",
+            "D": "Caccia sparando da autoveicoli"
+        },
+        "correct_answer": "C",
+        "explanation": "La lettera g) dell'Art. 30 relativa alla fauna stanziale alpina protetta è l'unica fattispecie che prevede esclusivamente l'ammenda fino a euro 3.098,00, senza previsione dell'arresto.",
+        "source": "Art. 30, comma 1, lettera g), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 801,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Un agente sorprende un cacciatore mentre spara da un natante. Quale norma sanzionatoria si applica?",
+        "options": {
+            "A": "Art. 30, comma 1, lettera f)",
+            "B": "Art. 30, comma 1, lettera i)",
+            "C": "Art. 30, comma 1, lettera h)",
+            "D": "Art. 30, comma 1, lettera e)"
+        },
+        "correct_answer": "B",
+        "explanation": "La lettera i) dell'Art. 30 vieta espressamente la caccia esercitata sparando da autoveicoli, natanti o aeromobili.",
+        "source": "Art. 30, comma 1, lettera i), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 802,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Secondo il testo, quali aree protette sono rilevanti per l'applicazione dell'Art. 30, lettera d) in Sardegna?",
+        "options": {
+            "A": "Solo il Parco Nazionale del Gennargentu",
+            "B": "Esclusivamente le riserve marine",
+            "C": "Gennargentu, Asinara, Tepilora, Molentargius e altre aree protette",
+            "D": "Solo le oasi faunistiche comunali"
+        },
+        "correct_answer": "C",
+        "explanation": "Il testo indica che la Sardegna è ricca di aree protette, citando espressamente Gennargentu, Asinara, Tepilora e Molentargius come esempi di zone dove si applica l'Art. 30, lettera d).",
+        "source": "Art. 30, comma 1, lettera d), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 803,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Quali specie sono elencate nell'Art. 30, comma 1, lettera c)?",
+        "options": {
+            "A": "Orso, stambecco, camoscio d'Abruzzo, muflone sardo",
+            "B": "Orso, lupo, lince, muflone sardo",
+            "C": "Stambecco, cervo sardo, daino, muflone",
+            "D": "Camoscio alpino, cervo, capriolo, muflone sardo"
+        },
+        "correct_answer": "A",
+        "explanation": "L'Art. 30, comma 1, lettera c) elenca tassativamente quattro specie: orso, stambecco, camoscio d'Abruzzo e muflone sardo.",
+        "source": "Art. 30, comma 1, lettera c), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 804,
+        "category": "Fauna (L. 157/1992)",
+        "question": "La pena congiunta (arresto E ammenda) è prevista per:",
+        "options": {
+            "A": "Solo per la caccia in periodo di divieto generale",
+            "B": "L'abbattimento di specie particolarmente protette e la caccia in aree protette",
+            "C": "Tutte le violazioni dell'Art. 30",
+            "D": "Solo per l'esercizio dell'uccellagione"
+        },
+        "correct_answer": "B",
+        "explanation": "Le lettere c) e d) dell'Art. 30 sono le uniche che prevedono la pena congiunta, rispettivamente per l'abbattimento di specie-simbolo e per la caccia in aree protette.",
+        "source": "Art. 30, comma 1, lettere c) e d), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 805,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Il principio secondo cui la fauna selvatica è patrimonio indisponibile dello Stato serve a:",
+        "options": {
+            "A": "Vietare completamente ogni forma di caccia sul territorio nazionale",
+            "B": "Attribuire la gestione della fauna ai cacciatori",
+            "C": "Giustificare l'adozione di sanzioni penali per le violazioni più gravi",
+            "D": "Limitare la competenza delle Regioni in materia venatoria"
+        },
+        "correct_answer": "C",
+        "explanation": "Il testo chiarisce che questo principio cardine eleva le violazioni venatorie più gravi a veri e propri reati, giustificando le severe sanzioni penali dell'Art. 30.",
+        "source": "Art. 1, Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 806,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Nel caso di caccia all'interno di un parco naturale, quale procedura deve seguire l'agente?",
+        "options": {
+            "A": "Elevare solo una sanzione amministrativa e rilasciare il trasgressore",
+            "B": "Avvisare il trasgressore e invitarlo ad allontanarsi",
+            "C": "Sequestrare solo la fauna eventualmente abbattuta",
+            "D": "Procedere all'identificazione, al sequestro penale dell'arma e alla comunicazione di notizia di reato"
+        },
+        "correct_answer": "D",
+        "explanation": "Secondo il caso studio, per la violazione dell'Art. 30, lettera d), l'agente deve identificare il soggetto, sequestrare l'arma e redigere la comunicazione di notizia di reato alla Procura.",
+        "source": "Art. 30, comma 1, lettera d), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 807,
+        "category": "Fauna (L. 157/1992)",
+        "question": "L'uso di richiami acustici elettronici per la caccia configura:",
+        "options": {
+            "A": "Una violazione dell'Art. 30, lettera h) - caccia con richiami vietati",
+            "B": "Una condotta penalmente irrilevante",
+            "C": "Esclusivamente un illecito amministrativo",
+            "D": "Un reato solo se commesso in area protetta"
+        },
+        "correct_answer": "A",
+        "explanation": "L'Art. 30, comma 1, lettera h) punisce con ammenda fino a euro 1.549,00 chi esercita la caccia con richiami vietati, tra cui rientrano i richiami acustici elettronici secondo l'Art. 21, comma 1, lettera r). In questo caso è prevista anche la confisca dei richiami.",
+        "source": "Art. 30, comma 1, lettera h), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 808,
+        "category": "Fauna (L. 157/1992)",
+        "question": "La confisca dei richiami è prevista come sanzione accessoria per quale fattispecie?",
+        "options": {
+            "A": "Caccia in periodo di divieto generale",
+            "B": "Esercizio dell'uccellagione",
+            "C": "Caccia nei giorni di silenzio venatorio",
+            "D": "Caccia con mezzi vietati o richiami vietati"
+        },
+        "correct_answer": "D",
+        "explanation": "La lettera h) dell'Art. 30 prevede espressamente, oltre all'ammenda, la confisca dei richiami utilizzati per la caccia con mezzi o richiami vietati.",
+        "source": "Art. 30, comma 1, lettera h), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 809,
+        "category": "Fauna (L. 157/1992)",
+        "question": "L'Art. 30 della Legge 157/92 distingue le sanzioni penali da quelle amministrative previste:",
+        "options": {
+            "A": "Nell'Art. 29 della stessa legge",
+            "B": "Nel Codice Penale",
+            "C": "Nell'Art. 31 della stessa legge",
+            "D": "Nella normativa regionale"
+        },
+        "correct_answer": "C",
+        "explanation": "Il testo specifica che l'Art. 30 tratta le fattispecie penali, distinguendole nettamente dalle infrazioni amministrative disciplinate dall'Art. 31 della Legge 157/92.",
+        "source": "Art. 30 e Art. 31, Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 810,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Quale elemento è sufficiente per configurare il reato di caccia in area protetta?",
+        "options": {
+            "A": "Solo l'effettivo abbattimento di fauna selvatica",
+            "B": "La semplice presenza armata in attitudine venatoria",
+            "C": "L'essere titolari di licenza di caccia all'interno dell'area",
+            "D": "Il possesso di fauna abbattuta nel veicolo"
+        },
+        "correct_answer": "B",
+        "explanation": "Come indicato nel caso studio, la semplice presenza armata in attitudine venatoria all'interno di un'area protetta è sufficiente per configurare il reato di cui all'Art. 30, lettera d).",
+        "source": "Art. 30, comma 1, lettera d), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 811,
+        "category": "Fauna (L. 157/1992)",
+        "question": "La pena per la caccia in periodo di divieto generale va:",
+        "options": {
+            "A": "Da due a otto mesi di arresto",
+            "B": "Fino a sei mesi di arresto",
+            "C": "Da tre mesi ad un anno di arresto",
+            "D": "Fino a tre mesi di arresto"
+        },
+        "correct_answer": "C",
+        "explanation": "La lettera a) dell'Art. 30 prevede per la caccia in periodo di divieto generale l'arresto da tre mesi ad un anno (in alternativa all'ammenda).",
+        "source": "Art. 30, comma 1, lettera a), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 812,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Nel caso di ritrovamento di un muflone sardo abbattuto in un veicolo, l'agente deve procedere a:",
+        "options": {
+            "A": "Sequestrare solo la carcassa dell'animale",
+            "B": "Sequestrare arma, veicolo e carcassa, e denunciare all'autorità giudiziaria",
+            "C": "Elevare una sanzione amministrativa e rilasciare il conducente",
+            "D": "Segnalare il fatto all'ufficio caccia regionale"
+        },
+        "correct_answer": "B",
+        "explanation": "Come indicato nel caso studio, per il grave reato di cui all'Art. 30, lettera c), l'agente deve procedere al sequestro penale di arma, veicolo e carcassa, denunciando il soggetto all'autorità giudiziaria.",
+        "source": "Art. 30, comma 1, lettera c), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 813,
+        "category": "Fauna (L. 157/1992)",
+        "question": "La norma sull'abbattimento di fauna stanziale alpina protetta (Art. 30, lett. g):",
+        "options": {
+            "A": "È direttamente applicabile in Sardegna",
+            "B": "Riguarda il muflone sardo",
+            "C": "Prevede la pena congiunta di arresto e ammenda",
+            "D": "Non è direttamente applicabile in Sardegna"
+        },
+        "correct_answer": "D",
+        "explanation": "Il testo chiarisce che la norma sulla fauna stanziale alpina protetta non è direttamente applicabile in Sardegna, ma la sua conoscenza è necessaria per una preparazione completa sulla legge nazionale.",
+        "source": "Art. 30, comma 1, lettera g), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 814,
+        "category": "Fauna (L. 157/1992)",
+        "question": "L'ammenda prevista per la caccia a specie non consentite (Art. 30, lett. h) arriva fino a:",
+        "options": {
+            "A": "Euro 516,00",
+            "B": "Euro 1.549,00",
+            "C": "Euro 2.065,00",
+            "D": "Euro 3.098,00"
+        },
+        "correct_answer": "B",
+        "explanation": "La lettera h) dell'Art. 30 prevede per la caccia a specie non consentite, con mezzi o richiami vietati, l'ammenda fino a euro 1.549,00.",
+        "source": "Art. 30, comma 1, lettera h), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 815,
+        "category": "Fauna (L. 157/1992)",
+        "question": "La pena disgiuntiva (arresto O ammenda) indica che:",
+        "options": {
+            "A": "Il reato è di massima gravità e non ammette sconti di pena",
+            "B": "Il giudice deve applicare entrambe le sanzioni cumulativamente",
+            "C": "Si tratta di un illecito amministrativo e non penale",
+            "D": "Il giudice ha un margine di valutazione sulla sanzione da applicare"
+        },
+        "correct_answer": "D",
+        "explanation": "Il testo spiega che la pena disgiuntiva (arresto O ammenda) si applica a reati gravi ma con un margine di valutazione per il giudice sulla sanzione da infliggere.",
+        "source": "Art. 30, Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 816,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Secondo il testo, gli strumenti tipici dell'uccellagione in Sardegna includono:",
+        "options": {
+            "A": "Fucili con silenziatore",
+            "B": "Reti e laqueddas",
+            "C": "Trappole metalliche a scatto",
+            "D": "Richiami elettronici e fari"
+        },
+        "correct_answer": "B",
+        "explanation": "Il testo indica che l'agente deve saper riconoscere gli strumenti tipici dell'uccellagione, citando espressamente le reti e le 'laqueddas' come mezzi tradizionali.",
+        "source": "Art. 30, comma 1, lettera e), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 817,
+        "category": "Fauna (L. 157/1992)",
+        "question": "La caccia da autoveicoli è indicata nel testo come tipica modalità di:",
+        "options": {
+            "A": "Caccia sportiva autorizzata",
+            "B": "Controllo faunistico",
+            "C": "Bracconaggio notturno con uso di fari",
+            "D": "Caccia di selezione"
+        },
+        "correct_answer": "C",
+        "explanation": "Il testo specifica che la caccia sparando da autoveicoli è una modalità tipica del bracconaggio notturno con uso di fari, denotando una condotta pericolosa e antisportiva.",
+        "source": "Art. 30, comma 1, lettera i), Legge 11 febbraio 1992, n. 157"
     }
 ]

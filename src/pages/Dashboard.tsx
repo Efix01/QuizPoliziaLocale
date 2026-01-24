@@ -20,6 +20,7 @@ import {
 import { useScrollAnimation, useStaggerAnimation, useParallax } from '../hooks/useAnimations';
 import LockedOverlay from '../components/ui/LockedOverlay';
 import { StudyNotificationBanner } from '../components/ui/StudyNotification';
+import { NewsBanner } from '../components/ui/NewsBanner';
 import './Dashboard.css';
 
 // Greeting based on time of day
@@ -154,6 +155,13 @@ const Dashboard: React.FC = () => {
         <div className="dashboard-container">
             {/* STUDY NOTIFICATION BANNER */}
             <StudyNotificationBanner />
+
+            {/* NEWS BANNER */}
+            <NewsBanner
+                id="update-jan-2026-legge157"
+                title="Nuovi contenuti disponibili! 🎉"
+                message="Aggiunta la lezione completa sulla Legge 157/92 (Norme per la protezione della fauna selvatica) e 34 nuovi quiz specifici."
+            />
 
             {/* HERO SECTION */}
             <section
