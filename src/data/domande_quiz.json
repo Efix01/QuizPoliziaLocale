@@ -1470,20 +1470,6 @@
         "source": "D.Lgs. 1/2018"
     },
     {
-        "id": 106,
-        "category": "Incendi Boschivi (L. 353/2000)",
-        "question": "Nelle situazioni di emergenza di cui all'articolo 7, comma 1, lettere a), b) e c) del d.lgs. 1/2018 (Codice della Protezione civile), i cittadini hanno:",
-        "options": {
-            "A": "La facoltà di ottemperare alle disposizioni impartite dalle autorità di Protezione civile",
-            "B": "L'interesse a ottemperare alle disposizioni impartite dalle autorità di Protezione civile",
-            "C": "Il dovere di ottemperare alle disposizioni impartite dalle autorità di Protezione civile",
-            "D": "Il diritto di ottemperare alle disposizioni impartite dalle autorità di Protezione civile"
-        },
-        "correct_answer": "C",
-        "explanation": "In caso di emergenza, i cittadini hanno il dovere civico e legale di seguire le istruzioni delle autorità per la propria e altrui incolumità.",
-        "source": "D.Lgs. 1/2018"
-    },
-    {
         "id": 107,
         "category": "Reati Ambientali",
         "question": "Ai sensi dell'art. 3-quinquies, comma 1, del decreto legislativo 152/2006, costituiscono, tra gli altri, condizioni minime ed essenziali per assicurare la tutela dell'ambiente su tutto il territorio nazionale i principi di:",
@@ -4654,12 +4640,12 @@
         "options": {
             "A": "Di boschi cedui matricinati in cedui composti",
             "B": "Di boschi cedui semplici in cedui matricinati",
-            "C": "Di boschi cedui matricinati in cedui composti",
+            "C": "Di boschi cedui semplici in cedui composti",
             "D": "Di boschi cedui composti in cedui semplici"
         },
         "correct_answer": "D",
-        "explanation": "È vietata la conversione che porta a una forma di governo meno evoluta o complessa (retrocessione), come da ceduo composto a ceduo semplice.",
-        "source": "PMPF Sardegna 2021"
+        "explanation": "È vietata la conversione che porta a una forma di governo meno evoluta o complessa (retrocessione), come da ceduo composto a ceduo semplice. L'art. 4 del decreto n. 3022/3 vieta specificamente le retrocessioni da cedui composti a cedui semplici e matricinati [web:1][page:0].",
+        "source": "PMPF Sardegna 2021 - Decreto n. 3022/3 del 31 marzo 2021"
     },
     {
         "id": 334,
@@ -4720,7 +4706,7 @@
     {
         "id": 338,
         "category": "Incendi Boschivi (L. 353/2000)",
-        "question": "Come definisce l'art. 1 la competenza del Corpo in materia di incendi?",
+        "question": "Come definisce l'art. 1 della L.R. 26/1985 la competenza del Corpo in materia di incendi?",
         "options": {
             "A": "Incendi boschivi e incendi di interfaccia urbano-rurale su richiesta dei Sindaci",
             "B": "Incendi nei boschi e, secondo i programmi regionali annuali di intervento, nelle aree extraurbane",
