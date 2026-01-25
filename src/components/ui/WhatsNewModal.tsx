@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Sparkles, Save, BookOpen, CheckCircle } from 'lucide-react';
 import './WhatsNewModal.css';
 
-const VERSION_KEY = 'has_seen_update_v1_0_2'; // Updated to force modal to show again
+const VERSION_KEY = 'has_seen_update_v1_0_3'; // Updated to force modal to show again
 
 const WhatsNewModal: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -39,11 +39,11 @@ const WhatsNewModal: React.FC = () => {
                 <ul className="whats-new-list">
                     <li className="whats-new-item">
                         <div className="item-icon">
-                            <Save size={20} />
+                            <BookOpen size={20} />
                         </div>
                         <div className="item-content">
-                            <h4>Salvataggio in Cloud</h4>
-                            <p>I tuoi progressi sono ora salvati online. Cambia dispositivo senza perdere nulla.</p>
+                            <h4>Nuova Lezione Inglese B1</h4>
+                            <p>Aggiunto un corso completo di Inglese B1 specifico per il Corpo Forestale nel materiale di studio.</p>
                         </div>
                     </li>
 
@@ -52,18 +52,18 @@ const WhatsNewModal: React.FC = () => {
                             <CheckCircle size={20} />
                         </div>
                         <div className="item-content">
-                            <h4>Migliore Lettura</h4>
-                            <p>Il pulsante "Segna come letto" è sempre visibile e trovi nuove opzioni per ripassare.</p>
+                            <h4>Nuovi Quiz Inglese</h4>
+                            <p>Inseriti 22 nuovi quiz di lingua inglese per testare subito la tua preparazione.</p>
                         </div>
                     </li>
 
                     <li className="whats-new-item">
                         <div className="item-icon">
-                            <BookOpen size={20} />
+                            <Save size={20} />
                         </div>
                         <div className="item-content">
-                            <h4>App Gratuita</h4>
-                            <p>Tutte le nuove funzioni sono ottimizzate per rimanere gratuite per sempre.</p>
+                            <h4>Sempre Migliorati</h4>
+                            <p>Continuiamo ad aggiungere contenuti per la tua preparazione al concorso.</p>
                         </div>
                     </li>
                 </ul>

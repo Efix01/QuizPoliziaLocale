@@ -11424,5 +11424,313 @@
         "correct_answer": "C",
         "explanation": "Il testo specifica che la caccia sparando da autoveicoli è una modalità tipica del bracconaggio notturno con uso di fari, denotando una condotta pericolosa e antisportiva.",
         "source": "Art. 30, comma 1, lettera i), Legge 11 febbraio 1992, n. 157"
+    },
+    {
+        "id": 818,
+        "category": "Lingua Inglese",
+        "question": "Come dici 'È vietato accendere fuochi'?",
+        "options": {
+            "A": "You don't have to light fires.",
+            "B": "You mustn't light fires.",
+            "C": "You should light fires.",
+            "D": "You can light fires."
+        },
+        "correct_answer": "B",
+        "explanation": "'Mustn't' = divieto assoluto, essenziale per segnaletica forestale B1.",
+        "source": "CEFR B1: Prohibition"
+    },
+    {
+        "id": 819,
+        "category": "Lingua Inglese",
+        "question": "Cosa significa 'wildlife' nel contesto forestale?",
+        "options": {
+            "A": "Piante e alberi",
+            "B": "Animali selvatici",
+            "C": "Fiumi e laghi",
+            "D": "Visitatori"
+        },
+        "correct_answer": "B",
+        "explanation": "'Wildlife' = fauna selvatica, termine base per Corpo Forestale B1.",
+        "source": "CEFR B1 Environment Vocabulary"
+    },
+    {
+        "id": 820,
+        "category": "Lingua Inglese",
+        "question": "Completa: I ranger _____ pattugliato per ore.",
+        "options": {
+            "A": "patrol",
+            "B": "have patrolled",
+            "C": "patrolled",
+            "D": "will patrol"
+        },
+        "correct_answer": "B",
+        "explanation": "Present perfect per azioni iniziate nel passato e continuate, B1 standard.",
+        "source": "CEFR B1: Present Perfect"
+    },
+    {
+        "id": 821,
+        "category": "Lingua Inglese",
+        "question": "Cosa significa 'patrol' per un agente forestale?",
+        "options": {
+            "A": "Tipo di albero",
+            "B": "Giro di controllo",
+            "C": "Area picnic",
+            "D": "Specie di uccello"
+        },
+        "correct_answer": "B",
+        "explanation": "'Patrol' = giro di ispezione, termine professionale Corpo Forestale.",
+        "source": "B1 Forest Ranger Vocabulary"
+    },
+    {
+        "id": 822,
+        "category": "Lingua Inglese",
+        "question": "Cosa significa 'pollution'?",
+        "options": {
+            "A": "Aria pulita",
+            "B": "Inquinamento ambientale",
+            "C": "Nuovi alberi",
+            "D": "Migrazioni animali"
+        },
+        "correct_answer": "B",
+        "explanation": "'Pollution' = contaminazione, termine base vigilanza ambientale B1.",
+        "source": "CEFR B1: Environment"
+    },
+    {
+        "id": 823,
+        "category": "Lingua Inglese",
+        "question": "Gli agenti _____ indossare l'uniforme in servizio.",
+        "options": {
+            "A": "should",
+            "B": "must",
+            "C": "can",
+            "D": "might"
+        },
+        "correct_answer": "B",
+        "explanation": "'Must' per regole di servizio obbligatorie B1 Corpo Forestale.",
+        "source": "CEFR B1: Strong Obligation"
+    },
+    {
+        "id": 824,
+        "category": "Lingua Inglese",
+        "question": "Sinonimo di 'protection' nelle foreste?",
+        "options": {
+            "A": "Distruzione",
+            "B": "Tutela",
+            "C": "Inquinamento",
+            "D": "Caccia"
+        },
+        "correct_answer": "B",
+        "explanation": "'Protection' = tutela ambientale, termine professionale B1.",
+        "source": "B1 Forest Protection"
+    },
+    {
+        "id": 825,
+        "category": "Lingua Inglese",
+        "question": "Cosa significa 'inspection'?",
+        "options": {
+            "A": "Passeggiata",
+            "B": "Controllo ufficiale",
+            "C": "Pranzo",
+            "D": "Fotografia"
+        },
+        "correct_answer": "B",
+        "explanation": "'Inspection' = ispezione, termine base Corpo Forestale B1.",
+        "source": "B1 Professional Vocabulary"
+    },
+    {
+        "id": 826,
+        "category": "Lingua Inglese",
+        "question": "Domani _____ pattugliare l'area.",
+        "options": {
+            "A": "I will",
+            "B": "I am",
+            "C": "I do",
+            "D": "I have"
+        },
+        "correct_answer": "A",
+        "explanation": "'Will' per futuro spontaneo, turni di servizio B1.",
+        "source": "CEFR B1: Future Simple"
+    },
+    {
+        "id": 827,
+        "category": "Lingua Inglese",
+        "question": "I ranger controllano _____ foresta.",
+        "options": {
+            "A": "on",
+            "B": "in",
+            "C": "at",
+            "D": "to"
+        },
+        "correct_answer": "B",
+        "explanation": "'In the forest' per luoghi estesi, B1 preposizioni di luogo.",
+        "source": "CEFR B1: Prepositions of Place"
+    },
+    {
+        "id": 828,
+        "category": "Lingua Inglese",
+        "question": "Il fiume inquinato è _____ .",
+        "options": {
+            "A": "polluting",
+            "B": "polluted",
+            "C": "pollute",
+            "D": "pollution"
+        },
+        "correct_answer": "B",
+        "explanation": "Aggettivo -ed per cosa subisce l'azione, B1 ambiente.",
+        "source": "CEFR B1: -ed/-ing Adjectives"
+    },
+    {
+        "id": 829,
+        "category": "Lingua Inglese",
+        "question": "Come si dice 'caccia illegale'?",
+        "options": {
+            "A": "Legal hunting",
+            "B": "Illegal hunting",
+            "C": "Wild hunting",
+            "D": "Safe hunting"
+        },
+        "correct_answer": "B",
+        "explanation": "'Illegal hunting' = bracconaggio, termine vigilanza B1.",
+        "source": "B1 Wildlife Protection"
+    },
+    {
+        "id": 830,
+        "category": "Lingua Inglese",
+        "question": "Cosa significa 'habitat'?",
+        "options": {
+            "A": "Cibo",
+            "B": "Casa naturale degli animali",
+            "C": "Luogo turistico",
+            "D": "Veicolo"
+        },
+        "correct_answer": "B",
+        "explanation": "'Habitat' = ambiente naturale specie, protezione fauna B1.",
+        "source": "CEFR B1: Environment"
+    },
+    {
+        "id": 831,
+        "category": "Lingua Inglese",
+        "question": "L'incendio _____ distrutto 10 ettari.",
+        "options": {
+            "A": "destroys",
+            "B": "has destroyed",
+            "C": "destroyed",
+            "D": "will destroy"
+        },
+        "correct_answer": "C",
+        "explanation": "Past simple per evento concluso, rapporti incendi B1.",
+        "source": "CEFR B1: Past Simple"
+    },
+    {
+        "id": 832,
+        "category": "Lingua Inglese",
+        "question": "Come si dice 'albero' in inglese forestale?",
+        "options": {
+            "A": "Bush",
+            "B": "Tree",
+            "C": "Flower",
+            "D": "Grass"
+        },
+        "correct_answer": "B",
+        "explanation": "'Tree' = albero, termine base Corpo Forestale Sardegna B1.",
+        "source": "CEFR B1: Forest Vocabulary"
+    },
+    {
+        "id": 833,
+        "category": "Lingua Inglese",
+        "question": "Nell'ambito della sicurezza forestale, qual è la funzione comunicativa specifica del verbo modale 'Mustn't' (es. 'You mustn't light fires')?",
+        "options": {
+            "A": "Esprimere una mancanza di necessità (non è necessario farlo).",
+            "B": "Esprimere un consiglio amichevole o una raccomandazione facoltativa.",
+            "C": "Esprimere un divieto assoluto o una proibizione.",
+            "D": "Esprimere una capacità fisica di fare qualcosa nel passato."
+        },
+        "correct_answer": "C",
+        "explanation": "Nel contesto B1 applicato alla sicurezza, 'Mustn't' indica un divieto assoluto (Prohibition). Si distingue da 'Don't have to' che indica assenza di obbligo.",
+        "source": "Fonte [3], [4] - Grammatica in Contesto"
+    },
+    {
+        "id": 834,
+        "category": "Lingua Inglese",
+        "question": "Nel lessico tecnico forestale B1, qual è il significato corretto del termine 'Wildlife'?",
+        "options": {
+            "A": "Incendio boschivo incontrollato.",
+            "B": "Flora protetta ad alto fusto.",
+            "C": "Vita notturna nelle aree urbane.",
+            "D": "Fauna selvatica (animali che vivono in natura)."
+        },
+        "correct_answer": "D",
+        "explanation": "Secondo il glossario tecnico ambientale per il livello B1, 'Wildlife' si riferisce alla fauna selvatica. L'incendio boschivo è tradotto come 'Wildfire'.",
+        "source": "Fonte [7], [8] - Lessico Tecnico"
+    },
+    {
+        "id": 835,
+        "category": "Lingua Inglese",
+        "question": "Nel contesto della 'Mediazione' e spiegazione di dati al livello B1, quale espressione è appropriata per descrivere un aumento degli incendi in un grafico?",
+        "options": {
+            "A": "The number of fires decreased significantly.",
+            "B": "The fire situation remained completely static.",
+            "C": "The number of wildfires increased during the summer.",
+            "D": "The data is too complex to be explained."
+        },
+        "correct_answer": "C",
+        "explanation": "Per descrivere un trend positivo (aumento) in modo semplice (B1), si utilizza il verbo 'increased'. 'Decreased' significa diminuito.",
+        "source": "Fonte [12], [13] - Mediazione: Spiegare Dati"
+    },
+    {
+        "id": 836,
+        "category": "Lingua Inglese",
+        "question": "Quale verbo modale è più indicato per esprimere un obbligo esterno, derivante da leggi o regolamenti (es. 'Gli agenti devono seguire le regole')?",
+        "options": {
+            "A": "Have to",
+            "B": "Might",
+            "C": "Can",
+            "D": "Would"
+        },
+        "correct_answer": "A",
+        "explanation": "Nel contesto B1, 'Have to' è utilizzato specificamente per obblighi esterni imposti da autorità o leggi, a differenza di 'Must' che è spesso un obbligo sentito internamente o personale.",
+        "source": "Fonte [3], [14] - Verbi di Obbligo"
+    },
+    {
+        "id": 837,
+        "category": "Lingua Inglese",
+        "question": "In un rapporto di servizio in inglese, cosa significa il termine tecnico 'Trail'?",
+        "options": {
+            "A": "Un veicolo fuoristrada della forestale.",
+            "B": "Un sentiero o percorso per escursionisti.",
+            "C": "Una specie di albero protetto.",
+            "D": "L'attrezzatura di spegnimento incendi."
+        },
+        "correct_answer": "B",
+        "explanation": "Il termine 'Trail' è fondamentale nel lessico forestale e turistico per indicare i sentieri o le piste che gli agenti devono monitorare.",
+        "source": "Fonte [8], [15] - Vocabolario Essenziale"
+    },
+    {
+        "id": 838,
+        "category": "Lingua Inglese",
+        "question": "Quale tra le seguenti è la definizione corretta di 'Biodiversity' nel contesto ambientale?",
+        "options": {
+            "A": "La varietà di organismi viventi in un particolare ecosistema.",
+            "B": "L'uso esclusivo di prodotti biologici nell'agricoltura.",
+            "C": "La procedura amministrativa per multare chi inquina.",
+            "D": "Un tipo di carburante ecologico per i mezzi di servizio."
+        },
+        "correct_answer": "A",
+        "explanation": "Biodiversity (Biodiversità) si riferisce alla varietà e variabilità degli organismi viventi e dei complessi ecologici in cui essi vivono.",
+        "source": "Fonte [8] - Lessico Tecnico"
+    },
+    {
+        "id": 839,
+        "category": "Lingua Inglese",
+        "question": "Quando si usa il verbo modale 'Should' in un contesto operativo forestale?",
+        "options": {
+            "A": "Per imporre un divieto assoluto sotto pena di sanzione.",
+            "B": "Per descrivere un'azione avvenuta nel passato.",
+            "C": "Per dare un consiglio o una raccomandazione di sicurezza (es. portare una mappa).",
+            "D": "Per indicare un obbligo di legge inderogabile."
+        },
+        "correct_answer": "C",
+        "explanation": "'Should' è utilizzato per esprimere raccomandazioni, consigli o buone pratiche (Advice/Recommendation), distinguendosi dall'obbligo ('Must/Have to').",
+        "source": "Fonte [3], [11] - Raccomandazioni"
     }
 ]
