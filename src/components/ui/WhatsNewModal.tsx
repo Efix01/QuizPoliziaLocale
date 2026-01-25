@@ -43,7 +43,7 @@ const WhatsNewModal: React.FC = () => {
                         </div>
                         <div className="item-content">
                             <h4>Nuova Lezione Inglese B1</h4>
-                            <p>Aggiunto un corso completo di Inglese B1 specifico per il Corpo Forestale nel materiale di studio.</p>
+                            <p>Aggiunte nozioni di Inglese B1 specifico per il Corpo Forestale nel materiale di studio.</p>
                         </div>
                     </li>
 
