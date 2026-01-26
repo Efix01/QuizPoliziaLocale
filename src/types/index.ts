@@ -25,6 +25,7 @@ export interface UserStats {
     level: number;
     xp: number;
     badges: string[];
+    dailyBonusClaimedDate?: string; // ISO Date string (YYYY-MM-DD)
 }
 
 export interface QuizState {

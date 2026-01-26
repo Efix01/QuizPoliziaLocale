@@ -4,16 +4,15 @@ import { useQuiz } from '../context/QuizContext';
 import { type QuizQuestion } from '../types';
 import { Check, X, Brain, Ban, ArrowLeft, Flag } from 'lucide-react';
 import { ReportModal } from '../components/ui/ReportModal';
+import { XPBonusOverlay } from '../components/ui/XPBonusOverlay';
 import './StudyMode.css';
 
-interface LocationState {
-    category?: string;
-}
+
 
 const StudyMode: React.FC = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { getQuestionsForStudy, answerQuestion } = useQuiz();
+    const { getQuestionsForStudy, answerQuestion, bonusNotification, clearBonusNotification, getTodayAnsweredCount } = useQuiz();
     const [sessionQuestions, setSessionQuestions] = useState<QuizQuestion[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [showAnswer, setShowAnswer] = useState(false);
@@ -23,17 +22,49 @@ const StudyMode: React.FC = () => {
     const [isReportModalOpen, setIsReportModalOpen] = useState(false);
 
     // Get category from navigation state
-    const state = location.state as LocationState;
+    // Get category and count from navigation state
+    const state = location.state as { category?: string; count?: number; forceNew?: boolean };
     const categoryFilter = state?.category;
+    const requestedCount = state?.count;
+    const forceNew = state?.forceNew;
 
     useEffect(() => {
         // Load questions for this session, filtered by category if provided
-        // 20 questions for category-specific study, 10 for quick quiz
-        const categoryList = categoryFilter ? [categoryFilter] : undefined;
-        const questionCount = categoryFilter ? 20 : 10;
+        // Use requested count if available, otherwise default logic (20 for category, 10 for quick)
+        const categoryList = categoryFilter && categoryFilter !== 'Sfida del Giorno' ? [categoryFilter] : undefined;
+
+        let questionCount = 10;
+        if (requestedCount) {
+            questionCount = requestedCount;
+        } else if (categoryFilter) {
+        } else if (categoryFilter) {
+            questionCount = 20;
+        }
+
+        // Daily Challenge Cap enforcement
+        if (categoryFilter === 'Sfida del Giorno') {
+            const todayCount = getTodayAnsweredCount();
+
+            // Check if we are at a boundary (multiples of 20) and forceNew is NOT set
+            if (todayCount > 0 && todayCount % 20 === 0 && !forceNew) {
+                questionCount = 0; // Show "Done" screen
+            } else {
+                // Calculate remaining in CURRENT cycle
+                // e.g. 21 -> 1 mod 20 -> remaining 19? No.
+                // 21 is the first of the new cycle. So we want 19 more.
+                // cycle progress = todayCount % 20.
+                // remaining = 20 - (todayCount % 20).
+                // if todayCount is 20, 20%20 is 0, remaining 20. Correct for forceNew case.
+                const remaining = 20 - (todayCount % 20);
+                questionCount = Math.min(questionCount, remaining);
+            }
+        }
+
+        // Special handling for "Sfida del Giorno" if it doesn't map to a real category
+        // If it's a general mix but count is 20, we pass undefined as categoryList
         const questions = getQuestionsForStudy(questionCount, categoryList);
         setSessionQuestions(questions);
-    }, [categoryFilter]);
+    }, [categoryFilter, requestedCount]);
 
 
     const handleOptionSelect = (key: string) => {
@@ -98,9 +129,28 @@ const StudyMode: React.FC = () => {
     if (sessionQuestions.length === 0) {
         return (
             <div className="study-container">
-                <h2>Tutto fatto!</h2>
-                <p>Non ci sono domande {categoryFilter ? `di ${categoryFilter}` : ''} da ripassare al momento.</p>
-                <button className="btn-reveal" onClick={() => navigate('/')}>Torna alla Home</button>
+                <h2>{categoryFilter === 'Sfida del Giorno' && getTodayAnsweredCount() > 0 && getTodayAnsweredCount() % 20 === 0 && !forceNew ? 'Sfida Completata!' : 'Tutto fatto!'}</h2>
+                <p>
+                    {categoryFilter === 'Sfida del Giorno' && getTodayAnsweredCount() > 0 && getTodayAnsweredCount() % 20 === 0 && !forceNew
+                        ? 'Hai completato 20 domande della sfida giornaliera. Ottimo lavoro!'
+                        : `Non ci sono domande ${categoryFilter ? `di ${categoryFilter}` : ''} da ripassare al momento.`}
+                </p>
+                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+                    <button className="btn-reveal" onClick={() => navigate('/')}>Torna alla Home</button>
+                    {categoryFilter === 'Sfida del Giorno' && getTodayAnsweredCount() > 0 && getTodayAnsweredCount() % 20 === 0 && !forceNew && (
+                        <button
+                            className="btn-reveal"
+                            style={{ background: 'var(--gold)', color: 'var(--green-dark)' }}
+                            onClick={() => {
+                                // Reload with forceNew
+                                navigate('/study', { state: { category: 'Sfida del Giorno', count: 20, forceNew: true } });
+                                window.location.reload(); // Simple reload to force state refresh since we are same route
+                            }}
+                        >
+                            Nuova Sfida
+                        </button>
+                    )}
+                </div>
             </div>
         );
     }
@@ -116,11 +166,31 @@ const StudyMode: React.FC = () => {
     }
 
     const currentQuestion = sessionQuestions[currentIndex];
-    const progress = ((currentIndex) / sessionQuestions.length) * 100;
+
+    // Determine progress display
+    let progressDisplay = `${currentIndex + 1}/${sessionQuestions.length}`;
+    let progressPercentage = ((currentIndex) / sessionQuestions.length) * 100;
+
+    // If it's the Daily Challenge, show global daily progress (CYCLIC)
+    if (categoryFilter === 'Sfida del Giorno') {
+        const todayCount = useQuiz().getTodayAnsweredCount();
+        const currentQuestionGlobalIndex = todayCount + 1; // +1 because we are on the current question
+        const currentCycleIndex = ((currentQuestionGlobalIndex - 1) % 20) + 1;
+        progressDisplay = `${currentCycleIndex}/20`;
+        progressPercentage = (currentCycleIndex / 20) * 100;
+    }
+
     const strategy = calculateStrategy(4, excludedOptions.length);
 
     return (
         <div className="study-container">
+            {bonusNotification && (
+                <XPBonusOverlay
+                    message={bonusNotification.message}
+                    amount={bonusNotification.amount}
+                    onClose={clearBonusNotification}
+                />
+            )}
             <ReportModal
                 isOpen={isReportModalOpen}
                 onClose={() => setIsReportModalOpen(false)}
@@ -137,9 +207,9 @@ const StudyMode: React.FC = () => {
                     <ArrowLeft size={20} />
                 </button>
                 <div className="progress-bar">
-                    <div className="progress-fill" style={{ width: `${progress}%` }}></div>
+                    <div className="progress-fill" style={{ width: `${progressPercentage}%` }}></div>
                 </div>
-                <span className="question-counter">{currentIndex + 1}/{sessionQuestions.length}</span>
+                <span className="question-counter">{progressDisplay}</span>
             </div>
 
             {categoryFilter && (

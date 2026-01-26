@@ -6414,7 +6414,7 @@
     {
         "id": 460,
         "category": "Reati Ambientali",
-        "question": "Qual è la sanzione prevista dall'art. 256, comma 1, del D.Lgs. 152/2006 (come modificato dal D.L. 116/2025, L. 147/2025) per chiunque effettua attività di gestione di rifiuti (raccolta, trasporto, recupero, smaltimento, commercio ed intermediazione) in mancanza della prescritta autorizzazione, iscrizione o comunicazione, nel caso di rifiuti non pericolosi?",
+        "question": "Qual è la sanzione prevista dall'art. 256, comma 1, del D.Lgs. 152/2006 per chiunque effettua attività di gestione di rifiuti (raccolta, trasporto, recupero, smaltimento) in mancanza della prescritta autorizzazione?",
         "options": {
             "A": "Pena dell'arresto da tre mesi a un anno o ammenda, se si tratta di rifiuti non pericolosi",
             "B": "Reclusione da 2 a 6 anni",
@@ -6422,7 +6422,8 @@
             "D": "Solo il sequestro del mezzo"
         },
         "correct_answer": "A",
-        "answer_explanation": "L'art. 256, comma 1, del D.Lgs. 152/2006, come modificato dal D.L. 116/2025 e convertito nella L. 147/2025, prevede per la gestione non autorizzata di rifiuti che:\n\n- Per i rifiuti non pericolosi: arresto da tre mesi a un anno o ammenda da 2.600 a 26.000 euro [web:19][web:8]\n- Per i rifiuti pericolosi: reclusione da 1 a 5 anni (o reclusione da 2 a 6 anni in presenza di aggravanti) [web:19][web:1][web:12]\n\nIl D.L. 116/2025 ha trasformato diverse contravvenzioni in delitti, ma per quanto riguarda l'art. 256, comma 1, ha mantenuto per i rifiuti non pericolosi la pena alternativa tra arresto e ammenda (nature penali, non amministrativa) [web:22][web:29][web:30]."
+        "explanation": "La gestione non autorizzata di rifiuti è un reato contravvenzionale punito con l'arresto o l'ammenda (rifiuti non pericolosi); se pericolosi, arresto e ammenda congiunti.",
+        "source": "D.Lgs. 152/2006, Art. 256, comma 1"
     },
     {
         "id": 461,
