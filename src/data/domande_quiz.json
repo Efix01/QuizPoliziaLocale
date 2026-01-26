@@ -6358,7 +6358,7 @@
     {
         "id": 456,
         "category": "Reati Ambientali",
-        "question": "L'abbandono di veicoli fuori uso (art. 231) da parte di un soggetto non impresa è sanzionato:",
+        "question": "L'abbandono di veicoli fuori uso (art. 231 D.Lgs. 152/2006) da parte di un soggetto non impresa è sanzionato:",
         "options": {
             "A": "Solo con la rimozione",
             "B": "Con l'arresto",
@@ -6366,8 +6366,8 @@
             "D": "Con sanzione amministrativa pecuniaria aumentata rispetto all'abbandono generico (da 1000 a 5000 euro)"
         },
         "correct_answer": "D",
-        "explanation": "L'abbandono di veicoli fuori uso ha una disciplina sanzionatoria specifica e più grave rispetto ai rifiuti generici, ma per i privati resta amministrativa (ex D.Lgs 209/2003 richiamato, salvo intersezioni con la nuova norma penale su abbandono, ma la norma speciale prevale solitamente). *Nota: Con la L. 137/23 la questione è dibattuta, ma la sanzione specifica per i veicoli (art 255 c.3 richiamante DLgs 209/03) prevede sanzioni pecuniarie alte.*",
-        "source": "D.Lgs. 152/2006, Art. 255, comma 3"
+        "explanation": "La sanzione specifica per i privati (detentori non imprese) è prevista dall'art. 13, co. 2, D.Lgs. 209/2003 (da 1.000 a 5.000 euro), richiamato dall'art. 231 D.Lgs. 152/2006. Questa norma speciale prevale sul penale generico ex art. 255 co. 1 D.Lgs. 152/2006 (modificato da L. 137/2023, ammenda 1.000-10.000 euro), che si applica principalmente a imprese.[web:1][web:16][web:2]",
+        "source": "D.Lgs. 152/2006 art. 231; D.Lgs. 209/2003 art. 13 co. 2"
     },
     {
         "id": 457,
@@ -11011,7 +11011,7 @@
         "question": "L'esercizio della caccia all'interno di un parco naturale regionale è punito con:",
         "options": {
             "A": "Arresto fino a sei mesi e ammenda da euro 464,00 a euro 1.549,00",
-            "B": "Arresto fino a sei mesi o ammenda da euro 464,00 a euro 1.549,00",
+            "B": "Arresto fino ad un anno o ammenda da euro 464,00 a euro 1.549,00",
             "C": "Sanzione amministrativa pecuniaria",
             "D": "Solo ammenda da euro 464,00 a euro 1.549,00"
         },
