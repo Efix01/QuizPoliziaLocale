@@ -12,7 +12,7 @@ import './StudyMode.css';
 const StudyMode: React.FC = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { getQuestionsForStudy, answerQuestion, bonusNotification, clearBonusNotification, getTodayAnsweredCount } = useQuiz();
+    const { getQuestionsForStudy, answerQuestion, bonusNotification, clearBonusNotification, todayAnsweredCount } = useQuiz();
     const [sessionQuestions, setSessionQuestions] = useState<QuizQuestion[]>([]);
     const [currentIndex, setCurrentIndex] = useState(0);
     const [showAnswer, setShowAnswer] = useState(false);
@@ -43,18 +43,13 @@ const StudyMode: React.FC = () => {
 
         // Daily Challenge Cap enforcement
         if (categoryFilter === 'Sfida del Giorno') {
-            const todayCount = getTodayAnsweredCount();
+            // Use todayAnsweredCount derived from context (outer scope)
+            const todayCount = todayAnsweredCount;
 
             // Check if we are at a boundary (multiples of 20) and forceNew is NOT set
             if (todayCount > 0 && todayCount % 20 === 0 && !forceNew) {
                 questionCount = 0; // Show "Done" screen
             } else {
-                // Calculate remaining in CURRENT cycle
-                // e.g. 21 -> 1 mod 20 -> remaining 19? No.
-                // 21 is the first of the new cycle. So we want 19 more.
-                // cycle progress = todayCount % 20.
-                // remaining = 20 - (todayCount % 20).
-                // if todayCount is 20, 20%20 is 0, remaining 20. Correct for forceNew case.
                 const remaining = 20 - (todayCount % 20);
                 questionCount = Math.min(questionCount, remaining);
             }
@@ -64,6 +59,7 @@ const StudyMode: React.FC = () => {
         // If it's a general mix but count is 20, we pass undefined as categoryList
         const questions = getQuestionsForStudy(questionCount, categoryList);
         setSessionQuestions(questions);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [categoryFilter, requestedCount]);
 
 
@@ -129,15 +125,15 @@ const StudyMode: React.FC = () => {
     if (sessionQuestions.length === 0) {
         return (
             <div className="study-container">
-                <h2>{categoryFilter === 'Sfida del Giorno' && getTodayAnsweredCount() > 0 && getTodayAnsweredCount() % 20 === 0 && !forceNew ? 'Sfida Completata!' : 'Tutto fatto!'}</h2>
+                <h2>{categoryFilter === 'Sfida del Giorno' && todayAnsweredCount > 0 && todayAnsweredCount % 20 === 0 && !forceNew ? 'Sfida Completata!' : 'Tutto fatto!'}</h2>
                 <p>
-                    {categoryFilter === 'Sfida del Giorno' && getTodayAnsweredCount() > 0 && getTodayAnsweredCount() % 20 === 0 && !forceNew
+                    {categoryFilter === 'Sfida del Giorno' && todayAnsweredCount > 0 && todayAnsweredCount % 20 === 0 && !forceNew
                         ? 'Hai completato 20 domande della sfida giornaliera. Ottimo lavoro!'
                         : `Non ci sono domande ${categoryFilter ? `di ${categoryFilter}` : ''} da ripassare al momento.`}
                 </p>
                 <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
                     <button className="btn-reveal" onClick={() => navigate('/')}>Torna alla Home</button>
-                    {categoryFilter === 'Sfida del Giorno' && getTodayAnsweredCount() > 0 && getTodayAnsweredCount() % 20 === 0 && !forceNew && (
+                    {categoryFilter === 'Sfida del Giorno' && todayAnsweredCount > 0 && todayAnsweredCount % 20 === 0 && !forceNew && (
                         <button
                             className="btn-reveal"
                             style={{ background: 'var(--gold)', color: 'var(--green-dark)' }}
@@ -173,10 +169,10 @@ const StudyMode: React.FC = () => {
 
     // If it's the Daily Challenge, show global daily progress (CYCLIC)
     if (categoryFilter === 'Sfida del Giorno') {
-        const todayCount = useQuiz().getTodayAnsweredCount();
-        const currentQuestionGlobalIndex = todayCount + 1; // +1 because we are on the current question
-        const currentCycleIndex = ((currentQuestionGlobalIndex - 1) % 20) + 1;
-        progressDisplay = `${currentCycleIndex}/20`;
+
+
+        const currentCycleIndex = ((todayAnsweredCount) % 20) + 1;
+        progressDisplay = `Domanda ${currentCycleIndex}/20`;
         progressPercentage = (currentCycleIndex / 20) * 100;
     }
 

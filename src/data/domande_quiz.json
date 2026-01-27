@@ -2956,7 +2956,7 @@
     {
         "id": 213,
         "category": "Lingua Inglese",
-        "question": "Completa con il pronome possessivo: 'Questa uniforme è tua? No, è mia.' -> 'Is this uniform _______? No, it's mine.'",
+        "question": "Complete with the possessive pronoun: 'Is this uniform ______? No, it's mine.'",
         "options": {
             "A": "your",
             "B": "yours'",
@@ -2984,7 +2984,7 @@
     {
         "id": 215,
         "category": "Lingua Inglese",
-        "question": "Completa la Question Tag: 'You are an agent, _______?'",
+        "question": "Complete the question tag: 'You are an agent, _______?'",
         "options": {
             "A": "don't you",
             "B": "isn't it",
@@ -6223,7 +6223,7 @@
             "A": "Un illecito amministrativo punito con sanzione pecuniaria",
             "B": "Sempre consentito",
             "C": "Punito con l'arresto",
-            "D": "Un reato penale"
+            "D": "Un illecito civile"
         },
         "correct_answer": "A",
         "explanation": "A differenza degli scarichi industriali (reato), lo scarico non autorizzato di acque domestiche è sanzionato in via amministrativa (da 6.000 a 60.000 euro).",
@@ -6422,7 +6422,8 @@
             "D": "Solo il sequestro del mezzo"
         },
         "correct_answer": "A",
-        "answer_explanation": "L'art. 256, comma 1, del D.Lgs. 152/2006, come modificato dal D.L. 116/2025 e convertito nella L. 147/2025, prevede per la gestione non autorizzata di rifiuti che:\n\n- Per i rifiuti non pericolosi: arresto da tre mesi a un anno o ammenda da 2.600 a 26.000 euro [web:19][web:8]\n- Per i rifiuti pericolosi: reclusione da 1 a 5 anni (o reclusione da 2 a 6 anni in presenza di aggravanti) [web:19][web:1][web:12]\n\nIl D.L. 116/2025 ha trasformato diverse contravvenzioni in delitti, ma per quanto riguarda l'art. 256, comma 1, ha mantenuto per i rifiuti non pericolosi la pena alternativa tra arresto e ammenda (nature penali, non amministrativa) [web:22][web:29][web:30]."
+        "explanation": "L'art. 256, comma 1, del D.Lgs. 152/2006, prevede l'arresto da tre mesi a un anno o l'ammenda da 2.600 euro a 26.000 euro per chiunque effettua attività di gestione di rifiuti non pericolosi in mancanza della prescritta autorizzazione.",
+        "source": "D.Lgs. 152/2006, Art. 256"
     },
     {
         "id": 461,
@@ -11455,7 +11456,7 @@
     {
         "id": 820,
         "category": "Lingua Inglese",
-        "question": "Completa: I ranger _____ pattugliato per ore.",
+        "question": "Complete: The rangers _______________ for hours.",
         "options": {
             "A": "patrol",
             "B": "have patrolled",
@@ -11497,7 +11498,7 @@
     {
         "id": 823,
         "category": "Lingua Inglese",
-        "question": "Gli agenti _____ indossare l'uniforme in servizio.",
+        "question": "The agents _____ wear the uniform on duty.",
         "options": {
             "A": "should",
             "B": "must",
@@ -11539,7 +11540,7 @@
     {
         "id": 826,
         "category": "Lingua Inglese",
-        "question": "Domani _____ pattugliare l'area.",
+        "question": "Tomorrow _____ patrol the area.",
         "options": {
             "A": "I will",
             "B": "I am",
@@ -11547,13 +11548,13 @@
             "D": "I have"
         },
         "correct_answer": "A",
-        "explanation": "'Will' per futuro spontaneo, turni di servizio B1.",
+        "explanation": "'Will' for spontaneous future or scheduled duties like patrols (CEFR B1).",
         "source": "CEFR B1: Future Simple"
     },
     {
         "id": 827,
         "category": "Lingua Inglese",
-        "question": "I ranger controllano _____ foresta.",
+        "question": "The rangers check _____ the forest.",
         "options": {
             "A": "on",
             "B": "in",
@@ -11567,7 +11568,7 @@
     {
         "id": 828,
         "category": "Lingua Inglese",
-        "question": "Il fiume inquinato è _____ .",
+        "question": "The polluted river is _____ .",
         "options": {
             "A": "polluting",
             "B": "polluted",
@@ -11609,7 +11610,7 @@
     {
         "id": 831,
         "category": "Lingua Inglese",
-        "question": "L'incendio _____ distrutto 10 ettari.",
+        "question": "The fire ___________ 10 hectares.",
         "options": {
             "A": "destroys",
             "B": "has destroyed",

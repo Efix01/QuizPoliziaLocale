@@ -69,7 +69,7 @@ const CATEGORIES = [
 const ONBOARDING_KEY = 'forestali_onboarding_completed';
 
 const Dashboard: React.FC = () => {
-    const { stats, questions, getTodayAnsweredCount } = useQuiz();
+    const { stats, questions, todayAnsweredCount } = useQuiz();
     const { isAuthenticated, user } = useAuth();
     const navigate = useNavigate();
 
@@ -291,7 +291,6 @@ const Dashboard: React.FC = () => {
                             <span className="stat-label">Precisione</span>
                         </div>
                     </div>
-
                     {/* Threshold bar */}
                     <div className="threshold-bar">
                         <div className="threshold-track">
@@ -405,15 +404,13 @@ const Dashboard: React.FC = () => {
                             <div
                                 className="challenge-progress-fill"
                                 style={{
-                                    width: challengeVisible
-                                        ? `${((getTodayAnsweredCount() === 0 ? 0 : ((getTodayAnsweredCount() - 1) % 20) + 1) / 20) * 100}%`
-                                        : '0%',
-                                    transition: 'width 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s'
+                                    width: `${((todayAnsweredCount % 20) / 20) * 100}%`,
+                                    transition: 'width 0.5s ease-out'
                                 }}
                             />
                         </div>
                         <span className="challenge-progress-text">
-                            {getTodayAnsweredCount() === 0 ? 0 : ((getTodayAnsweredCount() - 1) % 20) + 1}/20 completate
+                            {todayAnsweredCount % 20}/20 completate
                         </span>
                     </div>
                     <button
@@ -423,11 +420,11 @@ const Dashboard: React.FC = () => {
                                 category: 'Sfida del Giorno',
                                 count: 20,
                                 // Force new if we are at a boundary (20, 40, etc.)
-                                forceNew: getTodayAnsweredCount() > 0 && getTodayAnsweredCount() % 20 === 0
+                                forceNew: todayAnsweredCount > 0 && todayAnsweredCount % 20 === 0
                             }
                         })}
                     >
-                        Accetta la sfida
+                        {todayAnsweredCount > 0 && todayAnsweredCount % 20 === 0 ? 'Nuova Sfida' : 'Accetta la sfida'}
                     </button>
                 </div>
             </section>

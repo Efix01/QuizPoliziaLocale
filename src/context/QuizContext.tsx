@@ -23,6 +23,7 @@ interface QuizContextType extends QuizState {
     editQuestion: (question: QuizQuestion) => void;
     hideQuestion: (questionId: number) => void;
     getTodayAnsweredCount: () => number;
+    todayAnsweredCount: number;
     bonusNotification: { message: string, amount: number } | null;
     clearBonusNotification: () => void;
 }
@@ -354,8 +355,10 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
         }).length;
     };
 
+    const todayAnsweredCount = getTodayAnsweredCount();
+
     return (
-        <QuizContext.Provider value={{ ...state, answerQuestion, resetProgress, getQuestionsForStudy, addCustomQuestion, editQuestion, hideQuestion, getTodayAnsweredCount, bonusNotification, clearBonusNotification }}>
+        <QuizContext.Provider value={{ ...state, answerQuestion, resetProgress, getQuestionsForStudy, addCustomQuestion, editQuestion, hideQuestion, getTodayAnsweredCount, todayAnsweredCount, bonusNotification, clearBonusNotification }}>
             {children}
         </QuizContext.Provider>
     );
