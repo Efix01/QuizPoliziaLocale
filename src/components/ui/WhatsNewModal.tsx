@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, CheckCircle, TreePine } from 'lucide-react';
+import { Sparkles, CheckCircle, TreePine, RefreshCw } from 'lucide-react';
 import './WhatsNewModal.css';
 
-const VERSION_KEY = 'has_seen_update_v1_0_efisio'; // Updated to force modal to show again
+const VERSION_KEY = 'has_seen_update_v1_0_efisio_v2'; // Updated to force modal to show again
 
 const WhatsNewModal: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -58,6 +58,16 @@ const WhatsNewModal: React.FC = () => {
                         <div className="item-content">
                             <h4>Sempre Migliorati</h4>
                             <p>Stiamo lavorando per rendere l'esperienza sempre più stabile e completa.</p>
+                        </div>
+                    </li>
+
+                    <li className="whats-new-item">
+                        <div className="item-icon" style={{ color: 'var(--orange-primary, #F59E0B)' }}>
+                            <RefreshCw size={20} />
+                        </div>
+                        <div className="item-content">
+                            <h4>Nota Importante</h4>
+                            <p>Per vedere gli ultimi aggiornamenti consigliamo di <strong>cancellare i dati di navigazione e la cache</strong> del browser.</p>
                         </div>
                     </li>
                 </ul>
