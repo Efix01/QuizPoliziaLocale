@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Save, BookOpen, CheckCircle, TreePine } from 'lucide-react';
+import { Sparkles, CheckCircle, TreePine } from 'lucide-react';
 import './WhatsNewModal.css';
 
 const VERSION_KEY = 'has_seen_update_v1_0_efisio'; // Updated to force modal to show again
