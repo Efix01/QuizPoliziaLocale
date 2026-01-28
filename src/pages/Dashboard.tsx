@@ -20,7 +20,7 @@ import {
 import { useScrollAnimation, useStaggerAnimation, useParallax } from '../hooks/useAnimations';
 import LockedOverlay from '../components/ui/LockedOverlay';
 import { StudyNotificationBanner } from '../components/ui/StudyNotification';
-import { NewsBanner } from '../components/ui/NewsBanner';
+
 import './Dashboard.css';
 
 // Greeting based on time of day
@@ -69,7 +69,7 @@ const CATEGORIES = [
 const ONBOARDING_KEY = 'forestali_onboarding_completed';
 
 const Dashboard: React.FC = () => {
-    const { stats, questions } = useQuiz();
+    const { stats, questions, todayAnsweredCount } = useQuiz();
     const { isAuthenticated, user } = useAuth();
     const navigate = useNavigate();
 
@@ -157,11 +157,7 @@ const Dashboard: React.FC = () => {
             <StudyNotificationBanner />
 
             {/* NEWS BANNER */}
-            <NewsBanner
-                id="update-jan-2026-legge157"
-                title="Nuovi contenuti disponibili! 🎉"
-                message="Aggiunta la lezione completa sulla Legge 157/92 (Norme per la protezione della fauna selvatica) e 34 nuovi quiz specifici."
-            />
+
 
             {/* HERO SECTION */}
             <section
@@ -295,7 +291,6 @@ const Dashboard: React.FC = () => {
                             <span className="stat-label">Precisione</span>
                         </div>
                     </div>
-
                     {/* Threshold bar */}
                     <div className="threshold-bar">
                         <div className="threshold-track">
@@ -409,18 +404,27 @@ const Dashboard: React.FC = () => {
                             <div
                                 className="challenge-progress-fill"
                                 style={{
-                                    width: challengeVisible ? `${(8 / 20) * 100}%` : '0%',
-                                    transition: 'width 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s'
+                                    width: `${((todayAnsweredCount % 20) / 20) * 100}%`,
+                                    transition: 'width 0.5s ease-out'
                                 }}
                             />
                         </div>
-                        <span className="challenge-progress-text">8/20 completate</span>
+                        <span className="challenge-progress-text">
+                            {todayAnsweredCount % 20}/20 completate
+                        </span>
                     </div>
                     <button
                         className="challenge-button hover-lift focus-gold"
-                        onClick={() => navigate('/study')}
+                        onClick={() => navigate('/study', {
+                            state: {
+                                category: 'Sfida del Giorno',
+                                count: 20,
+                                // Force new if we are at a boundary (20, 40, etc.)
+                                forceNew: todayAnsweredCount > 0 && todayAnsweredCount % 20 === 0
+                            }
+                        })}
                     >
-                        Accetta la sfida
+                        {todayAnsweredCount > 0 && todayAnsweredCount % 20 === 0 ? 'Nuova Sfida' : 'Accetta la sfida'}
                     </button>
                 </div>
             </section>

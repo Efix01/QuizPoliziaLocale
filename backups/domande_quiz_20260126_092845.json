@@ -2956,7 +2956,7 @@
     {
         "id": 213,
         "category": "Lingua Inglese",
-        "question": "Complete with the possessive pronoun: 'Is this uniform ______? No, it's mine.'",
+        "question": "Completa con il pronome possessivo: 'Questa uniforme è tua? No, è mia.' -> 'Is this uniform _______? No, it's mine.'",
         "options": {
             "A": "your",
             "B": "yours'",
@@ -2984,7 +2984,7 @@
     {
         "id": 215,
         "category": "Lingua Inglese",
-        "question": "Complete the question tag: 'You are an agent, _______?'",
+        "question": "Completa la Question Tag: 'You are an agent, _______?'",
         "options": {
             "A": "don't you",
             "B": "isn't it",
@@ -6223,7 +6223,7 @@
             "A": "Un illecito amministrativo punito con sanzione pecuniaria",
             "B": "Sempre consentito",
             "C": "Punito con l'arresto",
-            "D": "Un illecito civile"
+            "D": "Un reato penale"
         },
         "correct_answer": "A",
         "explanation": "A differenza degli scarichi industriali (reato), lo scarico non autorizzato di acque domestiche è sanzionato in via amministrativa (da 6.000 a 60.000 euro).",
@@ -6248,13 +6248,14 @@
         "category": "Reati Ambientali",
         "question": "Ai sensi dell'art. 256, comma 3, chi realizza o gestisce una discarica non autorizzata è punito con:",
         "options": {
-            "A": "L'arresto da sei mesi a due anni e con l'ammenda",
-            "B": "La reclusione da uno a cinque anni",
-            "C": "La reclusione da 5 a 10 anni in ogni caso",
-            "D": "La sola sanzione amministrativa se la discarica è piccola"
+            "A": "L'arresto fino a 10 giorni",
+            "B": "La sola sanzione amministrativa se la discarica è piccola",
+            "C": "L'arresto da sei mesi a due anni e con l'ammenda (rifiuti non pericolosi)",
+            "D": "La reclusione da 5 a 10 anni in ogni caso"
         },
-        "correct_answer": "B",
-        "explanation": "Ai sensi dell'art. 256, comma 3, del D.Lgs. 152/2006 (come modificato dal D.L. 116/2025 convertito in Legge 147/2025), chiunque realizza o gestisce una discarica non autorizzata è punito con la reclusione da uno a cinque anni. In caso di rifiuti pericolosi, la pena è aumentata da un anno e sei mesi a cinque anni e sei mesi."
+        "correct_answer": "C",
+        "explanation": "La realizzazione o gestione di discarica abusiva è reato. La pena è arresto da 6 mesi a 2 anni + ammenda per rifiuti non pericolosi (aumentata per i pericolosi).",
+        "source": "D.Lgs. 152/2006, Art. 256, comma 3"
     },
     {
         "id": 449,
@@ -6413,7 +6414,7 @@
     {
         "id": 460,
         "category": "Reati Ambientali",
-        "question": "Qual è la sanzione prevista dall'art. 256, comma 1, del D.Lgs. 152/2006 (come modificato dal D.L. 116/2025, L. 147/2025) per chiunque effettua attività di gestione di rifiuti (raccolta, trasporto, recupero, smaltimento, commercio ed intermediazione) in mancanza della prescritta autorizzazione, iscrizione o comunicazione, nel caso di rifiuti non pericolosi?",
+        "question": "Qual è la sanzione prevista dall'art. 256, comma 1, del D.Lgs. 152/2006 per chiunque effettua attività di gestione di rifiuti (raccolta, trasporto, recupero, smaltimento) in mancanza della prescritta autorizzazione?",
         "options": {
             "A": "Pena dell'arresto da tre mesi a un anno o ammenda, se si tratta di rifiuti non pericolosi",
             "B": "Reclusione da 2 a 6 anni",
@@ -6421,8 +6422,8 @@
             "D": "Solo il sequestro del mezzo"
         },
         "correct_answer": "A",
-        "explanation": "L'art. 256, comma 1, del D.Lgs. 152/2006, prevede l'arresto da tre mesi a un anno o l'ammenda da 2.600 euro a 26.000 euro per chiunque effettua attività di gestione di rifiuti non pericolosi in mancanza della prescritta autorizzazione.",
-        "source": "D.Lgs. 152/2006, Art. 256"
+        "explanation": "La gestione non autorizzata di rifiuti è un reato contravvenzionale punito con l'arresto o l'ammenda (rifiuti non pericolosi); se pericolosi, arresto e ammenda congiunti.",
+        "source": "D.Lgs. 152/2006, Art. 256, comma 1"
     },
     {
         "id": 461,
@@ -7837,6 +7838,20 @@
         "correct_answer": "B",
         "explanation": "La Testudo marginata (testuggine marginata) è la più grande testuggine terrestre europea, presente in Sardegna e tutelata rigorosamente dal CITES (Allegato A).",
         "source": "Convenzione CITES / Regolamento CE 338/97"
+    },
+    {
+        "id": 562,
+        "category": "Botanica",
+        "question": "La Posidonia oceanica, fondamentale per l'ecosistema costiero sardo, è:",
+        "options": {
+            "A": "Un'alga bruna che indica inquinamento.",
+            "B": "Una pianta superiore (fanerogama) dotata di radici, fusto, foglie, fiori e frutti.",
+            "C": "Un lichene marino incrostante.",
+            "D": "Una formazione corallina morta."
+        },
+        "correct_answer": "B",
+        "explanation": "È un errore comune definirla alga. La Posidonia è una pianta vascolare evoluta tornata alla vita marina, essenziale per l'ossigenazione e la difesa delle spiagge.",
+        "source": "Biologia Marina del Mediterraneo"
     },
     {
         "id": 563,
@@ -11441,7 +11456,7 @@
     {
         "id": 820,
         "category": "Lingua Inglese",
-        "question": "Complete: The rangers _______________ for hours.",
+        "question": "Completa: I ranger _____ pattugliato per ore.",
         "options": {
             "A": "patrol",
             "B": "have patrolled",
@@ -11483,7 +11498,7 @@
     {
         "id": 823,
         "category": "Lingua Inglese",
-        "question": "The agents _____ wear the uniform on duty.",
+        "question": "Gli agenti _____ indossare l'uniforme in servizio.",
         "options": {
             "A": "should",
             "B": "must",
@@ -11525,7 +11540,7 @@
     {
         "id": 826,
         "category": "Lingua Inglese",
-        "question": "Tomorrow _____ patrol the area.",
+        "question": "Domani _____ pattugliare l'area.",
         "options": {
             "A": "I will",
             "B": "I am",
@@ -11533,13 +11548,13 @@
             "D": "I have"
         },
         "correct_answer": "A",
-        "explanation": "'Will' for spontaneous future or scheduled duties like patrols (CEFR B1).",
+        "explanation": "'Will' per futuro spontaneo, turni di servizio B1.",
         "source": "CEFR B1: Future Simple"
     },
     {
         "id": 827,
         "category": "Lingua Inglese",
-        "question": "The rangers check _____ the forest.",
+        "question": "I ranger controllano _____ foresta.",
         "options": {
             "A": "on",
             "B": "in",
@@ -11553,7 +11568,7 @@
     {
         "id": 828,
         "category": "Lingua Inglese",
-        "question": "The polluted river is _____ .",
+        "question": "Il fiume inquinato è _____ .",
         "options": {
             "A": "polluting",
             "B": "polluted",
@@ -11595,7 +11610,7 @@
     {
         "id": 831,
         "category": "Lingua Inglese",
-        "question": "The fire ___________ 10 hectares.",
+        "question": "L'incendio _____ distrutto 10 ettari.",
         "options": {
             "A": "destroys",
             "B": "has destroyed",
@@ -11717,827 +11732,5 @@
         "correct_answer": "C",
         "explanation": "'Should' è utilizzato per esprimere raccomandazioni, consigli o buone pratiche (Advice/Recommendation), distinguendosi dall'obbligo ('Must/Have to').",
         "source": "Fonte [3], [11] - Raccomandazioni"
-    },
-    {
-        "id": 840,
-        "category": "Geografia della Sardegna",
-        "question": "Le coste della Sardegna si sviluppano per una lunghezza di?",
-        "options": {
-            "A": "Circa 1220 km.",
-            "B": "Circa 1850 km.",
-            "C": "Circa 1500 km.",
-            "D": "Circa 1050 km."
-        },
-        "correct_answer": "B",
-        "explanation": "Le coste della Sardegna si sviluppano per circa 1.849-1.897 km, rendendo la Sardegna la regione italiana con il maggiore sviluppo costiero. Questo dato, che include anche le isole minori circostanti, rappresenta più di un quarto dell'intero sviluppo costiero italiano (7.456 km totali). La notevole estensione costiera è dovuta alla conformazione frastagliata dell'isola, caratterizzata da numerosi golfi profondi, promontori, piccole cale e insenature che si alternano a lunghe spiagge sabbiose e coste rocciose. Le coste sarde superano persino quelle della Sicilia, che si estendono per circa 1.639 km, nonostante quest'ultima sia l'isola più grande del Mediterraneo per superficie."
-    },
-    {
-        "id": 841,
-        "category": "Geografia della Sardegna",
-        "question": "La vetta più alta della Sardegna è Punta Lamarmora, (sul Gennargentu), quanto è alta?",
-        "options": {
-            "A": "1252 metri",
-            "B": "1537 metri",
-            "C": "1834 metri",
-            "D": "2238 metri"
-        },
-        "correct_answer": "C",
-        "explanation": "Punta La Marmora, con i suoi 1.834 metri sul livello del mare, è la vetta più elevata della Sardegna. Si trova nel Massiccio del Gennargentu, nel territorio amministrativo dei comuni di Arzana e Desulo. La vetta, conosciuta in lingua sarda come 'Perdas Crapìas', fu intitolata nel 1901 alla memoria del Generale Alberto Ferrero della Marmora, esploratore e scienziato che studiò approfonditamente la geografia e la natura dell'isola. Il punto più elevato non corrisponde alla croce visibile sulla cima (detta anche Punta della Croce), che si trova leggermente più a nord, ma a un punto della cresta situato poco più a sud. Dalla vetta, nelle giornate limpide, si può godere di una vista panoramica a 360° su tutta la Sardegna e, in condizioni ottimali, si possono persino scorgere i profili della Corsica all'orizzonte."
-    },
-    {
-        "id": 842,
-        "category": "Geografia della Sardegna",
-        "question": "La pianura più estesa della Sardegna è?",
-        "options": {
-            "A": "Il Campidano",
-            "B": "La Nurra",
-            "C": "Il Sarrabus",
-            "D": "L'Anglona"
-        },
-        "correct_answer": "A",
-        "explanation": "Il Campidano, con i suoi circa 1.850 chilometri quadrati di estensione, è la pianura più vasta e importante della Sardegna. Questa grande pianura alluvionale si estende nella porzione sud-occidentale dell'isola, da Cagliari fino a San Vero Milis e Milis in provincia di Oristano, collegando il Golfo di Cagliari con quello di Oristano. Il Campidano è una fossa tettonica di origine geologica, formatasi tra 4 e 2 milioni di anni fa a seguito dello sprofondamento della crosta terrestre, successivamente colmata da sedimenti alluvionali. La sua estensione è nettamente superiore alle altre pianure sarde."
-    },
-    {
-        "id": 843,
-        "category": "Geografia della Sardegna",
-        "question": "Fra le isole minori della Sardegna, quale è l'ordine giusto con superfici decrescenti?",
-        "options": {
-            "A": "La Maddalena - Asinara - San Pietro - S.Antioco",
-            "B": "La Maddalena - S.Antioco - San Pietro - Asinara",
-            "C": "S.Antioco - San Pietro - Asinara - La Maddalena",
-            "D": "San Pietro - Asinara - La Maddalena - S.Antioco"
-        },
-        "correct_answer": "C",
-        "explanation": "L'ordine corretto delle isole minori della Sardegna per superficie decrescente è: Sant'Antioco (108,9 km²), San Pietro (51,3 km²), Asinara (50,9 km²) e La Maddalena (20,1 km²)."
-    },
-    {
-        "id": 844,
-        "category": "Botanica",
-        "question": "Qual è la quercia sempreverde più diffusa in Sardegna che costituisce la foresta climacica dell'isola?",
-        "options": {
-            "A": "Roverella (Quercus pubescens)",
-            "B": "Leccio (Quercus ilex)",
-            "C": "Quercia da sughero (Quercus suber)",
-            "D": "Quercia congesta (Quercus congesta)"
-        },
-        "correct_answer": "B",
-        "explanation": "Il leccio (Quercus ilex) è l'albero più diffuso in Sardegna e rappresenta la foresta climacica, cioè lo stadio finale e stabile della vegetazione naturale dell'isola. È sempreverde con foglie coriacee e pagina inferiore tomentosa.",
-        "source": "Piano Forestale Ambientale Regionale - Flora e vegetazione della Sardegna"
-    },
-    {
-        "id": 845,
-        "category": "Botanica",
-        "question": "Secondo la L.R. 4/1994, quale circonferenza minima deve raggiungere una pianta di sughera per poter effettuare la demaschiatura?",
-        "options": {
-            "A": "50 centimetri misurati a 1,30 metri da terra",
-            "B": "60 centimetri misurati a 1,30 metri da terra",
-            "C": "70 centimetri misurati a 1,30 metri da terra",
-            "D": "80 centimetri misurati a 1,30 metri da terra"
-        },
-        "correct_answer": "B",
-        "explanation": "L'articolo 20 della L.R. 9 febbraio 1994, n. 4 stabilisce che la demaschiatura può essere praticata solo quando la pianta ha raggiunto una circonferenza minima di 60 centimetri misurata a 1,30 metri da terra.",
-        "source": "L.R. Sardegna n. 4 del 9 febbraio 1994, art. 20"
-    },
-    {
-        "id": 846,
-        "category": "Botanica",
-        "question": "Quale delle seguenti caratteristiche distingue la Roverella dalle altre querce sarde?",
-        "options": {
-            "A": "È sempreverde con corteccia spugnosa",
-            "B": "È caducifoglia con foglie lobate che diventano gialle in autunno",
-            "C": "Ha foglie aghiformi e produce pigne",
-            "D": "È sempreverde con foglie tomentose sulla pagina superiore"
-        },
-        "correct_answer": "B",
-        "explanation": "La Roverella (Quercus pubescens) è una quercia caducifoglia che perde le foglie in inverno. Le foglie sono lobate e diventano gialle in autunno. È tipica delle zone interne più fredde come la Barbagia.",
-        "source": "Piano Forestale Ambientale Regionale - Flora forestale sarda"
-    },
-    {
-        "id": 847,
-        "category": "Botanica",
-        "question": "Qual è il turno minimo previsto dalla L.R. 4/1994 tra due successive estrazioni di sughero?",
-        "options": {
-            "A": "8 anni",
-            "B": "12 anni",
-            "C": "10 anni",
-            "D": "15 anni"
-        },
-        "correct_answer": "C",
-        "explanation": "L'articolo 22 della L.R. 4/1994 stabilisce che l'estrazione del sughero non è consentita per turni inferiori a 10 anni, salvo autorizzazione per ragioni fisiologiche particolari della pianta.",
-        "source": "L.R. Sardegna n. 4 del 9 febbraio 1994, art. 22"
-    },
-    {
-        "id": 848,
-        "category": "Botanica",
-        "question": "Quante entità vegetali ospita circa la Sardegna?",
-        "options": {
-            "A": "Circa 1.800 entità vegetali",
-            "B": "Circa 2.410 entità vegetali",
-            "C": "Circa 3.200 entità vegetali",
-            "D": "Circa 1.500 entità vegetali"
-        },
-        "correct_answer": "B",
-        "explanation": "La Sardegna ospita circa 2.410 entità vegetali, con oltre 200 specie endemiche dovute all'isolamento geografico insulare. Questo rende l'isola uno dei territori italiani più ricchi di biodiversità.",
-        "source": "Flora e vegetazione della Sardegna - Sardegna Natura"
-    },
-    {
-        "id": 849,
-        "category": "Botanica",
-        "question": "Quale conifera è considerata l'unica parzialmente autoctona o storicizzata d'alto fusto in Sardegna?",
-        "options": {
-            "A": "Pino d'Aleppo (Pinus halepensis)",
-            "B": "Pino Domestico (Pinus pinea)",
-            "C": "Pino Laricio (Pinus nigra subsp. laricio)",
-            "D": "Pino Marittimo (Pinus pinaster)"
-        },
-        "correct_answer": "C",
-        "explanation": "Il Pino Laricio è l'unica conifera d'alto fusto considerata parzialmente autoctona o storicizzata in Sardegna, presente soprattutto nelle aree montane del Limbara e del Gennargentu.",
-        "source": "Piano Forestale Ambientale Regionale - Estensione area forestale"
-    },
-    {
-        "id": 850,
-        "category": "Botanica",
-        "question": "Dove vegeta esclusivamente il Ribes Sardo (Ribes sardoum)?",
-        "options": {
-            "A": "Sul monte Limbara a Tempio Pausania",
-            "B": "Sul monte Corrasi a Oliena (Supramonte)",
-            "C": "Sull'altopiano della Giara di Gesturi",
-            "D": "Sul Gennargentu a Fonni"
-        },
-        "correct_answer": "B",
-        "explanation": "Il Ribes sardo (Ribes sardoum) è una specie endemica esclusiva che vegeta unicamente sul monte Corrasi a Oliena (Supramonte). L'areale è estremamente ridotto a poche centinaia di metri quadrati ed è specie prioritaria della Direttiva Habitat.",
-        "source": "IUCN Red List - Ribes sardoum - Specie prioritaria Direttiva Habitat"
-    },
-    {
-        "id": 851,
-        "category": "Botanica",
-        "question": "Quale percentuale del territorio regionale sardo è coperto da superficie forestale?",
-        "options": {
-            "A": "Circa il 30%",
-            "B": "Circa il 40%",
-            "C": "Circa il 50%",
-            "D": "Circa il 60%"
-        },
-        "correct_answer": "C",
-        "explanation": "Circa il 50% del territorio regionale della Sardegna è coperto da superficie forestale, rappresentando un patrimonio naturale fondamentale con 27 serie di vegetazione forestale.",
-        "source": "Piano Forestale Ambientale Regionale - Estensione area forestale"
-    },
-    {
-        "id": 852,
-        "category": "Botanica",
-        "question": "Quale caratteristica morfologica distingue immediatamente la Sughera dalle altre querce?",
-        "options": {
-            "A": "Foglie lobate che cadono in inverno",
-            "B": "Corteccia spugnosa di colore bruno-rossastro",
-            "C": "Foglie aghiformi disposte a spirale",
-            "D": "Corteccia liscia di colore grigio chiaro"
-        },
-        "correct_answer": "B",
-        "explanation": "La Sughera (Quercus suber) si distingue immediatamente per la sua caratteristica corteccia spugnosa di colore bruno-rossastro. È una quercia sempreverde protetta dalla L.R. 4/1994.",
-        "source": "Flora forestale sarda - Quercus suber"
-    },
-    {
-        "id": 853,
-        "category": "Botanica",
-        "question": "Quale altezza raggiunge tipicamente la macchia alta?",
-        "options": {
-            "A": "Da 1 a 2 metri",
-            "B": "Da 2 a 4 metri",
-            "C": "Da 4 a 6 metri",
-            "D": "Fino a 1 metro"
-        },
-        "correct_answer": "B",
-        "explanation": "La macchia alta raggiunge altezze dai 2 ai 4 metri e rappresenta uno stadio evolutivo avanzato verso il bosco. È composta principalmente da Corbezzolo, Erica arborea e Fillirea ed è praticamente impenetrabile.",
-        "source": "Caratterizzazione vegetazione mediterranea - Macchia d'erica e corbezzolo"
-    },
-    {
-        "id": 854,
-        "category": "Botanica",
-        "question": "Dove si trova esclusivamente il Fiordaliso Spinoso (Centaurea horrida)?",
-        "options": {
-            "A": "Nelle aree montane del Gennargentu",
-            "B": "Nelle coste sud-orientali del Sarrabus",
-            "C": "Nelle coste nord-occidentali (Asinara e Stintino)",
-            "D": "Nelle zone umide dello stagno di Cabras"
-        },
-        "correct_answer": "C",
-        "explanation": "Il Fiordaliso spinoso (Centaurea horrida) è un cespuglio spinoso a forma di cuscino, esclusivo delle coste nord-occidentali della Sardegna, in particolare nell'area dell'Asinara e Stintino.",
-        "source": "Endemismi botanici sardi - Centaurea horrida"
-    },
-    {
-        "id": 855,
-        "category": "Botanica",
-        "question": "Quale specie arborea domina i corsi d'acqua a regime torrentizio in Sardegna?",
-        "options": {
-            "A": "Salice bianco (Salix alba)",
-            "B": "Pioppo nero (Populus nigra)",
-            "C": "Oleandro (Nerium oleander)",
-            "D": "Ontano nero (Alnus glutinosa)"
-        },
-        "correct_answer": "C",
-        "explanation": "L'Oleandro (Nerium oleander) è la specie termofila che domina i corsi d'acqua a regime torrentizio tipici del clima mediterraneo sardo. È una specie igrofila adattata alle condizioni di alternanza idrica.",
-        "source": "Flora ripariale della Sardegna - Vegetazione ripariale"
-    },
-    {
-        "id": 856,
-        "category": "Botanica",
-        "question": "Qual è il sistema di classificazione botanica più utilizzato?",
-        "options": {
-            "A": "Sistema di classificazione di Darwin",
-            "B": "Sistema di classificazione di Mendel",
-            "C": "Sistema di classificazione di Linneo",
-            "D": "Sistema di classificazione di Lamarck"
-        },
-        "correct_answer": "C",
-        "explanation": "Il sistema di classificazione botanica più utilizzato è quello di Linneo, che organizza le piante secondo categorie gerarchiche: regno, divisione, classe, ordine, famiglia, genere e specie.",
-        "source": "Classificazione delle piante - Sistema linneiano"
-    },
-    {
-        "id": 857,
-        "category": "Botanica",
-        "question": "Quante specie endemiche ospita la Sardegna?",
-        "options": {
-            "A": "Oltre 150 specie endemiche",
-            "B": "Oltre 200 specie endemiche",
-            "C": "Oltre 300 specie endemiche",
-            "D": "Oltre 100 specie endemiche"
-        },
-        "correct_answer": "B",
-        "explanation": "La Sardegna ospita oltre 200 specie endemiche dovute all'isolamento geografico insulare. Questo patrimonio rappresenta un elevato valore conservazionistico che richiede specifiche misure di protezione.",
-        "source": "Flora endemica della Sardegna - Endemismi sardi"
-    },
-    {
-        "id": 858,
-        "category": "Botanica",
-        "question": "Quale delle seguenti affermazioni sulla gariga è corretta?",
-        "options": {
-            "A": "È una vegetazione fitta e continua alta 3-4 metri",
-            "B": "È una vegetazione discontinua alta pochi centimetri che indica suolo povero",
-            "C": "È una formazione forestale matura con alberi d'alto fusto",
-            "D": "È una vegetazione ripariale lungo i corsi d'acqua"
-        },
-        "correct_answer": "B",
-        "explanation": "La gariga è una vegetazione discontinua in cui si vede il terreno roccioso sottostante, alta pochi centimetri. Indica suolo povero o degradato ed è composta da piante aromatiche come Timo, Elicriso e Lavanda.",
-        "source": "Tipologie vegetazione mediterranea - Gariga"
-    },
-    {
-        "id": 859,
-        "category": "Botanica",
-        "question": "Quale specie botanica caratterizza le formazioni costiere dunali della Sardegna?",
-        "options": {
-            "A": "Leccio (Quercus ilex)",
-            "B": "Ginepro fenicio (Juniperus phoenicea subsp. turbinata)",
-            "C": "Castagno (Castanea sativa)",
-            "D": "Roverella (Quercus pubescens)"
-        },
-        "correct_answer": "B",
-        "explanation": "Il Ginepro fenicio (Juniperus phoenicea subsp. turbinata) è specie tipica delle formazioni costiere dunali e rappresenta un elemento fondamentale degli ecosistemi litoranei. I ginepri sono specie protette con crescita lentissima.",
-        "source": "Piano Forestale Ambientale Regionale - Vegetazione costiera"
-    },
-    {
-        "id": 860,
-        "category": "Botanica",
-        "question": "Cosa significa che il Leccio costituisce la 'foresta climacica' della Sardegna?",
-        "options": {
-            "A": "È una specie introdotta dall'uomo per il rimboschimento",
-            "B": "È lo stadio finale e stabile della vegetazione naturale dell'isola",
-            "C": "È una specie che cresce solo in condizioni climatiche estreme",
-            "D": "È una specie pioniera che colonizza i terreni dopo gli incendi"
-        },
-        "correct_answer": "B",
-        "explanation": "La foresta climatica rappresenta lo stadio finale e stabile della vegetazione naturale. Il Leccio (Quercus ilex) costituisce la foresta climatica sarda, cioè l'ultima fase evolutiva della vegetazione in assenza di disturbi.",
-        "source": "Ecologia forestale - Vegetazione climacica sarda"
-    },
-    {
-        "id": 861,
-        "category": "Botanica",
-        "question": "Quale delle seguenti specie NON fa parte della macchia alta?",
-        "options": {
-            "A": "Corbezzolo (Arbutus unedo)",
-            "B": "Erica arborea (Erica arborea)",
-            "C": "Cisto (Cistus spp.)",
-            "D": "Fillirea (Phillyrea angustifolia)"
-        },
-        "correct_answer": "C",
-        "explanation": "Il Cisto fa parte della macchia bassa (fino a 2 metri), non della macchia alta. La macchia alta (2-4 metri) è composta da Corbezzolo, Erica arborea e Fillirea.",
-        "source": "Classificazione macchia mediterranea - Stratificazione vegetazionale"
-    },
-    {
-        "id": 862,
-        "category": "Botanica",
-        "question": "Cosa sono le Gimnosperme?",
-        "options": {
-            "A": "Piante con fiori e frutti che proteggono i semi",
-            "B": "Piante con semi nudi, non protetti da frutti",
-            "C": "Piante che assorbono nutrienti attraverso tutta la superficie corporea",
-            "D": "Piante con foglie composte e radici fascicolate"
-        },
-        "correct_answer": "B",
-        "explanation": "Le Gimnosperme sono piante con semi nudi, non protetti da frutti. Il nome deriva dal greco e significa 'semi nudi'. Comprendono conifere come pini e abeti.",
-        "source": "Classificazione botanica - Divisioni principali delle piante"
-    },
-    {
-        "id": 863,
-        "category": "Botanica",
-        "question": "Quale funzione svolgono le foglie nelle piante superiori?",
-        "options": {
-            "A": "Ancoraggio al suolo e assorbimento di acqua",
-            "B": "Fotosintesi clorofilliana e scambio gassoso",
-            "C": "Trasporto delle sostanze nutritive tra radici e foglie",
-            "D": "Riproduzione tramite semi"
-        },
-        "correct_answer": "B",
-        "explanation": "Le foglie sono gli organi deputati alla fotosintesi clorofilliana e allo scambio gassoso (assorbimento di CO₂ e rilascio di ossigeno). Sono essenziali per la produzione di energia della pianta.",
-        "source": "Morfologia vegetale - Organi principali delle piante"
-    },
-    {
-        "id": 864,
-        "category": "Botanica",
-        "question": "Quale caratteristica distingue le Angiosperme dalle Gimnosperme?",
-        "options": {
-            "A": "Le Angiosperme hanno semi nudi senza frutti",
-            "B": "Le Angiosperme hanno fiori e frutti che proteggono i semi",
-            "C": "Le Angiosperme sono tutte piante non vascolari",
-            "D": "Le Angiosperme hanno solo foglie aghiformi"
-        },
-        "correct_answer": "B",
-        "explanation": "Le Angiosperme sono piante con fiori e frutti che proteggono i semi. Rappresentano il gruppo più numeroso e si dividono in monocotiledoni e dicotiledoni, a differenza delle Gimnosperme che hanno semi nudi.",
-        "source": "Classificazione botanica - Angiosperme e Gimnosperme"
-    },
-    {
-        "id": 865,
-        "category": "Botanica",
-        "question": "Quale specie endemica sarda è inserita nell'elenco delle 50 specie botaniche più minacciate dell'area mediterranea?",
-        "options": {
-            "A": "Centaurea horrida (Fiordaliso spinoso)",
-            "B": "Ribes sardoum (Ribes sardo)",
-            "C": "Thymus herba-barona (Timo sardo)",
-            "D": "Armeria sardoa (Spillone di Sardegna)"
-        },
-        "correct_answer": "B",
-        "explanation": "Il Ribes sardoum è inserito nell'elenco delle 50 specie botaniche più minacciate dell'area mediterranea secondo la IUCN Red List. È a rischio critico di estinzione con un numero di esemplari adulti ridotto a un centinaio.",
-        "source": "IUCN Red List - Ribes sardoum - Specie prioritaria Direttiva Habitat"
-    },
-    {
-        "id": 866,
-        "category": "Botanica",
-        "question": "Quale tipo di radice presenta una radice centrale grossa e allungata con radici laterali più sottili?",
-        "options": {
-            "A": "Radici fascicolate",
-            "B": "Radici avventizie",
-            "C": "Radici a fittone",
-            "D": "Radici aeree"
-        },
-        "correct_answer": "C",
-        "explanation": "Le radici a fittone sono costituite da una radice centrale grossa e allungata (fittone) con radici laterali più sottili. Questo tipo di radice permette un ancoraggio profondo nel terreno.",
-        "source": "Morfologia vegetale - Tipologie di radici"
-    },
-    {
-        "id": 867,
-        "category": "Botanica",
-        "question": "Quale specie arbustiva è tipica della macchia bassa e rappresenta il primo stadio di recupero dopo un incendio?",
-        "options": {
-            "A": "Corbezzolo (Arbutus unedo)",
-            "B": "Erica arborea (Erica arborea)",
-            "C": "Cisto (Cistus spp.)",
-            "D": "Carpino nero (Ostrya carpinifolia)"
-        },
-        "correct_answer": "C",
-        "explanation": "Il Cisto è un arbusto pioniere della macchia bassa che colonizza rapidamente le aree percorse dal fuoco, rappresentando spesso il primo stadio di recupero dopo un incendio.",
-        "source": "Dinamica post-incendio vegetazione mediterranea"
-    },
-    {
-        "id": 868,
-        "category": "Botanica",
-        "question": "Quale delle seguenti è una quercia endemica della Sardegna?",
-        "options": {
-            "A": "Quercus robur",
-            "B": "Quercus ichnusae",
-            "C": "Quercus cerris",
-            "D": "Quercus petraea"
-        },
-        "correct_answer": "B",
-        "explanation": "Quercus ichnusae (Quercia ichnusae) è una specie endemica sarda di grande valore conservazionistico. Insieme a Quercus congesta rappresenta un importante patrimonio genetico dell'isola.",
-        "source": "Piano Forestale Ambientale Regionale - Querce endemiche sarde"
-    },
-    {
-        "id": 869,
-        "category": "Botanica",
-        "question": "Quale specie costituisce una 'associazione piroclimatica' nella macchia mediterranea sarda?",
-        "options": {
-            "A": "Leccio e Sughera",
-            "B": "Corbezzolo ed Erica arborea",
-            "C": "Lentisco e Mirto",
-            "D": "Ginepro e Olivastro"
-        },
-        "correct_answer": "B",
-        "explanation": "Il Corbezzolo e l'Erica arborea diventano dominanti nella macchia mediterranea a seguito di ripetuti incendi, costituendo una specifica associazione piroclimacica (vegetazione stabile condizionata dal fuoco).",
-        "source": "Ecologia vegetazione mediterranea - Associazioni piroclimaciche"
-    },
-    {
-        "id": 870,
-        "category": "Botanica",
-        "question": "Quale caratteristica distintiva presenta la pagina inferiore delle foglie di Leccio?",
-        "options": {
-            "A": "È completamente glabra e lucida",
-            "B": "È tomentosa (pelosa) di colore grigio-verde",
-            "C": "Presenta spine lungo i margini",
-            "D": "È di colore rossastro con nervature evidenti"
-        },
-        "correct_answer": "B",
-        "explanation": "Le foglie del Leccio (Quercus ilex) sono coriacee, lucide sulla pagina superiore e con pagina inferiore tomentosa (pelosa) di colore grigio-verde. Questa caratteristica permette di riconoscere facilmente la specie.",
-        "source": "Caratteristiche morfologiche Quercus ilex"
-    },
-    {
-        "id": 871,
-        "category": "Zoologia",
-        "question": "Il Cervo sardo (Cervus elaphus corsicanus) è un endemismo di quale tipo?",
-        "options": {
-            "A": "Endemismo sardo esclusivo",
-            "B": "Endemismo mediterraneo",
-            "C": "Endemismo sardo-corso a livello di sottospecie",
-            "D": "Endemismo tirrenico"
-        },
-        "correct_answer": "C",
-        "explanation": "Il Cervo sardo rappresenta un endemismo sardo-corso a livello di sottospecie, anticamente diffuso in gran parte dei territori della Sardegna e della Corsica.",
-        "source": "Wikipedia - Fauna della Sardegna"
-    },
-    {
-        "id": 872,
-        "category": "Zoologia",
-        "question": "Il Discoglosso sardo (Discoglossus sardus) appartiene a quale famiglia di anfibi?",
-        "options": {
-            "A": "Famiglia Ranidae",
-            "B": "Famiglia Bufonidae",
-            "C": "Famiglia Alytidae",
-            "D": "Famiglia Salamandridae"
-        },
-        "correct_answer": "C",
-        "explanation": "Il Discoglosso sardo è un anfibio anuro della famiglia Alytidae, endemismo sardo-corso presente anche nell'Arcipelago Toscano.",
-        "source": "Wikipedia - Fauna della Sardegna"
-    },
-    {
-        "id": 873,
-        "category": "Zoologia",
-        "question": "L'Euprotto sardo (Euproctus platycephalus) è comunemente noto come:",
-        "options": {
-            "A": "Rospo sardo",
-            "B": "Salamandra sarda",
-            "C": "Tritone sardo",
-            "D": "Geotritone sardo"
-        },
-        "correct_answer": "C",
-        "explanation": "L'Euprotto sardo, noto anche come Tritone sardo, è un anfibio caudato endemico della Sardegna.",
-        "source": "Sardegna Natura - Fauna della Sardegna"
-    },
-    {
-        "id": 874,
-        "category": "Zoologia",
-        "question": "La Lucertola di Bedriaga (Archaeolacerta bedriagae) vive prevalentemente in:",
-        "options": {
-            "A": "Ambienti costieri sabbiosi",
-            "B": "Ambienti rupestri",
-            "C": "Ambienti boschivi umidi",
-            "D": "Ambienti palustri"
-        },
-        "correct_answer": "B",
-        "explanation": "La Lucertola di Bedriaga è un endemismo sardo-corso che vive prevalentemente in ambienti rupestri.",
-        "source": "A Cagliari - Flora e Fauna Sarda"
-    },
-    {
-        "id": 875,
-        "category": "Zoologia",
-        "question": "Quale di questi mammiferi NON è un endemismo sardo o sardo-corso?",
-        "options": {
-            "A": "Cervo sardo",
-            "B": "Daino",
-            "C": "Muflone",
-            "D": "Cinghiale sardo"
-        },
-        "correct_answer": "B",
-        "explanation": "Il Daino si è estinto in Sardegna alla fine degli anni sessanta ed è stato successivamente reintrodotto. Non rappresenta un endemismo dell'isola.",
-        "source": "Wikipedia - Fauna della Sardegna"
-    },
-    {
-        "id": 876,
-        "category": "Zoologia",
-        "question": "La Raganella sarda (Hyla sarda) è un endemismo di origine:",
-        "options": {
-            "A": "Mediterranea occidentale",
-            "B": "Sardo-corsa esclusiva",
-            "C": "Tirrenica",
-            "D": "Africana"
-        },
-        "correct_answer": "C",
-        "explanation": "La Raganella sarda è un endemismo di probabile origine tirrenica, condiviso tra Sardegna e Corsica.",
-        "source": "Sardegna Foreste - La fauna della Sardegna"
-    },
-    {
-        "id": 877,
-        "category": "Zoologia",
-        "question": "Il Picchio rosso maggiore sardo (Dendrocopos major harterti) è:",
-        "options": {
-            "A": "Una specie migratoria",
-            "B": "Una sottospecie endemica",
-            "C": "Una specie alloctona introdotta",
-            "D": "Una specie mediterranea comune"
-        },
-        "correct_answer": "B",
-        "explanation": "Il Picchio rosso maggiore sardo è una sottospecie endemica della Sardegna, appartenente all'ordine dei Piciformi.",
-        "source": "Wikipedia - Fauna della Sardegna"
-    },
-    {
-        "id": 878,
-        "category": "Zoologia",
-        "question": "Quale di questi rapaci è una sottospecie endemica della Sardegna?",
-        "options": {
-            "A": "Falco pellegrino",
-            "B": "Poiana sarda (Buteo buteo arrigonii)",
-            "C": "Aquila reale",
-            "D": "Gheppio comune"
-        },
-        "correct_answer": "B",
-        "explanation": "La Poiana sarda (Buteo buteo arrigonii) è una sottospecie endemica della Sardegna, insieme ad Astore sardo e Sparviere sardo.",
-        "source": "Wikipedia - Fauna della Sardegna"
-    },
-    {
-        "id": 879,
-        "category": "Zoologia",
-        "question": "La Ghiandaia sarda (Garrulus glandarius ichnusae) appartiene all'ordine dei:",
-        "options": {
-            "A": "Accipitriformes",
-            "B": "Strigiformes",
-            "C": "Passeriformes",
-            "D": "Piciformes"
-        },
-        "correct_answer": "C",
-        "explanation": "La Ghiandaia sarda è una sottospecie endemica che appartiene all'ordine dei Passeriformes, insieme a Cinciallegra, Fringuello e Cincia mora sarda.",
-        "source": "Wikipedia - Fauna della Sardegna"
-    },
-    {
-        "id": 880,
-        "category": "Zoologia",
-        "question": "Quale di queste affermazioni sul Cinghiale sardo è corretta?",
-        "options": {
-            "A": "È stato introdotto in epoca romana",
-            "B": "È un endemismo sardo-corso a livello di sottospecie",
-            "C": "È identico al cinghiale continentale",
-            "D": "È stato reintrodotto negli anni '70"
-        },
-        "correct_answer": "B",
-        "explanation": "Il Cinghiale sardo (Sus scrofa) è un endemismo sardo-corso a livello di sottospecie, associato agli ambienti di macchia e foresta.",
-        "source": "Wikipedia - Fauna della Sardegna"
-    },
-    {
-        "id": 881,
-        "category": "Zoologia",
-        "question": "Il Grande panfago sardo è:",
-        "options": {
-            "A": "Un coleottero acquatico",
-            "B": "Un lepidottero notturno",
-            "C": "Una grossa cavalletta verde con ali atrofizzate",
-            "D": "Un mollusco terrestre"
-        },
-        "correct_answer": "C",
-        "explanation": "Il Grande panfago sardo è un ortottero endemico, caratterizzato da dimensioni notevoli e ali atrofizzate.",
-        "source": "Sardegna Natura - Fauna della Sardegna"
-    },
-    {
-        "id": 882,
-        "category": "Zoologia",
-        "question": "L'Astore sardo (Accipiter gentilis arrigonii) è:",
-        "options": {
-            "A": "Un rapace notturno endemico",
-            "B": "Una sottospecie endemica sardo-corsa di rapace diurno",
-            "C": "Una specie migratrice africana",
-            "D": "Un rapace alloctono naturalizzato"
-        },
-        "correct_answer": "B",
-        "explanation": "L'Astore sardo è una sottospecie endemica sardo-corsa di rapace diurno, appartenente all'ordine degli Accipitriformes.",
-        "source": "Wikipedia - Fauna della Sardegna"
-    },
-    {
-        "id": 883,
-        "category": "Zoologia",
-        "question": "Quale di questi pesci è una specie autoctona della Sardegna?",
-        "options": {
-            "A": "Persico trota",
-            "B": "Trota sarda",
-            "C": "Carpa",
-            "D": "Gambusia"
-        },
-        "correct_answer": "B",
-        "explanation": "La Trota sarda è una specie autoctona endemica, mentre Persico trota, Carpa e Gambusia sono specie alloctone introdotte dall'uomo.",
-        "source": "Sardegna Natura - Fauna della Sardegna"
-    },
-    {
-        "id": 884,
-        "category": "Zoologia",
-        "question": "La Pernice di Barberia (Alectoris barbara) appartiene all'ordine dei:",
-        "options": {
-            "A": "Passeriformes",
-            "B": "Columbiformes",
-            "C": "Galliformes",
-            "D": "Charadriiformes"
-        },
-        "correct_answer": "C",
-        "explanation": "La Pernice di Barberia è una sottospecie endemica appartenente all'ordine dei Galliformes.",
-        "source": "Wikipedia - Fauna della Sardegna"
-    },
-    {
-        "id": 885,
-        "category": "Zoologia",
-        "question": "Il Fringuello sardo ha come nome scientifico:",
-        "options": {
-            "A": "Fringilla coelebs mediterranea",
-            "B": "Fringilla montifringilla sarda",
-            "C": "Fringilla coelebs sarda",
-            "D": "Carduelis coelebs ichnusae"
-        },
-        "correct_answer": "C",
-        "explanation": "Il Fringuello sardo è identificato scientificamente come Fringilla coelebs sarda, sottospecie endemica della Sardegna.",
-        "source": "Wikipedia - Fauna della Sardegna"
-    },
-    {
-        "id": 886,
-        "category": "Zoologia",
-        "question": "Il colore delle estremità delle orecchie della lepre sarda è:",
-        "options": {
-            "A": "Bianco",
-            "B": "Grigio chiaro",
-            "C": "Nero",
-            "D": "Marrone rossastro"
-        },
-        "correct_answer": "C",
-        "explanation": "Il capo della lepre sarda è allungato, con orecchie grandi, nere all'estremità, occhi grandi e sporgenti.",
-        "source": "Wikipedia - Lepus capensis mediterraneus"
-    },
-    {
-        "id": 887,
-        "category": "Zoologia",
-        "question": "La lepre sarda ha abitudini prevalentemente:",
-        "options": {
-            "A": "Diurne",
-            "B": "Crepuscolari e notturne",
-            "C": "Notturne esclusive",
-            "D": "Diurne nelle ore più calde"
-        },
-        "correct_answer": "B",
-        "explanation": "La lepre sarda è una specie solitaria, elusiva e di abitudini notturne; di giorno si nasconde fra la vegetazione.",
-        "source": "Wikipedia - Lepus capensis mediterraneus"
-    },
-    {
-        "id": 888,
-        "category": "Zoologia",
-        "question": "Il Gatto selvatico sardo (Felis silvestris lybica) è il secondo più grande mammifero predatore della Sardegna dopo:",
-        "options": {
-            "A": "La martora",
-            "B": "Il cinghiale",
-            "C": "La volpe sarda",
-            "D": "Il muflone"
-        },
-        "correct_answer": "C",
-        "explanation": "Il gatto selvatico sardo è il secondo più grande mammifero predatore presente in Sardegna dopo la volpe sarda.",
-        "source": "Wikipedia - Felis silvestris sarda"
-    },
-    {
-        "id": 889,
-        "category": "Zoologia",
-        "question": "L'habitat preferenziale del Gatto selvatico sardo è rappresentato da:",
-        "options": {
-            "A": "Zone costiere e spiagge",
-            "B": "Foresta mediterranea sempreverde e macchia-foresta",
-            "C": "Praterie aperte di alta quota",
-            "D": "Zone agricole e pascoli"
-        },
-        "correct_answer": "B",
-        "explanation": "L'habitat del gatto selvatico sardo è rappresentato dalla foresta mediterranea sempreverde, dalla macchia-foresta e dalla fitta vegetazione che si estende nei valloni impervi.",
-        "source": "Wikipedia - Felis silvestris sarda"
-    },
-    {
-        "id": 890,
-        "category": "Zoologia",
-        "question": "Rispetto alla sottospecie continentale, la Volpe sarda si differenzia per:",
-        "options": {
-            "A": "La coda più lunga e il muso più appuntito",
-            "B": "Le zampe più lunghe e il pelo più folto",
-            "C": "La taglia minore e le orecchie più piccole",
-            "D": "Il colore più chiaro e gli occhi più grandi"
-        },
-        "correct_answer": "C",
-        "explanation": "Rispetto alla sottospecie continentale, la volpe sarda si differenzia per la taglia minore, con una lunghezza del corpo di 59-64 cm, e per le orecchie più piccole.",
-        "source": "Orthobenessere - La volpe sarda"
-    },
-    {
-        "id": 891,
-        "category": "Zoologia",
-        "question": "Le abitudini della Martora sono prevalentemente:",
-        "options": {
-            "A": "Diurne",
-            "B": "Crepuscolari e notturne",
-            "C": "Notturne esclusive",
-            "D": "Aritmiche"
-        },
-        "correct_answer": "B",
-        "explanation": "La Martora ha per lo più abitudini crepuscolari e notturne. Si rifugia nelle cavità degli alberi o fra le rocce.",
-        "source": "Oasi WWF del Cervo e della Luna - Fauna"
-    },
-    {
-        "id": 892,
-        "category": "Zoologia",
-        "question": "La lunghezza del corpo della Donnola non supera:",
-        "options": {
-            "A": "45 cm",
-            "B": "50 cm",
-            "C": "35 cm",
-            "D": "40 cm"
-        },
-        "correct_answer": "C",
-        "explanation": "La Donnola ha una coda corta rispetto al corpo che non supera i 35 cm, che si assottiglia verso l'estremità risultando snello con pelo raso.",
-        "source": "Sardegna Foreste - Donnola"
-    },
-    {
-        "id": 893,
-        "category": "Zoologia",
-        "question": "Il Muflone (Ovis orientalis musimon) fu introdotto in Sardegna e Corsica:",
-        "options": {
-            "A": "Durante l'epoca romana",
-            "B": "Nel Medioevo",
-            "C": "Verso il V millennio a.C.",
-            "D": "Nel XIX secolo"
-        },
-        "correct_answer": "C",
-        "explanation": "Il muflone europeo fu introdotto dal Medio Oriente, verso il V millennio a.C., in Corsica e Sardegna.",
-        "source": "Wikipedia - Ovis orientalis"
-    },
-    {
-        "id": 894,
-        "category": "Zoologia",
-        "question": "Il Muflone predilige:",
-        "options": {
-            "A": "Zone paludose e vallive",
-            "B": "Ambienti aperti in aree collinari con presenza di aree rocciose",
-            "C": "Foreste dense di alta quota",
-            "D": "Coste sabbiose e dune"
-        },
-        "correct_answer": "B",
-        "explanation": "Il muflone predilige gli ambienti aperti in aree collinari, spesso con presenza di aree rocciose dove potersi rifugiare in caso di pericolo.",
-        "source": "Wikipedia - Ovis musimon"
-    },
-    {
-        "id": 895,
-        "category": "Zoologia",
-        "question": "Il Cervo sardo (Cervus elaphus corsicanus) era anticamente diffuso in:",
-        "options": {
-            "A": "Solo in Sardegna",
-            "B": "Gran parte dei territori della Sardegna e della Corsica",
-            "C": "Tutte le isole del Tirreno",
-            "D": "Sardegna e Arcipelago Toscano"
-        },
-        "correct_answer": "B",
-        "explanation": "Il Cervo sardo è un endemismo sardo-corso a livello di sottospecie, anticamente diffuso in gran parte dei territori della Sardegna e della Corsica.",
-        "source": "Wikipedia - Fauna della Sardegna"
-    },
-    {
-        "id": 896,
-        "category": "Zoologia",
-        "question": "La Cinciallegra sarda ha come nome scientifico:",
-        "options": {
-            "A": "Parus major ichnusae",
-            "B": "Parus ater sardus",
-            "C": "Parus major ecki",
-            "D": "Parus caeruleus sarda"
-        },
-        "correct_answer": "C",
-        "explanation": "La Cinciallegra sarda è identificata scientificamente come Parus major ecki, sottospecie endemica della Sardegna.",
-        "source": "Wikipedia - Fauna della Sardegna"
-    },
-    {
-        "id": 897,
-        "category": "Zoologia",
-        "question": "La pelliccia della lepre sarda è di colore:",
-        "options": {
-            "A": "Grigio uniforme",
-            "B": "Bianco con macchie marroni",
-            "C": "Fulvo-brunastra con tonalità nere sul dorso e biancastre sulle parti ventrali",
-            "D": "Rossastra uniforme"
-        },
-        "correct_answer": "C",
-        "explanation": "La pelliccia della lepre sarda è fulvo-brunastra con tonalità nere sul dorso e biancastre sulle parti ventrali, con coda bianca nella parte ventrale e nerastra in quella dorsale.",
-        "source": "Wikipedia - Lepus capensis mediterraneus"
-    },
-    {
-        "id": 898,
-        "category": "Zoologia",
-        "question": "In Sardegna sono presenti varietà tipiche sarde di carnivori, tra cui:",
-        "options": {
-            "A": "Tasso, puzzola e lontra",
-            "B": "Donnola, Martora, Gatto selvatico e Volpe",
-            "C": "Furetto, ermellino e puzzola",
-            "D": "Istrice, tasso e faina"
-        },
-        "correct_answer": "B",
-        "explanation": "Sono presenti varietà tipiche sarde di carnivori quali la Donnola (Mustela nivalis boccamela), la Martora (Martes martes latinorum), il Gatto Selvatico sardo (Felis silvestris lybica) e la Volpe (Vulpes vulpes ichnusae).",
-        "source": "Oasi WWF del Cervo e della Luna - Fauna"
     }
 ]

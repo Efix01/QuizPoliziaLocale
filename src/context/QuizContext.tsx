@@ -22,6 +22,10 @@ interface QuizContextType extends QuizState {
     addCustomQuestion: (question: QuizQuestion) => void;
     editQuestion: (question: QuizQuestion) => void;
     hideQuestion: (questionId: number) => void;
+    getTodayAnsweredCount: () => number;
+    todayAnsweredCount: number;
+    bonusNotification: { message: string, amount: number } | null;
+    clearBonusNotification: () => void;
 }
 
 const QuizContext = createContext<QuizContextType | undefined>(undefined);
@@ -43,6 +47,10 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
         loading: true,
         error: null
     });
+
+    const [bonusNotification, setBonusNotification] = useState<{ message: string, amount: number } | null>(null);
+
+    const clearBonusNotification = () => setBonusNotification(null);
 
     // Debounce refs to prevent excessive writes
     const progressUpdateTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -251,6 +259,32 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
             }
             newStats.level = Math.floor(newStats.xp / 500) + 1;
 
+            // Daily Challenge Bonus Logic
+            const today = new Date();
+            const todayStr = today.toISOString().split('T')[0]; // YYYY-MM-DD
+            today.setHours(0, 0, 0, 0);
+            const todayStart = today.getTime();
+            const todayEnd = todayStart + 24 * 60 * 60 * 1000;
+
+            // Calculate answered today (including the one just answered)
+            const updatedUserProgress = { ...prev.userProgress, [questionId]: newProgress };
+            const todayAnsweredCount = Object.values(updatedUserProgress).filter(p => {
+                return p.lastReviewed >= todayStart && p.lastReviewed < todayEnd;
+            }).length;
+
+            if (todayAnsweredCount >= 20 && newStats.dailyBonusClaimedDate !== todayStr) {
+                newStats.xp += 50;
+                newStats.dailyBonusClaimedDate = todayStr;
+                // Recalculate level in case bonus leveled up
+                newStats.level = Math.floor(newStats.xp / 500) + 1;
+
+                // Trigger Visual Notification
+                setBonusNotification({
+                    message: "Sfida del Giorno Completata!",
+                    amount: 50
+                });
+            }
+
             return {
                 ...prev,
                 userProgress: { ...prev.userProgress, [questionId]: newProgress },
@@ -308,8 +342,23 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
         return shuffled.slice(0, Math.min(count, shuffled.length));
     };
 
+    // Get count of questions answered today
+    const getTodayAnsweredCount = (): number => {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const todayStart = today.getTime();
+        const todayEnd = todayStart + 24 * 60 * 60 * 1000;
+
+        return Object.values(state.userProgress).filter(progress => {
+            const lastReviewed = progress.lastReviewed;
+            return lastReviewed >= todayStart && lastReviewed < todayEnd;
+        }).length;
+    };
+
+    const todayAnsweredCount = getTodayAnsweredCount();
+
     return (
-        <QuizContext.Provider value={{ ...state, answerQuestion, resetProgress, getQuestionsForStudy, addCustomQuestion, editQuestion, hideQuestion }}>
+        <QuizContext.Provider value={{ ...state, answerQuestion, resetProgress, getQuestionsForStudy, addCustomQuestion, editQuestion, hideQuestion, getTodayAnsweredCount, todayAnsweredCount, bonusNotification, clearBonusNotification }}>
             {children}
         </QuizContext.Provider>
     );
