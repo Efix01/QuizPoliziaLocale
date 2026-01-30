@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Sparkles, CheckCircle, TreePine, RefreshCw } from 'lucide-react';
 import './WhatsNewModal.css';
 
-const VERSION_KEY = 'whats_new_v2_zoologia_botanica'; // Updated to force modal to show again
+const VERSION_KEY = 'whats_new_v3_quiz_limit_30'; // Updated to force modal to show again
 
 const WhatsNewModal: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -34,20 +34,16 @@ const WhatsNewModal: React.FC = () => {
                     <Sparkles size={32} />
                 </div>
 
-                <h2 className="whats-new-title">Maxi Aggiornamento! 🌿🦌</h2>
+                <h2 className="whats-new-title">Più Quiz per Voi! 🚀</h2>
 
                 <ul className="whats-new-list">
                     <li className="whats-new-item">
                         <div className="item-icon" style={{ color: 'var(--green-primary)' }}>
-                            <TreePine size={24} />
+                            <RefreshCw size={24} />
                         </div>
                         <div className="item-content">
-                            <h4>Nuove Lezioni di Zoologia e Botanica!</h4>
-                            <p>Abbiamo arricchito il materiale di studio:</p>
-                            <ul style={{ paddingLeft: '1.2rem', marginTop: '0.2rem', listStyleType: 'disc' }}>
-                                <li><strong>Zoologia:</strong> Mammiferi, Uccelli, Rettili, Anfibi, Pesci, Invertebrati ed Endemismi.</li>
-                                <li><strong>Botanica:</strong> Querce, Conifere, Macchia Alta/Bassa e Flora endemica.</li>
-                            </ul>
+                            <h4>Sessioni da 30 Domande</h4>
+                            <p>Ho ascoltato i vostri feedback! Da ora, selezionando un argomento specifico, potrete affrontare sessioni da <strong>30 quiz</strong> (invece di 10).</p>
                         </div>
                     </li>
 
@@ -56,22 +52,18 @@ const WhatsNewModal: React.FC = () => {
                             <CheckCircle size={20} />
                         </div>
                         <div className="item-content">
-                            <h4>Nuovi Quiz Aggiunti</h4>
-                            <p>Inseriti <strong>55 nuovi quiz</strong> specifici su questi argomenti per testare subito la tua preparazione!</p>
+                            <h4>Allenamento più Intenso</h4>
+                            <p>Ideale per coprire più argomenti in una sola volta e prepararsi al meglio.</p>
                         </div>
                     </li>
 
                     <li className="whats-new-item">
                         <div className="item-icon" style={{ color: '#3B82F6' }}>
-                            <RefreshCw size={20} />
+                            <TreePine size={20} />
                         </div>
                         <div className="item-content">
-                            <h4>Messaggio da Efisio</h4>
-                            <p style={{ fontStyle: 'italic', marginBottom: '0.5rem' }}>
-                                "Ciao ragazzi! 🌲 Sto mettendo tanto impegno per offrirvi il materiale, non sarà il migliore o il più completo, ma sono punti essenziali per la vostra preparazione.
-                                Mentre voi studiate sodo, io cerco di lavorare per voi. Buono studio e non mollate! sono sicuro che il giorno del test non è cosi lontano!!"
-                            </p>
-                            <p style={{ fontWeight: 'bold', color: 'var(--green-primary)', textAlign: 'right', margin: 0 }}>Efisio..</p>
+                            <h4>Buono Studio!</h4>
+                            <p>Continuate così, la preparazione è fondamentale. Forza ragazzi! 💪</p>
                         </div>
                     </li>
                 </ul>

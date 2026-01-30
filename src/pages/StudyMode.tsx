@@ -37,8 +37,7 @@ const StudyMode: React.FC = () => {
         if (requestedCount) {
             questionCount = requestedCount;
         } else if (categoryFilter) {
-        } else if (categoryFilter) {
-            questionCount = 20;
+            questionCount = 30;
         }
 
         // Daily Challenge Cap enforcement
