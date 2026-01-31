@@ -34,3 +34,6 @@ I file generati si troveranno nella cartella `dist`.
 
 ## Installazione PWA
 Su dispositivi mobili o Chrome desktop, comparirà l'icona "Installa App" nella barra degli indirizzi o nel menu del browser.
+
+## Italiano
+dammi le risposte sempre in italiano.

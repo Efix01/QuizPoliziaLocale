@@ -2,6 +2,7 @@ import React from 'react';
 import { ChevronRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useScrollAnimation } from '../../hooks/useAnimations';
+import StudyProgressChart from './StudyProgressChart';
 
 interface DashboardStatsProps {
     stats: {
@@ -16,10 +17,6 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({ stats, accuracy, averag
     const navigate = useNavigate();
     const [progressRef, progressVisible] = useScrollAnimation<HTMLElement>();
 
-    // Mock data
-    const sparklineData = [30, 45, 35, 50, 40, 55, 48];
-    const maxSparkline = Math.max(...sparklineData);
-
     return (
         <section
             ref={progressRef}
@@ -33,20 +30,6 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({ stats, accuracy, averag
             </div>
 
             <div className="progress-card">
-                {/* Sparkline */}
-                <div className="sparkline-container">
-                    {sparklineData.map((value, i) => (
-                        <div
-                            key={i}
-                            className="sparkline-bar"
-                            style={{
-                                height: progressVisible ? `${(value / maxSparkline) * 100}%` : '0%',
-                                transitionDelay: `${i * 0.05}s`
-                            }}
-                        />
-                    ))}
-                </div>
-
                 {/* Stats */}
                 <div className="stats-row">
                     <div className="stat-item">
@@ -64,6 +47,13 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({ stats, accuracy, averag
                         <span className="stat-label">Precisione</span>
                     </div>
                 </div>
+
+                {/* Learning Progress Chart (Replaces Sparkline) */}
+                <div className="chart-container-wrapper">
+                    <h3 className="chart-title">Distribuzione Apprendimento (Metodo Leitner)</h3>
+                    <StudyProgressChart />
+                </div>
+
                 {/* Threshold bar */}
                 <div className="threshold-bar">
                     <div className="threshold-track">
@@ -81,6 +71,23 @@ const DashboardStats: React.FC<DashboardStatsProps> = ({ stats, accuracy, averag
                     </div>
                 </div>
             </div>
+
+            <style>{`
+                .chart-container-wrapper {
+                    margin: 24px 0;
+                    padding-top: 16px;
+                    border-top: 1px solid rgba(255,255,255,0.05);
+                }
+                .chart-title {
+                    font-size: 0.85rem;
+                    text-transform: uppercase;
+                    letter-spacing: 0.05em;
+                    color: rgba(255,255,255,0.5);
+                    font-weight: 600;
+                    margin-bottom: 8px;
+                    text-align: center;
+                }
+            `}</style>
         </section>
     );
 };

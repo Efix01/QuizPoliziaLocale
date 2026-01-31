@@ -58,7 +58,7 @@ export const StudyMaterialProvider: React.FC<{ children: React.ReactNode }> = ({
                 const module = await import('../data/materiale_studio.json');
                 const subjects = module.default as Subject[];
                 setState(prev => ({ ...prev, subjects, loading: false }));
-            } catch (err) {
+            } catch {
                 setState(prev => ({ ...prev, error: 'Failed to load study material', loading: false }));
             }
         };

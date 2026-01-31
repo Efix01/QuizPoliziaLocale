@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, CheckCircle, TreePine, RefreshCw } from 'lucide-react';
+import { Sparkles, Palette, AlertTriangle, History, Dumbbell, Heart } from 'lucide-react';
 import './WhatsNewModal.css';
 
-const VERSION_KEY = 'whats_new_v3_quiz_limit_30'; // Updated to force modal to show again
+const VERSION_KEY = 'whats_new_v4_dark_glass';
 
 const WhatsNewModal: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -36,22 +36,34 @@ const WhatsNewModal: React.FC = () => {
 
     const features = [
         {
-            icon: <RefreshCw size={24} />,
-            color: 'var(--green-primary)',
-            title: 'Sessioni da 30 Domande',
-            description: <>Ho ascoltato i vostri feedback! Da ora, selezionando un argomento specifico, potrete affrontare sessioni da <strong>30 quiz</strong> (invece di 10).</>
+            icon: <Palette size={24} />,
+            color: '#A855F7', // Purple for design
+            title: 'Nuovo Look Dark Glass',
+            description: 'Un\'interfaccia moderna e riposante per le tue sessioni di studio notturne.'
         },
         {
-            icon: <CheckCircle size={20} />,
-            color: 'var(--orange-primary, #F59E0B)',
-            title: 'Allenamento più Intenso',
-            description: 'Ideale per coprire più argomenti in una sola volta e prepararsi al meglio.'
+            icon: <AlertTriangle size={24} />,
+            color: '#F59E0B', // Amber for alerts
+            title: 'Controllo Errori',
+            description: 'Nella Simulazione d\'Esame ora vedi subito gli errori per imparare più in fretta.'
         },
         {
-            icon: <TreePine size={20} />,
-            color: '#3B82F6',
-            title: 'Buono Studio!',
-            description: 'Continuate così, la preparazione è fondamentale. Forza ragazzi! 💪'
+            icon: <History size={24} />,
+            color: '#EF4444', // Red for errors/history
+            title: 'Revisione Errori',
+            description: 'Torna sui tuoi passi: una sezione dedicata per rivedere e riprovare le domande sbagliate.'
+        },
+        {
+            icon: <Dumbbell size={24} />,
+            color: '#06B6D4', // Cyan for physical
+            title: 'Hub Fisico',
+            description: 'Nuova sezione per preparare corsa, piegamenti e salto con timer integrati.'
+        },
+        {
+            icon: <Heart size={24} />,
+            color: '#EC4899', // Pink for love/luck
+            title: 'Buono Studio da Efisio!!!',
+            description: 'Un grande in bocca al lupo per la tua preparazione! 💪'
         }
     ];
 
@@ -62,7 +74,7 @@ const WhatsNewModal: React.FC = () => {
                     <Sparkles size={32} />
                 </div>
 
-                <h2 className="whats-new-title">Più Quiz per Voi! 🚀</h2>
+                <h2 className="whats-new-title">Novità da Quiz CFVA ✨</h2>
 
                 <ul className="whats-new-list">
                     {features.map((feature, index) => (

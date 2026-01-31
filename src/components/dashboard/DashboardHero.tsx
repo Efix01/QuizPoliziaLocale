@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import type { User } from 'firebase/auth';
 import { Calendar } from 'lucide-react';
 import { useStaggerAnimation, useParallax } from '../../hooks/useAnimations';
 
 interface DashboardHeroProps {
-    user: any; // Ideally typed properly
+    user: User | null;
     pageLoaded: boolean;
 }
+// ...
+const TARGET_DATE = new Date('2025-09-15T09:00:00');
 
 const getGreeting = (): { text: string; emoji: string } => {
     const hour = new Date().getHours();
@@ -34,7 +37,6 @@ const DashboardHero: React.FC<DashboardHeroProps> = ({ user, pageLoaded }) => {
     const countdownVisible = useStaggerAnimation(4, 100);
     const greeting = getGreeting();
 
-    const TARGET_DATE = new Date('2025-09-15T09:00:00');
     const [countdown, setCountdown] = useState(getCountdown(TARGET_DATE));
 
     useEffect(() => {
@@ -42,7 +44,7 @@ const DashboardHero: React.FC<DashboardHeroProps> = ({ user, pageLoaded }) => {
             setCountdown(getCountdown(TARGET_DATE));
         }, 1000);
         return () => clearInterval(timer);
-    }, [TARGET_DATE]);
+    }, []);
 
     return (
         <section

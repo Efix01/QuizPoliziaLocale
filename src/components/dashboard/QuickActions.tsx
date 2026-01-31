@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BookOpen, Target, ArrowRight } from 'lucide-react';
+import { BookOpen, Target, ArrowRight, AlertTriangle, Dumbbell } from 'lucide-react';
 import { useNotifications } from '../../context/NotificationContext';
 import LockedOverlay from '../ui/LockedOverlay';
 
@@ -54,6 +54,41 @@ const QuickActions: React.FC<QuickActionsProps> = ({ pageLoaded, isAuthenticated
                 <p className="action-description">90 domande<br />100 minuti</p>
                 <span className="action-link">
                     Inizia <ArrowRight />
+                </span>
+            </div>
+
+            <div
+                className={`action-card action-card--mistakes hover-lift focus-gold ${pageLoaded ? 'animate-spring-up delay-500' : ''}`}
+                onClick={() => isAuthenticated && navigate('/mistakes')}
+                role="button"
+                tabIndex={0}
+                style={{ opacity: pageLoaded ? 1 : 0, position: 'relative' }}
+            >
+                {!isAuthenticated && <LockedOverlay message="Accedi per sbloccare" />}
+                <div className="action-icon action-icon--mistakes">
+                    <AlertTriangle />
+                </div>
+                <h3 className="action-title">Revisione Errori</h3>
+                <p className="action-description">Recupera i tuoi<br />errori recenti</p>
+                <span className="action-link">
+                    Correggi <ArrowRight />
+                </span>
+            </div>
+
+            <div
+                className={`action-card action-card--physical hover-lift focus-gold ${pageLoaded ? 'animate-spring-up delay-500' : ''}`}
+                onClick={() => navigate('/physical')}
+                role="button"
+                tabIndex={0}
+                style={{ opacity: pageLoaded ? 1 : 0 }}
+            >
+                <div className="action-icon action-icon--physical">
+                    <Dumbbell />
+                </div>
+                <h3 className="action-title">Hub Fisico</h3>
+                <p className="action-description">Standard e<br />Cronometro</p>
+                <span className="action-link">
+                    Allenati <ArrowRight />
                 </span>
             </div>
         </section>

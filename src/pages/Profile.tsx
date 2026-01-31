@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Toggle from '../components/ui/Toggle';
 import { LogoutModal, DeleteAccountModal } from '../components/ui/AccountModals';
@@ -48,7 +48,8 @@ const Profile: React.FC = () => {
         : 0;
 
     // Get user initials for avatar fallback
-    const getInitials = () => {
+    // Get user initials for avatar fallback
+    const initials = useMemo(() => {
         if (!user?.displayName) return user?.email?.charAt(0).toUpperCase() || '?';
         return user.displayName
             .split(' ')
@@ -56,7 +57,7 @@ const Profile: React.FC = () => {
             .join('')
             .toUpperCase()
             .slice(0, 2);
-    };
+    }, [user]);
 
     return (
         <div className="profile-container">
@@ -69,7 +70,7 @@ const Profile: React.FC = () => {
                         {isAuthenticated && user?.photoURL ? (
                             <img src={user.photoURL} alt="" className="user-avatar-img" />
                         ) : isAuthenticated ? (
-                            <span className="user-avatar-initials">{getInitials()}</span>
+                            <span className="user-avatar-initials">{initials}</span>
                         ) : (
                             <User />
                         )}
@@ -110,7 +111,7 @@ const Profile: React.FC = () => {
                     </div>
                     <div className="stats-item">
                         <span className="stats-item-value">{stats.currentStreak}</span>
-                        <span className="stats-item-label">Streak</span>
+                        <span className="stats-item-label">Giorni di fila</span>
                     </div>
                 </div>
             </div>

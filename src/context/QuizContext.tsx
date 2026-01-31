@@ -27,6 +27,8 @@ interface QuizContextType extends QuizState {
     todayAnsweredCount: number;
     bonusNotification: { message: string, amount: number } | null;
     clearBonusNotification: () => void;
+    getMistakeQuestions: (count?: number) => QuizQuestion[];
+    getLeitnerStats: () => number[];
 }
 
 const QuizContext = createContext<QuizContextType | undefined>(undefined);
@@ -119,7 +121,7 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
                     loading: false
                 }));
 
-            } catch (err) {
+            } catch {
                 setState(prev => ({ ...prev, error: 'Failed to load quiz data', loading: false }));
             }
         };
@@ -201,7 +203,7 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 history: []
             };
 
-            let newBox = isCorrect ? Math.min(currentProgress.box + 1, 5) : 1;
+            const newBox = isCorrect ? Math.min(currentProgress.box + 1, 5) : 1;
             const intervals = [0, 1, 3, 7, 14, 30];
             const nextReviewDate = Date.now() + (intervals[newBox] * 24 * 60 * 60 * 1000);
 
@@ -321,6 +323,52 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
     // Provided for backward compatibility if called as function
     const getTodayAnsweredCount = () => todayAnsweredCount;
 
+    const getMistakeQuestions = (count: number = 20): QuizQuestion[] => {
+        if (state.questions.length === 0) return [];
+
+        // Filter questions where the LAST attempt was FALSE (wrong)
+        const mistakeIds = Object.keys(state.userProgress).filter(idStr => {
+            const id = parseInt(idStr);
+            const progress = state.userProgress[id];
+            if (!progress || progress.history.length === 0) return false;
+            // Check last history item
+            return progress.history[progress.history.length - 1] === false;
+        }).map(id => parseInt(id));
+
+        const questions = state.questions.filter(q => mistakeIds.includes(q.id));
+
+        // Shuffle
+        const shuffled = [...questions].sort(() => 0.5 - Math.random());
+        return shuffled.slice(0, count);
+    };
+
+    const getLeitnerStats = () => {
+        const stats = [0, 0, 0, 0, 0, 0]; // Box 0 to 5
+
+        // Count Box 0 (Unseen)
+        // Ideally we iterate all questions. 
+        // Optimized: Total Questions - Seen Questions (in userProgress)
+        // But some in userProgress might be Box 0 if reset? No, usually initialized to Box 1 on first correct answer? 
+        // Actually answerQuestion logic: currentProgress.box defaults to 0. 
+        // If isCorrect -> box 1, else box 1. So seen questions are at least Box 1.
+        // Wait, if answerQuestion is called:
+        // let newBox = isCorrect ? Math.min(currentProgress.box + 1, 5) : 1;
+        // So they go to 1 minimum.
+
+        const totalQuestions = state.questions.length;
+        let seenCount = 0;
+
+        Object.values(state.userProgress).forEach(p => {
+            if (p.box >= 1 && p.box <= 5) {
+                stats[p.box]++;
+                seenCount++;
+            }
+        });
+
+        stats[0] = Math.max(0, totalQuestions - seenCount);
+        return stats;
+    };
+
     return (
         <QuizContext.Provider value={{
             ...state,
@@ -333,7 +381,9 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
             getTodayAnsweredCount,
             todayAnsweredCount,
             bonusNotification,
-            clearBonusNotification
+            clearBonusNotification,
+            getMistakeQuestions,
+            getLeitnerStats
         }}>
             {children}
         </QuizContext.Provider>

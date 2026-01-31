@@ -23,7 +23,9 @@ interface CookieContextType extends CookieConsentState {
     resetConsent: () => void;
 }
 
-const STORAGE_KEY = 'quiz-cfva-cookie-consent';
+import { STORAGE_KEYS } from '../constants';
+
+const STORAGE_KEY = STORAGE_KEYS.COOKIE_PREFERENCES;
 
 const defaultPreferences: CookiePreferences = {
     necessary: true,

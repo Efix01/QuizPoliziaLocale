@@ -22,27 +22,22 @@ interface NotificationContextType {
 
 const NotificationContext = createContext<NotificationContextType | null>(null);
 
-const STORAGE_KEYS = {
-    LAST_STUDY: 'quiz_last_study_time',
-    LAST_VISIT: 'quiz_last_visit_time',
-    NOTIFICATIONS_ENABLED: 'quiz_notifications_enabled',
-    NOTIFICATIONS: 'quiz_notifications'
-};
+import { STORAGE_KEYS } from '../constants';
 
 export const NotificationProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-    const [notifications, setNotifications] = useState<StudyNotification[]>([]);
+    const [notifications, setNotifications] = useState<StudyNotification[]>(() => {
+        try {
+            const saved = localStorage.getItem(STORAGE_KEYS.NOTIFICATIONS);
+            return saved ? JSON.parse(saved) : [];
+        } catch {
+            return [];
+        }
+    });
+
     const [notificationsEnabled, setNotificationsEnabledState] = useState(() => {
         const saved = localStorage.getItem(STORAGE_KEYS.NOTIFICATIONS_ENABLED);
         return saved ? JSON.parse(saved) : true;
     });
-
-    // Load notifications from localStorage
-    useEffect(() => {
-        const saved = localStorage.getItem(STORAGE_KEYS.NOTIFICATIONS);
-        if (saved) {
-            setNotifications(JSON.parse(saved));
-        }
-    }, []);
 
     // Save notifications to localStorage
     useEffect(() => {
@@ -93,23 +88,26 @@ export const NotificationProvider: React.FC<{ children: ReactNode }> = ({ childr
 
                 if (message) {
                     // Add reminder notification (avoid duplicates)
-                    setNotifications(prev => {
-                        const hasRecent = prev.some(n =>
-                            n.type === 'reminder' &&
-                            (now - n.timestamp) < 24 * 60 * 60 * 1000
-                        );
-                        if (hasRecent) return prev;
+                    const timeoutId = setTimeout(() => {
+                        setNotifications(prev => {
+                            const hasRecent = prev.some(n =>
+                                n.type === 'reminder' &&
+                                (now - n.timestamp) < 24 * 60 * 60 * 1000
+                            );
+                            if (hasRecent) return prev;
 
-                        const newNotification: StudyNotification = {
-                            id: `reminder-${now}`,
-                            type: 'reminder',
-                            title: 'Promemoria Studio',
-                            message,
-                            icon,
-                            timestamp: now
-                        };
-                        return [newNotification, ...prev].slice(0, 10); // Keep max 10 notifications
-                    });
+                            const newNotification: StudyNotification = {
+                                id: `reminder-${now}`,
+                                type: 'reminder',
+                                title: 'Promemoria Studio',
+                                message,
+                                icon,
+                                timestamp: now
+                            };
+                            return [newNotification, ...prev].slice(0, 10); // Keep max 10 notifications
+                        });
+                    }, 1000); // Small delay to avoid hydration mismatch/sync update issues
+                    return () => clearTimeout(timeoutId);
                 }
             }
         } else {

@@ -43,6 +43,11 @@ const CategoryCarousel: React.FC<CategoryCarouselProps> = ({ isAuthenticated }) 
     const [categoriesRef, categoriesVisible] = useScrollAnimation<HTMLElement>();
     const categoriesScrollRef = useRef<HTMLDivElement>(null);
 
+    // Generate stable random widths for progress bars
+    const progressWidths = React.useMemo(() => {
+        return CATEGORIES.map((_, index) => ((index * 37) % 60) + 20); // Deterministic "random" 20-80%
+    }, []);
+
     const getCategoryCount = (categoryId: string) => {
         return questions.filter(q =>
             q.category.toLowerCase().includes(categoryId.toLowerCase())
@@ -116,7 +121,7 @@ const CategoryCarousel: React.FC<CategoryCarouselProps> = ({ isAuthenticated }) 
                                 <div className="category-progress">
                                     <div
                                         className="category-progress-fill"
-                                        style={{ width: `${Math.random() * 60 + 10}%` }}
+                                        style={{ width: `${progressWidths[index]}%` }}
                                     />
                                 </div>
                             </div>

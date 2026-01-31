@@ -23,9 +23,9 @@ export const getSafeItem = <T>(key: string, parseJson = false): T | null => {
 };
 
 // Generic setter
-export const setSafeItem = (key: string, value: any, stringify = false): void => {
+export const setSafeItem = <T>(key: string, value: T, stringify = false): void => {
     try {
-        const valueToStore = stringify ? JSON.stringify(value) : value;
+        const valueToStore = stringify ? JSON.stringify(value) : (value as string);
         localStorage.setItem(key, valueToStore);
     } catch (error) {
         console.warn(`LocalStorage SET FAILED for key "${key}":`, error);

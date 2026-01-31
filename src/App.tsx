@@ -15,6 +15,7 @@ import Onboarding from './pages/Onboarding';
 import TermsOfService from './pages/TermsOfService';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import ChiSiamo from './pages/ChiSiamo';
+import MistakeReview from './pages/MistakeReview';
 import { ToastProvider } from './context/ToastContext';
 import { AuthProvider } from './context/AuthContext';
 import { NotificationProvider } from './context/NotificationContext';
@@ -56,6 +57,7 @@ function App() {
                       <Route path="study" element={<StudyMode />} />
                       <Route path="simulation" element={<SimulationMode />} />
                       <Route path="physical" element={<PhysicalPrep />} />
+                      <Route path="mistakes" element={<MistakeReview />} />
                       <Route path="manual" element={<StudyLibrary />} />
                       <Route path="profile" element={<Profile />} />
                     </Route>

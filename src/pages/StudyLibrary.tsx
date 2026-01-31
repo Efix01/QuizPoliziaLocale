@@ -1,9 +1,27 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BookOpen, Clock, ChevronRight, CheckCircle, Lock } from 'lucide-react';
+import {
+    BookOpen, Clock, ChevronRight, CheckCircle, Lock,
+    Scale, TreeDeciduous, Leaf, Map, Gavel, Flame, BookMarked, ShieldAlert
+} from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useStudyMaterial, type Subject, type Chapter } from '../context/StudyMaterialContext';
 import './StudyLibrary.css';
+
+// Helper to map IDs to Icons
+const getSubjectIcon = (id: string) => {
+    switch (id) {
+        case 'lr_26_1985_art_1_7': return <Scale size={20} color="#4ADE80" />;
+        case 'ecologia_selvicoltura_avanzata': return <TreeDeciduous size={20} color="#22C55E" />;
+        case 'botanica_zoologia_sarda': return <Leaf size={20} color="#FB923C" />;
+        case 'geografia_fisica_sardegna': return <Map size={20} color="#38BDF8" />;
+        case 'rdl_3267_1923': return <Gavel size={20} color="#A78BFA" />;
+        case 'manuale_legislazione_forestale': return <BookMarked size={20} color="#F472B6" />;
+        case 'legge_394_1991': return <ShieldAlert size={20} color="#FACC15" />;
+        case 'legge_353_2000': return <Flame size={20} color="#F87171" />;
+        default: return <BookOpen size={20} color="#E2E8F0" />;
+    }
+};
 
 const StudyLibrary: React.FC = () => {
     const navigate = useNavigate();
@@ -34,7 +52,7 @@ const StudyLibrary: React.FC = () => {
     };
 
     // Get overall progress
-    const getOverallProgress = () => {
+    const overall = useMemo(() => {
         let totalChapters = 0;
         let readCount = 0;
         subjects.forEach(subject => {
@@ -44,9 +62,7 @@ const StudyLibrary: React.FC = () => {
             ).length;
         });
         return { read: readCount, total: totalChapters };
-    };
-
-    const overall = getOverallProgress();
+    }, [subjects, isRead]);
 
     const handleReset = async (e: React.MouseEvent, subjectId: string) => {
         e.stopPropagation();
@@ -59,7 +75,7 @@ const StudyLibrary: React.FC = () => {
     if (loading) {
         return (
             <div className="study-library">
-                <div className="library-loading">Caricamento...</div>
+                <div style={{ color: 'white', textAlign: 'center', marginTop: '4rem' }}>Caricamento materiale didattico...</div>
             </div>
         );
     }
@@ -71,13 +87,13 @@ const StudyLibrary: React.FC = () => {
                 <header className="library-header">
                     <h1 className="library-title">Pillole di studio</h1>
                     <p className="library-subtitle">
-                        Preparati al meglio con il nostro materiale didattico
+                        Accedi ai materiali esclusivi per la preparazione al concorso.
                     </p>
                 </header>
 
                 <div className="library-locked">
                     <div className="locked-icon">
-                        <Lock size={48} />
+                        <Lock size={32} />
                     </div>
                     <h2>Contenuto Riservato</h2>
                     <p>
@@ -99,9 +115,9 @@ const StudyLibrary: React.FC = () => {
         <div className="study-library">
             {/* Header */}
             <header className="library-header">
-                <h1 className="library-title">Pillole di studio</h1>
+                <h1 className="library-title">Piano di Studio</h1>
                 <p className="library-subtitle">
-                    Preparati al meglio con il nostro materiale didattico
+                    Il tuo percorso formativo completo per Agente Forestale.
                 </p>
             </header>
 
@@ -111,9 +127,9 @@ const StudyLibrary: React.FC = () => {
                     <BookOpen className="overall-icon" />
                     <div>
                         <span className="overall-label">Avanzamento Totale</span>
-                        <span className="overall-count">
-                            {overall.read}/{overall.total} lezioni completate
-                        </span>
+                        <div className="overall-count">
+                            {overall.read} / {overall.total}
+                        </div>
                     </div>
                 </div>
                 <div className="overall-progress-bar">
@@ -142,15 +158,18 @@ const StudyLibrary: React.FC = () => {
 
                             <div className="subject-content">
                                 <div className="subject-header">
-                                    <span className="subject-icon">{subject.icon}</span>
+                                    <div className="subject-icon">
+                                        {/* Dynamic Icon based on ID */}
+                                        {getSubjectIcon(subject.id)}
+                                    </div>
                                     <div className="subject-info">
                                         <h2 className="subject-title">{subject.title}</h2>
                                         <p className="subject-description">{subject.description}</p>
                                     </div>
                                     {isComplete && (
                                         <div className="subject-badge">
-                                            <CheckCircle size={16} />
-                                            <span>Letto</span>
+                                            <CheckCircle size={14} />
+                                            <span>Completato</span>
                                         </div>
                                     )}
                                 </div>
@@ -163,6 +182,8 @@ const StudyLibrary: React.FC = () => {
                                         <Clock size={14} />
                                         {totalTime} min
                                     </span>
+
+                                    {/* Push Arrow to end if needed, structure handles it via flex */}
                                 </div>
 
                                 <div className="subject-progress">
@@ -182,7 +203,7 @@ const StudyLibrary: React.FC = () => {
                                 )}
                             </div>
 
-                            {!isComplete && <ChevronRight className="subject-arrow" />}
+                            <ChevronRight className="subject-arrow" />
                         </div>
                     );
                 })}
