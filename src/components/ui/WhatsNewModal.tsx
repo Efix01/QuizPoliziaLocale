@@ -2,30 +2,58 @@ import React, { useState, useEffect } from 'react';
 import { Sparkles, CheckCircle, TreePine, RefreshCw } from 'lucide-react';
 import './WhatsNewModal.css';
 
-const VERSION_KEY = 'has_seen_update_v1_0_efisio_v2'; // Updated to force modal to show again
+const VERSION_KEY = 'whats_new_v3_quiz_limit_30'; // Updated to force modal to show again
 
 const WhatsNewModal: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
 
     useEffect(() => {
-        // Check if user has already seen this update
-        const hasSeen = localStorage.getItem(VERSION_KEY);
-        if (!hasSeen) {
-            // Small delay to appear after app load
-            const timer = setTimeout(() => {
-                setIsOpen(true);
-            }, 1000);
-            return () => clearTimeout(timer);
+        try {
+            // Check if user has already seen this update
+            const hasSeen = localStorage.getItem(VERSION_KEY);
+            if (!hasSeen) {
+                // Small delay to appear after app load
+                const timer = setTimeout(() => {
+                    setIsOpen(true);
+                }, 1000);
+                return () => clearTimeout(timer);
+            }
+        } catch (error) {
+            console.warn('LocalStorage access blocked:', error);
         }
     }, []);
 
     const handleClose = () => {
         setIsOpen(false);
-        // Save flag to localStorage
-        localStorage.setItem(VERSION_KEY, 'true');
+        try {
+            localStorage.setItem(VERSION_KEY, 'true');
+        } catch (error) {
+            console.warn('Could not save to LocalStorage:', error);
+        }
     };
 
     if (!isOpen) return null;
+
+    const features = [
+        {
+            icon: <RefreshCw size={24} />,
+            color: 'var(--green-primary)',
+            title: 'Sessioni da 30 Domande',
+            description: <>Ho ascoltato i vostri feedback! Da ora, selezionando un argomento specifico, potrete affrontare sessioni da <strong>30 quiz</strong> (invece di 10).</>
+        },
+        {
+            icon: <CheckCircle size={20} />,
+            color: 'var(--orange-primary, #F59E0B)',
+            title: 'Allenamento più Intenso',
+            description: 'Ideale per coprire più argomenti in una sola volta e prepararsi al meglio.'
+        },
+        {
+            icon: <TreePine size={20} />,
+            color: '#3B82F6',
+            title: 'Buono Studio!',
+            description: 'Continuate così, la preparazione è fondamentale. Forza ragazzi! 💪'
+        }
+    ];
 
     return (
         <div className="whats-new-overlay">
@@ -34,46 +62,24 @@ const WhatsNewModal: React.FC = () => {
                     <Sparkles size={32} />
                 </div>
 
-                <h2 className="whats-new-title">Novità!</h2>
+                <h2 className="whats-new-title">Più Quiz per Voi! 🚀</h2>
 
                 <ul className="whats-new-list">
-                    <li className="whats-new-item">
-                        <div className="item-icon" style={{ color: 'var(--green-primary)' }}>
-                            <TreePine size={24} />
-                        </div>
-                        <div className="item-content">
-                            <h4>Messaggio dallo Sviluppatore</h4>
-                            <p style={{ fontStyle: 'italic', marginBottom: '0.5rem' }}>
-                                "Ehi! 👋 Spero di preparare nuovi quiz e lezioni per voi. Non vi lascio soli.
-                                Finché voi studiate, io cercherò di aggiornare Quiz CFVA. A presto con le novità! 🌲"
-                            </p>
-                            <p style={{ fontWeight: 'bold', color: 'var(--green-primary)', textAlign: 'right', margin: 0 }}>— Efisio</p>
-                        </div>
-                    </li>
-
-                    <li className="whats-new-item">
-                        <div className="item-icon">
-                            <CheckCircle size={20} />
-                        </div>
-                        <div className="item-content">
-                            <h4>Sempre Migliorati</h4>
-                            <p>Stiamo lavorando per rendere l'esperienza sempre più stabile e completa.</p>
-                        </div>
-                    </li>
-
-                    <li className="whats-new-item">
-                        <div className="item-icon" style={{ color: 'var(--orange-primary, #F59E0B)' }}>
-                            <RefreshCw size={20} />
-                        </div>
-                        <div className="item-content">
-                            <h4>Nota Importante</h4>
-                            <p>Per vedere gli ultimi aggiornamenti consigliamo di <strong>cancellare i dati di navigazione e la cache</strong> del browser.</p>
-                        </div>
-                    </li>
+                    {features.map((feature, index) => (
+                        <li key={index} className="whats-new-item">
+                            <div className="item-icon" style={{ color: feature.color }}>
+                                {feature.icon}
+                            </div>
+                            <div className="item-content">
+                                <h4>{feature.title}</h4>
+                                <p>{feature.description}</p>
+                            </div>
+                        </li>
+                    ))}
                 </ul>
 
                 <button className="whats-new-btn" onClick={handleClose}>
-                    Fantastico, ho capito!
+                    Grazie! Torno a studiare 📚
                 </button>
             </div>
         </div>

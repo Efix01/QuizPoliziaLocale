@@ -24,6 +24,11 @@
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
     animation: slideUp 0.3s ease;
     text-align: center;
+    /* Mobile Fixes */
+    max-height: 90vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
 }
 
 .whats-new-icon {
@@ -119,5 +124,35 @@
     to {
         transform: translateY(0);
         opacity: 1;
+    }
+}
+
+@media (max-width: 640px) {
+    .whats-new-overlay {
+        padding: 1rem;
+        align-items: center;
+        /* Center vertically specifically */
+    }
+
+    .whats-new-content {
+        padding: 1.5rem;
+        max-height: 85vh;
+        /* Slightly less on mobile to be safe */
+        width: 100%;
+        margin: auto;
+        overscroll-behavior: contain;
+        /* Prevent body scroll when modal scrolls */
+        -webkit-overflow-scrolling: touch;
+        /* Smooth scrolling on iOS */
+    }
+
+    .whats-new-title {
+        font-size: 1.5rem;
+        /* reduce title size slightly */
+        margin-bottom: 1rem;
+    }
+
+    .whats-new-list {
+        margin: 1rem 0;
     }
 }

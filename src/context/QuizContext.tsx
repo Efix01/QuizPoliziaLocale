@@ -1,8 +1,9 @@
-import React, { createContext, useContext, useEffect, useState, useRef } from 'react';
+import React, { createContext, useContext, useEffect, useState, useRef, useMemo } from 'react';
 import { type QuizQuestion, type QuizState, type UserProgressData, type UserStats } from '../types';
 import { useAuth } from './AuthContext';
 import { db } from '../firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
+import { getSafeItem, setSafeItem } from '../utils/storage';
 
 // Initial Stats
 const INITIAL_STATS: UserStats = {
@@ -52,7 +53,7 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     const clearBonusNotification = () => setBonusNotification(null);
 
-    // Debounce refs to prevent excessive writes
+    // Debounce refs
     const progressUpdateTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
     const pendingUpdates = useRef<{ progress: Record<number, UserProgressData>, stats: UserStats } | null>(null);
 
@@ -60,18 +61,14 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
     useEffect(() => {
         const loadData = async () => {
             try {
-                // 1. Lazy load quiz data (Static content)
+                // 1. Lazy load quiz data
                 const quizModule = await import('../data/domande_quiz.json');
                 const quizDataRaw = quizModule.default as QuizQuestion[];
 
-                // 2. Load Questions Customizations (Local Only for now, could be clouded later)
-                const savedCustom = localStorage.getItem('forestali_custom_questions');
-                const savedHidden = localStorage.getItem('forestali_hidden_questions');
-                const savedModified = localStorage.getItem('forestali_modified_questions');
-
-                const customQuestions: QuizQuestion[] = savedCustom ? JSON.parse(savedCustom) : [];
-                const hiddenIds: number[] = savedHidden ? JSON.parse(savedHidden) : [];
-                const modifiedQuestionsMap: Record<number, QuizQuestion> = savedModified ? JSON.parse(savedModified) : {};
+                // 2. Load Questions Customizations
+                const customQuestions = getSafeItem<QuizQuestion[]>('forestali_custom_questions', true) || [];
+                const hiddenIds = getSafeItem<number[]>('forestali_hidden_questions', true) || [];
+                const modifiedQuestionsMap = getSafeItem<Record<number, QuizQuestion>>('forestali_modified_questions', true) || {};
 
                 // Merge and Filter Questions
                 let allQuestions = [...quizDataRaw, ...customQuestions];
@@ -88,27 +85,15 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
                         const docRef = doc(db, 'users', user.uid);
                         const docSnap = await getDoc(docRef);
 
-                        // Load local backup as fallback or for merging
-                        const localProgress = localStorage.getItem('forestali_progress');
-                        const localStats = localStorage.getItem('forestali_stats');
-                        const localP = localProgress ? JSON.parse(localProgress) : {};
-                        const localS = localStats ? JSON.parse(localStats) : INITIAL_STATS;
+                        const localP = getSafeItem<Record<number, UserProgressData>>('forestali_progress', true) || {};
+                        const localS = getSafeItem<UserStats>('forestali_stats', true) || INITIAL_STATS;
 
                         if (docSnap.exists()) {
                             const cloudData = docSnap.data();
-                            // Strategy: Cloud wins if exists, otherwise merge? For now, Cloud wins to be consistent.
-                            // Ideally, we could prompt user or merge intelligently (highest XP).
-                            // Let's assume Cloud is truth. IF cloud has 0 XP and local has > 0, maybe merge?
-                            // For safety: Use Cloud if available.
                             loadedProgress = cloudData.progress || {};
                             loadedStats = cloudData.stats || INITIAL_STATS;
-
-                            // Edge case: User just logged in but played as guest before.
-                            // If cloud is empty and local allows it, maybe we want to push local to cloud?
-                            // KEEP SHORT: Just load cloud.
                         } else {
-                            // First time cloud login? Push local data to cloud?
-                            // Let's use local data as starting point for cloud
+                            // First time cloud login, use local data
                             loadedProgress = localP;
                             loadedStats = localS;
                         }
@@ -116,18 +101,14 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
                     } catch (error) {
                         console.error("Firestore Load Error:", error);
                         // Fallback to local
-                        const savedProgress = localStorage.getItem('forestali_progress');
-                        const savedStats = localStorage.getItem('forestali_stats');
-                        loadedProgress = savedProgress ? JSON.parse(savedProgress) : {};
-                        loadedStats = savedStats ? JSON.parse(savedStats) : INITIAL_STATS;
+                        loadedProgress = getSafeItem('forestali_progress', true) || {};
+                        loadedStats = getSafeItem('forestali_stats', true) || INITIAL_STATS;
                     }
 
                 } else {
                     // Guest: LocalStorage
-                    const savedProgress = localStorage.getItem('forestali_progress');
-                    const savedStats = localStorage.getItem('forestali_stats');
-                    loadedProgress = savedProgress ? JSON.parse(savedProgress) : {};
-                    loadedStats = savedStats ? JSON.parse(savedStats) : INITIAL_STATS;
+                    loadedProgress = getSafeItem('forestali_progress', true) || {};
+                    loadedStats = getSafeItem('forestali_stats', true) || INITIAL_STATS;
                 }
 
                 setState(prev => ({
@@ -146,29 +127,25 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
         loadData();
     }, [user]);
 
-    // Persist Data on Change (Debounced for Cloud)
-    // This effect runs on every state change.
+    // Persist Data
     useEffect(() => {
         if (state.loading) return;
 
-        // 1. Always save to LocalStorage (Immediate backup/offline support)
-        localStorage.setItem('forestali_progress', JSON.stringify(state.userProgress));
-        localStorage.setItem('forestali_stats', JSON.stringify(state.stats));
+        // 1. Always save to LocalStorage
+        setSafeItem('forestali_progress', state.userProgress, true);
+        setSafeItem('forestali_stats', state.stats, true);
 
         // 2. Save to Firestore (Debounced)
         if (user) {
-            // Update pending payload
             pendingUpdates.current = {
                 progress: state.userProgress,
                 stats: state.stats
             };
 
-            // Clear existing timer
             if (progressUpdateTimer.current) {
                 clearTimeout(progressUpdateTimer.current);
             }
 
-            // Set new timer (e.g., 5 seconds debounce)
             progressUpdateTimer.current = setTimeout(async () => {
                 if (pendingUpdates.current && user) {
                     try {
@@ -183,47 +160,38 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
                         console.error("Cloud Sync Error:", error);
                     }
                 }
-            }, 5000); // 5 seconds wait
+            }, 5000);
         }
 
         return () => {
-            // Cleanup on unmount or before next effect (optional: could force save here if critical)
-            // Ideally, we don't want to cancel the save on unmount, but React effects might.
-            // For critical data, use a "flush" mechanism or relies on the timer staying alive in memory if component persists (Provider usually does).
+            // Cleanup provided by React
         };
 
     }, [state.userProgress, state.stats, state.loading, user]);
 
-    // Force flush on unmount/reload is tricky in React.
-    // relying on 5s debounce for active usage is usually "good enough" for quiz apps.
-
     const addCustomQuestion = (question: QuizQuestion) => {
-        const savedCustom = localStorage.getItem('forestali_custom_questions');
-        const customQuestions: QuizQuestion[] = savedCustom ? JSON.parse(savedCustom) : [];
+        const customQuestions = getSafeItem<QuizQuestion[]>('forestali_custom_questions', true) || [];
         const updatedCustom = [...customQuestions, question];
-        localStorage.setItem('forestali_custom_questions', JSON.stringify(updatedCustom));
+        setSafeItem('forestali_custom_questions', updatedCustom, true);
         setState(prev => ({ ...prev, questions: [...prev.questions, question] }));
     };
 
     const editQuestion = (question: QuizQuestion) => {
-        const savedModified = localStorage.getItem('forestali_modified_questions');
-        const modifiedQuestionsMap: Record<number, QuizQuestion> = savedModified ? JSON.parse(savedModified) : {};
+        const modifiedQuestionsMap = getSafeItem<Record<number, QuizQuestion>>('forestali_modified_questions', true) || {};
         modifiedQuestionsMap[question.id] = question;
-        localStorage.setItem('forestali_modified_questions', JSON.stringify(modifiedQuestionsMap));
+        setSafeItem('forestali_modified_questions', modifiedQuestionsMap, true);
         setState(prev => ({ ...prev, questions: prev.questions.map(q => q.id === question.id ? question : q) }));
     };
 
     const hideQuestion = (questionId: number) => {
-        const savedHidden = localStorage.getItem('forestali_hidden_questions');
-        const hiddenIds: number[] = savedHidden ? JSON.parse(savedHidden) : [];
+        const hiddenIds = getSafeItem<number[]>('forestali_hidden_questions', true) || [];
         if (!hiddenIds.includes(questionId)) {
             const updatedHidden = [...hiddenIds, questionId];
-            localStorage.setItem('forestali_hidden_questions', JSON.stringify(updatedHidden));
+            setSafeItem('forestali_hidden_questions', updatedHidden, true);
             setState(prev => ({ ...prev, questions: prev.questions.filter(q => q.id !== questionId) }));
         }
     };
 
-    // ... (answerQuestion logic remains same)
     const answerQuestion = (questionId: number, isCorrect: boolean) => {
         setState(prev => {
             const currentProgress = prev.userProgress[questionId] || {
@@ -261,12 +229,11 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
             // Daily Challenge Bonus Logic
             const today = new Date();
-            const todayStr = today.toISOString().split('T')[0]; // YYYY-MM-DD
+            const todayStr = today.toISOString().split('T')[0];
             today.setHours(0, 0, 0, 0);
             const todayStart = today.getTime();
             const todayEnd = todayStart + 24 * 60 * 60 * 1000;
 
-            // Calculate answered today (including the one just answered)
             const updatedUserProgress = { ...prev.userProgress, [questionId]: newProgress };
             const todayAnsweredCount = Object.values(updatedUserProgress).filter(p => {
                 return p.lastReviewed >= todayStart && p.lastReviewed < todayEnd;
@@ -275,10 +242,8 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
             if (todayAnsweredCount >= 20 && newStats.dailyBonusClaimedDate !== todayStr) {
                 newStats.xp += 50;
                 newStats.dailyBonusClaimedDate = todayStr;
-                // Recalculate level in case bonus leveled up
                 newStats.level = Math.floor(newStats.xp / 500) + 1;
 
-                // Trigger Visual Notification
                 setBonusNotification({
                     message: "Sfida del Giorno Completata!",
                     amount: 50
@@ -287,14 +252,14 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
             return {
                 ...prev,
-                userProgress: { ...prev.userProgress, [questionId]: newProgress },
+                userProgress: updatedUserProgress,
                 stats: newStats
             };
         });
     };
 
     const resetProgress = () => {
-        if (user) return; // Prevent full reset if logged in without explicit cloud clear? (simplification)
+        if (user) return; // Prevent full reset if logged in (safety)
 
         if (window.confirm('Sei sicuro di voler resettare tutti i progressi? (Questo cancellerà anche i dati salvati)')) {
             setState(prev => ({
@@ -302,19 +267,15 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 userProgress: {},
                 stats: INITIAL_STATS
             }));
-            // Updates will trigger useEffect and clear cloud if timer fires, but immediate clear is safer:
-            if (user) {
-                // Explicitly clear cloud doc? Or let debounce handle it (setting empty params)
-                // Debounce will set 'progress: {}'
-            }
+            // Data sync will happen via useEffect, or we can explicit clear if needed
         }
     };
 
-    // ... (getQuestionsForStudy logic remains same)
     const getQuestionsForStudy = (count: number = 10, categoryFilter?: string[]) => {
         if (state.questions.length === 0) return [];
         const now = Date.now();
         let relevantQuestions = state.questions;
+
         if (categoryFilter && categoryFilter.length > 0) {
             relevantQuestions = relevantQuestions.filter(q =>
                 categoryFilter.some(cat =>
@@ -323,27 +284,29 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 )
             );
         }
+
         if (relevantQuestions.length === 0) return [];
+
         const dueQuestions = relevantQuestions.filter(q => {
             const prog = state.userProgress[q.id];
             if (!prog) return true;
             return prog.nextReview <= now;
         });
+
         const questionsToUse = dueQuestions.length >= count ? dueQuestions : relevantQuestions;
-        const shuffle = <T,>(array: T[]): T[] => {
-            const shuffled = [...array];
-            for (let i = shuffled.length - 1; i > 0; i--) {
-                const j = Math.floor(Math.random() * (i + 1));
-                [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
-            }
-            return shuffled;
-        };
-        const shuffled = shuffle(questionsToUse);
+
+        // Fisher-Yates shuffle
+        const shuffled = [...questionsToUse];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+
         return shuffled.slice(0, Math.min(count, shuffled.length));
     };
 
-    // Get count of questions answered today
-    const getTodayAnsweredCount = (): number => {
+    // Performance Optimization: Memoize this calculation
+    const todayAnsweredCount = useMemo(() => {
         const today = new Date();
         today.setHours(0, 0, 0, 0);
         const todayStart = today.getTime();
@@ -353,12 +316,25 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
             const lastReviewed = progress.lastReviewed;
             return lastReviewed >= todayStart && lastReviewed < todayEnd;
         }).length;
-    };
+    }, [state.userProgress]);
 
-    const todayAnsweredCount = getTodayAnsweredCount();
+    // Provided for backward compatibility if called as function
+    const getTodayAnsweredCount = () => todayAnsweredCount;
 
     return (
-        <QuizContext.Provider value={{ ...state, answerQuestion, resetProgress, getQuestionsForStudy, addCustomQuestion, editQuestion, hideQuestion, getTodayAnsweredCount, todayAnsweredCount, bonusNotification, clearBonusNotification }}>
+        <QuizContext.Provider value={{
+            ...state,
+            answerQuestion,
+            resetProgress,
+            getQuestionsForStudy,
+            addCustomQuestion,
+            editQuestion,
+            hideQuestion,
+            getTodayAnsweredCount,
+            todayAnsweredCount,
+            bonusNotification,
+            clearBonusNotification
+        }}>
             {children}
         </QuizContext.Provider>
     );
