@@ -4190,10 +4190,10 @@
         "category": "Geografia della Sardegna",
         "question": "Qual è la vetta più alta della Sardegna e qual è la sua altitudine?",
         "options": {
-            "A": "Bruncu Spina  nel massiccio del Gennargentu",
-            "B": "Monte Limbara  nella catena settentrionale",
-            "C": "Punta La Marmora  nel massiccio del Gennargentu",
-            "D": "Punta Paulinu nel massiccio del Gennargentu"
+            "A": "Bruncu Spina, 1829 m. nel massiccio del Gennargentu",
+            "B": "Monte Limbara, 1359 m.  nella catena settentrionale",
+            "C": "Punta La Marmora,1834 m.  nel massiccio del Gennargentu",
+            "D": "Punta Paulinu, 1792 m. nel massiccio del Gennargentu"
         },
         "correct_answer": "C",
         "explanation": "Punta La Marmora è il tetto della Sardegna 1.834 m s.l.m., situata nel massiccio del Gennargentu, superando di pochi metri il Bruncu Spina.",
