@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, Palette, AlertTriangle, History, Dumbbell, Heart } from 'lucide-react';
+import { Sparkles, BookOpen, FileQuestion, Heart } from 'lucide-react';
 import './WhatsNewModal.css';
 
-const VERSION_KEY = 'whats_new_v4_dark_glass';
+const VERSION_KEY = 'whats_new_v5_content_update';
 
 const WhatsNewModal: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -36,34 +36,22 @@ const WhatsNewModal: React.FC = () => {
 
     const features = [
         {
-            icon: <Palette size={24} />,
-            color: '#A855F7', // Purple for design
-            title: 'Nuovo Look Dark Glass',
-            description: 'Un\'interfaccia moderna e riposante per le tue sessioni di studio notturne.'
+            icon: <FileQuestion size={24} />,
+            color: '#3B82F6', // Blue for quizzes
+            title: 'Nuovi Quiz Aggiunti',
+            description: 'Il database è stato aggiornato con 20 nuove domande ufficiali. Il totale ora è 916 quiz!'
         },
         {
-            icon: <AlertTriangle size={24} />,
-            color: '#F59E0B', // Amber for alerts
-            title: 'Controllo Errori',
-            description: 'Nella Simulazione d\'Esame ora vedi subito gli errori per imparare più in fretta.'
-        },
-        {
-            icon: <History size={24} />,
-            color: '#EF4444', // Red for errors/history
-            title: 'Revisione Errori',
-            description: 'Torna sui tuoi passi: una sezione dedicata per rivedere e riprovare le domande sbagliate.'
-        },
-        {
-            icon: <Dumbbell size={24} />,
-            color: '#06B6D4', // Cyan for physical
-            title: 'Hub Fisico',
-            description: 'Nuova sezione per preparare corsa, piegamenti e salto con timer integrati.'
+            icon: <BookOpen size={24} />,
+            color: '#10B981', // Green for study material
+            title: 'Nuova Lezione Legge 394/91',
+            description: 'Aggiunta una lezione di sintesi sulla Legge Quadro Aree Protette: sanzioni, schemi e strategie di studio.'
         },
         {
             icon: <Heart size={24} />,
             color: '#EC4899', // Pink for love/luck
             title: 'Buono Studio da Efisio!!!',
-            description: 'Un grande in bocca al lupo per la tua preparazione! 💪'
+            description: 'Continua a prepararti al meglio. In bocca al lupo! 💪'
         }
     ];
 
@@ -74,7 +62,7 @@ const WhatsNewModal: React.FC = () => {
                     <Sparkles size={32} />
                 </div>
 
-                <h2 className="whats-new-title">Novità da Quiz CFVA ✨</h2>
+                <h2 className="whats-new-title">Aggiornamento Contenuti ✨</h2>
 
                 <ul className="whats-new-list">
                     {features.map((feature, index) => (
@@ -91,7 +79,7 @@ const WhatsNewModal: React.FC = () => {
                 </ul>
 
                 <button className="whats-new-btn" onClick={handleClose}>
-                    Grazie! Torno a studiare 📚
+                    Fantastico! 📚
                 </button>
             </div>
         </div>
