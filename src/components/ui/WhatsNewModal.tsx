@@ -39,7 +39,7 @@ const WhatsNewModal: React.FC = () => {
             icon: <FileQuestion size={24} />,
             color: '#3B82F6', // Blue for quizzes
             title: 'Nuovi Quiz Aggiunti',
-            description: 'Il database è stato aggiornato con 20 nuove domande ufficiali. Il totale ora è 916 quiz!'
+            description: 'Il database è stato aggiornato con 20 nuovi quiz, e presto aumenteranno ancora!'
         },
         {
             icon: <BookOpen size={24} />,
