@@ -36,7 +36,6 @@ const WhatsNewModal: React.FC = () => {
 
     const features = [
         {
-<<<<<<< HEAD
             icon: <BookOpen size={24} />,
             color: '#10B981', // Green for study material
             title: "Nuova Lezione: Delitti contro l'Ambiente",
@@ -47,18 +46,6 @@ const WhatsNewModal: React.FC = () => {
             color: '#3B82F6', // Blue for quizzes
             title: 'Circa 80 Nuovi Quiz Aggiunti',
             description: 'Mettiti alla prova con i nuovi quiz sui Reati Ambientali e altre materie aggiunti di recente.'
-=======
-            icon: <FileQuestion size={24} />,
-            color: '#3B82F6', // Blue for quizzes
-            title: 'Nuovi Quiz Aggiunti',
-            description: 'Il database è stato aggiornato con 20 nuovi quiz, e presto aumenteranno ancora!'
-        },
-        {
-            icon: <BookOpen size={24} />,
-            color: '#10B981', // Green for study material
-            title: 'Nuova Lezione Legge 394/91',
-            description: 'Aggiunta una lezione di sintesi sulla Legge Quadro Aree Protette: sanzioni, schemi e strategie di studio.'
->>>>>>> ee0c0ea0426f1702a579c3697492238db91d5a62
         },
         {
             icon: <Heart size={24} />,
