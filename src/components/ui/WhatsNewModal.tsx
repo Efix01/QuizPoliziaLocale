@@ -2,11 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Sparkles, BookOpen, FileQuestion, Heart } from 'lucide-react';
 import './WhatsNewModal.css';
 
-<<<<<<< HEAD
 const VERSION_KEY = 'whats_new_v6_reati_ambientali';
-=======
-const VERSION_KEY = 'whats_new_v5_content_update';
->>>>>>> ee0c0ea0426f1702a579c3697492238db91d5a62
 
 const WhatsNewModal: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -68,11 +64,7 @@ const WhatsNewModal: React.FC = () => {
             icon: <Heart size={24} />,
             color: '#EC4899', // Pink for love/luck
             title: 'Buono Studio da Efisio!!!',
-<<<<<<< HEAD
             description: 'Continua così! La tua preparazione sta facendo grandi passi avanti. 💪'
-=======
-            description: 'Continua a prepararti al meglio. In bocca al lupo! 💪'
->>>>>>> ee0c0ea0426f1702a579c3697492238db91d5a62
         }
     ];
 

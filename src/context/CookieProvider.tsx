@@ -2,34 +2,7 @@ import React, { useState, type ReactNode } from 'react';
 import { CookieContext, type CookiePreferences, type CookieConsentState, type CookieContextType } from './CookieContext';
 import { STORAGE_KEYS } from '../constants';
 
-<<<<<<< HEAD:src/context/CookieProvider.tsx
-=======
-// Cookie preference types
-export interface CookiePreferences {
-    necessary: boolean;  // Always true, cannot be disabled
-    analytics: boolean;
-    marketing: boolean;
-}
 
-export interface CookieConsentState {
-    hasConsented: boolean;
-    showBanner: boolean;
-    showPreferences: boolean;
-    preferences: CookiePreferences;
-}
-
-interface CookieContextType extends CookieConsentState {
-    acceptAll: () => void;
-    rejectNonEssential: () => void;
-    savePreferences: (prefs: Partial<CookiePreferences>) => void;
-    openPreferences: () => void;
-    closePreferences: () => void;
-    resetConsent: () => void;
-}
-
-import { STORAGE_KEYS } from '../constants';
-
->>>>>>> ee0c0ea0426f1702a579c3697492238db91d5a62:src/context/CookieContext.tsx
 const STORAGE_KEY = STORAGE_KEYS.COOKIE_PREFERENCES;
 
 const defaultPreferences: CookiePreferences = {
