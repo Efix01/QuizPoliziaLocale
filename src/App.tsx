@@ -16,11 +16,19 @@ import TermsOfService from './pages/TermsOfService';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import ChiSiamo from './pages/ChiSiamo';
 import MistakeReview from './pages/MistakeReview';
+<<<<<<< HEAD
 import { ToastProvider } from './context/ToastProvider';
 import { AuthProvider } from './context/AuthProvider';
 import { NotificationProvider } from './context/NotificationProvider';
 import { StudyMaterialProvider } from './context/StudyMaterialProvider';
 import { CookieProvider } from './context/CookieProvider';
+=======
+import { ToastProvider } from './context/ToastContext';
+import { AuthProvider } from './context/AuthContext';
+import { NotificationProvider } from './context/NotificationContext';
+import { StudyMaterialProvider } from './context/StudyMaterialContext';
+import { CookieProvider } from './context/CookieContext';
+>>>>>>> ee0c0ea0426f1702a579c3697492238db91d5a62
 import CookieBanner from './components/ui/CookieBanner';
 import { QuizProvider } from './context/QuizProvider';
 import WhatsNewModal from './components/ui/WhatsNewModal';

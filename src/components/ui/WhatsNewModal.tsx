@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Sparkles, BookOpen, FileQuestion, Heart } from 'lucide-react';
 import './WhatsNewModal.css';
 
+<<<<<<< HEAD
 const VERSION_KEY = 'whats_new_v6_reati_ambientali';
+=======
+const VERSION_KEY = 'whats_new_v5_content_update';
+>>>>>>> ee0c0ea0426f1702a579c3697492238db91d5a62
 
 const WhatsNewModal: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -36,6 +40,7 @@ const WhatsNewModal: React.FC = () => {
 
     const features = [
         {
+<<<<<<< HEAD
             icon: <BookOpen size={24} />,
             color: '#10B981', // Green for study material
             title: "Nuova Lezione: Delitti contro l'Ambiente",
@@ -46,12 +51,28 @@ const WhatsNewModal: React.FC = () => {
             color: '#3B82F6', // Blue for quizzes
             title: 'Circa 80 Nuovi Quiz Aggiunti',
             description: 'Mettiti alla prova con i nuovi quiz sui Reati Ambientali e altre materie aggiunti di recente.'
+=======
+            icon: <FileQuestion size={24} />,
+            color: '#3B82F6', // Blue for quizzes
+            title: 'Nuovi Quiz Aggiunti',
+            description: 'Il database è stato aggiornato con 20 nuovi quiz, e presto aumenteranno ancora!'
+        },
+        {
+            icon: <BookOpen size={24} />,
+            color: '#10B981', // Green for study material
+            title: 'Nuova Lezione Legge 394/91',
+            description: 'Aggiunta una lezione di sintesi sulla Legge Quadro Aree Protette: sanzioni, schemi e strategie di studio.'
+>>>>>>> ee0c0ea0426f1702a579c3697492238db91d5a62
         },
         {
             icon: <Heart size={24} />,
             color: '#EC4899', // Pink for love/luck
             title: 'Buono Studio da Efisio!!!',
+<<<<<<< HEAD
             description: 'Continua così! La tua preparazione sta facendo grandi passi avanti. 💪'
+=======
+            description: 'Continua a prepararti al meglio. In bocca al lupo! 💪'
+>>>>>>> ee0c0ea0426f1702a579c3697492238db91d5a62
         }
     ];
 
