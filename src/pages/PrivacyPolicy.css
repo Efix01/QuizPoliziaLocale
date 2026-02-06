@@ -1,6 +1,9 @@
+/* Privacy Policy - Dark Glass Theme */
 .privacy-page {
     min-height: 100vh;
-    background: #f8f9fa;
+    background: radial-gradient(ellipse at top, #1E293B, #0F172A);
+    background-size: cover;
+    color: white;
 }
 
 /* Header */
@@ -11,8 +14,9 @@
     align-items: center;
     gap: 1rem;
     padding: 1rem 1.5rem;
-    background: #1a472a;
-    color: #fff;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--glass-border);
     z-index: 100;
 }
 
@@ -20,19 +24,20 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    background: rgba(255, 255, 255, 0.1);
-    border: none;
+    background: var(--glass-background);
+    border: 1px solid var(--glass-border);
     border-radius: 10px;
-    color: #fff;
+    color: white;
     padding: 10px 16px;
     cursor: pointer;
     font-size: 14px;
     font-weight: 500;
-    transition: background 0.2s;
+    transition: all 0.2s;
 }
 
 .privacy-header .back-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-1px);
 }
 
 /* Content */
@@ -43,32 +48,39 @@
 }
 
 .privacy-content h1 {
+    font-family: var(--font-display);
     font-size: 1.75rem;
     font-weight: 700;
-    color: #1a472a;
+    color: white;
     margin: 0 0 0.5rem;
     line-height: 1.3;
+    background: linear-gradient(to right, #6EE7B7, #3B82F6);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .privacy-date {
     font-size: 0.875rem;
-    color: #666;
+    color: rgba(255, 255, 255, 0.5);
     margin-bottom: 1.5rem;
 }
 
 /* Data Controller Box */
 .data-controller {
-    background: #e8f5e9;
-    border-left: 4px solid #1a472a;
-    border-radius: 8px;
-    padding: 1rem 1.25rem;
-    margin-bottom: 1.5rem;
+    background: var(--glass-background);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-left: 4px solid #10B981;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
 }
 
 .data-controller h3 {
     font-size: 0.875rem;
     font-weight: 600;
-    color: #1a472a;
+    color: #10B981;
     margin: 0 0 0.5rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -76,18 +88,19 @@
 
 .data-controller p {
     margin: 0.25rem 0;
-    color: #333;
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .data-controller a {
-    color: #1a472a;
+    color: #34D399;
     font-weight: 600;
+    text-decoration: none;
 }
 
 .privacy-intro {
     font-size: 1.125rem;
     line-height: 1.7;
-    color: #333;
+    color: rgba(255, 255, 255, 0.9);
     margin-bottom: 1rem;
 }
 
@@ -95,7 +108,7 @@
 .privacy-content section {
     margin-bottom: 2rem;
     padding-bottom: 1.5rem;
-    border-bottom: 1px solid #e8e8e8;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .privacy-content section:last-child {
@@ -105,21 +118,21 @@
 .privacy-content h2 {
     font-size: 1.25rem;
     font-weight: 600;
-    color: #1a472a;
+    color: white;
     margin: 0 0 1rem;
 }
 
 .privacy-content h3 {
     font-size: 1rem;
     font-weight: 600;
-    color: #2d5a3d;
-    margin: 1rem 0 0.5rem;
+    color: #34D399;
+    margin: 1.5rem 0 0.5rem;
 }
 
 .privacy-content p {
     font-size: 1rem;
     line-height: 1.7;
-    color: #444;
+    color: rgba(255, 255, 255, 0.8);
     margin: 0 0 0.75rem;
 }
 
@@ -132,40 +145,47 @@
 .privacy-content li {
     font-size: 1rem;
     line-height: 1.7;
-    color: #444;
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 0.5rem;
 }
 
 .privacy-content li::marker {
-    color: #1a472a;
+    color: #10B981;
 }
 
 .privacy-content a {
-    color: #1a472a;
-    text-decoration: underline;
+    color: #38BDF8;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(56, 189, 248, 0.3);
+    transition: all 0.2s;
 }
 
 .privacy-content a:hover {
-    color: #0d2818;
+    color: #7DD3FC;
+    border-bottom-color: #7DD3FC;
 }
 
 /* Contact Info */
 .privacy-content .contact-info {
-    background: #e8f5e9;
+    background: rgba(255, 255, 255, 0.05);
     border-radius: 8px;
     padding: 1rem 1.25rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .privacy-content .contact-info a {
     font-weight: 600;
+    color: #34D399;
+    border-bottom: none;
 }
 
 /* Cookie Table */
 .cookie-table-container {
     overflow-x: auto;
     margin: 1rem 0;
-    border-radius: 8px;
-    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    border: 1px solid var(--glass-border);
+    background: rgba(0, 0, 0, 0.2);
 }
 
 .cookie-table {
@@ -177,13 +197,14 @@
 
 .cookie-table th,
 .cookie-table td {
-    padding: 0.75rem 1rem;
+    padding: 1rem;
     text-align: left;
-    border-bottom: 1px solid #e8e8e8;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .cookie-table th {
-    background: #1a472a;
+    background: rgba(255, 255, 255, 0.05);
     color: white;
     font-weight: 600;
     font-size: 0.8rem;
@@ -192,23 +213,24 @@
 }
 
 .cookie-table tbody tr:nth-child(even) {
-    background: #f8f9fa;
+    background: rgba(255, 255, 255, 0.02);
 }
 
 .cookie-table tbody tr:hover {
-    background: #e8f5e9;
+    background: rgba(255, 255, 255, 0.05);
 }
 
 .cookie-table code {
-    background: #e8f5e9;
-    padding: 2px 6px;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px 8px;
     border-radius: 4px;
     font-size: 0.8rem;
-    color: #1a472a;
+    color: #FCD34D;
+    font-family: var(--font-mono);
 }
 
 .cookie-table td strong {
-    color: #c9a227;
+    color: #F87171;
 }
 
 /* Cookie Preferences Button */
@@ -216,21 +238,22 @@
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    background: linear-gradient(135deg, #1a472a, #0d2818);
+    background: linear-gradient(135deg, #10B981, #059669);
     color: white;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     padding: 12px 24px;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
     margin-top: 1rem;
     transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
 }
 
 .cookie-preferences-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(26, 71, 42, 0.3);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
 }
 
 .cookie-preferences-btn:active {

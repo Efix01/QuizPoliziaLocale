@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Timer, Activity, TrendingUp, RotateCcw } from 'lucide-react';
+import { Timer, Activity, TrendingUp, RotateCcw, ArrowLeft } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import './PhysicalPrep.css';
 
 interface PrepStandard {
@@ -18,20 +19,65 @@ const STANDARDS: PrepStandard[] = [
     { name: 'Salto in Alto', key: 'jump', unit: 'cm', minMale: 120, minFemale: 100, type: 'reps' } // Example values logic (higher is better)
 ];
 
-const PhysicalPrep: React.FC = () => {
-    const [gender, setGender] = useState<'M' | 'F'>('M');
-    const [bests, setBests] = useState<Record<string, number>>({});
+const StatusBadge: React.FC<{
+    standard: PrepStandard;
+    value: number;
+    gender: 'M' | 'F';
+}> = ({ standard, value, gender }) => {
+    const target = gender === 'M' ? standard.minMale : standard.minFemale;
+    let isPass = false;
 
-    // Stopwatch State
-    const [runTime, setRunTime] = useState(0); // in deciseconds/seconds logic
+    if (standard.type === 'time') {
+        isPass = value > 0 && value <= target;
+    } else {
+        isPass = value >= target;
+    }
+
+    const isNonIdoneo = value > 0 && !isPass;
+    const label = isPass ? 'IDONEO' : (isNonIdoneo ? 'NON IDONEO' : '-');
+
+    // Inline styles for badges to match the dynamic logic
+    const style: React.CSSProperties = isPass ? {
+        background: 'linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(6, 78, 59, 0.4))',
+        color: '#34D399',
+        border: '1px solid rgba(16, 185, 129, 0.3)'
+    } : {
+        background: isNonIdoneo ? 'linear-gradient(135deg, rgba(239, 68, 68, 0.2), rgba(127, 29, 29, 0.4))' : 'rgba(255,255,255,0.1)',
+        color: isNonIdoneo ? '#F87171' : 'rgba(255,255,255,0.5)',
+        border: isNonIdoneo ? '1px solid rgba(239, 68, 68, 0.3)' : '1px solid rgba(255,255,255,0.1)'
+    };
+
+    return (
+        <span className="status-badge" style={style}>
+            {label}
+        </span>
+    );
+};
+
+const PhysicalPrep: React.FC = () => {
+    const navigate = useNavigate();
+    const [gender, setGender] = useState<'M' | 'F'>(() => {
+        const saved = localStorage.getItem('physical_gender');
+        return (saved === 'M' || saved === 'F') ? saved : 'M';
+    });
+    const [bests, setBests] = useState<Record<string, number>>(() => {
+        try {
+            const saved = localStorage.getItem('physical_bests');
+            return saved ? JSON.parse(saved) : {};
+        } catch (e) {
+            console.error("Failed to parse physical_bests", e);
+            return {};
+        }
+    });
+
+    const [runTime, setRunTime] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
     const timerRef = useRef<number | null>(null);
 
     useEffect(() => {
-        const savedBests = localStorage.getItem('physical_bests');
-        const savedGender = localStorage.getItem('physical_gender');
-        if (savedBests) setBests(JSON.parse(savedBests));
-        if (savedGender) setGender(savedGender as 'M' | 'F');
+        return () => {
+            if (timerRef.current) clearInterval(timerRef.current);
+        };
     }, []);
 
     const updateBest = (key: string, val: string) => {
@@ -46,12 +92,10 @@ const PhysicalPrep: React.FC = () => {
         localStorage.setItem('physical_gender', g);
     };
 
-    // Stopwatch Logic
     const toggleTimer = () => {
         if (isRunning) {
             if (timerRef.current) clearInterval(timerRef.current);
             setIsRunning(false);
-            // Auto-save best if better? For now just manual entry from display.
         } else {
             setIsRunning(true);
             const startTime = Date.now() - runTime;
@@ -74,16 +118,16 @@ const PhysicalPrep: React.FC = () => {
         return `${minutes}:${seconds.toString().padStart(2, '0')}`;
     };
 
-    const checkStatus = (std: PrepStandard, val: number) => {
-        const target = gender === 'M' ? std.minMale : std.minFemale;
-        if (std.type === 'time') return val > 0 && val <= target;
-        return val >= target;
-    };
-
     return (
         <div className="prep-container">
             <header className="prep-header">
-                <h2 className="prep-title">Hub Fisico</h2>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                    <button onClick={() => navigate('/')} className="btn-nav" aria-label="Torna alla Home">
+                        <ArrowLeft size={20} />
+                    </button>
+                    <h2 className="prep-title">Hub Fisico</h2>
+                </div>
+
                 <div className="gender-toggle">
                     <button
                         className={`gender-btn ${gender === 'M' ? 'active' : ''}`}
@@ -122,7 +166,6 @@ const PhysicalPrep: React.FC = () => {
                         )}
                     </div>
 
-                    {/* Manual Override for Run */}
                     <div className="manual-input">
                         <span>Record:</span>
                         <input
@@ -131,44 +174,40 @@ const PhysicalPrep: React.FC = () => {
                             value={bests['run'] || ''}
                             onChange={(e) => updateBest('run', e.target.value)}
                         />
-                        <span className="status-badge" style={{
-                            background: checkStatus(STANDARDS[0], bests['run']) ? '#4CAF50' : 'rgba(255,255,255,0.2)',
-                            color: 'white'
-                        }}>
-                            {checkStatus(STANDARDS[0], bests['run']) ? 'IDONEO' : ((bests['run'] || 0) > 0 ? 'NON IDONEO' : '-')}
-                        </span>
+                        <StatusBadge
+                            standard={STANDARDS[0]}
+                            value={bests['run'] || 0}
+                            gender={gender}
+                        />
                     </div>
                 </div>
 
                 {/* SMALLER CARDS */}
-                {STANDARDS.slice(1).map(std => {
-                    const isPass = checkStatus(std, bests[std.key] || 0);
-                    const target = gender === 'M' ? std.minMale : std.minFemale;
-
-                    return (
-                        <div key={std.key} className="stat-card-wrapper">
-                            <div className="stat-icon">
-                                {std.key === 'pushups' ? <Activity size={24} /> : <TrendingUp size={24} />}
-                            </div>
-                            <span className="stat-name">{std.name}</span>
-
-                            <div className="stat-input-group">
-                                <input
-                                    className="stat-input"
-                                    type="number"
-                                    value={bests[std.key] || ''}
-                                    onChange={(e) => updateBest(std.key, e.target.value)}
-                                    placeholder="0"
-                                />
-                                <span className="stat-target">Target: {target} {std.unit}</span>
-                            </div>
-
-                            <span className={`status-badge ${isPass ? 'ok' : 'no'}`}>
-                                {isPass ? 'IDONEO' : 'NON IDONEO'}
-                            </span>
+                {STANDARDS.slice(1).map(std => (
+                    <div key={std.key} className="stat-card-wrapper">
+                        <div className="stat-icon">
+                            {std.key === 'pushups' ? <Activity size={28} /> : <TrendingUp size={28} />}
                         </div>
-                    );
-                })}
+                        <span className="stat-name">{std.name}</span>
+
+                        <div className="stat-input-group">
+                            <input
+                                className="stat-input"
+                                type="number"
+                                value={bests[std.key] || ''}
+                                onChange={(e) => updateBest(std.key, e.target.value)}
+                                placeholder="0"
+                            />
+                            <span className="stat-target">Target: {gender === 'M' ? std.minMale : std.minFemale} {std.unit}</span>
+                        </div>
+
+                        <StatusBadge
+                            standard={std}
+                            value={bests[std.key] || 0}
+                            gender={gender}
+                        />
+                    </div>
+                ))}
             </div>
         </div>
     );

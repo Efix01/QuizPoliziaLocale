@@ -1,44 +1,13 @@
-import React, { createContext, useContext, useState, type ReactNode } from 'react';
+import React, { useState, type ReactNode } from 'react';
+import { CookieContext, type CookiePreferences, type CookieConsentState, type CookieContextType } from './CookieContext';
+import { STORAGE_KEYS } from '../constants';
 
-// Cookie preference types
-export interface CookiePreferences {
-    necessary: boolean;  // Always true, cannot be disabled
-    analytics: boolean;
-    marketing: boolean;
-}
-
-export interface CookieConsentState {
-    hasConsented: boolean;
-    showBanner: boolean;
-    showPreferences: boolean;
-    preferences: CookiePreferences;
-}
-
-interface CookieContextType extends CookieConsentState {
-    acceptAll: () => void;
-    rejectNonEssential: () => void;
-    savePreferences: (prefs: Partial<CookiePreferences>) => void;
-    openPreferences: () => void;
-    closePreferences: () => void;
-    resetConsent: () => void;
-}
-
-const STORAGE_KEY = 'quiz-cfva-cookie-consent';
+const STORAGE_KEY = STORAGE_KEYS.COOKIE_PREFERENCES;
 
 const defaultPreferences: CookiePreferences = {
     necessary: true,
     analytics: false,
     marketing: false,
-};
-
-const CookieContext = createContext<CookieContextType | undefined>(undefined);
-
-export const useCookieConsent = (): CookieContextType => {
-    const context = useContext(CookieContext);
-    if (!context) {
-        throw new Error('useCookieConsent must be used within a CookieProvider');
-    }
-    return context;
 };
 
 interface CookieProviderProps {
@@ -172,5 +141,3 @@ export const CookieProvider: React.FC<CookieProviderProps> = ({ children }) => {
         </CookieContext.Provider>
     );
 };
-
-export default CookieContext;

@@ -1,127 +1,48 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useQuiz } from '../context/QuizContext';
-import { type QuizQuestion } from '../types';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useQuizSession } from '../hooks/useQuizSession'; // New Hook
 import { Check, X, Brain, Ban, ArrowLeft, Flag } from 'lucide-react';
 import { ReportModal } from '../components/ui/ReportModal';
 import { XPBonusOverlay } from '../components/ui/XPBonusOverlay';
+import { useQuiz } from '../context/QuizContext'; // Only for bonus notification
 import './StudyMode.css';
 
-
-
 const StudyMode: React.FC = () => {
-    const location = useLocation();
     const navigate = useNavigate();
-    const { getQuestionsForStudy, answerQuestion, bonusNotification, clearBonusNotification, todayAnsweredCount } = useQuiz();
-    const [sessionQuestions, setSessionQuestions] = useState<QuizQuestion[]>([]);
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const [showAnswer, setShowAnswer] = useState(false);
-    const [selectedOption, setSelectedOption] = useState<string | null>(null);
-    const [excludedOptions, setExcludedOptions] = useState<string[]>([]);
-    const [isFinished, setIsFinished] = useState(false);
+    const { bonusNotification, clearBonusNotification } = useQuiz();
+
+    // Use the custom hook for all session logic
+    const {
+        sessionQuestions,
+        currentQuestion,
+        showAnswer,
+        selectedOption,
+        excludedOptions,
+        isFinished,
+        handleOptionSelect,
+        toggleExclusion,
+        handleCheck,
+        handleFeedback,
+        calculateStrategy,
+        progressDisplay,
+        progressPercentage,
+        categoryFilter,
+        forceNew,
+        todayAnsweredCount
+    } = useQuizSession();
+
     const [isReportModalOpen, setIsReportModalOpen] = useState(false);
 
-    // Get category from navigation state
-    // Get category and count from navigation state
-    const state = location.state as { category?: string; count?: number; forceNew?: boolean };
-    const categoryFilter = state?.category;
-    const requestedCount = state?.count;
-    const forceNew = state?.forceNew;
+    // Derived UI state
+    const strategy = currentQuestion ? calculateStrategy(Object.keys(currentQuestion.options).length) : null;
 
-    useEffect(() => {
-        // Load questions for this session, filtered by category if provided
-        // Use requested count if available, otherwise default logic (20 for category, 10 for quick)
-        const categoryList = categoryFilter && categoryFilter !== 'Sfida del Giorno' ? [categoryFilter] : undefined;
+    // Loading State
+    if (sessionQuestions.length === 0 && !isFinished) {
+        // It might be empty because we just finished or there are none.
+        // If we are "finished" per hook logic, it will fall through to isFinished block if we handle it right.
+        // But useQuizSession initializes empty. Let's assume if empty and not finished -> Loading or Empty Result.
 
-        let questionCount = 10;
-        if (requestedCount) {
-            questionCount = requestedCount;
-        } else if (categoryFilter) {
-            questionCount = 30;
-        }
-
-        // Daily Challenge Cap enforcement
-        if (categoryFilter === 'Sfida del Giorno') {
-            // Use todayAnsweredCount derived from context (outer scope)
-            const todayCount = todayAnsweredCount;
-
-            // Check if we are at a boundary (multiples of 20) and forceNew is NOT set
-            if (todayCount > 0 && todayCount % 20 === 0 && !forceNew) {
-                questionCount = 0; // Show "Done" screen
-            } else {
-                const remaining = 20 - (todayCount % 20);
-                questionCount = Math.min(questionCount, remaining);
-            }
-        }
-
-        // Special handling for "Sfida del Giorno" if it doesn't map to a real category
-        // If it's a general mix but count is 20, we pass undefined as categoryList
-        const questions = getQuestionsForStudy(questionCount, categoryList);
-        setSessionQuestions(questions);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [categoryFilter, requestedCount]);
-
-
-    const handleOptionSelect = (key: string) => {
-        if (showAnswer) return;
-        if (excludedOptions.includes(key)) return; // Prevents selection of excluded option
-        setSelectedOption(key);
-    };
-
-    const toggleExclusion = (e: React.MouseEvent, key: string) => {
-        e.stopPropagation(); // Stop bubble if clicked inside button
-        if (showAnswer) return;
-
-        if (excludedOptions.includes(key)) {
-            setExcludedOptions(prev => prev.filter(k => k !== key));
-        } else {
-            setExcludedOptions(prev => [...prev, key]);
-            if (selectedOption === key) setSelectedOption(null); // Deselect if excluded
-        }
-    };
-
-    const handleCheck = () => {
-        setShowAnswer(true);
-    };
-
-    const handleFeedback = (correct: boolean) => {
-        if (!currentQuestion) return;
-
-        // Save Result
-        answerQuestion(currentQuestion.id, correct);
-
-        // Go next
-        if (currentIndex < sessionQuestions.length - 1) {
-            setCurrentIndex(prev => prev + 1);
-            setShowAnswer(false);
-            setSelectedOption(null);
-            setExcludedOptions([]);
-            // Scroll to top for next question
-            window.scrollTo(0, 0);
-        } else {
-            setIsFinished(true);
-        }
-    };
-
-    const openReportModal = () => {
-        setIsReportModalOpen(true);
-    };
-
-    // EV Calculator Logic
-    const calculateStrategy = (totalOptions: number, excludedCount: number) => {
-        const remaining = totalOptions - excludedCount;
-        if (remaining <= 0) return null;
-        if (remaining === 1) return { type: 'positive', ev: 0.50, text: "Risposta Certa (+0.50)" };
-
-        const prob = 1 / remaining;
-        const ev = (prob * 0.50) + ((1 - prob) * -0.17);
-
-        if (ev > 0.1) return { type: 'positive', ev, text: `EV Positivo (+${ev.toFixed(2)}). Conviene Tentare!` };
-        if (ev > -0.01) return { type: 'neutral', ev, text: `EV Marginale (${ev.toFixed(2)}). Rischio Medio.` };
-        return { type: 'negative', ev, text: `EV Negativo (${ev.toFixed(2)}). Meglio lasciare in bianco.` };
-    };
-
-    if (sessionQuestions.length === 0) {
+        // Actually, if we loaded 0 questions, it means we are done or none available.
         return (
             <div className="study-container">
                 <h2>{categoryFilter === 'Sfida del Giorno' && todayAnsweredCount > 0 && todayAnsweredCount % 20 === 0 && !forceNew ? 'Sfida Completata!' : 'Tutto fatto!'}</h2>
@@ -135,11 +56,10 @@ const StudyMode: React.FC = () => {
                     {categoryFilter === 'Sfida del Giorno' && todayAnsweredCount > 0 && todayAnsweredCount % 20 === 0 && !forceNew && (
                         <button
                             className="btn-reveal"
-                            style={{ background: 'var(--gold)', color: 'var(--green-dark)' }}
+                            style={{ background: 'linear-gradient(135deg, #F59E0B, #D97706)', color: 'white' }}
                             onClick={() => {
-                                // Reload with forceNew
                                 navigate('/study', { state: { category: 'Sfida del Giorno', count: 20, forceNew: true } });
-                                window.location.reload(); // Simple reload to force state refresh since we are same route
+                                window.location.reload();
                             }}
                         >
                             Nuova Sfida
@@ -160,22 +80,7 @@ const StudyMode: React.FC = () => {
         );
     }
 
-    const currentQuestion = sessionQuestions[currentIndex];
-
-    // Determine progress display
-    let progressDisplay = `${currentIndex + 1}/${sessionQuestions.length}`;
-    let progressPercentage = ((currentIndex) / sessionQuestions.length) * 100;
-
-    // If it's the Daily Challenge, show global daily progress (CYCLIC)
-    if (categoryFilter === 'Sfida del Giorno') {
-
-
-        const currentCycleIndex = ((todayAnsweredCount) % 20) + 1;
-        progressDisplay = `Domanda ${currentCycleIndex}/20`;
-        progressPercentage = (currentCycleIndex / 20) * 100;
-    }
-
-    const strategy = calculateStrategy(4, excludedOptions.length);
+    if (!currentQuestion) return <div className="study-container">Caricamento...</div>;
 
     return (
         <div className="study-container">
@@ -199,7 +104,7 @@ const StudyMode: React.FC = () => {
                     onClick={() => navigate('/')}
                     aria-label="Torna alla Home"
                 >
-                    <ArrowLeft size={20} />
+                    <ArrowLeft size={24} />
                 </button>
                 <div className="progress-bar">
                     <div className="progress-fill" style={{ width: `${progressPercentage}%` }}></div>
@@ -207,23 +112,27 @@ const StudyMode: React.FC = () => {
                 <span className="question-counter">{progressDisplay}</span>
             </div>
 
+            {/* Note: category-filter-badge is now handled via CSS or we can keep it if we want explicit badge */}
             {categoryFilter && (
                 <div className="category-filter-badge">
-                    Argomento: {categoryFilter}
+                    {categoryFilter}
                 </div>
             )}
 
             <div className="flashcard-container">
                 <div className="flashcard">
                     <div className="flashcard-header">
-                        <div className="category-tag">{currentQuestion.category}</div>
+                        {/* Empty spacing element if category tag is hidden, or we can use it for something else */}
+                        <div style={{ flex: 1 }}>
+                            <span className="category-tag">{currentQuestion.category}</span>
+                        </div>
+
                         <button
                             className="report-btn"
-                            onClick={openReportModal}
-                            title="Segnala errore in questa domanda"
-                            aria-label="Segnala errore"
+                            onClick={() => setIsReportModalOpen(true)}
+                            title="Segnala errore"
                         >
-                            <Flag size={16} />
+                            <Flag size={18} />
                         </button>
                     </div>
 
@@ -235,7 +144,7 @@ const StudyMode: React.FC = () => {
                             <div className="advisor-icon"><Brain size={20} /></div>
                             <div>
                                 <span className="advisor-stats">
-                                    {4 - excludedOptions.length} Opz. Rimaste
+                                    {Object.keys(currentQuestion.options).length - excludedOptions.length} Opz. Rimaste
                                 </span>
                                 {strategy.text}
                             </div>
@@ -266,14 +175,14 @@ const StudyMode: React.FC = () => {
                                             onClick={(e) => toggleExclusion(e, key)}
                                             title="Escludi opzione"
                                         >
-                                            <Ban size={16} />
+                                            <Ban size={18} />
                                         </button>
                                     )}
                                     <div
                                         className={className}
                                         onClick={() => handleOptionSelect(key)}
                                     >
-                                        <span style={{ fontWeight: 600, marginRight: '0.5rem' }}>{key}.</span>
+                                        <span style={{ fontWeight: 700, marginRight: '0.75rem', color: '#38BDF8' }}>{key}</span>
                                         {text}
                                     </div>
                                 </div>
@@ -283,10 +192,13 @@ const StudyMode: React.FC = () => {
 
                     {showAnswer && (
                         <div className="explanation-box">
-                            <strong>Spiegazione:</strong> {currentQuestion.explanation}
-                            <div style={{ marginTop: '0.5rem', fontSize: '0.8rem', opacity: 0.8 }}>
-                                Fonte: {currentQuestion.source}
-                            </div>
+                            <strong>Spiegazione</strong>
+                            {currentQuestion.explanation}
+                            {currentQuestion.source && (
+                                <div style={{ marginTop: '0.75rem', fontSize: '0.8rem', opacity: 0.6, borderTop: '1px solid rgba(255,255,255,0.1)', paddingTop: '4px' }}>
+                                    Fonte: {currentQuestion.source}
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
@@ -300,7 +212,7 @@ const StudyMode: React.FC = () => {
                         disabled={!selectedOption}
                         style={{ opacity: selectedOption ? 1 : 0.5 }}
                     >
-                        Verifica Risposta
+                        Conferma Risposta
                     </button>
                 ) : (
                     <>

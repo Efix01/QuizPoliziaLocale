@@ -19,7 +19,7 @@ export const XPBonusOverlay: React.FC<XPBonusOverlayProps> = ({ message, amount,
                 <div className="xp-rays"></div>
                 <div className="xp-icon">⭐</div>
                 <h2 className="xp-title">{message}</h2>
-                <div className="xp-amount">+{amount} XP</div>
+                <div className="xp-amount">+{amount} Punti</div>
             </div>
         </div>
     );

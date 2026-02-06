@@ -8,21 +8,16 @@ export function useScrollAnimation<T extends HTMLElement>(
     options: IntersectionObserverInit = {}
 ): [React.RefObject<T | null>, boolean] {
     const elementRef = useRef<T>(null);
-    const [isVisible, setIsVisible] = useState(false);
+    const [isVisible, setIsVisible] = useState(() => {
+        if (typeof window !== 'undefined') {
+            return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        }
+        return false;
+    });
 
     useEffect(() => {
         const element = elementRef.current;
-        if (!element) return;
-
-        // Check for reduced motion preference
-        const prefersReducedMotion = window.matchMedia(
-            '(prefers-reduced-motion: reduce)'
-        ).matches;
-
-        if (prefersReducedMotion) {
-            setIsVisible(true);
-            return;
-        }
+        if (!element || isVisible) return; // If already visible (reduced motion), skip observer
 
         const observer = new IntersectionObserver(
             (entries) => {
@@ -46,7 +41,7 @@ export function useScrollAnimation<T extends HTMLElement>(
         return () => {
             observer.disconnect();
         };
-    }, [options]);
+    }, [options, isVisible]);
 
     return [elementRef, isVisible];
 }

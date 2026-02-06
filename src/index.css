@@ -117,11 +117,19 @@
   --space-2xl: 48px;
 
   /* ══════════════════════════════════════════
-     GLASSMORPHISM
+     GLASSMORPHISM (Light / Legacy)
      ══════════════════════════════════════════ */
   --glass-bg: rgba(255, 255, 255, 0.85);
-  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-border-light: rgba(255, 255, 255, 0.3);
   --glass-blur: 12px;
+
+  /* ══════════════════════════════════════════
+     DARK GLASS THEME (New Standard)
+     ══════════════════════════════════════════ */
+  --glass-background: rgba(15, 23, 42, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-highlight: rgba(255, 255, 255, 0.05);
+  --surface-dark: #0F172A;
 
   /* ══════════════════════════════════════════
      LAYOUT

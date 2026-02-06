@@ -4,24 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { Mail, Lock, User, ArrowLeft, Eye, EyeOff, ArrowRight, AlertCircle, Check } from 'lucide-react';
 import './Login.css';
 
-// Password strength calculator
-const getPasswordStrength = (password: string): { level: number; label: string } => {
-    if (password.length === 0) return { level: 0, label: '' };
-    if (password.length < 6) return { level: 1, label: 'Debole' };
-
-    let score = 0;
-    if (password.length >= 8) score++;
-    if (/[A-Z]/.test(password)) score++;
-    if (/[0-9]/.test(password)) score++;
-    if (/[^A-Za-z0-9]/.test(password)) score++;
-
-    if (score <= 1) return { level: 1, label: 'Debole' };
-    if (score === 2) return { level: 2, label: 'Media' };
-    if (score === 3) return { level: 3, label: 'Buona' };
-    return { level: 4, label: 'Forte' };
-};
-
-const strengthClasses = ['', 'weak', 'fair', 'good', 'strong'];
+import { getPasswordStrength, STRENGTH_CLASSES } from '../utils/passwordStrength';
 
 const Login: React.FC = () => {
     const [isRegister, setIsRegister] = useState(false);
@@ -93,7 +76,7 @@ const Login: React.FC = () => {
             }, 700);
 
         } catch {
-            // Error is handled in AuthContext
+            // Error is handled via AuthContext state (error variable) which updates the UI
         } finally {
             if (!isSuccess) {
                 setIsSubmitting(false);
@@ -117,6 +100,7 @@ const Login: React.FC = () => {
             }, 700);
 
         } catch {
+            // Error is handled via AuthContext state
             setIsSubmitting(false);
         }
     };
@@ -294,11 +278,11 @@ const Login: React.FC = () => {
                                         {[1, 2, 3, 4].map(level => (
                                             <div
                                                 key={level}
-                                                className={`strength-bar ${passwordStrength.level >= level ? strengthClasses[passwordStrength.level] : ''}`}
+                                                className={`strength-bar ${passwordStrength.level >= level ? STRENGTH_CLASSES[passwordStrength.level] : ''}`}
                                             />
                                         ))}
                                     </div>
-                                    <p className={`strength-label ${strengthClasses[passwordStrength.level]}`}>
+                                    <p className={`strength-label ${STRENGTH_CLASSES[passwordStrength.level]}`}>
                                         {passwordStrength.label}
                                     </p>
                                 </>

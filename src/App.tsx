@@ -15,13 +15,14 @@ import Onboarding from './pages/Onboarding';
 import TermsOfService from './pages/TermsOfService';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import ChiSiamo from './pages/ChiSiamo';
-import { ToastProvider } from './context/ToastContext';
-import { AuthProvider } from './context/AuthContext';
-import { NotificationProvider } from './context/NotificationContext';
-import { StudyMaterialProvider } from './context/StudyMaterialContext';
-import { CookieProvider } from './context/CookieContext';
+import MistakeReview from './pages/MistakeReview';
+import { ToastProvider } from './context/ToastProvider';
+import { AuthProvider } from './context/AuthProvider';
+import { NotificationProvider } from './context/NotificationProvider';
+import { StudyMaterialProvider } from './context/StudyMaterialProvider';
+import { CookieProvider } from './context/CookieProvider';
 import CookieBanner from './components/ui/CookieBanner';
-import { QuizProvider } from './context/QuizContext';
+import { QuizProvider } from './context/QuizProvider';
 import WhatsNewModal from './components/ui/WhatsNewModal';
 import './components/ui/Toast.css';
 
@@ -56,6 +57,7 @@ function App() {
                       <Route path="study" element={<StudyMode />} />
                       <Route path="simulation" element={<SimulationMode />} />
                       <Route path="physical" element={<PhysicalPrep />} />
+                      <Route path="mistakes" element={<MistakeReview />} />
                       <Route path="manual" element={<StudyLibrary />} />
                       <Route path="profile" element={<Profile />} />
                     </Route>
