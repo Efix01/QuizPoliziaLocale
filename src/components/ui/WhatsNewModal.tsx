@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Sparkles, BookOpen, FileQuestion, Heart } from 'lucide-react';
 import './WhatsNewModal.css';
 
-const VERSION_KEY = 'whats_new_v6_reati_ambientali';
+const VERSION_KEY = 'whats_new_v7_sanzioni_2025';
 
 const WhatsNewModal: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -38,20 +38,20 @@ const WhatsNewModal: React.FC = () => {
         {
             icon: <BookOpen size={24} />,
             color: '#10B981', // Green for study material
-            title: "Nuova Lezione: Delitti contro l'Ambiente",
-            description: "Approfondimento sulla Legge 68/2015 (Ecoreati), Art. 452-bis e seguenti. Tutto sui nuovi delitti ambientali."
+            title: "Nuova Lezione: Sistema Sanzionatorio",
+            description: "Tutto sulle sanzioni ambientali (D.Lgs. 152/2006). Focus su Art. 255 (Abbandono) e 256 (Gestione illecita)."
         },
         {
             icon: <FileQuestion size={24} />,
             color: '#3B82F6', // Blue for quizzes
-            title: 'Circa 80 Nuovi Quiz Aggiunti',
-            description: 'Mettiti alla prova con i nuovi quiz sui Reati Ambientali e altre materie aggiunti di recente.'
+            title: 'Io mi stò impegnando per te!!, oltre 120 Nuovi Quiz!',
+            description: 'Mettiti alla prova su Sanzioni, Rifiuti, Incendi e Codice Penale. Database super aggiornato! 🚀'
         },
         {
             icon: <Heart size={24} />,
             color: '#EC4899', // Pink for love/luck
-            title: 'Buono Studio da Efisio!!!',
-            description: 'Continua così! La tua preparazione sta facendo grandi passi avanti. 💪'
+            title: 'Buono Studio!!!',
+            description: 'La tua costanza ti premierà. Continua così.! 💪'
         }
     ];
 
@@ -79,7 +79,7 @@ const WhatsNewModal: React.FC = () => {
                 </ul>
 
                 <button className="whats-new-btn" onClick={handleClose}>
-                    Fantastico! 📚
+                    OK..vado a studiare! 📚
                 </button>
             </div>
         </div>

@@ -2,7 +2,7 @@ import React, { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
     BookOpen, Clock, ChevronRight, CheckCircle, Lock,
-    Scale, TreeDeciduous, Leaf, Map, Gavel, Flame, BookMarked, ShieldAlert
+    Scale, TreeDeciduous, Leaf, Map, Gavel, Flame, BookMarked, ShieldAlert, AlertTriangle
 } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { useStudyMaterial, type Subject, type Chapter } from '../context/StudyMaterialContext';
@@ -19,6 +19,7 @@ const getSubjectIcon = (id: string) => {
         case 'manuale_legislazione_forestale': return <BookMarked size={20} color="#F472B6" />;
         case 'legge_394_1991': return <ShieldAlert size={20} color="#FACC15" />;
         case 'legge_353_2000': return <Flame size={20} color="#F87171" />;
+        case 'sanzioni_ambientali_152_2006': return <AlertTriangle size={20} color="#EF4444" />;
         default: return <BookOpen size={20} color="#E2E8F0" />;
     }
 };
