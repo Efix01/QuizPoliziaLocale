@@ -39,7 +39,7 @@ const MistakeReview: React.FC = () => {
             setIsCorrect(false);
         } else {
             // Finished current batch
-            navigate('/dashboard'); // Or show summary
+            navigate('/'); // Return to Home
         }
     };
 

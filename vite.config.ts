@@ -30,5 +30,16 @@ export default defineConfig({
         ]
       }
     })
-  ]
+  ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'vendor-react': ['react', 'react-dom', 'react-router-dom'],
+          'vendor-firebase': ['firebase/app', 'firebase/auth', 'firebase/firestore', 'firebase/analytics'],
+          'vendor-ui': ['lucide-react', 'recharts', 'clsx', 'tailwind-merge'],
+        }
+      }
+    }
+  }
 })

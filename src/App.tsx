@@ -1,21 +1,23 @@
-
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import ScrollToTop from './components/ScrollToTop';
-import Dashboard from './pages/Dashboard';
-import StudyMode from './pages/StudyMode';
-import SimulationMode from './pages/SimulationMode';
-import PhysicalPrep from './pages/PhysicalPrep';
-import Profile from './pages/Profile';
-import StudyLibrary from './pages/StudyLibrary';
-import LessonReader from './pages/LessonReader';
-import Login from './pages/Login';
-import ForgotPassword from './pages/ForgotPassword';
-import Onboarding from './pages/Onboarding';
-import TermsOfService from './pages/TermsOfService';
-import PrivacyPolicy from './pages/PrivacyPolicy';
-import ChiSiamo from './pages/ChiSiamo';
-import MistakeReview from './pages/MistakeReview';
+const Dashboard = React.lazy(() => import('./pages/Dashboard'));
+const StudyMode = React.lazy(() => import('./pages/StudyMode'));
+const SimulationMode = React.lazy(() => import('./pages/SimulationMode'));
+const PhysicalPrep = React.lazy(() => import('./pages/PhysicalPrep'));
+const Profile = React.lazy(() => import('./pages/Profile'));
+const StudyLibrary = React.lazy(() => import('./pages/StudyLibrary'));
+const LessonReader = React.lazy(() => import('./pages/LessonReader'));
+const Login = React.lazy(() => import('./pages/Login'));
+const ForgotPassword = React.lazy(() => import('./pages/ForgotPassword'));
+const Onboarding = React.lazy(() => import('./pages/Onboarding'));
+const TermsOfService = React.lazy(() => import('./pages/TermsOfService'));
+const PrivacyPolicy = React.lazy(() => import('./pages/PrivacyPolicy'));
+const ChiSiamo = React.lazy(() => import('./pages/ChiSiamo'));
+const MistakeReview = React.lazy(() => import('./pages/MistakeReview'));
+
+import LoadingSpinner from './components/ui/LoadingSpinner';
 import { ToastProvider } from './context/ToastProvider';
 import { AuthProvider } from './context/AuthProvider';
 import { NotificationProvider } from './context/NotificationProvider';
@@ -36,32 +38,35 @@ function App() {
               <ToastProvider>
                 <Router>
                   <ScrollToTop />
-                  <Routes>
-                    {/* Onboarding - First time users */}
-                    <Route path="/welcome" element={<Onboarding />} />
-                    <Route path="/terms" element={<TermsOfService />} />
-                    <Route path="/privacy" element={<PrivacyPolicy />} />
-                    <Route path="/chi-siamo" element={<ChiSiamo />} />
 
-                    {/* Auth pages outside Layout (full-screen) */}
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/forgot-password" element={<ForgotPassword />} />
+                  <Suspense fallback={<LoadingSpinner />}>
+                    <Routes>
+                      {/* Onboarding - First time users */}
+                      <Route path="/welcome" element={<Onboarding />} />
+                      <Route path="/terms" element={<TermsOfService />} />
+                      <Route path="/privacy" element={<PrivacyPolicy />} />
+                      <Route path="/chi-siamo" element={<ChiSiamo />} />
 
-                    {/* Lesson Reader - Full screen without navbar */}
-                    <Route path="/manual/:subjectId/:chapterId" element={<LessonReader />} />
-                    <Route path="/manual/:subjectId" element={<LessonReader />} />
+                      {/* Auth pages outside Layout (full-screen) */}
+                      <Route path="/login" element={<Login />} />
+                      <Route path="/forgot-password" element={<ForgotPassword />} />
 
-                    {/* Main app with Layout */}
-                    <Route path="/" element={<Layout />}>
-                      <Route index element={<Dashboard />} />
-                      <Route path="study" element={<StudyMode />} />
-                      <Route path="simulation" element={<SimulationMode />} />
-                      <Route path="physical" element={<PhysicalPrep />} />
-                      <Route path="mistakes" element={<MistakeReview />} />
-                      <Route path="manual" element={<StudyLibrary />} />
-                      <Route path="profile" element={<Profile />} />
-                    </Route>
-                  </Routes>
+                      {/* Lesson Reader - Full screen without navbar */}
+                      <Route path="/manual/:subjectId/:chapterId" element={<LessonReader />} />
+                      <Route path="/manual/:subjectId" element={<LessonReader />} />
+
+                      {/* Main app with Layout */}
+                      <Route path="/" element={<Layout />}>
+                        <Route index element={<Dashboard />} />
+                        <Route path="study" element={<StudyMode />} />
+                        <Route path="simulation" element={<SimulationMode />} />
+                        <Route path="physical" element={<PhysicalPrep />} />
+                        <Route path="mistakes" element={<MistakeReview />} />
+                        <Route path="manual" element={<StudyLibrary />} />
+                        <Route path="profile" element={<Profile />} />
+                      </Route>
+                    </Routes>
+                  </Suspense>
                   <CookieBanner />
                   <WhatsNewModal />
                 </Router>
