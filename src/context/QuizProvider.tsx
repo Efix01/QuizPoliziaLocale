@@ -299,19 +299,38 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const getMistakeQuestions = (count: number = 20): QuizQuestion[] => {
         if (state.questions.length === 0) return [];
 
-        // Filter questions where the LAST attempt was FALSE (wrong)
+        // Filter questions where:
+        // 1. History exists and has at least one entry
+        // 2. The LAST attempt was FALSE (wrong)
+        // 3. The question is not yet mastered (box <= 2)
         const mistakeIds = Object.keys(state.userProgress).filter(idStr => {
             const id = parseInt(idStr);
             const progress = state.userProgress[id];
-            if (!progress || progress.history.length === 0) return false;
-            // Check last history item
-            return progress.history[progress.history.length - 1] === false;
+
+            // Skip if no progress or empty history
+            if (!progress || !progress.history || progress.history.length === 0) {
+                return false;
+            }
+
+            // Check that the last attempt was wrong
+            const lastAttempt = progress.history[progress.history.length - 1];
+            if (lastAttempt !== false) {
+                return false;
+            }
+
+            // Include only questions in lower boxes (not mastered yet)
+            return progress.box <= 2;
         }).map(id => parseInt(id));
 
         const questions = state.questions.filter(q => mistakeIds.includes(q.id));
 
-        // Shuffle
-        const shuffled = [...questions].sort(() => 0.5 - Math.random());
+        // Fisher-Yates shuffle for better randomization
+        const shuffled = [...questions];
+        for (let i = shuffled.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+        }
+
         return shuffled.slice(0, count);
     };
 
