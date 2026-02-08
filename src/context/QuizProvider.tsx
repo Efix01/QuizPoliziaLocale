@@ -76,8 +76,7 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
                         }
 
                     } catch (error) {
-                        console.error("Firestore Load Error:", error);
-                        // Fallback to local
+                        // Fallback to local on Firestore error
                         loadedProgress = getSafeItem('forestali_progress', true) || {};
                         loadedStats = getSafeItem('forestali_stats', true) || INITIAL_STATS;
                     }
@@ -132,9 +131,8 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
                             stats: pendingUpdates.current.stats,
                             lastUpdated: new Date().toISOString()
                         }, { merge: true });
-                        console.log("Synced to Cloud");
-                    } catch (error) {
-                        console.error("Cloud Sync Error:", error);
+                    } catch {
+                        // Silent fail for cloud sync - data is safe in localStorage
                     }
                 }
             }, 5000);

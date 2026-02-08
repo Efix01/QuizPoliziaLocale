@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Clock, CheckCircle, BookOpen, ChevronLeft, ChevronRight } from 'lucide-react';
+import DOMPurify from 'dompurify';
 import { useAuth } from '../context/AuthContext';
 import { useStudyMaterial } from '../context/StudyMaterialContext';
 import './LessonReader.css';
@@ -136,7 +137,7 @@ const LessonReader: React.FC = () => {
                     {/* Chapter Content */}
                     <div
                         className="lesson-body"
-                        dangerouslySetInnerHTML={{ __html: chapter.content_html }}
+                        dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(chapter.content_html) }}
                     />
                 </article>
 

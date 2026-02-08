@@ -8,8 +8,19 @@ import {
     onAuthStateChanged,
     updateProfile
 } from 'firebase/auth';
+import { z } from 'zod';
 import { auth, googleProvider } from '../firebase';
 import { AuthContext, type AuthContextType } from './AuthContext';
+
+// Schema di validazione Zod
+const LoginSchema = z.object({
+    email: z.string().email('Email non valida'),
+    password: z.string().min(6, 'La password deve avere almeno 6 caratteri')
+});
+
+const RegisterSchema = LoginSchema.extend({
+    displayName: z.string().min(2, 'Il nome deve avere almeno 2 caratteri')
+});
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [user, setUser] = useState<User | null>(null);
@@ -29,6 +40,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     // Login with email/password
     const login = async (email: string, password: string) => {
         setError(null);
+
+        // Validazione Zod
+        const validation = LoginSchema.safeParse({ email, password });
+        if (!validation.success) {
+            const errorMsg = validation.error.issues[0].message;
+            setError(errorMsg);
+            throw new Error(errorMsg);
+        }
+
         setLoading(true);
         try {
             await signInWithEmailAndPassword(auth, email, password);
@@ -44,6 +64,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     // Register new user
     const register = async (email: string, password: string, displayName: string) => {
         setError(null);
+
+        // Validazione Zod
+        const validation = RegisterSchema.safeParse({ email, password, displayName });
+        if (!validation.success) {
+            const errorMsg = validation.error.issues[0].message;
+            setError(errorMsg);
+            throw new Error(errorMsg);
+        }
+
         setLoading(true);
         try {
             const result = await createUserWithEmailAndPassword(auth, email, password);
