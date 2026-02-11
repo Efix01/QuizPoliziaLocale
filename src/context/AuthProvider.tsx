@@ -6,7 +6,9 @@ import {
     signInWithPopup,
     signOut,
     onAuthStateChanged,
-    updateProfile
+    updateProfile,
+    setPersistence,
+    browserLocalPersistence
 } from 'firebase/auth';
 import { z } from 'zod';
 import { auth, googleProvider } from '../firebase';
@@ -29,12 +31,30 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     // Listen to auth state changes
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-            setUser(firebaseUser);
-            setLoading(false);
-        });
+        // Ensure persistence is set to LOCAL
+        const initializeAuth = async () => {
+            // Dynamic import for persistence to avoid build issues if needed, strictly compliant with Firebase v9 modular SDK
+            try {
+                // Default persistence is usually LOCAL, but we enforce it here
+                await setPersistence(auth, browserLocalPersistence);
+            } catch (error) {
+                console.error("Error setting persistence:", error);
+            }
 
-        return () => unsubscribe();
+            const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+                setUser(firebaseUser);
+                setLoading(false);
+            });
+            return unsubscribe;
+        };
+
+        const unsubscribePromise = initializeAuth();
+
+        return () => {
+            unsubscribePromise.then(unsubscribe => {
+                if (unsubscribe) unsubscribe();
+            });
+        };
     }, []);
 
     // Login with email/password
