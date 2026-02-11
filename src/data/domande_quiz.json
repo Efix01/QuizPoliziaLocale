@@ -14741,16 +14741,16 @@
     {
         "id": 1054,
         "category": "Reati Ambientali",
-        "question": "Qual è la competenza per il reato di 'Attività organizzate per il traffico illecito di rifiuti' (art. 260)?",
+        "question": "A quale organo spetta la competenza investigativa per il delitto di 'Attività organizzate per il traffico illecito di rifiuti' (Art. 452-quaterdecies c.p., ex Art. 260 TUA)?",
         "options": {
             "A": "Giudice di Pace",
-            "B": "Tribunale Monocratico",
-            "C": "Direzione Distrettuale Antimafia (DDA)",
+            "B": "Procura della Repubblica presso il Tribunale circondariale",
+            "C": "Procura Distrettuale Antimafia (DDA)",
             "D": "Tribunale Amministrativo Regionale (TAR)"
         },
         "correct_answer": "C",
-        "explanation": "L'art. 260 (ora 452-quaterdecies c.p., richiamato dal TUA) è un delitto grave di competenza della DDA per la sua natura di reato associativo/organizzato.",
-        "source": "D.Lgs. 152/2006 art. 260 / art. 51 c.3-bis c.p.p. [web:7][web:11]"
+        "explanation": "Il reato, ora previsto dall'art. 452-quaterdecies c.p., rientra tra i delitti elencati nell'art. 51 comma 3-bis c.p.p., attribuendo le funzioni di Pubblico Ministero alla Direzione Distrettuale Antimafia (DDA) data la natura associativa e la gravità del crimine.",
+        "source": "Art. 452-quaterdecies c.p. / Art. 51 c.3-bis c.p.p. [web:5][web:12]"
     },
     {
         "id": 1055,
@@ -15157,5 +15157,605 @@
         "correct_answer": "A",
         "explanation": "Il reato di scarico abusivo di sostanze pericolose (art. 137 c.2) è un reato di pericolo presunto: scatta per il solo fatto di scaricare quelle sostanze senza autorizzazione, indipendentemente dal superamento dei limiti.",
         "source": "D.Lgs. 152/2006 art. 137 c.2 [web:1]"
+    },
+    {
+        "id": 1084,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Qual è la finalità delle indagini preliminari secondo l'art. 326 c.p.p.?",
+        "options": {
+            "A": "Accertare in modo definitivo la colpevolezza dell'indagato con valore di giudicato.",
+            "B": "Acquisire elementi necessari per le determinazioni inerenti all'esercizio dell'azione penale.",
+            "C": "Stabilire la pena concreta da applicare, già nella fase delle indagini.",
+            "D": "Consentire alla polizia giudiziaria di definire autonomamente l'imputazione."
+        },
+        "correct_answer": "B",
+        "explanation": "Le indagini preliminari servono ad acquisire elementi utili alle determinazioni del PM sull'azione penale (art. 326 c.p.p.).",
+        "source": "Art. 326 c.p.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1085,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'art. 330 c.p.p., PM e PG come acquisiscono la notizia di reato?",
+        "options": {
+            "A": "Solo tramite querela della persona offesa.",
+            "B": "Solo tramite denuncia scritta presentata da un privato.",
+            "C": "Di propria iniziativa e ricevendo le notizie di reato presentate o trasmesse.",
+            "D": "Solo tramite comunicazione del giudice per le indagini preliminari."
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 330 c.p.p. prevede che PM e PG prendano notizia dei reati di propria iniziativa e ricevano quelle presentate o trasmesse.",
+        "source": "Art. 330 c.p.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1086,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Un agente CFVA che opera come Polizia Giudiziaria, appresa una notizia di reato, quale norma applica in via principale per riferire al PM?",
+        "options": {
+            "A": "Art. 331 c.p.p. (Denuncia da parte di pubblici ufficiali), sempre e comunque.",
+            "B": "Art. 347 c.p.p. (Obbligo di riferire la notizia di reato), perché speciale rispetto all'art. 331.",
+            "C": "Art. 333 c.p.p. (Denuncia da parte di privati).",
+            "D": "Art. 326 c.p.p. (Finalità delle indagini preliminari)."
+        },
+        "correct_answer": "B",
+        "explanation": "Per la PG vale l'obbligo specifico dell'art. 347 c.p.p., richiamato come speciale rispetto all'art. 331 c.p.p.",
+        "source": "Artt. 331 e 347 c.p.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1087,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Quale elemento è tipicamente richiesto dall'art. 332 c.p.p. nel contenuto della denuncia (o della comunicazione di notizia di reato)?",
+        "options": {
+            "A": "La richiesta di condanna dell'indagato con indicazione della pena desiderata.",
+            "B": "L'esposizione dei fatti e l'indicazione degli elementi e delle fonti di prova conosciuti.",
+            "C": "La trascrizione integrale di tutte le dichiarazioni rese informalmente sul posto e nei luoghi limitrifi.",
+            "D": "La convalida immediata del GIP come requisito di validità dell'atto."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 332 c.p.p. richiede un contenuto informativo essenziale: esposizione dei fatti e indicazione di elementi/fonte di prova utili.",
+        "source": "Art. 332 c.p.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1088,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "In base all'art. 333 c.p.p., le denunce anonime possono essere utilizzate come prova nel processo penale?",
+        "options": {
+            "A": "Sì, se riguardano reati ambientali e sono dettagliate.",
+            "B": "Sì, purché confermate oralmente dalla PG nel CNR.",
+            "C": "No, non sono utilizzabili processualmente, ma possono costituire spunto investigativo.",
+            "D": "No, e non possono mai essere neppure considerate come stimolo per accertamenti o ulteriori verifiche."
+        },
+        "correct_answer": "C",
+        "explanation": "La denuncia anonima non è utilizzabile come prova, ma può orientare accertamenti autonomi della PG (art. 333 c.p.p.).",
+        "source": "Art. 333 c.p.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1089,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Cosa comporta l'art. 327 c.p.p. sul rapporto tra PM e Polizia Giudiziaria nelle indagini?",
+        "options": {
+            "A": "La PG dipende funzionalmente dal PM per la direzione delle indagini.",
+            "B": "La PG opera sempre e solo su delega scritta del GIP.",
+            "C": "Il PM può solo ricevere gli atti della PG, senza impartire direttive.",
+            "D": "La PG è gerarchicamente subordinata solo ai superiori amministrativi, mai al PM."
+        },
+        "correct_answer": "A",
+        "explanation": "Il PM dirige le indagini e dispone della PG, che opera in dipendenza funzionale per l'attività investigativa (art. 327 c.p.p.).",
+        "source": "Art. 327 c.p.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1090,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Qual è l'obbligo generale previsto dall'art. 347 c.p.p. per la Polizia Giudiziaria quando acquisisce una notizia di reato?",
+        "options": {
+            "A": "Riferire al PM senza ritardo e per iscritto gli elementi essenziali del fatto e quelli raccolti.",
+            "B": "Aspettare l'autorizzazione del GIP prima di contattare il PM.",
+            "C": "Trasmettere solo un avviso orale, senza mai redigere atto scritto.",
+            "D": "Inviare esclusivamente la qualificazione giuridica definitiva, senza descrivere i fatti e gli accertamenti."
+        },
+        "correct_answer": "A",
+        "explanation": "L'art. 347 c.p.p. impone alla PG di riferire al PM senza ritardo e per iscritto gli elementi essenziali della notizia di reato.",
+        "source": "Art. 347 c.p.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1091,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Dopo avere comunicato la notizia di reato al PM, la PG può continuare a svolgere attività investigativa di iniziativa?",
+        "options": {
+            "A": "No, deve attendere sempre una delega formale del PM.",
+            "B": "Sì, può continuare a svolgere attività di iniziativa salvo diverse direttive del PM (art. 348 c.p.p.).",
+            "C": "No, perché l'iniziativa è consentita solo prima del primo contatto con il PM.",
+            "D": "Sì, ma solo per atti irripetibili e mai per ricerca di persone informate sui fatti acquisiti durante la notizia."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 348 c.p.p. prevede che la PG continui le funzioni di ricerca e assicurazione delle fonti di prova anche dopo la comunicazione.",
+        "source": "Art. 348 c.p.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1092,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Quando la PG può procedere all'identificazione con accompagnamento nei propri uffici ai sensi dell'art. 349 c.p.p.?",
+        "options": {
+            "A": "Sempre, anche se la persona mostra un documento valido.",
+            "B": "Solo se la persona è imputata in un processo già iniziato.",
+            "C": "Se la persona rifiuta di farsi identificare o non può essere identificata secondo le modalità previste.",
+            "D": "Solo con autorizzazione preventiva del Ministro della Giustizia."
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 349 c.p.p. consente l'accompagnamento per identificazione quando l'identificazione non è possibile altrimenti o vi è rifiuto.",
+        "source": "Art. 349 c.p.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1093,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Prima di assumere sommarie informazioni dalla persona indagata (art. 350 c.p.p.), quale garanzia è centrale?",
+        "options": {
+            "A": "La presenza obbligatoria del giudice per le indagini preliminari.",
+            "B": "L'invito a nominare un difensore e l'avvertimento della facoltà di non rispondere.",
+            "C": "La consegna immediata della sentenza di condanna.",
+            "D": "L'obbligo di registrare l'atto esclusivamente in forma di annotazione, mai in verbale."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 350 c.p.p. prevede garanzie difensive per l'indagato, tra cui difensore e facoltà di non rispondere.",
+        "source": "Art. 350 c.p.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1094,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "In quale caso l'art. 350, comma 5, c.p.p. consente alla PG di assumere sommarie informazioni anche senza difensore presente?",
+        "options": {
+            "A": "Quando l'indagato lo chiede espressamente per iscritto.",
+            "B": "Quando si procede ad arresto in flagranza o fermo, sul luogo o nell'immediatezza, per la immediata prosecuzione delle indagini.",
+            "C": "Sempre, perché il difensore non può assistere agli atti della PG.",
+            "D": "Solo nei reati procedibili a querela."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 350, co. 5, c.p.p. prevede un'eccezione legata ad arresto/fermo e immediatezza per esigenze di prosecuzione investigativa.",
+        "source": "Art. 350, comma 5, c.p.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1095,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'art. 354 c.p.p., quando la PG può procedere a sequestro d'iniziativa del corpo del reato e delle cose pertinenti?",
+        "options": {
+            "A": "Quando ritiene che l'indagato sia colpevole, anche senza pericolo attuale e senza avvisare il PM.",
+            "B": "Solo dopo la convalida preventiva del PM.",
+            "C": "Se vi è pericolo di alterazione/dispersione e il PM non può intervenire tempestivamente.",
+            "D": "Solo per i delitti contro la Pubblica Amministrazione."
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 354 c.p.p. prevede il sequestro d'iniziativa in presenza di pericolo di modificazione/dispersione e impossibilità di pronto intervento del PM.",
+        "source": "Art. 354 c.p.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1096,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Quale affermazione descrive correttamente il principio di legalità dell'art. 1 c.p.?",
+        "options": {
+            "A": "È punibile ogni fatto socialmente pericoloso, anche se non previsto dalla legge.",
+            "B": "Nessuno può essere punito per un fatto non espressamente previsto come reato dalla legge, né con pene non stabilite dalla legge.",
+            "C": "Il giudice può creare nuove fattispecie di reato per colmare lacune.",
+            "D": "Il principio vale solo per le contravvenzioni e non per i delitti."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 1 c.p. afferma la riserva di legge: reati e pene devono essere previsti dalla legge (nullum crimen, nulla poena sine lege).",
+        "source": "Art. 1 c.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1097,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Quale criterio utilizza l'art. 17 c.p. per distinguere le pene principali dei delitti da quelle delle contravvenzioni?",
+        "options": {
+            "A": "La distinzione dipende dal bene giuridico tutelato, non dalla pena.",
+            "B": "Per i delitti: ergastolo, reclusione, multa; per le contravvenzioni: arresto, ammenda.",
+            "C": "Per i delitti: arresto e ammenda; per le contravvenzioni: reclusione e multa.",
+            "D": "La distinzione è rimessa alla scelta discrezionale del giudice caso per caso a seconda dell’illecito."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 17 c.p. elenca le pene principali per delitti (ergastolo/reclusione/multa) e per contravvenzioni (arresto/ammenda).",
+        "source": "Art. 17 c.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1098,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "In base all'art. 42, comma 4, c.p., nelle contravvenzioni si risponde:",
+        "options": {
+            "A": "Solo ed esclusivamente per dolo, salvo casi eccezionali, la colpa non rientra in questa fattispecie.",
+            "B": "Solo per colpa, perché sono reati minori.",
+            "C": "Sia per dolo sia per colpa, purché l'azione/omissione sia cosciente e volontaria.",
+            "D": "Sempre a titolo di responsabilità oggettiva."
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 42, co. 4, c.p. prevede per le contravvenzioni responsabilità sia dolosa sia colposa.",
+        "source": "Art. 42, comma 4, c.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1099,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Quale requisito NON è richiesto dall'art. 56 c.p. per configurare il delitto tentato?",
+        "options": {
+            "A": "Atti idonei diretti a commettere un delitto.",
+            "B": "Atti diretti in modo non equivoco alla commissione del delitto.",
+            "C": "Che l'azione non si compia o l'evento non si verifichi.",
+            "D": "Che si tratti di una contravvenzione punita con ammenda."
+        },
+        "correct_answer": "D",
+        "explanation": "Il tentativo ex art. 56 c.p. riguarda i delitti (atti idonei e univoci) e non le contravvenzioni.",
+        "source": "Art. 56 c.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1100,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Quale affermazione è coerente con la scriminante dell'uso legittimo delle armi (art. 53 c.p.)?",
+        "options": {
+            "A": "Si applica a chiunque, anche a privati cittadini, purché autorizzati al porto d'armi.",
+            "B": "Si applica al pubblico ufficiale che usa o ordina di usare armi/mezzi di coazione fisica quando costretto dalla necessità nei casi previsti.",
+            "C": "Si applica sempre quando vi è un sospetto di reato ambientale.",
+            "D": "Esclude la punibilità anche se l'uso della forza è sproporzionato per colpa da parte di un pubblico ufficiale durante l’orario di servizio."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 53 c.p. è una scriminante propria del pubblico ufficiale, fondata su necessità nei casi indicati dalla norma.",
+        "source": "Art. 53 c.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1101,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Qual è l'elemento centrale del peculato (art. 314 c.p.)?",
+        "options": {
+            "A": "La promessa di denaro per compiere un atto d'ufficio inerente le autorizzazioni che possono essere rilasciate ad enti e privati dall’amministrazione.",
+            "B": "L'appropriazione, da parte del pubblico ufficiale, di denaro o cosa mobile altrui di cui ha possesso o disponibilità per ragione dell'ufficio o servizio.",
+            "C": "La costrizione del privato a dare utilità mediante minaccia.",
+            "D": "La rivelazione di notizie coperte da segreto investigativo."
+        },
+        "correct_answer": "B",
+        "explanation": "Nel peculato ex art. 314 c.p. il P.U. si appropria di denaro/cosa mobile altrui posseduti per ragioni d'ufficio o servizio.",
+        "source": "Art. 314 c.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1102,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Quale affermazione è corretta sull'induzione indebita a dare o promettere utilità (art. 319-quater c.p.)?",
+        "options": {
+            "A": "È punito solo il pubblico ufficiale; il privato non è mai punibile.",
+            "B": "È punibile solo se l'utilità è denaro contante, non altre utilità come regali materiali o beni di consumo.",
+            "C": "È un reato che presuppone sempre la violenza fisica sul privato.",
+            "D": "È punibile anche il privato che dà o promette l'utilità, nei limiti previsti dalla norma."
+        },
+        "correct_answer": "D",
+        "explanation": "Nell'art. 319-quater c.p. è prevista la punibilità anche del privato indotto, secondo la disciplina della fattispecie.",
+        "source": "Art. 319-quater c.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1103,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Quale situazione rientra tipicamente nel rifiuto di atti d'ufficio (art. 328 c.p., comma 1)?",
+        "options": {
+            "A": "Rifiutare indebitamente un atto che deve essere compiuto senza ritardo per ragioni di giustizia/sicurezza pubblica/ordine pubblico/igiene.",
+            "B": "Rifiutare sempre qualsiasi atto richiesto da un privato, anche se non dovuto.",
+            "C": "Non rispondere a una richiesta generica entro 90 giorni, anche senza obbligo giuridico di provvedere entro la data prevista.",
+            "D": "Eseguire un atto d'ufficio con lieve ritardo per semplice carenza di personale."
+        },
+        "correct_answer": "A",
+        "explanation": "L'art. 328 c.p., co. 1, punisce il rifiuto indebito di atti dovuti senza ritardo per specifiche ragioni (giustizia, sicurezza, ordine pubblico, igiene).",
+        "source": "Art. 328 c.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1104,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Quale affermazione descrive correttamente l'incendio boschivo (art. 423-bis c.p.)?",
+        "options": {
+            "A": "È una semplice aggravante dell'art. 423 c.p., non un reato autonomo.",
+            "B": "Punisce solo l'incendio doloso e non prevede ipotesi colposa.",
+            "C": "È un reato autonomo che prevede un'ipotesi dolosa e una colposa, riferita a boschi/selve/foreste.",
+            "D": "Si applica solo se l'incendio avviene su cosa altrui, mai su cosa propria."
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 423-bis c.p. configura un reato autonomo di incendio boschivo, con previsione anche dell'ipotesi colposa.",
+        "source": "Art. 423-bis c.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1105,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Cosa caratterizza le 'attività organizzate per il traffico illecito di rifiuti' (art. 452-quaterdecies c.p.)?",
+        "options": {
+            "A": "Un singolo episodio occasionale di abbandono di rifiuti domestici.",
+            "B": "Una condotta colposa senza finalità di profitto o organizzazione da parte dei cittadini o società.",
+            "C": "Una gestione/traffico illecito svolti in modo organizzato e non meramente episodico.",
+            "D": "Solo l'importazione lecita di rifiuti con autorizzazione."
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 452-quaterdecies c.p. colpisce condotte connotate da organizzazione, non riducibili a fatto occasionale.",
+        "source": "Art. 452-quaterdecies c.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1106,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Quale condotta rientra nel maltrattamento di animali (art. 544-ter c.p.) secondo la disciplina vigente dal 1° luglio 2025?",
+        "options": {
+            "A": "Cagionare lesioni o sottoporre l'animale a sevizie o a comportamenti/fatiche insopportabili per crudeltà o senza necessità.",
+            "B": "Uccidere una specie selvatica protetta fuori dai casi consentiti dalla legge o per  scopi di studio scentifico (sempre e solo art. 727-bis c.p.).",
+            "C": "Rifiutare di indicare le proprie generalità a un pubblico ufficiale.",
+            "D": "Non osservare un'ordinanza dell'autorità in materia di igiene pubblica."
+        },
+        "correct_answer": "A",
+        "explanation": "L'art. 544-ter c.p., come modificato dalla Legge 82/2025 (entrata in vigore 1° luglio 2025), punisce chi per crudeltà o senza necessità cagiona lesioni, sevizie o comportamenti incompatibili con le caratteristiche etologiche. PENA: reclusione da 6 mesi a 2 anni E multa da 5.000 a 30.000 euro.",
+        "source": "Art. 544-ter c.p. (L. 82/2025)",
+        "note_aggiornamento": "AGGIORNATO - L. 82/2025"
+    },
+    {
+        "id": 1107,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Quale caratteristica è tipica dell'art. 650 c.p. (inosservanza dei provvedimenti dell'autorità)?",
+        "options": {
+            "A": "È una norma sussidiaria: si applica se il fatto non costituisce un più grave reato.",
+            "B": "Si applica anche se il provvedimento non è legalmente dato, purché sia 'ragionevole'.",
+            "C": "È procedibile solo a querela della pubblica amministrazione, mai a querele da parte dei privati cittadini",
+            "D": "Punisce solo i pubblici ufficiali e non i privati."
+        },
+        "correct_answer": "A",
+        "explanation": "L'art. 650 c.p. opera in via sussidiaria ('se il fatto non costituisce un più grave reato') rispetto ad altre incriminazioni.",
+        "source": "Art. 650 c.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1108,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Quale condotta integra l'art. 651 c.p.?",
+        "options": {
+            "A": "Non osservare un'ordinanza dell'autorità per ragioni di igiene pubblica.",
+            "B": "Rifiutare, richiesto da un pubblico ufficiale nell'esercizio delle funzioni, di dare indicazioni sulla propria identità personale o su qualità personali.",
+            "C": "Portare fuori casa un'arma per cui non è ammessa licenza.",
+            "D": "Detenere munizioni in casa senza averne fatto denuncia, quando richiesta."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 651 c.p. punisce il rifiuto di fornire indicazioni sull'identità/qualità personali a richiesta del P.U. nell'esercizio delle funzioni.",
+        "source": "Art. 651 c.p.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1109,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Come è definito il delitto doloso dall'art. 43 c.p.?",
+        "options": {
+            "A": "È il delitto commesso per negligenza, imprudenza o imperizia.",
+            "B": "È il delitto in cui l'evento, anche se preveduto, non è voluto dall'agente.",
+            "C": "È il delitto in cui l'evento dannoso o pericoloso è previsto e voluto dall'agente come conseguenza della propria azione od omissione.",
+            "D": "È il delitto in cui l'agente non poteva in alcun modo prevedere l'evento dannoso."
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 43, comma 1, c.p. definisce il delitto doloso come quello in cui l'evento dannoso o pericoloso è dall'agente preveduto e voluto come conseguenza della propria azione od omissione.",
+        "source": "art. 43, comma 1, c.p., Delitto doloso.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1110,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'art. 40, comma 2, c.p., quando non impedire un evento equivale a cagionarlo?",
+        "options": {
+            "A": "Quando l'agente ha la mera possibilità materiale di intervenire, anche senza un obbligo giuridico.",
+            "B": "Quando l'agente ha un obbligo giuridico di impedire l'evento e non vi provvede.",
+            "C": "Solo quando l'agente è pubblico ufficiale, indipendentemente da un obbligo specifico.",
+            "D": "Quando l'agente ha un obbligo morale di intervenire, anche se non previsto dalla legge."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 40, comma 2, c.p. stabilisce che non impedire un evento che si ha l'obbligo giuridico di impedire equivale a cagionarlo, configurando i reati omissivi impropri.",
+        "source": "art. 40, comma 2, c.p., Rapporto di causalità.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1111,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Quando si configura il delitto tentato ai sensi dell'art. 56 c.p.?",
+        "options": {
+            "A": "Quando l'autore ha già portato a compimento tutti gli elementi del reato ma il danno non si verifica per caso fortuito.",
+            "B": "Quando l'autore compie atti idonei e diretti in modo non equivoco a commettere un delitto, ma l'azione non si compie o l'evento non si verifica.",
+            "C": "Quando l'autore manifesta solo l'intenzione di commettere un reato, senza alcun inizio di esecuzione e quindi non si verifica nessun evento dannoso.",
+            "D": "Quando l'autore compie atti preparatori, a prescindere dalla loro idoneità a realizzare il reato."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 56 c.p. stabilisce che vi è delitto tentato quando l'agente compie atti idonei e diretti in modo non equivoco a commettere un delitto, se l'azione non si compie o l'evento non si verifica.",
+        "source": "art. 56 c.p., Delitto tentato.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1112,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Quale tra le seguenti è una circostanza aggravante comune ai sensi dell'art. 61 c.p.?",
+        "options": {
+            "A": "Aver agito per motivi di particolare valore morale o sociale.",
+            "B": "Aver cagionato un danno patrimoniale di speciale tenuità.",
+            "C": "Aver commesso il fatto con abuso dei poteri o violazione dei doveri inerenti a una pubblica funzione o a un pubblico servizio.",
+            "D": "Aver integralmente riparato il danno prima del giudizio."
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 61 c.p. annovera tra le circostanze aggravanti comuni l'avere commesso il fatto con abuso dei poteri o violazione dei doveri inerenti a una pubblica funzione o a un pubblico servizio.",
+        "source": "art. 61 c.p., Circostanze aggravanti comuni.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1113,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Che cosa prevede l'art. 99 c.p. in tema di recidiva?",
+        "options": {
+            "A": "Che la recidiva comporti sempre un aumento obbligatorio di pena in misura fissa.",
+            "B": "Che chi, dopo essere stato condannato per un delitto non colposo, ne commette un altro, può subire un aumento di pena entro i limiti previsti dalla legge.",
+            "C": "Che la recidiva sia configurabile esclusivamente se i due reati sono della stessa indole e commessi entro un meno di un anno temporale l’uno dall’altro.",
+            "D": "Che la recidiva abbia effetto solo sulla misura delle pene accessorie."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 99 c.p. stabilisce che chi, dopo condanna per delitto non colposo, ne commette un altro può essere sottoposto ad aumento di pena, con discipline differenziate per recidiva semplice, aggravata e reiterata.",
+        "source": "art. 99 c.p., Recidiva.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1114,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'art. 85 c.p., che cosa si richiede perché un soggetto sia imputabile?",
+        "options": {
+            "A": "Che abbia compiuto almeno 16 anni al momento del fatto e che  sia in grado di non intendere e di volere al momento del fatto",
+            "B": "Che sia in grado di intendere e di volere al momento del fatto, salvo i casi di vizio di mente o minore età.",
+            "C": "Che sia incensurato e privo di precedenti penali.",
+            "D": "Che abbia piena capacità di agire in sede civile."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 85 c.p. stabilisce che è imputabile chi, al momento del fatto, ha la capacità di intendere e di volere, che può essere esclusa o grandemente scemata per minore età o vizio di mente.",
+        "source": "art. 85 c.p., Imputabilità.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1115,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Che cosa prevede l'art. 152 c.p. in tema di remissione della querela?",
+        "options": {
+            "A": "Che la remissione della querela non abbia mai effetto estintivo sul reato.",
+            "B": "Che la remissione della querela estingue il reato, se accettata dal querelato",
+            "C": "Che la remissione sia efficace anche senza l'accettazione del querelato se decisa dal PM.",
+            "D": "Che la remissione sia sempre revocabile fino alla sentenza definitiva."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 152 c.p. dispone che nei reati procedibili a querela la remissione, accettata dal querelato, estingue il reato.",
+        "source": "art. 152 c.p., Remissione della querela.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1116,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Che cosa punisce il delitto di inquinamento ambientale di cui all'art. 452-bis c.p.?",
+        "options": {
+            "A": "Qualsiasi violazione amministrativa in materia ambientale.",
+            "B": "Solo l'abbandono occasionale di rifiuti non pericolosi.",
+            "C": "La compromissione o il deterioramento significativi e misurabili di acque, aria, suolo, sottosuolo, ecosistemi o biodiversità, oltre determinati livelli di soglia.",
+            "D": "Esclusivamente l'inquinamento delle acque destinate al consumo umano."
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 452-bis c.p. punisce chi abusivamente cagiona una compromissione o un deterioramento significativi e misurabili di componenti ambientali come acque, aria, suolo, sottosuolo, ecosistemi e biodiversità, oltre determinate soglie di rilevanza.",
+        "source": "art. 452-bis c.p., Inquinamento ambientale.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1117,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Quale condotta integra il reato di maltrattamento di animali ex art. 544-ter c.p., rilevante per l'attività del Corpo Forestale?",
+        "options": {
+            "A": "Qualunque uccisione di animale, anche per necessità e senza crudeltà, compreso l’abbandono per dimostrata impossibilità finanziaria del proprietario",
+            "B": "Solo la detenzione di animali senza le prescritte autorizzazioni amministrative.",
+            "C": "Cagionare una lesione ad un animale o sottoporlo a sevizie, comportamenti o fatiche insopportabili per crudeltà o senza necessità.",
+            "D": "L'organizzazione di qualunque manifestazione sportiva con la presenza di animali."
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 544-ter c.p., come modificato dalla Legge 82/2025 (vigente dal 1° luglio 2025), punisce chi per crudeltà o senza necessità cagiona lesione, sevizie o comportamenti insopportabili ad un animale. PENA: reclusione da 6 mesi a 2 anni E multa da 5.000 a 30.000 euro (cumulativa).",
+        "source": "Art. 544-ter c.p. (L. 82/2025)",
+        "note_aggiornamento": "AGGIORNATO - L. 82/2025 (pena inasprita e multa cumulativa)"
+    },
+    {
+        "id": 1118,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Chi dirige le indagini preliminari secondo l'art. 327 c.p.p.?",
+        "options": {
+            "A": "La polizia giudiziaria, che agisce in piena autonomia rispetto all'autorità giudiziaria.",
+            "B": "Il giudice per le indagini preliminari.",
+            "C": "Il pubblico ministero, che dispone direttamente della polizia giudiziaria.",
+            "D": "Il questore o il comandante del Corpo Forestale competente per territorio."
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 327 c.p.p. stabilisce che il pubblico ministero dirige le indagini e dispone direttamente della polizia giudiziaria, in attuazione del principio di direzione dell'organo requirente sulle investigazioni.",
+        "source": "art. 327 c.p.p., Direzione delle indagini preliminari.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1119,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Che natura ha la denuncia da parte di privati disciplinata dall'art. 333 c.p.p.?",
+        "options": {
+            "A": "È sempre obbligatoria per qualsiasi cittadino che abbia notizia di un reato in corso.",
+            "B": "È facoltativa, salvo i casi particolari in cui sussiste un diverso obbligo di legge.",
+            "C": "È ammessa solo in forma scritta autenticata da notaio.",
+            "D": "Non è mai ricevibile dalla polizia giudiziaria, ma solo dal pubblico ministero."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 333 c.p.p. prevede che la denuncia da parte di privati sia di regola una facoltà, fatta salva la sussistenza di specifici obblighi di denuncia previsti da altre norme per particolari soggetti o reati.",
+        "source": "art. 333 c.p.p., Denuncia da parte di privati.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1120,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Qual è, di regola, il termine per proporre querela ai sensi dell'art. 339 c.p.p.?",
+        "options": {
+            "A": "Tre giorni dalla data del fatto.",
+            "B": "Tre mesi dal giorno della notizia del fatto di reato.",
+            "C": "Sei mesi dal giorno della notizia del fatto di reato, per tutti i reati.",
+            "D": "Un anno dalla data di commissione del reato."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 339 c.p.p. stabilisce che, salvo specifiche eccezioni, la querela deve essere proposta entro tre mesi dal giorno della notizia del fatto costituente reato.",
+        "source": "art. 339 c.p.p., Termine per proporre querela.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1121,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Qual è la funzione dell'istanza di procedimento di cui all'art. 341 c.p.p.?",
+        "options": {
+            "A": "È una richiesta con cui la persona offesa chiede il risarcimento del danno nel processo penale.",
+            "B": "È una condizione di procedibilità riferita a determinati reati commessi all'estero da o contro cittadini italiani.",
+            "C": "È l'atto con cui il pubblico ministero iscrive la notizia di reato nel registro.",
+            "D": "È una forma particolare di querela per i reati contro la pubblica amministrazione e pubblici ufficiali che fanno capo ad essa."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 341 c.p.p. disciplina l'istanza di procedimento come condizione di procedibilità per specifiche ipotesi di reati commessi all'estero da o contro cittadini italiani, distinta dalla querela e dalla richiesta di procedimento.",
+        "source": "art. 341 c.p.p., Istanza di procedimento.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1122,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Qual è lo scopo del registro delle notizie di reato previsto dall'art. 335 c.p.p.?",
+        "options": {
+            "A": "Registrare esclusivamente le sentenze definitive emesse dai tribunali e dare la possibilità a chiunque ne faccia richiesta di verificarne la correttezza.",
+            "B": "Annotare le notizie di reato per consentire il controllo sullo stato dei procedimenti e la verifica dell'esercizio dell'azione penale.",
+            "C": "Tenere traccia delle sole denunce anonime.",
+            "D": "Registrare le misure cautelari personali anticipate rispetto alla notizia di reato."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 335 c.p.p. prevede che il pubblico ministero iscriva le notizie di reato in un apposito registro, al fine di consentire la tracciabilità dei procedimenti, il controllo dei termini delle indagini e la verifica dell'esercizio dell'azione penale.",
+        "source": "art. 335 c.p.p., Registro delle notizie di reato.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "id": 1123,
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Come si configura il rapporto tra pubblico ministero e polizia giudiziaria nelle indagini preliminari, alla luce dell'art. 327 c.p.p. e dell'art. 109 Cost.?",
+        "options": {
+            "A": "La polizia giudiziaria è totalmente autonoma rispetto al pubblico ministero e non ha vincoli funzionali verso di lui.",
+            "B": "La polizia giudiziaria agisce solo su ordine scritto del giudice, senza alcuna iniziativa propria.",
+            "C": "Il pubblico ministero dirige le indagini e dispone direttamente della polizia giudiziaria, alla quale spettano anche attività di iniziativa purché non in contrasto con le sue direttive.",
+            "D": "Il rapporto è di mera collaborazione facoltativa senza obblighi di obbedienza alle direttive del pubblico ministero, ogni parte agisce di propria iniziativa, poi si fa un resoconto di tutte le indagini effettuate."
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 327 c.p.p., in coerenza con l'art. 109 Cost., prevede che il pubblico ministero diriga le indagini disponendo direttamente della polizia giudiziaria, la quale continua a svolgere attività anche di iniziativa nei limiti e nel rispetto delle direttive ricevute.",
+        "source": "art. 327 c.p.p. e richiamo all'art. 109 Cost.",
+        "note_aggiornamento": "VERIFICATO - Corretto"
     }
 ]

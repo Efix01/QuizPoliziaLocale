@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Sparkles, BookOpen, FileQuestion, Heart } from 'lucide-react';
 import './WhatsNewModal.css';
 
-const VERSION_KEY = 'whats_new_v7_sanzioni_2025';
+const VERSION_KEY = 'whats_new_v8_penale_2025';
 
 const WhatsNewModal: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -38,20 +38,20 @@ const WhatsNewModal: React.FC = () => {
         {
             icon: <BookOpen size={24} />,
             color: '#10B981', // Green for study material
-            title: "Nuova Lezione: Sistema Sanzionatorio",
-            description: "Tutto sulle sanzioni ambientali (D.Lgs. 152/2006). Focus su Art. 255 (Abbandono) e 256 (Gestione illecita)."
+            title: "Manuale Diritto Penale Aggiornato",
+            description: "Revisione completa con Riforma Nordio (abrogazione abuso d'ufficio) e L. 82/2025 (reati contro gli animali)."
         },
         {
             icon: <FileQuestion size={24} />,
             color: '#3B82F6', // Blue for quizzes
-            title: 'Io mi stò impegnando per te!!, oltre 120 Nuovi Quiz!',
-            description: 'Mettiti alla prova su Sanzioni, Rifiuti, Incendi e Codice Penale. Database super aggiornato! 🚀'
+            title: '+40 Nuovi Quiz Penali',
+            description: 'Le cose si fanno serie!! (per menti forti) Nuovi quiz su procedura penale, denunce, indagini preliminari e reati ambientali. Mettiti alla prova! 🚀'
         },
         {
             icon: <Heart size={24} />,
             color: '#EC4899', // Pink for love/luck
             title: 'Buono Studio!!!',
-            description: 'La tua costanza ti premierà. Continua così.! 💪'
+            description: 'Studia,ripassa,studia. Continua così! 💪'
         }
     ];
 
