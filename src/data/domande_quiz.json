@@ -9565,14 +9565,14 @@
         "category": "Incendi Boschivi (L. 353/2000)",
         "question": "La violazione del divieto di caccia su aree percorse dal fuoco comporta una sanzione amministrativa che va da:",
         "options": {
-            "A": "€ 1.032,91 a € 10.329,13",
+            "A": "€ 206,58 a € 413,16",
             "B": "€ 30,98 a € 61,97",
-            "C": "€ 500 a € 1.000",
-            "D": "€ 206,58 a € 413,16"
+            "C": "€ 300 a € 600",
+            "D": "€ 500 a € 1.000"
         },
-        "correct_answer": "D",
-        "explanation": "L'articolo 10, comma 5, punisce l'esercizio venatorio nelle zone vincolate con una sanzione amministrativa compresa tra 206,58 e 413,16 euro.",
-        "source": "Art. 10, comma 5, L. 353/2000"
+        "correct_answer": "C",
+        "explanation": "L'art. 10, comma 3, della Legge 353/2000 (come modificato dal D.L. 120/2021 convertito in L. 155/2021) stabilisce che la trasgressione al divieto di caccia sui soprassuoli percorsi dal fuoco è punita con una sanzione amministrativa da 300 a 600 euro.",
+        "source": "Art. 10, comma 3, L. 353/2000 (mod. L. 155/2021)"
     },
     {
         "id": 685,
