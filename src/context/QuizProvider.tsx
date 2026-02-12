@@ -75,7 +75,7 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
                             loadedStats = localS;
                         }
 
-                    } catch (error) {
+                    } catch {
                         // Fallback to local on Firestore error
                         loadedProgress = getSafeItem('forestali_progress', true) || {};
                         loadedStats = getSafeItem('forestali_stats', true) || INITIAL_STATS;

@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
+import { LoginSchema, RegisterSchema } from '../context/AuthProvider'; // Import schemas
 import { Mail, Lock, User, ArrowLeft, Eye, EyeOff, ArrowRight, AlertCircle, Check } from 'lucide-react';
 import './Login.css';
 
@@ -28,20 +29,25 @@ const Login: React.FC = () => {
     const validateForm = useCallback(() => {
         const errors: { email?: string; password?: string; name?: string } = {};
 
-        if (isRegister && !displayName.trim()) {
-            errors.name = 'Inserisci il tuo nome';
-        }
-
-        if (!email.trim()) {
-            errors.email = 'Inserisci la tua email';
-        } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-            errors.email = 'Inserisci un\'email valida';
-        }
-
-        if (!password) {
-            errors.password = 'Inserisci la password';
-        } else if (isRegister && password.length < 6) {
-            errors.password = 'Minimo 6 caratteri';
+        if (isRegister) {
+            const result = RegisterSchema.safeParse({ email, password, displayName });
+            if (!result.success) {
+                result.error.issues.forEach(issue => {
+                    const path = issue.path[0] as string;
+                    if (path === 'email') errors.email = issue.message;
+                    if (path === 'password') errors.password = issue.message;
+                    if (path === 'displayName') errors.name = issue.message;
+                });
+            }
+        } else {
+            const result = LoginSchema.safeParse({ email, password });
+            if (!result.success) {
+                result.error.issues.forEach(issue => {
+                    const path = issue.path[0] as string;
+                    if (path === 'email') errors.email = issue.message;
+                    if (path === 'password') errors.password = issue.message;
+                });
+            }
         }
 
         setFieldErrors(errors);

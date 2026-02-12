@@ -15,12 +15,12 @@ import { auth, googleProvider } from '../firebase';
 import { AuthContext, type AuthContextType } from './AuthContext';
 
 // Schema di validazione Zod
-const LoginSchema = z.object({
+export const LoginSchema = z.object({
     email: z.string().email('Email non valida'),
     password: z.string().min(6, 'La password deve avere almeno 6 caratteri')
 });
 
-const RegisterSchema = LoginSchema.extend({
+export const RegisterSchema = LoginSchema.extend({
     displayName: z.string().min(2, 'Il nome deve avere almeno 2 caratteri')
 });
 
