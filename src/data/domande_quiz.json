@@ -9465,16 +9465,16 @@
     {
         "id": 677,
         "category": "Incendi Boschivi (L. 353/2000)",
-        "question": "A quale sanzione è soggetto chi viola il divieto di pascolo su un'area percorsa dal fuoco?",
+        "question": "A quale sanzione amministrativa è soggetto chi viola il divieto di pascolo su un'area percorsa dal fuoco per ogni capo di bestiame (bovino o equino)?",
         "options": {
-            "A": "Una sanzione da € 206,58 a € 413,16 per ogni capo.",
-            "B": "Una sanzione da € 30,98 a € 61,97 per ogni capo.",
-            "C": "L'arresto da 1 a 6 mesi.",
-            "D": "Una sanzione fissa di € 100 per l'intera mandria."
+            "A": "Da € 206,58 a € 413,16",
+            "B": "Da € 45,00 a € 90,00",
+            "C": "Da € 9,00 a € 18,00",
+            "D": "Una sanzione fissa di € 100"
         },
         "correct_answer": "B",
-        "explanation": "L'articolo 10, comma 4, specifica una sanzione amministrativa da 30,98 a 61,97 euro per ogni capo di bestiame sorpreso a pascolare nelle aree vincolate.",
-        "source": "Art. 10, comma 4, L. 353/2000"
+        "explanation": "L'articolo 10, comma 4, come modificato dalla L. 155/2021, stabilisce una sanzione da 45 a 90 euro per ogni capo bovino o equino e da 9 a 18 euro per ogni capo ovino o caprino.",
+        "source": "Art. 10, comma 4, L. 353/2000 (mod. L. 155/2021)"
     },
     {
         "id": 678,
