@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Sparkles, BookOpen, FileQuestion, Heart } from 'lucide-react';
 import './WhatsNewModal.css';
 
-const VERSION_KEY = 'whats_new_v8_penale_2025';
+const VERSION_KEY = 'whats_new_v9_limit_50_2026';
 
 const WhatsNewModal: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -37,21 +37,21 @@ const WhatsNewModal: React.FC = () => {
     const features = [
         {
             icon: <BookOpen size={24} />,
-            color: '#10B981', // Green for study material
-            title: "Manuale Diritto Penale Aggiornato",
-            description: "Revisione completa con Riforma Nordio (abrogazione abuso d'ufficio) e L. 82/2025 (reati contro gli animali)."
+            color: '#10B981', // Green
+            title: "Su Vostre richieste,Limite Quiz Argomenti Aumentato! 🚀",
+            description: "A grande richiesta, ora puoi affrontare fino a 50 domande per sessione in ogni argomento! Mettiti alla prova con sessioni più intense."
         },
         {
             icon: <FileQuestion size={24} />,
-            color: '#3B82F6', // Blue for quizzes
-            title: '+40 Nuovi Quiz Penali',
-            description: 'Le cose si fanno serie!! (per menti forti) Nuovi quiz su procedura penale, denunce, indagini preliminari e reati ambientali. Mettiti alla prova! 🚀'
+            color: '#3B82F6', // Blue
+            title: '+24 Nuovi Quiz Penali e 40 di Botanica',
+            description: 'Abbiamo aggiunto nuovi quiz su "Diritto Penale e Procedura Penale" (indagini, perquisizioni, armi). Il database continua a crescere!'
         },
         {
             icon: <Heart size={24} />,
-            color: '#EC4899', // Pink for love/luck
+            color: '#EC4899', // Pink
             title: 'Buono Studio!!!',
-            description: 'Studia,ripassa,studia. Continua così! 💪'
+            description: 'Continua a studiare e ripassare. La preparazione è la chiave per il successo! 💪'
         }
     ];
 

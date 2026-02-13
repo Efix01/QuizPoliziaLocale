@@ -22,7 +22,7 @@ export const useQuizSession = () => {
         if (requestedCount) {
             questionCount = requestedCount;
         } else if (categoryFilter) {
-            questionCount = 30;
+            questionCount = 50;
         }
         // Daily Challenge Cap enforcement
         if (categoryFilter === 'Sfida del Giorno') {

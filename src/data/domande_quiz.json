@@ -15757,5 +15757,341 @@
         "explanation": "L'art. 327 c.p.p., in coerenza con l'art. 109 Cost., prevede che il pubblico ministero diriga le indagini disponendo direttamente della polizia giudiziaria, la quale continua a svolgere attività anche di iniziativa nei limiti e nel rispetto delle direttive ricevute.",
         "source": "art. 327 c.p.p. e richiamo all'art. 109 Cost.",
         "note_aggiornamento": "VERIFICATO - Corretto"
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Qual è la principale funzione delle indagini preliminari secondo l'art. 326 c.p.p.?",
+        "options": {
+            "A": "Accertare la responsabilità penale oltre ogni ragionevole dubbio",
+            "B": "Acquisire gli elementi necessari per le determinazioni del PM sull'esercizio dell'azione penale",
+            "C": "Definire la misura della pena da applicare all'imputato a secondo della gravità dell’azione penale effettuata dal colpevole",
+            "D": "Verificare la regolarità formale degli atti amministrativi connessi al reato"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 326 c.p.p. stabilisce che le indagini preliminari sono dirette ad acquisire gli elementi necessari per le determinazioni del Pubblico Ministero in ordine all'esercizio dell'azione penale.",
+        "source": "Art. 326 c.p.p.",
+        "id": 1124
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Chi dirige le indagini preliminari e dispone direttamente della polizia giudiziaria ai sensi dell'art. 327 c.p.p.?",
+        "options": {
+            "A": "Il Giudice per le indagini preliminari",
+            "B": "Il Presidente del Tribunale",
+            "C": "Il Pubblico Ministero",
+            "D": "Il Questore o il Comandante del Corpo di appartenenza"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 327 c.p.p. prevede che il Pubblico Ministero dirige le indagini e disponedirettamente della polizia giudiziaria, in attuazione dell'art. 109 Cost.",
+        "source": "Art. 327 c.p.p.",
+        "id": 1125
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Che cosa consente all'agente CFVA l'art. 349 c.p.p. in caso di rifiuto di fornire le proprie generalità da parte di un soggetto controllato?",
+        "options": {
+            "A": "Applicare immediatamente una misura cautelare personale",
+            "B": "Accompagnare il soggetto negli uffici per l'identificazione per un tempo determinato",
+            "C": "Irrogare direttamente una pena pecuniaria sostitutiva",
+            "D": "Sospendere ogni accertamento sino all'arrivo del difensore che è obbligato a presentarsi entro le 24/48 ore"
+        },
+        "correct_answer": "B",
+        "explanation": "L' art. 349 c.p.p. consente l'accompagnamento del soggetto negli uffici di polizia per l'identificazione quando questi rifiuti di dare le proprie generalità o non possa provarle.",
+        "source": "Art. 349 c.p.p.",
+        "id": 1126
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Qual è la durata massima ordinaria dell'accompagnamento per identificazione previstodall'art. 349 c.p.p.?",
+        "options": {
+            "A": "6 ore, senza proroghe",
+            "B": "12 ore, con possibilità eccezionale di proroga fino a 24 ore",
+            "C": "24 ore, sempre prorogabili di altre 24",
+            "D": "48 ore, con convalida del Pubblico Ministero"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 349 c.p.p. indica che l'accompagnamento non può superare 12 ore,prorogabili eccezionalmente fino a 24 ore previa comunicazione al Pubblico Ministero.",
+        "source": "Art. 349 c.p.p.",
+        "id": 1127
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Prima di assumere sommarie informazioni dall'indagato, cosa deve fare l'ufficiale di PG ai sensi dell'art. 350 c.p.p.?",
+        "options": {
+            "A": "Informarlo esclusivamente dell'identità del Pubblico Ministero procedente",
+            "B": "Invitarlo a nominare un difensore e avvertirlo della facoltà di non rispondere",
+            "C": "Spiegargli le ragioni etiche dell'indagine in corso, spiegare quali sono le sue responsabilità",
+            "D": "Chiedergli di firmare una dichiarazione di responsabilità"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 350 c.p.p., richiamando l'art. 64 c.p.p., impone di invitare l'indagato anominare un difensore e di avvertirlo che ha facoltà di non rispondere.",
+        "source": "Art. 350 c.p.p.; Art. 64 c.p.p.",
+        "id": 1128
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Chi può essere sentito dalla polizia giudiziaria a sommarie informazioni ai sensi dell'art. 351 c.p.p.?",
+        "options": {
+            "A": "Solo la persona offesa dal reato",
+            "B": "Esclusivamente i pubblici ufficiali presenti al fatto nell’ immediatezza dei fatti",
+            "C": "Chiunque possa riferire circostanze utili ai fini delle indagini",
+            "D": "Solo l'indagato, senza difensore"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 351 c.p.p. prevede che la polizia giudiziaria assuma sommarie informazionidalle persone che possono riferire circostanze utili alle indagini.",
+        "source": "Art. 351 c.p.p.",
+        "id": 1129
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Entro quanto tempo deve essere trasmesso al Pubblico Ministero il verbale di perquisizione eseguita d'iniziativa dalla polizia giudiziaria ai sensi dell'art. 352 c.p.p.?",
+        "options": {
+            "A": "Entro 12 ore",
+            "B": "Entro 24 ore",
+            "C": "Entro 48 ore",
+            "D": "Entro 3 giorni"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 352 c.p.p. dispone che il verbale della perquisizione di iniziativa sia trasmessoal Pubblico Ministero entro 48 ore, per la relativa convalida.",
+        "source": "Art. 352 c.p.p.",
+        "id": 1130
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'art. 354 c.p.p., quale obbligo ha la polizia giudiziaria riguardo ai luoghi e alle cose pertinenti al reato prima dell'intervento del Pubblico Ministero?",
+        "options": {
+            "A": "Provvedere subito alla distruzione delle cose sequestrate",
+            "B": "Curare che le tracce e le cose pertinenti al reato siano conservate e che lo stato dei luoghi non venga mutato",
+            "C": "Consentire l'accesso ai luoghi a chiunque lo richieda, mantenendo gli organi di stampa a 10 m. dallo stato dei luoghi per poterlo fotografare",
+            "D": "Redigere immediatamente l'imputazione a carico dell'indagato"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 354, comma 1, c.p.p. impone alla polizia giudiziaria di conservare le tracce ele cose pertinenti al reato e di evitare modifiche dello stato dei luoghi prima dell'intervento delPubblico Ministero.",
+        "source": "Art. 354, comma 1 c.p.p.",
+        "id": 1131
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'art. 357 c.p.p., quale tra i seguenti atti della polizia giudiziaria richiedenecessariamente la redazione di un verbale?",
+        "options": {
+            "A": "Una semplice annotazione di servizio interna",
+            "B": "L'elaborazione di una valutazione personale sull'indagato",
+            "C": "Una perquisizione eseguita ai sensi dell'art. 352 c.p.p.",
+            "D": "La consultazione informale di una banca dati"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 357 c.p.p. stabilisce che degli atti che richiedono specifica documentazione,come perquisizioni e sequestri, debba essere redatto verbale.",
+        "source": "Art. 357 c.p.p.",
+        "id": 1132
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Qual è il termine ordinario per proporre querela, indicato dall'art. 339 c.p.p.?",
+        "options": {
+            "A": "Tre mesi dal giorno in cui la persona offesa ha avuto notizia del fatto",
+            "B": "Un anno dalla data del fatto",
+            "C": "Sei mesi dalla data di iscrizione nel registro delle notizie di reato",
+            "D": "Due anni dalla chiusura delle indagini preliminari"
+        },
+        "correct_answer": "A",
+        "explanation": "L'art. 339 c.p.p. prevede, come regola generale, il termine di tre mesi dal giorno incui la persona offesa ha avuto notizia del fatto per proporre querela.",
+        "source": "Art. 339 c.p.p.",
+        "id": 1133
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Che cos'è l'istanza di procedimento disciplinata dall'art. 341 c.p.p.?",
+        "options": {
+            "A": "Una particolare forma di querela per i reati di competenza del giudice di pace",
+            "B": "L'atto con cui la persona offesa chiede la sospensione del processo",
+            "C": "Un atto richiesto per alcuni reati commessi all'estero da o contro cittadini italiani",
+            "D": "Il provvedimento del GIP che apre le indagini preliminari"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 341 c.p.p. disciplina l'istanza di procedimento, richiesta per taluni reaticommessi all'estero da o contro cittadini italiani.",
+        "source": "Art. 341 c.p.p.",
+        "id": 1134
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Secondo l'art. 342 c.p.p., chi può formulare la richiesta di procedimento prevista dalla norma?",
+        "options": {
+            "A": "Il Giudice per le indagini preliminari",
+            "B": "Il Ministro della Giustizia",
+            "C": "La polizia giudiziaria",
+            "D": "La persona offesa dal reato"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 342 c.p.p. prevede che la richiesta di procedimento sia proposta dal Ministrodella Giustizia per specifiche categorie di reati.",
+        "source": "Art. 342 c.p.p.",
+        "id": 1135
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Qual è la finalità dell'autorizzazione a procedere disciplinata dagli artt. 343-344 c.p.p.?",
+        "options": {
+            "A": "Consentire al PM di prorogare i termini delle indagini",
+            "B": "Rimuovere ostacoli derivanti da immunità o prerogative di determinati soggetti",
+            "C": "Autorizzare l'uso di intercettazioni telefoniche",
+            "D": "Permettere alla polizia giudiziaria di svolgere controlli amministrativi e fiscali su persone pericolose"
+        },
+        "correct_answer": "B",
+        "explanation": "Gli artt. 343-344 c.p.p. riguardano l'autorizzazione a procedere, necessaria persuperare immunità o prerogative connesse a determinate cariche o funzioni.",
+        "source": "Artt. 343-344 c.p.p.",
+        "id": 1136
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Ai sensi dell'art. 333 c.p.p., la denuncia presentata dal privato cittadino è:",
+        "options": {
+            "A": "Sempre obbligatoria per qualsiasi reato",
+            "B": "Facoltativa, salvo casi particolari previsti dalla legge",
+            "C": "Valida solo se resa davanti al giudice per le indagini preliminari",
+            "D": "Inammissibile se scritta"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 333 c.p.p. prevede che la denuncia del privato sia di regola facoltativa, salvocasi specificamente previsti (ad es. per alcuni reati gravi).",
+        "source": "Art. 333 c.p.p.",
+        "id": 1137
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Qual è la conseguenza per il pubblico ufficiale che omette di denunciare un reato procedibile d'ufficio appreso nell'esercizio delle funzioni, in base all'art. 331 c.p.p. e all'art. 361c.p.?",
+        "options": {
+            "A": "Nessuna conseguenza, trattandosi di facoltà procedibile d’ufficio  il pubblico ufficiale può effettuare una scelta sulla base della sua esperienza",
+            "B": "La sola responsabilità disciplinare",
+            "C": "La responsabilità per il reato di omessa denuncia da parte del pubblico ufficiale",
+            "D": "La nullità degli atti compiuti successivamente dalla PG"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 331 c.p.p. impone l'obbligo di denuncia ai pubblici ufficiali; l'art. 361 c.p.sanziona penalmente l'omessa denuncia di reato procedibile d'ufficio.",
+        "source": "Art. 331 c.p.p.; Art. 361 c.p.",
+        "id": 1138
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Quale affermazione è corretta in tema di segreto d'indagine, ai sensi dell'art. 329 c.p.p.,per un agente CFVA?",
+        "options": {
+            "A": "Il segreto riguarda solo le intercettazioni telefoniche",
+            "B": "Può parlare liberamente degli atti con chiunque dopo 24 ore dal compimento dell’ accertamento, tranne quando  vi sono coinvolti minori",
+            "C": "Non può rivelare ad estranei il contenuto degli atti coperti da segreto, pena responsabilità ex art. 326 c.p.",
+            "D": "Può fornire a giornalisti copia dei verbali se non ancora depositati"
+        },
+        "correct_answer": "C",
+        "explanation": "La violazione del segreto sugli atti d'indagine ex art. 329 c.p.p. integra il reato dirivelazione di segreto d'ufficio previsto dall'art. 326 c.p.",
+        "source": "Art. 329 c.p.p.; Art. 326 c.p.",
+        "id": 1139
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Che differenza vi è tra rinuncia alla querela e remissione della querela, secondo gli artt.338 e 340 c.p.p.?",
+        "options": {
+            "A": "La rinuncia estingue il reato, la remissione no",
+            "B": "La rinuncia avviene prima della proposizione della querela, la remissione dopo",
+            "C": "La rinuncia è atto del PM, la remissione atto del giudice",
+            "D": "Non vi è alcuna differenza giuridica, tutte e due estinguono automaticamente il reato"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 338 c.p.p. regola la rinuncia, che interviene prima della proposizione dellaquerela; l'art. 340 c.p.p. disciplina la remissione, che avviene dopo che la querela è stata proposta.",
+        "source": "Art. 338 c.p.p.; Art. 340 c.p.p.",
+        "id": 1140
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "In base all'art. 55 c.p.p., quale tra le seguenti è una funzione tipica della polizia giudiziaria?",
+        "options": {
+            "A": "Emanare ordinanze sindacali in materia di sicurezza urbana",
+            "B": "Impedire che i reati vengano portati a conoscenza dell'autorità giudiziaria",
+            "C": "Assicurare le fonti di prova e ricercare gli autori dei reati",
+            "D": "Determinare la pena da irrogare all'imputato"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 55 c.p.p. indica che la polizia giudiziaria deve, tra l'altro, assicurare le fonti diprova e ricercare gli autori dei reati.",
+        "source": "Art. 55 c.p.p.",
+        "id": 1141
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Quale tra le seguenti informazioni deve essere indicata in un verbale di PG, ai sensidell'art. 357 c.p.p.?",
+        "options": {
+            "A": "Il parere personale del redattore sulla colpevolezza",
+            "B": "Luogo, data, ora, persone intervenute e descrizione delle attività svolte",
+            "C": "Il pronostico sull'esito del processo",
+            "D": "La sola qualificazione giuridica del fatto"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 357 c.p.p. richiede che il verbale indichi luogo, data, ora, persone intervenutee una descrizione fedele delle attività compiute.",
+        "source": "Art. 357 c.p.p.",
+        "id": 1142
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Cosa prevede l'art. 651 c.p. in relazione al rifiuto d'indicazioni sulla propria identitàpersonale?",
+        "options": {
+            "A": "È una mera infrazione amministrativa priva di rilievo penale",
+            "B": "È punibile solo se il soggetto ha precedenti penali",
+            "C": "È reato se la richiesta proviene da un pubblico ufficiale nell'esercizio delle sue funzioni e ilsoggetto rifiuta di dare indicazioni sulla propria identità",
+            "D": "È punibile solo se avviene in un luogo privato"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 651 c.p. punisce chi, richiesto da un pubblico ufficiale nell'esercizio delle suefunzioni, rifiuta di fornire le indicazioni sulla propria identità personale.",
+        "source": "Art. 651 c.p.",
+        "id": 1143
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "In che modo l'art. 697 c.p. rileva per i controlli CFVA su armi nei luoghi rurali?",
+        "options": {
+            "A": "Punisce il porto di arma regolarmente denunciata",
+            "B": "Riguarda la detenzione di armi o munizioni non denunciate all'autorità di pubblica sicurezza",
+            "C": "Si applica solo alle armi bianche",
+            "D": "Si riferisce unicamente alle armi in dotazione di servizio, alla loro tenuta e alla manutenzione delle armerie nelle Stazioni Forestali"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 697 c.p. punisce chi detiene armi o munizioni senza averne fatto denunciaall'autorità di pubblica sicurezza nei termini di legge.",
+        "source": "Art. 697 c.p.",
+        "id": 1144
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Qual è la condotta tipica del reato previsto dall'art. 699 c.p. (porto abusivo di armi)?",
+        "options": {
+            "A": "Trasportare un'arma smontata in valigia",
+            "B": "Vendere un'arma con regolare autorizzazione",
+            "C": "Portare fuori dalla propria abitazione un'arma per la quale è richiesta licenza, senza averne titolo o al di fuori dei casi consentiti",
+            "D": "Conservare un'arma scarica in casa"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 699 c.p. punisce chi porta un'arma fuori della propria abitazione o pertinenze,quando è richiesta licenza, senza averne titolo o fuori dalle condizioni consentite.",
+        "source": "Art. 699 c.p.",
+        "id": 1145
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Qual è l'oggetto di tutela principale dell'art. 727-bis c.p. (uccisione, distruzione, cattura di specie protette)?",
+        "options": {
+            "A": "La dignità delle forze di polizia",
+            "B": "Tutela esclusivamente la proprietà privata sugli animali domestici d’affezione",
+            "C": "La conservazione delle specie animali e vegetali selvatiche protette",
+            "D": "Solo la sicurezza pubblica urbana"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 727-bis c.p. tutela la conservazione delle specie animali e vegetali selvaticheprotette, sanzionando uccisione, cattura, detenzione o distruzione illecita.",
+        "source": "Art. 727-bis c.p.",
+        "id": 1146
+    },
+    {
+        "category": "Diritto Penale e Procedura Penale",
+        "question": "Per un agente CFVA, quale combinazione normativa governa l'obbligo di riferire al Pubblico Ministero la notizia di reato ambientalmente rilevante acquisita in servizio?",
+        "options": {
+            "A": "Art. 55 c.p.p. e Art. 650 c.p.",
+            "B": "Art. 347 c.p.p. e Art. 331 c.p.p.",
+            "C": "Art. 132 c.p. e Art. 452-bis c.p.",
+            "D": "Art. 349 c.p.p. e Art. 697 c.p."
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 331 c.p.p. impone ai pubblici ufficiali la denuncia dei reati d'ufficio; per la polizia giudiziaria l'obbligo si specifica nell'art. 347 c.p.p. (comunicazione della notizia di reato).",
+        "source": "Art. 331 c.p.p.; Art. 347 c.p.p.",
+        "id": 1147
     }
 ]
