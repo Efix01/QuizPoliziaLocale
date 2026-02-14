@@ -1509,7 +1509,7 @@
         },
         "correct_answer": "D",
         "explanation": "Chiunque realizza o gestisce una discarica non autorizzata è punito con la pena della reclusione da uno a cinque anni; se la discarica è destinata, anche in parte, allo smaltimento di rifiuti pericolosi, si applica la reclusione da un anno e sei mesi a cinque anni e sei mesi. Si tratta oggi di un delitto, in seguito alle modifiche introdotte dal D.L. 8 agosto 2025, n. 116, convertito dalla L. 3 ottobre 2025, n. 147.",
-        "source": "D.Lgs. 152/2006, art. 256, comma 3 (come modificato dal D.L. 8 agosto 2025, n. 116, conv. in L. 3 ottobre 2025, n. 147)"
+        "source": "D.Lgs. 152/2006, art. 256, comma 3 (testo coordinato come modificato dal D.L. 8 agosto 2025, n. 116, conv. in L. 3 ottobre 2025, n. 147) - Normattiva agg. 2025"
     },
     {
         "id": 109,
@@ -1750,6 +1750,20 @@
         "source": "L.R. 4/1994, Art. 15"
     },
     {
+        "id": 125,
+        "category": "Legislazione Forestale",
+        "question": "Secondo l'art. 20 della L.R. 4/1994, qual è la circonferenza minima che una pianta di sughera deve aver raggiunto per poter effettuare la prima estrazione (demaschiatura)?",
+        "options": {
+            "A": "65 cm misurati a terra",
+            "B": "50 cm misurati a 1,50 m da terra",
+            "C": "55 cm misurati a 1,00 m da terra",
+            "D": "60 cm misurati a 1,30 m da terra"
+        },
+        "correct_answer": "D",
+        "explanation": "L'art. 20 della L.R. 4/1994 stabilisce che la demaschiatura è consentita solo su piante che abbiano raggiunto una circonferenza non inferiore a cm 60 misurata sopra scorza a metri 1,30 da terra.",
+        "source": "L.R. 4/1994, Art. 20"
+    },
+    {
         "id": 126,
         "category": "Legislazione Forestale",
         "question": "È possibile estrarre il sughero prima dei 10 anni (anticipo del turno)?",
@@ -1760,8 +1774,8 @@
             "D": "Sì, pagando una sovrattassa"
         },
         "correct_answer": "A",
-        "explanation": "Il turno decennale è la regola. Le deroghe sono concesse solo dall'autorità forestale per casi eccezionali (es. piante da abbattere per opere pubbliche o danneggiate).",
-        "source": "L.R. 4/1994, Art. 17"
+        "explanation": "Il turno decennale è la regola (art. 22). Tuttavia, l'art. 24 prevede che l'estrazione anticipata possa essere autorizzata dall'Ispettorato competente solo per ragioni eccezionali (es. incendi, ricostituzione boschiva, piani di assestamento) per il ripristino della produttività.",
+        "source": "L.R. 4/1994, Artt. 22 e 24"
     },
     {
         "id": 127,
@@ -2124,8 +2138,8 @@
             "D": "Sì, ma solo per le piante con circonferenza superiore a 1 metro"
         },
         "correct_answer": "C",
-        "explanation": "L'art. 19 vieta espressamente l'uso di ramponi o scarpe chiodate per salire sulla pianta, in quanto danneggiano il cambio e la scorza.",
-        "source": "L.R. 4/1994, Art. 19"
+        "explanation": "L'uso di ramponi o scarpe chiodate per salire sulla pianta è assolutamente vietato durante le operazioni di estrazione, in quanto tali strumenti provocano ferite che danneggiano il cambio e facilitano l'ingresso di patogeni.",
+        "source": "L.R. Sardegna n. 4/1994 (art. 22 e ss.) / Prescrizioni di Massima e Polizia Forestale (PMPF)"
     },
     {
         "id": 153,
@@ -2368,16 +2382,16 @@
     {
         "id": 170,
         "category": "Legislazione Forestale",
-        "question": "L'estrazione del sughero sui rami è consentita?",
+        "question": "Secondo la normativa forestale sarda (L.R. 4/1994 e PMPF), a quale condizione è consentita la prima estrazione del sughero (demaschiatura)?",
         "options": {
-            "A": "No, è vietata su tutti i rami",
-            "B": "Sì, su tutti i rami indistintamente",
-            "C": "Sì, ma solo sui rami che abbiano raggiunto una circonferenza di almeno 35 cm",
-            "D": "Sì, solo se i rami sono secchi"
+            "A": "Su piante di qualsiasi dimensione, purché sane",
+            "B": "Solo su piante con circonferenza superiore a 60 cm misurata a 1,30 m da terra",
+            "C": "Solo su rami con circonferenza di almeno 35 cm",
+            "D": "Su piante di almeno 5 anni di età"
         },
-        "correct_answer": "C",
-        "explanation": "L'art. 16 permette l'estrazione sui rami principali, purché abbiano dimensioni sufficienti (circ. min 35 cm) per sopportare lo stress.",
-        "source": "L.R. 4/1994, Art. 16 (Dettaglio misure)"
+        "correct_answer": "B",
+        "explanation": "La prima decortica (demaschiatura) è consentita solo su piante che abbiano raggiunto una circonferenza superiore a 60 cm, misurata a metri 1,30 da terra, per garantire lo sviluppo fisiologico dell'albero.",
+        "source": "L.R. Sardegna n. 4/1994 / Prescrizioni di Massima e Polizia Forestale"
     },
     {
         "id": 171,
@@ -3670,16 +3684,16 @@
     {
         "id": 263,
         "category": "Fauna (L. 157/1992)",
-        "question": "In base alla legge 23/1998 della Regione Sardegna, l'addestramento di cani sui terreni non soggetti a vincoli venatori può essere effettuato:",
+        "question": "In base all'art. 71 della L.R. 23/1998 (Regione Sardegna), l'addestramento di cani sui terreni non soggetti a vincoli venatori può essere effettuato:",
         "options": {
-            "A": "Dal quarantacinquesimo giorno precedente l'apertura generale della caccia, con esclusione dei tre giorni precedenti l'apertura della stessa",
-            "B": "Dal trentesimo giorno precedente l'apertura generale della caccia, con esclusione dei cinque giorni precedenti l'apertura della stessa",
-            "C": "Dal trentesimo giorno precedente l'apertura generale della caccia, con esclusione dei due giorni precedenti l'apertura della stessa",
-            "D": "Dal quarantacinquesimo giorno precedente l'apertura generale della caccia, con esclusione dei due giorni precedenti l'apertura della stessa"
+            "A": "Dal quarantacinquesimo giorno precedente l'apertura generale della caccia",
+            "B": "Dal trentesimo giorno precedente l'apertura generale della caccia, con esclusione dei giorni stabiliti dal calendario venatorio (solitamente i giorni immediatamente precedenti l'apertura)",
+            "C": "Sempre, tranne il martedì e il venerdì",
+            "D": "Solo nelle zone Z.A.C. autorizzate"
         },
-        "correct_answer": "C",
-        "explanation": "L'art. 44 della L.R. 23/98 (e successivi calendari venatori) fissa il periodo di addestramento cani a partire da 30 giorni prima dell'apertura, escludendo i giorni immediatamente precedenti.",
-        "source": "L.R. 23/1998"
+        "correct_answer": "B",
+        "explanation": "L'art. 71 della L.R. 23/1998 stabilisce che l'addestramento è consentito dal trentesimo giorno precedente l'apertura generale, salvo i divieti (giorni di silenzio venatorio) fissati dal calendario annuale.",
+        "source": "L.R. Sardegna n. 23/1998, Art. 71"
     },
     {
         "id": 264,
@@ -4008,14 +4022,14 @@
         "category": "Legislazione Forestale",
         "question": "La misurazione della circonferenza di 60 cm per la demaschiatura deve essere effettuata:",
         "options": {
-            "A": "A metà altezza del fusto",
+            "A": "A metà altezza del fusto (includendo il sughero)",
             "B": "Alla base della pianta",
             "C": "Sopra scorza (includendo il sughero)",
             "D": "Sotto scorza (sul legno nudo)"
         },
         "correct_answer": "C",
         "explanation": "La norma specifica 'misurata sopra scorza', in quanto la misurazione sotto scorza richiederebbe di danneggiare la pianta prima di sapere se è estraibile.",
-        "source": "L.R. 4/1994, Art. 15"
+        "source": "L.R. 4/1994, Art. 20"
     },
     {
         "id": 288,
@@ -4986,7 +5000,7 @@
     {
         "id": 357,
         "category": "Legislazione Forestale",
-        "question": "La raccolta dei prodotti secondari del bosco (funghi, tartufi, erbe officinali) disciplinata dall'art. 22:",
+        "question": "Secondo la Legge Forestale della Sardegna (L.R. 8/2016), la raccolta dei prodotti del bosco non legnosi (funghi, tartufi, erbe officinali):",
         "options": {
             "A": "Può essere regolamentata dai Comuni o dalle Unioni di Comuni, che possono prevedere permessi a pagamento",
             "B": "È sempre libera e gratuita per tutti i cittadini comunitari",
@@ -4994,8 +5008,8 @@
             "D": "È gestita esclusivamente dall'Agenzia Forestas"
         },
         "correct_answer": "A",
-        "explanation": "La legge dà facoltà agli enti locali di regolamentare la raccolta, anche istituendo ticket, per garantire la sostenibilità e la ricaduta economica locale.",
-        "source": "L.R. 8/2016, Art. 22"
+        "explanation": "L'art. 15, comma 3, della L.R. 8/2016 stabilisce che i Comuni o le Unioni di Comuni possono regolamentare la raccolta di prodotti secondari nel proprio territorio, istituendo anche permessi a pagamento per garantirne la sostenibilità.",
+        "source": "L.R. 8/2016, Art. 15"
     },
     {
         "id": 358,
@@ -5993,7 +6007,7 @@
     },
     {
         "id": 429,
-        "category": "Legislazione Forestale",
+        "category": "Istituzionale (L.R. 26/1985)",
         "question": "Il Corpo può avanzare proposte di soluzione agli organi competenti in merito a quali problemi (Art. 1)?",
         "options": {
             "A": "Problemi sanitari del bestiame da allevamento",
@@ -6440,7 +6454,7 @@
     },
     {
         "id": 461,
-        "category": "Legislazione Forestale",
+        "category": "Istituzionale (L.R. 26/1985)",
         "question": "In relazione ai pascoli, quale funzione specifica è attribuita al Corpo dall'art. 1?",
         "options": {
             "A": "Vigilanza sui pascoli privati recintati",
@@ -6454,7 +6468,7 @@
     },
     {
         "id": 462,
-        "category": "Aree Protette (L. 394/1991)",
+        "category": "Istituzionale (L.R. 26/1985)",
         "question": "In merito alle aree protette, cosa tutela il Corpo secondo l'art. 1?",
         "options": {
             "A": "Parchi, riserve, biotopi ed altre aree di particolare interesse naturalistico e paesaggistico individuate con leggi o provvedimenti",
@@ -6468,7 +6482,7 @@
     },
     {
         "id": 463,
-        "category": "Botanica",
+        "category": "Legislazione Forestale",
         "question": "È consentito estrarre sughero da piante che non hanno raggiunto i 60 cm di circonferenza?",
         "options": {
             "A": "Sì, se serve per uso domestico",
@@ -9325,16 +9339,16 @@
     {
         "id": 667,
         "category": "Incendi Boschivi (L. 353/2000)",
-        "question": "Qual è la pena per chi cagiona colposamente (per negligenza o imprudenza) un incendio boschivo secondo l'art. 423-bis c.p.?",
+        "question": "Qual è la pena per chi cagiona colposamente (per negligenza o imprudenza) un incendio boschivo secondo l'art. 423-bis, comma 2, c.p.?",
         "options": {
-            "A": "La reclusione da 4 a 10 anni.",
-            "B": "La reclusione da 1 a 5 anni.",
+            "A": "La reclusione da 6 a 10 anni.",
+            "B": "La reclusione da 2 a 5 anni.",
             "C": "Solo una sanzione amministrativa.",
             "D": "L'arresto fino a 6 mesi."
         },
         "correct_answer": "B",
-        "explanation": "L'art. 423-bis del Codice Penale, introdotto dall'art. 11 della L. 353/2000, punisce l'incendio boschivo colposo con la reclusione da 1 a 5 anni.",
-        "source": "Art. 11, L. 353/2000"
+        "explanation": "L'art. 423-bis, comma 2, del Codice Penale (introdotto dalla L. 353/2000 e modificato dal D.L. 120/2021, conv. in L. 155/2021) punisce l'incendio boschivo colposo con la reclusione da 2 a 5 anni. Il D.L. 120/2021 ha innalzato il minimo edittale da 1 a 2 anni.",
+        "source": "Art. 423-bis, comma 2, c.p. (testo vigente dopo D.L. 120/2021, conv. in L. 155/2021)"
     },
     {
         "id": 668,
@@ -9899,16 +9913,16 @@
     {
         "id": 708,
         "category": "Reati Ambientali",
-        "question": "La violazione delle norme sul deposito temporaneo di rifiuti sanitari pericolosi per quantitativi NON superiori a 200 litri (art. 256, c. 6, TUA) costituisce:",
+        "question": "Chiunque effettua il deposito temporaneo presso il luogo di produzione di rifiuti sanitari pericolosi, con violazione delle disposizioni di cui all'art. 227, comma 1, lettera b), per quantitativi NON superiori a 200 litri (o quantità equivalenti), costituisce:",
         "options": {
             "A": "Un delitto punito con la reclusione.",
-            "B": "Un illecito amministrativo punito con sanzione pecuniaria.",
-            "C": "Una contravvenzione punita con l'arresto.",
+            "B": "Un illecito amministrativo punito con sanzione amministrativa pecuniaria.",
+            "C": "Una contravvenzione punita con l'arresto o con l'ammenda.",
             "D": "Un fatto non sanzionato dalla legge."
         },
         "correct_answer": "B",
-        "explanation": "L'art. 256, comma 6, TUA opera una distinzione cruciale in base al quantitativo: sotto i 200 litri, la violazione è un illecito amministrativo, non penale.",
-        "source": "Art. 256, comma 6, D.Lgs. 152/2006"
+        "explanation": "L'art. 256, comma 6, TUA prevede, in via generale, la contravvenzione (arresto da 3 mesi a 1 anno o ammenda da 2.600 a 26.000 euro) per il deposito temporaneo di rifiuti sanitari pericolosi effettuato in violazione dell'art. 227, c. 1, lett. b). Tuttavia, per quantitativi non superiori a 200 litri (o quantità equivalenti), il secondo periodo del comma 6 sostituisce la sanzione penale con una sanzione amministrativa pecuniaria da 2.600 a 15.500 euro.",
+        "source": "D.Lgs. 152/2006, art. 256, comma 6 (testo vigente, agg. Normattiva 07/10/2025)"
     },
     {
         "id": 709,
@@ -10385,8 +10399,8 @@
             "D": "L'allevamento intensivo"
         },
         "correct_answer": "B",
-        "explanation": "L'art. 672 c.p. punisce chi lascia liberi o non custodisce con le debite cautele animali pericolosi da lui posseduti, o ne affida la custodia a persona inesperta.",
-        "source": "Art. 672 c.p."
+        "explanation": "L'art. 672 c.p. punisce con sanzione amministrativa pecuniaria (da 25 a 258 euro) chi lascia liberi o non custodisce con le debite cautele animali pericolosi da lui posseduti, o ne affida la custodia a persona inesperta. La fattispecie è stata depenalizzata con la L. 689/1981.",
+        "source": "Art. 672 c.p. (testo vigente dopo depenalizzazione L. 689/1981)"
     },
     {
         "id": 743,
@@ -16569,5 +16583,551 @@
         "correct_answer": "B",
         "explanation": "L'Ammophila arenaria è la specie ingegnere delle dune mobili (dune bianche), fondamentale per il loro consolidamento geologico.",
         "source": "Dinamica costiera e Ingegneria naturalistica"
+    },
+    {
+        "id": 1182,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Secondo l'art. 1 della L.R. n. 26/1985, a quale organo della Regione è attribuita la dipendenza del Corpo forestale e di vigilanza ambientale?",
+        "options": {
+            "A": "All'Assessorato della Difesa dell'Ambiente",
+            "B": "Alla Direzione Generale della Protezione Civile",
+            "C": "Alla Presidenza della Regione",
+            "D": "All'Assessorato dell'Agricoltura e Riforma Agro-Pastorale"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 1, come modificato dalla L.R. n. 10/2021, stabilisce che la Direzione generale del Corpo forestale e di vigilanza ambientale è incardinata presso la Presidenza della Regione.",
+        "source": "L.R. 26/1985, art. 1 (modificato da L.R. 10/2021)"
+    },
+    {
+        "id": 1183,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Quale funzione, tra le seguenti, è espressamente attribuita al Corpo forestale dall'art. 1 della L.R. n. 26/1985 in materia di boschi?",
+        "options": {
+            "A": "La gestione commerciale del legname",
+            "B": "La tutela tecnica ed economica dei boschi",
+            "C": "L'esproprio dei terreni boschivi privati",
+            "D": "La vendita dei prodotti del sottobosco"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 1 elenca tra le funzioni del Corpo la 'tutela tecnica ed economica dei boschi'.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1184,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Ai sensi dell'art. 7 della L.R. n. 26/1985, quale qualifica possiede il personale appartenente al Corpo forestale e di vigilanza ambientale?",
+        "options": {
+            "A": "Solo agente di polizia giudiziaria",
+            "B": "Agente di pubblica sicurezza",
+            "C": "Pubblico ufficiale senza poteri di polizia",
+            "D": "Ausiliario di pubblica sicurezza"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 7 specifica che il personale esercita i compiti derivanti dalla qualifica di agente di pubblica sicurezza attribuita a termini del D.P.R. 6 maggio 1972, n. 297.",
+        "source": "L.R. 26/1985, art. 7"
+    },
+    {
+        "id": 1185,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "In relazione alla protezione civile, quale compito affida l'art. 1 della L.R. n. 26/1985 al Corpo forestale?",
+        "options": {
+            "A": "La direzione esclusiva di tutte le emergenze regionali",
+            "B": "Compiti di collaborazione nelle attività connesse",
+            "C": "La gestione amministrativa dei fondi per calamità",
+            "D": "Il comando dei Vigili del Fuoco in caso di alluvione"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 1 stabilisce che al Corpo sono affidati compiti di collaborazione nelle attività connesse alla protezione civile.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1186,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Quale delle seguenti attività di propaganda è prevista dall'art. 1 della L.R. n. 26/1985?",
+        "options": {
+            "A": "Propaganda turistica e alberghiera",
+            "B": "Propaganda venatoria e ittica",
+            "C": "Propaganda forestale e ambientale",
+            "D": "Propaganda agricola e zootecnica"
+        },
+        "correct_answer": "C",
+        "explanation": "Tra le funzioni elencate all'art. 1 vi è la 'propaganda forestale e ambientale'.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1187,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Secondo l'art. 7 della L.R. n. 26/1985, il personale del Corpo esercita le funzioni attribuite:",
+        "options": {
+            "A": "Indipendentemente dalla qualifica rivestita",
+            "B": "Nell'ambito della fascia funzionale di appartenenza",
+            "C": "Esclusivamente su delega del Presidente della Regione",
+            "D": "Solo se autorizzato dall'autorità giudiziaria"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 7 dispone che il personale esercita le funzioni 'nell'ambito della fascia funzionale di appartenenza'.",
+        "source": "L.R. 26/1985, art. 7"
+    },
+    {
+        "id": 1188,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Oltre alla tutela dei boschi, quale altra tutela specifica è prevista dall'art. 1 della L.R. n. 26/1985?",
+        "options": {
+            "A": "Tutela dei beni culturali e archeologici",
+            "B": "Tutela dei parchi, delle riserve, dei biotopi",
+            "C": "Tutela delle coste e del demanio marittimo statale",
+            "D": "Tutela delle infrastrutture viarie regionali"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 1 cita espressamente la 'tutela dei parchi, delle riserve, dei biotopi ed altre aree di particolare interesse naturalistico e paesaggistico'.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1189,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Il Corpo forestale e di vigilanza ambientale provvede alla difesa del suolo da cosa, secondo l'art. 1 della L.R. n. 26/1985?",
+        "options": {
+            "A": "Dall'inquinamento industriale",
+            "B": "Dall'erosione",
+            "C": "Dalla desertificazione",
+            "D": "Dall'urbanizzazione selvaggia"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 1 attribuisce al Corpo la funzione di 'difesa del suolo dall'erosione'.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1190,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Quale attività di controllo è specificamente menzionata all'art. 1 della L.R. n. 26/1985 riguardo al materiale forestale?",
+        "options": {
+            "A": "Controllo sulla produzione e commercio di semi e piantine",
+            "B": "Controllo sull'importazione di legname esotico",
+            "C": "Controllo sulla certificazione FSC del legno",
+            "D": "Controllo sui vivai ornamentali privati, sui prati e aiuole cittadine"
+        },
+        "correct_answer": "A",
+        "explanation": "L'art. 1 prevede il 'controllo sulla produzione e sul commercio di semi e piantine forestali'.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1191,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Le funzioni di vigilanza e controllo in materia di caccia e pesca rientrano nelle competenze del Corpo previste dall'art. 1?",
+        "options": {
+            "A": "Sì, esclusivamente per la caccia",
+            "B": "Sì, per entrambe le materie",
+            "C": "No, sono competenza delle Province",
+            "D": "Sì, ma solo per la pesca marittima"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 1 attribuisce al Corpo funzioni di 'vigilanza, prevenzione e repressione in materia di caccia, di pesca nelle acque interne e marittime'.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1192,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "A quale organo spetta determinare 'ogni altra azione per la difesa e tutela delle foreste' affidata al Corpo?",
+        "options": {
+            "A": "Alla legge o ai regolamenti regionali",
+            "B": "Esclusivamente ai Carabinieri forestali",
+            "C": "Ai singoli Comuni interessati",
+            "D": "Alle Comunità Montane"
+        },
+        "correct_answer": "A",
+        "explanation": "L'art. 1 prevede genericamente 'ogni altra azione per la difesa e tutela delle foreste' e rinvia a leggi e regolamenti per ulteriori attribuzioni.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1193,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "In quale ambito territoriale il Corpo esercita la vigilanza sulla pesca secondo l'art. 1 della L.R. n. 26/1985?",
+        "options": {
+            "A": "Solo nelle acque interne",
+            "B": "Solo nelle acque marittime territoriali",
+            "C": "Nelle acque interne e marittime",
+            "D": "Esclusivamente nei laghi artificiali"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 1 specifica la competenza in materia di pesca 'nelle acque interne e marittime'.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1194,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Quale tipologia di studi il Corpo può predisporre ai sensi dell'art. 1 della L.R. n. 26/1985?",
+        "options": {
+            "A": "Studi di mercato sul prezzo del legname e dell’esbosco dello stesso",
+            "B": "Studi sui problemi di interesse forestale e montano",
+            "C": "Studi geologici per l'apertura di cave",
+            "D": "Studi urbanistici per l'espansione edilizia"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 1 prevede la possibilità di predisporre 'studi sui problemi di interesse forestale e montano ai fini della difesa del suolo'.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1195,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "La competenza in materia di prevenzione e repressione degli incendi attribuita all'art. 1 riguarda:",
+        "options": {
+            "A": "Solo i boschi demaniali",
+            "B": "I boschi e le aree extraurbane",
+            "C": "Esclusivamente le aree urbane",
+            "D": "Solo i parchi nazionali"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 1 attribuisce competenze in materia di incendi 'nei boschi e nelle aree extraurbane'.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1196,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Il personale del Corpo Forestale della Sardegna ha funzioni di polizia giudiziaria?",
+        "options": {
+            "A": "No, ha solo funzioni amministrative",
+            "B": "Sì, limitatamente ai reati forestali",
+            "C": "Sì, secondo quanto previsto dal c.p.p. e leggi speciali",
+            "D": "Solo se autorizzato dal Prefetto caso per caso"
+        },
+        "correct_answer": "C",
+        "explanation": "Sebbene l'art. 7 citi esplicitamente la qualifica di PS, la funzione di polizia giudiziaria è implicita nelle 'funzioni tecniche e di polizia' richiamate e confermata dalla normativa statale e regionale vigente.",
+        "source": "L.R. 26/1985, artt. 1 e 7 (e normativa correlata c.p.p.)"
+    },
+    {
+        "id": 1197,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "La tutela dei beni silvo-pastorali prevista dall'art. 1 si riferisce specificamente ai beni di quali enti?",
+        "options": {
+            "A": "Esclusivamente della Regione",
+            "B": "Dei privati cittadini",
+            "C": "Dei comuni e degli altri enti pubblici",
+            "D": "Dello Stato e delle Forze Armate"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 1 menziona la 'tutela dei beni silvo-pastorali dei comuni e degli altri enti pubblici'.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1198,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Cosa si intende per 'fascia funzionale' citata nell'art. 7 della L.R. n. 26/1985?",
+        "options": {
+            "A": "L'area geografica di competenza",
+            "B": "Il livello di inquadramento professionale",
+            "C": "L'orario di servizio giornaliero",
+            "D": "L'equipaggiamento in dotazione"
+        },
+        "correct_answer": "B",
+        "explanation": "La 'fascia funzionale' indica il livello gerarchico e professionale (es. ispettore, assistente, guardia) in cui il personale è inquadrato.",
+        "source": "L.R. 26/1985, art. 7"
+    },
+    {
+        "id": 1199,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "L'art. 1 della L.R. n. 26/1985 attribuisce al Corpo la tutela di quale tipo di pascoli?",
+        "options": {
+            "A": "Pascoli irrigui di pianura",
+            "B": "Pascoli montani",
+            "C": "Pascoli artificiali intensivi",
+            "D": "Tutti i tipi di pascoli regionali"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 1 specifica la 'tutela dei pascoli montani'.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1200,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Il Corpo forestale può svolgere compiti non espressamente elencati all'art. 1?",
+        "options": {
+            "A": "No, l'elenco è tassativo",
+            "B": "Sì, se stabiliti con legge o regolamento",
+            "C": "Sì, ma solo su ordinanza del Sindaco",
+            "D": "No, salvo autorizzazione ministeriale"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 7 prevede l'esercizio degli 'altri compiti stabiliti con legge o regolamento'.",
+        "source": "L.R. 26/1985, art. 7"
+    },
+    {
+        "id": 1201,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "La competenza del Corpo in materia di flora e vegetazione, secondo l'art. 1, riguarda:",
+        "options": {
+            "A": "La commercializzazione",
+            "B": "La tutela",
+            "C": "L'esportazione",
+            "D": "La coltivazione intensiva"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 1 attribuisce al Corpo la funzione di 'tutela della flora e della vegetazione'.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1202,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Il trasferimento del Corpo Forestale alla Presidenza della Regione (art. 1 modificato) comporta che:",
+        "options": {
+            "A": "Il Corpo diventa un organo dello Stato ma alle dipendenze della Regione Sardegna",
+            "B": "Il Corpo dipende direttamente dal vertice dell'esecutivo regionale",
+            "C": "Il Corpo perde le funzioni di polizia",
+            "D": "Il Corpo viene sciolto e rifondato"
+        },
+        "correct_answer": "B",
+        "explanation": "L'incardinamento presso la Presidenza della Regione implica una dipendenza diretta dal Presidente, vertice dell'amministrazione regionale.",
+        "source": "L.R. 26/1985, art. 1 (mod. L.R. 10/2021)"
+    },
+    {
+        "id": 1203,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "La qualifica di agente di pubblica sicurezza richiamata dall'art. 7 è attribuita ai sensi di quale decreto?",
+        "options": {
+            "A": "D.P.R. n. 616 del 1977",
+            "B": "D.P.R. n. 297 del 1972",
+            "C": "R.D. n. 773 del 1931 (TULPS)",
+            "D": "Legge n. 121 del 1981"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 7 cita espressamente il D.P.R. 6 maggio 1972, n. 297 per l'attribuzione della qualifica di agente di PS.",
+        "source": "L.R. 26/1985, art. 7"
+    },
+    {
+        "id": 1204,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Quale tipo di 'tutela' NON è esplicitamente citata nell'art. 1 della L.R. n. 26/1985?",
+        "options": {
+            "A": "Tutela tecnica dei boschi",
+            "B": "Tutela economica dei boschi",
+            "C": "Tutela del paesaggio urbano storico",
+            "D": "Tutela della flora"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 1 cita la tutela tecnica ed economica dei boschi e della flora, ma non fa riferimento specifico al 'paesaggio urbano storico'.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1205,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Il Corpo Forestale regionale esercita le proprie funzioni:",
+        "options": {
+            "A": "In contrasto con la programmazione regionale",
+            "B": "Nel quadro della programmazione regionale",
+            "C": "Esclusivamente su direttiva statale",
+            "D": "In totale autonomia senza vincoli programmatori"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 1 stabilisce che il Corpo provvede alle sue funzioni 'nel quadro della programmazione regionale'.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1206,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Le funzioni 'tecniche' menzionate all'art. 1 comprendono:",
+        "options": {
+            "A": "Solo attività di polizia repressiva",
+            "B": "Attività come la tutela tecnica dei boschi e studi di settore",
+            "C": "La manutenzione dei mezzi della Regione",
+            "D": "La progettazione di edifici pubblici"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 1 attribuisce al Corpo 'funzioni tecniche e di vigilanza', esplicitando poi attività come la tutela tecnica dei boschi e la predisposizione di studi.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1207,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "In merito ai biotopi, quale azione specifica è richiesta al Corpo dall'art. 1?",
+        "options": {
+            "A": "La loro bonifica integrale",
+            "B": "La loro tutela",
+            "C": "La loro trasformazione in aree agricole",
+            "D": "La vendita e cessione a privati per conservazione"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 1 prevede la 'tutela di parchi, riserve, biotopi'.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1208,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Le competenze del Corpo in materia di vincolo idrogeologico rientrano:",
+        "options": {
+            "A": "Nella vigilanza sull'osservanza del vincolo",
+            "B": "Nell'abolizione del vincolo",
+            "C": "Nella sola riscossione delle sanzioni",
+            "D": "Esclusivamente nella mappatura satellitare delle zone vincolate"
+        },
+        "correct_answer": "A",
+        "explanation": "L'art. 1 attribuisce funzioni di 'vigilanza, prevenzione e repressione in materia di... osservanza del vincolo idrogeologico'.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1209,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Quale affermazione descrive correttamente il rapporto tra art. 1 e art. 7 della L.R. n. 26/1985?",
+        "options": {
+            "A": "L'art. 1 definisce le sanzioni, l'art. 7 le funzioni",
+            "B": "L'art. 1 istituisce il Corpo e ne elenca le funzioni, l'art. 7 specifica l'esercizio delle stesse da parte del personale",
+            "C": "L'art. 7 abroga le funzioni dell'art. 1",
+            "D": "L'art. 1 riguarda solo gli ufficiali e i loro compiti, l'art. 7 solo gli agenti e le funzioni a loro affidate durante il servizio"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 1 istituisce il Corpo e ne delinea i compiti generali; l'art. 7 disciplina come il personale esercita tali funzioni in base alla qualifica.",
+        "source": "L.R. 26/1985, artt. 1 e 7"
+    },
+    {
+        "id": 1210,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Le 'acque interne' citate all'art. 1 in materia di pesca includono:",
+        "options": {
+            "A": "Solo i fiumi",
+            "B": "Solo i laghi naturali e i laghi artificiali",
+            "C": "Fiumi, laghi e bacini idrici interni",
+            "D": "Le piscine private"
+        },
+        "correct_answer": "C",
+        "explanation": "Il termine 'acque interne' (contrapposto a 'marittime') comprende nel linguaggio giuridico e tecnico fiumi, laghi e invasi.",
+        "source": "L.R. 26/1985, art. 1 (interpretazione tecnica)"
+    },
+    {
+        "id": 1211,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "L'art. 1 prevede la 'repressione' in quali materie?",
+        "options": {
+            "A": "Solo incendi boschivi",
+            "B": "Caccia, pesca, incendi e vincolo idrogeologico",
+            "C": "Solo reati contro la pubblica amministrazione",
+            "D": "Violazioni edilizie urbane"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 1 parla di 'vigilanza, prevenzione e repressione in materia di caccia, di pesca..., di incendi... e di osservanza del vincolo idrogeologico'.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1212,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Cosa si intende per 'aree di particolare interesse naturalistico' nell'art. 1?",
+        "options": {
+            "A": "Aree destinate a discarica controllata",
+            "B": "Aree protette come parchi, riserve e biotopi",
+            "C": "Aree industriali dismesse",
+            "D": "Zone residenziali con molto verde"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 1 cita 'parchi, riserve, biotopi ed altre aree di particolare interesse naturalistico e paesaggistico'.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1213,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "L'attribuzione della qualifica di Agente di PS al personale forestale regionale comporta:",
+        "options": {
+            "A": "La possibilità di portare armi senza licenza specifica",
+            "B": "L'obbligo di risiedere in caserma",
+            "C": "Il divieto di iscrizione ai sindacati",
+            "D": "L'equiparazione totale ai militari con la facoltà di utilizzo di armi parabellum"
+        },
+        "correct_answer": "A",
+        "explanation": "La qualifica di agente di PS (art. 7) abilita al porto dell'arma di ordinanza senza licenza (art. 73 Regolamento TULPS), in quanto agenti di pubblica sicurezza.",
+        "source": "L.R. 26/1985, art. 7 (e normativa PS collegata)"
+    },
+    {
+        "id": 1214,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Chi è il vertice politico-amministrativo a cui fa capo il Corpo secondo l'attuale formulazione dell'art. 1?",
+        "options": {
+            "A": "Il Ministro dell'Ambiente",
+            "B": "Il Presidente della Giunta Regionale",
+            "C": "Il Prefetto di Cagliari",
+            "D": "Il Comandante dei Carabinieri Forestali"
+        },
+        "correct_answer": "B",
+        "explanation": "Essendo incardinato presso la Presidenza della Regione (L.R. 10/2021), il vertice di riferimento è il Presidente della Regione.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1215,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Quale termine usa l'art. 1 per descrivere l'azione del Corpo verso la 'difesa del suolo'?",
+        "options": {
+            "A": "Monitoraggio passivo",
+            "B": "Intervento straordinario",
+            "C": "Difesa dall'erosione",
+            "D": "Ricostruzione geologica"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 1 attribuisce al Corpo la funzione di 'difesa del suolo dall'erosione'.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1216,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Le funzioni di 'vigilanza' e 'repressione' sono elencate nell'art. 1:",
+        "options": {
+            "A": "Come alternative (o l'una o l'altra)",
+            "B": "Congiuntamente alla 'prevenzione'",
+            "C": "Come funzioni secondarie ed eventuali",
+            "D": "Solo per il personale amministrativo"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 1 usa la formula 'vigilanza, prevenzione e repressione' come un insieme coordinato di funzioni.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1217,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "L'istituzione del Corpo risponde all'esigenza di esercitare funzioni in materia di agricoltura e foreste che lo Statuto Speciale attribuisce:",
+        "options": {
+            "A": "Allo Stato",
+            "B": "Alla Regione Sardegna",
+            "C": "All'Unione Europea",
+            "D": "Alle Province delle regioni autonome"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 1 fa riferimento all'istituzione del Corpo 'della Regione Sarda', in attuazione delle competenze statutarie esclusive della Regione.",
+        "source": "L.R. 26/1985, art. 1 (e Statuto Sardo)"
+    },
+    {
+        "id": 1218,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "In base all'art. 7, il personale del Corpo esercita i compiti previsti:",
+        "options": {
+            "A": "Solo in orario diurno",
+            "B": "Anche oltre i confini regionali senza autorizzazione",
+            "C": "Nell'ambito della fascia funzionale di appartenenza",
+            "D": "Esclusivamente se accompagnato da un Ufficiale"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 7 ribadisce che l'esercizio delle funzioni avviene 'nell'ambito della fascia funzionale di appartenenza'.",
+        "source": "L.R. 26/1985, art. 7"
+    },
+    {
+        "id": 1219,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "La competenza sui 'pascoli montani' (art. 1) implica:",
+        "options": {
+            "A": "La loro totale chiusura al pascolo",
+            "B": "La loro tutela",
+            "C": "La loro trasformazione in bosco obbligatoria",
+            "D": "La loro vendita all'asta con il benestare del proprietario"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 1 parla espressamente di 'tutela dei pascoli montani'.",
+        "source": "L.R. 26/1985, art. 1"
+    },
+    {
+        "id": 1220,
+        "category": "Istituzionale (L.R. 26/1985)",
+        "question": "Il Corpo Forestale e di Vigilanza Ambientale è istituito con L.R. n. 26 del:",
+        "options": {
+            "A": "5 novembre 1985",
+            "B": "5 novembre 1995",
+            "C": "26 novembre 1985",
+            "D": "5 ottobre 1985"
+        },
+        "correct_answer": "A",
+        "explanation": "La data corretta della legge istitutiva (n. 26) è il 5 novembre 1985.",
+        "source": "L.R. 26/1985, titolo"
     }
 ]
