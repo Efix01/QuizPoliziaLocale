@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Sparkles, BookOpen, FileQuestion, Heart } from 'lucide-react';
 import './WhatsNewModal.css';
 
-const VERSION_KEY = 'whats_new_v9_limit_50_2026';
+const VERSION_KEY = 'whats_new_v10_feb_2026';
 
 const WhatsNewModal: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -38,20 +38,20 @@ const WhatsNewModal: React.FC = () => {
         {
             icon: <BookOpen size={24} />,
             color: '#10B981', // Green
-            title: "Su Vostre richieste,Limite Quiz Argomenti Aumentato! 🚀",
-            description: "A grande richiesta, ora puoi affrontare fino a 50 domande per sessione in ogni argomento! Mettiti alla prova con sessioni più intense."
+            title: "Gran lavoro di aggiornamento quasi quotidiano!! Nuovi Quiz:",
+            description: "Aggiunti i quiz 1041-1220! Focus su Diritto Penale (attività di PG, reati) e Botanica Forestale (specie protette e L.R. 4/2025) e L.R. 26/1985."
         },
         {
             icon: <FileQuestion size={24} />,
             color: '#3B82F6', // Blue
-            title: '+24 Nuovi Quiz Penali e 40 di Botanica',
-            description: 'Abbiamo aggiunto nuovi quiz su "Diritto Penale e Procedura Penale" (indagini, perquisizioni, armi). Il database continua a crescere!'
+            title: 'Aggiornamenti Normativi 2025/26',
+            description: 'Il database è aggiornato con le ultimissime riforme: D.L. 116/2025 (sanzioni rifiuti) e L. 82/2025 (tutela animali).'
         },
         {
             icon: <Heart size={24} />,
             color: '#EC4899', // Pink
-            title: 'Buono Studio!!!',
-            description: 'Continua a studiare e ripassare. La preparazione è la chiave per il successo! 💪'
+            title: 'Corpo Forestale',
+            description: 'Nuova sezione Istituzionale sulla L.R. 26/1985 aggiornata (dipendenza dalla Presidenza della Regione). Buono studio!'
         }
     ];
 
