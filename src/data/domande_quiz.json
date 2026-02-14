@@ -16097,16 +16097,16 @@
     {
         "id": 1148,
         "category": "Botanica",
-        "question": "Quale specie arborea, diffusa in Sardegna, è protetta dalla L.R. n. 31/1989 e considerata 'relitto terziario'?",
+        "question": "Quale specie arborea, diffusa in Sardegna, è protetta dalla normativa regionale e considerata 'relitto terziario'?",
         "options": {
-            "A": "Quercus suber",
-            "B": "Olea europaea",
-            "C": "Taxus baccata",
+            "A": "Taxus baccata",
+            "B": "Quercus suber",
+            "C": "Olea europaea",
             "D": "Pinus pinea"
         },
-        "correct_answer": "C",
-        "explanation": "Il Taxus baccata (Tasso) è una specie protetta in Sardegna, considerata un relitto della flora terziaria per la sua antica origine.",
-        "source": "L.R. Sardegna n. 31/1989, Allegato B"
+        "correct_answer": "A",
+        "explanation": "Il Taxus baccata (Tasso) è una specie protetta in Sardegna, considerata un relitto della flora terziaria per la sua antica origine. La tutela è prevista dalla L.R. 24 febbraio 2025, n. 4 sulla protezione della flora autoctona.",
+        "source": "L.R. Sardegna n. 4/2025 (Tutela flora autoctona)"
     },
     {
         "id": 1149,
@@ -16114,25 +16114,25 @@
         "question": "Secondo la normativa forestale e botanica, qual è la differenza fondamentale tra Posidonia oceanica e le alghe comuni?",
         "options": {
             "A": "La Posidonia vive solo in acque dolci",
-            "B": "La Posidonia non effettua fotosintesi",
-            "C": "Non vi è alcuna differenza biologica rilevante",
-            "D": "La Posidonia è una pianta vascolare con radici, fusto e foglie"
+            "B": "La Posidonia è una pianta vascolare con radici, fusto e foglie",
+            "C": "La Posidonia non effettua fotosintesi",
+            "D": "Non vi è alcuna differenza biologica rilevante"
         },
-        "correct_answer": "D",
+        "correct_answer": "B",
         "explanation": "La Posidonia oceanica è una fanerogama marina (pianta superiore), dotata di tessuti vascolari differenziati, fiori e frutti, a differenza delle alghe.",
-        "source": "Direttiva 92/43/CEE (Habitat), Allegato I"
+        "source": "Direttiva 92/43/CEE (Habitat), Allegato I - habitat prioritario 1120*"
     },
     {
         "id": 1150,
         "category": "Botanica",
-        "question": "Quale endemismo sardo-corso è noto per la produzione di un frutto carnoso rosso commestibile.",
+        "question": "Quale specie tipica della macchia mediterranea è nota per la produzione di un frutto carnoso rosso",
         "options": {
             "A": "Myrtus communis",
-            "B": "Arbutus unedo",
-            "C": "Ephedra distachya",
+            "B": "Ephedra distachya",
+            "C": "Arbutus unedo",
             "D": "Juniperus oxycedrus"
         },
-        "correct_answer": "B",
+        "correct_answer": "C",
         "explanation": "L'Arbutus unedo (Corbezzolo) produce un frutto (bacca) rosso, granuloso, edule, tipico della macchia mediterranea.",
         "source": "Manuale di Botanica Forestale / Flora d'Italia (Pignatti)"
     },
@@ -16141,26 +16141,26 @@
         "category": "Botanica",
         "question": "In riferimento alla tutela dei boschi, qual è il nome scientifico della Quercia da sughero, specie forestale fondamentale in Sardegna?",
         "options": {
-            "A": "Quercus suber",
-            "B": "Quercus ilex",
-            "C": "Quercus pubescens",
-            "D": "Quercus coccifera"
+            "A": "Quercus ilex",
+            "B": "Quercus pubescens",
+            "C": "Quercus coccifera",
+            "D": "Quercus suber"
         },
-        "correct_answer": "A",
+        "correct_answer": "D",
         "explanation": "Quercus suber è il nome scientifico della sughera; Quercus ilex è il leccio. La distinzione è fondamentale per l'applicazione delle norme sulle estrazioni.",
-        "source": "L.R. Sardegna n. 4/1994 (Disciplina delle estrazioni del sughero)"
+        "source": "L.R. Sardegna n. 4/1994 (Disciplina della sughericoltura)"
     },
     {
         "id": 1152,
         "category": "Botanica",
         "question": "Quale parte del Taxus baccata (Tasso) NON contiene la tassina, potente alcaloide tossico?",
         "options": {
-            "A": "I semi",
-            "B": "Le foglie",
-            "C": "La corteccia",
-            "D": "L'arillo rosso"
+            "A": "L'arillo rosso",
+            "B": "I semi",
+            "C": "Le foglie verdi",
+            "D": "La corteccia"
         },
-        "correct_answer": "D",
+        "correct_answer": "A",
         "explanation": "L'unica parte non tossica del Tasso è l'arillo, la polpa rossa e carnosa che avvolge il seme (che invece è velenosissimo).",
         "source": "Letteratura tossicologica botanica / Schede tecniche Corpo Forestale"
     },
@@ -16170,27 +16170,27 @@
         "question": "Quale delle seguenti specie è un endemismo esclusivo puntiforme della Sardegna, localizzato sul Monte Corrasi?",
         "options": {
             "A": "Paeonia mascula",
-            "B": "Gentiana lutea",
-            "C": "Ribes sardoum",
+            "B": "Ribes sardoum",
+            "C": "Gentiana lutea",
             "D": "Helichrysum italicum"
         },
-        "correct_answer": "C",
+        "correct_answer": "B",
         "explanation": "Il Ribes sardoum è un endemismo ristrettissimo (puntiforme) presente solo in una limitata area del Supramonte di Oliena.",
         "source": "Lista Rossa IUCN / Flora endemica della Sardegna"
     },
     {
         "id": 1154,
         "category": "Botanica",
-        "question": "Ai sensi delle Prescrizioni di Massima e di Polizia Forestale, qual è la caratteristica del 'sottobosco'?",
+        "question": "Ai sensi della tecnica forestale, qual è la caratteristica del 'sottobosco'?",
         "options": {
-            "A": "Insieme di alberi ad alto fusto",
-            "B": "Insieme di arbusti, erbe e funghi che crescono sotto la copertura arborea",
-            "C": "Terreno privo di vegetazione",
+            "A": "Insieme di alberi ad alto fusto che abbiano una copertura arborea che supera il 70%",
+            "B": "Terreno privo di vegetazione",
+            "C": "Insieme di arbusti, erbe e funghi che crescono sotto la copertura arborea",
             "D": "Area destinata al pascolo intensivo"
         },
-        "correct_answer": "B",
+        "correct_answer": "C",
         "explanation": "Il sottobosco è definito come l'insieme della vegetazione arbustiva ed erbacea che si sviluppa all'ombra delle chiome degli alberi.",
-        "source": "R.D.L. 3267/1923 / Prescrizioni di Massima e Polizia Forestale"
+        "source": "Manuale di Selvicoltura / Prescrizioni di Massima e Polizia Forestale"
     },
     {
         "id": 1155,
@@ -16200,23 +16200,23 @@
             "A": "Juniperus communis",
             "B": "Juniperus phoenicea",
             "C": "Juniperus sabina",
-            "D": "Juniperus macrocarpa"
+            "D": "Juniperus oxycedrus subsp. macrocarpa"
         },
         "correct_answer": "D",
-        "explanation": "Il Juniperus macrocarpa è la specie tipica degli ambienti dunali costieri sardi, distinta dal ginepro comune e fenicio.",
-        "source": "Direttiva Habitat 92/43/CEE (Habitat prioritari costieri)"
+        "explanation": "Il Juniperus oxycedrus subsp. macrocarpa (sin. Juniperus macrocarpa) è la specie tipica degli ambienti dunali costieri sardi, distinta dal ginepro comune e fenicio. L'habitat prioritario 2250* 'Dune costiere con Juniperus spp.' della Direttiva Habitat tutela queste formazioni.",
+        "source": "Direttiva Habitat 92/43/CEE, Allegato I - habitat prioritario 2250*"
     },
     {
         "id": 1156,
         "category": "Botanica",
         "question": "Quale fenomeno botanico caratterizza l'Euphorbia dendroides durante la stagione estiva in Sardegna?",
         "options": {
-            "A": "Massima fioritura",
-            "B": "Estivazione con perdita delle foglie",
-            "C": "Produzione di frutti commestibili",
+            "A": "Estivazione con perdita delle foglie",
+            "B": "Massima fioritura",
+            "C": "Produzione di frutti commestibili con foglie sempreverdi",
             "D": "Crescita rapida dei rami"
         },
-        "correct_answer": "B",
+        "correct_answer": "A",
         "explanation": "L'Euphorbia dendroides perde le foglie in estate per ridurre la traspirazione (estivazione), presentandosi come scheletrica nei mesi caldi.",
         "source": "Ecologia della Macchia Mediterranea"
     },
@@ -16226,11 +16226,11 @@
         "question": "La 'Quercus ilex' (Leccio) è una specie:",
         "options": {
             "A": "Caducifoglia",
-            "B": "Agoifoglia",
-            "C": "Sempreverde sclerofilla",
+            "B": "Sempreverde sclerofilla",
+            "C": "Agoifoglia",
             "D": "Erbacea annuale"
         },
-        "correct_answer": "C",
+        "correct_answer": "B",
         "explanation": "Il Leccio è la tipica latifoglia sempreverde sclerofilla (foglie dure) della foresta mediterranea.",
         "source": "Manuale di Selvicoltura Generale"
     },
@@ -16239,14 +16239,14 @@
         "category": "Botanica",
         "question": "Quale delle seguenti orchidee spontanee è protetta dalla convenzione CITES e presente in Sardegna?",
         "options": {
-            "A": "Ophrys e tutte le Orchidaceae",
-            "B": "Solo le orchidee coltivate",
-            "C": "Nessuna orchidea è protetta",
+            "A": "Solo le orchidee coltivate",
+            "B": "Nessuna orchidea è protetta",
+            "C": "Ophrys e tutte le Orchidaceae",
             "D": "Solo il genere Papaver"
         },
-        "correct_answer": "A",
-        "explanation": "Tutta la famiglia delle Orchidaceae è inclusa nell'Appendice II della CITES, proteggendo quindi anche le specie spontanee sarde come le Ophrys.",
-        "source": "Convenzione di Washington (CITES) - Appendice II"
+        "correct_answer": "C",
+        "explanation": "Le Orchidaceae sono incluse negli allegati CITES: in generale in Appendice II, con l’eccezione di alcuni taxa inseriti in Appendice I. Di conseguenza anche le orchidee spontanee sarde (es. Ophrys) sono soggette alla disciplina CITES sul commercio.",
+        "source": "CITES – Appendici I, II e III (Orchidaceae spp., eccetto taxa in Appendice I) / Checklist CITES Orchidee (Kew)"
     },
     {
         "id": 1159,
@@ -16267,27 +16267,27 @@
         "category": "Botanica",
         "question": "Come si definisce la 'Gariga' nel contesto della vegetazione sarda?",
         "options": {
-            "A": "Foresta densa di lecci",
-            "B": "Formazione vegetale bassa e discontinua su suoli rocciosi o degradati",
+            "A": "Formazione vegetale bassa e discontinua su suoli rocciosi o degradati",
+            "B": "Foresta densa di lecci",
             "C": "Prato umido allagato",
             "D": "Coltivazione intensiva di grano"
         },
-        "correct_answer": "B",
+        "correct_answer": "A",
         "explanation": "La gariga è uno stadio di degradazione della macchia mediterranea, caratterizzata da arbusti bassi, aromatici e suolo spesso scoperto.",
         "source": "Fitogeografia della Sardegna"
     },
     {
         "id": 1161,
         "category": "Botanica",
-        "question": "Quale pino è autoctono in Sardegna, tipico delle zone costiere sabbiose e produce pinoli commestibili?",
+        "question": "Quale pino, tipico delle zone costiere sabbiose della Sardegna, produce pinoli commestibili?",
         "options": {
             "A": "Pinus nigra",
-            "B": "Pinus sylvestris",
-            "C": "Pinus pinea",
+            "B": "Pinus pinea",
+            "C": "Pinus sylvestris",
             "D": "Pinus mugo"
         },
-        "correct_answer": "C",
-        "explanation": "Il Pinus pinea (Pino domestico) è caratteristico per la chioma a ombrello e la produzione di pinoli eduli.",
+        "correct_answer": "B",
+        "explanation": "Il Pinus pinea (Pino domestico) è caratteristico per la chioma a ombrello e la produzione di pinoli eduli. Presente nelle pinete costiere sarde, molte delle quali di origine antropica storica.",
         "source": "Manuale di Botanica Forestale"
     },
     {
@@ -16295,27 +16295,27 @@
         "category": "Botanica",
         "question": "La 'Paeonia mascula' (Peonia), presente nei monti sardi, è:",
         "options": {
-            "A": "Una specie erbacea perenne con grossi fiori rossi/rosa",
-            "B": "Un albero ad alto fusto",
-            "C": "Una felce acquatica",
-            "D": "Un lichene crostoso"
+            "A": "Un albero ad alto fusto",
+            "B": "Una felce acquatica",
+            "C": "Una specie erbacea perenne con grossi fiori rossi/rosa",
+            "D": "Un lichene crostoso che in primavera fiorisce con piccoli fiori di colore rosa/rosso"
         },
-        "correct_answer": "A",
-        "explanation": "La Peonia è una pianta erbacea perenne rizomatosa, nota per i vistosi fiori, protetta dalla L.R. 31/89.",
-        "source": "L.R. Sardegna n. 31/1989"
+        "correct_answer": "C",
+        "explanation": "La Peonia è una pianta erbacea perenne rizomatosa, nota per i vistosi fiori, protetta dalla normativa regionale sulla flora autoctona.",
+        "source": "L.R. Sardegna n. 4/2025 (Tutela flora autoctona)"
     },
     {
         "id": 1163,
         "category": "Botanica",
-        "question": "L'Helichrysum microphyllum (Elicriso) è una specie:",
+        "question": "L'Helichrysum italicum (Elicriso) è una specie:",
         "options": {
             "A": "Importata dall'America",
-            "B": "Endemica sardo-corsa tipica delle garighe costiere",
-            "C": "Tipica delle zone alpine oltre i 2000m",
-            "D": "Parassita degli alberi da frutto"
+            "B": "Tipica delle zone alpine oltre i 2000m",
+            "C": "Parassita degli alberi da frutto cresce alla base delle radici",
+            "D": "Endemica sardo-corsa tipica delle garighe costiere"
         },
-        "correct_answer": "B",
-        "explanation": "L'Elicriso (sottospecie microphyllum) è un endemismo tirrenico caratteristico per il profumo intenso e l'habitat costiero arido.",
+        "correct_answer": "D",
+        "explanation": "L'Elicriso (Helichrysum italicum, con sottospecie endemiche sardo-corse) è caratteristico per il profumo intenso e l'habitat costiero arido delle garighe mediterranee.",
         "source": "Flora vascolare della Sardegna"
     },
     {
@@ -16323,171 +16323,143 @@
         "category": "Botanica",
         "question": "Quale pianta parassita, priva di clorofilla, si trova spesso sulle radici delle Cistaceae (Cisto) in Sardegna?",
         "options": {
-            "A": "Hedera helix",
-            "B": "Smilax aspera",
-            "C": "Cytinus hypocistis",
+            "A": "Cytinus hypocistis",
+            "B": "Hedera helix",
+            "C": "Smilax aspera",
             "D": "Rubus ulmifolius"
         },
-        "correct_answer": "C",
+        "correct_answer": "A",
         "explanation": "Il Cytinus hypocistis è una pianta parassita obbligata che vive sulle radici dei Cisti, emergendo solo per fiorire (fiori gialli/rossi).",
         "source": "Botanica Sistematica - Piante parassite"
     },
     {
         "id": 1165,
         "category": "Botanica",
-        "question": "In botanica forestale, cosa si intende per 'Demaschiatura' della Quercia da sughero?",
+        "question": "Quale specie del genere Genista è un endemismo sardo-corso spinoso, noto come 'Cirra'?",
         "options": {
-            "A": "Il taglio dei rami secchi",
-            "B": "L'abbattimento dell'albero",
-            "C": "La raccolta delle ghiande",
-            "D": "La prima estrazione del sughero 'maschio' o 'vergine'"
-        },
-        "correct_answer": "D",
-        "explanation": "La demaschiatura è l'operazione di prima decortica della sughera, che rimuove il sughero vergine (maschio) per permettere la crescita del sughero gentile.",
-        "source": "L.R. Sardegna n. 4/1994, Art. 2"
-    },
-    {
-        "id": 1166,
-        "category": "Botanica",
-        "question": "Quale specie del genere Genista è un endemismo sardo-corso spinoso, noto come 'Tiria'?",
-        "options": {
-            "A": "Genista corsica",
-            "B": "Spartium junceum",
+            "A": "Spartium junceum",
+            "B": "Genista corsica",
             "C": "Medicago arborea",
             "D": "Robinia pseudoacacia"
         },
-        "correct_answer": "A",
+        "correct_answer": "B",
         "explanation": "La Genista corsica è un arbusto spinoso endemico della Sardegna e Corsica, componente tipico delle garighe.",
         "source": "Flora endemica della Sardegna"
     },
     {
-        "id": 1167,
+        "id": 1166,
         "category": "Botanica",
-        "question": "Qual è il nome scientifico dell'Oleandro, arbusto velenoso spontaneo lungo i corsi d'acqua sardi?",
+        "question": "Quale tra queste è un arbusto velenoso spontaneo che cresce lungo i corsi d'acqua della Sardegna?",
         "options": {
-            "A": "Viburnum tinus",
-            "B": "Nerium oleander",
-            "C": "Cornus sanguinea",
-            "D": "Sambucus nigra"
+            "A": "Viburnum tinus (Viburno tino)",
+            "B": "Cornus sanguinea (Corniolo sanguinello)",
+            "C": "Nerium oleander (Oleandro)",
+            "D": "Sambucus nigra (Sambuco nero)"
         },
-        "correct_answer": "B",
+        "correct_answer": "C",
         "explanation": "Nerium oleander è l'oleandro, specie ripariale tipica degli alvei fluviali mediterranei, interamente tossica.",
         "source": "Botanica Sistematica"
     },
     {
-        "id": 1168,
+        "id": 1167,
         "category": "Botanica",
         "question": "La 'Quercus pubescens' (Roverella) si distingue dalle altre querce sarde perché:",
         "options": {
             "A": "È sempreverde",
             "B": "Non produce ghiande",
-            "C": "È una specie caducifoglia",
-            "D": "Ha foglie aghiformi"
+            "C": "Ha foglie aghiformi",
+            "D": "È una specie caducifoglia"
         },
-        "correct_answer": "C",
+        "correct_answer": "D",
         "explanation": "La Roverella è una quercia caducifoglia (perde le foglie in inverno), a differenza di Leccio e Sughera che sono sempreverdi.",
         "source": "Dendrologia"
     },
     {
-        "id": 1169,
+        "id": 1168,
         "category": "Botanica",
-        "question": "Quale pianta, simbolo della Sardegna, viene utilizzata per l'intreccio tradizionale ma è protetta dalla raccolta indiscriminata nelle zone umide?",
+        "question": "Quale pianta, utilizzata tradizionalmente in Sardegna per l'intreccio artigianale, è soggetta a regolamentazione della raccolta nelle zone umide protette?",
         "options": {
-            "A": "Opuntia ficus-indica",
-            "B": "Agave americana",
-            "C": "Arundo donax",
-            "D": "Juncus acutus (Giunco)"
+            "A": "Juncus acutus (Giunco pungente)",
+            "B": "Opuntia ficus-indica (Fico d'India)",
+            "C": "Agave americana (Agave)",
+            "D": "Arundo donax (Canna comune)"
         },
-        "correct_answer": "D",
-        "explanation": "Le specie del genere Juncus sono fondamentali per gli ecosistemi umidi e l'artigianato; la loro raccolta è regolamentata nelle aree protette.",
-        "source": "Piani di gestione aree SIC/ZPS"
+        "correct_answer": "A",
+        "explanation": "Il Juncus acutus (giunco pungente) è una specie tradizionalmente utilizzata per l'intreccio nelle zone costiere sarde. Costituisce l'habitat prioritario dei Pascoli inondati mediterranei della Direttiva Habitat; la raccolta è regolamentata nei Siti di Interesse Comunitario e nelle Zone di Protezione Speciale delle zone umide.",
+        "source": "Direttiva Habitat 92/43/CEE (habitat 1410) / Piani di gestione SIC/ZPS Sardegna"
     },
     {
-        "id": 1170,
+        "id": 1169,
         "category": "Botanica",
         "question": "Quale caratteristica distingue le foglie della 'Quercus suber' da quelle della 'Quercus ilex'?",
         "options": {
-            "A": "Il margine spesso dentato-spinoso e la pagina inferiore grigiastra nella Q. ilex, margine più ondulato nella Q. suber",
-            "B": "Q. suber ha foglie rosse",
+            "A": "Q. suber ha foglie rosse",
+            "B": "Il margine spesso dentato-spinoso e la pagina inferiore grigiastra nella Q. ilex, margine più ondulato nella Q. suber",
             "C": "Q. ilex perde le foglie in inverno",
             "D": "Non ci sono differenze visibili"
         },
-        "correct_answer": "A",
+        "correct_answer": "B",
         "explanation": "Sebbene simili, la Q. ilex ha spesso foglie più coriacee, scure e tomentose sotto; la Q. suber ha foglie verde meno scuro e margine meno spinoso negli adulti.",
         "source": "Manuale di riconoscimento specie forestali"
     },
     {
-        "id": 1171,
+        "id": 1170,
         "category": "Botanica",
         "question": "Cos'è la 'Smilax aspera'?",
         "options": {
             "A": "Un albero di 30 metri",
-            "B": "Una liana spinosa (Salsapariglia) comune nella macchia",
-            "C": "Un fungo commestibile",
+            "B": "Un fungo commestibile solo dopo cottura",
+            "C": "Una liana spinosa (Salsapariglia) comune nella macchia",
             "D": "Un'alga rossa"
         },
-        "correct_answer": "B",
+        "correct_answer": "C",
         "explanation": "La Smilax aspera, detta stracciabrache o salsapariglia, è una liana rampicante spinosa tipica del sottobosco mediterraneo.",
         "source": "Flora della Macchia Mediterranea"
     },
     {
+        "id": 1171,
+        "category": "Botanica",
+        "question": "L'agrifoglio (Ilex aquifolium) in Sardegna è:",
+        "options": {
+            "A": "Una specie infestante da eliminare",
+            "B": "Coltivata solo nei giardini",
+            "C": "Assente dalla flora regionale",
+            "D": "Una specie protetta, relitto di climi più umidi"
+        },
+        "correct_answer": "D",
+        "explanation": "L'Agrifoglio è una specie mesofila protetta dalla normativa regionale sulla flora autoctona, trovandosi in stazioni montane umide (es. Gennargentu).",
+        "source": "L.R. Sardegna n. 4/2025 (Tutela flora autoctona)"
+    },
+    {
         "id": 1172,
-        "category": "Botanica",
-        "question": "Quale specie di 'Limonium' è spesso oggetto di tutela stretta nelle aree costiere sarde?",
-        "options": {
-            "A": "Solo specie importate",
-            "B": "Nessuna, sono infestanti",
-            "C": "Molte specie endemiche locali (microendemismi)",
-            "D": "Solo il Limonium vulgare"
-        },
-        "correct_answer": "C",
-        "explanation": "Il genere Limonium presenta in Sardegna numerosissimi microendemismi esclusivi di singoli tratti costieri, altamente protetti.",
-        "source": "Direttiva Habitat / Liste Rosse Flora Italiana"
-    },
-    {
-        "id": 1173,
-        "category": "Botanica",
-        "question": "L'agrifoglio (Ilex aquifolium) in Sardegna è considerato:",
-        "options": {
-            "A": "Una specie protetta, relitto terziario di climi più umidi",
-            "B": "Una specie infestante da eliminare",
-            "C": "Coltivata solo nei giardini e assente allo stato spontaneo",
-            "D": "Una conifera d'alta quota"
-        },
-        "correct_answer": "A",
-        "explanation": "L'Agrifoglio è un relitto della flora terziaria (laurisilva), protetto dalla normativa regionale e comunitaria (Habitat 9380) perché testimone di antichi climi più umidi.",
-        "source": "L.R. Sardegna n. 4/2025 / Direttiva Habitat 92/43/CEE"
-    },
-    {
-        "id": 1174,
         "category": "Botanica",
         "question": "Il 'Pungitopo' (Ruscus aculeatus) è caratterizzato da:",
         "options": {
             "A": "Cladodi (fusti appiattiti) che sembrano foglie con una spina apicale",
-            "B": "Foglie vere molto grandi e morbide con spine blu cobalto per spaventare gli erbivori",
-            "C": "Fiori blu",
+            "B": "Foglie vere molto grandi e morbide con grandi fiori blu spinosi per difendersi dagli erbivori",
+            "C": "Fiori rosso/amaranto",
             "D": "Radici aeree"
         },
         "correct_answer": "A",
-        "explanation": "Il Pungitopo possiede fusti modificati detti cladodi che svolgono la fotosintesi; è specie protetta (Direttiva Habitat, all. V).",
+        "explanation": "Il Pungitopo possiede fusti modificati detti cladodi che svolgono la fotosintesi; è specie protetta dall'Allegato V della Direttiva Habitat (sfruttamento regolamentato).",
         "source": "Direttiva Habitat 92/43/CEE - Allegato V"
     },
     {
-        "id": 1175,
+        "id": 1173,
         "category": "Botanica",
         "question": "Qual è la definizione botanica di 'Macchia alta'?",
         "options": {
             "A": "Prato rasato",
             "B": "Vegetazione dominata da specie arboree o arbustive alte 2-4 metri (Leccio, Corbezzolo, Erica)",
             "C": "Vegetazione di soli Cisti e Rosmarino (bassa)",
-            "D": "Foresta di conifere con un sottobosco a macchia mediterranea con continuità di combustibile dalla base alla chioma"
+            "D": "Foresta di conifere con sottobosco a macchia mediterranea e continuità di vegetazione dalla base del terreno fino alla chioma"
         },
         "correct_answer": "B",
         "explanation": "La macchia alta è lo stadio evoluto della macchia mediterranea, dove le chiome chiudono la copertura, dominata da eriche arboree, corbezzoli e lecci.",
         "source": "Ecologia forestale / Tipologie forestali INFC"
     },
     {
-        "id": 1176,
+        "id": 1174,
         "category": "Botanica",
         "question": "La 'Gentiana lutea' (Genziana maggiore), le cui radici sono usate per liquori, è:",
         "options": {
@@ -16497,31 +16469,31 @@
             "D": "Un'alga marina"
         },
         "correct_answer": "C",
-        "explanation": "La Genziana lutea è inclusa nell'Allegato V della Direttiva Habitat; la raccolta indiscriminata delle radici ne minaccia la sopravvivenza.",
-        "source": "Direttiva Habitat 92/43/CEE"
+        "explanation": "La Genziana lutea è inclusa nell'Allegato V della Direttiva Habitat; la raccolta indiscriminata delle radici ne minaccia la sopravvivenza ed è soggetta a regolamentazione.",
+        "source": "Direttiva Habitat 92/43/CEE - Allegato V"
     },
     {
-        "id": 1177,
+        "id": 1175,
         "category": "Botanica",
         "question": "Quale specie endemica del Gennargentu forma cuscini spinosi emisferici (pulvini) per resistere al vento e al freddo?",
         "options": {
-            "A": "Ferula communis",
-            "B": "Asphodelus ramosus",
-            "C": "Cistus monspeliensis",
-            "D": "Astragalus genargenteus (Astragalo)"
+            "A": "Ferula communis (Ferula, Finocchiaccio)",
+            "B": "Asphodelus ramosus (Asfodelo ramificato)",
+            "C": "Cistus monspeliensis (Cisto di Montpellier)",
+            "D": "Astragalus genargenteus (Astragalo del Gennargentu)"
         },
         "correct_answer": "D",
-        "explanation": "Gli Astragali spinosi (tragacanta) formano tipici cuscini a pulvino nelle alte quote sarde, adattamento al clima ventoso di montagna.",
-        "source": "Flora montana della Sardegna"
+        "explanation": "L'Astragalus genargenteus è un endemismo sardo-corso che forma tipici cuscini a pulvino nelle alte quote del Gennargentu, adattamento al clima ventoso di montagna.",
+        "source": "Flora montana della Sardegna / Portale Flora d'Italia"
     },
     {
-        "id": 1178,
+        "id": 1176,
         "category": "Botanica",
         "question": "L'Asfodelo (Asphodelus ramosus), comune nei pascoli sardi degradati, è indice di:",
         "options": {
             "A": "Sovrapascolamento e degradazione del suolo",
             "B": "Ottima fertilità del terreno",
-            "C": "Presenza di ristagno idrico, nasce e cresce in presenza di acqua o umidità persistente",
+            "C": "Presenza di ristagno idrico e umidità costante nei terreni",
             "D": "Foresta primaria intatta"
         },
         "correct_answer": "A",
@@ -16529,7 +16501,7 @@
         "source": "Ecologia pastorale"
     },
     {
-        "id": 1179,
+        "id": 1177,
         "category": "Botanica",
         "question": "Quale è il nome scientifico della palma nana, l'unica palma spontanea del Mediterraneo occidentale presente in Sardegna?",
         "options": {
@@ -16543,11 +16515,11 @@
         "source": "Flora d'Italia"
     },
     {
-        "id": 1180,
+        "id": 1178,
         "category": "Botanica",
         "question": "Il 'Carrubo' (Ceratonia siliqua) è una specie:",
         "options": {
-            "A": "Microterma (amante del freddo), tipica dell'alta montagna",
+            "A": "Microterma (amante del freddo), tipica dell'alta montagna della fascia del castanetum",
             "B": "Acquatica",
             "C": "Termofila (amante del caldo), tipica della fascia costiera",
             "D": "Parassita"
@@ -16557,7 +16529,7 @@
         "source": "Fitoclimatologia / Lauretum"
     },
     {
-        "id": 1181,
+        "id": 1179,
         "category": "Botanica",
         "question": "Quale albero deciduo, raro in Sardegna e legato ai corsi d'acqua, è detto 'Ontano nero'?",
         "options": {
@@ -16571,12 +16543,12 @@
         "source": "Habitat ripariali (Direttiva 92/43/CEE)"
     },
     {
-        "id": 1182,
+        "id": 1180,
         "category": "Botanica",
         "question": "La 'Ferula communis' è nota per:",
         "options": {
-            "A": "L'alta tossicità per il bestiame e i fusti alti fioriti",
-            "B": "Essere un ottima pianta foraggiera, utile agli animali erbivori",
+            "A": "L'alta tossicità per il bestiame (ferulismo) e i fusti alti fioriti",
+            "B": "Essere un ottimo foraggio, molto utile per il fabbisogno calorico degli erbivori ",
             "C": "Produrre legname da costruzione",
             "D": "Essere una specie protetta rara"
         },
@@ -16585,14 +16557,14 @@
         "source": "Tossicologia veterinaria / Botanica applicata"
     },
     {
-        "id": 1183,
+        "id": 1181,
         "category": "Botanica",
         "question": "Nelle dune sabbiose, quale pianta è fondamentale per consolidare la sabbia con i suoi lunghi rizomi?",
         "options": {
-            "A": "Pinus radiata",
-            "B": "Ammophila arenaria",
-            "C": "Opuntia ficus-indica",
-            "D": "Quercus suber"
+            "A": "Pinus radiata (Pino di Monterey)",
+            "B": "Ammophila arenaria (Sparto pungente)",
+            "C": "Opuntia ficus-indica (Fico d'India)",
+            "D": "Quercus suber Sughera)"
         },
         "correct_answer": "B",
         "explanation": "L'Ammophila arenaria è la specie ingegnere delle dune mobili (dune bianche), fondamentale per il loro consolidamento geologico.",
