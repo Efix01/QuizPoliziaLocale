@@ -10561,14 +10561,14 @@
         "category": "Diritto Penale e Procedura Penale",
         "question": "L'art. 544-ter c.p. (Titolo IX-bis) punisce il maltrattamento di animali. Quale pena è prevista?",
         "options": {
-            "A": "Ammenda fino a 1.000 euro",
-            "B": "Reclusione da tre mesi a diciotto mesi o multa",
-            "C": "Arresto fino a 6 mesi",
-            "D": "Solo sanzione amministrativa"
+            "A": "Reclusione da tre a diciotto mesi o multa da 3.000 a 15.000 euro",
+            "B": "Reclusione da sei mesi a due anni e multa da 5.000 a 30.000 euro",
+            "C": "Arresto fino a un anno o ammenda fino a 10.000 euro",
+            "D": "Solo sanzione amministrativa pecuniaria"
         },
         "correct_answer": "B",
-        "explanation": "L'art. 544-ter c.p. punisce chi per crudeltà o senza necessità cagiona una lesione a un animale o lo sottopone a sevizie con la reclusione da tre a diciotto mesi o con multa.",
-        "source": "Art. 544-ter c.p."
+        "explanation": "L'art. 544-ter c.p., come modificato dalla L. 82/2025, punisce chi per crudeltà o senza necessità cagiona una lesione a un animale o lo sottopone a sevizie con la reclusione da sei mesi a due anni e con la multa da 5.000 a 30.000 euro.",
+        "source": "Art. 544-ter c.p. (testo aggiornato L. 82/2025)"
     },
     {
         "id": 755,
