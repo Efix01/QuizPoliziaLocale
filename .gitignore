@@ -29,3 +29,9 @@ dist-ssr
 
 # Agent configuration
 .agent
+
+# Untracked quiz data and scripts
+batch_*.json
+new_quizzes.json
+update_quizzes.py
+extract_batch.py
