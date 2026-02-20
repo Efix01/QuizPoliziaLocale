@@ -17129,5 +17129,411 @@
         "correct_answer": "A",
         "explanation": "La data corretta della legge istitutiva (n. 26) è il 5 novembre 1985.",
         "source": "L.R. 26/1985, titolo"
+    },
+    {
+        "id": 1221,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Qual è la sanzione prevista per chi esercita la caccia in periodo di divieto generale (tra la chiusura e l'apertura della stagione)?",
+        "options": {
+            "A": "L'arresto da tre mesi ad un anno o l'ammenda da euro 929,00 a euro 2.582,00",
+            "B": "Solo una sanzione amministrativa da 1.000 euro",
+            "C": "La revoca definitiva della licenza di porto di fucile e della licenza di caccia",
+            "D": "L'arresto fino a sei mesi e l'ammenda di 2.000 euro"
+        },
+        "correct_answer": "A",
+        "explanation": "L'art. 30, comma 1, lett. a) punisce la caccia in periodo di divieto generale con l'arresto da 3 mesi a 1 anno o l'ammenda da euro 929,00 a euro 2.582,00. La sanzione è alternativa.",
+        "source": "L. 157/1992, Art. 30, comma 1, lett. a)"
+    },
+    {
+        "id": 1222,
+        "category": "Fauna (L. 157/1992)",
+        "question": "L'esercizio dell'uccellagione è punito ai sensi dell'Art. 30 con:",
+        "options": {
+            "A": "Sanzione amministrativa da 500 a 2.000 euro",
+            "B": "Arresto da sei mesi a due anni e ammenda da euro 4.000 a euro 10.000",
+            "C": "Arresto fino ad un anno o ammenda da euro 774,00 a euro 2.065,00",
+            "D": "Sospensione della licenza di caccia per 10 anni senza sanzione pecuniaria"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 30, comma 1, lett. e) punisce l'uccellagione con l'arresto fino ad un anno o l'ammenda da euro 774,00 a euro 2.065,00. È una fattispecie di pericolo a consumazione anticipata.",
+        "source": "L. 157/1992, Art. 30, comma 1, lett. e)"
+    },
+    {
+        "id": 1223,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Chi esercita la caccia sparando da autoveicoli, natanti o aeromobili incorre in:",
+        "options": {
+            "A": "Sola ammenda di euro 258,00",
+            "B": "Arresto obbligatorio di 6 mesi",
+            "C": "Sanzione amministrativa raddoppiata se la macchina è un fuoristrada",
+            "D": "Arresto fino a tre mesi o ammenda fino a euro 2.065,00"
+        },
+        "correct_answer": "D",
+        "explanation": "L'art. 30, comma 1, lett. i) punisce con l'arresto fino a tre mesi o l'ammenda fino a euro 2.065,00 chi spara da mezzi di locomozione.",
+        "source": "L. 157/1992, Art. 30, comma 1, lett. i)"
+    },
+    {
+        "id": 1224,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Abbattere, catturare o detenere fringillidi in numero superiore a cinque comporta:",
+        "options": {
+            "A": "Sola sanzione amministrativa",
+            "B": "L'ammenda penale fino a euro 1.549,00",
+            "C": "L'arresto da due a sei mesi",
+            "D": "Nessuna sanzione se si ha il tesserino per le deroghe"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 30, comma 1, lett. h) punisce con l'ammenda fino a euro 1.549,00 chi abbatte/detiene più di cinque fringillidi. Sotto o uguale a cinque capi la sanzione è solo amministrativa.",
+        "source": "L. 157/1992, Art. 30, comma 1, lett. h)"
+    },
+    {
+        "id": 1225,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Il commercio di fauna selvatica in violazione della legge è punito con:",
+        "options": {
+            "A": "Arresto da due a sei mesi o ammenda da euro 516,00 a euro 2.065,00",
+            "B": "Sola sanzione amministrativa di euro 1.032,00",
+            "C": "Arresto fino a un anno",
+            "D": "Ammenda fissa di 5.000 euro per ogni capo"
+        },
+        "correct_answer": "A",
+        "explanation": "L'art. 30, comma 1, lett. l) prevede l'arresto da due a sei mesi o l'ammenda da euro 516,00 a euro 2.065,00.",
+        "source": "L. 157/1992, Art. 30, comma 1, lett. l)"
+    },
+    {
+        "id": 1226,
+        "category": "Fauna (L. 157/1992)",
+        "question": "L'uso di richiami vietati (es. acustici elettromagnetici) comporta, oltre all'ammenda, quale misura accessoria?",
+        "options": {
+            "A": "La distruzione immediata dell'arma",
+            "B": "La sospensione della licenza per 5 anni",
+            "C": "La confisca dei richiami",
+            "D": "L'obbligo di frequentare un corso di aggiornamento"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 30, comma 1, lett. h) specifica che in caso di uso di richiami vietati si applica altresì la confisca dei richiami.",
+        "source": "L. 157/1992, Art. 30, comma 1, lett. h)"
+    },
+    {
+        "id": 1227,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Per le violazioni in materia di imbalsamazione e tassidermia, quali sanzioni si applicano?",
+        "options": {
+            "A": "Le sanzioni sono dimezzate rispetto all'abbattimento",
+            "B": "Solo sanzioni amministrative fisse di 500 euro",
+            "C": "Non sono previste sanzioni penali",
+            "D": "Le medesime sanzioni comminate per l'abbattimento degli animali le cui spoglie sono oggetto del trattamento"
+        },
+        "correct_answer": "D",
+        "explanation": "L'art. 30, comma 2 equipara le sanzioni per tassidermia illecita a quelle previste per l'abbattimento della specie trattata.",
+        "source": "L. 157/1992, Art. 30, comma 2"
+    },
+    {
+        "id": 1228,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Per le violazioni previste dall'Art. 30, si applicano le norme del Codice Penale relative al furto (artt. 624, 625 e 626 c.p.)?",
+        "options": {
+            "A": "Sì, sempre in concorso di reato",
+            "B": "No, non si applicano mai in nessun caso",
+            "C": "No, non si applicano ai soggetti titolari di licenza, ma si applicano a chi caccia senza licenza (furto venatorio)",
+            "D": "Solo per le specie particolarmente protette dell'art. 2"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 30 comma 3 esclude il furto per i cacciatori con licenza. Chi caccia senza licenza risponde invece di furto aggravato ai danni dello Stato.",
+        "source": "L. 157/1992, Art. 30, comma 3"
+    },
+    {
+        "id": 1229,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Qual è la sanzione per chi esercita la caccia senza aver stipulato la polizza assicurativa obbligatoria?",
+        "options": {
+            "A": "Sanzione amministrativa da euro 103,00 a euro 619,00",
+            "B": "Arresto fino a 3 mesi",
+            "C": "Sanzione amministrativa da euro 25,00 a euro 154,00",
+            "D": "Sequestro del fucile fino al pagamento della polizza"
+        },
+        "correct_answer": "A",
+        "explanation": "L'art. 31, comma 1, lett. b) prevede la sanzione amministrativa da euro 103,00 a euro 619,00 per la mancata assicurazione.",
+        "source": "L. 157/1992, Art. 31, comma 1, lett. b)"
+    },
+    {
+        "id": 1230,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Per la mancata annotazione dei capi abbattuti sul tesserino regionale, la sanzione prevista è:",
+        "options": {
+            "A": "Sanzione amministrativa di euro 50,00 per ogni capo",
+            "B": "Sanzione amministrativa da euro 77,00 a euro 464,00",
+            "C": "Sospensione della licenza per un anno",
+            "D": "Arresto fino a 15 giorni"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 31, comma 1, lett. i) punisce la mancata annotazione sul tesserino con la sanzione amministrativa da euro 77,00 a euro 464,00.",
+        "source": "L. 157/1992, Art. 31, comma 1, lett. i)"
+    },
+    {
+        "id": 1231,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Se un cacciatore non esibisce la licenza o il tesserino su richiesta, la sanzione minima è applicata se:",
+        "options": {
+            "A": "L'interessato esibisce il documento entro 24 ore",
+            "B": "Il cacciatore dichiara di averlo dimenticato a casa",
+            "C": "L'interessato esibisce il documento entro dieci giorni",
+            "D": "L'interessato esibisce il documento entro cinque giorni"
+        },
+        "correct_answer": "D",
+        "explanation": "L'art. 31, comma 1, lett. m) stabilisce che la sanzione è applicata nel minimo se i documenti vengono esibiti entro 5 giorni.",
+        "source": "L. 157/1992, Art. 31, comma 1, lett. m)"
+    },
+    {
+        "id": 1232,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Qual è la sanzione prevista per chi esercita la caccia senza aver effettuato il versamento delle tasse di concessione?",
+        "options": {
+            "A": "Ammenda penale da euro 258,00",
+            "B": "Revoca immediata della licenza",
+            "C": "Sanzione amministrativa da euro 154,00 a euro 929,00",
+            "D": "Sanzione amministrativa fissa di 1.000 euro"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 31, comma 1, lett. c) prevede la sanzione amministrativa da euro 154,00 a euro 929,00 per il mancato pagamento delle tasse.",
+        "source": "L. 157/1992, Art. 31, comma 1, lett. c)"
+    },
+    {
+        "id": 1233,
+        "category": "Fauna (L. 157/1992)",
+        "question": "La sanzione per chi importa fauna selvatica senza autorizzazione è prevista per ciascun capo in misura da:",
+        "options": {
+            "A": "Euro 100 a euro 500",
+            "B": "Sanzione amministrativa da euro 77,00 a euro 464,00",
+            "C": "Lire 50.000 a lire 300.000",
+            "D": "Nessuna sanzione pecuniaria, solo confisca"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 31, comma 1, lett. l) prevede la sanzione amministrativa da euro 77,00 a euro 464,00 per ciascun capo importato senza autorizzazione.",
+        "source": "L. 157/1992, Art. 31, comma 1, lett. l)"
+    },
+    {
+        "id": 1234,
+        "category": "Fauna (L. 157/1992)",
+        "question": "In caso di infrazioni penali, quali mezzi sono esclusi dal sequestro obbligatorio?",
+        "options": {
+            "A": "Il fucile e le munizioni",
+            "B": "L'autoveicolo utilizzato per il trasporto",
+            "C": "Il cane e i richiami vivi autorizzati",
+            "D": "Non sono previste esclusioni dal sequestro"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 28, comma 2 esclude espressamente dal sequestro obbligatorio il cane e i richiami vivi autorizzati.",
+        "source": "L. 157/1992, Art. 28, comma 2"
+    },
+    {
+        "id": 1235,
+        "category": "Fauna (L. 157/1992)",
+        "question": "In caso di condanna per caccia in periodo di divieto generale, la sospensione della licenza va da:",
+        "options": {
+            "A": "Sei mesi a un anno",
+            "B": "Uno a tre anni",
+            "C": "Due a cinque anni",
+            "D": "Dieci anni (revoca)"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 32, comma 1, lett. a) prevede la sospensione della licenza da uno a tre anni per condanne legate all'art. 30.",
+        "source": "L. 157/1992, Art. 32, comma 1, lett. a)"
+    },
+    {
+        "id": 1236,
+        "category": "Fauna (L. 157/1992)",
+        "question": "La revoca della licenza ed il divieto di rilascio per dieci anni è disposto in caso di condanna per:",
+        "options": {
+            "A": "Caccia nei giorni di silenzio venatorio",
+            "B": "Esercizio dell'uccellagione",
+            "C": "Mancata annotazione sul tesserino",
+            "D": "Sconfinamento in un ambito territoriale vicino"
+        },
+        "correct_answer": "B",
+        "explanation": "La revoca per 10 anni scatta per uccellagione (lett. e) o abbattimento di specie particolarmente protette (lett. c).",
+        "source": "L. 157/1992, Art. 32, comma 1, lett. b)"
+    },
+    {
+        "id": 1237,
+        "category": "Fauna (L. 157/1992)",
+        "question": "A quale distanza minima da immobili adibiti ad abitazione è vietato l'esercizio venatorio?",
+        "options": {
+            "A": "100 metri",
+            "B": "50 metri",
+            "C": "150 metri",
+            "D": "200 metri"
+        },
+        "correct_answer": "A",
+        "explanation": "L'art. 21, comma 1, lett. e) vieta l'esercizio venatorio nel raggio di 100 metri da immobili adibiti ad abitazione o posto di lavoro.",
+        "source": "L. 157/1992, Art. 21, comma 1, lett. e)"
+    },
+    {
+        "id": 1238,
+        "category": "Fauna (L. 157/1992)",
+        "question": "A quale distanza minima è vietato l'esercizio venatorio vicino a ferrovie e strade carrozzabili?",
+        "options": {
+            "A": "150 metri",
+            "B": "100 metri",
+            "C": "200 metri",
+            "D": "50 metri"
+        },
+        "correct_answer": "D",
+        "explanation": "L'art. 21 fissa a 50 metri la distanza minima dalle vie ferroviarie e dalle strade carrozzabili.",
+        "source": "L. 157/1992, Art. 21, comma 1, lett. e)"
+    },
+    {
+        "id": 1239,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Qual è il limite massimo di persone consentito per cacciare 'a rastrello'?",
+        "options": {
+            "A": "Due persone",
+            "B": "Cinque persone",
+            "C": "Tre persone",
+            "D": "Non esiste un limite numerico"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 21, comma 1, lett. h) vieta di cacciare a rastrello in più di tre persone.",
+        "source": "L. 157/1992, Art. 21, comma 1, lett. h)"
+    },
+    {
+        "id": 1240,
+        "category": "Fauna (L. 157/1992)",
+        "question": "È consentito l'uso di richiami acustici a funzionamento elettromagnetico?",
+        "options": {
+            "A": "No, è sempre vietato",
+            "B": "Sì, se autorizzati dalla Regione",
+            "C": "Sì, ma solo per la caccia agli acquatici",
+            "D": "Sì, ma solo nelle ore pomeridiane"
+        },
+        "correct_answer": "A",
+        "explanation": "L'art. 21, comma 1, lett. r) vieta espressamente l'uso di richiami acustici meccanici o elettromagnetici.",
+        "source": "L. 157/1992, Art. 21, comma 1, lett. r)"
+    },
+    {
+        "id": 1241,
+        "category": "Fauna (L. 157/1992)",
+        "question": "A che distanza minima da macchine operatrici agricole in funzione è vietato cacciare?",
+        "options": {
+            "A": "50 metri",
+            "B": "100 metri",
+            "C": "200 metri",
+            "D": "500 metri"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 21, comma 1, lett. l) vieta di cacciare a distanza inferiore a cento metri da macchine operatrici agricole in funzione.",
+        "source": "L. 157/1992, Art. 21, comma 1, lett. l)"
+    },
+    {
+        "id": 1242,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Il trasporto di armi venatorie a bordo di veicoli deve avvenire:",
+        "options": {
+            "A": "Sempre fuori dal fodero",
+            "B": "Con arma scarica e in custodia",
+            "C": "Con arma carica ma sicura inserita",
+            "D": "Solo se il veicolo è un fuoristrada"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 21 vieta il trasporto di armi venatorie su veicoli che non siano scariche e in custodia.",
+        "source": "L. 157/1992, Art. 21, comma 1, lett. g)"
+    },
+    {
+        "id": 1243,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Cosa prevede la legge riguardo alla distruzione deliberata di nidi e uova?",
+        "options": {
+            "A": "È consentita solo per le specie cacciabili",
+            "B": "È vietata, fatte salve le attività previste dalla legge",
+            "C": "È consentita se i nidi si trovano vicino alle case",
+            "D": "È consentita solo per fini di ricerca senza autorizzazione"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 21 vieta di distruggere o danneggiare deliberatamente nidi e uova.",
+        "source": "L. 157/1992, Art. 21, comma 1, lett. o)"
+    },
+    {
+        "id": 1244,
+        "category": "Fauna (L. 157/1992)",
+        "question": "È consentito l'uso di munizione spezzata nella caccia agli ungulati?",
+        "options": {
+            "A": "Sì, per il capriolo",
+            "B": "Sì, ma solo entro i 20 metri",
+            "C": "Sì, ma solo con pallini del numero 0",
+            "D": "No, è vietato"
+        },
+        "correct_answer": "D",
+        "explanation": "L'art. 21, comma 1, lett. u) vieta esplicitamente di usare munizione spezzata nella caccia agli ungulati.",
+        "source": "L. 157/1992, Art. 21, comma 1, lett. u)"
+    },
+    {
+        "id": 1245,
+        "category": "Fauna (L. 157/1992)",
+        "question": "L'uso di scafandri o tute impermeabili da sommozzatore a scopo venatorio è:",
+        "options": {
+            "A": "Vietato",
+            "B": "Consentito per la caccia alle anatre",
+            "C": "Consentito se autorizzato dal Comune",
+            "D": "Consentito solo in inverno"
+        },
+        "correct_answer": "A",
+        "explanation": "L'art. 21 vieta l'uso di scafandri o tute da sommozzatore negli specchi d'acqua per cacciare.",
+        "source": "L. 157/1992, Art. 21, comma 1, lett. h)"
+    },
+    {
+        "id": 1246,
+        "category": "Fauna (L. 157/1992)",
+        "question": "È consentito l'uso di armi da sparo munite di silenziatore?",
+        "options": {
+            "A": "Sì, per non disturbare la quiete pubblica",
+            "B": "Sì, ma solo nei parchi privati",
+            "C": "No, è vietato",
+            "D": "Sì, ma solo per la caccia di selezione"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 21 vieta esplicitamente l'uso di silenziatori sulle armi da sparo.",
+        "source": "L. 157/1992, Art. 21, comma 1, lett. u)"
+    },
+    {
+        "id": 1247,
+        "category": "Fauna (L. 157/1992)",
+        "question": "È vietato rimuovere o danneggiare le tabelle di delimitazione degli ambiti di caccia?",
+        "options": {
+            "A": "Sì, ed è punito anche ai sensi dell'art. 635 del codice penale",
+            "B": "No, è solo una violazione amministrativa lieve",
+            "C": "Solo se le tabelle sono di metallo",
+            "D": "No, se ostacolano il passaggio del cacciatore"
+        },
+        "correct_answer": "A",
+        "explanation": "L'art. 21 punisce il danneggiamento delle tabelle applicando anche l'art. 635 del codice penale.",
+        "source": "L. 157/1992, Art. 21, comma 1, lett. dd)"
+    },
+    {
+        "id": 1248,
+        "category": "Fauna (L. 157/1992)",
+        "question": "L'esercizio venatorio è vietato nei fondi chiusi da muro o rete di altezza non inferiore a:",
+        "options": {
+            "A": "1,00 metro",
+            "B": "1,50 metri",
+            "C": "1,20 metri",
+            "D": "2,00 metri"
+        },
+        "correct_answer": "C",
+        "explanation": "L'art. 15 definisce il fondo chiuso quello recintato con altezza non inferiore a metri 1,20.",
+        "source": "L. 157/1992, Art. 15, comma 8"
+    },
+    {
+        "id": 1249,
+        "category": "Fauna (L. 157/1992)",
+        "question": "Qual è il limite di cartucce per i fucili a ripetizione semiautomatica nella caccia al cinghiale?",
+        "options": {
+            "A": "Non più di due cartucce",
+            "B": "Fino a cinque cartucce",
+            "C": "Fino a dieci cartucce",
+            "D": "Nessun limite di capienza"
+        },
+        "correct_answer": "B",
+        "explanation": "L'art. 13 comma 1 limita a cinque cartucce la capienza dei caricatori per la caccia al cinghiale.",
+        "source": "L. 157/1992, Art. 13, comma 1"
     }
 ]

@@ -24,6 +24,10 @@ export const RegisterSchema = LoginSchema.extend({
     displayName: z.string().min(2, 'Il nome deve avere almeno 2 caratteri')
 });
 
+export const ForgotPasswordSchema = z.object({
+    email: z.string().email('Email non valida')
+});
+
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const [user, setUser] = useState<User | null>(null);
     const [loading, setLoading] = useState(true);
@@ -176,7 +180,15 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     return (
         <AuthContext.Provider value={value}>
-            {children}
+            {loading ? (
+                <div className="skeleton-loader-container" style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px', maxWidth: '400px', margin: 'auto', height: '100vh', justifyContent: 'center' }}>
+                    <div className="skeleton-box" style={{ height: '60px', borderRadius: '12px' }}></div>
+                    <div className="skeleton-box" style={{ height: '120px', borderRadius: '16px' }}></div>
+                    <div className="skeleton-box" style={{ height: '40px', width: '50%', margin: '0 auto', borderRadius: '20px' }}></div>
+                </div>
+            ) : (
+                children
+            )}
         </AuthContext.Provider>
     );
 };

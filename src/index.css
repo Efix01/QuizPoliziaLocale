@@ -280,8 +280,9 @@ button:disabled {
    ───────────────────────────────────────────── */
 
 :focus-visible {
-  outline: 2px solid var(--pino-marittimo);
-  outline-offset: 2px;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(30, 86, 49, 0.4);
+  /* soft ring pino-marittimo */
 }
 
 /* ─────────────────────────────────────────────
@@ -477,6 +478,26 @@ button:disabled {
   50% {
     box-shadow: 0 0 20px rgba(201, 162, 39, 0.6);
   }
+}
+
+/* Skeleton Loading Animation */
+@keyframes skeletonPulse {
+  0% {
+    background-color: rgba(156, 163, 175, 0.1);
+  }
+
+  50% {
+    background-color: rgba(156, 163, 175, 0.25);
+  }
+
+  100% {
+    background-color: rgba(156, 163, 175, 0.1);
+  }
+}
+
+.skeleton-box {
+  animation: skeletonPulse 1.5s ease-in-out infinite;
+  border-radius: var(--radius-sm);
 }
 
 /* ─────────────────────────────────────────────
