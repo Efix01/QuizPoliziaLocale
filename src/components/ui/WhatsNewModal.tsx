@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Sparkles, BookOpen, FileQuestion, Heart } from 'lucide-react';
 import './WhatsNewModal.css';
 
-const VERSION_KEY = 'whats_new_v10_feb_2026';
+const VERSION_KEY = 'whats_new_v11_feb_2026_caccia';
 
 const WhatsNewModal: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -38,20 +38,20 @@ const WhatsNewModal: React.FC = () => {
         {
             icon: <BookOpen size={24} />,
             color: '#10B981', // Green
-            title: "Gran lavoro di aggiornamento quasi quotidiano!! Nuovi Quiz:",
-            description: "Aggiunti i quiz 1041-1220! Focus su Diritto Penale (attività di PG, reati) e Botanica Forestale (specie protette e L.R. 4/2025) e L.R. 26/1985."
+            title: "Nuovi Quiz Disponibili! 🦌",
+            description: "Aggiunte le domande 1221-1249 sulla Legge sulla Caccia (L. 157/1992): normativa, divieti e sistema sanzionatorio penale/amministrativo."
         },
         {
             icon: <FileQuestion size={24} />,
             color: '#3B82F6', // Blue
-            title: 'Aggiornamenti Normativi 2025/26',
-            description: 'Il database è aggiornato con le ultimissime riforme: D.L. 116/2025 (sanzioni rifiuti) e L. 82/2025 (tutela animali).'
+            title: 'Audit & Miglioramenti 🛡️',
+            description: "Abbiamo fatto un check-up completo dell'app. Zero bug, più sicurezza (validazione Zod) e interfaccia ancora più reattiva e moderna."
         },
         {
             icon: <Heart size={24} />,
             color: '#EC4899', // Pink
-            title: 'Corpo Forestale',
-            description: 'Nuova sezione Istituzionale sulla L.R. 26/1985 aggiornata (dipendenza dalla Presidenza della Regione). Buono studio!'
+            title: 'Continua a studiare! 💪',
+            description: "Il traguardo è vicino. Mettiti alla prova regolarmente, ogni quiz superato è un passo in più verso il Corpo Forestale. In bocca al lupo!"
         }
     ];
 

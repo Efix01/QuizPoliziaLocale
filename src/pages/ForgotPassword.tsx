@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { auth } from '../firebase';
+import { ForgotPasswordSchema } from '../context/AuthProvider';
 import { Mail, ArrowLeft, KeyRound, MailCheck } from 'lucide-react';
 import './ForgotPassword.css';
 
@@ -25,12 +26,9 @@ const ForgotPassword: React.FC = () => {
 
     // Validate email
     const validateEmail = (emailValue: string): boolean => {
-        if (!emailValue.trim()) {
-            setEmailError('Inserisci la tua email');
-            return false;
-        }
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailValue)) {
-            setEmailError('Inserisci un\'email valida');
+        const result = ForgotPasswordSchema.safeParse({ email: emailValue });
+        if (!result.success) {
+            setEmailError(result.error.issues[0].message);
             return false;
         }
         setEmailError(null);
