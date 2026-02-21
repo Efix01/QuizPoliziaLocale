@@ -15,7 +15,7 @@ import './Dashboard.css';
 const ONBOARDING_KEY = 'forestali_onboarding_completed';
 
 const Dashboard: React.FC = () => {
-    const { stats, todayAnsweredCount } = useQuiz();
+    const { stats, todayAnsweredCount, loading } = useQuiz();
     const { isAuthenticated, user } = useAuth();
     const navigate = useNavigate();
     const [pageLoaded, setPageLoaded] = useState(false);
@@ -70,6 +70,7 @@ const Dashboard: React.FC = () => {
 
             <CategoryCarousel
                 isAuthenticated={isAuthenticated}
+                loading={loading}
             />
 
             <DailyChallenge

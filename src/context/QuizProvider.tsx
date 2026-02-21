@@ -5,6 +5,7 @@ import { useAuth } from './AuthContext';
 import { db } from '../firebase';
 import { doc, getDoc, setDoc } from 'firebase/firestore';
 import { getSafeItem, setSafeItem } from '../utils/storage';
+import quizDataRaw from '../data/domande_quiz.json';
 
 const INITIAL_STATS: UserStats = {
     totalAnswered: 0,
@@ -38,9 +39,8 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
     useEffect(() => {
         const loadData = async () => {
             try {
-                // 1. Lazy load quiz data
-                const quizModule = await import('../data/domande_quiz.json');
-                const quizDataRaw = quizModule.default as QuizQuestion[];
+                // 1. Quiz data is now statically imported (no async delay)
+                const allQuizData = quizDataRaw as QuizQuestion[];
 
                 // 2. Load Questions Customizations
                 const customQuestions = getSafeItem<QuizQuestion[]>('forestali_custom_questions', true) || [];
@@ -48,52 +48,53 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 const modifiedQuestionsMap = getSafeItem<Record<number, QuizQuestion>>('forestali_modified_questions', true) || {};
 
                 // Merge and Filter Questions
-                let allQuestions = [...quizDataRaw, ...customQuestions];
+                let allQuestions = [...(allQuizData as QuizQuestion[]), ...customQuestions];
                 allQuestions = allQuestions.map(q => modifiedQuestionsMap[q.id] ? modifiedQuestionsMap[q.id] : q);
                 const activeQuestions = allQuestions.filter(q => !hiddenIds.includes(q.id));
 
-                // 3. Load User Progress & Stats
-                let loadedProgress = {};
-                let loadedStats = INITIAL_STATS;
-
-                if (user) {
-                    // Authenticated: Try Firestore
-                    try {
-                        const docRef = doc(db, 'users', user.uid);
-                        const docSnap = await getDoc(docRef);
-
-                        const localP = getSafeItem<Record<number, UserProgressData>>('forestali_progress', true) || {};
-                        const localS = getSafeItem<UserStats>('forestali_stats', true) || INITIAL_STATS;
-
-                        if (docSnap.exists()) {
-                            const cloudData = docSnap.data();
-                            loadedProgress = cloudData.progress || {};
-                            loadedStats = cloudData.stats || INITIAL_STATS;
-                        } else {
-                            // First time cloud login, use local data
-                            loadedProgress = localP;
-                            loadedStats = localS;
-                        }
-
-                    } catch {
-                        // Fallback to local on Firestore error
-                        loadedProgress = getSafeItem('forestali_progress', true) || {};
-                        loadedStats = getSafeItem('forestali_stats', true) || INITIAL_STATS;
-                    }
-
-                } else {
-                    // Guest: LocalStorage
-                    loadedProgress = getSafeItem('forestali_progress', true) || {};
-                    loadedStats = getSafeItem('forestali_stats', true) || INITIAL_STATS;
-                }
+                // 3. PHASE 1: Load from localStorage immediately → UI is ready instantly
+                const localProgress = getSafeItem<Record<number, UserProgressData>>('forestali_progress', true) || {};
+                const localStats = getSafeItem<UserStats>('forestali_stats', true) || INITIAL_STATS;
 
                 setState(prev => ({
                     ...prev,
                     questions: activeQuestions,
-                    userProgress: loadedProgress,
-                    stats: loadedStats,
-                    loading: false
+                    userProgress: localProgress,
+                    stats: localStats,
+                    loading: false   // ← UI is already usable
                 }));
+
+                // 4. PHASE 2: If logged in, sync with Firestore in background (no blocking)
+                if (user) {
+                    try {
+                        const docRef = doc(db, 'users', user.uid);
+                        const docSnap = await getDoc(docRef);
+
+                        if (docSnap.exists()) {
+                            const cloudData = docSnap.data();
+                            const cloudProgress = cloudData.progress || {};
+                            const cloudStats = cloudData.stats || INITIAL_STATS;
+
+                            // Only update state if cloud data is newer
+                            const cloudUpdated = cloudData.lastUpdated || '';
+                            const localUpdated = getSafeItem<string>('forestali_last_updated', false) || '';
+
+                            if (cloudUpdated > localUpdated) {
+                                setState(prev => ({
+                                    ...prev,
+                                    userProgress: cloudProgress,
+                                    stats: cloudStats
+                                }));
+                                // Update local cache with cloud data
+                                setSafeItem('forestali_progress', cloudProgress, true);
+                                setSafeItem('forestali_stats', cloudStats, true);
+                                setSafeItem('forestali_last_updated', cloudUpdated, false);
+                            }
+                        }
+                    } catch {
+                        // Silent fail — local data is already shown
+                    }
+                }
 
             } catch {
                 setState(prev => ({ ...prev, error: 'Failed to load quiz data', loading: false }));
@@ -108,8 +109,10 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
         if (state.loading) return;
 
         // 1. Always save to LocalStorage
+        const now = new Date().toISOString();
         setSafeItem('forestali_progress', state.userProgress, true);
         setSafeItem('forestali_stats', state.stats, true);
+        setSafeItem('forestali_last_updated', now, false);
 
         // 2. Save to Firestore (Debounced)
         if (user) {
@@ -129,7 +132,7 @@ export const QuizProvider: React.FC<{ children: React.ReactNode }> = ({ children
                         await setDoc(docRef, {
                             progress: pendingUpdates.current.progress,
                             stats: pendingUpdates.current.stats,
-                            lastUpdated: new Date().toISOString()
+                            lastUpdated: now
                         }, { merge: true });
                     } catch {
                         // Silent fail for cloud sync - data is safe in localStorage

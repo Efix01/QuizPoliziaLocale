@@ -9,7 +9,7 @@ import './StudyMode.css';
 
 const StudyMode: React.FC = () => {
     const navigate = useNavigate();
-    const { bonusNotification, clearBonusNotification } = useQuiz();
+    const { bonusNotification, clearBonusNotification, loading: quizLoading } = useQuiz();
 
     // Use the custom hook for all session logic
     const {
@@ -35,6 +35,11 @@ const StudyMode: React.FC = () => {
 
     // Derived UI state
     const strategy = currentQuestion ? calculateStrategy(Object.keys(currentQuestion.options).length) : null;
+
+    // Show loading while quiz data is still being loaded
+    if (quizLoading) {
+        return <div className="study-container"><p>Caricamento quiz...</p></div>;
+    }
 
     // Loading State
     if (sessionQuestions.length === 0 && !isFinished) {

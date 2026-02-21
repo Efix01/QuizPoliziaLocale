@@ -18,6 +18,7 @@ import { useQuiz } from '../../context/QuizContext';
 
 interface CategoryCarouselProps {
     isAuthenticated: boolean;
+    loading?: boolean;
 }
 
 const FREE_CATEGORY_IDS = ['botanica', 'fauna', 'ecologia'];
@@ -37,7 +38,7 @@ const CATEGORIES = [
     { id: 'informatica', name: 'Informatica', icon: Target, gradient: 'informatica' },
 ];
 
-const CategoryCarousel: React.FC<CategoryCarouselProps> = ({ isAuthenticated }) => {
+const CategoryCarousel: React.FC<CategoryCarouselProps> = ({ isAuthenticated, loading = false }) => {
     const navigate = useNavigate();
     const { questions } = useQuiz();
     const [categoriesRef, categoriesVisible] = useScrollAnimation<HTMLElement>();
@@ -117,7 +118,7 @@ const CategoryCarousel: React.FC<CategoryCarouselProps> = ({ isAuthenticated }) 
                                     <Icon />
                                 </div>
                                 <span className="category-title">{cat.name}</span>
-                                <span className="category-count">{count} domande</span>
+                                <span className="category-count">{loading ? '—' : `${count} domande`}</span>
                                 <div className="category-progress">
                                     <div
                                         className="category-progress-fill"
