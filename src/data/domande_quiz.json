@@ -15079,14 +15079,14 @@
     "category": "Reati Ambientali",
     "question": "Con l'entrata in vigore del D.L. 116/2025, l'abbandono di rifiuti non pericolosi effettuato da un privato cittadino:",
     "options": {
-      "A": "Diventa reato penale punito con l'arresto",
-      "B": "Rimane illecito amministrativo ma con sanzione aumentata (1.500-18.000 euro)",
-      "C": "È depenalizzato a semplice avviso bonario",
-      "D": "È punito con la reclusione da 1 a 3 anni"
+      "A": "È punito con l'arresto da tre mesi a un anno in ogni caso",
+      "B": "Rimane reato contravvenzionale punito con ammenda aumentata (da 1.500 a 18.000 euro)",
+      "C": "È depenalizzato e comporta solo un richiamo verbale",
+      "D": "È punito con la reclusione da 1 a 3 anni anche senza aggravanti"
     },
     "correct_answer": "B",
-    "explanation": "La riforma ha inasprito le sanzioni amministrative per i privati (triplicando il massimo a 18.000€), riservando la sanzione penale (arresto) ai titolari di imprese ed enti.",
-    "source": "D.Lgs. 152/2006 art. 255 c.1 modificato da DL 116/2025 [web:16][web:61]"
+    "explanation": "Dopo le modifiche introdotte dal D.L. 116/2025 (come convertito dalla L. 147/2025), l’abbandono di rifiuti non pericolosi da parte di privati rimane una contravvenzione ex art. 255 D.Lgs. 152/2006, punita con ammenda da 1.500 a 18.000 euro. La sanzione penale (reclusione) è prevista solo per le nuove fattispecie più gravi e per l’abbandono in casi particolari disciplinati dagli artt. 255-bis e 255-ter TUA.",
+    "source": "Art. 255 D.Lgs. 152/2006 come modificato dal D.L. 116/2025 e dalla L. 147/2025, in vigore dall’8.10.2025 [web:19][web:3][web:11][web:24][web:26]"
   },
   {
     "id": 1078,
