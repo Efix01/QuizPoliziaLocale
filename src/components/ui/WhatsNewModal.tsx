@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, BookOpen, FileQuestion, Heart } from 'lucide-react';
+import { Sparkles, BookOpen, Heart } from 'lucide-react';
 import './WhatsNewModal.css';
 
 const VERSION_KEY = 'whats_new_v12_feb_2026_incendi_boschivi'; // Aggiornato per forzare la visualizzazione del nuovo design e dei nuovi contenuti
@@ -43,12 +43,12 @@ const WhatsNewModal: React.FC = () => {
         {
             icon: <Sparkles size={24} color="#10B981" />, // Smeraldo per il design nuovo
             title: 'Nuovissimo Design "Glass" �',
-            description: "L'app ha un look totalmente nuovo! Modalità Studio e pop-up ora sfruttano un elegante design scuro semi-trasparente (Glassmorphism), progettato per non affaticare gli occhi."
+            description: "L'app ha un look nuovo! Modalità Studio e pop-up ora sfruttano un elegante design scuro semi-trasparente (Glassmorphism), progettato per non affaticare gli occhi."
         },
         {
             icon: <Heart size={24} color="#F43F5E" />, // Rosa acceso
             title: 'Continua a studiare! 💪',
-            description: "Le banche dati crescono e la tua preparazione anche. Mettiti alla prova ogni giorno, ogni quiz superato è un passo in più verso il Corpo Forestale. In bocca al lupo!"
+            description: "Le banche dati crescono e la tua preparazione anche! Se trovate qualche errore fatemelo sapere... per ora!!. è ancora Tutto Gratis...ma??? .. studiate... studiate !!"
         }
     ];
 

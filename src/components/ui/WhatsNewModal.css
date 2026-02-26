@@ -195,20 +195,80 @@
     }
 
     .whats-new-content {
-        padding: 1.5rem;
-        max-height: 85vh;
+        padding: 1.25rem;
+        max-height: 90vh;
         border-radius: 20px;
+        /* Impostiamo flex per gestire l'area scrollabile internamente */
+        display: flex;
+        flex-direction: column;
+    }
+
+    .whats-new-icon {
+        width: 56px;
+        height: 56px;
+        margin-bottom: var(--space-md);
+    }
+
+    .whats-new-icon svg {
+        width: 28px;
+        height: 28px;
     }
 
     .whats-new-title {
-        font-size: 1.4rem;
+        font-size: 1.3rem;
+        margin-bottom: 0.5rem;
+    }
+
+    /* La lista diventa l'elemento scrollabile sui cellulari */
+    .whats-new-list {
+        overflow-y: auto;
+        flex-grow: 1;
+        /* Prende lo spazio disponibile */
+        margin: var(--space-sm) 0;
+        padding-right: 4px;
+        /* Spazio per la scrollbar */
+        /* Applico la scrollbar custom anche qui per coerenza */
+        scrollbar-width: thin;
+        scrollbar-color: rgba(148, 163, 184, 0.5) transparent;
+    }
+
+    .whats-new-list::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    .whats-new-list::-webkit-scrollbar-thumb {
+        background: rgba(148, 163, 184, 0.4);
+        border-radius: 4px;
+    }
+
+    .whats-new-item {
+        padding: 0.75rem;
+        gap: 0.75rem;
+    }
+
+    .item-icon {
+        padding: 6px;
+    }
+
+    .item-icon svg {
+        width: 20px;
+        height: 20px;
     }
 
     .item-content h4 {
-        font-size: 1rem;
+        font-size: 0.95rem;
+        margin-bottom: 4px;
     }
 
     .item-content p {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+    }
+
+    .whats-new-btn {
+        margin-top: 0.5rem;
+        padding: 14px;
+        font-size: 1rem;
+        /* Rende il bottone "appiccicato" al fondo e sempre visibile */
+        flex-shrink: 0;
     }
 }
