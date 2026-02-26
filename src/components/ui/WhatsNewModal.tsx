@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Sparkles, BookOpen, FileQuestion, Heart } from 'lucide-react';
 import './WhatsNewModal.css';
 
-const VERSION_KEY = 'whats_new_v11_feb_2026_caccia_v2'; // Aggiornato per forzare la visualizzazione del nuovo design
+const VERSION_KEY = 'whats_new_v12_feb_2026_incendi_boschivi'; // Aggiornato per forzare la visualizzazione del nuovo design e dei nuovi contenuti
 
 const WhatsNewModal: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -36,19 +36,19 @@ const WhatsNewModal: React.FC = () => {
 
     const features = [
         {
-            icon: <BookOpen size={24} color="#10B981" />, // Smeraldo per Botanica/Legge
-            title: "Nuovi Quiz Disponibili! 🦌",
-            description: "Aggiunte le domande 1221-1249 sulla Legge sulla Caccia (L. 157/1992): normativa, divieti e sistema sanzionatorio penale/amministrativo."
+            icon: <BookOpen size={24} color="#F59E0B" />, // Ambra per il fuoco/incendi
+            title: "Nuovi Quiz Disponibili! 🔥",
+            description: "Aggiunte ben 54 nuove domande sulla normativa Antincendio (L. 353/2000): definizioni di legge, lotta attiva, catasto incendi e sistema sanzionatorio penale."
         },
         {
-            icon: <FileQuestion size={24} color="#38BDF8" />, // Azzurro cielo
-            title: 'Audit & Miglioramenti 🛡️',
-            description: "Abbiamo fatto un check-up completo dell'app. Zero bug, più sicurezza (validazione Zod) e interfaccia ancora più fluida ed elegante."
+            icon: <Sparkles size={24} color="#10B981" />, // Smeraldo per il design nuovo
+            title: 'Nuovissimo Design "Glass" �',
+            description: "L'app ha un look totalmente nuovo! Modalità Studio e pop-up ora sfruttano un elegante design scuro semi-trasparente (Glassmorphism), progettato per non affaticare gli occhi."
         },
         {
             icon: <Heart size={24} color="#F43F5E" />, // Rosa acceso
             title: 'Continua a studiare! 💪',
-            description: "Il traguardo è vicino. Mettiti alla prova regolarmente, ogni quiz superato è un passo in più verso il Corpo Forestale. In bocca al lupo!"
+            description: "Le banche dati crescono e la tua preparazione anche. Mettiti alla prova ogni giorno, ogni quiz superato è un passo in più verso il Corpo Forestale. In bocca al lupo!"
         }
     ];
 
