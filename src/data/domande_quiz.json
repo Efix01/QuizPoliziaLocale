@@ -17801,5 +17801,1035 @@
     "correct_answer": "A",
     "explanation": "\"La Legge 157/92 costituisce il 'nucleo minimo' di tutela ambientale valido su tutto il territorio nazionale... Per la Sardegna, questa legge si integra con la normativa regionale specifica\". Nel combinato disposto normativo, le violazioni economiche basate sul preesistente conio subiscono la conversione in Euro arrotondata (usando il tasso 1936,27) e citare il D.Lgs. 213/1998 è obbligatorio. Questo principio costituzionale garantisce standard uniformi e inderogabili di protezione in tutta Italia.",
     "source": "Applicazione Pratica per il Concorso - L. 157/1992 (Testo incollato)"
+  },
+  {
+    "id": 1269,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Quale definizione è stata introdotta nell'art. 2 dalla riforma del 2021 per gestire le zone di contatto tra case e vegetazione?",
+    "options": {
+      "A": "Incendio agricolo semplificato.",
+      "B": "Incendio di interfaccia urbano-rurale.",
+      "C": "Incendio di zona costiera antropizzata.",
+      "D": "Fuoco controllato di prossimità."
+    },
+    "correct_answer": "B",
+    "explanation": "L'incendio di interfaccia urbano-rurale è una fattispecie di incendio boschivo che interessa aree dove vi è una interconnessione tra strutture antropiche (abitazioni, infrastrutture) e aree naturali, rendendo necessaria una pianificazione specifica nel Piano AIB.",
+    "source": "L. 353/2000 integrata dal D.L. 120/2021",
+    "tags_articoli": [
+      "Art. 2"
+    ],
+    "difficolta": "base",
+    "capo": "Capo I - Disposizioni generali"
+  },
+  {
+    "id": 1270,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Con quale periodicità deve essere revisionato il Piano regionale AIB in Sardegna ai sensi dell'art. 3 della legge nazionale?",
+    "options": {
+      "A": "Ogni tre anni.",
+      "B": "Semestralmente, prima dell'estate.",
+      "C": "Annualmente.",
+      "D": "Ogni cinque anni su parere del COAU."
+    },
+    "correct_answer": "C",
+    "explanation": "L'articolo 3 stabilisce che la Regione approva il piano di previsione, prevenzione e lotta attiva e provvede alla sua revisione con cadenza annuale per aggiornare risorse e indici di rischio.",
+    "source": "Legge 353/2000, Art. 3",
+    "tags_articoli": [
+      "Art. 3"
+    ],
+    "difficolta": "base",
+    "capo": "Capo I - Disposizioni generali"
+  },
+  {
+    "id": 1271,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "In ambito tecnico, cosa si intende per 'pascoli limitrofi' ai fini dell'applicazione della L. 353/2000?",
+    "options": {
+      "A": "Aree destinate al bestiame distanti almeno 10 km dal bosco.",
+      "B": "Pascoli contigui o prossimi al bosco in grado di garantire continuità di combustibile per la propagazione del fuoco.",
+      "C": "Qualsiasi terreno agricolo seminato a cereali nel periodo invernale.",
+      "D": "Aree recintate per il ricovero notturno degli animali."
+    },
+    "correct_answer": "B",
+    "explanation": "La nozione è funzionale: il pascolo è considerato limitrofo se la sua vegetazione erbacea può permettere al fuoco di passare dal bosco al pascolo o viceversa, creando un pericolo continuo.",
+    "source": "Legge 353/2000, Art. 2",
+    "tags_articoli": [
+      "Art. 2"
+    ],
+    "difficolta": "base",
+    "capo": "Capo I - Disposizioni generali"
+  },
+  {
+    "id": 1272,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Quale provvedimento regionale sardo ha aggiornato il PRAI (Piano Regionale Antincendi) per la campagna 2025?",
+    "options": {
+      "A": "La Legge Regionale n. 26/1985.",
+      "B": "La Deliberazione della Giunta Regionale n. 5/48 del 29.01.2025.",
+      "C": "Il Decreto del Presidente del Consiglio dei Ministri del 30.12.2021.",
+      "D": "L'Ordinanza del Corpo dei Carabinieri forestali."
+    },
+    "correct_answer": "B",
+    "explanation": "La Sardegna attua la programmazione annuale tramite delibere di Giunta. Per il 2025, la D.G.R. 5/48 ha approvato gli aggiornamenti operativi del PRAI 2023-2025.",
+    "source": "PRAI Sardegna 2025",
+    "tags_articoli": [
+      "Art. 3",
+      "Sardegna - PRAI/Prescrizioni"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo I - Disposizioni generali"
+  },
+  {
+    "id": 1273,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Nell'ambito della prevenzione (Art. 4), quale attività è stata riconosciuta espressamente dalla riforma del 2021 come intervento colturale?",
+    "options": {
+      "A": "Il pascolo controllato nelle aree bruciate.",
+      "B": "Il fuoco prescritto effettuato secondo autorizzazione.",
+      "C": "L'abbattimento totale degli alberi sani per creare viali parafuoco.",
+      "D": "La cementificazione delle strade forestali secondarie."
+    },
+    "correct_answer": "B",
+    "explanation": "Il fuoco prescritto è l'applicazione esperta del fuoco su superfici pianificate per ridurre il carico di combustibile e prevenire incendi gravi. Il D.L. 120/2021 lo ha inserito ufficialmente tra le misure di prevenzione.",
+    "source": "Legge 353/2000, Art. 4 comma 2-bis",
+    "tags_articoli": [
+      "Art. 4"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo II - Previsione, prevenzione e lotta attiva"
+  },
+  {
+    "id": 1274,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Cosa comprende l'attività di 'lotta attiva' definita dall'art. 7 della L. 353/2000?",
+    "options": {
+      "A": "Esclusivamente l'educazione ambientale nelle scuole.",
+      "B": "Ricognizione, sorveglianza, avvistamento, allarme e spegnimento con mezzi terrestri e aerei.",
+      "C": "La pianificazione urbanistica dei comuni costieri.",
+      "D": "La vendita del legname recuperato dagli incendi."
+    },
+    "correct_answer": "B",
+    "explanation": "La lotta attiva riguarda la fase operativa dell'incendio in corso: dal monitoraggio per l'avvistamento immediato fino allo spegnimento coordinato con mezzi terrestri e aerei.",
+    "source": "Legge 353/2000, Art. 7",
+    "tags_articoli": [
+      "Art. 7"
+    ],
+    "difficolta": "base",
+    "capo": "Capo II - Previsione, prevenzione e lotta attiva"
+  },
+  {
+    "id": 1275,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Quale tecnica di spegnimento è stata ufficialmente valorizzata dal legislatore nel 2021 come strumento di lotta attiva?",
+    "options": {
+      "A": "L'uso sistematico di droni da trasporto acqua.",
+      "B": "La tecnica del controfuoco e l'uso di attrezzature manuali.",
+      "C": "Il raffreddamento del terreno con ghiaccio secco.",
+      "D": "La deviazione dei corsi d'acqua naturali se l'incendio è vicino al fiume."
+    },
+    "correct_answer": "B",
+    "explanation": "Il controfuoco è una tecnica tattica usata per sottrarre combustibile all'incendio principale. La riforma del 2021 ne ha riconosciuto l'importanza insieme all'uso di attrezzature manuali da parte delle squadre a terra.",
+    "source": "L. 353/2000, Art. 7 integrato dal D.L. 120/2021",
+    "tags_articoli": [
+      "Art. 7"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo II - Previsione, prevenzione e lotta attiva"
+  },
+  {
+    "id": 1276,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Chi coordina l'impiego della flotta aerea statale (Canadair) su richiesta delle sale operative regionali?",
+    "options": {
+      "A": "Il Direttore Generale del CFVA coadiuvato dalla SOUP (Sala Operativa Unificata Permanente).",
+      "B": "Il COAU (Centro Operativo Aereo Unificato) presso il Dipartimento della Protezione Civile.",
+      "C": "Il Comando Generale dell'Arma dei Carabinieri.",
+      "D": "Il Ministero dell'Interno."
+    },
+    "correct_answer": "B",
+    "explanation": "Il COAU è l'organo nazionale che gestisce la flotta statale pesante, decidendo l'invio dei mezzi in base alla gravità degli incendi segnalati dalle Regioni.",
+    "source": "Legge 353/2000, Art. 7; Sistema COAU",
+    "tags_articoli": [
+      "Art. 7"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo II - Previsione, prevenzione e lotta attiva"
+  },
+  {
+    "id": 1277,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Quale obbligo temporale è previsto per il catasto incendi dopo il D.L. 120/2021?",
+    "options": {
+      "A": "Rilevazione delle aree bruciate entro 60 giorni e aggiornamento al 1° aprile.",
+      "B": "Pubblicazione degli elenchi entro 30 giorni e revisione entro il 31 dicembre.",
+      "C": "Censimento dei soli boschi entro 90 giorni e notifica ai comuni entro maggio.",
+      "D": "Perimetrazione dei pascoli entro 15 giorni e invio al Ministero entro giugno."
+    },
+    "correct_answer": "A",
+    "explanation": "La normativa vigente post-2021 impone termini molto stretti: 60 giorni per la rilevazione fisica del perimetro dall'estinzione e 1° aprile per l'aggiornamento definitivo del catasto.",
+    "source": "L. 353/2000 Art. 10; D.L. 120/2021",
+    "tags_articoli": [
+      "Art. 10 - Divieti post-incendio"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo III - Divieti, prescrizioni e sanzioni"
+  },
+  {
+    "id": 1278,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Cosa si intende per 'fuoco prescritto' secondo la legislazione antincendio aggiornata?",
+    "options": {
+      "A": "L'uso di fiamme per l'eliminazione dei rifiuti urbani in zone montane.",
+      "B": "L'applicazione esperta del fuoco su superfici pianificate per fini preventivi.",
+      "C": "L'accensione di fuochi controllati per la sola segnalazione di emergenza.",
+      "D": "La bruciatura di stoppie autorizzata dal Piano Regionale Antincendi."
+    },
+    "correct_answer": "B",
+    "explanation": "Il fuoco prescritto è uno strumento tecnico di prevenzione che mira a ridurre il carico di combustibile vegetale in modo programmato e autorizzato.",
+    "source": "L. 353/2000 Art. 4; D.L. 120/2021",
+    "tags_articoli": [
+      "Art. 4"
+    ],
+    "difficolta": "base",
+    "capo": "Capo II - Previsione, prevenzione e lotta attiva"
+  },
+  {
+    "id": 1279,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "In Sardegna, quali sanzioni si applicano per la mancata pulizia dei terreni limitrofi?",
+    "options": {
+      "A": "Multa amministrativa da 1.000 a 10.000 euro e sospensione dei contributi agricoli.",
+      "B": "Sanzione pecuniaria da 5.000 a 50.000 euro e possibile esecuzione in danno.",
+      "C": "Ammenda penale fino a 3.000 euro e obbligo di ripristino dei luoghi entro 30 giorni.",
+      "D": "Sanzione fissa di 2.500 euro raddoppiata in caso di recidiva entro l'anno solare."
+    },
+    "correct_answer": "B",
+    "explanation": "Le Prescrizioni Regionali Antincendio 2025 prevedono una sanzione unica molto elevata per le omissioni di prevenzione, con facoltà di pulizia forzata a spese del proprietario.",
+    "source": "Prescrizioni Regionali Antincendio Sardegna 2025",
+    "tags_articoli": [
+      "Sardegna - PRAI/Prescrizioni"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Focus Sardegna - PRAI e Prescrizioni regionali"
+  },
+  {
+    "id": 1280,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Quale sanzione penale è prevista per chi cagiona un incendio boschivo per colpa?",
+    "options": {
+      "A": "La reclusione da due a cinque anni.",
+      "B": "La reclusione da sei a dieci anni, salvo attenuanti per collaborazione.",
+      "C": "Una sanzione amministrativa pecuniaria da 5.000 a 50.000 euro.",
+      "D": "La reclusione da quattro a otto anni se commesso con abuso di poteri."
+    },
+    "correct_answer": "A",
+    "explanation": "L'incendio boschivo colposo è punito con la reclusione da 2 a 5 anni (art. 423-bis c.p. come modificato dalla L. 137/2023). La pena superiore (6-10 anni) è riservata alla fattispecie dolosa.",
+    "source": "Codice Penale Art. 423-bis; L. 137/2023",
+    "tags_articoli": [
+      "Art. 423-bis c.p."
+    ],
+    "difficolta": "avanzato",
+    "capo": "Penale - Art. 423-bis c.p."
+  },
+  {
+    "id": 1281,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "In Sardegna, quale sanzione è prevista per chi non rispetta il divieto di bruciatura delle stoppie in giornate di 'codice rosso'?",
+    "options": {
+      "A": "Sanzione amministrativa fissa di 5.000 euro.",
+      "B": "Sanzione pecuniaria da 5.000 a 50.000 euro.",
+      "C": "Multa fissa di 2.065 euro e sequestro preventivo delle attrezzature agricole impiegate.",
+      "D": "Sanzione da 309 a 618 euro per ogni ettaro di terreno bruciato."
+    },
+    "correct_answer": "B",
+    "explanation": "Le Prescrizioni Regionali Sardegna 2025 prevedono una sanzione da 5.000 a 50.000 euro per violazioni gravi come le bruciature non autorizzate in periodi di alto rischio.",
+    "source": "Prescrizioni Regionali Antincendio Sardegna 2025",
+    "tags_articoli": [
+      "Sardegna - PRAI/Prescrizioni"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Focus Sardegna - PRAI e Prescrizioni regionali"
+  },
+  {
+    "id": 1282,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Cosa si intende per 'incendio di interfaccia urbano-rurale' ai sensi del D.L. 120/2021?",
+    "options": {
+      "A": "Un incendio boschivo che interessa aree in cui vi è interconnessione tra strutture antropiche e aree naturali.",
+      "B": "Un fuoco che si sviluppa esclusivamente all'interno dei centri storici classificati come zone A.",
+      "C": "Un incendio che colpisce solo le aree industriali contigue a zone costiere prive di vegetazione.",
+      "D": "Qualsiasi abbruciamento di rifiuti effettuato entro i confini comunali delle città metropolitane."
+    },
+    "correct_answer": "A",
+    "explanation": "Questa definizione identifica gli incendi che minacciano direttamente abitazioni o infrastrutture poiché si sviluppano in zone dove la vegetazione e l'uomo convivono.",
+    "source": "L. 353/2000 Art. 2 comma 1-bis; D.L. 120/2021",
+    "tags_articoli": [
+      "Art. 2"
+    ],
+    "difficolta": "base",
+    "capo": "Capo I - Disposizioni generali"
+  },
+  {
+    "id": 1283,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Quale obbligo grava sui Comuni per quanto riguarda il Catasto dei soprassuoli percorsi dal fuoco?",
+    "options": {
+      "A": "Pubblicazione dell'elenco provvisorio entro il 1° aprile di ogni anno.",
+      "B": "Aggiornamento settimanale dei dati proprietari dei terreni durante la campagna estiva.",
+      "C": "Notifica tramite raccomandata a tutti i residenti entro 15 giorni dall'evento.",
+      "D": "Rilevazione delle aree bruciate solo se queste superano l'estensione di 10 ettari."
+    },
+    "correct_answer": "A",
+    "explanation": "Il D.L. 120/2021 impone la pubblicazione degli elenchi provvisori entro il 1° aprile per rendere efficaci i vincoli post-incendio prima della stagione estiva.",
+    "source": "L. 353/2000 Art. 10; D.L. 120/2021",
+    "tags_articoli": [
+      "Art. 3"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo I - Disposizioni generali"
+  },
+  {
+    "id": 1284,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Quale tecnica di spegnimento è stata formalmente inclusa nella 'lotta attiva' dalla riforma del 2021?",
+    "options": {
+      "A": "L'uso di attrezzature manuali e la tecnica del controfuoco.",
+      "B": "L'impiego di droni dotati di sensori termici per la ricerca dei responsabili dell'innesco.",
+      "C": "La deviazione dei corsi d'acqua verso le aree boscate colpite.",
+      "D": "L'utilizzo di esplosivi per rimuovere l'ossigeno nelle zone di macchia mediterranea."
+    },
+    "correct_answer": "A",
+    "explanation": "Il legislatore ha voluto valorizzare strumenti tattici come il controfuoco e il lavoro manuale delle squadre a terra (art. 7 L. 353/2000, mod. D.L. 120/2021).",
+    "source": "L. 353/2000 Art. 7; D.L. 120/2021",
+    "tags_articoli": [
+      "Art. 7"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo II - Previsione, prevenzione e lotta attiva"
+  },
+  {
+    "id": 1285,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Il divieto di caccia nelle zone boscate percorse dal fuoco ha una durata di:",
+    "options": {
+      "A": "10 anni.",
+      "B": "15 anni.",
+      "C": "3 anni.",
+      "D": "5 anni."
+    },
+    "correct_answer": "A",
+    "explanation": "Il vincolo per l'attività venatoria è decennale, analogamente a quello per il pascolo. Il vincolo più lungo (15 anni) riguarda il mutamento della destinazione d'uso.",
+    "source": "L. 353/2000 Art. 10 comma 1",
+    "tags_articoli": [
+      "Art. 10 - Divieti post-incendio"
+    ],
+    "difficolta": "base",
+    "capo": "Capo III - Divieti, prescrizioni e sanzioni"
+  },
+  {
+    "id": 1286,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Quale tra i seguenti è un intervento di 'prevenzione' strutturale ai sensi dell'art. 4?",
+    "options": {
+      "A": "Il coordinamento della flotta aerea pesante statale durante un incendio di interfaccia.",
+      "B": "La verbalizzazione delle violazioni amministrative accertate dal CFVA.",
+      "C": "La manutenzione dei viali parafuoco e delle linee tagliafuoco.",
+      "D": "Il sequestro degli animali sorpresi al pascolo abusivo nelle aree incendiate."
+    },
+    "correct_answer": "C",
+    "explanation": "La manutenzione infrastrutturale (viabilità, parafuoco) è attività di prevenzione. Il coordinamento aereo è lotta attiva; la verbalizzazione e il sequestro sono attività sanzionatorie.",
+    "source": "L. 353/2000 Art. 4",
+    "tags_articoli": [
+      "Art. 4"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo II - Previsione, prevenzione e lotta attiva"
+  },
+  {
+    "id": 1287,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Per quanto tempo vige il divieto di raccolta dei prodotti del sottobosco nelle aree bruciate?",
+    "options": {
+      "A": "1 anno.",
+      "B": "3 anni.",
+      "C": "10 anni.",
+      "D": "5 anni."
+    },
+    "correct_answer": "B",
+    "explanation": "Il divieto di raccolta dei prodotti del sottobosco è stato introdotto nel 2021 con durata triennale (art. 10 comma 5 L. 353/2000, aggiunto da D.L. 120/2021).",
+    "source": "L. 353/2000 Art. 10 comma 5; D.L. 120/2021",
+    "tags_articoli": [
+      "Art. 10 - Divieti post-incendio"
+    ],
+    "difficolta": "base",
+    "capo": "Capo III - Divieti, prescrizioni e sanzioni"
+  },
+  {
+    "id": 1288,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Cosa prevede l'art. 3 della L. 353/2000 riguardo agli aggiornamenti del Piano regionale AIB?",
+    "options": {
+      "A": "Devono essere trasmessi al Dipartimento della Protezione Civile per l'esame del Comitato tecnico nazionale.",
+      "B": "Richiedono la firma di tutti i sindaci dei comuni montani presenti sul territorio regionale.",
+      "C": "Hanno validità immediata ma possono essere annullati dal Ministero dell'Interno entro 60 giorni.",
+      "D": "Devono essere pubblicati esclusivamente sul Bollettino Ufficiale della Regione Sardegna."
+    },
+    "correct_answer": "A",
+    "explanation": "La riforma del 2021 ha introdotto questo passaggio di coordinamento nazionale per le revisioni annuali dei piani regionali, al fine di ricevere raccomandazioni dal Comitato tecnico nazionale.",
+    "source": "L. 353/2000 Art. 3 comma 3; D.L. 120/2021",
+    "tags_articoli": [
+      "Art. 3"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo I - Disposizioni generali"
+  },
+  {
+    "id": 1289,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Quale aggravante per il reato di incendio boschivo (Art. 423-bis c.p.) è stata estesa nel 2021?",
+    "options": {
+      "A": "Se l'incendio si sviluppa in orario notturno dopo le ore 22:00.",
+      "B": "Se l'autore dell'innesco ha utilizzato acceleranti chimici vietati.",
+      "C": "Se l'incendio interessa aree di pascolo non censite nel catasto regionale.",
+      "D": "Se il danno è arrecato ad animali domestici o di allevamento."
+    },
+    "correct_answer": "D",
+    "explanation": "Oltre alle aree protette, il D.L. 120/2021 ha esteso l'aggravante includendo esplicitamente i danni agli animali domestici o di allevamento colpiti dall'incendio.",
+    "source": "Codice Penale Art. 423-bis comma 2; D.L. 120/2021",
+    "tags_articoli": [
+      "Art. 423-bis c.p."
+    ],
+    "difficolta": "avanzato",
+    "capo": "Penale - Art. 423-bis c.p."
+  },
+  {
+    "id": 1290,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Il 'fuoco prescritto' può essere utilizzato come strumento di prevenzione?",
+    "options": {
+      "A": "No, è vietato su tutto il territorio nazionale in quanto innesco volontario di fiamme.",
+      "B": "Sì, se previsto dal Piano regionale AIB.",
+      "C": "Sì, ma solo nelle riserve naturali statali gestite dai Carabinieri Forestali.",
+      "D": "Sì, a condizione che l'area sia superiore ai 50 ettari e non vi siano abitazioni entro 5 km."
+    },
+    "correct_answer": "B",
+    "explanation": "La legge include il fuoco prescritto tra gli interventi di prevenzione programmata (art. 4 comma 2-bis), a condizione che sia autorizzato e previsto nel Piano regionale AIB.",
+    "source": "L. 353/2000 Art. 4 comma 2-bis",
+    "tags_articoli": [
+      "Art. 4"
+    ],
+    "difficolta": "base",
+    "capo": "Capo II - Previsione, prevenzione e lotta attiva"
+  },
+  {
+    "id": 1291,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "In Sardegna, chi assicura la direzione delle operazioni di spegnimento a terra?",
+    "options": {
+      "A": "Il Sindaco del comune interessato in qualità di autorità locale di protezione civile.",
+      "B": "Il Comandante provinciale dei Vigili del Fuoco esclusivamente per le zone agricole.",
+      "C": "Il CFVA.",
+      "D": "L'Assessore regionale dell'Ambiente mediante ordinanza contingibile e urgente."
+    },
+    "correct_answer": "C",
+    "explanation": "Il PRAI Sardegna assegna al CFVA il ruolo di coordinamento e direzione delle operazioni di spegnimento a terra, in sinergia con le altre forze AIB.",
+    "source": "PRAI Sardegna 2025; L.R. 26/1985",
+    "tags_articoli": [
+      "Sardegna - PRAI/Prescrizioni"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Focus Sardegna - PRAI e Prescrizioni regionali"
+  },
+  {
+    "id": 1292,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "A quanto ammonta la sanzione pecuniaria per chi viola il divieto di pascolo su area bruciata?",
+    "options": {
+      "A": "Da 5.000 a 50.000 euro per ogni ettaro di pascolo utilizzato abusivamente.",
+      "B": "Una sanzione fissa di 2.065 euro indipendentemente dal numero di animali.",
+      "C": "Da 309 a 618 euro per ogni capo di bestiame.",
+      "D": "Da 103 a 309 euro per ogni giorno di permanenza del gregge nell'area vincolata."
+    },
+    "correct_answer": "C",
+    "explanation": "La sanzione è calcolata per ogni capo di bestiame (euro 309-618). Si aggiunge, in caso di recidiva penale ex art. 423-bis c.p. sulle stesse aree nei 10 anni precedenti, la possibilità di confisca degli animali.",
+    "source": "L. 353/2000 Art. 10 comma 3",
+    "tags_articoli": [
+      "Art. 10 - Divieti post-incendio"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo III - Divieti, prescrizioni e sanzioni"
+  },
+  {
+    "id": 1293,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Quale di queste affermazioni sui 'pascoli limitrofi' è corretta ai fini della L. 353/2000?",
+    "options": {
+      "A": "Possono essere utilizzati per il pascolo già dopo 12 mesi dall'estinzione dell'incendio.",
+      "B": "Sono esclusi dal catasto incendi se di proprietà privata e recintati regolarmente.",
+      "C": "Non possono essere oggetto di vincolo se non presentano alberi di alto fusto.",
+      "D": "Sono soggetti ai medesimi divieti post-incendio previsti per le zone boscate."
+    },
+    "correct_answer": "D",
+    "explanation": "I pascoli limitrofi bruciati sono equiparati al bosco per quanto riguarda i vincoli decennali di pascolo, caccia ed edificazione, poiché costituiscono continuità di combustibile con il soprassuolo forestale.",
+    "source": "L. 353/2000; Art. 2",
+    "tags_articoli": [
+      "Art. 2",
+      "Art. 10 - Divieti post-incendio"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo I - Disposizioni generali"
+  },
+  {
+    "id": 1294,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Ai sensi dell'art. 2 della L. 353/2000, la definizione di 'incendio boschivo' si applica anche a terreni non boscati?",
+    "options": {
+      "A": "No, si applica esclusivamente alle formazioni arboree con densità superiore al 20%.",
+      "B": "Solo se il terreno è di proprietà dello Stato o di enti pubblici territoriali.",
+      "C": "Sì, ma solo se l'incendio ha avuto origine dolosa accertata dal Nucleo Investigativo.",
+      "D": "Sì, se si tratta di terreni coltivati o incolti e pascoli limitrofi alle aree boscate."
+    },
+    "correct_answer": "D",
+    "explanation": "La legge include nella definizione anche i terreni coltivati, incolti e i pascoli limitrofi, a condizione che il fuoco abbia la capacità di espandersi su di essi.",
+    "source": "Legge 353/2000, Art. 2",
+    "tags_articoli": [
+      "Art. 2"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo I - Disposizioni generali"
+  },
+  {
+    "id": 1295,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Cosa ha stabilito il D.L. 120/2021 riguardo alle sanzioni amministrative per i soggetti appartenenti alle squadre AIB?",
+    "options": {
+      "A": "Sono ridotte del 50% per favorire il reclutamento di personale volontario.",
+      "B": "Vengono raddoppiate in caso di violazione dei divieti post-incendio.",
+      "C": "Vengono annullate se il soggetto dimostra di aver agito per stato di necessità.",
+      "D": "Restano invariate rispetto a quelle previste per la generalità dei cittadini."
+    },
+    "correct_answer": "B",
+    "explanation": "Il legislatore ha inasprito le sanzioni per chi ha il compito istituzionale di proteggere il bosco, prevedendone il raddoppio in caso di violazione dei divieti post-incendio.",
+    "source": "Art. 10 comma 6, L. 353/2000",
+    "tags_articoli": [
+      "Art. 423-bis c.p."
+    ],
+    "difficolta": "avanzato",
+    "capo": "Penale - Art. 423-bis c.p."
+  },
+  {
+    "id": 1296,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Quale tra le seguenti è un'attività di 'lotta attiva' espressamente menzionata dall'art. 7 della L. 353/2000?",
+    "options": {
+      "A": "La perimetrazione delle aree bruciate entro sessanta giorni dall'estinzione.",
+      "B": "La pubblicazione annuale dell'elenco provvisorio dei terreni percorsi dal fuoco.",
+      "C": "La ricognizione, la sorveglianza e l'avvistamento degli incendi.",
+      "D": "L'attività di educazione ambientale nelle scuole primarie e secondarie sarde."
+    },
+    "correct_answer": "C",
+    "explanation": "La lotta attiva comprende tutte le fasi operative: dalla sorveglianza e avvistamento fino allo spegnimento. Le altre opzioni riguardano obblighi catastali o prevenzione.",
+    "source": "Legge 353/2000, Art. 7",
+    "tags_articoli": [
+      "Art. 7"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo II - Previsione, prevenzione e lotta attiva"
+  },
+  {
+    "id": 1297,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "In Sardegna, entro quale data deve essere aggiornato annualmente il catasto delle aree bruciate?",
+    "options": {
+      "A": "Entro il 31 dicembre di ogni anno solare.",
+      "B": "Entro il 1° maggio, data di inizio della campagna AIB.",
+      "C": "Entro 15 giorni dalla chiusura dei lavori della SOUP regionale.",
+      "D": "Entro il 1° aprile."
+    },
+    "correct_answer": "D",
+    "explanation": "Per garantire l'efficacia dei vincoli prima della stagione estiva, il catasto deve essere aggiornato al 1° aprile (D.L. 120/2021, art. 10 L. 353/2000).",
+    "source": "D.L. 120/2021; Art. 10 L. 353/2000",
+    "tags_articoli": [
+      "Sardegna - PRAI/Prescrizioni"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Focus Sardegna - PRAI e Prescrizioni regionali"
+  },
+  {
+    "id": 1298,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Quale nuova aggravante è stata introdotta nell'art. 423-bis c.p. (incendio boschivo) dal D.L. 120/2021?",
+    "options": {
+      "A": "Se l'incendio è causato da un mozzicone di sigaretta lanciato da un veicolo.",
+      "B": "Se il fatto reca danno ad animali domestici o di allevamento.",
+      "C": "Se l'evento si verifica in una giornata classificata con codice rischio verde.",
+      "D": "Se l'autore dell'innesco ha utilizzato materiali plastici altamente tossici."
+    },
+    "correct_answer": "B",
+    "explanation": "La tutela penale è stata estesa non solo alle specie protette, ma anche agli animali domestici o di allevamento colpiti dall'incendio (art. 423-bis comma 2 c.p., mod. D.L. 120/2021).",
+    "source": "Codice Penale, Art. 423-bis; D.L. 120/2021",
+    "tags_articoli": [
+      "Art. 423-bis c.p."
+    ],
+    "difficolta": "avanzato",
+    "capo": "Penale - Art. 423-bis c.p."
+  },
+  {
+    "id": 1299,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Nel sistema sardo, quale autorità approva le Prescrizioni Regionali Antincendio (PRAI)?",
+    "options": {
+      "A": "Il Direttore Generale del Corpo Forestale (CFVA).",
+      "B": "Il Comitato Tecnico Nazionale per l'aggiornamento tecnologico.",
+      "C": "L'Assessore regionale degli Affari Generali e del Personale.",
+      "D": "La Giunta Regionale."
+    },
+    "correct_answer": "D",
+    "explanation": "La programmazione delle attività AIB è di competenza della Giunta Regionale, che delibera il PRAI annualmente (es. D.G.R. 5/48 del 29.01.2025 per la campagna 2025).",
+    "source": "Art. 3, L. 353/2000; PRAI Sardegna 2025",
+    "tags_articoli": [
+      "Art. 3",
+      "Sardegna - PRAI/Prescrizioni"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo I - Disposizioni generali"
+  },
+  {
+    "id": 1300,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Qual è la durata del divieto di pascolo nelle zone boscate percorse dal fuoco?",
+    "options": {
+      "A": "Quindici anni.",
+      "B": "Tre anni.",
+      "C": "Cinque anni.",
+      "D": "Dieci anni."
+    },
+    "correct_answer": "D",
+    "explanation": "Il divieto di pascolo dura 10 anni, periodo ritenuto necessario per il ripristino della vegetazione naturale. Il vincolo più lungo (15 anni) riguarda il mutamento di destinazione d'uso.",
+    "source": "Art. 10 comma 1, L. 353/2000",
+    "tags_articoli": [
+      "Art. 10 - Divieti post-incendio"
+    ],
+    "difficolta": "base",
+    "capo": "Capo III - Divieti, prescrizioni e sanzioni"
+  },
+  {
+    "id": 1301,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Quale sanzione accessoria è stata introdotta nel 2021 per la violazione del divieto di pascolo in area bruciata, in caso di recidiva penale?",
+    "options": {
+      "A": "La sospensione immediata dei contributi europei PAC per cinque anni.",
+      "B": "La confisca degli animali, se il proprietario è stato condannato per art. 423-bis c.p. sulle stesse aree nei 10 anni precedenti.",
+      "C": "L'obbligo di recintare l'intera area colpita a spese dell'allevatore.",
+      "D": "Il sequestro amministrativo dei veicoli adibiti al trasporto del bestiame."
+    },
+    "correct_answer": "B",
+    "explanation": "La confisca NON è automatica: scatta solo se il proprietario ha commesso il fatto su soprassuoli per i quali è stato condannato, nei dieci anni precedenti, per il reato di cui all'art. 423-bis comma 1 c.p. (art. 10 comma 3 L. 353/2000, mod. D.L. 120/2021).",
+    "source": "L. 353/2000 Art. 10 comma 3; D.L. 120/2021",
+    "tags_articoli": [
+      "Art. 10 - Divieti post-incendio"
+    ],
+    "difficolta": "avanzato",
+    "capo": "Capo III - Divieti, prescrizioni e sanzioni"
+  },
+  {
+    "id": 1302,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "In Sardegna, qual è la sanzione pecuniaria per la mancata pulizia delle fasce di protezione stradale?",
+    "options": {
+      "A": "Da 5.000 a 50.000 euro.",
+      "B": "Da 516 a 2.065 euro.",
+      "C": "Da 309 a 618 euro per ogni metro lineare non pulito.",
+      "D": "Un'unica sanzione fissa di 2.500 euro ridotta al 50% se pagata entro 5 giorni."
+    },
+    "correct_answer": "A",
+    "explanation": "Le Prescrizioni sarde 2025 prevedono una sanzione molto elevata (5.000-50.000 euro) per le omissioni che possono innescare incendi, con possibilità di esecuzione in danno a carico del proprietario inadempiente.",
+    "source": "Prescrizioni Regionali Antincendio Sardegna 2025",
+    "tags_articoli": [
+      "Art. 10 - Divieti post-incendio"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo III - Divieti, prescrizioni e sanzioni"
+  },
+  {
+    "id": 1303,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Cosa si intende per 'prevenzione gestionale' nell'ambito della L. 353/2000?",
+    "options": {
+      "A": "L'acquisto di nuovi mezzi e attrezzature per il Corpo Forestale.",
+      "B": "La stipula di convenzioni operative tra la Regione e i Vigili del Fuoco.",
+      "C": "La regolamentazione degli abbruciamenti e la gestione del carico di combustibile.",
+      "D": "L'aggiornamento dei sistemi informatici della Sala Operativa Unificata Permanente."
+    },
+    "correct_answer": "C",
+    "explanation": "La prevenzione gestionale mira a ridurre il rischio tramite la gestione della biomassa vegetale e la disciplina delle fiamme autorizzate (abbruciamenti controllati, fuoco prescritto).",
+    "source": "Legge 353/2000, Art. 4",
+    "tags_articoli": [
+      "Art. 4"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo II - Previsione, prevenzione e lotta attiva"
+  },
+  {
+    "id": 1304,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "In caso di inadempienza del Comune nell'aggiornamento del catasto incendi, chi interviene?",
+    "options": {
+      "A": "Il Prefetto, mediante la nomina di un commissario ad acta dedicato.",
+      "B": "Il Ministero dell'Interno, tramite il Dipartimento della Pubblica Sicurezza.",
+      "C": "La Regione, esercitando i poteri sostitutivi previsti dalla legge.",
+      "D": "Il Corpo Forestale dello Stato (oggi assorbito dall'Arma dei Carabinieri)."
+    },
+    "correct_answer": "C",
+    "explanation": "La legge (art. 10 comma 2 L. 353/2000, rafforzato dal D.L. 120/2021) prevede che la Regione si sostituisca all'ente locale inadempiente per garantire la mappatura delle aree percorse dal fuoco.",
+    "source": "Art. 10 comma 2, L. 353/2000",
+    "tags_articoli": [
+      "Art. 10 - Divieti post-incendio"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo III - Divieti, prescrizioni e sanzioni"
+  },
+  {
+    "id": 1305,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Qual è il divieto post-incendio che ha la durata più lunga (quindici anni)?",
+    "options": {
+      "A": "Il divieto di esercitare l'attività venatoria su zone boscate o pascoli.",
+      "B": "Il divieto di pascolo per qualsiasi tipo di bestiame domestico.",
+      "C": "Il divieto di raccolta dei prodotti del sottobosco introdotto nel 2021.",
+      "D": "Il divieto di mutamento della destinazione d'uso dei terreni bruciati."
+    },
+    "correct_answer": "D",
+    "explanation": "Il vincolo di destinazione d'uso dura 15 anni per scoraggiare incendi a fini speculativi. Pascolo e caccia durano 10 anni; raccolta sottobosco 3 anni.",
+    "source": "Art. 10 comma 1, L. 353/2000",
+    "tags_articoli": [
+      "Art. 10 - Divieti post-incendio"
+    ],
+    "difficolta": "base",
+    "capo": "Capo III - Divieti, prescrizioni e sanzioni"
+  },
+  {
+    "id": 1306,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Per il delitto doloso di incendio boschivo (Art. 423-bis c.p.), la pena minima è stata elevata a:",
+    "options": {
+      "A": "Quattro anni di reclusione.",
+      "B": "Due anni di reclusione.",
+      "C": "Sette anni di reclusione.",
+      "D": "Sei anni di reclusione."
+    },
+    "correct_answer": "D",
+    "explanation": "La L. 137/2023 ha inasprito il minimo edittale portandolo a 6 anni (massimo rimane 10 anni). Prima del 2023 era 4 anni.",
+    "source": "Codice Penale Art. 423-bis; Legge 137/2023",
+    "tags_articoli": [
+      "Art. 423-bis c.p."
+    ],
+    "difficolta": "avanzato",
+    "capo": "Penale - Art. 423-bis c.p."
+  },
+  {
+    "id": 1307,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Quale comportamento permette una riduzione della pena da un mezzo a due terzi per l'incendio boschivo?",
+    "options": {
+      "A": "L'aver agito per proteggere la propria abitazione o i propri beni mobili.",
+      "B": "L'essere incensurati al momento della commissione del delitto colposo.",
+      "C": "La collaborazione con le autorità per evitare conseguenze ulteriori.",
+      "D": "L'aver utilizzato solo materiali naturali per l'innesco del fuoco boschivo."
+    },
+    "correct_answer": "C",
+    "explanation": "Le attenuanti premiali introdotte nel 2021 (commi 5-6 art. 423-bis c.p.) favoriscono chi collabora attivamente con le autorità dopo il reato o si adopera per evitarne le conseguenze.",
+    "source": "Art. 423-bis comma 5-6 c.p.; D.L. 120/2021",
+    "tags_articoli": [
+      "Art. 423-bis c.p."
+    ],
+    "difficolta": "avanzato",
+    "capo": "Penale - Art. 423-bis c.p."
+  },
+  {
+    "id": 1308,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "A quanto ammonta la sanzione per l'attività venatoria praticata su area bruciata?",
+    "options": {
+      "A": "Da 309 a 618 euro.",
+      "B": "Da 5.000 a 50.000 euro.",
+      "C": "Un'ammenda penale stabilita dal giudice di pace territoriale.",
+      "D": "Da 2.065 a 4.131 euro."
+    },
+    "correct_answer": "D",
+    "explanation": "Questa sanzione amministrativa specifica (euro 2.065-4.131) è stabilita dall'art. 10 comma 3 L. 353/2000 per scoraggiare la caccia nelle aree in fase di ripristino.",
+    "source": "Art. 10 comma 3, L. 353/2000",
+    "tags_articoli": [
+      "Art. 423-bis c.p."
+    ],
+    "difficolta": "avanzato",
+    "capo": "Penale - Art. 423-bis c.p."
+  },
+  {
+    "id": 1309,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Cosa prevede l'art. 1 della L. 353/2000 riguardo al patrimonio boschivo?",
+    "options": {
+      "A": "Che è una risorsa economica destinata al libero sfruttamento locale.",
+      "B": "Che la sua tutela è affidata esclusivamente ai proprietari terrieri privati.",
+      "C": "Che deve essere convertito in pascolo dopo venti anni dall'ultimo incendio.",
+      "D": "Che è un bene insostituibile per la qualità della vita e oggetto di protezione unitaria."
+    },
+    "correct_answer": "D",
+    "explanation": "L'articolo 1 sancisce il valore ambientale superiore e nazionale del bosco, costituendo la chiave di lettura sistemica dell'intera legge.",
+    "source": "Legge 353/2000, Art. 1",
+    "tags_articoli": [
+      "Art. 1"
+    ],
+    "difficolta": "base",
+    "capo": "Capo I - Disposizioni generali"
+  },
+  {
+    "id": 1310,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "In Sardegna, durante il periodo di rischio, quali mezzi devono avere un estintore da 6 kg a bordo?",
+    "options": {
+      "A": "Tutte le autovetture private che transitano su strade forestali secondarie.",
+      "B": "Esclusivamente i mezzi pesanti adibiti al trasporto di legname da sughera.",
+      "C": "I veicoli fuoristrada dei barracelli impegnati in attività di ricognizione.",
+      "D": "Le macchine agricole che operano in zone a rischio durante il codice rosso."
+    },
+    "correct_answer": "D",
+    "explanation": "Per prevenire inneschi accidentali, le Prescrizioni Regionali Sardegna 2025 obbligano le macchine agricole ad avere dotazioni antincendio specifiche (estintore 6 kg) durante il codice rosso.",
+    "source": "Prescrizioni Regionali Antincendio Sardegna 2025",
+    "tags_articoli": [
+      "Sardegna - PRAI/Prescrizioni"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Focus Sardegna - PRAI e Prescrizioni regionali"
+  },
+  {
+    "id": 1311,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Quale sanzione è prevista per chi viola il divieto di raccolta prodotti del sottobosco in area bruciata?",
+    "options": {
+      "A": "Sanzione fissa di 309 euro per ogni chilogrammo di prodotto raccolto abusivamente.",
+      "B": "Reclusione da uno a tre anni se il fatto è commesso in una riserva naturale.",
+      "C": "Sospensione della licenza di raccolta per un intero anno solare su tutto il territorio.",
+      "D": "Sanzione amministrativa pecuniaria da 5.000 a 50.000 euro."
+    },
+    "correct_answer": "D",
+    "explanation": "Il divieto triennale di raccolta (introdotto nel 2021) è punito con la sanzione amministrativa da 5.000 a 50.000 euro, la più elevata prevista per le violazioni dei divieti post-incendio.",
+    "source": "L. 353/2000, Art. 10 comma 5",
+    "tags_articoli": [
+      "Art. 10 - Divieti post-incendio"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo III - Divieti, prescrizioni e sanzioni"
+  },
+  {
+    "id": 1312,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Perché la nozione di 'pascoli limitrofi' è importante per il Corpo Forestale (CFVA)?",
+    "options": {
+      "A": "Perché permette di sequestrare il bestiame anche in zone non colpite dal fuoco.",
+      "B": "Perché obbliga l'allevatore a risiedere nel raggio di 10 km dall'area boscata.",
+      "C": "Perché stabilisce la quota minima di alberi che devono essere presenti in un'area.",
+      "D": "Perché definisce il perimetro di applicazione dei divieti decennali post-incendio."
+    },
+    "correct_answer": "D",
+    "explanation": "Se un pascolo è limitrofo al bosco bruciato e presenta continuità di combustibile, su di esso scattano i medesimi divieti di pascolo, caccia ed edificazione per i periodi previsti dalla legge.",
+    "source": "Legge 353/2000, Art. 2",
+    "tags_articoli": [
+      "Art. 2",
+      "Art. 10 - Divieti post-incendio"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo I - Disposizioni generali"
+  },
+  {
+    "id": 1313,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "In quale caso la pena per incendio boschivo può essere diminuita dalla metà a due terzi?",
+    "options": {
+      "A": "Se l'incendio è stato causato da un guasto meccanico imprevisto di un veicolo.",
+      "B": "Se l'area percorsa dal fuoco è inferiore a un ettaro di superficie complessiva.",
+      "C": "Se l'autore collabora per l'individuazione degli altri responsabili del reato.",
+      "D": "Se il responsabile provvede al rimboschimento entro l'anno solare successivo."
+    },
+    "correct_answer": "C",
+    "explanation": "L'attenuante speciale (art. 423-bis commi 5-6 c.p.) premia chi collabora attivamente con le autorità o si adopera per evitare conseguenze ulteriori del delitto.",
+    "source": "Codice Penale, Art. 423-bis",
+    "tags_articoli": [
+      "Art. 423-bis c.p."
+    ],
+    "difficolta": "avanzato",
+    "capo": "Penale - Art. 423-bis c.p."
+  },
+  {
+    "id": 1314,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Cosa prevede l'art. 4 della L. 353/2000 riguardo alla sensibilizzazione?",
+    "options": {
+      "A": "L'obbligo di affiggere manifesti cartacei in ogni singola proprietà privata boscata.",
+      "B": "L'attuazione di campagne di informazione e sensibilizzazione per la popolazione.",
+      "C": "L'invio di un kit antincendio gratuito a ogni famiglia residente in zone rurali.",
+      "D": "L'organizzazione di turni di guardia obbligatori per i cittadini sopra i 18 anni."
+    },
+    "correct_answer": "B",
+    "explanation": "La legge include tra le misure di prevenzione la diffusione della cultura della protezione dei boschi tramite campagne informative rivolte alla popolazione.",
+    "source": "L. 353/2000, Art. 4",
+    "tags_articoli": [
+      "Art. 4"
+    ],
+    "difficolta": "base",
+    "capo": "Capo II - Previsione, prevenzione e lotta attiva"
+  },
+  {
+    "id": 1315,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Nell'ordinamento sardo, quale funzione svolge il 'bollettino di pericolosità'?",
+    "options": {
+      "A": "Serve esclusivamente a informare i turisti sulla percorribilità dei sentieri.",
+      "B": "Stabilisce l'ordine di precedenza per l'assunzione di personale stagionale.",
+      "C": "Indica il prezzo di mercato del sughero estratto dalle zone non percorse dal fuoco.",
+      "D": "Determina le restrizioni operative e i divieti graduati sull'uso del fuoco."
+    },
+    "correct_answer": "D",
+    "explanation": "In base al codice di rischio (verde, giallo, arancione, rosso), scattano divieti specifici stabiliti dalle Prescrizioni Regionali (bruciature, accessi, obblighi attrezzature).",
+    "source": "PRAI Sardegna 2025",
+    "tags_articoli": [
+      "Sardegna - PRAI/Prescrizioni"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Focus Sardegna - PRAI e Prescrizioni regionali"
+  },
+  {
+    "id": 1316,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Quale sanzione penale accessoria è prevista per la condanna per incendio boschivo?",
+    "options": {
+      "A": "L'obbligo di prestare servizio civile presso i Vigili del Fuoco per tre anni.",
+      "B": "La sospensione perpetua del diritto di voto per tutte le consultazioni locali.",
+      "C": "Il divieto di frequentare parchi nazionali e riserve naturali dello Stato.",
+      "D": "L'interdizione da incarichi legati alla prevenzione degli incendi boschivi."
+    },
+    "correct_answer": "D",
+    "explanation": "Oltre alla reclusione, il condannato subisce interdizioni professionali specifiche legate alla materia degli incendi, estinzione del rapporto di lavoro pubblico e confisca obbligatoria dei profitti.",
+    "source": "D.L. 120/2021; Codice Penale",
+    "tags_articoli": [
+      "Art. 423-bis c.p."
+    ],
+    "difficolta": "avanzato",
+    "capo": "Penale - Art. 423-bis c.p."
+  },
+  {
+    "id": 1317,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Cosa si intende per 'esecuzione in danno' nelle prescrizioni antincendio sarde?",
+    "options": {
+      "A": "La pulizia del terreno effettuata dall'ente pubblico a spese del privato inadempiente.",
+      "B": "Il risarcimento dei danni fisici subiti dal personale AIB durante lo spegnimento.",
+      "C": "L'abbattimento forzato di animali selvatici che minacciano le colture agricole.",
+      "D": "La confisca del terreno che è stato oggetto di incendio doloso per fini edilizi."
+    },
+    "correct_answer": "A",
+    "explanation": "Se il privato non pulisce il terreno nonostante l'obbligo previsto dalle Prescrizioni, la Regione (tramite CFVA) può intervenire d'ufficio addebitando i costi al proprietario inadempiente.",
+    "source": "Prescrizioni Sardegna 2025",
+    "tags_articoli": [
+      "Sardegna - PRAI/Prescrizioni"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Focus Sardegna - PRAI e Prescrizioni regionali"
+  },
+  {
+    "id": 1318,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Il divieto di edificazione sulle aree bruciate NON si applica se:",
+    "options": {
+      "A": "L'autorizzazione edilizia era stata già rilasciata prima dell'evento.",
+      "B": "L'edificio è destinato esclusivamente al ricovero di attrezzi agricoli in ferro.",
+      "C": "Il proprietario dimostra di aver tentato di spegnere l'incendio personalmente.",
+      "D": "L'incendio ha interessato meno del dieci per cento della particella catastale."
+    },
+    "correct_answer": "A",
+    "explanation": "Il vincolo di edificazione non è retroattivo rispetto a titoli edilizi già esistenti e validi al momento del rogo, in applicazione del principio di irretroattività dei vincoli.",
+    "source": "L. 353/2000, Art. 10 comma 1",
+    "tags_articoli": [
+      "Art. 10 - Divieti post-incendio"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo III - Divieti, prescrizioni e sanzioni"
+  },
+  {
+    "id": 1319,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Qual è il compito della Sala Operativa Unificata Permanente (SOUP) in Sardegna?",
+    "options": {
+      "A": "Aggiornare le mappe catastali dei comuni che hanno subito incendi boschivi.",
+      "B": "Coordinare le richieste di mezzi aerei statali e la gestione delle squadre a terra.",
+      "C": "Elevare le sanzioni amministrative per il mancato rispetto delle fasce di rispetto.",
+      "D": "Svolgere i compiti di polizia giudiziaria per l'individuazione dei piromani."
+    },
+    "correct_answer": "B",
+    "explanation": "La SOUP è il centro nevralgico che mette in rete CFVA, Protezione Civile e Vigili del Fuoco durante le emergenze, coordinando richieste COAU e gestione operativa delle squadre.",
+    "source": "Sistema AIB Sardegna; PRAI 2025",
+    "tags_articoli": [
+      "Sardegna - PRAI/Prescrizioni"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Focus Sardegna - PRAI e Prescrizioni regionali"
+  },
+  {
+    "id": 1320,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "In base alla L. 353/2000, come vengono considerati i vincoli e i divieti dell'art. 10?",
+    "options": {
+      "A": "Norme opzionali che i Comuni possono scegliere di adottare nei propri regolamenti.",
+      "B": "Disposizioni temporanee che decadono se l'area viene rimboschita artificialmente.",
+      "C": "Principi fondamentali inderogabili a tutela dell'ambiente e dell'ecosistema.",
+      "D": "Linee guida prive di sanzione pecuniaria per le proprietà inferiori a un ettaro."
+    },
+    "correct_answer": "C",
+    "explanation": "L'art. 1 della legge stabilisce che la tutela del bosco è principio fondamentale a tutela dell'ambiente e dell'ecosistema (art. 117 Cost.), prevalente su ogni interesse locale o economico.",
+    "source": "L. 353/2000, Art. 1",
+    "tags_articoli": [
+      "Art. 1"
+    ],
+    "difficolta": "intermedio",
+    "capo": "Capo I - Disposizioni generali"
+  },
+  {
+    "id": 1321,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Quale tra i seguenti strumenti è considerato 'prevenzione' nell'aggiornamento 2021?",
+    "options": {
+      "A": "Il controfuoco.",
+      "B": "La confisca degli animali.",
+      "C": "Il fuoco prescritto.",
+      "D": "L'arresto in flagranza."
+    },
+    "correct_answer": "C",
+    "explanation": "Il fuoco prescritto è prevenzione (prima dell'incendio, riduce il combustibile), mentre il controfuoco è lotta attiva (durante l'incendio). La confisca e l'arresto sono misure sanzionatorie.",
+    "source": "L. 353/2000, Art. 4",
+    "tags_articoli": [
+      "Art. 4"
+    ],
+    "difficolta": "avanzato",
+    "capo": "Capo II - Previsione, prevenzione e lotta attiva"
+  },
+  {
+    "id": 1322,
+    "category": "Incendi Boschivi (L. 353/2000)",
+    "question": "Per quanto riguarda gli incentivi AIB, cosa prevede la riforma del 2021?",
+    "options": {
+      "A": "Gli incentivi vengono revocati per sempre a tutto il personale della regione interessata.",
+      "B": "Si perde il diritto per un periodo fisso di cinque anni dalla data del rinvio a giudizio.",
+      "C": "Non esiste alcun legame tra l'estensione delle aree bruciate e gli incentivi economici.",
+      "D": "La rimodulazione degli incentivi in base all'efficacia dello spegnimento e alla riduzione delle aree bruciate."
+    },
+    "correct_answer": "D",
+    "explanation": "La riforma del 2021 ha introdotto un sistema premiale legato alla reale riduzione delle superfici percorse dal fuoco, valorizzando l'efficacia dell'azione di spegnimento del personale AIB.",
+    "source": "L. 353/2000, Art. 7",
+    "tags_articoli": [
+      "Art. 7"
+    ],
+    "difficolta": "avanzato",
+    "capo": "Capo II - Previsione, prevenzione e lotta attiva"
   }
 ]
