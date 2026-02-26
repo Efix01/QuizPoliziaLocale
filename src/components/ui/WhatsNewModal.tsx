@@ -42,13 +42,13 @@ const WhatsNewModal: React.FC = () => {
         },
         {
             icon: <Sparkles size={24} color="#10B981" />, // Smeraldo per il design nuovo
-            title: 'Nuovissimo Design "Glass" �',
+            title: 'Nuovissimo Design "Glass" ✨',
             description: "L'app ha un look nuovo! Modalità Studio e pop-up ora sfruttano un elegante design scuro semi-trasparente (Glassmorphism), progettato per non affaticare gli occhi."
         },
         {
             icon: <Heart size={24} color="#F43F5E" />, // Rosa acceso
             title: 'Continua a studiare! 💪',
-            description: "Le banche dati crescono e la tua preparazione anche! Se trovate qualche errore fatemelo sapere... per ora!!. è ancora Tutto Gratis...ma??? .. studiate... studiate !!"
+            description: <>Le banche dati crescono e la tua preparazione anche! <strong>Se trovate qualche errore fatemelo sapere... per ora è ancora Tutto Gratis... studiate... studiate !!</strong></>
         }
     ];
 
