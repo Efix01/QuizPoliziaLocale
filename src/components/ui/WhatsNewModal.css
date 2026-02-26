@@ -5,25 +5,38 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.6);
-    backdrop-filter: blur(4px);
+    background: rgba(15, 23, 42, 0.7);
+    /* Slate 900 semi-trasparent */
+    backdrop-filter: blur(12px);
+    /* Aumentato il blur per un effetto vetro più netto */
+    -webkit-backdrop-filter: blur(12px);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 9999;
     padding: var(--space-md);
-    animation: fadeIn 0.3s ease;
+    animation: fadeIn 0.4s ease-out forwards;
 }
 
 .whats-new-content {
-    background: white;
+    background: rgba(30, 41, 59, 0.7);
+    /* Slate 800 semi-trasparent */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     width: 100%;
-    max-width: 500px;
-    border-radius: var(--radius-2xl);
+    max-width: 520px;
+    border-radius: 24px;
     padding: var(--space-xl);
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    animation: slideUp 0.3s ease;
+    box-shadow:
+        0 25px 50px -12px rgba(0, 0, 0, 0.5),
+        /* Ombra profonda */
+        inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    /* Bordo superiore luminoso */
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    /* Bordo delicato per effetto vetro */
+    animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
     text-align: center;
+
     /* Mobile Fixes */
     max-height: 90vh;
     overflow-y: auto;
@@ -32,22 +45,27 @@
 }
 
 .whats-new-icon {
-    width: 64px;
-    height: 64px;
-    background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+    width: 72px;
+    height: 72px;
+    background: linear-gradient(135deg, rgba(234, 179, 8, 0.2), rgba(217, 119, 6, 0.05));
+    border: 1px solid rgba(250, 204, 21, 0.3);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #D97706;
+    color: #FBBF24;
+    /* Amber 400 */
     margin: 0 auto var(--space-lg);
+    box-shadow: 0 0 20px rgba(245, 158, 11, 0.15);
 }
 
 .whats-new-title {
     font-family: var(--font-display);
     font-size: var(--text-2xl);
-    color: var(--inchiostro);
+    color: #F8FAFC;
+    /* Slate 50 */
     margin-bottom: var(--space-md);
+    letter-spacing: -0.02em;
 }
 
 .whats-new-list {
@@ -55,76 +73,118 @@
     margin: var(--space-lg) 0;
     list-style: none;
     padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
 }
 
 .whats-new-item {
     display: flex;
     align-items: flex-start;
     gap: var(--space-md);
-    margin-bottom: var(--space-md);
-    padding: var(--space-sm);
-    background: #F9FAFB;
-    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    background: rgba(15, 23, 42, 0.4);
+    /* Slate 900 molto trasparente */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.whats-new-item:hover {
+    background: rgba(15, 23, 42, 0.6);
+    transform: translateY(-2px);
 }
 
 .item-icon {
     flex-shrink: 0;
-    color: var(--pino-marittimo);
-    margin-top: 2px;
+    margin-top: 4px;
+    padding: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
 }
 
 .item-content h4 {
     font-size: var(--text-lg);
-    font-weight: 700;
-    color: var(--inchiostro);
-    margin: 0 0 4px 0;
-    line-height: 1.2;
+    font-weight: 600;
+    color: #F1F5F9;
+    /* Slate 100 */
+    margin: 0 0 6px 0;
+    line-height: 1.3;
 }
 
 .item-content p {
-    font-size: var(--text-base);
-    color: var(--bosco-notte);
+    font-size: 0.95rem;
+    color: #94A3B8;
+    /* Slate 400 */
     margin: 0;
     line-height: 1.5;
-    opacity: 0.9;
 }
 
 .whats-new-btn {
     width: 100%;
-    padding: var(--space-md);
-    background: linear-gradient(135deg, var(--pino-marittimo), var(--bosco-notte));
+    padding: 16px;
+    background: linear-gradient(135deg, #10B981, #059669);
+    /* Smeraldo vibrante */
     color: white;
     border: none;
-    border-radius: var(--radius-lg);
-    font-weight: 700;
-    font-size: var(--text-base);
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 1.05rem;
     cursor: pointer;
-    transition: all var(--transition-fast);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3);
+    margin-top: var(--space-sm);
 }
 
 .whats-new-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(30, 86, 49, 0.3);
+    box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+    background: linear-gradient(135deg, #34D399, #10B981);
+}
+
+.whats-new-btn:active {
+    transform: translateY(0);
+}
+
+/* Custom Scrollbar for the modal content */
+.whats-new-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.whats-new-content::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.5);
+    border-radius: 8px;
+}
+
+.whats-new-content::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.3);
+    border-radius: 8px;
+}
+
+.whats-new-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(148, 163, 184, 0.5);
 }
 
 @keyframes fadeIn {
     from {
         opacity: 0;
+        backdrop-filter: blur(0px);
     }
 
     to {
         opacity: 1;
+        backdrop-filter: blur(12px);
     }
 }
 
 @keyframes slideUp {
     from {
-        transform: translateY(20px);
+        transform: translateY(30px) scale(0.95);
         opacity: 0;
     }
 
     to {
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
         opacity: 1;
     }
 }
@@ -132,29 +192,23 @@
 @media (max-width: 640px) {
     .whats-new-overlay {
         padding: 1rem;
-        align-items: center;
-        /* Center vertically specifically */
     }
 
     .whats-new-content {
         padding: 1.5rem;
         max-height: 85vh;
-        /* Slightly less on mobile to be safe */
-        width: 100%;
-        margin: auto;
-        overscroll-behavior: contain;
-        /* Prevent body scroll when modal scrolls */
-        -webkit-overflow-scrolling: touch;
-        /* Smooth scrolling on iOS */
+        border-radius: 20px;
     }
 
     .whats-new-title {
-        font-size: 1.5rem;
-        /* reduce title size slightly */
-        margin-bottom: 1rem;
+        font-size: 1.4rem;
     }
 
-    .whats-new-list {
-        margin: 1rem 0;
+    .item-content h4 {
+        font-size: 1rem;
+    }
+
+    .item-content p {
+        font-size: 0.9rem;
     }
 }

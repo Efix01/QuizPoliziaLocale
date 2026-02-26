@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Sparkles, BookOpen, FileQuestion, Heart } from 'lucide-react';
 import './WhatsNewModal.css';
 
-const VERSION_KEY = 'whats_new_v11_feb_2026_caccia';
+const VERSION_KEY = 'whats_new_v11_feb_2026_caccia_v2'; // Aggiornato per forzare la visualizzazione del nuovo design
 
 const WhatsNewModal: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -36,20 +36,17 @@ const WhatsNewModal: React.FC = () => {
 
     const features = [
         {
-            icon: <BookOpen size={24} />,
-            color: '#10B981', // Green
+            icon: <BookOpen size={24} color="#10B981" />, // Smeraldo per Botanica/Legge
             title: "Nuovi Quiz Disponibili! 🦌",
             description: "Aggiunte le domande 1221-1249 sulla Legge sulla Caccia (L. 157/1992): normativa, divieti e sistema sanzionatorio penale/amministrativo."
         },
         {
-            icon: <FileQuestion size={24} />,
-            color: '#3B82F6', // Blue
+            icon: <FileQuestion size={24} color="#38BDF8" />, // Azzurro cielo
             title: 'Audit & Miglioramenti 🛡️',
-            description: "Abbiamo fatto un check-up completo dell'app. Zero bug, più sicurezza (validazione Zod) e interfaccia ancora più reattiva e moderna."
+            description: "Abbiamo fatto un check-up completo dell'app. Zero bug, più sicurezza (validazione Zod) e interfaccia ancora più fluida ed elegante."
         },
         {
-            icon: <Heart size={24} />,
-            color: '#EC4899', // Pink
+            icon: <Heart size={24} color="#F43F5E" />, // Rosa acceso
             title: 'Continua a studiare! 💪',
             description: "Il traguardo è vicino. Mettiti alla prova regolarmente, ogni quiz superato è un passo in più verso il Corpo Forestale. In bocca al lupo!"
         }
@@ -59,15 +56,15 @@ const WhatsNewModal: React.FC = () => {
         <div className="whats-new-overlay">
             <div className="whats-new-content">
                 <div className="whats-new-icon">
-                    <Sparkles size={32} />
+                    <Sparkles size={36} />
                 </div>
 
-                <h2 className="whats-new-title">Aggiornamento Contenuti ✨</h2>
+                <h2 className="whats-new-title">Aggiornamento ✨</h2>
 
                 <ul className="whats-new-list">
                     {features.map((feature, index) => (
                         <li key={index} className="whats-new-item">
-                            <div className="item-icon" style={{ color: feature.color }}>
+                            <div className="item-icon">
                                 {feature.icon}
                             </div>
                             <div className="item-content">
