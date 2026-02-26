@@ -48,7 +48,7 @@ const WhatsNewModal: React.FC = () => {
         {
             icon: <Heart size={24} color="#F43F5E" />, // Rosa acceso
             title: 'Continua a studiare! 💪',
-            description: <>Le banche dati crescono e la tua preparazione anche! <strong>Se trovate qualche errore fatemelo sapere... per ora è ancora Tutto Gratis... studiate... studiate !!</strong></>
+            description: <>Le banche dati crescono e la tua preparazione anche! <strong style={{ color: '#FFFFFF', fontWeight: 'bold' }}>Se trovate qualche errore fatemelo sapere... per ora.... è ancora Tutto Gratis...Ma??? 🤔 ... studiate... studiate !!</strong></>
         }
     ];
 
