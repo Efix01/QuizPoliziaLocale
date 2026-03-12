@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Sparkles, BookOpen, Heart } from 'lucide-react';
 import './WhatsNewModal.css';
 
-const VERSION_KEY = 'whats_new_v12_feb_2026_incendi_boschivi'; // Aggiornato per forzare la visualizzazione del nuovo design e dei nuovi contenuti
+const VERSION_KEY = 'whats_new_v13_mar_2026_buono_studio'; // Aggiornato per mostrare il messaggio di incoraggiamento
 
 const WhatsNewModal: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -46,9 +46,9 @@ const WhatsNewModal: React.FC = () => {
             description: "L'app ha un look nuovo! Modalità Studio e pop-up ora sfruttano un elegante design scuro semi-trasparente (Glassmorphism), progettato per non affaticare gli occhi."
         },
         {
-            icon: <Heart size={24} color="#F43F5E" />, // Rosa acceso
-            title: 'Continua a studiare! 💪',
-            description: <>Le banche dati crescono e la tua preparazione anche! <strong style={{ color: '#FFFFFF', fontWeight: 'bold' }}>Se trovate qualche errore fatemelo sapere... per ora.... è ancora Tutto Gratis...Ma??? 🤔 ... studiate... studiate !!</strong></>
+            icon: <Heart size={24} color="#F43F5E" />,
+            title: 'Buona prosecuzione di studio! 💪',
+            description: <>Non perdetevi d'animo! Il ritardo delle prove scritte gioca a vostro favore per migliorare le conoscenze sulle <strong style={{ color: '#FFFFFF', fontWeight: 'bold' }}>materie forestali</strong>. Gli aggiornamenti dei quiz riprenderanno a breve!</>
         }
     ];
 
