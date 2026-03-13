@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, BookOpen, Heart } from 'lucide-react';
+import { Sparkles, BookOpen } from 'lucide-react';
 import './WhatsNewModal.css';
 
-const VERSION_KEY = 'whats_new_v13_mar_2026_buono_studio'; // Aggiornato per mostrare il messaggio di incoraggiamento
+const VERSION_KEY = 'whats_new_v14_mar_2026_commissione'; // Aggiornato per annuncio commissione
 
 const WhatsNewModal: React.FC = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +34,33 @@ const WhatsNewModal: React.FC = () => {
 
     if (!isOpen) return null;
 
+    const PDF_LINK = "https://files.regione.sardegna.it/squidex/api/assets/redazionaleras/421a3ee7-e8bc-4f76-882d-b3a7330e5ce7/determinazione-nomina-prima-commissione-esaminatrice-n.-469-10363-12.03.2026-.pdf";
+
     const features = [
+        {
+            icon: <BookOpen size={24} color="#3B82F6" />, // Blu per comunicazioni ufficiali
+            title: "Commissione Nominata!. Dacci dentro...⚖️",
+            description: (
+                <>
+                    È stata formalizzata la Commissione Esaminatrice (Pres. Dir. Gen. CFVA). La valutazione riguarderà prove scritte, pratiche e titoli.
+                    <br />
+                    <a
+                        href={PDF_LINK}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                            display: 'inline-block',
+                            marginTop: '8px',
+                            color: '#60A5FA',
+                            textDecoration: 'underline',
+                            fontWeight: '500'
+                        }}
+                    >
+                        📄 Scarica PDF Ufficiale
+                    </a>
+                </>
+            )
+        },
         {
             icon: <BookOpen size={24} color="#F59E0B" />, // Ambra per il fuoco/incendi
             title: "Nuovi Quiz Disponibili! 🔥",
@@ -43,12 +69,7 @@ const WhatsNewModal: React.FC = () => {
         {
             icon: <Sparkles size={24} color="#10B981" />, // Smeraldo per il design nuovo
             title: 'Nuovissimo Design "Glass" ✨',
-            description: "L'app ha un look nuovo! Modalità Studio e pop-up ora sfruttano un elegante design scuro semi-trasparente (Glassmorphism), progettato per non affaticare gli occhi."
-        },
-        {
-            icon: <Heart size={24} color="#F43F5E" />,
-            title: 'Buona prosecuzione di studio! 💪',
-            description: <>Non perdetevi d'animo! Il ritardo delle prove scritte gioca a vostro favore per migliorare le conoscenze sulle <strong style={{ color: '#FFFFFF', fontWeight: 'bold' }}>materie forestali</strong>. Gli aggiornamenti dei quiz riprenderanno a breve!</>
+            description: "L'app ha un look nuovo! Modalità Studio e pop-up ora sfruttano un elegante design scuro semi-transparente (Glassmorphism), progettato per non affaticare gli occhi."
         }
     ];
 
