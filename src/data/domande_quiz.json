@@ -14797,16 +14797,16 @@
   {
     "id": 1057,
     "category": "Reati Ambientali",
-    "question": "Qual è la sanzione per la miscelazione non consentita di rifiuti pericolosi (art. 256 c.6)?",
+    "question": "Qual è la sanzione per la miscelazione non consentita di rifiuti (art. 256 c.5, d.lgs. 152/2006)?",
     "options": {
       "A": "Arresto da 3 mesi a 1 anno",
-      "B": "Ammenda amministrativa",
+      "B": "Ammenda da 2.600 a 26.000 euro",
       "C": "Arresto da 6 mesi a 2 anni",
-      "D": "Arresto da 1 a 4 anni (reclusione)"
+      "D": "Arresto da 6 mesi a 2 anni o ammenda da 2.600 a 26.000 euro"
     },
     "correct_answer": "D",
-    "explanation": "La miscelazione vietata di rifiuti pericolosi (art. 187) è punita severamente dall'art. 256 comma 6 con la pena della reclusione (arresto) da 2 a 5 anni (testo vigente aggravato). Nota: il testo base prevedeva pene minori, ma la giurisprudenza e riforme recenti aggravano. Risposta D corretta come riferimento base del reato specifico.",
-    "source": "D.Lgs. 152/2006 art. 256 c.6 (riferimento a c.3/4) [web:16]"
+    "explanation": "L’art. 256, comma 5, d.lgs. 152/2006 punisce la miscelazione non consentita ex art. 187 con arresto da 6 mesi a 2 anni o ammenda da 2.600 a 26.000 euro (agg. D.L. 116/2025, conv. L. 147/2025). Contravvenzione, non delitto.[page:1]",
+    "source": "D.lgs. 152/2006, art. 256 c.5 [page:1][web:1]"
   },
   {
     "id": 1058,
