@@ -18549,21 +18549,21 @@
   {
     "id": 1308,
     "category": "Incendi Boschivi (L. 353/2000)",
-    "question": "A quanto ammonta la sanzione per l'attività venatoria praticata su area bruciata?",
+    "question": "Qual è la sanzione per l'attività venatoria su soprassuolo percorso da incendio (art. 10 c.1 L. 353/2000)?",
     "options": {
-      "A": "Da 309 a 618 euro.",
-      "B": "Da 5.000 a 50.000 euro.",
-      "C": "Un'ammenda penale stabilita dal giudice di pace territoriale.",
-      "D": "Da 2.065 a 4.131 euro."
+      "A": "Da 309 a 618 euro",
+      "B": "Da 5.000 a 50.000 euro",
+      "C": "Da 400.000 a 800.000 lire (≈ 207-413 euro)",
+      "D": "Da 2.065 a 4.131 euro"
     },
-    "correct_answer": "D",
-    "explanation": "Questa sanzione amministrativa specifica (euro 2.065-4.131) è stabilita dall'art. 10 comma 3 L. 353/2000 per scoraggiare la caccia nelle aree in fase di ripristino.",
-    "source": "Art. 10 comma 3, L. 353/2000",
+    "correct_answer": "C",
+    "explanation": "L'art. 10, comma 1, L. 353/2000 prevede sanzione amministrativa da 400.000 a 800.000 lire per caccia su area percorsa da fuoco (comma 3). Valore in euro da conversione tecnica (1 euro = 1.936,27 lire); nessun adeguamento normativo recente.",
+    "source": "L. 21/11/2000, n. 353, art. 10, commi 1 e 3 [page:1]",
     "tags_articoli": [
-      "Art. 423-bis c.p."
+      "Art. 10 L. 353/2000"
     ],
     "difficolta": "avanzato",
-    "capo": "Penale - Art. 423-bis c.p."
+    "capo": "Sanzioni Amministrative - Incendi boschivi"
   },
   {
     "id": 1309,
