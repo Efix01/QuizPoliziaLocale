@@ -6234,13 +6234,13 @@
     "category": "Reati Ambientali",
     "question": "Ai sensi dell'art. 256, comma 3, chi realizza o gestisce una discarica non autorizzata è punito con:",
     "options": {
-      "A": "L'arresto da sei mesi a due anni e con l'ammenda",
+      "A": "L'arresto da sei mesi a due anni e con l'ammenda da 2.600 a 26.000 €",
       "B": "La reclusione da uno a cinque anni",
-      "C": "La reclusione da 5 a 10 anni in ogni caso",
-      "D": "La sola sanzione amministrativa se la discarica è piccola"
+      "C": "La reclusione da 5 a 10 anni",
+      "D": "Sola sanzione amministrativa se piccola"
     },
-    "correct_answer": "B",
-    "explanation": "Ai sensi dell'art. 256, comma 3, del D.Lgs. 152/2006 (come modificato dal D.L. 116/2025 convertito in Legge 147/2025), chiunque realizza o gestisce una discarica non autorizzata è punito con la reclusione da uno a cinque anni. In caso di rifiuti pericolosi, la pena è aumentata da un anno e sei mesi a cinque anni e sei mesi."
+    "correct_answer": "A",
+    "explanation": "Art. 256 co. 3 TUA (vigente marzo 2026): arresto 6 mesi–2 anni + ammenda 2.600–26.000 €. Pericolosi: arresto 1–3 anni + ammenda 5.200–52.000 € (non reclusione 1–5 anni, che è art. 255-ter). Modificato DL 116/2025 ma comma 3 invariato nella struttura penale."
   },
   {
     "id": 447,
