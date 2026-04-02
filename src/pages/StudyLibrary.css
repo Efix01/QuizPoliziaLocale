@@ -159,29 +159,29 @@
 }
 
 /* Use brighter colors for dark mode context */
-.subject-border--legis_forestale {
+.subject-border--diritto_costituzionale {
+    background: #38BDF8;
+    box-shadow: 0 0 10px #38BDF8;
+}
+
+.subject-border--diritto_amministrativo {
+    background: #F472B6;
+    box-shadow: 0 0 10px #F472B6;
+}
+
+.subject-border--codice_della_strada {
+    background: #FACC15;
+    box-shadow: 0 0 10px #FACC15;
+}
+
+.subject-border--ordinamento_pl {
     background: #4ADE80;
     box-shadow: 0 0 10px #4ADE80;
 }
 
-.subject-border--botanica {
-    background: #22C55E;
-    box-shadow: 0 0 10px #22C55E;
-}
-
-.subject-border--fauna {
-    background: #FB923C;
-    box-shadow: 0 0 10px #FB923C;
-}
-
-.subject-border--incendi {
-    background: #F87171;
-    box-shadow: 0 0 10px #F87171;
-}
-
 .subject-border--diritto_penale {
-    background: #A78BFA;
-    box-shadow: 0 0 10px #A78BFA;
+    background: #EF4444;
+    box-shadow: 0 0 10px #EF4444;
 }
 
 .subject-content {
@@ -459,24 +459,24 @@
     flex-shrink: 0;
 }
 
-.subject-border--legis_forestale {
-    background: linear-gradient(180deg, #1E5631, #2D8B4E);
+.subject-border--diritto_costituzionale {
+    background: linear-gradient(180deg, #0284C7, #38BDF8);
 }
 
-.subject-border--botanica {
-    background: linear-gradient(180deg, #16A34A, #22C55E);
+.subject-border--diritto_amministrativo {
+    background: linear-gradient(180deg, #DB2777, #F472B6);
 }
 
-.subject-border--fauna {
-    background: linear-gradient(180deg, #EA580C, #F97316);
+.subject-border--codice_della_strada {
+    background: linear-gradient(180deg, #D97706, #FACC15);
 }
 
-.subject-border--incendi {
-    background: linear-gradient(180deg, #DC2626, #EF4444);
+.subject-border--ordinamento_pl {
+    background: linear-gradient(180deg, #16A34A, #4ADE80);
 }
 
 .subject-border--diritto_penale {
-    background: linear-gradient(180deg, #7C3AED, #8B5CF6);
+    background: linear-gradient(180deg, #DC2626, #EF4444);
 }
 
 .subject-content {

@@ -6,11 +6,11 @@ export const Slide1Illustration = () => (
         <div className="bg-circle circle-2"></div>
         <div className="bg-circle circle-3"></div>
 
-        {/* Logo Ufficiale CFVA */}
+        {/* Logo Ufficiale Polizia Locale */}
         <img
-            src="/logo-cfva.png"
-            alt="Quiz CFVA Logo"
-            className="cfva-logo"
+            src="/logo-pl.png"
+            alt="Quiz Polizia Locale Logo"
+            className="logo-pl"
         />
     </div>
 );
@@ -122,7 +122,7 @@ export const Slide3Illustration = () => (
                 <rect x="45" y="14" width="40" height="12" rx="6" fill="#0D2818" />
 
                 <rect x="15" y="35" width="100" height="25" rx="8" fill="#1E5631" />
-                <text x="65" y="52" fontSize="10" fill="white" textAnchor="middle" fontWeight="bold">QUIZ CFVA</text>
+                <text x="65" y="52" fontSize="10" fill="white" textAnchor="middle" fontWeight="bold">QUIZ P.L.</text>
 
                 <rect x="15" y="70" width="100" height="50" rx="10" fill="white" stroke="#E5E7EB" />
                 <circle cx="35" cy="95" r="12" fill="#E8F5E9" />
@@ -196,7 +196,7 @@ export const Slide4Illustration = () => (
 
                 <circle cx="50" cy="95" r="12" fill="#C9A227" />
                 <circle cx="50" cy="95" r="8" fill="#FFD700" />
-                {/* Aquila stilizzata - Logo CFVA */}
+                {/* Stemma stilizzato - Logo Polizia Locale */}
                 <g transform="translate(50, 95) scale(0.35)">
                     <path d="M0,-15 L-8,-5 L-15,5 L-10,5 L-5,0 L0,10 L5,0 L10,5 L15,5 L8,-5 Z" fill="#0D2818" />
                     <circle cx="0" cy="-8" r="3" fill="#0D2818" />

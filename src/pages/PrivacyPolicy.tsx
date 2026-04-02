@@ -16,8 +16,8 @@ const PrivacyPolicy: React.FC = () => {
             </header>
 
             <main className="privacy-content">
-                <h1>INFORMATIVA SULLA PRIVACY DI "QUIZ CFVA"</h1>
-                <p className="privacy-date">Ultimo aggiornamento: 20.01.2026</p>
+                <h1>INFORMATIVA SULLA PRIVACY DI "QUIZ POLIZIA LOCALE"</h1>
+                <p className="privacy-date">Ultimo aggiornamento: 29.03.2026</p>
 
                 <div className="data-controller">
                     <h3>Titolare del Trattamento dei Dati:</h3>
@@ -27,7 +27,7 @@ const PrivacyPolicy: React.FC = () => {
                 </div>
 
                 <p className="privacy-intro">
-                    Gentile Utente, la presente informativa ("Privacy Policy") ha lo scopo di descrivere le modalità di gestione di "Quiz CFVA" (di seguito, anche "l'App" o il "Servizio") con riferimento al trattamento dei dati personali degli utenti che lo utilizzano. L'informativa è rilasciata ai sensi dell'art. 13 del Regolamento (UE) 2016/679 (GDPR).
+                    Gentile Utente, la presente informativa ("Privacy Policy") ha lo scopo di descrivere le modalità di gestione di "Quiz Polizia Locale" (di seguito, anche "l'App" o il "Servizio") con riferimento al trattamento dei dati personali degli utenti che lo utilizzano. L'informativa è rilasciata ai sensi dell'art. 13 del Regolamento (UE) 2016/679 (GDPR).
                 </p>
                 <p>Ti invitiamo a leggere con attenzione la presente Privacy Policy prima di utilizzare l'App.</p>
 
@@ -128,7 +128,7 @@ const PrivacyPolicy: React.FC = () => {
 
                 <section>
                     <h2>10. Uso dei Cookies</h2>
-                    <p>Il sito "Quiz CFVA" utilizza diverse tipologie di cookie per garantire il funzionamento del servizio e, con il tuo consenso, per migliorare la tua esperienza.</p>
+                    <p>Il sito "Quiz Polizia Locale" utilizza diverse tipologie di cookie per garantire il funzionamento del servizio e, con il tuo consenso, per migliorare la tua esperienza.</p>
 
                     <h3>10.1 Tabella dei Cookie Utilizzati</h3>
                     <div className="cookie-table-container">
@@ -144,7 +144,7 @@ const PrivacyPolicy: React.FC = () => {
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><code>quiz-cfva-cookie-consent</code></td>
+                                    <td><code>quiz-pl-cookie-consent</code></td>
                                     <td>Tecnico</td>
                                     <td>Memorizza le preferenze cookie dell'utente</td>
                                     <td>1 anno</td>
@@ -196,7 +196,7 @@ const PrivacyPolicy: React.FC = () => {
                         className="cookie-preferences-btn"
                         onClick={() => {
                             // This will be handled by importing the context
-                            localStorage.removeItem('quiz-cfva-cookie-consent');
+                            localStorage.removeItem('quiz-pl-cookie-consent');
                             window.location.reload();
                         }}
                     >

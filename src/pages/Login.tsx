@@ -168,7 +168,7 @@ const Login: React.FC = () => {
                 <div className={`login-card ${cardExiting ? 'success-exit' : ''}`}>
                     {/* Logo */}
                     <div className="login-logo">
-                        <img src="/logo-cfva.png" alt="Quiz CFVA" className="login-logo-img" />
+                        <img src="/logo-pl.png" alt="Quiz Polizia Locale" className="login-logo-img" />
                     </div>
 
                     {/* Title */}

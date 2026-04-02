@@ -1,0 +1,627 @@
+/* ============================================
+   PL Components — Design System condiviso
+   per tutte le pagine dell'architettura PL
+   ============================================ */
+
+/* ─────────────────────────────────────────────
+   LAYOUT BASE
+   ───────────────────────────────────────────── */
+
+.pl-page {
+  padding: var(--space-lg);
+  max-width: 600px;
+  margin: 0 auto;
+  background-color: var(--carta-antica);
+  min-height: 100vh;
+  padding-bottom: 5rem;
+}
+
+.pl-page--compact {
+  padding-bottom: 3rem;
+}
+
+/* ─────────────────────────────────────────────
+   HEADER NAVIGAZIONE
+   ───────────────────────────────────────────── */
+
+.pl-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+  color: var(--inchiostro);
+}
+
+.pl-header__back {
+  cursor: pointer;
+  margin-right: var(--space-md);
+  color: var(--inchiostro);
+  transition: color var(--transition-fast);
+}
+
+.pl-header__back:hover {
+  color: #2563eb;
+}
+
+.pl-header__title {
+  font-size: var(--text-xl);
+  font-weight: 700;
+  margin: 0;
+}
+
+/* ─────────────────────────────────────────────
+   SEZIONE TITOLO
+   ───────────────────────────────────────────── */
+
+.pl-section-title {
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--inchiostro);
+  margin: 0 0 var(--space-md) 0;
+  display: flex;
+  align-items: center;
+}
+
+.pl-section-title__icon {
+  margin-right: var(--space-sm);
+}
+
+.pl-section-label {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--nebbia);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: var(--space-md);
+}
+
+/* ─────────────────────────────────────────────
+   CARD BASE
+   ───────────────────────────────────────────── */
+
+.pl-card {
+  background-color: white;
+  border-radius: var(--radius-lg);
+  border: 1px solid #e2e8f0;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: var(--shadow-elevation-1);
+}
+
+.pl-card--dark {
+  background-color: #1e293b;
+  color: white;
+  border: none;
+  box-shadow: 0 10px 25px rgba(30, 41, 59, 0.2);
+}
+
+.pl-card--highlight {
+  border-color: #3b82f6;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.1);
+}
+
+.pl-card--clickable {
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.pl-card--clickable:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-elevation-2);
+}
+
+.pl-card--clickable:active {
+  transform: translateY(0);
+}
+
+/* ─────────────────────────────────────────────
+   PULSANTI
+   ───────────────────────────────────────────── */
+
+.pl-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 1.25rem;
+  border: none;
+  border-radius: var(--radius-lg);
+  font-size: var(--text-lg);
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.pl-btn:active {
+  transform: scale(0.98);
+}
+
+.pl-btn--primary {
+  background-color: #2563eb;
+  color: white;
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.pl-btn--primary:hover {
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.3);
+}
+
+.pl-btn--primary:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.pl-btn--outline {
+  background-color: white;
+  color: var(--inchiostro);
+  border: 1px solid #e2e8f0;
+  font-size: var(--text-base);
+  font-weight: 600;
+  padding: 1rem;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.pl-btn--outline:hover {
+  border-color: #cbd5e1;
+  background-color: #f8fafc;
+}
+
+/* ─────────────────────────────────────────────
+   PROGRESS BAR
+   ───────────────────────────────────────────── */
+
+.pl-progress {
+  width: 100%;
+  height: 6px;
+  background-color: #f1f5f9;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.pl-progress--lg {
+  height: 8px;
+  border-radius: 4px;
+}
+
+.pl-progress--sm {
+  height: 4px;
+  border-radius: 2px;
+}
+
+.pl-progress__fill {
+  height: 100%;
+  border-radius: inherit;
+  transition: width 0.5s ease;
+}
+
+.pl-progress__fill--green { background-color: #10b981; }
+.pl-progress__fill--yellow { background-color: #f59e0b; }
+.pl-progress__fill--red { background-color: #ef4444; }
+.pl-progress__fill--blue { background-color: #3b82f6; }
+.pl-progress__fill--purple { background-color: #8b5cf6; }
+.pl-progress__fill--gray { background-color: #94a3b8; }
+
+/* ─────────────────────────────────────────────
+   MATERIA ROW (barra materia nella Dashboard)
+   ───────────────────────────────────────────── */
+
+.pl-materia-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.pl-materia-row__label {
+  width: 80px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #334155;
+  flex-shrink: 0;
+}
+
+.pl-materia-row__bar {
+  flex: 1;
+  margin: 0 10px;
+}
+
+.pl-materia-row__pct {
+  width: 35px;
+  text-align: right;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+/* ─────────────────────────────────────────────
+   ACTION GRID (3 colonne azioni Dashboard)
+   ───────────────────────────────────────────── */
+
+.pl-action-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.pl-action-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem 0.5rem;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-elevation-1);
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.pl-action-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-elevation-2);
+}
+
+.pl-action-card__icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: var(--space-sm);
+}
+
+.pl-action-card__icon--blue { background-color: #eff6ff; color: #2563eb; }
+.pl-action-card__icon--red { background-color: #fef2f2; color: #dc2626; }
+.pl-action-card__icon--purple { background-color: #fdf4ff; color: #c026d3; }
+
+.pl-action-card__label {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: var(--inchiostro);
+}
+
+.pl-action-card__sub {
+  font-size: 0.7rem;
+  color: var(--nebbia);
+}
+
+/* ─────────────────────────────────────────────
+   ALERT BOX (Avvisi gialli)
+   ───────────────────────────────────────────── */
+
+.pl-alert {
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.pl-alert--warning {
+  background-color: #fffbeb;
+  border: 1px solid #fef3c7;
+}
+
+.pl-alert--info {
+  background-color: #f0f9ff;
+  border: 1px solid #bae6fd;
+}
+
+.pl-alert__icon {
+  flex-shrink: 0;
+  margin-right: 10px;
+  margin-top: 2px;
+}
+
+.pl-alert__text {
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.pl-alert--warning .pl-alert__icon { color: #d97706; }
+.pl-alert--warning .pl-alert__text { color: #92400e; }
+.pl-alert--info .pl-alert__icon { color: #0284c7; }
+.pl-alert--info .pl-alert__text { color: #075985; }
+
+/* ─────────────────────────────────────────────
+   LOCATION BADGE (header "📍 Lazio — Roma")
+   ───────────────────────────────────────────── */
+
+.pl-location-badge {
+  display: flex;
+  align-items: center;
+  font-size: var(--text-lg);
+  font-weight: 700;
+  color: var(--inchiostro);
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.pl-location-badge__icon {
+  margin-right: var(--space-sm);
+  color: #2563eb;
+}
+
+/* ─────────────────────────────────────────────
+   FORM ELEMENTS
+   ───────────────────────────────────────────── */
+
+.pl-form-group {
+  margin-bottom: 1.25rem;
+}
+
+.pl-form-label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #475569;
+  margin-bottom: 0.5rem;
+}
+
+.pl-select {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid #cbd5e1;
+  background-color: #f8fafc;
+  font-size: var(--text-base);
+  appearance: none;
+  cursor: pointer;
+  transition: border-color var(--transition-fast);
+}
+
+.pl-select:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.pl-select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pl-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid #cbd5e1;
+  font-size: var(--text-base);
+  box-sizing: border-box;
+  transition: border-color var(--transition-fast);
+}
+
+.pl-input:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+}
+
+.pl-input--with-icon {
+  padding-left: 2.5rem;
+}
+
+.pl-input-number {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  text-align: center;
+  font-weight: 700;
+}
+
+/* ─────────────────────────────────────────────
+   PARAM GRID (Settings — griglia parametri)
+   ───────────────────────────────────────────── */
+
+.pl-param-grid {
+  display: grid;
+  grid-template-columns: 7fr 3fr;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.pl-param-grid__label {
+  font-size: 0.95rem;
+  color: #334155;
+}
+
+/* ─────────────────────────────────────────────
+   COMPOSIZIONE BAR (Simulation breakdown)
+   ───────────────────────────────────────────── */
+
+.pl-composition-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.pl-composition-row__bar {
+  width: 120px;
+  height: 10px;
+  background-color: #f1f5f9;
+  border-radius: 5px;
+  overflow: hidden;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.pl-composition-row__fill {
+  height: 100%;
+  border-radius: 5px;
+}
+
+.pl-composition-row__label {
+  font-size: 0.85rem;
+  color: #334155;
+  font-weight: 500;
+}
+
+/* ─────────────────────────────────────────────
+   STAT PILL (grid 2x dell'esame)
+   ───────────────────────────────────────────── */
+
+.pl-stat-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.pl-stat-item {
+  display: flex;
+  align-items: center;
+  font-size: 0.95rem;
+  color: #334155;
+}
+
+.pl-stat-item__emoji {
+  font-size: 1.2rem;
+  margin-right: var(--space-sm);
+}
+
+.pl-stat-item--success { color: #10b981; }
+.pl-stat-item--error { color: #ef4444; }
+.pl-stat-item--muted { color: #94a3b8; }
+
+/* ─────────────────────────────────────────────
+   STRATO BUTTON (Regionale/Comunale block)
+   ───────────────────────────────────────────── */
+
+.pl-strato-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 1.25rem;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-elevation-1);
+  cursor: pointer;
+  text-align: left;
+  outline: none;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.pl-strato-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-elevation-2);
+}
+
+.pl-strato-btn__emoji {
+  font-size: 2rem;
+  margin-right: 1rem;
+  flex-shrink: 0;
+}
+
+.pl-strato-btn__title {
+  font-weight: 700;
+  font-size: var(--text-base);
+  color: var(--inchiostro);
+  margin-bottom: 4px;
+}
+
+.pl-strato-btn__sub {
+  font-size: 0.85rem;
+  color: var(--nebbia);
+}
+
+/* ─────────────────────────────────────────────
+   HORIZONTAL SCROLL STRIP (Materiale Studio)
+   ───────────────────────────────────────────── */
+
+.pl-hscroll {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.5rem;
+  scrollbar-width: none;
+}
+
+.pl-hscroll::-webkit-scrollbar {
+  display: none;
+}
+
+.pl-hscroll__item {
+  min-width: 130px;
+  background-color: white;
+  border: 1px solid #e2e8f0;
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.pl-hscroll__item:hover {
+  transform: translateY(-2px);
+}
+
+.pl-hscroll__item-title {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #334155;
+  margin-bottom: 4px;
+}
+
+.pl-hscroll__item-sub {
+  font-size: 0.8rem;
+  color: var(--nebbia);
+}
+
+/* ─────────────────────────────────────────────
+   FOOTER META TEXT
+   ───────────────────────────────────────────── */
+
+.pl-meta-text {
+  text-align: center;
+  font-size: 0.85rem;
+  color: var(--nebbia);
+}
+
+.pl-meta-text strong {
+  color: var(--inchiostro);
+}
+
+/* ─────────────────────────────────────────────
+   LINK INLINE
+   ───────────────────────────────────────────── */
+
+.pl-link {
+  font-size: 0.85rem;
+  color: #2563eb;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color var(--transition-fast);
+}
+
+.pl-link:hover {
+  color: #1d4ed8;
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────── */
+
+@media (max-width: 420px) {
+  .pl-page {
+    padding: var(--space-md);
+  }
+
+  .pl-action-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .pl-stat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pl-param-grid {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}

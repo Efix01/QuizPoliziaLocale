@@ -1,0 +1,807 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "lastUpdate": "2025-01-15",
+    "totaleRegioni": 20,
+    "totaleCitta": 36,
+    "note": "Struttura espandibile. Per aggiungere una città basta inserire un nuovo oggetto nell'array 'citta' della regione corrispondente."
+  },
+  "regioni": [
+    {
+      "id": "lombardia",
+      "nome": "Lombardia",
+      "leggeRegionale": {
+        "numero": "L.R. 6/2015",
+        "titolo": "Disciplina regionale dei servizi di polizia locale e promozione di politiche integrate di sicurezza",
+        "dataApprovazione": "2015-04-01",
+        "link": null
+      },
+      "domandeRegionali": {
+        "disponibili": 300,
+        "stato": "disponibile"
+      },
+      "materialeStudio": true,
+      "citta": [
+        {
+          "id": "milano",
+          "nome": "Milano",
+          "provincia": "MI",
+          "popolazione": 1371498,
+          "domandeComunali": { "disponibili": 60, "stato": "disponibile" },
+          "ultimoBando": {
+            "anno": 2024, "posti": 200, "fonte": "https://www.comune.milano.it/concorsi",
+            "parametriEsame": { "numeroDomande": 100, "durataMinuti": 90, "punteggioCorretta": 0.5, "punteggioErrata": -0.15, "punteggioNonData": 0 }
+          }
+        },
+        {
+          "id": "brescia",
+          "nome": "Brescia",
+          "provincia": "BS",
+          "popolazione": 200423,
+          "domandeComunali": { "disponibili": 30, "stato": "disponibile" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 30, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": -0.25, "punteggioNonData": 0 }
+          }
+        },
+        {
+          "id": "monza",
+          "nome": "Monza",
+          "provincia": "MB",
+          "popolazione": 124953,
+          "domandeComunali": { "disponibili": 0, "stato": "coming_soon" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 25, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        },
+        {
+          "id": "bergamo",
+          "nome": "Bergamo",
+          "provincia": "BG",
+          "popolazione": 122060,
+          "domandeComunali": { "disponibili": 0, "stato": "coming_soon" },
+          "ultimoBando": {
+            "anno": 2022, "posti": 15, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        }
+      ],
+      "altroComune": {
+        "abilitato": true,
+        "label": "Altro comune della Lombardia",
+        "descrizione": "Preparazione con quiz nazionali + LR Lombardia 6/2015. Ideale per concorsi in comuni non ancora presenti nella lista.",
+        "parametriEsameDefault": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+      }
+    },
+    {
+      "id": "emilia_romagna",
+      "nome": "Emilia-Romagna",
+      "leggeRegionale": {
+        "numero": "L.R. 24/2003",
+        "titolo": "Disciplina della polizia amministrativa locale e promozione di un sistema integrato di sicurezza",
+        "dataApprovazione": "2003-12-04",
+        "link": null
+      },
+      "domandeRegionali": { "disponibili": 280, "stato": "disponibile" },
+      "materialeStudio": true,
+      "citta": [
+        {
+          "id": "bologna",
+          "nome": "Bologna",
+          "provincia": "BO",
+          "popolazione": 394463,
+          "domandeComunali": { "disponibili": 50, "stato": "disponibile" },
+          "ultimoBando": {
+            "anno": 2024, "posti": 80, "fonte": null,
+            "parametriEsame": { "numeroDomande": 100, "durataMinuti": 90, "punteggioCorretta": 1, "punteggioErrata": -0.25, "punteggioNonData": 0 }
+          }
+        },
+        {
+          "id": "parma",
+          "nome": "Parma",
+          "provincia": "PR",
+          "popolazione": 198938,
+          "domandeComunali": { "disponibili": 0, "stato": "coming_soon" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 35, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        },
+        {
+          "id": "modena",
+          "nome": "Modena",
+          "provincia": "MO",
+          "popolazione": 188345,
+          "domandeComunali": { "disponibili": 0, "stato": "coming_soon" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 30, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        },
+        {
+          "id": "reggio_emilia",
+          "nome": "Reggio Emilia",
+          "provincia": "RE",
+          "popolazione": 173284,
+          "domandeComunali": { "disponibili": 0, "stato": "coming_soon" },
+          "ultimoBando": {
+            "anno": 2022, "posti": 25, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        }
+      ],
+      "altroComune": {
+        "abilitato": true,
+        "label": "Altro comune dell'Emilia-Romagna",
+        "descrizione": "Preparazione con quiz nazionali + LR Emilia-Romagna 24/2003.",
+        "parametriEsameDefault": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+      }
+    },
+    {
+      "id": "veneto",
+      "nome": "Veneto",
+      "leggeRegionale": {
+        "numero": "L.R. 24/1999",
+        "titolo": "Norme sulla polizia locale",
+        "dataApprovazione": "1999-12-09",
+        "link": null
+      },
+      "domandeRegionali": { "disponibili": 260, "stato": "disponibile" },
+      "materialeStudio": true,
+      "citta": [
+        {
+          "id": "venezia",
+          "nome": "Venezia",
+          "provincia": "VE",
+          "popolazione": 261321,
+          "domandeComunali": { "disponibili": 40, "stato": "disponibile" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 60, "fonte": null,
+            "parametriEsame": { "numeroDomande": 100, "durataMinuti": 90, "punteggioCorretta": 1, "punteggioErrata": -0.25, "punteggioNonData": 0 }
+          }
+        },
+        {
+          "id": "verona",
+          "nome": "Verona",
+          "provincia": "VR",
+          "popolazione": 258108,
+          "domandeComunali": { "disponibili": 35, "stato": "disponibile" },
+          "ultimoBando": {
+            "anno": 2024, "posti": 50, "fonte": null,
+            "parametriEsame": { "numeroDomande": 100, "durataMinuti": 90, "punteggioCorretta": 1, "punteggioErrata": -0.25, "punteggioNonData": 0 }
+          }
+        },
+        {
+          "id": "padova",
+          "nome": "Padova",
+          "provincia": "PD",
+          "popolazione": 214198,
+          "domandeComunali": { "disponibili": 30, "stato": "disponibile" },
+          "ultimoBando": {
+            "anno": 2024, "posti": 40, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        }
+      ],
+      "altroComune": {
+        "abilitato": true,
+        "label": "Altro comune del Veneto",
+        "descrizione": "Preparazione con quiz nazionali + LR Veneto 24/1999.",
+        "parametriEsameDefault": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+      }
+    },
+    {
+      "id": "toscana",
+      "nome": "Toscana",
+      "leggeRegionale": {
+        "numero": "L.R. 11/2020",
+        "titolo": "Norme di riordino in materia di polizia locale",
+        "dataApprovazione": "2020-02-19",
+        "link": null
+      },
+      "domandeRegionali": { "disponibili": 250, "stato": "disponibile" },
+      "materialeStudio": true,
+      "citta": [
+        {
+          "id": "firenze",
+          "nome": "Firenze",
+          "provincia": "FI",
+          "popolazione": 382258,
+          "domandeComunali": { "disponibili": 45, "stato": "disponibile" },
+          "ultimoBando": {
+            "anno": 2024, "posti": 70, "fonte": null,
+            "parametriEsame": { "numeroDomande": 100, "durataMinuti": 90, "punteggioCorretta": 1, "punteggioErrata": -0.25, "punteggioNonData": 0 }
+          }
+        },
+        {
+          "id": "livorno",
+          "nome": "Livorno",
+          "provincia": "LI",
+          "popolazione": 160512,
+          "domandeComunali": { "disponibili": 0, "stato": "coming_soon" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 25, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        },
+        {
+          "id": "prato",
+          "nome": "Prato",
+          "provincia": "PO",
+          "popolazione": 195089,
+          "domandeComunali": { "disponibili": 0, "stato": "coming_soon" },
+          "ultimoBando": {
+            "anno": 2022, "posti": 20, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        }
+      ],
+      "altroComune": {
+        "abilitato": true,
+        "label": "Altro comune della Toscana",
+        "descrizione": "Preparazione con quiz nazionali + LR Toscana 11/2020.",
+        "parametriEsameDefault": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+      }
+    },
+    {
+      "id": "puglia",
+      "nome": "Puglia",
+      "leggeRegionale": {
+        "numero": "L.R. 37/2011",
+        "titolo": "Norme in materia di polizia locale",
+        "dataApprovazione": "2011-12-21",
+        "link": null
+      },
+      "domandeRegionali": { "disponibili": 220, "stato": "disponibile" },
+      "materialeStudio": true,
+      "citta": [
+        {
+          "id": "bari",
+          "nome": "Bari",
+          "provincia": "BA",
+          "popolazione": 325183,
+          "domandeComunali": { "disponibili": 40, "stato": "disponibile" },
+          "ultimoBando": {
+            "anno": 2024, "posti": 60, "fonte": null,
+            "parametriEsame": { "numeroDomande": 100, "durataMinuti": 90, "punteggioCorretta": 1, "punteggioErrata": -0.25, "punteggioNonData": 0 }
+          }
+        },
+        {
+          "id": "taranto",
+          "nome": "Taranto",
+          "provincia": "TA",
+          "popolazione": 200154,
+          "domandeComunali": { "disponibili": 0, "stato": "coming_soon" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 30, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        },
+        {
+          "id": "lecce",
+          "nome": "Lecce",
+          "provincia": "LE",
+          "popolazione": 96404,
+          "domandeComunali": { "disponibili": 0, "stato": "coming_soon" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 20, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        }
+      ],
+      "altroComune": {
+        "abilitato": true,
+        "label": "Altro comune della Puglia",
+        "descrizione": "Preparazione con quiz nazionali + LR Puglia 37/2011.",
+        "parametriEsameDefault": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+      }
+    },
+    {
+      "id": "sicilia",
+      "nome": "Sicilia",
+      "leggeRegionale": {
+        "numero": "L.R. 17/1990",
+        "titolo": "Norme in materia di polizia municipale",
+        "dataApprovazione": "1990-06-01",
+        "link": null
+      },
+      "domandeRegionali": { "disponibili": 200, "stato": "disponibile" },
+      "materialeStudio": true,
+      "citta": [
+        {
+          "id": "palermo",
+          "nome": "Palermo",
+          "provincia": "PA",
+          "popolazione": 679290,
+          "domandeComunali": { "disponibili": 35, "stato": "disponibile" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 100, "fonte": null,
+            "parametriEsame": { "numeroDomande": 100, "durataMinuti": 90, "punteggioCorretta": 1, "punteggioErrata": -0.25, "punteggioNonData": 0 }
+          }
+        },
+        {
+          "id": "catania",
+          "nome": "Catania",
+          "provincia": "CT",
+          "popolazione": 315576,
+          "domandeComunali": { "disponibili": 0, "stato": "coming_soon" },
+          "ultimoBando": {
+            "anno": 2024, "posti": 50, "fonte": null,
+            "parametriEsame": { "numeroDomande": 100, "durataMinuti": 90, "punteggioCorretta": 1, "punteggioErrata": -0.25, "punteggioNonData": 0 }
+          }
+        },
+        {
+          "id": "messina",
+          "nome": "Messina",
+          "provincia": "ME",
+          "popolazione": 236962,
+          "domandeComunali": { "disponibili": 0, "stato": "coming_soon" },
+          "ultimoBando": {
+            "anno": 2022, "posti": 30, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        }
+      ],
+      "altroComune": {
+        "abilitato": true,
+        "label": "Altro comune della Sicilia",
+        "descrizione": "Preparazione con quiz nazionali + LR Sicilia 17/1990.",
+        "parametriEsameDefault": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+      }
+    },
+    {
+      "id": "lazio",
+      "nome": "Lazio",
+      "leggeRegionale": {
+        "numero": "L.R. 1/2005",
+        "titolo": "Disposizioni in materia di polizia locale",
+        "dataApprovazione": "2005-01-13",
+        "link": null
+      },
+      "domandeRegionali": { "disponibili": 280, "stato": "disponibile" },
+      "materialeStudio": true,
+      "citta": [
+        {
+          "id": "roma",
+          "nome": "Roma Capitale",
+          "provincia": "RM",
+          "popolazione": 2873000,
+          "domandeComunali": { "disponibili": 45, "stato": "disponibile" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 1512, "fonte": "https://www.comune.roma.it/concorsi",
+            "parametriEsame": { "numeroDomande": 100, "durataMinuti": 90, "punteggioCorretta": 1, "punteggioErrata": -0.25, "punteggioNonData": 0 }
+          }
+        },
+        {
+          "id": "latina",
+          "nome": "Latina",
+          "provincia": "LT",
+          "popolazione": 128300,
+          "domandeComunali": { "disponibili": 15, "stato": "disponibile" },
+          "ultimoBando": {
+            "anno": 2024, "posti": 20, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        }
+      ],
+      "altroComune": {
+        "abilitato": true,
+        "label": "Altro comune del Lazio",
+        "descrizione": "Preparazione con quiz nazionali + LR Lazio 1/2005.",
+        "parametriEsameDefault": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+      }
+    },
+    {
+      "id": "piemonte",
+      "nome": "Piemonte",
+      "leggeRegionale": {
+        "numero": "L.R. 58/1987",
+        "titolo": "Norme in materia di polizia locale",
+        "dataApprovazione": "1987-12-30",
+        "link": null
+      },
+      "domandeRegionali": { "disponibili": 240, "stato": "disponibile" },
+      "materialeStudio": true,
+      "citta": [
+        {
+          "id": "torino",
+          "nome": "Torino",
+          "provincia": "TO",
+          "popolazione": 880000,
+          "domandeComunali": { "disponibili": 50, "stato": "disponibile" },
+          "ultimoBando": {
+            "anno": 2024, "posti": 120, "fonte": null,
+            "parametriEsame": { "numeroDomande": 100, "durataMinuti": 90, "punteggioCorretta": 1, "punteggioErrata": -0.25, "punteggioNonData": 0 }
+          }
+        },
+        {
+          "id": "novara",
+          "nome": "Novara",
+          "provincia": "NO",
+          "popolazione": 105000,
+          "domandeComunali": { "disponibili": 0, "stato": "coming_soon" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 15, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        }
+      ],
+      "altroComune": {
+        "abilitato": true,
+        "label": "Altro comune del Piemonte",
+        "descrizione": "Preparazione con quiz nazionali + LR Piemonte 58/1987.",
+        "parametriEsameDefault": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+      }
+    },
+    {
+      "id": "campania",
+      "nome": "Campania",
+      "leggeRegionale": {
+        "numero": "L.R. 12/2003",
+        "titolo": "Norme in materia di polizia amministrativa regionale e locale",
+        "dataApprovazione": "2003-04-08",
+        "link": null
+      },
+      "domandeRegionali": { "disponibili": 230, "stato": "disponibile" },
+      "materialeStudio": true,
+      "citta": [
+        {
+          "id": "napoli",
+          "nome": "Napoli",
+          "provincia": "NA",
+          "popolazione": 960000,
+          "domandeComunali": { "disponibili": 40, "stato": "disponibile" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 150, "fonte": null,
+            "parametriEsame": { "numeroDomande": 100, "durataMinuti": 90, "punteggioCorretta": 1, "punteggioErrata": -0.25, "punteggioNonData": 0 }
+          }
+        },
+        {
+          "id": "salerno",
+          "nome": "Salerno",
+          "provincia": "SA",
+          "popolazione": 135000,
+          "domandeComunali": { "disponibili": 0, "stato": "coming_soon" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 25, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        }
+      ],
+      "altroComune": {
+        "abilitato": true,
+        "label": "Altro comune della Campania",
+        "descrizione": "Preparazione con quiz nazionali + LR Campania 12/2003.",
+        "parametriEsameDefault": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+      }
+    },
+    {
+      "id": "sardegna",
+      "nome": "Sardegna",
+      "leggeRegionale": {
+        "numero": "L.R. 9/2006",
+        "titolo": "Conferimento di funzioni e compiti agli enti locali",
+        "dataApprovazione": "2006-04-12",
+        "link": null
+      },
+      "domandeRegionali": { "disponibili": 180, "stato": "disponibile" },
+      "materialeStudio": true,
+      "citta": [
+        {
+          "id": "cagliari",
+          "nome": "Cagliari",
+          "provincia": "CA",
+          "popolazione": 155000,
+          "domandeComunali": { "disponibili": 30, "stato": "disponibile" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 30, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        },
+        {
+          "id": "sassari",
+          "nome": "Sassari",
+          "provincia": "SS",
+          "popolazione": 128000,
+          "domandeComunali": { "disponibili": 0, "stato": "coming_soon" },
+          "ultimoBando": {
+            "anno": 2022, "posti": 20, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        }
+      ],
+      "altroComune": {
+        "abilitato": true,
+        "label": "Altro comune della Sardegna",
+        "descrizione": "Preparazione con quiz nazionali + LR Sardegna 9/2006.",
+        "parametriEsameDefault": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+      }
+    },
+    {
+      "id": "trentino_alto_adige",
+      "nome": "Trentino-Alto Adige",
+      "leggeRegionale": {
+        "numero": "Competenza provinciale",
+        "titolo": "Le Province Autonome di Trento e Bolzano hanno normativa propria in materia di polizia locale",
+        "dataApprovazione": null,
+        "link": null
+      },
+      "domandeRegionali": { "disponibili": 200, "stato": "disponibile" },
+      "materialeStudio": true,
+      "citta": [
+        {
+          "id": "trento",
+          "nome": "Trento",
+          "provincia": "TN",
+          "popolazione": 120000,
+          "domandeComunali": { "disponibili": 25, "stato": "disponibile" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 20, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        },
+        {
+          "id": "bolzano",
+          "nome": "Bolzano",
+          "provincia": "BZ",
+          "popolazione": 108000,
+          "domandeComunali": { "disponibili": 25, "stato": "disponibile" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 15, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        }
+      ],
+      "altroComune": {
+        "abilitato": true,
+        "label": "Altro comune del Trentino-Alto Adige",
+        "descrizione": "Preparazione con quiz nazionali + normativa provinciale TN/BZ.",
+        "parametriEsameDefault": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+      }
+    },
+    {
+      "id": "calabria",
+      "nome": "Calabria",
+      "leggeRegionale": {
+        "numero": "L.R. 24/1990",
+        "titolo": "Norme in materia di polizia municipale e provinciale",
+        "dataApprovazione": "1990-09-10",
+        "link": null
+      },
+      "domandeRegionali": { "disponibili": 180, "stato": "disponibile" },
+      "materialeStudio": true,
+      "citta": [
+        {
+          "id": "reggio_calabria",
+          "nome": "Reggio Calabria",
+          "provincia": "RC",
+          "popolazione": 180000,
+          "domandeComunali": { "disponibili": 0, "stato": "coming_soon" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 30, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        }
+      ],
+      "altroComune": {
+        "abilitato": true,
+        "label": "Altro comune della Calabria",
+        "descrizione": "Preparazione con quiz nazionali + LR Calabria 24/1990.",
+        "parametriEsameDefault": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+      }
+    },
+    {
+      "id": "liguria",
+      "nome": "Liguria",
+      "leggeRegionale": {
+        "numero": "L.R. 31/2008",
+        "titolo": "Norme in materia di polizia locale",
+        "dataApprovazione": "2008-11-25",
+        "link": null
+      },
+      "domandeRegionali": { "disponibili": 200, "stato": "disponibile" },
+      "materialeStudio": true,
+      "citta": [
+        {
+          "id": "genova",
+          "nome": "Genova",
+          "provincia": "GE",
+          "popolazione": 580000,
+          "domandeComunali": { "disponibili": 40, "stato": "disponibile" },
+          "ultimoBando": {
+            "anno": 2024, "posti": 80, "fonte": null,
+            "parametriEsame": { "numeroDomande": 100, "durataMinuti": 90, "punteggioCorretta": 1, "punteggioErrata": -0.25, "punteggioNonData": 0 }
+          }
+        }
+      ],
+      "altroComune": {
+        "abilitato": true,
+        "label": "Altro comune della Liguria",
+        "descrizione": "Preparazione con quiz nazionali + LR Liguria 31/2008.",
+        "parametriEsameDefault": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+      }
+    },
+    {
+      "id": "marche",
+      "nome": "Marche",
+      "leggeRegionale": {
+        "numero": "L.R. 17/2008",
+        "titolo": "Norme in materia di polizia locale",
+        "dataApprovazione": "2008-06-26",
+        "link": null
+      },
+      "domandeRegionali": { "disponibili": 180, "stato": "disponibile" },
+      "materialeStudio": true,
+      "citta": [
+        {
+          "id": "ancona",
+          "nome": "Ancona",
+          "provincia": "AN",
+          "popolazione": 101000,
+          "domandeComunali": { "disponibili": 0, "stato": "coming_soon" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 15, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        }
+      ],
+      "altroComune": {
+        "abilitato": true,
+        "label": "Altro comune delle Marche",
+        "descrizione": "Preparazione con quiz nazionali + LR Marche 17/2008.",
+        "parametriEsameDefault": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+      }
+    },
+    {
+      "id": "abruzzo",
+      "nome": "Abruzzo",
+      "leggeRegionale": {
+        "numero": "L.R. 42/2013",
+        "titolo": "Norme in materia di polizia locale",
+        "dataApprovazione": "2013-12-23",
+        "link": null
+      },
+      "domandeRegionali": { "disponibili": 180, "stato": "disponibile" },
+      "materialeStudio": true,
+      "citta": [
+        {
+          "id": "pescara",
+          "nome": "Pescara",
+          "provincia": "PE",
+          "popolazione": 123000,
+          "domandeComunali": { "disponibili": 0, "stato": "coming_soon" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 20, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        }
+      ],
+      "altroComune": {
+        "abilitato": true,
+        "label": "Altro comune dell'Abruzzo",
+        "descrizione": "Preparazione con quiz nazionali + LR Abruzzo 42/2013.",
+        "parametriEsameDefault": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+      }
+    },
+    {
+      "id": "friuli_venezia_giulia",
+      "nome": "Friuli Venezia Giulia",
+      "leggeRegionale": {
+        "numero": "L.R. 9/2009",
+        "titolo": "Disposizioni in materia di politiche di sicurezza e ordinamento della polizia locale",
+        "dataApprovazione": "2009-03-29",
+        "link": null
+      },
+      "domandeRegionali": { "disponibili": 180, "stato": "disponibile" },
+      "materialeStudio": true,
+      "citta": [
+        {
+          "id": "trieste",
+          "nome": "Trieste",
+          "provincia": "TS",
+          "popolazione": 205000,
+          "domandeComunali": { "disponibili": 0, "stato": "coming_soon" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 25, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        }
+      ],
+      "altroComune": {
+        "abilitato": true,
+        "label": "Altro comune del Friuli Venezia Giulia",
+        "descrizione": "Preparazione con quiz nazionali + LR FVG 9/2009.",
+        "parametriEsameDefault": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+      }
+    },
+    {
+      "id": "umbria",
+      "nome": "Umbria",
+      "leggeRegionale": {
+        "numero": "L.R. 13/2008",
+        "titolo": "Norme in materia di polizia locale",
+        "dataApprovazione": "2008-04-14",
+        "link": null
+      },
+      "domandeRegionali": { "disponibili": 170, "stato": "disponibile" },
+      "materialeStudio": true,
+      "citta": [
+        {
+          "id": "perugia",
+          "nome": "Perugia",
+          "provincia": "PG",
+          "popolazione": 167000,
+          "domandeComunali": { "disponibili": 0, "stato": "coming_soon" },
+          "ultimoBando": {
+            "anno": 2023, "posti": 20, "fonte": null,
+            "parametriEsame": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+          }
+        }
+      ],
+      "altroComune": {
+        "abilitato": true,
+        "label": "Altro comune dell'Umbria",
+        "descrizione": "Preparazione con quiz nazionali + LR Umbria 13/2008.",
+        "parametriEsameDefault": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+      }
+    },
+    {
+      "id": "basilicata",
+      "nome": "Basilicata",
+      "leggeRegionale": {
+        "numero": "L.R. 4/2019",
+        "titolo": "Disciplina della polizia locale e politiche integrate di sicurezza urbana",
+        "dataApprovazione": "2019-03-15",
+        "link": null
+      },
+      "domandeRegionali": { "disponibili": 150, "stato": "disponibile" },
+      "materialeStudio": true,
+      "citta": [],
+      "altroComune": {
+        "abilitato": true,
+        "label": "Comune della Basilicata",
+        "descrizione": "Preparazione con quiz nazionali + LR Basilicata 4/2019.",
+        "parametriEsameDefault": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+      }
+    },
+    {
+      "id": "molise",
+      "nome": "Molise",
+      "leggeRegionale": {
+        "numero": "L.R. 28/2000",
+        "titolo": "Norme per la disciplina della polizia municipale e provinciale",
+        "dataApprovazione": "2000-10-24",
+        "link": null
+      },
+      "domandeRegionali": { "disponibili": 140, "stato": "disponibile" },
+      "materialeStudio": true,
+      "citta": [],
+      "altroComune": {
+        "abilitato": true,
+        "label": "Comune del Molise",
+        "descrizione": "Preparazione con quiz nazionali + LR Molise 28/2000.",
+        "parametriEsameDefault": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+      }
+    },
+    {
+      "id": "valle_d_aosta",
+      "nome": "Valle d'Aosta",
+      "leggeRegionale": {
+        "numero": "L.R. 40/2002",
+        "titolo": "Disposizioni in materia di polizia locale",
+        "dataApprovazione": "2002-12-05",
+        "link": null
+      },
+      "domandeRegionali": { "disponibili": 130, "stato": "disponibile" },
+      "materialeStudio": true,
+      "citta": [],
+      "altroComune": {
+        "abilitato": true,
+        "label": "Comune della Valle d'Aosta",
+        "descrizione": "Preparazione con quiz nazionali + LR Valle d'Aosta 40/2002.",
+        "parametriEsameDefault": { "numeroDomande": 80, "durataMinuti": 60, "punteggioCorretta": 1, "punteggioErrata": 0, "punteggioNonData": 0 }
+      }
+    }
+  ]
+}

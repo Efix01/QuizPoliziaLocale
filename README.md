@@ -1,6 +1,6 @@
-# ForestaliSardegna Prep PWA
+# Quiz Polizia Locale PWA
 
-Questa è una Web App Progressiva (PWA) per la preparazione al concorso del Corpo Forestale della Sardegna.
+Questa è una Web App Progressiva (PWA) per la preparazione ai concorsi di Polizia Locale.
 
 ## Caratteristiche
 - **Modalità Studio**: Ripetizione spaziata (SRS) per imparare dai propri errori.

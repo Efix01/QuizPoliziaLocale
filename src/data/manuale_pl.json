@@ -1,0 +1,83 @@
+{
+  "cds": {
+    "titolo": "Codice della Strada",
+    "descrizione": "D.Lgs. 285/1992 — Circolazione, sanzioni, veicoli",
+    "capitoli": [
+      {
+        "id": "cds_1",
+        "titolo": "Principi Generali sulla Sicurezza Stardale",
+        "testo": [
+          "In questo file 'manuale_pl.json' potrai incollare tutto il testo inerente al Nuovo Codice della Strada.",
+          "Puoi strutturare il testo in paragrafi semplicemente aggiungendo nuove righe a questo array.",
+          "La sicurezza delle persone, nella circolazione stradale, rientra tra le finalità primarie perseguite dallo Stato, nonché per lo sviluppo economico o sociale."
+        ]
+      }
+    ]
+  },
+  "tuel": {
+    "titolo": "Ordinamento Enti Locali",
+    "descrizione": "D.Lgs. 267/2000 — Organi, competenze, ordinanze",
+    "capitoli": [
+      {
+        "id": "tuel_1",
+        "titolo": "Struttura e Funzioni del Comune",
+        "testo": [
+          "Il comune è l'ente locale che rappresenta la propria comunità, ne cura gli interessi e ne promuove lo sviluppo.",
+          "Inserisci qui le spiegazioni su Sindaco, Giunta, Consiglio e competenze."
+        ]
+      }
+    ]
+  },
+  "san_amm": {
+    "titolo": "Sanzioni Amministrative",
+    "descrizione": "L. 689/1981 — Contestazione, pagamento, ricorsi",
+    "capitoli": [
+      {
+        "id": "san_amm_1",
+        "titolo": "Principio di Legalità (Legge 689/81)",
+        "testo": [
+          "Nessuno può essere assoggettato a sanzioni amministrative se non in forza di una legge che sia entrata in vigore prima della commissione della violazione."
+        ]
+      }
+    ]
+  },
+  "dir_amm": {
+    "titolo": "Diritto Amministrativo",
+    "descrizione": "L. 241/1990 — Procedimento, accesso, silenzio",
+    "capitoli": [
+      {
+        "id": "dir_amm_1",
+        "titolo": "Il Procedimento Amministrativo",
+        "testo": [
+          "L'attività amministrativa persegue i fini determinati dalla legge ed è retta da criteri di economicità, di efficacia, di imparzialità, di pubblicità e di trasparenza."
+        ]
+      }
+    ]
+  },
+  "dir_pen": {
+    "titolo": "Diritto Penale",
+    "descrizione": "Delitti contro la PA — Peculato, corruzione, abuso",
+    "capitoli": [
+      {
+        "id": "dir_pen_1",
+        "titolo": "I Reati Propri del Pubblico Ufficiale",
+        "testo": [
+          "Il vigile urbano riveste la qualifica di Pubblico Ufficiale. Pertanto è soggetto a reati specifici come il peculato (Art. 314 c.p.) o l'abuso d'ufficio (recentemente abolito/modificato)."
+        ]
+      }
+    ]
+  },
+  "proc_pen": {
+    "titolo": "Procedura Penale",
+    "descrizione": "C.P.P. — Polizia giudiziaria, arresto, notizia di reato",
+    "capitoli": [
+      {
+        "id": "proc_pen_1",
+        "titolo": "Funzioni della Polizia Giudiziaria (Art. 55 c.p.p.)",
+        "testo": [
+          "La polizia giudiziaria deve, anche di propria iniziativa, prendere notizia dei reati, impedire che vengano portati a conseguenze ulteriori, ricercarne gli autori e compiere gli atti necessari per assicurare le fonti di prova."
+        ]
+      }
+    ]
+  }
+}

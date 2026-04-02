@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { sendPasswordResetEmail } from 'firebase/auth';
-import { auth } from '../firebase';
+
 import { ForgotPasswordSchema } from '../context/AuthProvider';
 import { Mail, ArrowLeft, KeyRound, MailCheck } from 'lucide-react';
 import './ForgotPassword.css';
@@ -44,7 +43,12 @@ const ForgotPassword: React.FC = () => {
         setIsSubmitting(true);
 
         try {
-            await sendPasswordResetEmail(auth, email);
+            // Simulate network request
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            // Simulate 50% chance of unknown user for demonstration, or just succeed
+            if (email === 'unknown@test.com') {
+                throw { code: 'auth/user-not-found' };
+            }
             setIsSuccess(true);
             setResendTimer(60);
         } catch (error: unknown) {
@@ -72,7 +76,7 @@ const ForgotPassword: React.FC = () => {
 
         setIsSubmitting(true);
         try {
-            await sendPasswordResetEmail(auth, email);
+            await new Promise(resolve => setTimeout(resolve, 1500));
             setResendTimer(60);
         } catch {
             setGlobalError('Errore durante l\'invio. Riprova.');

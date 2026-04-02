@@ -1,63 +1,39 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
-    BookOpen,
-    Target,
-    TreePine,
-    Leaf,
-    Bug,
-    Scale,
-    Flame,
-    MapPin,
-    ChevronLeft,
-    ChevronRight,
+    Scale, Map, FileText, BookOpen, Gavel, ShieldAlert,
+    ChevronLeft, ChevronRight
 } from 'lucide-react';
 import { useScrollAnimation } from '../../hooks/useAnimations';
-
-import { useQuiz } from '../../context/QuizContext';
+import { usePL } from '../../context/PLContext';
 
 interface CategoryCarouselProps {
     isAuthenticated: boolean;
     loading?: boolean;
 }
 
-const FREE_CATEGORY_IDS = ['botanica', 'fauna', 'ecologia'];
-
 const CATEGORIES = [
-    { id: 'istituzionale', name: 'Istituzionale (L.R. 26/1985)', icon: Scale, gradient: 'diritto' },
-    { id: 'ecologia', name: 'Ecologia e Selvicoltura', icon: TreePine, gradient: 'ecologia' },
-    { id: 'botanica', name: 'Botanica', icon: Leaf, gradient: 'botanica' },
-    { id: 'zoologia', name: 'Zoologia', icon: Bug, gradient: 'fauna' },
-    { id: 'geografia', name: 'Geografia della Sardegna', icon: MapPin, gradient: 'geografia' },
-    { id: 'legislazione', name: 'Legislazione Forestale', icon: BookOpen, gradient: 'inglese' },
-    { id: 'aree', name: 'Aree Protette (L. 394/1991)', icon: TreePine, gradient: 'ecologia' },
-    { id: 'incendi', name: 'Incendi Boschivi (L. 353/2000)', icon: Flame, gradient: 'incendi' },
-    { id: 'penale', name: 'Diritto Penale e Procedura Penale', icon: Scale, gradient: 'diritto' },
-    { id: 'reati', name: 'Reati Ambientali', icon: Flame, gradient: 'incendi' },
-    { id: 'fauna', name: 'Fauna (L. 157/1992)', icon: Bug, gradient: 'fauna' },
-    { id: 'informatica', name: 'Informatica', icon: Target, gradient: 'informatica' },
+    { id: 'cds', name: 'Codice della Strada', icon: Map, gradient: 'cds' },
+    { id: 'tuel', name: 'Ordinamento Enti Locali', icon: Scale, gradient: 'tuel' },
+    { id: 'san_amm', name: 'Sanzioni Amministrative', icon: FileText, gradient: 'san_amm' },
+    { id: 'dir_amm', name: 'Diritto Amministrativo', icon: BookOpen, gradient: 'dir_amm' },
+    { id: 'dir_pen', name: 'Diritto Penale', icon: Gavel, gradient: 'dir_pen' },
+    { id: 'proc_pen', name: 'Procedura Penale', icon: ShieldAlert, gradient: 'proc_pen' },
 ];
 
-const CategoryCarousel: React.FC<CategoryCarouselProps> = ({ isAuthenticated, loading = false }) => {
+const CategoryCarousel: React.FC<CategoryCarouselProps> = ({ loading = false }) => {
     const navigate = useNavigate();
-    const { questions } = useQuiz();
+    const { domandeCore } = usePL();
     const [categoriesRef, categoriesVisible] = useScrollAnimation<HTMLElement>();
-    const categoriesScrollRef = useRef<HTMLDivElement>(null);
-
-    // Generate stable random widths for progress bars
-    const progressWidths = React.useMemo(() => {
-        return CATEGORIES.map((_, index) => ((index * 37) % 60) + 20); // Deterministic "random" 20-80%
-    }, []);
+    const categoriesScrollRef = React.useRef<HTMLDivElement>(null);
 
     const getCategoryCount = (categoryId: string) => {
-        return questions.filter(q =>
-            q.category.toLowerCase().includes(categoryId.toLowerCase())
-        ).length;
+        return domandeCore.filter(d => d.categoriaId === categoryId).length;
     };
 
     const scrollCategories = (direction: 'left' | 'right') => {
         if (categoriesScrollRef.current) {
-            const scrollAmount = 320; // ~2 cards
+            const scrollAmount = 320;
             categoriesScrollRef.current.scrollBy({
                 left: direction === 'left' ? -scrollAmount : scrollAmount,
                 behavior: 'smooth'
@@ -87,33 +63,18 @@ const CategoryCarousel: React.FC<CategoryCarouselProps> = ({ isAuthenticated, lo
                     {CATEGORIES.map((cat, index) => {
                         const count = getCategoryCount(cat.id);
                         const Icon = cat.icon;
-                        const isFreeCategory = FREE_CATEGORY_IDS.includes(cat.id);
-                        const isLocked = !isAuthenticated && !isFreeCategory;
 
                         return (
                             <div
                                 key={cat.id}
                                 className={`category-card category-card--${cat.gradient} hover-scale`}
-                                onClick={() => {
-                                    if (isLocked) {
-                                        navigate('/login');
-                                    } else {
-                                        navigate('/study', { state: { category: cat.name } });
-                                    }
-                                }}
+                                onClick={() => navigate('/quiz-veloce')}
                                 role="button"
                                 tabIndex={0}
                                 style={{
                                     transitionDelay: categoriesVisible ? `${index * 0.05}s` : '0s',
-                                    position: 'relative'
                                 }}
                             >
-                                {isLocked && (
-                                    <div className="category-locked">
-                                        <span className="category-lock-icon">🔒</span>
-                                    </div>
-                                )}
-
                                 <div className="category-icon">
                                     <Icon />
                                 </div>
@@ -122,7 +83,7 @@ const CategoryCarousel: React.FC<CategoryCarouselProps> = ({ isAuthenticated, lo
                                 <div className="category-progress">
                                     <div
                                         className="category-progress-fill"
-                                        style={{ width: `${progressWidths[index]}%` }}
+                                        style={{ width: '0%' }}
                                     />
                                 </div>
                             </div>

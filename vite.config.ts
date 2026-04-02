@@ -9,9 +9,9 @@ export default defineConfig({
       registerType: 'autoUpdate',
       includeAssets: ['favicon.ico', 'apple-touch-icon.png', 'mask-icon.svg'],
       manifest: {
-        name: 'ForestaliSardegna Prep',
-        short_name: 'ForestaliPrep',
-        description: 'App di preparazione per il concorso Forestale Sardegna',
+        name: 'Quiz Polizia Locale',
+        short_name: 'QuizPL',
+        description: 'App di preparazione per concorsi di Polizia Locale',
         theme_color: '#2E7D32',
         background_color: '#F1F8E9',
         display: 'standalone',
@@ -36,7 +36,6 @@ export default defineConfig({
       output: {
         manualChunks: {
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-firebase': ['firebase/app', 'firebase/auth', 'firebase/firestore', 'firebase/analytics'],
           'vendor-ui': ['lucide-react', 'recharts', 'clsx', 'tailwind-merge'],
         }
       }

@@ -2,10 +2,9 @@ import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import ScrollToTop from './components/ScrollToTop';
+
+// Lazy-loaded Pages
 const Dashboard = React.lazy(() => import('./pages/Dashboard'));
-const StudyMode = React.lazy(() => import('./pages/StudyMode'));
-const SimulationMode = React.lazy(() => import('./pages/SimulationMode'));
-const PhysicalPrep = React.lazy(() => import('./pages/PhysicalPrep'));
 const Profile = React.lazy(() => import('./pages/Profile'));
 const StudyLibrary = React.lazy(() => import('./pages/StudyLibrary'));
 const LessonReader = React.lazy(() => import('./pages/LessonReader'));
@@ -15,67 +14,94 @@ const Onboarding = React.lazy(() => import('./pages/Onboarding'));
 const TermsOfService = React.lazy(() => import('./pages/TermsOfService'));
 const PrivacyPolicy = React.lazy(() => import('./pages/PrivacyPolicy'));
 const ChiSiamo = React.lazy(() => import('./pages/ChiSiamo'));
-const MistakeReview = React.lazy(() => import('./pages/MistakeReview'));
+const PhysicalPrep = React.lazy(() => import('./pages/PhysicalPrep'));
+
+// Pagine PL
+const Settings = React.lazy(() => import('./pages/Settings'));
+const QuickQuizMenu = React.lazy(() => import('./pages/QuickQuizMenu'));
+const SimulationMenu = React.lazy(() => import('./pages/SimulationMenu'));
+const SimulationSession = React.lazy(() => import('./pages/SimulationSession'));
+const StudyMode = React.lazy(() => import('./pages/StudyMode'));
 
 import LoadingSpinner from './components/ui/LoadingSpinner';
 import { ToastProvider } from './context/ToastProvider';
 import { AuthProvider } from './context/AuthProvider';
 import { NotificationProvider } from './context/NotificationProvider';
-import { StudyMaterialProvider } from './context/StudyMaterialProvider';
 import { CookieProvider } from './context/CookieProvider';
 import CookieBanner from './components/ui/CookieBanner';
-import { QuizProvider } from './context/QuizProvider';
+import { PLProvider } from './context/PLContext';
+import { ProgressProvider } from './context/ProgressContext';
 import WhatsNewModal from './components/ui/WhatsNewModal';
 import './components/ui/Toast.css';
+import ErrorBoundary from './components/ui/ErrorBoundary';
 
 function App() {
+  // PULIZIA LEGACY ETREMA (Per risolvere pagina bianca da vecchi dati)
+  React.useEffect(() => {
+    const LEGACY_KEYS = ['quiz_cfva_auth', 'user_progress', 'cfva_study_state', 'last_quiz_results'];
+    let cleaned = false;
+    LEGACY_KEYS.forEach(key => {
+      if (localStorage.getItem(key)) {
+        localStorage.removeItem(key);
+        cleaned = true;
+      }
+    });
+    if (cleaned) {
+      console.log('🧹 Puliti dati legacy CFVA per prevenire crash.');
+    }
+  }, []);
+
   return (
-    <CookieProvider>
-      <AuthProvider>
-        <NotificationProvider>
-          <StudyMaterialProvider>
-            <QuizProvider>
-              <ToastProvider>
-                <Router>
-                  <ScrollToTop />
+    <ErrorBoundary>
+      <CookieProvider>
+        <AuthProvider>
+          <NotificationProvider>
+            <PLProvider>
+              <ProgressProvider>
+                <ToastProvider>
+                  <Router>
+                    <ScrollToTop />
 
-                  <Suspense fallback={<LoadingSpinner />}>
-                    <Routes>
-                      {/* Onboarding - First time users */}
-                      <Route path="/welcome" element={<Onboarding />} />
-                      <Route path="/terms" element={<TermsOfService />} />
-                      <Route path="/privacy" element={<PrivacyPolicy />} />
-                      <Route path="/chi-siamo" element={<ChiSiamo />} />
+                    <Suspense fallback={<LoadingSpinner />}>
+                      <Routes>
+                        {/* Onboarding */}
+                        <Route path="/welcome" element={<Onboarding />} />
+                        <Route path="/terms" element={<TermsOfService />} />
+                        <Route path="/privacy" element={<PrivacyPolicy />} />
+                        <Route path="/chi-siamo" element={<ChiSiamo />} />
 
-                      {/* Auth pages outside Layout (full-screen) */}
-                      <Route path="/login" element={<Login />} />
-                      <Route path="/forgot-password" element={<ForgotPassword />} />
+                        {/* Auth */}
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/forgot-password" element={<ForgotPassword />} />
 
-                      {/* Lesson Reader - Full screen without navbar */}
-                      <Route path="/manual/:subjectId/:chapterId" element={<LessonReader />} />
-                      <Route path="/manual/:subjectId" element={<LessonReader />} />
+                        {/* Lesson Reader & Simulation & Study - Full screen (No Tabs) */}
+                        <Route path="/manual/:subjectId/:chapterId" element={<LessonReader />} />
+                        <Route path="/manual/:subjectId" element={<LessonReader />} />
+                        <Route path="/simulation/sessione/:id?" element={<SimulationSession />} />
+                        <Route path="/study" element={<StudyMode />} />
 
-                      {/* Main app with Layout */}
-                      <Route path="/" element={<Layout />}>
-                        <Route index element={<Dashboard />} />
-                        <Route path="study" element={<StudyMode />} />
-                        <Route path="simulation" element={<SimulationMode />} />
-                        <Route path="physical" element={<PhysicalPrep />} />
-                        <Route path="mistakes" element={<MistakeReview />} />
-                        <Route path="manual" element={<StudyLibrary />} />
-                        <Route path="profile" element={<Profile />} />
-                      </Route>
-                    </Routes>
-                  </Suspense>
-                  <CookieBanner />
-                  <WhatsNewModal />
-                </Router>
-              </ToastProvider>
-            </QuizProvider>
-          </StudyMaterialProvider>
-        </NotificationProvider>
-      </AuthProvider>
-    </CookieProvider>
+                        {/* Main app with Layout */}
+                        <Route path="/" element={<Layout />}>
+                          <Route index element={<Dashboard />} />
+                          <Route path="quiz-veloce" element={<QuickQuizMenu />} />
+                          <Route path="simulation" element={<SimulationMenu />} />
+                          <Route path="physical" element={<PhysicalPrep />} />
+                          <Route path="manual" element={<StudyLibrary />} />
+                          <Route path="profile" element={<Profile />} />
+                          <Route path="settings" element={<Settings />} />
+                        </Route>
+                      </Routes>
+                    </Suspense>
+                    <CookieBanner />
+                    <WhatsNewModal />
+                  </Router>
+                </ToastProvider>
+              </ProgressProvider>
+            </PLProvider>
+          </NotificationProvider>
+        </AuthProvider>
+      </CookieProvider>
+    </ErrorBoundary>
   );
 }
 

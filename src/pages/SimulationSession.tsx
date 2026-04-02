@@ -1,23 +1,55 @@
 import React, { useEffect, useState } from 'react';
-import { useQuiz } from '../context/QuizContext';
-import { type QuizQuestion } from '../types';
-import { ChevronLeft, ChevronRight, Flag } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { type DomandaPL } from '../types/pl';
+import { useProgress } from '../context/ProgressContext';
 import { ResultCard } from '../components/simulation/ResultCard';
+import { ChevronLeft, ChevronRight, Flag } from 'lucide-react';
 import './SimulationMode.css';
 
-const SIMULATION_TIME = 100 * 60; // 100 minutes
-const QUESTION_COUNT = 90;
-const PASS_THRESHOLD = 31;
-const MAX_SCORE = 45;
+interface LocationState {
+    domande: DomandaPL[];
+    parametriEsame: {
+        numeroDomande: number;
+        durataMinuti: number;
+        punteggioCorretta: number;
+        punteggioErrata: number;
+        punteggioNonData: number;
+        sogliaSuperamento?: number;
+    };
+}
 
-const SimulationMode: React.FC = () => {
-    const { questions } = useQuiz();
-    const [simQuestions, setSimQuestions] = useState<QuizQuestion[]>([]);
+const SimulationSession: React.FC = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const state = location.state as LocationState;
+    const { salvaRisultatoQuiz } = useProgress();
+
+    // Se mancano i parametri o si accede direttamente ricarichiamo (potenzialmente indietro ad home)
+    useEffect(() => {
+        if (!state?.domande || !state?.parametriEsame) {
+            navigate('/simulation');
+        }
+    }, [state, navigate]);
+
+    const simQuestions = state?.domande || [];
+    const parametri = state?.parametriEsame || {
+        numeroDomande: 20,
+        durataMinuti: 20,
+        punteggioCorretta: 1,
+        punteggioErrata: 0,
+        punteggioNonData: 0,
+        sogliaSuperamento: 12
+    };
+
+    const SIMULATION_TIME = parametri.durataMinuti * 60;
+    const MAX_SCORE = parametri.numeroDomande * parametri.punteggioCorretta;
+    const PASS_THRESHOLD = parametri.sogliaSuperamento ?? (MAX_SCORE * 0.6); // Default 60% se non definito
+
     const [currentIdx, setCurrentIdx] = useState(0);
-    const [answers, setAnswers] = useState<Record<number, string>>({});
+    const [answers, setAnswers] = useState<Record<string, number>>({});
     const [timeLeft, setTimeLeft] = useState(SIMULATION_TIME);
     const [isFinished, setIsFinished] = useState(false);
-    const [flaggedQuestions, setFlaggedQuestions] = useState<number[]>([]);
+    const [flaggedQuestions, setFlaggedQuestions] = useState<string[]>([]);
 
     // Results
     const [score, setScore] = useState(0);
@@ -31,14 +63,7 @@ const SimulationMode: React.FC = () => {
     const [isReviewing, setIsReviewing] = useState(false);
 
     useEffect(() => {
-        if (questions.length > 0) {
-            const shuffled = [...questions].sort(() => 0.5 - Math.random());
-            setSimQuestions(shuffled.slice(0, QUESTION_COUNT));
-        }
-    }, [questions]);
-
-    useEffect(() => {
-        if (isFinished) return;
+        if (isFinished || !state) return;
         const timer = setInterval(() => {
             setTimeLeft((prev) => {
                 if (prev <= 1) {
@@ -50,27 +75,45 @@ const SimulationMode: React.FC = () => {
         }, 1000);
         return () => clearInterval(timer);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isFinished]);
+    }, [isFinished, state]);
 
     const finishSimulation = () => {
         let finalScore = 0;
         let correct = 0;
         let wrong = 0;
         let skipped = 0;
+        
+        // Per loggare in ProgressContext
+        const risultatiList: any[] = []; // Usa il tipo equivalente a RisultatoRisposta se esportato, qui va bene un array di oggetti
 
         simQuestions.forEach(q => {
             const userAnswer = answers[q.id];
-            if (!userAnswer) {
+            
+            const risultato = {
+                domandaId: q.id,
+                categoriaId: q.categoriaId,
+                corretta: false,
+                data: userAnswer !== undefined,
+                tStamp: new Date().toISOString()
+            };
+
+            if (userAnswer === undefined) {
                 skipped++;
-                // 0 points
-            } else if (userAnswer === q.correct_answer) {
+                finalScore += parametri.punteggioNonData;
+            } else if (userAnswer === q.rispostaCorretta) {
                 correct++;
-                finalScore += 0.50;
+                finalScore += parametri.punteggioCorretta;
+                risultato.corretta = true;
             } else {
                 wrong++;
-                finalScore -= 0.17;
+                finalScore += parametri.punteggioErrata; // punteggioErrata è di solito negativo
             }
+            
+            risultatiList.push(risultato);
         });
+
+        // Previene punteggi sotto zero estremi (a discrezione)
+        if (finalScore < 0) finalScore = 0;
 
         setScore(finalScore);
         setCorrectCount(correct);
@@ -78,11 +121,15 @@ const SimulationMode: React.FC = () => {
         setSkippedCount(skipped);
 
         // Fortune Teller Logic
-        const pLost = wrong * 0.17;
+        const penaltyValue = Math.abs(parametri.punteggioErrata);
+        const pLost = wrong * penaltyValue;
         setPointsLost(pLost);
         setPotentialScore(finalScore + pLost);
 
         setIsFinished(true);
+
+        // SALVATAGGIO PROGRESSI TOTALI (Richiesto e Implementato)
+        salvaRisultatoQuiz(risultatiList);
     };
 
     const formatTime = (seconds: number) => {
@@ -91,29 +138,16 @@ const SimulationMode: React.FC = () => {
         return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
     };
 
-    const handleAnswer = (key: string) => {
-        if (isFinished && !isReviewing) return; // Strict lock
-        if (isReviewing) return; // No changes in review mode
+    const handleAnswer = (idx: number) => {
+        if (isFinished && !isReviewing) return;
+        if (isReviewing) return;
 
-        // Toggle logic: if clicking already selected answer, deselect it (allow skipping)
-        if (answers[simQuestions[currentIdx].id] === key) {
+        if (answers[simQuestions[currentIdx].id] === idx) {
             const newAnswers = { ...answers };
             delete newAnswers[simQuestions[currentIdx].id];
             setAnswers(newAnswers);
         } else {
-            setAnswers(prev => ({ ...prev, [simQuestions[currentIdx].id]: key }));
-            // Optional: Immediate feedback disabled in Strict Exam mode, 
-            // but for "User Experience" request we can show confirmation or subtle cue.
-            // Following "Serenità" -> maybe don't startle them.
-            // But User requested toasts for penalty (-0.17). This usually happens AFTER grading or if it's "Study Mode".
-            // In pure simulation (Exam), finding out immediately breaks realism.
-            // However, the prompt asked specifically: "se l'utente commette un errore... toast... -0.17". 
-            // This implies immediate feedback or feedback at review.
-            // I will add it ONLY IF in review mode or if we decide to hybridize. 
-            // Actually, "Simulation" usually implies no immediate feedback. 
-            // I will implement it basically:
-            // "Risposta registrata" (neutral)
-            // showToast("Risposta salvata", "info"); 
+            setAnswers(prev => ({ ...prev, [simQuestions[currentIdx].id]: idx }));
         }
     };
 
@@ -132,9 +166,8 @@ const SimulationMode: React.FC = () => {
         }
     };
 
-    if (simQuestions.length === 0) return <div>Caricamento quiz...</div>;
+    if (!state || simQuestions.length === 0) return <div className="pl-page">Caricamento in corso...</div>;
 
-    // Final Result Screen (Not Reviewing)
     if (isFinished && !isReviewing) {
         return (
             <ResultCard
@@ -147,35 +180,33 @@ const SimulationMode: React.FC = () => {
                 pointsLost={pointsLost}
                 potentialScore={potentialScore}
                 onReviewClick={startReview}
-                onRetryClick={() => window.location.reload()}
-                onHomeClick={() => window.location.href = '/'}
+                onRetryClick={() => navigate('/simulation')}
+                onHomeClick={() => navigate('/')}
             />
         );
     }
 
     const currentQ = simQuestions[currentIdx];
 
-    // Helper to determine option classes
-    const getOptionClass = (key: string, questionId: number) => {
+    const getOptionClass = (idx: number, questionId: string) => {
         const userAnswer = answers[questionId];
-        const isCorrect = key === currentQ.correct_answer;
-        const isSelected = userAnswer === key;
+        const isCorrect = idx === currentQ.rispostaCorretta;
+        const isSelected = userAnswer === idx;
 
         if (isReviewing) {
             if (isCorrect) return 'option-item review-correct';
             if (isSelected && !isCorrect) return 'option-item review-wrong';
-            if (isSelected && isCorrect) return 'option-item review-selected-correct'; // Visually reinforce success
+            if (isSelected && isCorrect) return 'option-item review-selected-correct';
             return 'option-item';
         } else {
-            // Normal Simulation Mode (No hints)
             return `option-item ${isSelected ? 'selected' : ''}`;
         }
     };
 
     return (
-        <div className="simulation-container">
+        <div className="simulation-container" style={{ margin: '0 auto', maxWidth: '800px', width: '100%', display: 'flex', flexDirection: 'column' }}>
             <div className="sim-header">
-                <h2 style={{ margin: 0, fontSize: '1.5rem', fontWeight: 700 }}>Prova d'esame simulata</h2>
+                <h2 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 700 }}>Simulazione Esame</h2>
                 {!isReviewing ? (
                     <div className={`timer-display ${timeLeft < 300 ? 'timer-warning' : ''}`}>
                         {formatTime(timeLeft)}
@@ -187,18 +218,18 @@ const SimulationMode: React.FC = () => {
 
             <div className="sim-content">
                 <div className="flashcard">
-                    <div className="category-tag">{currentQ.category}</div>
-                    <h3 className="question-text">{currentQ.question}</h3>
+                    <div className="category-tag">{currentQ.categoriaId || 'Generale'}</div>
+                    <h3 className="question-text">{currentQ.testo}</h3>
 
                     <div className="options-list">
-                        {Object.entries(currentQ.options).map(([key, text]) => (
+                        {currentQ.opzioni.map((text, idx) => (
                             <div
-                                key={key}
-                                className={getOptionClass(key, currentQ.id)}
-                                onClick={() => handleAnswer(key)}
+                                key={idx}
+                                className={getOptionClass(idx, currentQ.id)}
+                                onClick={() => handleAnswer(idx)}
                                 style={{ cursor: isReviewing ? 'default' : 'pointer' }}
                             >
-                                <span style={{ fontWeight: 600, marginRight: '0.5rem' }}>{key}.</span>
+                                <span style={{ fontWeight: 600, marginRight: '0.5rem' }}>{String.fromCharCode(65 + idx)}.</span>
                                 {text}
                             </div>
                         ))}
@@ -209,9 +240,9 @@ const SimulationMode: React.FC = () => {
                         </p>
                     )}
 
-                    {isReviewing && (
+                    {isReviewing && currentQ.spiegazione && (
                         <div className="explanation-box" style={{ marginTop: '1rem' }}>
-                            <strong>Spiegazione:</strong> {currentQ.explanation}
+                            <strong>Spiegazione:</strong> {currentQ.spiegazione}
                         </div>
                     )}
                 </div>
@@ -236,20 +267,20 @@ const SimulationMode: React.FC = () => {
                     </button>
                 )}
 
-                {currentIdx === QUESTION_COUNT - 1 ? (
+                {currentIdx === parametri.numeroDomande - 1 ? (
                     !isReviewing ? (
                         <button className="btn-nav btn-submit" onClick={finishSimulation}>
                             Consegna
                         </button>
                     ) : (
-                        <button className="btn-nav" onClick={() => window.location.href = '/'}>
+                        <button className="btn-nav" onClick={() => navigate('/simulation')}>
                             Esci
                         </button>
                     )
                 ) : (
                     <button
                         className="btn-nav"
-                        onClick={() => setCurrentIdx(p => Math.min(QUESTION_COUNT - 1, p + 1))}
+                        onClick={() => setCurrentIdx(p => Math.min(parametri.numeroDomande - 1, p + 1))}
                     >
                         <ChevronRight size={20} />
                     </button>
@@ -263,44 +294,28 @@ const SimulationMode: React.FC = () => {
 
                     if (isReviewing) {
                         const ans = answers[q.id];
-                        if (ans === q.correct_answer) dotClass += ' stat-correct'; // Green text/border usually, check CSS
-                        else if (ans) dotClass += ' stat-wrong';
-                        else dotClass += ' stat-skipped';
-
-                        // Override styles for dots in review mode if needed, utilizing standard utility classes
-                        // Simple color override inline for clarity
                         let style = {};
-                        if (ans === q.correct_answer) style = { backgroundColor: 'var(--color-success)', color: 'white', borderColor: 'transparent' };
-                        else if (ans) style = { backgroundColor: 'var(--color-error)', color: 'white', borderColor: 'transparent' };
+                        if (ans === q.rispostaCorretta) style = { backgroundColor: 'var(--color-success)', color: 'white', borderColor: 'transparent' };
+                        else if (ans !== undefined) style = { backgroundColor: 'var(--color-error)', color: 'white', borderColor: 'transparent' };
                         else style = { backgroundColor: '#e5e7eb', color: '#6b7280' };
 
                         if (currentIdx === idx) style = { ...style, border: '2px solid black' };
 
                         return (
-                            <div
-                                key={q.id}
-                                className={dotClass}
-                                onClick={() => setCurrentIdx(idx)}
-                                style={style}
-                            >
+                            <div key={q.id} className={dotClass} onClick={() => setCurrentIdx(idx)} style={style}>
                                 {idx + 1}
                             </div>
                         );
                     } else {
-                        if (answers[q.id]) dotClass += ' answered';
+                        if (answers[q.id] !== undefined) dotClass += ' answered';
                         if (flaggedQuestions.includes(q.id)) dotClass += ' flagged';
 
                         const style: React.CSSProperties = flaggedQuestions.includes(q.id)
-                            ? { borderColor: '#f59e0b', color: '#d97706', backgroundColor: '#fffbeb' } // Amber-ish
+                            ? { borderColor: '#f59e0b', color: '#d97706', backgroundColor: '#fffbeb' }
                             : {};
 
                         return (
-                            <div
-                                key={q.id}
-                                className={dotClass}
-                                onClick={() => setCurrentIdx(idx)}
-                                style={style}
-                            >
+                            <div key={q.id} className={dotClass} onClick={() => setCurrentIdx(idx)} style={style}>
                                 {idx + 1}
                             </div>
                         );
@@ -311,4 +326,4 @@ const SimulationMode: React.FC = () => {
     );
 };
 
-export default SimulationMode;
+export default SimulationSession;

@@ -17,10 +17,10 @@ const TermsOfService: React.FC = () => {
 
             <main className="terms-content">
                 <h1>TERMINI DI SERVIZIO DI "QUIZ CFVA"</h1>
-                <p className="terms-date">Ultimo aggiornamento: 20.01.2026</p>
+                <p className="terms-date">Ultimo aggiornamento: 29.03.2026</p>
 
                 <p className="terms-intro">
-                    Benvenuto in "Quiz CFVA". Ti preghiamo di leggere attentamente i presenti Termini di Servizio ("Termini") prima di utilizzare l'applicazione Web ("Servizio").
+                    Benvenuto in "Quiz Polizia Locale". Ti preghiamo di leggere attentamente i presenti Termini di Servizio ("Termini") prima di utilizzare l'applicazione Web ("Servizio").
                 </p>
                 <p>
                     Utilizzando il Servizio, l'utente accetta di essere vincolato dai presenti Termini. Se non sei d'accordo con questi Termini, ti preghiamo di non utilizzare il Servizio.
@@ -29,7 +29,7 @@ const TermsOfService: React.FC = () => {
                 <section>
                     <h2>1. Il Servizio</h2>
                     <p>
-                        Quiz CFVA è un'applicazione Web dedicata alla preparazione per il concorso pubblico indetto dalla Regione Autonoma della Sardegna per l'assunzione di Agenti del Corpo Forestale e di Vigilanza Ambientale.
+                        Quiz Polizia Locale è un'applicazione Web dedicata alla preparazione per i concorsi pubblici indetti dagli Enti Locali per l'assunzione di Agenti di Polizia Locale.
                     </p>
                     <p>Il Servizio fornisce:</p>
                     <ul>
@@ -70,7 +70,7 @@ const TermsOfService: React.FC = () => {
                 <section>
                     <h2>4. Natura dei Contenuti e Disclaimer</h2>
                     <div className="terms-warning">
-                        <strong>⚠️ IMPORTANTE:</strong> I contenuti di "Quiz CFVA" sono forniti a scopo puramente didattico e informativo.
+                        <strong>⚠️ IMPORTANTE:</strong> I contenuti di "Quiz Polizia Locale" sono forniti a scopo puramente didattico e informativo.
                     </div>
                     <p>Sebbene ci sforziamo di garantire che le domande e le spiegazioni siano accurate e aggiornate in base al testo del bando ufficiale:</p>
                     <ul>
@@ -79,7 +79,7 @@ const TermsOfService: React.FC = () => {
                         <li>Il Proprietario declina ogni responsabilità per danni diretti o indiretti derivanti dall'uso di informazioni imprecise. L'utente è tenuto di persona a verificare la validità delle risposte nei testi ufficiali.</li>
                     </ul>
                     <p>
-                        Per la partecipazione al concorso, si rimanda esclusivamente al testo integrale pubblicato dalla Regione Autonoma della Sardegna sulla Gazzetta Ufficiale e sul portale "inPA".
+                        Per la partecipazione ai concorsi, si rimanda esclusivamente al testo integrale pubblicato dagli Enti Locali e sul portale "inPA".
                     </p>
                 </section>
 
@@ -92,7 +92,7 @@ const TermsOfService: React.FC = () => {
                         <li>Banca dati dei quiz (domande e risposte).</li>
                     </ul>
                     <p>
-                        sono di proprietà esclusiva del Proprietario ("Quiz CFVA") o dei suoi licenziatari e sono protetti dalle leggi sul diritto d'autore e sulla proprietà intellettuale.
+                        sono di proprietà esclusiva del Proprietario ("Quiz Polizia Locale") o dei suoi licenziatari e sono protetti dalle leggi sul diritto d'autore e sulla proprietà intellettuale.
                     </p>
                     <p>È severamente vietato:</p>
                     <ul>

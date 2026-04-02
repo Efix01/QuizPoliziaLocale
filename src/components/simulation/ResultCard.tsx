@@ -48,8 +48,8 @@ export const ResultCard: React.FC<ResultCardProps> = ({
 
                 <p className="result-message">
                     {isPassed
-                        ? "Congratulazioni! Hai superato la soglia di 31/45. Ricorda che l'accesso alla fase successiva dipende dalla graduatoria (primi 600)."
-                        : "Non hai raggiunto il punteggio minimo di 31/45. Continua a studiare e riprova!"}
+                        ? `Congratulazioni! Hai superato la soglia minima (${passThreshold.toFixed(2)} punti).`
+                        : `Non hai raggiunto il punteggio minimo (${passThreshold.toFixed(2)}). Continua a studiare e riprova!`}
                 </p>
 
                 <div className="stats-breakdown">
@@ -68,11 +68,11 @@ export const ResultCard: React.FC<ResultCardProps> = ({
                 </div>
 
                 {/* Stratagemma dell'Indovino */}
-                {wrongCount > 0 && (
+                {wrongCount > 0 && pointsLost > 0 && (
                     <div className="fortune-teller">
                         <strong>🔮 Stratagemma dell'Indovino</strong>
                         <p>
-                            A causa del malus (-0.17), hai perso <b>{pointsLost.toFixed(2)}</b> punti per errori evitabili.
+                            A causa del malus per le risposte errate, hai perso <b>{pointsLost.toFixed(2)}</b> punti per errori evitabili.
                             <br />
                             Se avessi lasciato in bianco quelle domande, il tuo punteggio sarebbe stato <b>{potentialScore.toFixed(2)}</b>.
                         </p>

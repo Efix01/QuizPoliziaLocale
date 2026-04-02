@@ -31,7 +31,7 @@ const ChiSiamo: React.FC = () => {
                     <span>al servizio della Natura</span>
                 </h2>
                 <p className="hero-subtitle">
-                    Il progetto Quiz CFVA nasce per supportare i futuri custodi della Sardegna.
+                    Il progetto Quiz Polizia Locale nasce per supportare i futuri agenti sul territorio nazionale.
                 </p>
             </section>
 
@@ -44,7 +44,7 @@ const ChiSiamo: React.FC = () => {
                     <div className="bio-content">
                         <p className="bio-greeting">Ciao, sono <strong>Efisio</strong>.</p>
                         <p>
-                            Nella vita professionale sono un <strong>Assistente Capo del Corpo Forestale</strong>.
+                            Nella vita professionale sono un <strong>Agente della Polizia Locale</strong>.
                             Nel tempo libero, sono un appassionato di programmazione, intelligenza artificiale,
                             fotografia e video.
                         </p>
@@ -52,7 +52,7 @@ const ChiSiamo: React.FC = () => {
                             Ho creato questa applicazione perché conosco bene la sfida che state affrontando.
                             Il percorso per indossare questa divisa è impegnativo e richiede dedizione assoluta.
                             Ho voluto mettere le mie competenze digitali a disposizione di chi, come me, ha il
-                            sogno di proteggere il patrimonio ambientale della nostra isola.
+                            sogno di proteggere e servire la nostra comunità.
                         </p>
                     </div>
                 </div>
@@ -94,14 +94,13 @@ const ChiSiamo: React.FC = () => {
                     </div>
                     <div className="disclaimer-content">
                         <p>
-                            L'applicazione <strong>"Quiz CFVA"</strong> è un progetto personale,
+                            L'applicazione <strong>"Quiz Polizia Locale"</strong> è un progetto personale,
                             apolitico e senza scopo di lucro, realizzato a titolo di volontariato privato.
                         </p>
                         <p className="disclaimer-declaration">Si dichiara esplicitamente che:</p>
                         <ul>
                             <li>
-                                Questo progetto è <strong>totalmente indipendente</strong> dal Corpo Forestale
-                                e di Vigilanza Ambientale (CFVA) e dalla Regione Autonoma della Sardegna (RAS).
+                                Questo progetto è <strong>totalmente indipendente</strong> dagli Enti Locali e dalle Forze dell'Ordine.
                             </li>
                             <li>
                                 L'autore agisce in veste di privato cittadino appassionato di tecnologia;

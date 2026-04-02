@@ -10,5 +10,5 @@ export const STORAGE_KEYS = {
 
     // App Settings
     THEME: 'quiz_theme',
-    COOKIE_PREFERENCES: 'quiz-cfva-cookie-consent'
+    COOKIE_PREFERENCES: 'quiz-pl-cookie-consent'
 };

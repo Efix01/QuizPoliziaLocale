@@ -1,5 +1,12 @@
 import { createContext, useContext } from 'react';
-import type { User } from 'firebase/auth';
+
+export interface User {
+    uid: string;
+    email: string | null;
+    displayName: string | null;
+    photoURL?: string | null;
+    providerData?: Array<{ providerId: string }>;
+}
 
 export interface AuthContextType {
     user: User | null;
@@ -10,6 +17,7 @@ export interface AuthContextType {
     register: (email: string, password: string, displayName: string) => Promise<void>;
     loginWithGoogle: () => Promise<void>;
     logout: () => Promise<void>;
+    deleteAccount: () => Promise<void>;
     clearError: () => void;
 }
 

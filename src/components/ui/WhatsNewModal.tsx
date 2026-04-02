@@ -39,10 +39,10 @@ const WhatsNewModal: React.FC = () => {
     const features = [
         {
             icon: <BookOpen size={24} color="#3B82F6" />, // Blu per comunicazioni ufficiali
-            title: "Commissione Nominata!. Dacci dentro...⚖️",
+            title: "Preparazione Concorso Polizia Locale! ⚖️",
             description: (
                 <>
-                    È stata formalizzata la Commissione Esaminatrice (Pres. Dir. Gen. CFVA). La valutazione riguarderà prove scritte, pratiche e titoli.
+                    Inizia la preparazione per le prove scritte, pratiche e titoli del nuovo concorso.
                     <br />
                     <a
                         href={PDF_LINK}

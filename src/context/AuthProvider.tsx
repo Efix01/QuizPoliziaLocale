@@ -1,18 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import {
-    type User,
-    signInWithEmailAndPassword,
-    createUserWithEmailAndPassword,
-    signInWithPopup,
-    signOut,
+import { z } from 'zod';
+import { AuthContext, type AuthContextType, type User } from './AuthContext';
+import { auth, googleProvider } from '../firebase';
+import { 
+    signInWithEmailAndPassword, 
+    createUserWithEmailAndPassword, 
+    signInWithPopup, 
+    signOut, 
     onAuthStateChanged,
     updateProfile,
-    setPersistence,
-    browserLocalPersistence
+    deleteUser
 } from 'firebase/auth';
-import { z } from 'zod';
-import { auth, googleProvider } from '../firebase';
-import { AuthContext, type AuthContextType } from './AuthContext';
 
 // Schema di validazione Zod
 export const LoginSchema = z.object({
@@ -33,138 +31,113 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    // Listen to auth state changes
+    // Initial check con Firebase OnAuthStateChanged
     useEffect(() => {
-        // Ensure persistence is set to LOCAL
-        const initializeAuth = async () => {
-            // Dynamic import for persistence to avoid build issues if needed, strictly compliant with Firebase v9 modular SDK
-            try {
-                // Default persistence is usually LOCAL, but we enforce it here
-                await setPersistence(auth, browserLocalPersistence);
-            } catch (error) {
-                console.error("Error setting persistence:", error);
+        const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
+            if (firebaseUser) {
+                setUser({
+                    uid: firebaseUser.uid,
+                    email: firebaseUser.email || '',
+                    displayName: firebaseUser.displayName || firebaseUser.email?.split('@')[0] || 'Utente'
+                });
+            } else {
+                setUser(null);
             }
+            setLoading(false);
+        });
 
-            const unsubscribe = onAuthStateChanged(auth, (firebaseUser) => {
-                setUser(firebaseUser);
-                setLoading(false);
-            });
-            return unsubscribe;
-        };
-
-        const unsubscribePromise = initializeAuth();
-
-        return () => {
-            unsubscribePromise.then(unsubscribe => {
-                if (unsubscribe) unsubscribe();
-            });
-        };
+        // Cleanup subscription on unmount
+        return () => unsubscribe();
     }, []);
 
-    // Login with email/password
+    // Firebase Email/Password Login
     const login = async (email: string, password: string) => {
         setError(null);
-
-        // Validazione Zod
-        const validation = LoginSchema.safeParse({ email, password });
-        if (!validation.success) {
-            const errorMsg = validation.error.issues[0].message;
-            setError(errorMsg);
-            throw new Error(errorMsg);
-        }
-
         setLoading(true);
         try {
             await signInWithEmailAndPassword(auth, email, password);
-        } catch (err: unknown) {
-            const errorMessage = getErrorMessage(err);
-            setError(errorMessage);
-            throw err;
+            // Non serve setUser qui, onAuthStateChanged scatterà da solo
+        } catch (err: any) {
+            console.error("Login err:", err);
+            setError(err.message || "Errore durante il login. Controlla le credenziali.");
         } finally {
             setLoading(false);
         }
     };
 
-    // Register new user
+    // Firebase Register
     const register = async (email: string, password: string, displayName: string) => {
         setError(null);
-
-        // Validazione Zod
-        const validation = RegisterSchema.safeParse({ email, password, displayName });
-        if (!validation.success) {
-            const errorMsg = validation.error.issues[0].message;
-            setError(errorMsg);
-            throw new Error(errorMsg);
-        }
-
         setLoading(true);
         try {
-            const result = await createUserWithEmailAndPassword(auth, email, password);
-            // Update display name
-            await updateProfile(result.user, { displayName });
-        } catch (err: unknown) {
-            const errorMessage = getErrorMessage(err);
-            setError(errorMessage);
-            throw err;
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            // Updating Profile with displayName
+            if (userCredential.user) {
+                await updateProfile(userCredential.user, { displayName });
+                // Forza l'aggiornamento locale del context per reattività immediata
+                setUser({
+                    uid: userCredential.user.uid,
+                    email: userCredential.user.email || email,
+                    displayName
+                });
+            }
+        } catch (err: any) {
+            console.error("Register err:", err);
+            setError(err.message || "Errore durante la registrazione.");
         } finally {
             setLoading(false);
         }
     };
 
-    // Login with Google
+    // Firebase Google Login
     const loginWithGoogle = async () => {
         setError(null);
         setLoading(true);
         try {
             await signInWithPopup(auth, googleProvider);
-        } catch (err: unknown) {
-            const errorMessage = getErrorMessage(err);
-            setError(errorMessage);
-            throw err;
+        } catch (err: any) {
+            console.error("Google login err:", err);
+            setError(err.message || "Errore durante il login con Google.");
         } finally {
             setLoading(false);
         }
     };
 
-    // Logout
+    // Firebase Logout
     const logout = async () => {
         setError(null);
         try {
             await signOut(auth);
-        } catch (err: unknown) {
-            const errorMessage = getErrorMessage(err);
-            setError(errorMessage);
-            throw err;
+            setUser(null);
+            // Ripulisce il fallback storage legacy se presente (cleanup opzionale)
+            localStorage.removeItem('quiz_pl_auth');
+        } catch (err: any) {
+            console.error("Logout err:", err);
+            setError(err.message || "Errore durante il logout.");
+        }
+    };
+
+    // Firebase Account Deletion
+    const deleteAccount = async () => {
+        setError(null);
+        setLoading(true);
+        try {
+            const currentUser = auth.currentUser;
+            if (currentUser) {
+                await deleteUser(currentUser);
+                setUser(null);
+                localStorage.clear(); // Cleanup completo
+            }
+        } catch (err: any) {
+            console.error("Delete account err:", err);
+            setError(err.message || "Errore durante l'eliminazione. Potrebbe essere necessario ri-effettuare il login per motivi di sicurezza.");
+            throw err; // Rilancio per gestirlo nel modal
+        } finally {
+            setLoading(false);
         }
     };
 
     const clearError = () => setError(null);
-
-    // Helper function to get readable error messages
-    const getErrorMessage = (err: unknown): string => {
-        if (err && typeof err === 'object' && 'code' in err) {
-            const code = (err as { code: string }).code;
-            switch (code) {
-                case 'auth/email-already-in-use':
-                    return 'Questa email è già registrata. Prova ad accedere.';
-                case 'auth/invalid-email':
-                    return 'Email non valida.';
-                case 'auth/weak-password':
-                    return 'La password deve avere almeno 6 caratteri.';
-                case 'auth/user-not-found':
-                    return 'Utente non trovato. Registrati prima.';
-                case 'auth/wrong-password':
-                    return 'Password errata.';
-                case 'auth/invalid-credential':
-                    return 'Credenziali non valide.';
-                case 'auth/popup-closed-by-user':
-                    return 'Finestra di login chiusa.';
-                default:
-                    return 'Errore durante l\'autenticazione.';
-            }
-        }
-        return 'Errore sconosciuto.';
-    };
 
     const value: AuthContextType = {
         user,
@@ -175,16 +148,18 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         register,
         loginWithGoogle,
         logout,
+        deleteAccount,
         clearError
     };
 
     return (
         <AuthContext.Provider value={value}>
             {loading ? (
-                <div className="skeleton-loader-container" style={{ display: 'flex', flexDirection: 'column', gap: '16px', padding: '24px', maxWidth: '400px', margin: 'auto', height: '100vh', justifyContent: 'center' }}>
-                    <div className="skeleton-box" style={{ height: '60px', borderRadius: '12px' }}></div>
-                    <div className="skeleton-box" style={{ height: '120px', borderRadius: '16px' }}></div>
-                    <div className="skeleton-box" style={{ height: '40px', width: '50%', margin: '0 auto', borderRadius: '20px' }}></div>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', color: '#111827' }}>
+                    <div style={{ textAlign: 'center' }}>
+                        <div style={{ width: '40px', height: '40px', border: '4px solid #f3f4f6', borderTop: '4px solid var(--oro-sardegna)', borderRadius: '50%', animation: 'spin 1s linear infinite', margin: '0 auto 1rem' }}></div>
+                        Verifica sessione...
+                    </div>
                 </div>
             ) : (
                 children

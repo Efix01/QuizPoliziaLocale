@@ -35,7 +35,7 @@ export const Layout: React.FC = () => {
                     <span>Home</span>
                 </NavLink>
                 <NavLink
-                    to="/study"
+                    to="/quiz-veloce"
                     className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
                     aria-label="Quiz"
                 >
@@ -51,7 +51,7 @@ export const Layout: React.FC = () => {
                     <span>Studio</span>
                 </NavLink>
                 <NavLink
-                    to="/simulation"
+                    to="/simulazione"
                     className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
                     aria-label="Simulazione"
                 >

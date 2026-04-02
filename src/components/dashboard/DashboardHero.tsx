@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import type { User } from 'firebase/auth';
+import type { User } from '../../context/AuthContext';
 import { Calendar } from 'lucide-react';
 import { useStaggerAnimation, useParallax } from '../../hooks/useAnimations';
 
@@ -56,7 +56,7 @@ const DashboardHero: React.FC<DashboardHeroProps> = ({ user, pageLoaded }) => {
         >
             <div className={`hero-content ${pageLoaded ? 'animate-scale-in' : ''}`}>
                 <div className="dashboard-logo">
-                    <img src="/logo-cfva.png" alt="Quiz CFVA" className="dashboard-logo-img" />
+                    <img src="/logo-pl.png" alt="Quiz Polizia Locale" className="dashboard-logo-img" />
                 </div>
 
                 <div className="hero-greeting">

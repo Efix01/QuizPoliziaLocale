@@ -3,18 +3,34 @@ import { useNavigate } from 'react-router-dom';
 import Toggle from '../components/ui/Toggle';
 import { LogoutModal, DeleteAccountModal } from '../components/ui/AccountModals';
 import { useToast } from '../context/ToastContext';
-import { useQuiz } from '../context/QuizContext';
 import { useAuth } from '../context/AuthContext';
 import { useNotifications } from '../context/NotificationContext';
+import { useProgress } from '../context/ProgressContext';
 import { User, LogOut, Trash2, ChevronRight, Info, FileText } from 'lucide-react';
 import './Profile.css';
 
 const Profile: React.FC = () => {
     const { showToast } = useToast();
-    const { stats } = useQuiz();
     const { user, isAuthenticated } = useAuth();
     const { notificationsEnabled, setNotificationsEnabled } = useNotifications();
+    const { progressiGlobali } = useProgress();
     const navigate = useNavigate();
+
+    // Calcolo statistiche reali da ProgressContext (Firebase)
+    const stats = useMemo(() => {
+        const pg = progressiGlobali;
+        const totalAnswered = pg ? Object.values(pg.perCategoria).reduce((sum, cat) => sum + cat.fatte, 0) : 0;
+        const correctCount = pg ? Object.values(pg.perCategoria).reduce((sum, cat) => sum + cat.corrette, 0) : 0;
+        
+        return {
+            level: pg?.livello ?? 1,
+            xp: pg?.xp ?? 0,
+            totalAnswered,
+            correctCount,
+            currentStreak: pg?.streak ?? 0,
+            accuracy: totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0
+        };
+    }, [progressiGlobali]);
 
     const [settings, setSettings] = useState({
         sound: true
@@ -42,10 +58,8 @@ const Profile: React.FC = () => {
         }
     };
 
-    // Calculate stats
-    const accuracy = stats.totalAnswered > 0
-        ? Math.round((stats.correctCount / stats.totalAnswered) * 100)
-        : 0;
+    // accuracy is now in stats object
+    const accuracy = stats.accuracy;
 
     // Get user initials for avatar fallback
     // Get user initials for avatar fallback
@@ -102,6 +116,10 @@ const Profile: React.FC = () => {
                         <span className="stats-item-label">Livello</span>
                     </div>
                     <div className="stats-item">
+                        <span className="stats-item-value">{stats.xp}</span>
+                        <span className="stats-item-label">XP Totali</span>
+                    </div>
+                    <div className="stats-item">
                         <span className="stats-item-value">{stats.totalAnswered}</span>
                         <span className="stats-item-label">Domande</span>
                     </div>
@@ -109,9 +127,19 @@ const Profile: React.FC = () => {
                         <span className="stats-item-value">{accuracy}%</span>
                         <span className="stats-item-label">Precisione</span>
                     </div>
-                    <div className="stats-item">
-                        <span className="stats-item-value">{stats.currentStreak}</span>
-                        <span className="stats-item-label">Giorni di fila</span>
+                </div>
+
+                {/* Level Progress Bar */}
+                <div className="level-progress-container" style={{ marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', marginBottom: '0.5rem', color: '#94a3b8' }}>
+                        <span>Progresso Livello</span>
+                        <span>{stats.xp % 1000} / 1000 XP</span>
+                    </div>
+                    <div className="pl-progress" style={{ height: '8px' }}>
+                        <div 
+                            className="pl-progress__fill pl-progress__fill--blue" 
+                            style={{ width: `${(stats.xp % 1000) / 10}%` }} 
+                        />
                     </div>
                 </div>
             </div>

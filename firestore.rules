@@ -1,0 +1,67 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // =========================================================
+    // REGOLA GLOBALE: Nessun accesso pubblico
+    // =========================================================
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // =========================================================
+    // UTENTI: Solo il proprietario può leggere/scrivere i propri dati
+    // =========================================================
+    match /users/{userId} {
+      allow read, write: if request.auth != null 
+                         && request.auth.uid == userId;
+
+      // Profilo utente e configurazione PL
+      match /profile/{doc} {
+        allow read, write: if request.auth != null 
+                           && request.auth.uid == userId;
+      }
+
+      // Progressi globali centralizzati
+      // Path: users/{userId}/progressi/main
+      match /progressi/{doc} {
+        allow read, write: if request.auth != null 
+                           && request.auth.uid == userId;
+      }
+
+      // Dati SRS (Spaced Repetition System) — indicizzati per domandaId
+      // Path: users/{userId}/srsData/{domandaId}
+      match /srsData/{domandaId} {
+        allow read, write: if request.auth != null 
+                           && request.auth.uid == userId;
+      }
+
+      // Log errori — indicizzati per domandaId
+      // Path: users/{userId}/errori/{domandaId}
+      match /errori/{domandaId} {
+        allow read, write: if request.auth != null 
+                           && request.auth.uid == userId;
+      }
+    }
+
+    // =========================================================
+    // DATI PUBBLICI (domande, regioni, materiale)
+    // Se serviti come collection Firestore (opzionale)
+    // =========================================================
+    match /domande_core/{docId} {
+      allow read: if request.auth != null;
+      allow write: if false; // Solo admin via Console
+    }
+
+    match /regioni/{regioneId} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+
+    match /comuni/{comuneId} {
+      allow read: if request.auth != null;
+      allow write: if false;
+    }
+  }
+}
