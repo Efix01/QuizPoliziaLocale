@@ -1,0 +1,13 @@
+{
+  "domande": [
+    {
+      "id": "test_com_1",
+      "testo": "Domanda Comunale di Test (Cagliari)?",
+      "opzioni": ["Sì", "No", "Forse"],
+      "rispostaCorretta": 0,
+      "spiegazione": "Cagliari",
+      "livello": 1,
+      "categoriaId": "ordinanza_sindaco"
+    }
+  ]
+}

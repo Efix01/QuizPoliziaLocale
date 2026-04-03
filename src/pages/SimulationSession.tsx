@@ -22,10 +22,10 @@ const SimulationSession: React.FC = () => {
     
     const { salvaRisultatoQuiz } = useProgress();
 
-    // Se mancano i parametri o si accede direttamente ricarichiamo (potenzialmente indietro ad home)
+    // Se mancano i parametri o si accede direttamente ricarichiamo ad home
     useEffect(() => {
         if (!state?.domande || !state?.parametriEsame) {
-            navigate('/simulation');
+            navigate('/dashboard');
         }
     }, [state, navigate]);
 
@@ -91,8 +91,8 @@ const SimulationSession: React.FC = () => {
                 domandaId: q.id,
                 categoriaId: q.categoriaId,
                 corretta: false,
-                data: userAnswer !== undefined,
-                tStamp: new Date().toISOString()
+                indiceRispostaScelta: userAnswer !== undefined ? userAnswer : 0,
+                timestamp: new Date().toISOString()
             };
 
             if (userAnswer === undefined) {

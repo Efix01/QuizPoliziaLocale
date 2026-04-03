@@ -1,0 +1,13 @@
+{
+  "domande": [
+    {
+      "id": "test_reg_1",
+      "testo": "Domanda Regionale di Test (Sardegna)?",
+      "opzioni": ["Sì", "No", "Forse"],
+      "rispostaCorretta": 0,
+      "spiegazione": "Ok",
+      "livello": 1,
+      "categoriaId": "legge_regionale"
+    }
+  ]
+}

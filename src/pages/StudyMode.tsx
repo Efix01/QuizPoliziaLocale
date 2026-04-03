@@ -16,7 +16,6 @@ const StudyMode: React.FC = () => {
         selectedOption,
         excludedOptions,
         isFinished,
-        isPending,
         handleOptionSelect,
         toggleExclusion,
         handleCheck,
@@ -25,17 +24,20 @@ const StudyMode: React.FC = () => {
         progressDisplay,
         progressPercentage,
         sessionMode,
-        sessionCategoriaId
+        sessionCategoriaId,
+        sessionStrato
     } = useQuizSession();
 
     const [isReportModalOpen, setIsReportModalOpen] = useState(false);
 
     // Titolo o Categoria da mostrare nell'header/riepilogo
-    const displayFilter = sessionMode === 'categoria' ? sessionCategoriaId : (sessionMode !== 'free' ? sessionMode : null);
+    const displayFilter = sessionMode === 'categoria' 
+        ? sessionCategoriaId 
+        : (sessionStrato ? `${sessionStrato}` : (sessionMode !== 'free' ? sessionMode : null));
 
     // Reindirizzamento se la sessione non è valida (es. refresh pagina)
     if (!hasValidSession) {
-        return <Navigate to="/" replace />;
+        return <Navigate to="/dashboard" replace />;
     }
 
     if (isFinished) {
@@ -137,15 +139,13 @@ const StudyMode: React.FC = () => {
                                             className={`exclude-btn ${isExcluded ? 'active' : ''}`}
                                             onClick={(e) => toggleExclusion(e, index)}
                                             title="Escludi opzione"
-                                            disabled={isPending}
                                         >
                                             <Ban size={18} />
                                         </button>
                                     )}
                                     <div
                                         className={className}
-                                        onClick={() => !isPending && handleOptionSelect(index)}
-                                        style={{ pointerEvents: isPending ? 'none' : 'auto' }}
+                                        onClick={() => handleOptionSelect(index)}
                                     >
                                         <span style={{ fontWeight: 700, marginRight: '0.75rem', color: 'var(--oro-sardegna, #F59E0B)' }}>
                                             {keyLabel}.
@@ -171,8 +171,8 @@ const StudyMode: React.FC = () => {
                     <button
                         className="btn-reveal"
                         onClick={handleCheck}
-                        disabled={selectedOption === null || isPending}
-                        style={{ opacity: (selectedOption !== null && !isPending) ? 1 : 0.5 }}
+                        disabled={selectedOption === null}
+                        style={{ opacity: (selectedOption !== null) ? 1 : 0.5 }}
                     >
                         Conferma Risposta
                     </button>
@@ -182,7 +182,6 @@ const StudyMode: React.FC = () => {
                              <button 
                                 className="btn-feedback btn-wrong" 
                                 onClick={() => handleFeedback(false)}
-                                disabled={isPending}
                              >
                                 <X size={20} /> Ho Sbagliato
                             </button>
@@ -190,7 +189,6 @@ const StudyMode: React.FC = () => {
                         <button 
                             className="btn-feedback btn-correct" 
                             onClick={() => handleFeedback(true)}
-                            disabled={isPending}
                         >
                             <Check size={20} /> Avanti
                         </button>
