@@ -1,0 +1,264 @@
+/* ============================================
+   💎 DASHBOARD ELITE — Midnight Edition
+   Sober, Professional & Authoritative UI
+   ============================================ */
+
+:root {
+  --midnight-bg: #0f172a;
+  --midnight-panel: rgba(30, 41, 59, 0.6);
+  --pl-gold: #d4af37;
+  --pl-gold-light: #f1d279;
+  --pl-blue-badge: #1e40af;
+  --pl-blue-light: #3b82f6;
+  --slate-text: #94a3b8;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+.dashboard-elite {
+  background-color: var(--midnight-bg);
+  color: white;
+  min-height: 100vh;
+  padding: 1.5rem;
+  font-family: 'Outfit', sans-serif;
+  padding-bottom: 6rem;
+}
+
+/* ─────────────────────────────────────────────
+   GLASS COMPONENTS
+   ───────────────────────────────────────────── */
+
+.glass-card {
+  background: var(--midnight-panel);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 1.5rem;
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-card--gold {
+  border-color: rgba(212, 175, 55, 0.2);
+}
+
+/* ─────────────────────────────────────────────
+   HEADER & PROFILE
+   ───────────────────────────────────────────── */
+
+.elite-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.rank-badge {
+  background: linear-gradient(135deg, var(--pl-gold), #b8860b);
+  color: #1a1a1a;
+  padding: 4px 12px;
+  border-radius: 100px;
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3);
+}
+
+.profile-section__name {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+  color: white;
+}
+
+.profile-section__sub {
+  font-size: 0.85rem;
+  color: var(--slate-text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ─────────────────────────────────────────────
+   GAUGES & PROGRESS
+   ───────────────────────────────────────────── */
+
+.hero-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr;
+  gap: 1.25rem;
+  margin-bottom: 2rem;
+}
+
+.readiness-gauge-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.readiness-label {
+  font-size: 0.7rem;
+  color: var(--slate-text);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 10px;
+}
+
+.xp-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+
+.xp-label-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.xp-current {
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.xp-total {
+  font-size: 0.8rem;
+  color: var(--slate-text);
+}
+
+.xp-level-badge {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--pl-gold);
+}
+
+/* ─────────────────────────────────────────────
+   BENTO GRID
+   ───────────────────────────────────────────── */
+
+.bento-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.bento-item {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 140px;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.bento-item--large {
+  grid-column: span 2;
+  min-height: 120px;
+  flex-direction: row;
+  align-items: center;
+  background: linear-gradient(135deg, #1e40af, #1e3a8a);
+  border: none;
+}
+
+.bento-item:active {
+  transform: scale(0.98);
+}
+
+.bento-item__icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.bento-item__title {
+  font-weight: 700;
+  font-size: 1rem;
+  margin-top: 12px;
+}
+
+.bento-item__sub {
+  font-size: 0.75rem;
+  color: var(--slate-text);
+  margin-top: 4px;
+}
+
+.bento-item__badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  padding: 2px 8px;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+/* ─────────────────────────────────────────────
+   INSIGHT CARDS
+   ───────────────────────────────────────────── */
+
+.section-label-elite {
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: var(--pl-gold);
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.insight-card {
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 1rem;
+}
+
+.insight-card__icon {
+  color: var(--pl-gold);
+  flex-shrink: 0;
+}
+
+.insight-card__text {
+  flex: 1;
+}
+
+.insight-card__title {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.insight-card__desc {
+  font-size: 0.75rem;
+  color: var(--slate-text);
+}
+
+/* ─────────────────────────────────────────────
+   RESPONSIVE
+   ───────────────────────────────────────────── */
+
+@media (max-width: 480px) {
+  .hero-stats-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  
+  .dashboard-elite {
+    padding: 1.25rem;
+  }
+}

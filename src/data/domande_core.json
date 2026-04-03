@@ -269,7 +269,7 @@
     {
       "id": "core_san_amm_001",
       "strato": "core",
-      "categoriaId": "san_amm",
+      "categoriaId": "l689",
       "sottoCategoriaId": "san_amm_principi",
       "testo": "La Legge 689/1981 disciplina:",
       "opzioni": ["Le sanzioni penali", "Le sanzioni amministrative pecuniarie", "I reati ambientali", "Le sanzioni disciplinari dei dipendenti pubblici"],
@@ -282,7 +282,7 @@
     {
       "id": "core_san_amm_002",
       "strato": "core",
-      "categoriaId": "san_amm",
+      "categoriaId": "l689",
       "sottoCategoriaId": "san_amm_principi",
       "testo": "In materia di sanzioni amministrative, il principio di legalità comporta che:",
       "opzioni": ["Le sanzioni possono essere applicate anche in assenza di legge", "Nessuno può essere assoggettato a sanzioni se non in forza di una legge in vigore al momento della violazione", "Le sanzioni sono sempre retroattive", "Le sanzioni sono decise discrezionalmente dall'agente accertatore"],
@@ -295,7 +295,7 @@
     {
       "id": "core_san_amm_003",
       "strato": "core",
-      "categoriaId": "san_amm",
+      "categoriaId": "l689",
       "sottoCategoriaId": "san_amm_contestazione",
       "testo": "Se la contestazione immediata non è possibile, il verbale deve essere notificato entro:",
       "opzioni": ["30 giorni", "60 giorni", "90 giorni", "120 giorni"],
@@ -308,7 +308,7 @@
     {
       "id": "core_san_amm_004",
       "strato": "core",
-      "categoriaId": "san_amm",
+      "categoriaId": "l689",
       "sottoCategoriaId": "san_amm_pagamento",
       "testo": "Il pagamento in misura ridotta deve essere effettuato entro:",
       "opzioni": ["30 giorni dalla contestazione o notificazione", "60 giorni dalla contestazione o notificazione", "90 giorni dalla contestazione o notificazione", "15 giorni dalla contestazione o notificazione"],
@@ -321,7 +321,7 @@
     {
       "id": "core_san_amm_005",
       "strato": "core",
-      "categoriaId": "san_amm",
+      "categoriaId": "l689",
       "sottoCategoriaId": "san_amm_principi",
       "testo": "Non può essere assoggettato a sanzione amministrativa chi, al momento della violazione:",
       "opzioni": ["Ha meno di 21 anni", "Non ha compiuto 18 anni o non aveva capacità di intendere e volere", "È straniero", "Non conosce la legge"],
@@ -334,7 +334,7 @@
     {
       "id": "core_san_amm_006",
       "strato": "core",
-      "categoriaId": "san_amm",
+      "categoriaId": "l689",
       "sottoCategoriaId": "san_amm_accertamento",
       "testo": "L'obbligazione di pagare la sanzione amministrativa si estingue per:",
       "opzioni": ["Prescrizione di 3 anni", "Prescrizione di 5 anni", "Prescrizione di 10 anni", "Non si prescrive mai"],
@@ -347,7 +347,7 @@
     {
       "id": "core_san_amm_007",
       "strato": "core",
-      "categoriaId": "san_amm",
+      "categoriaId": "l689",
       "sottoCategoriaId": "san_amm_opposizione",
       "testo": "Contro l'ordinanza-ingiunzione si può proporre ricorso:",
       "opzioni": ["Al TAR entro 60 giorni", "Al Giudice di Pace o al Tribunale entro 30 giorni", "Al Prefetto entro 60 giorni", "Non è impugnabile"],
@@ -360,7 +360,7 @@
     {
       "id": "core_san_amm_008",
       "strato": "core",
-      "categoriaId": "san_amm",
+      "categoriaId": "l689",
       "sottoCategoriaId": "san_amm_accertamento",
       "testo": "Gli organi addetti al controllo sull'osservanza delle disposizioni possono:",
       "opzioni": ["Solo redigere verbali", "Assumere informazioni e procedere a ispezioni anche di locali privati senza autorizzazione", "Assumere informazioni e procedere a ispezioni di cose e luoghi diversi dalla privata dimora", "Procedere a perquisizioni personali"],
@@ -373,7 +373,7 @@
     {
       "id": "core_san_amm_009",
       "strato": "core",
-      "categoriaId": "san_amm",
+      "categoriaId": "l689",
       "sottoCategoriaId": "san_amm_principi",
       "testo": "In caso di concorso di più persone nella violazione amministrativa:",
       "opzioni": ["Risponde solo chi ha materialmente commesso il fatto", "Ciascuno soggiace alla sanzione per essa stabilita", "Risponde solo chi ha organizzato la violazione", "La sanzione è ripartita tra tutti i concorrenti"],
@@ -386,7 +386,7 @@
     {
       "id": "core_san_amm_010",
       "strato": "core",
-      "categoriaId": "san_amm",
+      "categoriaId": "l689",
       "sottoCategoriaId": "san_amm_principi",
       "testo": "La sanzione amministrativa è personale e quindi:",
       "opzioni": ["Si trasmette agli eredi", "Non si trasmette agli eredi", "Si trasmette solo al coniuge", "Si trasmette solo se c'è testamento"],
@@ -399,7 +399,7 @@
     {
       "id": "core_dir_amm_001",
       "strato": "core",
-      "categoriaId": "dir_amm",
+      "categoriaId": "l241",
       "sottoCategoriaId": "dir_amm_principi",
       "testo": "L'attività amministrativa è retta dai criteri di:",
       "opzioni": ["Efficienza e segretezza", "Economicità, efficacia, imparzialità, pubblicità e trasparenza", "Celerità e informalità", "Autoritarietà e discrezionalità"],
@@ -412,7 +412,7 @@
     {
       "id": "core_dir_amm_002",
       "strato": "core",
-      "categoriaId": "dir_amm",
+      "categoriaId": "l241",
       "sottoCategoriaId": "dir_amm_procedimento",
       "testo": "Il procedimento amministrativo deve concludersi con provvedimento espresso entro:",
       "opzioni": ["30 giorni dalla data di presentazione dell'istanza, salvo diverso termine di legge", "60 giorni sempre", "90 giorni sempre", "Nessun termine è previsto"],
@@ -425,7 +425,7 @@
     {
       "id": "core_dir_amm_003",
       "strato": "core",
-      "categoriaId": "dir_amm",
+      "categoriaId": "l241",
       "sottoCategoriaId": "dir_amm_responsabile",
       "testo": "Il responsabile del procedimento deve essere comunicato:",
       "opzioni": ["Solo su richiesta dell'interessato", "Entro 10 giorni dalla ricezione della domanda", "Al termine del procedimento", "Non è obbligatorio comunicarlo"],
@@ -438,7 +438,7 @@
     {
       "id": "core_dir_amm_004",
       "strato": "core",
-      "categoriaId": "dir_amm",
+      "categoriaId": "l241",
       "sottoCategoriaId": "dir_amm_partecipazione",
       "testo": "La comunicazione di avvio del procedimento deve contenere:",
       "opzioni": ["Solo il nome del funzionario responsabile", "L'oggetto del procedimento, l'ufficio competente, il responsabile e i termini", "Solo l'oggetto del procedimento", "Nessun contenuto obbligatorio"],
@@ -451,7 +451,7 @@
     {
       "id": "core_dir_amm_005",
       "strato": "core",
-      "categoriaId": "dir_amm",
+      "categoriaId": "l241",
       "sottoCategoriaId": "dir_amm_accesso",
       "testo": "Il diritto di accesso ai documenti amministrativi spetta:",
       "opzioni": ["Solo ai cittadini italiani", "A chiunque abbia un interesse diretto, concreto e attuale", "Solo ai dipendenti pubblici", "A chiunque senza alcuna limitazione"],
@@ -464,7 +464,7 @@
     {
       "id": "core_dir_amm_006",
       "strato": "core",
-      "categoriaId": "dir_amm",
+      "categoriaId": "l241",
       "sottoCategoriaId": "dir_amm_accesso",
       "testo": "La richiesta di accesso ai documenti deve essere evasa entro:",
       "opzioni": ["10 giorni", "20 giorni", "30 giorni", "60 giorni"],
@@ -477,7 +477,7 @@
     {
       "id": "core_dir_amm_007",
       "strato": "core",
-      "categoriaId": "dir_amm",
+      "categoriaId": "l241",
       "sottoCategoriaId": "dir_amm_silenzio",
       "testo": "Il silenzio-assenso si forma:",
       "opzioni": ["In tutti i procedimenti ad istanza di parte", "Solo nei procedimenti previsti dalla legge, decorso il termine senza provvedimento", "Mai, l'amministrazione deve sempre pronunciarsi", "Solo nei procedimenti edilizi"],
@@ -490,7 +490,7 @@
     {
       "id": "core_dir_amm_008",
       "strato": "core",
-      "categoriaId": "dir_amm",
+      "categoriaId": "l241",
       "sottoCategoriaId": "dir_amm_procedimento",
       "testo": "La motivazione del provvedimento amministrativo deve indicare:",
       "opzioni": ["Solo la norma applicata", "I presupposti di fatto e le ragioni giuridiche che hanno determinato la decisione", "Solo le ragioni di opportunità", "Nulla, la motivazione è facoltativa"],
@@ -503,7 +503,7 @@
     {
       "id": "core_dir_amm_009",
       "strato": "core",
-      "categoriaId": "dir_amm",
+      "categoriaId": "l241",
       "sottoCategoriaId": "dir_amm_partecipazione",
       "testo": "Il preavviso di rigetto (art. 10-bis) consente all'interessato di presentare osservazioni entro:",
       "opzioni": ["5 giorni", "10 giorni", "15 giorni", "30 giorni"],
@@ -516,7 +516,7 @@
     {
       "id": "core_dir_amm_010",
       "strato": "core",
-      "categoriaId": "dir_amm",
+      "categoriaId": "l241",
       "sottoCategoriaId": "dir_amm_procedimento",
       "testo": "L'annullamento d'ufficio di un provvedimento illegittimo può avvenire:",
       "opzioni": ["Senza limiti di tempo", "Entro 12 mesi dall'adozione del provvedimento, salvo eccezioni", "Solo su ricorso del privato", "Solo dal giudice amministrativo"],
@@ -529,7 +529,7 @@
     {
       "id": "core_dir_pen_001",
       "strato": "core",
-      "categoriaId": "dir_pen",
+      "categoriaId": "penale",
       "sottoCategoriaId": "dir_pen_delitti_pa",
       "testo": "Il peculato consiste in:",
       "opzioni": ["Ricevere denaro per compiere un atto d'ufficio", "L'appropriazione di denaro o cose mobili di cui il pubblico ufficiale ha il possesso per ragioni d'ufficio", "La falsificazione di documenti pubblici", "L'abuso dei poteri d'ufficio"],
@@ -542,7 +542,7 @@
     {
       "id": "core_dir_pen_002",
       "strato": "core",
-      "categoriaId": "dir_pen",
+      "categoriaId": "penale",
       "sottoCategoriaId": "dir_pen_delitti_pa",
       "testo": "La corruzione propria si configura quando il pubblico ufficiale:",
       "opzioni": ["Riceve denaro per compiere un atto conforme ai doveri d'ufficio", "Riceve denaro per omettere o ritardare un atto del suo ufficio, o per compiere un atto contrario ai doveri d'ufficio", "Esercita pressioni su un altro pubblico ufficiale", "Si appropria di beni pubblici"],
@@ -555,7 +555,7 @@
     {
       "id": "core_dir_pen_003",
       "strato": "core",
-      "categoriaId": "dir_pen",
+      "categoriaId": "penale",
       "sottoCategoriaId": "dir_pen_delitti_pa",
       "testo": "L'abuso d'ufficio si configura quando il pubblico ufficiale:",
       "opzioni": ["Non esegue un ordine del superiore", "Nello svolgimento delle funzioni, viola norme di legge o regolamento, procurando intenzionalmente un danno ingiusto o un vantaggio patrimoniale", "Rivela segreti d'ufficio", "Omette atti del suo ufficio"],
@@ -568,7 +568,7 @@
     {
       "id": "core_proc_pen_001",
       "strato": "core",
-      "categoriaId": "proc_pen",
+      "categoriaId": "penale",
       "sottoCategoriaId": "proc_pen_pg",
       "testo": "Gli agenti di Polizia Locale, quando svolgono funzioni di polizia giudiziaria, hanno la qualifica di:",
       "opzioni": ["Solo agenti di pubblica sicurezza", "Agenti di polizia giudiziaria", "Ufficiali di polizia giudiziaria", "Agenti o ufficiali a seconda del grado"],
@@ -581,7 +581,7 @@
     {
       "id": "core_proc_pen_002",
       "strato": "core",
-      "categoriaId": "proc_pen",
+      "categoriaId": "penale",
       "sottoCategoriaId": "proc_pen_atti_urgenti",
       "testo": "L'arresto in flagranza è obbligatorio per:",
       "opzioni": ["Tutti i reati", "I delitti non colposi con pena minima superiore a 5 anni e massima superiore a 20 anni", "I delitti non colposi puniti con reclusione non inferiore nel minimo a 5 anni e nel massimo a 20 anni (e altri casi specifici)", "Solo i reati contro la persona"],
@@ -594,7 +594,7 @@
     {
       "id": "core_proc_pen_003",
       "strato": "core",
-      "categoriaId": "proc_pen",
+      "categoriaId": "penale",
       "sottoCategoriaId": "proc_pen_atti_urgenti",
       "testo": "L'arresto in flagranza facoltativo è consentito per delitti non colposi puniti con:",
       "opzioni": ["Pena della reclusione superiore nel massimo a 1 anno", "Pena della reclusione superiore nel massimo a 3 anni", "Pena della reclusione superiore nel massimo a 5 anni", "Qualsiasi pena"],
@@ -607,7 +607,7 @@
     {
       "id": "core_proc_pen_004",
       "strato": "core",
-      "categoriaId": "proc_pen",
+      "categoriaId": "penale",
       "sottoCategoriaId": "proc_pen_atti_urgenti",
       "testo": "L'arrestato deve essere messo a disposizione del PM:",
       "opzioni": ["Entro 12 ore dall'arresto", "Entro 24 ore dall'arresto", "Entro 48 ore dall'arresto", "Immediatamente"],
@@ -620,7 +620,7 @@
     {
       "id": "core_proc_pen_005",
       "strato": "core",
-      "categoriaId": "proc_pen",
+      "categoriaId": "penale",
       "sottoCategoriaId": "proc_pen_pg",
       "testo": "La polizia giudiziaria deve riferire la notizia di reato al PM:",
       "opzioni": ["Immediatamente", "Entro 24 ore", "Entro 48 ore", "Entro 10 giorni"],

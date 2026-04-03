@@ -50,8 +50,8 @@ const Onboarding: React.FC = () => {
                 parametriEsame: par,
             });
 
-            if (isRegioneActive) await cambiaRegione(regione);
-            if (isComuneActive) await cambiaComune(comune);
+            if (isRegioneActive) await cambiaRegione(regione, rData?.nome || 'Regione');
+            if (isComuneActive) await cambiaComune(comune, cData?.nome);
 
             localStorage.setItem(ONBOARDING_KEY, 'true');
             navigate('/', { replace: true });

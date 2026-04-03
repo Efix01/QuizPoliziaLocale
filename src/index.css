@@ -9,87 +9,49 @@
 
 :root {
   /* ══════════════════════════════════════════
-     COLORI PRIMARI - Foresta Sarda
+     ELITE COMMAND CENTER — Midnight Tokens
+     Sober, Professional & Authoritative UI
      ══════════════════════════════════════════ */
-  --bosco-notte: #0D2818;
-  /* Verde scuro - Header, elementi di ancoraggio */
-  --pino-marittimo: #1E5631;
-  /* Verde medio - Pulsanti primari, accenti */
-  --macchia-chiara: #A4C3A2;
-  /* Verde salvia pallido - Sfondi secondari, hover */
+  --midnight-bg: #0f172a;
+  --midnight-panel: rgba(30, 41, 59, 0.6);
+  --pl-gold: #d4af37;
+  --pl-gold-light: #f1d279;
+  --pl-blue-badge: #1e40af;
+  --pl-blue-light: #3b82f6;
+  --slate-text: #94a3b8;
+  
+  /* Feedbacks */
+  --successo: #10b981;
+  --errore: #ef4444;
+  --warning: #f59e0b;
 
   /* ══════════════════════════════════════════
-     COLORI ACCENTO - Sardegna
+     NEUTRI & TEXT
      ══════════════════════════════════════════ */
-  --oro-sardegna: #C9A227;
-  /* Oro caldo - Badge, achievement, CTA */
-  --granito-rosa: #D4A5A5;
-  /* Rosa terroso - Notifiche, alert morbidi */
-  --mare-sardegna: #5B8A9A;
-  /* Blu-verde - Link, elementi informativi */
+  --inchiostro: #f8fafc;
+  --nebbia: #94a3b8;
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 
   /* ══════════════════════════════════════════
-     NEUTRI
+     TIPOGRAFIA (Premium)
      ══════════════════════════════════════════ */
-  --carta-antica: #FAF8F5;
-  /* Bianco caldo - Background principale */
-  --inchiostro: #2D3436;
-  /* Quasi nero - Testo principale */
-  --nebbia: #9CA3AF;
-  /* Grigio medio - Testo secondario */
-
-  /* ══════════════════════════════════════════
-     FEEDBACK
-     ══════════════════════════════════════════ */
-  --successo: #2D6A4F;
-  /* Verde bosco profondo */
-  --errore: #9B2C2C;
-  /* Rosso mattone sardo */
-  --warning: #B45309;
-  /* Arancione terracotta */
-
-  /* ══════════════════════════════════════════
-     TIPOGRAFIA
-     ══════════════════════════════════════════ */
-  --font-display: 'Fraunces', Georgia, serif;
-  --font-body: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Outfit', sans-serif;
+  --font-body: 'Outfit', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
   /* Font sizes */
   --text-xs: 0.6875rem;
-  /* 11px */
   --text-sm: 0.8125rem;
-  /* 13px */
   --text-base: 1rem;
-  /* 16px */
   --text-lg: 1.125rem;
-  /* 18px */
   --text-xl: 1.25rem;
-  /* 20px */
   --text-2xl: 1.5rem;
-  /* 24px */
   --text-3xl: 1.75rem;
-  /* 28px */
   --text-4xl: 2rem;
-  /* 32px */
 
   /* ══════════════════════════════════════════
-     OMBRE ORGANICHE
-     ══════════════════════════════════════════ */
-  --shadow-elevation-1:
-    0 1px 2px rgba(13, 40, 24, 0.04),
-    0 4px 8px rgba(13, 40, 24, 0.04);
-
-  --shadow-elevation-2:
-    0 2px 4px rgba(13, 40, 24, 0.06),
-    0 8px 24px rgba(13, 40, 24, 0.08);
-
-  --shadow-elevation-3:
-    0 4px 8px rgba(13, 40, 24, 0.08),
-    0 16px 48px rgba(13, 40, 24, 0.12);
-
-  /* ══════════════════════════════════════════
-     BORDER RADIUS (Organici)
+     BORDER RADIUS (Elite)
      ══════════════════════════════════════════ */
   --radius-sm: 8px;
   --radius-md: 12px;
@@ -97,14 +59,6 @@
   --radius-xl: 20px;
   --radius-2xl: 24px;
   --radius-pill: 9999px;
-
-  /* ══════════════════════════════════════════
-     TRANSIZIONI
-     ══════════════════════════════════════════ */
-  --transition-fast: 150ms ease;
-  --transition-normal: 250ms ease;
-  --transition-slow: 400ms ease;
-  --transition-bounce: 400ms cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* ══════════════════════════════════════════
      SPAZIATURA
@@ -117,27 +71,13 @@
   --space-2xl: 48px;
 
   /* ══════════════════════════════════════════
-     GLASSMORPHISM (Light / Legacy)
-     ══════════════════════════════════════════ */
-  --glass-bg: rgba(255, 255, 255, 0.85);
-  --glass-border-light: rgba(255, 255, 255, 0.3);
-  --glass-blur: 12px;
-
-  /* ══════════════════════════════════════════
-     DARK GLASS THEME (New Standard)
-     ══════════════════════════════════════════ */
-  --glass-background: rgba(15, 23, 42, 0.7);
-  --glass-border: rgba(255, 255, 255, 0.1);
-  --glass-highlight: rgba(255, 255, 255, 0.05);
-  --surface-dark: #0F172A;
-
-  /* ══════════════════════════════════════════
-     LAYOUT
+     LAYOUT & GLASS
      ══════════════════════════════════════════ */
   --header-height: 64px;
   --bottom-nav-height: 72px;
   --content-padding: 20px;
   --safe-area-bottom: env(safe-area-inset-bottom, 0px);
+  --glass-blur: 12px;
 }
 
 /* ─────────────────────────────────────────────

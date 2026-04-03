@@ -7,9 +7,7 @@
     min-height: 100vh;
     padding: var(--space-lg) var(--content-padding);
     padding-bottom: calc(var(--bottom-nav-height) + var(--safe-area-bottom) + 32px);
-    /* Premium Dark Gradient */
-    background: radial-gradient(ellipse at top, #1E293B, #0F172A);
-    background-size: cover;
+    background: var(--midnight-bg);
     display: flex;
     flex-direction: column;
     color: white;
@@ -98,13 +96,13 @@
 }
 
 .flashcard {
-    background: rgba(30, 41, 59, 0.6);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 24px;
+    background: var(--midnight-panel);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-2xl);
     padding: var(--space-xl);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 0 rgba(255, 255, 255, 0.1);
+    box-shadow: var(--glass-shadow);
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -286,10 +284,9 @@
 }
 
 .option-item.selected {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: #38BDF8;
-    /* Sky blue for selection */
-    box-shadow: 0 0 15px rgba(56, 189, 248, 0.2);
+    background: rgba(212, 175, 55, 0.15);
+    border-color: var(--pl-gold);
+    box-shadow: 0 0 15px rgba(212, 175, 55, 0.2);
 }
 
 .option-item.excluded {
@@ -360,16 +357,18 @@
     align-items: center;
     justify-content: center;
     gap: var(--space-sm);
-    /* Premium Gradient */
-    background: linear-gradient(135deg, #3B82F6, #2563EB);
+    /* Elite Blue Gradient */
+    background: linear-gradient(135deg, var(--pl-blue-light), var(--pl-blue-badge));
     color: white;
-    font-weight: 600;
+    font-weight: 700;
     font-size: 1rem;
     padding: 16px 24px;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 4px 15px rgba(30, 64, 175, 0.4);
     transition: all 0.2s ease;
     border: none;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
 }
 
 .btn-reveal:hover:not(:disabled) {

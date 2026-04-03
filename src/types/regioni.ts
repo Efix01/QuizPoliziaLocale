@@ -1,5 +1,5 @@
 import { z } from 'zod';
-import { ParametriEsameSchema } from './progressi';
+import { ParametriEsameSchema } from './common';
 
 // ─── Bando concorso ───
 export const BandoSchema = z.object({

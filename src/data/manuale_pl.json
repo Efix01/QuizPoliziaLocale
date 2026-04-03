@@ -28,7 +28,7 @@
       }
     ]
   },
-  "san_amm": {
+  "l689": {
     "titolo": "Sanzioni Amministrative",
     "descrizione": "L. 689/1981 — Contestazione, pagamento, ricorsi",
     "capitoli": [
@@ -41,7 +41,7 @@
       }
     ]
   },
-  "dir_amm": {
+  "l241": {
     "titolo": "Diritto Amministrativo",
     "descrizione": "L. 241/1990 — Procedimento, accesso, silenzio",
     "capitoli": [
@@ -54,9 +54,9 @@
       }
     ]
   },
-  "dir_pen": {
-    "titolo": "Diritto Penale",
-    "descrizione": "Delitti contro la PA — Peculato, corruzione, abuso",
+  "penale": {
+    "titolo": "Diritto e Procedura Penale",
+    "descrizione": "CP e CPP — Reati PA e Polizia Giudiziaria",
     "capitoli": [
       {
         "id": "dir_pen_1",
@@ -64,13 +64,7 @@
         "testo": [
           "Il vigile urbano riveste la qualifica di Pubblico Ufficiale. Pertanto è soggetto a reati specifici come il peculato (Art. 314 c.p.) o l'abuso d'ufficio (recentemente abolito/modificato)."
         ]
-      }
-    ]
-  },
-  "proc_pen": {
-    "titolo": "Procedura Penale",
-    "descrizione": "C.P.P. — Polizia giudiziaria, arresto, notizia di reato",
-    "capitoli": [
+      },
       {
         "id": "proc_pen_1",
         "titolo": "Funzioni della Polizia Giudiziaria (Art. 55 c.p.p.)",

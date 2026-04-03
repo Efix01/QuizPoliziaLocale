@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import { useQuizSession } from '../hooks/useQuizSession';
 import { Check, X, Brain, Ban, ArrowLeft, Flag } from 'lucide-react';
 import { ReportModal } from '../components/ui/ReportModal';
@@ -9,12 +9,14 @@ const StudyMode: React.FC = () => {
     const navigate = useNavigate();
 
     const {
+        hasValidSession,
         sessionQuestions,
         currentQuestion,
         showAnswer,
         selectedOption,
         excludedOptions,
         isFinished,
+        isPending,
         handleOptionSelect,
         toggleExclusion,
         handleCheck,
@@ -22,29 +24,25 @@ const StudyMode: React.FC = () => {
         calculateStrategy,
         progressDisplay,
         progressPercentage,
-        categoryFilter
+        sessionMode,
+        sessionCategoriaId
     } = useQuizSession();
 
     const [isReportModalOpen, setIsReportModalOpen] = useState(false);
 
-    // Gestione Caricamento / Stato Vuoto
-    if (!sessionQuestions || sessionQuestions.length === 0) {
-        return (
-            <div className="study-container">
-                <h2>Seleziona un Quiz</h2>
-                <p>Torna alla Dashboard e scegli la Polizia Locale.</p>
-                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-                    <button className="btn-reveal" onClick={() => navigate('/')}>Torna alla Home</button>
-                </div>
-            </div>
-        );
+    // Titolo o Categoria da mostrare nell'header/riepilogo
+    const displayFilter = sessionMode === 'categoria' ? sessionCategoriaId : (sessionMode !== 'free' ? sessionMode : null);
+
+    // Reindirizzamento se la sessione non è valida (es. refresh pagina)
+    if (!hasValidSession) {
+        return <Navigate to="/" replace />;
     }
 
     if (isFinished) {
         return (
             <div className="study-container">
                 <h2>Sessione Completata!</h2>
-                <p>Hai ripassato {sessionQuestions.length} domande{categoryFilter ? ` di ${categoryFilter}` : ''}.</p>
+                <p>Hai ripassato {sessionQuestions.length} domande{displayFilter ? ` di ${displayFilter}` : ''}.</p>
                 <p style={{ color: '#aaa', marginTop: '1rem', fontSize: '0.9rem' }}>I progressi sono stati appena sincronizzati sul Cloud.</p>
                 <button className="btn-reveal" onClick={() => navigate('/')}>Torna alla Dashboard</button>
             </div>
@@ -78,9 +76,9 @@ const StudyMode: React.FC = () => {
                 <span className="question-counter">{progressDisplay}</span>
             </div>
 
-            {categoryFilter && (
+            {displayFilter && (
                 <div className="category-filter-badge">
-                    {categoryFilter}
+                    {displayFilter}
                 </div>
             )}
 
@@ -139,13 +137,15 @@ const StudyMode: React.FC = () => {
                                             className={`exclude-btn ${isExcluded ? 'active' : ''}`}
                                             onClick={(e) => toggleExclusion(e, index)}
                                             title="Escludi opzione"
+                                            disabled={isPending}
                                         >
                                             <Ban size={18} />
                                         </button>
                                     )}
                                     <div
                                         className={className}
-                                        onClick={() => handleOptionSelect(index)}
+                                        onClick={() => !isPending && handleOptionSelect(index)}
+                                        style={{ pointerEvents: isPending ? 'none' : 'auto' }}
                                     >
                                         <span style={{ fontWeight: 700, marginRight: '0.75rem', color: 'var(--oro-sardegna, #F59E0B)' }}>
                                             {keyLabel}.
@@ -161,7 +161,6 @@ const StudyMode: React.FC = () => {
                         <div className="explanation-box">
                             <strong>Spiegazione</strong>
                             <p>{currentQuestion.spiegazione || 'Nessuna spiegazione disponibile per questa domanda.'}</p>
-                            {/* Attualmente i json PL non hanno 'fonte' ma possiamo inietarlo in futuro */}
                         </div>
                     )}
                 </div>
@@ -172,19 +171,27 @@ const StudyMode: React.FC = () => {
                     <button
                         className="btn-reveal"
                         onClick={handleCheck}
-                        disabled={selectedOption === null}
-                        style={{ opacity: selectedOption !== null ? 1 : 0.5 }}
+                        disabled={selectedOption === null || isPending}
+                        style={{ opacity: (selectedOption !== null && !isPending) ? 1 : 0.5 }}
                     >
                         Conferma Risposta
                     </button>
                 ) : (
                     <>
                         {selectedOption !== currentQuestion.rispostaCorretta && (
-                             <button className="btn-feedback btn-wrong" onClick={() => handleFeedback(false)}>
+                             <button 
+                                className="btn-feedback btn-wrong" 
+                                onClick={() => handleFeedback(false)}
+                                disabled={isPending}
+                             >
                                 <X size={20} /> Ho Sbagliato
                             </button>
                         )}
-                        <button className="btn-feedback btn-correct" onClick={() => handleFeedback(true)}>
+                        <button 
+                            className="btn-feedback btn-correct" 
+                            onClick={() => handleFeedback(true)}
+                            disabled={isPending}
+                        >
                             <Check size={20} /> Avanti
                         </button>
                     </>

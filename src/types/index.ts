@@ -1,37 +1,41 @@
-export interface QuizQuestion {
-    id: number;
-    category: string;
-    question: string;
-    options: {
-        [key: string]: string; // A, B, C, D
-    };
-    correct_answer: string;
-    explanation: string;
-    source: string;
-}
+// === Single point of import per tutti i tipi ===
 
-export interface UserProgressData {
-    box: number; // SRS Box: 0 (New) to 5 (Mastered)
-    nextReview: number; // Timestamp
-    lastReviewed: number;
-    history: boolean[]; // Last 5 attempts (true=correct, false=wrong)
-}
+export {
+  // Da progressi.ts
+  isoDateString,
+  ParametriEsameSchema,
+  UserProfileSchema,
+  CategoriaStatsSchema,
+  GlobalProgressSchema,
+  SRSItemSchema,
+  ErroreLogSchema,
+  RisultatoRispostaSchema,
+  LocalStorageProgressSchema,
+} from './progressi';
 
-export interface UserStats {
-    totalAnswered: number;
-    correctCount: number;
-    currentStreak: number;
-    bestStreak: number;
-    level: number;
-    xp: number;
-    badges: string[];
-    dailyBonusClaimedDate?: string; // ISO Date string (YYYY-MM-DD)
-}
+export type {
+  ParametriEsame,
+  UserProfile,
+  CategoriaStats,
+  GlobalProgress,
+  SRSItem,
+  ErroreLog,
+  RisultatoRisposta,
+  LocalStorageProgress,
+} from './progressi';
 
-export interface QuizState {
-    questions: QuizQuestion[];
-    userProgress: Record<number, UserProgressData>;
-    stats: UserStats;
-    loading: boolean;
-    error: string | null;
-}
+export {
+  // Da pl.ts
+  CategoriaIdSchema,
+  ComposizioneQuizSchemaPL,
+  ProfiloPLSchema,
+  DomandaPLSchema,
+  ArrayDomandeSchema,
+} from './pl';
+
+export type {
+  CategoriaId,
+  ComposizioneQuizPL,
+  ProfiloPL,
+  DomandaPL,
+} from './pl';

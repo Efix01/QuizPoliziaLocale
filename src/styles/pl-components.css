@@ -625,3 +625,266 @@
     gap: 0.5rem;
   }
 }
+
+/* ─────────────────────────────────────────────
+   UTILITY — Row layouts
+   ───────────────────────────────────────────── */
+
+.pl-row {
+  display: flex;
+  align-items: center;
+}
+
+.pl-row--between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pl-flex-1 { flex: 1; }
+
+/* ─────────────────────────────────────────────
+   UTILITY — Loading state
+   ───────────────────────────────────────────── */
+
+.pl-loading-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+}
+
+.pl-loading-screen__spinner {
+  margin-bottom: 1rem;
+}
+
+.pl-loading-screen__text {
+  color: #64748b;
+}
+
+/* ─────────────────────────────────────────────
+   UTILITY — Card header variants
+   ───────────────────────────────────────────── */
+
+.pl-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.pl-card__meta {
+  font-size: 0.85rem;
+  color: #64748b;
+  margin-top: 4px;
+}
+
+.pl-card__subtitle {
+  font-size: 1rem;
+  margin: 0 0 1rem;
+  font-weight: 500;
+}
+
+.pl-card__subtitle--dark { color: #cbd5e1; }
+
+/* ─────────────────────────────────────────────
+   UTILITY — Location badge flush (no divider)
+   ───────────────────────────────────────────── */
+
+.pl-location-badge--flush {
+  border-bottom: none;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+/* ─────────────────────────────────────────────
+   UTILITY — Button compact (inline / icon-size)
+   ───────────────────────────────────────────── */
+
+.pl-btn--compact {
+  width: auto;
+  padding: 0.5rem 0.75rem;
+}
+
+/* ─────────────────────────────────────────────
+   UTILITY — Progress row (bar + percentage)
+   ───────────────────────────────────────────── */
+
+.pl-progress-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.pl-progress-pct {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-left: 1rem;
+  color: white;
+}
+
+/* ─────────────────────────────────────────────
+   UTILITY — Stats row (bottom of dark card)
+   ───────────────────────────────────────────── */
+
+.pl-stats-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  padding-top: 1rem;
+  border-top: 1px solid #334155;
+  color: #cbd5e1;
+}
+
+.pl-stats-row__streak { color: #fbbf24; }
+.pl-stats-row__core   { color: #60a5fa; }
+.pl-stats-row__reg    { color: #34d399; }
+.pl-stats-row__com    { color: #a78bfa; }
+
+/* ─────────────────────────────────────────────
+   UTILITY — Section header (title + link row)
+   ───────────────────────────────────────────── */
+
+.pl-section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.pl-section-title--flush { margin: 0; }
+
+/* ─────────────────────────────────────────────
+   UTILITY — Materia group (sub-sections in card)
+   ───────────────────────────────────────────── */
+
+.pl-materia-group { margin-bottom: 1.5rem; }
+
+/* ─────────────────────────────────────────────
+   UTILITY — Progress Stack (Multiple bars)
+   ───────────────────────────────────────────── */
+
+.pl-progress-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.pl-progress-stack__item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.pl-progress-stack__label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pl-progress-stack__pct {
+  color: white;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+/* ─────────────────────────────────────────────
+   UTILITY — Readiness Score (Dashboard highlight)
+   ───────────────────────────────────────────── */
+
+.pl-readiness {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid #334155;
+}
+
+.pl-readiness__label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.5rem;
+}
+
+.pl-readiness__value {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+  color: white;
+  display: flex;
+  align-items: baseline;
+}
+
+.pl-readiness__pct {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-left: 2px;
+  color: #94a3b8;
+}
+
+.pl-readiness__status {
+  margin-top: 0.75rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.pl-readiness__status--red { background-color: rgba(239, 68, 68, 0.2); color: #f87171; border: 1px solid rgba(239, 68, 68, 0.3); }
+.pl-readiness__status--yellow { background-color: rgba(245, 158, 11, 0.2); color: #fbbf24; border: 1px solid rgba(245, 158, 11, 0.3); }
+.pl-readiness__status--green { background-color: rgba(16, 185, 129, 0.2); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); }
+
+/* Streak Badge header */
+.pl-streak-badge {
+    background: rgba(245, 158, 11, 0.15);
+    color: #f59e0b;
+    padding: 6px 12px;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.pl-layer-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 1rem;
+}
+
+.pl-layer-bar__info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #94a3b8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.pl-layer-bar__weight {
+    font-size: 0.65rem;
+    opacity: 0.7;
+    background: rgba(255,255,255,0.1);
+    padding: 2px 6px;
+    border-radius: 4px;
+    margin-left: 6px;
+}
+
+

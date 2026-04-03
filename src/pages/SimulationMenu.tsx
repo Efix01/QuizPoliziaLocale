@@ -3,27 +3,52 @@ import { useNavigate } from 'react-router-dom';
 import { usePL } from '../context/PLContext';
 import { useProgress } from '../context/ProgressContext';
 import { useQuizPL } from '../hooks/useQuizPL';
+import { ComposizioneQuizSchemaPL } from '../types/pl';
+import { motion, type Variants } from 'framer-motion';
 
 import { ArrowLeft, Rocket, AlertTriangle, MapPin } from 'lucide-react';
-import '../styles/pl-components.css';
+
+const containerVariants: Variants = {
+    hidden: { opacity: 0 },
+    visible: { 
+        opacity: 1, 
+        transition: { staggerChildren: 0.1 } 
+    }
+};
+
+const itemVariants: Variants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: { 
+        y: 0, 
+        opacity: 1, 
+        transition: { type: 'spring', stiffness: 300, damping: 25 } 
+    }
+};
 
 const SimulationMenu: React.FC = () => {
     const navigate = useNavigate();
-    const { profilo, domandeRegionali, domandeComunali } = usePL();
+    const { profilo, domandeCore, domandeRegionali, domandeComunali } = usePL();
     const { progressiGlobali } = useProgress();
     const { generaSimulazione, parametriEsame } = useQuizPL();
 
     if (!profilo || !parametriEsame) {
-        return <div className="pl-page" style={{ textAlign: 'center' }}>Caricamento Dati Esame...</div>;
+        return (
+            <div className="dashboard-elite" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <div className="glass-card">Caricamento Dati Esame...</div>
+            </div>
+        );
     }
 
     const pg = progressiGlobali;
     const prevSimulations = pg?.quizCompletati ?? 0;
 
+    // SSOT: Calcolo composizione domande in base allo schema
+    const config = ComposizioneQuizSchemaPL.parse(profilo?.composizioneQuiz || {});
     const totale = parametriEsame.numeroDomande;
-    const targetComunali = domandeComunali.length > 0 ? Math.min(Math.round(totale * 0.05), domandeComunali.length) : 0;
-    const targetRegionali = domandeRegionali.length > 0 ? Math.min(Math.round(totale * 0.25), domandeRegionali.length) : 0;
-    const targetNazionali = totale - targetRegionali - targetComunali;
+    
+    const targetRegionali = Math.min(Math.round(totale * (config.percentualeRegionale / 100)), domandeRegionali.length);
+    const targetComunali  = Math.min(Math.round(totale * (config.percentualeComunale / 100)), domandeComunali.length);
+    const targetNazionali = Math.min(totale - targetRegionali - targetComunali, domandeCore.length);
 
     const maxParam = Math.max(targetNazionali, targetRegionali, targetComunali, 1);
     const wNaz = (targetNazionali / maxParam) * 100;
@@ -36,91 +61,139 @@ const SimulationMenu: React.FC = () => {
     };
 
     return (
-        <div className="pl-page pl-page--compact">
+        <motion.div 
+            className="dashboard-elite"
+            style={{ paddingBottom: '2rem' }}
+            variants={containerVariants}
+            initial="hidden"
+            animate="visible"
+        >
             
             {/* Header */}
-            <div className="pl-header">
-                <ArrowLeft className="pl-header__back" onClick={() => navigate(-1)} />
-                <h1 className="pl-header__title">Simulazione Esame</h1>
-            </div>
+            <motion.div className="elite-header" variants={itemVariants}>
+                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                    <div 
+                        onClick={() => navigate(-1)}
+                        style={{ cursor: 'pointer', background: 'rgba(255,255,255,0.05)', padding: '10px', borderRadius: '12px' }}
+                    >
+                        <ArrowLeft size={20} />
+                    </div>
+                    <h1 className="profile-section__name">Simulazione Esame</h1>
+                 </div>
+            </motion.div>
 
-            <h2 className="pl-section-title">Parametri:</h2>
+            <motion.div className="section-label-elite" variants={itemVariants}>
+                Parametri Concorso Attivo
+            </motion.div>
 
             {/* Box RIEPILOGO */}
-            <div className="pl-card">
-                <div className="pl-location-badge">
-                    <MapPin size={20} className="pl-location-badge__icon"/>
+            <motion.div className="glass-card" variants={itemVariants} style={{ marginBottom: '1.5rem', borderLeft: '4px solid var(--pl-gold)' }}>
+                <div className="profile-section__sub" style={{ marginBottom: '1.5rem' }}>
+                    <MapPin size={16} />
                     {profilo.nomeRegione} {profilo.nomeComune ? `— ${profilo.nomeComune}` : ''}
                 </div>
 
-                <div className="pl-stat-grid">
-                    <div className="pl-stat-item">
-                        <span className="pl-stat-item__emoji">📝</span>
-                        <strong>{parametriEsame.numeroDomande}</strong>&nbsp;domande
+                <div className="hero-stats-grid" style={{ marginBottom: '1.5rem', gridTemplateColumns: 'repeat(2, 1fr)' }}>
+                    <div className="glass-card" style={{ padding: '1rem', textAlign: 'center', background: 'rgba(255,255,255,0.03)' }}>
+                        <div style={{ fontSize: '0.7rem', color: 'var(--slate-text)', textTransform: 'uppercase' }}>Domande</div>
+                        <div style={{ fontSize: '1.2rem', fontWeight: '800' }}>{parametriEsame.numeroDomande}</div>
                     </div>
-                    <div className="pl-stat-item">
-                        <span className="pl-stat-item__emoji">⏱️</span>
-                        <strong>{parametriEsame.durataMinuti}</strong>&nbsp;minuti
-                    </div>
-                    <div className="pl-stat-item pl-stat-item--success">
-                        <span className="pl-stat-item__emoji">✅</span>
-                        +{parametriEsame.punteggioCorretta} p.to corretta
-                    </div>
-                    <div className="pl-stat-item pl-stat-item--error">
-                        <span className="pl-stat-item__emoji">❌</span>
-                        {parametriEsame.punteggioErrata} errata
-                    </div>
-                    <div className="pl-stat-item pl-stat-item--muted">
-                        <span className="pl-stat-item__emoji">⬜</span>
-                        {parametriEsame.punteggioNonData} non risposta
+                    <div className="glass-card" style={{ padding: '1rem', textAlign: 'center', background: 'rgba(255,255,255,0.03)' }}>
+                        <div style={{ fontSize: '0.7rem', color: 'var(--slate-text)', textTransform: 'uppercase' }}>Tempo</div>
+                        <div style={{ fontSize: '1.2rem', fontWeight: '800' }}>{parametriEsame.durataMinuti}'</div>
                     </div>
                 </div>
 
                 {/* Composizione */}
-                <div>
-                    <div style={{ fontSize: '0.9rem', fontWeight: 'bold', color: '#475569', marginBottom: '0.75rem' }}>Composizione:</div>
+                <div style={{ borderTop: '1px solid var(--glass-border)', paddingTop: '1.5rem' }}>
+                    <div className="section-label-elite" style={{ fontSize: '0.65rem' }}>
+                        Distribuzione Domande
+                    </div>
                     
-                    <div className="pl-composition-row">
-                        <div className="pl-composition-row__bar">
-                            <div className="pl-composition-row__fill" style={{ width: `${wNaz}%`, backgroundColor: '#3b82f6' }}/>
-                        </div>
-                        <span className="pl-composition-row__label">{targetNazionali} nazionali</span>
-                    </div>
-
-                    <div className="pl-composition-row">
-                        <div className="pl-composition-row__bar">
-                            <div className="pl-composition-row__fill" style={{ width: `${wReg}%`, backgroundColor: '#8b5cf6' }}/>
-                        </div>
-                        <span className="pl-composition-row__label">{targetRegionali} regionali</span>
-                    </div>
-
-                    {targetComunali > 0 && (
-                        <div className="pl-composition-row">
-                            <div className="pl-composition-row__bar">
-                                <div className="pl-composition-row__fill" style={{ width: `${wCom}%`, backgroundColor: '#64748b' }}/>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        <div className="xp-container">
+                            <div className="xp-label-row">
+                                <span style={{ fontSize: '0.8rem', fontWeight: '600' }}>Nazionali</span>
+                                <span style={{ fontSize: '0.8rem', color: 'var(--slate-text)' }}>{targetNazionali}</span>
                             </div>
-                            <span className="pl-composition-row__label">{targetComunali} comunali</span>
+                            <div style={{ height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', overflow: 'hidden' }}>
+                                <motion.div 
+                                    initial={{ width: 0 }}
+                                    animate={{ width: `${wNaz}%` }}
+                                    style={{ height: '100%', background: 'var(--pl-blue-light)' }}
+                                />
+                            </div>
                         </div>
-                    )}
+
+                        <div className="xp-container">
+                            <div className="xp-label-row">
+                                <span style={{ fontSize: '0.8rem', fontWeight: '600' }}>Regionali</span>
+                                <span style={{ fontSize: '0.8rem', color: 'var(--slate-text)' }}>{targetRegionali}</span>
+                            </div>
+                            <div style={{ height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', overflow: 'hidden' }}>
+                                <motion.div 
+                                    initial={{ width: 0 }}
+                                    animate={{ width: `${wReg}%` }}
+                                    style={{ height: '100%', background: '#8b5cf6' }}
+                                />
+                            </div>
+                        </div>
+
+                        {targetComunali > 0 && (
+                            <div className="xp-container">
+                                <div className="xp-label-row">
+                                    <span style={{ fontSize: '0.8rem', fontWeight: '600' }}>Comunali</span>
+                                    <span style={{ fontSize: '0.8rem', color: 'var(--slate-text)' }}>{targetComunali}</span>
+                                </div>
+                                <div style={{ height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '10px', overflow: 'hidden' }}>
+                                    <motion.div 
+                                        initial={{ width: 0 }}
+                                        animate={{ width: `${wCom}%` }}
+                                        style={{ height: '100%', background: 'var(--successo)' }}
+                                    />
+                                </div>
+                            </div>
+                        )}
+                    </div>
                 </div>
-            </div>
+            </motion.div>
 
             {/* Avviso */}
-            <div className="pl-alert pl-alert--warning">
-                <AlertTriangle size={20} className="pl-alert__icon"/>
-                <div className="pl-alert__text">
-                    <strong>La simulazione riproduce le condizioni reali</strong> del concorso di {profilo.nomeComune || profilo.nomeRegione}. Il timer partirà immediatamente all'avvio.
+            <motion.div className="glass-card" variants={itemVariants} style={{ marginBottom: '2rem', display: 'flex', gap: '12px', alignItems: 'center', borderColor: 'rgba(245, 158, 11, 0.2)' }}>
+                <AlertTriangle size={20} color="var(--warning)" style={{ flexShrink: 0 }}/>
+                <div style={{ fontSize: '0.8rem', color: 'var(--slate-text)', lineHeight: '1.4' }}>
+                   La simulazione riproduce le condizioni reali. Una volta avviata, il timer non può essere messo in pausa.
                 </div>
-            </div>
+            </motion.div>
 
-            <button className="pl-btn pl-btn--primary" onClick={startSimulazione} style={{ marginBottom: '1.5rem' }}>
-                <Rocket size={22} style={{ marginRight: '10px' }}/> INIZIA SIMULAZIONE
-            </button>
+            <motion.button 
+                onClick={startSimulazione} 
+                variants={itemVariants}
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                style={{ 
+                    width: '100%',
+                    background: 'linear-gradient(135deg, var(--pl-gold), #b8860b)',
+                    color: '#1a1a1a',
+                    fontWeight: '800',
+                    fontSize: '1rem',
+                    padding: '1.25rem',
+                    borderRadius: '16px',
+                    border: 'none',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    gap: '12px',
+                    boxShadow: '0 10px 20px rgba(212, 175, 55, 0.2)'
+                }}
+            >
+                <Rocket size={22}/> INIZIA SIMULAZIONE
+            </motion.button>
 
-            <div className="pl-meta-text">
-                Hai completato {prevSimulations} quiz finora
-            </div>
-        </div>
+            <motion.div style={{ textAlign: 'center', marginTop: '1.5rem', fontSize: '0.75rem', color: 'var(--slate-text)' }} variants={itemVariants}>
+                Hai completato {prevSimulations} simulazioni con questo profilo
+            </motion.div>
+        </motion.div>
     );
 };
 

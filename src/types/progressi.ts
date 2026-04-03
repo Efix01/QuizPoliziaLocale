@@ -1,18 +1,10 @@
 import { z } from 'zod';
+import { isoDateString, ParametriEsameSchema } from './common';
+import { ProfiloPLSchema } from './pl';
 
-// ==========================================
-// 🔑 SINGLE SOURCE OF TRUTH — ParametriEsame
-// Usato da: regioni.ts, pl.ts, Settings.tsx, SimulationMenu.tsx
-// ==========================================
-
-export const ParametriEsameSchema = z.object({
-  numeroDomande: z.number().int().min(1).default(100),
-  durataMinuti: z.number().int().min(1).default(90),
-  punteggioCorretta: z.number().default(1),
-  punteggioErrata: z.number().default(-0.25),
-  punteggioNonData: z.number().default(0),
-});
-export type ParametriEsame = z.infer<typeof ParametriEsameSchema>;
+// Ri-esportazione da common.ts
+export { isoDateString, ParametriEsameSchema };
+export type { ParametriEsame } from './common';
 
 
 // ==========================================
@@ -20,18 +12,11 @@ export type ParametriEsame = z.infer<typeof ParametriEsameSchema>;
 // Path Firestore: users/{userId}/profile/
 // ==========================================
 
-export const PLConfigSchema = z.object({
-  regioneId: z.string(),
-  comuneId: z.string().optional(),
-  parametriEsame: ParametriEsameSchema,
-  updatedAt: z.string(),
-});
-export type PLConfig = z.infer<typeof PLConfigSchema>;
 
 export const UserProfileSchema = z.object({
   displayName: z.string(),
   email: z.string().email(),
-  plConfig: PLConfigSchema.optional(),
+  plConfig: ProfiloPLSchema.optional(),
 });
 export type UserProfile = z.infer<typeof UserProfileSchema>;
 
@@ -78,15 +63,15 @@ export const SRSItemSchema = z.object({
   easeFactor: z.number().default(2.5),
   interval: z.number().default(1),
   nextReview: z.string(),
-  streak: z.number().default(0),
+  consecutiveCorrect: z.number().default(0),
 });
 export type SRSItem = z.infer<typeof SRSItemSchema>;
 
 export const ErroreLogSchema = z.object({
   domandaId: z.string(),
   count: z.number().positive().default(1),
-  lastError: z.string(),
-  rispostaData: z.number().min(0).max(3),
+  lastError: isoDateString,
+  indiceRispostaScelta: z.number().min(0).max(3),
 });
 export type ErroreLog = z.infer<typeof ErroreLogSchema>;
 
@@ -100,6 +85,17 @@ export const RisultatoRispostaSchema = z.object({
   domandaId: z.string(),
   categoriaId: z.string(),
   corretta: z.boolean(),
-  rispostaData: z.number().min(0).max(3),
+  indiceRispostaScelta: z.number().min(0).max(3),
+  timestamp: isoDateString,
 });
 export type RisultatoRisposta = z.infer<typeof RisultatoRispostaSchema>;
+// ==========================================
+// 5. LOCAL STORAGE (Sincronizzazione)
+// ==========================================
+
+export const LocalStorageProgressSchema = z.object({
+  progressi: GlobalProgressSchema,
+  srs: z.record(z.string(), SRSItemSchema),
+  errori: z.record(z.string(), ErroreLogSchema),
+});
+export type LocalStorageProgress = z.infer<typeof LocalStorageProgressSchema>;

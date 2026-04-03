@@ -1,11 +1,32 @@
 import { z } from 'zod';
-import { ParametriEsameSchema } from './progressi';
+import { ParametriEsameSchema, isoDateString } from './common';
 
-// Ri-esportazione del tipo unificato (Single Source of Truth in progressi.ts)
+// Ri-esportazione (SSOT ora in common.ts)
 export { ParametriEsameSchema };
-export type { ParametriEsame } from './progressi';
+export type { ParametriEsame } from './common';
 
-// === Profilo PL (Stato locale per l'UI) ===
+// === Categorie (enum tipizzato) ===
+
+export const CategoriaIdSchema = z.enum([
+  'cds', 'tuel', 'l241', 'l689', 'penale',
+  'reg_generale', 'com_generale'
+]);
+export type CategoriaId = z.infer<typeof CategoriaIdSchema>;
+
+// === Composizione Quiz ===
+
+export const ComposizioneQuizSchemaPL = z.object({
+  percentualeCore: z.number().min(0).max(100).default(70),
+  percentualeRegionale: z.number().min(0).max(100).default(25),
+  percentualeComunale: z.number().min(0).max(100).default(5),
+}).refine(
+  ({ percentualeCore, percentualeRegionale, percentualeComunale }) =>
+    percentualeCore + percentualeRegionale + percentualeComunale === 100,
+  { message: 'Le percentuali devono sommare a 100' }
+);
+export type ComposizioneQuizPL = z.infer<typeof ComposizioneQuizSchemaPL>;
+
+// === Profilo PL — UNICO schema (sostituisce anche PLConfigSchema) ===
 
 export const ProfiloPLSchema = z.object({
   regioneId: z.string(),
@@ -13,20 +34,21 @@ export const ProfiloPLSchema = z.object({
   nomeRegione: z.string(),
   nomeComune: z.string().optional(),
   parametriEsame: ParametriEsameSchema,
+  composizioneQuiz: ComposizioneQuizSchemaPL.optional(),
+  updatedAt: isoDateString.optional(),
 });
 export type ProfiloPL = z.infer<typeof ProfiloPLSchema>;
 
 // === Domanda PL ===
 
-export const DomandaPLSchema = z.object({
+const BaseDomandaSchema = z.object({
   id: z.string(),
-  strato: z.enum(['core', 'regionale', 'comunale']),
-  categoriaId: z.string(),
+  categoriaId: CategoriaIdSchema,
   sottoCategoriaId: z.string().optional(),
   testo: z.string().min(5),
   opzioni: z.array(z.string()).length(4),
   rispostaCorretta: z.number().int().min(0).max(3),
-  spiegazione: z.string(),
+  spiegazione: z.string().min(10),
   riferimentoNormativo: z.object({
     legge: z.string(),
     articolo: z.string().optional(),
@@ -35,13 +57,13 @@ export const DomandaPLSchema = z.object({
   livelloDifficolta: z.union([z.literal(1), z.literal(2), z.literal(3)]),
   tags: z.array(z.string()).default([]),
 });
+
+export const DomandaPLSchema = z.discriminatedUnion('strato', [
+  BaseDomandaSchema.extend({ strato: z.literal('core') }),
+  BaseDomandaSchema.extend({ strato: z.literal('regionale'), regioneId: z.string() }),
+  BaseDomandaSchema.extend({ strato: z.literal('comunale'), regioneId: z.string(), comuneId: z.string() }),
+]);
 export type DomandaPL = z.infer<typeof DomandaPLSchema>;
 
-// === Composizione Quiz ===
-
-export const ComposizioneQuizSchemaPL = z.object({
-  percentualeCore: z.number().min(0).max(100).default(70),
-  percentualeRegionale: z.number().min(0).max(100).default(25),
-  percentualeComunale: z.number().min(0).max(100).default(5),
-});
-export type ComposizioneQuizPL = z.infer<typeof ComposizioneQuizSchemaPL>;
+// Array helper per validazione bulk
+export const ArrayDomandeSchema = z.array(DomandaPLSchema);

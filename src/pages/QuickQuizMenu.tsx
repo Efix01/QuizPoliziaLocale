@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { usePL } from '../context/PLContext';
 import { useProgress } from '../context/ProgressContext';
 import { useQuizPL } from '../hooks/useQuizPL';
@@ -20,22 +20,21 @@ const getProgressColor = (pct: number): string => {
 
 const QuickQuizMenu: React.FC = () => {
     const navigate = useNavigate();
-    const location = useLocation();
+    const [searchParams] = useSearchParams();
     const { profilo, domandeRegionali, domandeComunali } = usePL();
     const { progressiGlobali, erroriLog } = useProgress();
     const { generaQuizVeloce, generaQuizCategoria, generaQuizStrato, generaQuizId } = useQuizPL();
 
-    // Auto-start se arriviamo dal Dashboard con una modalità specifica
+    // Auto-start se la URL contiene ?mode=mistakes (sopravvive al reload)
     useEffect(() => {
-        const state = location.state as { mode?: string };
-        if (state?.mode === 'mistakes') {
+        if (searchParams.get('mode') === 'mistakes') {
             const errorIds = Object.keys(erroriLog);
             if (errorIds.length > 0) {
                 const domande = generaQuizId(errorIds);
                 navigate('/study', { state: { domande, mode: 'errori' } });
             }
         }
-    }, [location.state, erroriLog, generaQuizId, navigate]);
+    }, [searchParams, erroriLog, generaQuizId, navigate]);
 
     const perCategoria = progressiGlobali?.perCategoria ?? {};
 

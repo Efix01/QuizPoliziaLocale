@@ -77,14 +77,14 @@ function App() {
                         {/* Lesson Reader & Simulation & Study - Full screen (No Tabs) */}
                         <Route path="/manual/:subjectId/:chapterId" element={<LessonReader />} />
                         <Route path="/manual/:subjectId" element={<LessonReader />} />
-                        <Route path="/simulation/sessione/:id?" element={<SimulationSession />} />
+                        <Route path="/simulazione/sessione/:id?" element={<SimulationSession />} />
                         <Route path="/study" element={<StudyMode />} />
 
                         {/* Main app with Layout */}
                         <Route path="/" element={<Layout />}>
                           <Route index element={<Dashboard />} />
                           <Route path="quiz-veloce" element={<QuickQuizMenu />} />
-                          <Route path="simulation" element={<SimulationMenu />} />
+                          <Route path="simulazione" element={<SimulationMenu />} />
                           <Route path="physical" element={<PhysicalPrep />} />
                           <Route path="manual" element={<StudyLibrary />} />
                           <Route path="profile" element={<Profile />} />
