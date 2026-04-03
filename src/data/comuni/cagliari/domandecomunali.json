@@ -1,22 +1,82 @@
 {
   "domande": [
     {
-      "id": "cagliari_1",
-      "testo": "Secondo il Regolamento di Polizia Urbana di Cagliari, qual è l'organo competente per le ordinanze contingibili e urgenti?",
+      "id": "cagl_com_001",
+      "categoriaId": "com_generale",
+      "testo": "Secondo lo Statuto del Comune di Cagliari, quale organo ha il potere di approvare i regolamenti comunali?",
       "opzioni": [
         "Il Sindaco",
-        "Il Comandante della Polizia Locale",
-        "Il Segretario Comunale",
-        "L'Assessore all'Ambiente"
+        "La Giunta Comunale",
+        "Il Consiglio Comunale",
+        "Il Segretario Generale"
       ],
-      "rispostaCorretta": 0,
-      "spiegazione": "Ai sensi del TUEL e delle normative vigenti, il Sindaco è l'organo competente per l'adozione di ordinanze contingibili e urgenti.",
+      "rispostaCorretta": 2,
+      "spiegazione": "Lo Statuto comunale assegna al Consiglio Comunale la competenza esclusiva in materia di approvazione dei regolamenti, in quanto atto normativo di rango locale.",
       "riferimentoNormativo": {
-        "legge": "D.Lgs. 267/2000 (TUEL)",
-        "articolo": "54"
+        "legge": "Statuto Comune di Cagliari",
+        "articolo": "42",
+        "comma": "2"
+      },
+      "livelloDifficolta": 1,
+      "tags": ["cagliari", "statuto", "regolamenti"]
+    },
+    {
+      "id": "cagl_com_002",
+      "categoriaId": "com_generale",
+      "testo": "Nel territorio del Comune di Cagliari, quale regolamento disciplina l'attività della Polizia Locale?",
+      "opzioni": [
+        "Regolamento di Polizia Urbana",
+        "Regolamento Generale degli Uffici e dei Servizi",
+        "Regolamento di Polizia Locale",
+        "Regolamento per la Sicurezza Urbana"
+      ],
+      "rispostaCorretta": 2,
+      "spiegazione": "Il Regolamento di Polizia Locale disciplina in modo specifico l'organizzazione, le funzioni e le modalità operative del Corpo di Polizia Locale del Comune di Cagliari.",
+      "riferimentoNormativo": {
+        "legge": "Regolamento di Polizia Locale - Comune di Cagliari",
+        "articolo": "1"
+      },
+      "livelloDifficolta": 1,
+      "tags": ["cagliari", "regolamento", "polizia-locale"]
+    },
+    {
+      "id": "cagl_com_003",
+      "categoriaId": "com_generale",
+      "testo": "Quale delle seguenti zone del territorio comunale di Cagliari è soggetta a limitazioni permanenti della circolazione veicolare?",
+      "opzioni": [
+        "Via Roma",
+        "Centro storico - Castello",
+        "Viale Poetto",
+        "Via Dante"
+      ],
+      "rispostaCorretta": 1,
+      "spiegazione": "Il quartiere storico di Castello è sottoposto a Zone a Traffico Limitato (ZTL) permanenti per la tutela del patrimonio storico-artistico e la vivibilità del centro.",
+      "riferimentoNormativo": {
+        "legge": "Ordinanza ZTL Comune di Cagliari",
+        "articolo": "3"
       },
       "livelloDifficolta": 2,
-      "categoriaId": "com_generale"
+      "tags": ["cagliari", "ztl", "traffico", "castello"]
+    },
+    {
+      "id": "cagl_com_004",
+      "categoriaId": "com_generale",
+      "testo": "In caso di emergenza sanitaria sul territorio comunale, quale organo comunale coordina gli interventi secondo il Piano di Protezione Civile?",
+      "opzioni": [
+        "Il Comandante della Polizia Locale",
+        "Il Sindaco in qualità di Autorità Locale di Protezione Civile",
+        "L'Assessore alla Sicurezza",
+        "Il Prefetto"
+      ],
+      "rispostaCorretta": 1,
+      "spiegazione": "Il Sindaco, in qualità di Autorità Locale di Protezione Civile, coordina tutte le attività di soccorso e assistenza alla popolazione secondo quanto previsto dal Piano Comunale di Protezione Civile.",
+      "riferimentoNormativo": {
+        "legge": "D.Lgs. 1/2018",
+        "articolo": "6",
+        "comma": "1"
+      },
+      "livelloDifficolta": 2,
+      "tags": ["cagliari", "protezione-civile", "emergenze", "sindaco"]
     }
   ]
 }

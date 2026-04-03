@@ -1,22 +1,62 @@
 {
   "domande": [
     {
-      "id": "sardegna_1",
-      "testo": "Qual è la legge regionale della Sardegna sull'ordinamento della Polizia Locale?",
+      "id": "sard_reg_001",
+      "categoriaId": "reg_generale",
+      "testo": "Quale organo della Regione Sardegna esercita la funzione di coordinamento della Polizia Locale ai sensi della L.R. 23/1984?",
       "opzioni": [
-        "Legge Regionale n. 9 del 2007",
-        "Legge Regionale n. 1 del 2020",
-        "Legge Regionale n. 5 del 1999",
-        "Nessuna delle precedenti"
+        "La Giunta Regionale",
+        "Il Consiglio Regionale",
+        "L'Assessorato agli Enti Locali",
+        "Il Presidente della Regione"
       ],
-      "rispostaCorretta": 0,
-      "spiegazione": "La Legge Regionale 9 agosto 2007, n. 9, disciplina l'ordinamento e le funzioni della polizia locale in Sardegna.",
+      "rispostaCorretta": 2,
+      "spiegazione": "Secondo la L.R. 23/1984, l'Assessorato competente in materia di Enti Locali coordina le attività di Polizia Locale sul territorio regionale.",
       "riferimentoNormativo": {
-        "legge": "L.R. 9/2007",
-        "articolo": "1"
+        "legge": "L.R. Sardegna 23/1984",
+        "articolo": "5",
+        "comma": "1"
+      },
+      "livelloDifficolta": 2,
+      "tags": ["sardegna", "coordinamento", "enti-locali"]
+    },
+    {
+      "id": "sard_reg_002",
+      "categoriaId": "reg_generale",
+      "testo": "In base alla normativa regionale sarda, quale dei seguenti atti deve essere adottato per l'istituzione di un Corpo di Polizia Locale?",
+      "opzioni": [
+        "Delibera di Giunta Comunale",
+        "Delibera di Consiglio Comunale",
+        "Decreto del Sindaco",
+        "Ordinanza del Comandante"
+      ],
+      "rispostaCorretta": 1,
+      "spiegazione": "L'istituzione di un Corpo di Polizia Locale richiede una deliberazione del Consiglio Comunale in quanto atto di organizzazione fondamentale dell'ente.",
+      "riferimentoNormativo": {
+        "legge": "L.R. Sardegna 23/1984",
+        "articolo": "3"
       },
       "livelloDifficolta": 1,
-      "categoriaId": "reg_generale"
+      "tags": ["sardegna", "istituzione", "corpo"]
+    },
+    {
+      "id": "sard_reg_003",
+      "categoriaId": "reg_generale",
+      "testo": "Quale tra le seguenti funzioni NON rientra tra le competenze della Polizia Locale in Sardegna secondo la L.R. 23/1984?",
+      "opzioni": [
+        "Vigilanza sull'osservanza delle leggi e dei regolamenti",
+        "Gestione diretta dei servizi sociali comunali",
+        "Attività di informazione e assistenza ai cittadini",
+        "Rilievi degli incidenti stradali"
+      ],
+      "rispostaCorretta": 1,
+      "spiegazione": "La gestione dei servizi sociali non rientra tra le competenze specifiche della Polizia Locale, ma è affidata ad altri settori dell'amministrazione comunale.",
+      "riferimentoNormativo": {
+        "legge": "L.R. Sardegna 23/1984",
+        "articolo": "7"
+      },
+      "livelloDifficolta": 2,
+      "tags": ["sardegna", "competenze", "funzioni"]
     }
   ]
 }
