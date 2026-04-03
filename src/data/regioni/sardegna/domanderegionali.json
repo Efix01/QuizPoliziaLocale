@@ -1,13 +1,22 @@
 {
   "domande": [
     {
-      "id": "test_reg_1",
-      "testo": "Domanda Regionale di Test (Sardegna)?",
-      "opzioni": ["Sì", "No", "Forse"],
+      "id": "sardegna_1",
+      "testo": "Qual è la legge regionale della Sardegna sull'ordinamento della Polizia Locale?",
+      "opzioni": [
+        "Legge Regionale n. 9 del 2007",
+        "Legge Regionale n. 1 del 2020",
+        "Legge Regionale n. 5 del 1999",
+        "Nessuna delle precedenti"
+      ],
       "rispostaCorretta": 0,
-      "spiegazione": "Ok",
-      "livello": 1,
-      "categoriaId": "legge_regionale"
+      "spiegazione": "La Legge Regionale 9 agosto 2007, n. 9, disciplina l'ordinamento e le funzioni della polizia locale in Sardegna.",
+      "riferimentoNormativo": {
+        "legge": "L.R. 9/2007",
+        "articolo": "1"
+      },
+      "livelloDifficolta": 1,
+      "categoriaId": "reg_generale"
     }
   ]
 }

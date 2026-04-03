@@ -4,6 +4,15 @@ import { z } from 'zod';
 import { useProfile } from './ProfileContext';
 import regioniData from '../data/regioni_pl.json';
 
+// ✅ Glob import — Vite risolve a build time tutti i file disponibili
+const regioniModules = import.meta.glob<{ default?: { domande: unknown[] }; domande?: unknown[] }>(
+  '/src/data/regioni/*/domanderegionali.json'
+);
+
+const comuniModules = import.meta.glob<{ default?: { domande: unknown[] }; domande?: unknown[] }>(
+  '/src/data/comuni/*/domandecomunali.json'
+);
+
 type LoadingLayers = {
   core: boolean;
   regionale: boolean;
@@ -50,7 +59,6 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
   // Refs per Race Condition
   const regioneRequestRef = useRef(0);
   const comuneRequestRef = useRef(0);
-  const hasHydratedRef = useRef(false);
 
   // isLoading derivato
   const isLoading = useMemo(() => 
@@ -58,85 +66,83 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
     [loadingLayers]
   );
 
-  // 1. Caricamento Core (Nazionale)
+  // 1. Caricamento Iniziale (Boot — Core, Regionali, Comunali)
   useEffect(() => {
-    let isMounted = true;
-    async function loadCore() {
+    let active = true;
+
+    async function bootDomande() {
+      setLoadingLayers(prev => ({ ...prev, core: true }));
       try {
-        const data = await import('../data/domande_core.json');
-        const result = ArrayDomandeSchema.safeParse(data.domande);
+        const data = await import('@data/domandecore.json');
+        const result = ArrayDomandeSchema.safeParse(data.domande || data.default?.domande);
         
-        if (isMounted) {
-            if (result.success) {
-                setDomandeCore(result.data);
-            } else {
-                console.error('Core JSON non valido:', result.error.issues.slice(0, 5));
-                setError('Dati nazionali non validi.');
-            }
-            setLoadingLayers(prev => ({ ...prev, core: false }));
+        if (active) {
+          if (result.success) {
+            setDomandeCore(result.data);
+          } else {
+            console.error('Core JSON non valido:', result.error.issues.slice(0, 5));
+            setError('Dati nazionali non validi.');
+          }
         }
       } catch (err) {
-        console.error("Errore CORE JSON:", err);
-        if (isMounted) {
-            setError("Impossibile caricare domande nazionali.");
-            setLoadingLayers(prev => ({ ...prev, core: false }));
+        console.error("Errore Core JSON:", err);
+        if (active) setError("Impossibile caricare domande nazionali.");
+      } finally {
+        if (active) setLoadingLayers(prev => ({ ...prev, core: false }));
+      }
+
+      // Caricamento Regionali (se presenti nel profilo) — Esecuzione Parallela
+      if (active && profilo?.regioneId) {
+        setLoadingLayers(prev => ({ ...prev, regionale: true }));
+        const modulePath = `/src/data/regioni/${profilo.regioneId}/domanderegionali.json`;
+        const loader = regioniModules[modulePath];
+        if (loader) {
+          loader().then(data => {
+            if (!active) return;
+            const raw = (data as any).domande || (data as any).default?.domande || [];
+            const withMeta = raw.map((d: any) => ({ ...d, strato: 'regionale', regioneId: profilo.regioneId }));
+            const res = ArrayDomandeSchema.safeParse(withMeta);
+            setDomandeRegionali(res.success ? res.data : []);
+          }).catch(e => {
+            console.warn(`Errore regionale boot (${profilo.regioneId}):`, e);
+            setDomandeRegionali([]);
+          }).finally(() => {
+            if (active) setLoadingLayers(prev => ({ ...prev, regionale: false }));
+          });
+        } else {
+          setLoadingLayers(prev => ({ ...prev, regionale: false }));
+        }
+      }
+
+      // Caricamento Comunali (se presenti nel profilo)
+      if (active && profilo?.comuneId) {
+        setLoadingLayers(prev => ({ ...prev, comunale: true }));
+        const modulePath = `/src/data/comuni/${profilo.comuneId}/domandecomunali.json`;
+        const loader = comuniModules[modulePath];
+        if (loader) {
+          loader().then(data => {
+            if (!active) return;
+            const raw = (data as any).domande || (data as any).default?.domande || [];
+            const withMeta = raw.map((d: any) => ({ 
+              ...d, strato: 'comunale', regioneId: profilo?.regioneId, comuneId: profilo.comuneId 
+            }));
+            const res = ArrayDomandeSchema.safeParse(withMeta);
+            setDomandeComunali(res.success ? res.data : []);
+          }).catch(e => {
+            console.warn(`Errore comunale boot (${profilo.comuneId}):`, e);
+            setDomandeComunali([]);
+          }).finally(() => {
+            if (active) setLoadingLayers(prev => ({ ...prev, comunale: false }));
+          });
+        } else {
+          setLoadingLayers(prev => ({ ...prev, comunale: false }));
         }
       }
     }
-    loadCore();
-    return () => { isMounted = false; };
-  }, []);
 
-  // 2. Idratazione iniziale Regionali/Comunali (Sincronizzata con Profile boot)
-  useEffect(() => {
-    if (!profilo || hasHydratedRef.current) return;
-    hasHydratedRef.current = true;
-    let isCancelled = false;
-
-    if (profilo.regioneId) {
-        setLoadingLayers(prev => ({ ...prev, regionale: true }));
-        import(`../data/regioni/${profilo.regioneId}/domande_regionali.json`)
-            .then(data => {
-                if (isCancelled) return;
-                const withMeta = (data.domande || []).map((d: any) => ({ 
-                    ...d, strato: 'regionale', regioneId: profilo.regioneId 
-                }));
-                const res = ArrayDomandeSchema.safeParse(withMeta);
-                setDomandeRegionali(res.success ? res.data : []);
-            }).catch(e => {
-                if (isCancelled) return;
-                console.warn(`Errore regionale boot (${profilo.regioneId}):`, e);
-                setDomandeRegionali([]);
-            }).finally(() => {
-                if (!isCancelled) {
-                    setLoadingLayers(prev => ({ ...prev, regionale: false }));
-                }
-            });
-    }
-
-    if (profilo.comuneId) {
-        setLoadingLayers(prev => ({ ...prev, comunale: true }));
-        import(`../data/comuni/${profilo.comuneId}/domande_comunali.json`)
-            .then(data => {
-                if (isCancelled) return;
-                const withMeta = (data.domande || []).map((d: any) => ({ 
-                    ...d, strato: 'comunale', regioneId: profilo.regioneId, comuneId: profilo.comuneId 
-                }));
-                const res = ArrayDomandeSchema.safeParse(withMeta);
-                setDomandeComunali(res.success ? res.data : []);
-            }).catch(e => {
-                if (isCancelled) return;
-                console.warn(`Errore comunale boot (${profilo.comuneId}):`, e);
-                setDomandeComunali([]);
-            }).finally(() => {
-                if (!isCancelled) {
-                    setLoadingLayers(prev => ({ ...prev, comunale: false }));
-                }
-            });
-    }
-
-    return () => { isCancelled = true; };
-  }, [profilo]);
+    bootDomande();
+    return () => { active = false; };
+  }, []); // Esegue solo al mount
 
   // 3. Logica di cambio dati (Imperativa)
   // NOTA: Vite esegue automaticamente il caching modulare degli import dinamici.
@@ -156,8 +162,14 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
         throw new Error(`Regione non riconosciuta: ${regioneId}`);
       }
 
-      // Nota: Uso il path senza underscore come richiesto
-      const data = await import(`../data/regioni/${regioneId}/domanderegionali.json`);
+      const modulePath = `/src/data/regioni/${regioneId}/domanderegionali.json`;
+      const loader = regioniModules[modulePath];
+
+      if (!loader) {
+        throw new Error(`File non trovato per regione: ${regioneId}`);
+      }
+
+      const data = await loader();
 
       // Se nel frattempo è arrivata un'altra richiesta, ignora questa
       if (requestId !== regioneRequestRef.current) return;
@@ -213,8 +225,14 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
     setError(null);
 
     try {
-      // Nota: Uso il path senza underscore come richiesto
-      const data = await import(`../data/comuni/${comuneId}/domandecomunali.json`);
+      const modulePath = `/src/data/comuni/${comuneId}/domandecomunali.json`;
+      const loader = comuniModules[modulePath];
+
+      if (!loader) {
+        throw new Error(`File non trovato per comune: ${comuneId}`);
+      }
+
+      const data = await loader();
 
       // Se nel frattempo è arrivata un'altra richiesta, ignora questa
       if (requestId !== comuneRequestRef.current) return;

@@ -1,13 +1,22 @@
 {
   "domande": [
     {
-      "id": "test_com_1",
-      "testo": "Domanda Comunale di Test (Cagliari)?",
-      "opzioni": ["Sì", "No", "Forse"],
+      "id": "cagliari_1",
+      "testo": "Secondo il Regolamento di Polizia Urbana di Cagliari, qual è l'organo competente per le ordinanze contingibili e urgenti?",
+      "opzioni": [
+        "Il Sindaco",
+        "Il Comandante della Polizia Locale",
+        "Il Segretario Comunale",
+        "L'Assessore all'Ambiente"
+      ],
       "rispostaCorretta": 0,
-      "spiegazione": "Cagliari",
-      "livello": 1,
-      "categoriaId": "ordinanza_sindaco"
+      "spiegazione": "Ai sensi del TUEL e delle normative vigenti, il Sindaco è l'organo competente per l'adozione di ordinanze contingibili e urgenti.",
+      "riferimentoNormativo": {
+        "legge": "D.Lgs. 267/2000 (TUEL)",
+        "articolo": "54"
+      },
+      "livelloDifficolta": 2,
+      "categoriaId": "com_generale"
     }
   ]
 }

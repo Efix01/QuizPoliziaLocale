@@ -68,7 +68,7 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
   const [srsModificati, setSrsModificati] = useState<Set<string>>(new Set());
   const [erroriModificati, setErroriModificati] = useState<Set<string>>(new Set());
 
-  // Helper per tracciamento modifiche
+  /* Helper per tracciamento modifiche (Non utilizzati al momento)
   const tracciaSrs = (id: string, item: SRSItem) => {
     setSrsData(prev => ({ ...prev, [id]: item }));
     setSrsModificati(prev => new Set(prev).add(id));
@@ -83,6 +83,7 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
     });
     setErroriModificati(prev => new Set(prev).add(id));
   };
+  */
 
   // Derivazione del conteggio errori
   const erroriCount = useMemo(() => Object.keys(erroriLog).length, [erroriLog]);

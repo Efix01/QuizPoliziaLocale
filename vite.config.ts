@@ -31,6 +31,12 @@ export default defineConfig({
       }
     })
   ],
+  resolve: {
+    alias: {
+      '@': '/src',
+      '@data': '/src/data',
+    },
+  },
   build: {
     rollupOptions: {
       output: {
