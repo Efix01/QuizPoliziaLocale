@@ -1,27 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { type DomandaPL } from '../types/pl';
+import { z } from 'zod';
+import { DomandaPLSchema, ParametriEsameSchema } from '../types/pl';
 import { useProgress } from '../context/ProgressContext';
 import { ResultCard } from '../components/simulation/ResultCard';
 import { ChevronLeft, ChevronRight, Flag } from 'lucide-react';
 import './SimulationMode.css';
 
-interface LocationState {
-    domande: DomandaPL[];
-    parametriEsame: {
-        numeroDomande: number;
-        durataMinuti: number;
-        punteggioCorretta: number;
-        punteggioErrata: number;
-        punteggioNonData: number;
-        sogliaSuperamento?: number;
-    };
-}
+const SimulationStateSchema = z.object({
+    domande: z.array(DomandaPLSchema).min(1),
+    parametriEsame: ParametriEsameSchema
+});
 
 const SimulationSession: React.FC = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const state = location.state as LocationState;
+    
+    // Validazione dello stato tramite Zod
+    const parsed = SimulationStateSchema.safeParse(location.state);
+    const state = parsed.success ? parsed.data : null;
+    
     const { salvaRisultatoQuiz } = useProgress();
 
     // Se mancano i parametri o si accede direttamente ricarichiamo (potenzialmente indietro ad home)
@@ -143,9 +141,11 @@ const SimulationSession: React.FC = () => {
         if (isReviewing) return;
 
         if (answers[simQuestions[currentIdx].id] === idx) {
-            const newAnswers = { ...answers };
-            delete newAnswers[simQuestions[currentIdx].id];
-            setAnswers(newAnswers);
+            setAnswers(prev => {
+                const next = { ...prev };
+                delete next[simQuestions[currentIdx].id];
+                return next;
+            });
         } else {
             setAnswers(prev => ({ ...prev, [simQuestions[currentIdx].id]: idx }));
         }

@@ -2,9 +2,10 @@ import { z } from 'zod';
 import { isoDateString, ParametriEsameSchema } from './common';
 import { ProfiloPLSchema } from './pl';
 
-// Ri-esportazione da common.ts
-export { isoDateString, ParametriEsameSchema };
+// Ri-esportazione per SSOT
+export { isoDateString, ParametriEsameSchema, ProfiloPLSchema };
 export type { ParametriEsame } from './common';
+export type { ProfiloPL } from './pl';
 
 
 // ==========================================
@@ -33,6 +34,7 @@ export const CategoriaStatsSchema = z.object({
 export type CategoriaStats = z.infer<typeof CategoriaStatsSchema>;
 
 export const GlobalProgressSchema = z.object({
+  _schemaVersion: z.literal(1).default(1),
   quizCompletati: z.number().nonnegative().default(0),
   risposteCorrette: z.number().nonnegative().default(0),
   mediaPercentuale: z.number().min(0).max(100).default(0),

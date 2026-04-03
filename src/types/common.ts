@@ -14,6 +14,7 @@ export const ParametriEsameSchema = z.object({
   punteggioCorretta: z.number().default(1),
   punteggioErrata: z.number().default(-0.25),
   punteggioNonData: z.number().default(0),
+  sogliaSuperamento: z.number().optional(),
 });
 
 export type ParametriEsame = z.infer<typeof ParametriEsameSchema>;

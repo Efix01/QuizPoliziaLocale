@@ -16,21 +16,33 @@ const Profile: React.FC = () => {
     const { progressiGlobali } = useProgress();
     const navigate = useNavigate();
 
-    // Calcolo statistiche reali da ProgressContext (Firebase)
+    // Materie Nazionali Core (coerente con Dashboard e QuizDataContext)
+    const materieNazionali = useMemo(() => ['cds', 'tuel', 'l241', 'l689', 'penale'], []);
+
+    // Calcolo statistiche reali filtrate per layer
     const stats = useMemo(() => {
         const pg = progressiGlobali;
-        const totalAnswered = pg ? Object.values(pg.perCategoria).reduce((sum, cat) => sum + cat.fatte, 0) : 0;
-        const correctCount = pg ? Object.values(pg.perCategoria).reduce((sum, cat) => sum + cat.corrette, 0) : 0;
+        if (!pg) return { level: 1, xp: 0, totalAnswered: 0, correctCount: 0, currentStreak: 0, accuracy: 0 };
+
+        const { perCategoria } = pg;
         
+        // Calcolo Core (Nazionale)
+        const totalAnsweredCore = materieNazionali.reduce((sum, id) => sum + (perCategoria[id]?.fatte ?? 0), 0);
+        const correctCountCore = materieNazionali.reduce((sum, id) => sum + (perCategoria[id]?.corrette ?? 0), 0);
+        
+        // Calcolo Totale (per riferimento)
+        const totalAnsweredAll = Object.values(perCategoria).reduce((sum, cat) => sum + cat.fatte, 0);
+
         return {
-            level: pg?.livello ?? 1,
-            xp: pg?.xp ?? 0,
-            totalAnswered,
-            correctCount,
-            currentStreak: pg?.streak ?? 0,
-            accuracy: totalAnswered > 0 ? Math.round((correctCount / totalAnswered) * 100) : 0
+            level: pg.livello ?? 1,
+            xp: pg.xp ?? 0,
+            totalAnswered: totalAnsweredCore, // Mostriamo le domande core come primarie
+            correctCount: correctCountCore,
+            currentStreak: pg.streak ?? 0,
+            accuracy: totalAnsweredCore > 0 ? Math.round((correctCountCore / totalAnsweredCore) * 100) : 0,
+            totalAnsweredGlobal: totalAnsweredAll
         };
-    }, [progressiGlobali]);
+    }, [progressiGlobali, materieNazionali]);
 
     const [settings, setSettings] = useState({
         sound: true

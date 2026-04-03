@@ -79,7 +79,7 @@ export function useQuizPL() {
       ...shuffle(domandeRegionali).slice(0, nRegionale),
       ...shuffle(domandeComunali).slice(0, nComunale),
     ]);
-  }, [domandeCore, domandeRegionali, domandeComunali, profilo?.parametriEsame]);
+  }, [domandeCore, domandeRegionali, domandeComunali, profilo?.parametriEsame, profilo?.composizioneQuiz]);
 
   // Quiz per ID — Map lookup O(n) + preserva l'ordine degli ID passati
   const generaQuizId = useCallback((ids: string[]): DomandaPL[] => {

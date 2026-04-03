@@ -91,21 +91,26 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     if (!profilo || hasHydratedRef.current) return;
     hasHydratedRef.current = true;
+    let isCancelled = false;
 
     if (profilo.regioneId) {
         setLoadingLayers(prev => ({ ...prev, regionale: true }));
         import(`../data/regioni/${profilo.regioneId}/domande_regionali.json`)
             .then(data => {
+                if (isCancelled) return;
                 const withMeta = (data.domande || []).map((d: any) => ({ 
                     ...d, strato: 'regionale', regioneId: profilo.regioneId 
                 }));
                 const res = ArrayDomandeSchema.safeParse(withMeta);
                 setDomandeRegionali(res.success ? res.data : []);
             }).catch(e => {
+                if (isCancelled) return;
                 console.warn(`Errore regionale boot (${profilo.regioneId}):`, e);
                 setDomandeRegionali([]);
             }).finally(() => {
-                setLoadingLayers(prev => ({ ...prev, regionale: false }));
+                if (!isCancelled) {
+                    setLoadingLayers(prev => ({ ...prev, regionale: false }));
+                }
             });
     }
 
@@ -113,18 +118,24 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
         setLoadingLayers(prev => ({ ...prev, comunale: true }));
         import(`../data/comuni/${profilo.comuneId}/domande_comunali.json`)
             .then(data => {
+                if (isCancelled) return;
                 const withMeta = (data.domande || []).map((d: any) => ({ 
                     ...d, strato: 'comunale', regioneId: profilo.regioneId, comuneId: profilo.comuneId 
                 }));
                 const res = ArrayDomandeSchema.safeParse(withMeta);
                 setDomandeComunali(res.success ? res.data : []);
             }).catch(e => {
+                if (isCancelled) return;
                 console.warn(`Errore comunale boot (${profilo.comuneId}):`, e);
                 setDomandeComunali([]);
             }).finally(() => {
-                setLoadingLayers(prev => ({ ...prev, comunale: false }));
+                if (!isCancelled) {
+                    setLoadingLayers(prev => ({ ...prev, comunale: false }));
+                }
             });
     }
+
+    return () => { isCancelled = true; };
   }, [profilo]);
 
   // 3. Logica di cambio dati (Imperativa)
@@ -173,13 +184,13 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
   }
 
   async function cambiaComune(comuneId: string | null, nomeComune?: string) {
+    const requestId = ++comuneRequestRef.current;
+
     if (!comuneId) {
       setDomandeComunali([]);
       setProfilo(prev => prev ? { ...prev, comuneId: undefined, nomeComune: undefined } : null);
       return;
     }
-    
-    const requestId = ++comuneRequestRef.current;
 
     // Validazione preventiva dell'ID comune nell'ambito della regione corrente
     const regioneCorrente = regioniData.regioni.find(r => r.id === profilo?.regioneId);

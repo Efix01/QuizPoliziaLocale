@@ -66,8 +66,6 @@ const Dashboard: React.FC = () => {
     const {
         streak = 0,
         perCategoria = {},
-        quizCompletati = 0,
-        mediaPercentuale = 0,
         xp = 0,
         livello = 1,
         capitoliLetti = []
@@ -272,12 +270,12 @@ const Dashboard: React.FC = () => {
                     <div style={{ fontSize: '0.65rem', color: 'var(--slate-text)' }}>STREAK</div>
                 </div>
                 <div style={{ textAlign: 'center' }}>
-                    <div style={{ color: 'white', fontSize: '1.1rem', fontWeight: '800' }}>{quizCompletati}</div>
-                    <div style={{ fontSize: '0.65rem', color: 'var(--slate-text)' }}>QUIZ</div>
+                    <div style={{ color: 'white', fontSize: '1.1rem', fontWeight: '800' }}>{totaleFatteCore}</div>
+                    <div style={{ fontSize: '0.65rem', color: 'var(--slate-text)' }}>QUESITI</div>
                 </div>
                 <div style={{ textAlign: 'center' }}>
-                    <div style={{ color: 'white', fontSize: '1.1rem', fontWeight: '800' }}>{Math.round(mediaPercentuale)}%</div>
-                    <div style={{ fontSize: '0.65rem', color: 'var(--slate-text)' }}>MEDIA</div>
+                    <div style={{ color: 'white', fontSize: '1.1rem', fontWeight: '800' }}>{progressoCore}%</div>
+                    <div style={{ fontSize: '0.65rem', color: 'var(--slate-text)' }}>PRECISIONE CORE</div>
                 </div>
             </motion.div>
         </motion.div>

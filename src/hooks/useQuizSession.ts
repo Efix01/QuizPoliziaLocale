@@ -120,8 +120,12 @@ export const useQuizSession = () => {
             };
 
             // Calcoliamo il nuovo registro in modo deterministico
-            const nuovoRegistro = [...risposteDate, nuovoRisultato];
-            setRisposteDate(nuovoRegistro);
+            // Utilizziamo il functional update per evitare race condition
+            let nuovoRegistro: RisultatoRisposta[] = [];
+            setRisposteDate(prev => {
+                nuovoRegistro = [...prev, nuovoRisultato];
+                return nuovoRegistro;
+            });
 
             const isLastQuestion = currentIndex >= sessionQuestions.length - 1;
 
@@ -135,6 +139,7 @@ export const useQuizSession = () => {
             } else {
                  // Fine delle domande: stop al timer e finalizza
                  stopTimer();
+                 // Attendiamo un microtick per assicurarci che lo stato sia pronto (opzionale con nuovoRegistro locale)
                  await finalizzaSessione(nuovoRegistro);
             }
         } finally {

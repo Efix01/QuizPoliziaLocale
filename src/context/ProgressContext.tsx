@@ -29,6 +29,7 @@ const ProgressContext = createContext<ProgressContextProps | undefined>(undefine
 const STORAGE_KEY = 'pl_progress_offline_cache';
 
 const DEFAULT_PROGRESS: GlobalProgress = {
+  _schemaVersion: 1,
   quizCompletati: 0,
   risposteCorrette: 0,
   mediaPercentuale: 0,
@@ -188,7 +189,7 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
       progress: GlobalProgress, 
       srs: Record<string, SRSItem>, 
       errori: Record<string, ErroreLog>,
-      cleanMainDoc: boolean = false
+      cleanMainDoc: boolean = true
   ) => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify({ progressi: progress, srs, errori }));
@@ -230,17 +231,23 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
     const updatedProgress: GlobalProgress = { 
         ...progressiGlobali,
         quizCompletati: progressiGlobali.quizCompletati + 1,
-        perCategoria: { ...progressiGlobali.perCategoria }
+        perCategoria: { ...progressiGlobali.perCategoria },
+        capitoliLetti: [...(progressiGlobali.capitoliLetti || [])]
     };
 
     const updatedSrs = { ...srsData };
     const updatedErrori = { ...erroriLog };
     
     const oggi = new Date().toDateString();
-    const ultimoAccessoDate = new Date(progressiGlobali.ultimoAccesso).toDateString();
     const ieri = new Date(Date.now() - 86400000).toDateString();
-    if (ultimoAccessoDate !== oggi) {
-        updatedProgress.streak = (ultimoAccessoDate === ieri) ? updatedProgress.streak + 1 : 1;
+    const ultimoAccessoDate = progressiGlobali.ultimoAccesso ? new Date(progressiGlobali.ultimoAccesso).toDateString() : '';
+
+    if (ultimoAccessoDate === oggi) {
+        // Già studiato oggi, non incrementiamo lo streak
+    } else if (ultimoAccessoDate === ieri) {
+        updatedProgress.streak = (updatedProgress.streak || 0) + 1;
+    } else {
+        updatedProgress.streak = 1;
     }
     
     let totCorretteInTurn = 0;
@@ -289,17 +296,18 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
       };
     });
 
-    updatedProgress.risposteCorrette += totCorretteInTurn;
-
     const XP_PER_RISPOSTA_CORRETTA = 10;
     const XP_PER_QUIZ_COMPLETATO = 5;
     const XP_PER_LIVELLO = 500;
+    
     updatedProgress.xp += (totCorretteInTurn * XP_PER_RISPOSTA_CORRETTA) + XP_PER_QUIZ_COMPLETATO;
     updatedProgress.livello = Math.floor(updatedProgress.xp / XP_PER_LIVELLO) + 1;
 
     const statsArray = Object.values(updatedProgress.perCategoria);
     const totFatte = statsArray.reduce((acc, cat) => acc + cat.fatte, 0);
     const totCorrette = statsArray.reduce((acc, cat) => acc + cat.corrette, 0);
+    
+    updatedProgress.risposteCorrette = totCorrette;
     updatedProgress.mediaPercentuale = totFatte > 0 ? Math.round((totCorrette / totFatte) * 100) : 0;
     updatedProgress.ultimoAccesso = new Date().toISOString();
 
@@ -312,19 +320,40 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
   const segnaComeLetto = async (capitoloId: string) => {
     if (!progressiGlobali || !isAuthenticated || !user) return;
     if (progressiGlobali.capitoliLetti?.includes(capitoloId)) return;
+    const XP_PER_CAPITOLO = 15;
+    const XP_PER_LIVELLO = 500;
+    
     const isoNow = new Date().toISOString();
-    const updatedProgress = { ...progressiGlobali };
-    if (!updatedProgress.capitoliLetti) updatedProgress.capitoliLetti = [];
-    updatedProgress.capitoliLetti.push(capitoloId);
-    updatedProgress.xp += 15;
-    updatedProgress.ultimoAccesso = isoNow;
+    const oggi = new Date().toDateString();
+    const ieri = new Date(Date.now() - 86400000).toDateString();
+    const ultimoAccessoDate = progressiGlobali.ultimoAccesso ? new Date(progressiGlobali.ultimoAccesso).toDateString() : '';
+
+    const updatedProgress: GlobalProgress = { 
+        ...progressiGlobali,
+        capitoliLetti: [...(progressiGlobali.capitoliLetti || []), capitoloId],
+        xp: progressiGlobali.xp + XP_PER_CAPITOLO,
+        ultimoAccesso: isoNow
+    };
+
+    if (ultimoAccessoDate === oggi) {
+        // Già studiato oggi
+    } else if (ultimoAccessoDate === ieri) {
+        updatedProgress.streak = (updatedProgress.streak || 0) + 1;
+    } else {
+        updatedProgress.streak = 1;
+    }
+
+    updatedProgress.livello = Math.floor(updatedProgress.xp / XP_PER_LIVELLO) + 1;
+
     setProgressiGlobali(updatedProgress);
     try {
         const mainRef = doc(db, 'users', user.uid, 'progressi', 'main');
         await updateDoc(mainRef, {
             capitoliLetti: arrayUnion(capitoloId),
-            xp: increment(15),
-            ultimoAccesso: isoNow
+            xp: increment(XP_PER_CAPITOLO),
+            ultimoAccesso: isoNow,
+            streak: updatedProgress.streak,
+            livello: updatedProgress.livello
         });
         localStorage.setItem(STORAGE_KEY, JSON.stringify({ progressi: updatedProgress, srs: srsData, errori: erroriLog }));
     } catch (e) { console.error("Errore atomico segnaComeLetto:", e); }
