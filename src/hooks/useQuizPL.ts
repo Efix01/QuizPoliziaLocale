@@ -17,18 +17,18 @@ function shuffle<T>(array: T[]): T[] {
 export function useQuizPL() {
   const { domandeCore, domandeRegionali, domandeComunali, profilo } = usePL();
 
-  // ✅ AGGIUNGI QUESTO — pool memoizzato
+  // Pool completo memoizzato
   const poolCompleto = useMemo(
     () => [...domandeCore, ...domandeRegionali, ...domandeComunali],
     [domandeCore, domandeRegionali, domandeComunali]
   );
 
-  // ✅ generaQuizVeloce
+  // Quiz veloce: N domande dal pool completo
   const generaQuizVeloce = useCallback((numeroDomande: number = 20): DomandaPL[] => {
     return shuffle(poolCompleto).slice(0, numeroDomande);
   }, [poolCompleto]);
 
-  // ✅ generaQuizCategoria
+  // Quiz per categoria specifica
   const generaQuizCategoria = useCallback((
     categoriaId: string, 
     n: number = 20,
@@ -42,7 +42,7 @@ export function useQuizPL() {
     return shuffle(base.filter(d => d.categoriaId === categoriaId)).slice(0, n);
   }, [domandeCore, domandeRegionali, domandeComunali, poolCompleto]);
 
-  // ✅ generaQuizStrato
+  // Quiz per strato specifico
   const generaQuizStrato = useCallback((
     strato: 'core' | 'regionale' | 'comunale',
     n: number = 20
@@ -55,7 +55,7 @@ export function useQuizPL() {
     return shuffle(map[strato]).slice(0, n);
   }, [domandeCore, domandeRegionali, domandeComunali]);
 
-  // ✅ generaSimulazione — con percentuali 5/25/70
+  // Simulazione d'esame: rispetta le proporzioni reali
   const generaSimulazione = useCallback((): DomandaPL[] => {
     const params = profilo?.parametriEsame ?? {
       numeroDomande: 100,
@@ -66,17 +66,12 @@ export function useQuizPL() {
     };
 
     const totale = params.numeroDomande;
-
-    // Calcola quante per strato, limitato dalla disponibilità effettiva
     const nComunale = domandeComunali.length > 0 
       ? Math.min(Math.round(totale * 0.05), domandeComunali.length) 
       : 0;
-    
     const nRegionale = domandeRegionali.length > 0 
       ? Math.min(Math.round(totale * 0.25), domandeRegionali.length) 
       : 0;
-    
-    // Il Core funge da "riempitivo" se le domande locali scarseggiano
     const nCore = Math.min(totale - nRegionale - nComunale, domandeCore.length);
 
     const totaleEffettivo = nCore + nRegionale + nComunale;
@@ -93,13 +88,13 @@ export function useQuizPL() {
     return shuffle(simulazione);
   }, [domandeCore, domandeRegionali, domandeComunali, profilo?.parametriEsame]);
 
-  // ✅ generaQuizId — con Map per performance O(n) invece di O(n²)
+  // Quiz basato su un elenco di ID (es. per ripasso errori)
   const generaQuizId = useCallback((ids: string[]): DomandaPL[] => {
     const map = new Map(poolCompleto.map(d => [d.id, d]));
     return ids.map(id => map.get(id)).filter((d): d is DomandaPL => d !== undefined);
   }, [poolCompleto]);
 
-  // ✅ Quiz per livello di difficoltà (1 = facile, 2 = medio, 3 = avanzato)
+  // Quiz per difficoltà
   const generaQuizDifficolta = useCallback((
     livello: 1 | 2 | 3,
     n: number = 20
