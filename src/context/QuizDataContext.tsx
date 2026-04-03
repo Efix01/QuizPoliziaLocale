@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect, useRef, useMemo } from 'react';
+import React, { createContext, useContext, useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { DomandaPLSchema, type DomandaPL } from '../types/pl';
 import { z } from 'zod';
 import { useProfile } from './ProfileContext';
@@ -23,7 +23,7 @@ interface QuizDataContextType {
   
   // Cambio regione/comune
   cambiaRegione: (regioneId: string, nomeRegione: string) => Promise<void>;
-  cambiaComune: (comuneId: string | null, nomeComune?: string) => Promise<void>;
+  cambiaComune: (comuneId: string, nomeComune: string) => Promise<void>;
   
   // Helper
   totaleDomandeDisponibili: number;
@@ -141,36 +141,52 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
   // 3. Logica di cambio dati (Imperativa)
   // NOTA: Vite esegue automaticamente il caching modulare degli import dinamici.
   // Non è quindi necessario implementare un layer di cache manuale per i file JSON già caricati.
-  
-  async function cambiaRegione(regioneId: string, nomeRegione: string) {
+   const cambiaRegione = useCallback(async (regioneId: string, nomeRegione: string) => {
     const requestId = ++regioneRequestRef.current;
-    
-    // Validazione preventiva dell'ID regione
-    const regioneValida = regioniData.regioni.find(r => r.id === regioneId);
-    if (!regioneValida) {
-      console.error(`Regione non riconosciuta: ${regioneId}`);
-      setError(`La regione specificata (${regioneId}) non è valida.`);
-      return;
-    }
-
     setLoadingLayers(prev => ({ ...prev, regionale: true }));
     setError(null);
 
+    // Reset comunale quando cambi regione
+    setDomandeComunali([]);
+
     try {
-      const data = await import(`../data/regioni/${regioneId}/domande_regionali.json`);
+      // Valida che la regione esista nel config
+      const regioneValida = regioniData.regioni.find(r => r.id === regioneId);
+      if (!regioneValida) {
+        throw new Error(`Regione non riconosciuta: ${regioneId}`);
+      }
+
+      // Nota: Uso il path senza underscore come richiesto
+      const data = await import(`../data/regioni/${regioneId}/domanderegionali.json`);
+
+      // Se nel frattempo è arrivata un'altra richiesta, ignora questa
       if (requestId !== regioneRequestRef.current) return;
 
-      const withMeta = (data.domande || []).map((d: unknown) => ({ 
-        ...(d as object), strato: 'regionale' as const, regioneId 
+      const rawDomande = data.domande || data.default?.domande || [];
+      const withMeta = rawDomande.map((d: unknown) => ({
+        ...(d as object),
+        strato: 'regionale' as const,
+        regioneId,
       }));
-      
-      const result = ArrayDomandeSchema.safeParse(withMeta);
-      setDomandeRegionali(result.success ? result.data : []);
 
-      setProfilo(prev => prev ? { 
-        ...prev, regioneId, nomeRegione, comuneId: undefined, nomeComune: undefined 
+      const result = ArrayDomandeSchema.safeParse(withMeta);
+
+      if (result.success) {
+        setDomandeRegionali(result.data);
+      } else {
+        console.warn(`Validazione domande regionali ${regioneId} fallita:`, result.error.issues);
+        setDomandeRegionali([]);
+      }
+
+      // Aggiorna profilo con nomeRegione corretto
+      setProfilo(prev => prev ? {
+        ...prev,
+        regioneId,
+        nomeRegione,
+        comuneId: undefined,
+        nomeComune: undefined,
       } : null);
-      
+
     } catch (e) {
       if (requestId !== regioneRequestRef.current) return;
       console.warn(`Errore caricamento regione ${regioneId}:`, e);
@@ -181,26 +197,15 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
         setLoadingLayers(prev => ({ ...prev, regionale: false }));
       }
     }
-  }
+  }, [setProfilo]);
 
-  async function cambiaComune(comuneId: string | null, nomeComune?: string) {
+  const cambiaComune = useCallback(async (comuneId: string, nomeComune: string) => {
     const requestId = ++comuneRequestRef.current;
-
-    if (!comuneId) {
-      setDomandeComunali([]);
-      setProfilo(prev => prev ? { ...prev, comuneId: undefined, nomeComune: undefined } : null);
-      return;
-    }
-
-    // Validazione preventiva dell'ID comune nell'ambito della regione corrente
-    const regioneCorrente = regioniData.regioni.find(r => r.id === profilo?.regioneId);
-    const comuneValido = regioneCorrente?.citta.find(c => c.id === comuneId);
     
-    if (!comuneValido) {
-      console.warn(`Comune ${comuneId} non trovato nella regione ${profilo?.regioneId}`);
-      // Se il comune non esiste, resettiamo semplicemente le domande comunali
+    if (comuneId === 'nessuno' || !comuneId) {
       setDomandeComunali([]);
       setProfilo(prev => prev ? { ...prev, comuneId: undefined, nomeComune: undefined } : null);
+      setError(null);
       return;
     }
 
@@ -208,31 +213,49 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
     setError(null);
 
     try {
-      const data = await import(`../data/comuni/${comuneId}/domande_comunali.json`);
+      // Nota: Uso il path senza underscore come richiesto
+      const data = await import(`../data/comuni/${comuneId}/domandecomunali.json`);
+
+      // Se nel frattempo è arrivata un'altra richiesta, ignora questa
       if (requestId !== comuneRequestRef.current) return;
 
-      const withMeta = (data.domande || []).map((d: unknown) => ({ 
-        ...(d as object), strato: 'comunale' as const, regioneId: profilo?.regioneId, comuneId 
+      const rawDomande = data.domande || data.default?.domande || [];
+      const regioneId = profilo?.regioneId || '';
+
+      const withMeta = rawDomande.map((d: unknown) => ({
+        ...(d as object),
+        strato: 'comunale' as const,
+        regioneId,
+        comuneId,
       }));
-      
+
       const result = ArrayDomandeSchema.safeParse(withMeta);
-      setDomandeComunali(result.success ? result.data : []);
-      
-      setProfilo(prev => prev ? { 
-        ...prev, comuneId, nomeComune: nomeComune || prev.nomeComune 
+
+      if (result.success) {
+        setDomandeComunali(result.data);
+      } else {
+        console.warn(`Validazione domande comunali ${comuneId} fallita:`, result.error.issues);
+        setDomandeComunali([]);
+      }
+
+      // Aggiorna profilo con nomeComune corretto
+      setProfilo(prev => prev ? {
+        ...prev,
+        comuneId,
+        nomeComune,
       } : null);
 
     } catch (e) {
       if (requestId !== comuneRequestRef.current) return;
       console.warn(`Errore caricamento comune ${comuneId}:`, e);
       setDomandeComunali([]);
-      setError(`Impossibile caricare le domande per ${nomeComune || comuneId}`);
+      setError(`Impossibile caricare le domande per ${nomeComune}`);
     } finally {
       if (requestId === comuneRequestRef.current) {
         setLoadingLayers(prev => ({ ...prev, comunale: false }));
       }
     }
-  }
+  }, [profilo?.regioneId, setProfilo]);
 
   const tutteLeDomande = useMemo(
     () => [...domandeCore, ...domandeRegionali, ...domandeComunali],

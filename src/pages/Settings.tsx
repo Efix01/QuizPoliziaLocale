@@ -35,7 +35,7 @@ const Settings: React.FC = () => {
 
     const handleSalva = async () => {
         if (regione !== profilo.regioneId) await cambiaRegione(regione, currentRegioneData?.nome || 'Regione');
-        if (comune !== profilo.comuneId) await cambiaComune(comune === 'nessuno' ? null : comune, currentComuneData?.nome);
+        if (comune !== profilo.comuneId) await cambiaComune(comune, currentComuneData?.nome || 'Comune');
 
         setProfilo({
             ...profilo,

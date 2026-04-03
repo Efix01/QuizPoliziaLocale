@@ -27,7 +27,7 @@ interface PLContextType {
   
   // Cambio regione/comune (da QuizDataContext)
   cambiaRegione: (regioneId: string, nomeRegione: string) => Promise<void>;
-  cambiaComune: (comuneId: string | null, nomeComune?: string) => Promise<void>;
+  cambiaComune: (comuneId: string, nomeComune: string) => Promise<void>;
   
   // Helper (da QuizDataContext)
   totaleDomandeDisponibili: number;
