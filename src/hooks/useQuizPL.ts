@@ -1,9 +1,10 @@
 import { useCallback, useMemo } from 'react';
 import { usePL } from '../context/PLContext';
-import type { DomandaPL, ComposizioneQuizPL } from '../types/pl';
-import { ComposizioneQuizSchemaPL } from '../types/pl';
+import type { DomandaPL } from '../types/pl';
 
-// ✅ Funzione pura a livello di modulo — stabile, mai ricreata
+/**
+ * Fisher-Yates shuffle — mischia un array in modo uniforme
+ */
 function shuffle<T>(array: T[]): T[] {
   const shuffled = [...array];
   for (let i = shuffled.length - 1; i > 0; i--) {
@@ -16,81 +17,95 @@ function shuffle<T>(array: T[]): T[] {
 export function useQuizPL() {
   const { domandeCore, domandeRegionali, domandeComunali, profilo } = usePL();
 
-  // ✅ Pool completo memoizzato — ricreato solo se cambiano i dati sorgente
+  // ✅ AGGIUNGI QUESTO — pool memoizzato
   const poolCompleto = useMemo(
     () => [...domandeCore, ...domandeRegionali, ...domandeComunali],
     [domandeCore, domandeRegionali, domandeComunali]
   );
 
-  // Quiz veloce: N domande casuali dal pool completo
-  const generaQuizVeloce = useCallback(
-    (n = 20) => shuffle(poolCompleto).slice(0, n),
-    [poolCompleto]
-  );
+  // ✅ generaQuizVeloce
+  const generaQuizVeloce = useCallback((numeroDomande: number = 20): DomandaPL[] => {
+    return shuffle(poolCompleto).slice(0, numeroDomande);
+  }, [poolCompleto]);
 
-  // Quiz per categoria — strato opzionale per filtrare su un sotto-pool
+  // ✅ generaQuizCategoria
   const generaQuizCategoria = useCallback((
-    categoriaId: string,
-    n = 20,
+    categoriaId: string, 
+    n: number = 20,
     strato?: 'core' | 'regionale' | 'comunale'
   ): DomandaPL[] => {
-    const base = strato === 'core'      ? domandeCore
-               : strato === 'regionale' ? domandeRegionali
-               : strato === 'comunale'  ? domandeComunali
-               : poolCompleto;
+    const base = strato === 'core' ? domandeCore
+      : strato === 'regionale' ? domandeRegionali
+      : strato === 'comunale' ? domandeComunali
+      : poolCompleto;
+
     return shuffle(base.filter(d => d.categoriaId === categoriaId)).slice(0, n);
   }, [domandeCore, domandeRegionali, domandeComunali, poolCompleto]);
 
-  // Quiz per strato specifico
+  // ✅ generaQuizStrato
   const generaQuizStrato = useCallback((
     strato: 'core' | 'regionale' | 'comunale',
-    n = 20
+    n: number = 20
   ): DomandaPL[] => {
-    const stratoMap = { core: domandeCore, regionale: domandeRegionali, comunale: domandeComunali };
-    return shuffle(stratoMap[strato]).slice(0, n);
+    const map = {
+      core: domandeCore,
+      regionale: domandeRegionali,
+      comunale: domandeComunali,
+    };
+    return shuffle(map[strato]).slice(0, n);
   }, [domandeCore, domandeRegionali, domandeComunali]);
 
-  // Simulazione d'esame: rispetta le proporzioni reali per strato
-  const generaSimulazione = useCallback((config?: ComposizioneQuizPL): DomandaPL[] => {
+  // ✅ generaSimulazione — con percentuali 5/25/70
+  const generaSimulazione = useCallback((): DomandaPL[] => {
     const params = profilo?.parametriEsame ?? {
       numeroDomande: 100,
       durataMinuti: 90,
       punteggioCorretta: 1,
       punteggioErrata: -0.25,
-      punteggioNonData: 0,
+      punteggioNonData: 0
     };
 
-    // Validazione configurazione strati (SSOT)
-    // Priorità: 1. config esplicito, 2. config nel profilo, 3. default (tramite parse({}))
-    const validConfig = ComposizioneQuizSchemaPL.parse(config || profilo?.composizioneQuiz || {});
     const totale = params.numeroDomande;
 
-    const nRegionale = Math.min(Math.round(totale * (validConfig.percentualeRegionale / 100)), domandeRegionali.length);
-    const nComunale  = Math.min(Math.round(totale * (validConfig.percentualeComunale / 100)), domandeComunali.length);
-    // Clamp: nCore non può superare le domande core disponibili (residuo del totale)
+    // Calcola quante per strato, limitato dalla disponibilità effettiva
+    const nComunale = domandeComunali.length > 0 
+      ? Math.min(Math.round(totale * 0.05), domandeComunali.length) 
+      : 0;
+    
+    const nRegionale = domandeRegionali.length > 0 
+      ? Math.min(Math.round(totale * 0.25), domandeRegionali.length) 
+      : 0;
+    
+    // Il Core funge da "riempitivo" se le domande locali scarseggiano
     const nCore = Math.min(totale - nRegionale - nComunale, domandeCore.length);
 
-    if (nCore + nRegionale + nComunale < totale) {
-      console.warn(`⚠️ Simulazione ridotta: ${nCore + nRegionale + nComunale}/${totale} domande disponibili nel pool attuale.`);
+    const totaleEffettivo = nCore + nRegionale + nComunale;
+    if (totaleEffettivo < totale) {
+      console.warn(`Simulazione ridotta: ${totaleEffettivo}/${totale} domande disponibili`);
     }
 
-    return shuffle([
+    const simulazione: DomandaPL[] = [
       ...shuffle(domandeCore).slice(0, nCore),
       ...shuffle(domandeRegionali).slice(0, nRegionale),
       ...shuffle(domandeComunali).slice(0, nComunale),
-    ]);
-  }, [domandeCore, domandeRegionali, domandeComunali, profilo?.parametriEsame, profilo?.composizioneQuiz]);
+    ];
 
-  // Quiz per ID — Map lookup O(n) + preserva l'ordine degli ID passati
+    return shuffle(simulazione);
+  }, [domandeCore, domandeRegionali, domandeComunali, profilo?.parametriEsame]);
+
+  // ✅ generaQuizId — con Map per performance O(n) invece di O(n²)
   const generaQuizId = useCallback((ids: string[]): DomandaPL[] => {
     const map = new Map(poolCompleto.map(d => [d.id, d]));
-    return ids.map(id => map.get(id)).filter(Boolean) as DomandaPL[];
+    return ids.map(id => map.get(id)).filter((d): d is DomandaPL => d !== undefined);
   }, [poolCompleto]);
 
-  // Quiz per livello di difficoltà (1 = facile, 2 = medio, 3 = avanzato)
-  const generaQuizDifficolta = useCallback((livello: 1 | 2 | 3, n = 20): DomandaPL[] =>
-    shuffle(poolCompleto.filter(d => d.livelloDifficolta === livello)).slice(0, n),
-  [poolCompleto]);
+  // ✅ Quiz per livello di difficoltà (1 = facile, 2 = medio, 3 = avanzato)
+  const generaQuizDifficolta = useCallback((
+    livello: 1 | 2 | 3,
+    n: number = 20
+  ): DomandaPL[] => {
+    return shuffle(poolCompleto.filter(d => d.livelloDifficolta === livello)).slice(0, n);
+  }, [poolCompleto]);
 
   return {
     generaQuizVeloce,
