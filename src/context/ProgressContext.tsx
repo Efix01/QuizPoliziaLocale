@@ -26,6 +26,19 @@ import {
 import { commitInChunks } from '../lib/firestoreHelpers';
 import { migrateProgressV1toV2 } from '../lib/migrateProgressV1toV2';
 
+const DEFAULT_PROGRESS: GlobalProgress = {
+  _schemaVersion: 1,
+  quizCompletati: 0,
+  risposteCorrette: 0,
+  mediaPercentuale: 0,
+  streak: 0,
+  livello: 1,
+  xp: 0,
+  capitoliLetti: [],
+  perCategoria: {},
+  ultimoAccesso: new Date().toISOString(),
+};
+
 interface ProgressContextProps {
   progressiGlobali: GlobalProgress | null;
   srsData: Record<string, SRSItem>;
@@ -42,18 +55,7 @@ const ProgressContext = createContext<ProgressContextProps | undefined>(undefine
 
 const STORAGE_KEY = 'pl_progress_v2';
 
-const DEFAULT_PROGRESS: GlobalProgress = {
-  _schemaVersion: 2,
-  quizCompletati: 0,
-  risposteCorrette: 0,
-  mediaPercentuale: 0,
-  streak: 0,
-  livello: 1,
-  xp: 0,
-  capitoliLetti: [],
-  perCategoria: {},
-  ultimoAccesso: new Date().toISOString()
-};
+
 
 
 export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
@@ -180,7 +182,9 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
   const persistProgressData = async (
     progress: GlobalProgress,
     srs: Record<string, SRSItem>,
-    errori: Record<string, ErroreLog>
+    errori: Record<string, ErroreLog>,
+    srsModificatiOverride?: Set<string>,
+    erroriModificatiOverride?: Set<string>
   ): Promise<void> => {
 
     // === 1. localStorage (sempre, anche offline) ===
@@ -216,7 +220,8 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
       });
 
       // 2b. SRS — Solo modificati
-      srsModificati.forEach((domandaId) => {
+      const srsTargetIds = srsModificatiOverride || srsModificati;
+      srsTargetIds.forEach((domandaId) => {
         const srsItem = srs[domandaId];
         if (!srsItem) return;
         const ref = doc(db, 'users', uid, 'srsData', domandaId);
@@ -224,7 +229,8 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
       });
 
       // 2c. Errori — Solo modificati
-      erroriModificati.forEach((domandaId) => {
+      const erroriTargetIds = erroriModificatiOverride || erroriModificati;
+      erroriTargetIds.forEach((domandaId) => {
         const errore = errori[domandaId];
         const ref = doc(db, 'users', uid, 'errori', domandaId);
         if (!errore) {
@@ -245,100 +251,161 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
     }
   };
 
-  const salvaRisultatoQuiz = async (risultatiList: RisultatoRisposta[]) => {
-    if (!progressiGlobali) return;
+  const salvaRisultatoQuiz = async (risultatiList: RisultatoRisposta[]): Promise<void> => {
+    if (risultatiList.length === 0 || !progressiGlobali) return;
 
-    const updatedProgress: GlobalProgress = { 
-        ...progressiGlobali,
-        quizCompletati: progressiGlobali.quizCompletati + 1,
-        perCategoria: { ...progressiGlobali.perCategoria },
-        capitoliLetti: [...(progressiGlobali.capitoliLetti || [])]
+    // === 1. Deep copy sicura (NO mutation dello stato) ===
+    const updatedProgress: GlobalProgress = {
+      ...progressiGlobali,
+      perCategoria: Object.fromEntries(
+        Object.entries(progressiGlobali.perCategoria).map(
+          ([key, val]) => [key, { ...val }] // copia ogni CategoriaStats
+        )
+      ),
     };
 
-    const updatedSrs = { ...srsData };
-    const updatedErrori = { ...erroriLog };
+    // === 2. Aggiorna quiz completati ===
+    updatedProgress.quizCompletati += 1;
 
-    const oggi = new Date().toDateString();
-    const ieri = new Date(Date.now() - 86400000).toDateString();
-    const ultimoAccessoDate = progressiGlobali.ultimoAccesso ? new Date(progressiGlobali.ultimoAccesso).toDateString() : '';
-
-    if (ultimoAccessoDate === oggi) {
-        // Già studiato oggi, non incrementiamo lo streak
-    } else if (ultimoAccessoDate === ieri) {
-        updatedProgress.streak = (updatedProgress.streak || 0) + 1;
-    } else {
-        updatedProgress.streak = 1;
-    }
-    
+    // === 3. Aggiorna perCategoria (senza mutation) ===
     let totCorretteInTurn = 0;
 
     risultatiList.forEach((ris) => {
-      const { domandaId, categoriaId, corretta, indiceRispostaScelta } = ris;
-      
-      const prevCat = updatedProgress.perCategoria[categoriaId] || { fatte: 0, corrette: 0 };
-      updatedProgress.perCategoria[categoriaId] = {
-          fatte: prevCat.fatte + 1,
-          corrette: prevCat.corrette + (corretta ? 1 : 0)
-      };
-      
-      if (corretta) {
-        totCorretteInTurn += 1;
-        // Se corretta, rimuoviamo l'errore se presente (centralizzazione logica)
-        delete updatedErrori[domandaId];
-      } else {
-          updatedErrori[domandaId] = {
-              domandaId,
-              count: (updatedErrori[domandaId]?.count || 0) + 1,
-              lastError: new Date().toISOString(),
-              indiceRispostaScelta
-          };
+      const catId = ris.categoriaId;
+
+      // Se la categoria non esiste ancora, creala
+      if (!updatedProgress.perCategoria[catId]) {
+        updatedProgress.perCategoria[catId] = { fatte: 0, corrette: 0 };
       }
 
-      const prevSRS = updatedSrs[domandaId] || { 
-          domandaId, 
-          easeFactor: 2.5, 
-          interval: 1, 
-          nextReview: new Date().toISOString(), 
-          consecutiveCorrect: 0 
+      updatedProgress.perCategoria[catId] = {
+        fatte: updatedProgress.perCategoria[catId].fatte + 1,
+        corrette: updatedProgress.perCategoria[catId].corrette + (ris.corretta ? 1 : 0),
       };
 
-      let newConsecutive = corretta ? prevSRS.consecutiveCorrect + 1 : 0;
-      let newInterval = corretta ? Math.max(1, Math.round(prevSRS.interval * prevSRS.easeFactor)) : 1;
-      
-      const nextReviewDate = new Date();
-      nextReviewDate.setDate(nextReviewDate.getDate() + newInterval);
-
-      const srsItem: SRSItem = {
-          ...prevSRS,
-          consecutiveCorrect: newConsecutive,
-          interval: newInterval,
-          nextReview: nextReviewDate.toISOString()
-      };
-
-      updatedSrs[domandaId] = srsItem;
-      tracciaSrs(domandaId, srsItem);
-      
-      // Se è un errore o una correzione di errore, tracciamo anche errori
-      tracciaErrore(domandaId, updatedErrori[domandaId] || null);
+      if (ris.corretta) totCorretteInTurn++;
     });
 
-    const XP_PER_RISPOSTA_CORRETTA = 10;
-    const XP_PER_QUIZ_COMPLETATO = 5;
+    // === 4. Aggiorna risposteCorrette globali ===
+    updatedProgress.risposteCorrette += totCorretteInTurn;
+
+    // === 5. Ricalcola mediaPercentuale ===
+    const totFatte = Object.values(updatedProgress.perCategoria)
+      .reduce((sum, cat) => sum + cat.fatte, 0);
+    const totCorrette = Object.values(updatedProgress.perCategoria)
+      .reduce((sum, cat) => sum + cat.corrette, 0);
+
+    updatedProgress.mediaPercentuale = totFatte > 0
+      ? Math.round((totCorrette / totFatte) * 100)
+      : 0;
+
+    // === 6. Aggiorna streak ===
+    const oggi = new Date().toDateString();
+    const ultimoAccesso = new Date(progressiGlobali.ultimoAccesso).toDateString();
+    const ieri = new Date(Date.now() - 86_400_000).toDateString();
+
+    if (ultimoAccesso === oggi) {
+      // Già studiato oggi — streak invariato
+    } else if (ultimoAccesso === ieri) {
+      // Studiato ieri — streak continua
+      updatedProgress.streak += 1;
+    } else {
+      // Streak interrotto — ricomincia da 1
+      updatedProgress.streak = 1;
+    }
+
+    // === 7. Aggiorna XP e livello ===
+    const XP_PER_CORRETTA = 10;
+    const XP_PER_QUIZ = 5;
     const XP_PER_LIVELLO = 500;
-    
-    updatedProgress.xp += (totCorretteInTurn * XP_PER_RISPOSTA_CORRETTA) + XP_PER_QUIZ_COMPLETATO;
+
+    updatedProgress.xp += (totCorretteInTurn * XP_PER_CORRETTA) + XP_PER_QUIZ;
     updatedProgress.livello = Math.floor(updatedProgress.xp / XP_PER_LIVELLO) + 1;
 
-    const statsArray = Object.values(updatedProgress.perCategoria);
-    const totFatte = statsArray.reduce((acc, cat) => acc + (cat as any).fatte, 0);
-    const totCorrette = statsArray.reduce((acc, cat) => acc + (cat as any).corrette, 0);
-    
-    updatedProgress.risposteCorrette = totCorrette;
-    updatedProgress.mediaPercentuale = totFatte > 0 ? Math.round((totCorrette / totFatte) * 100) : 0;
+    // === 8. Aggiorna timestamp ===
     updatedProgress.ultimoAccesso = new Date().toISOString();
 
-    // Persistiamo i cambiamenti scalari nel main doc e i dirty record nelle sub-collections
-    await persistProgressData(updatedProgress, updatedSrs, updatedErrori);
+    // === 9. Aggiorna SRS ed Errori ===
+    const updatedSrs = { ...srsData };
+    const updatedErrori = { ...erroriLog };
+    const srsModificatiIds = new Set<string>();
+    const erroriModificatiIds = new Set<string>();
+
+    risultatiList.forEach((ris) => {
+      const domandaId = ris.domandaId;
+
+      if (ris.corretta) {
+        // SRS: incrementa consecutiveCorrect, aumenta intervallo
+        const existing = updatedSrs[domandaId];
+        const consecutiveCorrect = (existing?.consecutiveCorrect ?? 0) + 1;
+        const easeFactor = Math.max(1.3, (existing?.easeFactor ?? 2.5) + 0.1);
+        const interval = Math.round((existing?.interval ?? 1) * easeFactor);
+
+        const nextReview = new Date();
+        nextReview.setDate(nextReview.getDate() + interval);
+
+        updatedSrs[domandaId] = {
+          domandaId,
+          easeFactor,
+          interval,
+          nextReview: nextReview.toISOString(),
+          consecutiveCorrect,
+        };
+        srsModificatiIds.add(domandaId);
+
+        // Errori: se era in errore e ora è corretta, decrementa
+        if (updatedErrori[domandaId]) {
+          const newCount = updatedErrori[domandaId].count - 1;
+          if (newCount <= 0) {
+            delete updatedErrori[domandaId];
+          } else {
+            updatedErrori[domandaId] = {
+              ...updatedErrori[domandaId],
+              count: newCount,
+            };
+          }
+          erroriModificatiIds.add(domandaId);
+        }
+
+      } else {
+        // SRS: reset consecutiveCorrect, riduci easeFactor
+        const existing = updatedSrs[domandaId];
+        const easeFactor = Math.max(1.3, (existing?.easeFactor ?? 2.5) - 0.2);
+
+        updatedSrs[domandaId] = {
+          domandaId,
+          easeFactor,
+          interval: 1,
+          nextReview: new Date().toISOString(),
+          consecutiveCorrect: 0,
+        };
+        srsModificatiIds.add(domandaId);
+
+        // Errori: aggiungi o incrementa
+        const existingErr = updatedErrori[domandaId];
+        updatedErrori[domandaId] = {
+          domandaId,
+          count: (existingErr?.count ?? 0) + 1,
+          lastError: new Date().toISOString(),
+          indiceRispostaScelta: ris.indiceRispostaScelta,
+        };
+        erroriModificatiIds.add(domandaId);
+      }
+    });
+
+    // === 10. Aggiorna stato React ===
+    setProgressiGlobali(updatedProgress);
+    setSrsData(updatedSrs);
+    setErroriLog(updatedErrori);
+
+    // === 11. Persisti (localStorage + Firestore) ===
+    await persistProgressData(
+      updatedProgress,
+      updatedSrs,
+      updatedErrori,
+      srsModificatiIds,
+      erroriModificatiIds
+    );
   };
 
   const segnaComeLetto = async (capitoloId: string) => {
@@ -392,7 +459,7 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
     setErroriModificati(prev => new Set(prev).add(domandaId));
 
     // Persistiamo subito il cambiamento
-    await persistProgressData(progressiGlobali!, srsData, newErrori);
+    await persistProgressData(progressiGlobali!, srsData, newErrori, new Set(), new Set([domandaId]));
   };
 
   const aggiungiErrore = async (domandaId: string, rispostaErrata: number) => {
@@ -412,7 +479,7 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
       setErroriLog(newErrori);
       setErroriModificati(prev => new Set(prev).add(domandaId));
 
-      await persistProgressData(progressiGlobali, srsData, newErrori);
+      await persistProgressData(progressiGlobali, srsData, newErrori, new Set(), new Set([domandaId]));
   };
 
   return (

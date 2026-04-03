@@ -34,7 +34,7 @@ export const CategoriaStatsSchema = z.object({
 export type CategoriaStats = z.infer<typeof CategoriaStatsSchema>;
 
 export const GlobalProgressSchema = z.object({
-  _schemaVersion: z.literal(2).default(2),
+  _schemaVersion: z.union([z.literal(1), z.literal(2)]).default(1),
   quizCompletati: z.number().nonnegative().default(0),
   risposteCorrette: z.number().nonnegative().default(0),
   mediaPercentuale: z.number().min(0).max(100).default(0),
