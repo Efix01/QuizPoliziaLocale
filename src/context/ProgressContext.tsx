@@ -3,6 +3,8 @@ import type { ReactNode } from 'react';
 import { useAuth } from './AuthContext';
 import { 
   GlobalProgressSchema, 
+  SRSItemSchema,
+  ErroreLogSchema,
   LocalStorageProgressSchema,
   type GlobalProgress, 
   type SRSItem, 
@@ -10,7 +12,19 @@ import {
   type RisultatoRisposta 
 } from '../types/progressi';
 import { db } from '../firebase';
-import { doc, getDoc, writeBatch, collection, getDocs, deleteField, arrayUnion, increment, updateDoc, deleteDoc, type Firestore, type WriteBatch } from 'firebase/firestore';
+import { 
+  doc, 
+  getDoc, 
+  collection, 
+  getDocs, 
+  deleteField, 
+  arrayUnion, 
+  increment, 
+  updateDoc, 
+  type WriteBatch 
+} from 'firebase/firestore';
+import { commitInChunks } from '../lib/firestoreHelpers';
+import { migrateProgressV1toV2 } from '../lib/migrateProgressV1toV2';
 
 interface ProgressContextProps {
   progressiGlobali: GlobalProgress | null;
@@ -26,10 +40,10 @@ interface ProgressContextProps {
 
 const ProgressContext = createContext<ProgressContextProps | undefined>(undefined);
 
-const STORAGE_KEY = 'pl_progress_offline_cache';
+const STORAGE_KEY = 'pl_progress_v2';
 
 const DEFAULT_PROGRESS: GlobalProgress = {
-  _schemaVersion: 1,
+  _schemaVersion: 2,
   quizCompletati: 0,
   risposteCorrette: 0,
   mediaPercentuale: 0,
@@ -41,21 +55,6 @@ const DEFAULT_PROGRESS: GlobalProgress = {
   ultimoAccesso: new Date().toISOString()
 };
 
-/**
- * ✅ Helper universale per eseguire batch di scrittura Firestore in blocchi (chunking).
- * Risolve il limite di 500 operazioni per batch.
- */
-async function commitInChunks(
-  db: Firestore,
-  operations: Array<(batch: WriteBatch) => void>,
-  chunkSize = 490
-) {
-  for (let i = 0; i < operations.length; i += chunkSize) {
-    const batch = writeBatch(db);
-    operations.slice(i, i + chunkSize).forEach(op => op(batch));
-    await batch.commit();
-  }
-}
 
 export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const { user, isAuthenticated } = useAuth();
@@ -64,164 +63,185 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
   const [erroriLog, setErroriLog] = useState<Record<string, ErroreLog>>({});
   const [isLoading, setIsLoading] = useState(true);
 
+  const [srsModificati, setSrsModificati] = useState<Set<string>>(new Set());
+  const [erroriModificati, setErroriModificati] = useState<Set<string>>(new Set());
+
+  // Helper per tracciamento modifiche
+  const tracciaSrs = (id: string, item: SRSItem) => {
+    setSrsData(prev => ({ ...prev, [id]: item }));
+    setSrsModificati(prev => new Set(prev).add(id));
+  };
+
+  const tracciaErrore = (id: string, item: ErroreLog | null) => {
+    setErroriLog(prev => {
+      const next = { ...prev };
+      if (!item) delete next[id];
+      else next[id] = item;
+      return next;
+    });
+    setErroriModificati(prev => new Set(prev).add(id));
+  };
+
   // Derivazione del conteggio errori
   const erroriCount = useMemo(() => Object.keys(erroriLog).length, [erroriLog]);
+
+  /**
+   * Helper: Carica progressi da Firestore (subcollection) con fallback localStorage.
+   * Include logica di migrazione atomica v1 -> v2.
+   */
+  const loadProgressData = async (): Promise<{
+    progress: GlobalProgress;
+    srs: Record<string, SRSItem>;
+    errori: Record<string, ErroreLog>;
+  }> => {
+    const uid = user?.uid;
+    if (!uid) return { progress: DEFAULT_PROGRESS, srs: {}, errori: {} };
+
+    try {
+      // 1. Progressi scalari (main doc)
+      const mainRef = doc(db, 'users', uid, 'progressi', 'main');
+      const mainSnap = await getDoc(mainRef);
+
+      let progress = DEFAULT_PROGRESS;
+      if (mainSnap.exists()) {
+        const parsed = GlobalProgressSchema.safeParse(mainSnap.data());
+        if (parsed.success) progress = parsed.data;
+      }
+
+      // 2. Caricamento Sub-collections (SRS + Errori)
+      const [srsSnap, erroriSnap] = await Promise.all([
+        getDocs(collection(db, 'users', uid, 'srsData')),
+        getDocs(collection(db, 'users', uid, 'errori'))
+      ]);
+
+      const srs: Record<string, SRSItem> = {};
+      srsSnap.forEach(snap => {
+        const parsed = SRSItemSchema.safeParse(snap.data());
+        if (parsed.success) srs[snap.id] = parsed.data;
+      });
+
+      const errori: Record<string, ErroreLog> = {};
+      erroriSnap.forEach(snap => {
+        const parsed = ErroreLogSchema.safeParse(snap.data());
+        if (parsed.success) errori[snap.id] = parsed.data;
+      });
+
+      return { progress, srs, errori };
+    } catch (e) {
+      console.warn('Errore Firestore, uso localStorage:', e);
+      const stored = localStorage.getItem(STORAGE_KEY);
+      if (stored) {
+        const raw = JSON.parse(stored);
+        const res = LocalStorageProgressSchema.safeParse(raw.progressi ? { ...raw, srs: raw.srs || {}, errori: raw.errori || {} } : raw);
+        if (res.success) return { progress: res.data.progressi, srs: res.data.srs, errori: res.data.errori };
+      }
+      return { progress: DEFAULT_PROGRESS, srs: {}, errori: {} };
+    }
+  };
 
   // 1. Idratazione da Firebase o Cache
   useEffect(() => {
     let active = true;
 
-    const caricaDati = async () => {
+    async function boot() {
       setIsLoading(true);
-
-      if (!isAuthenticated || !user) {
-        setProgressiGlobali(DEFAULT_PROGRESS);
-        setIsLoading(false);
-        return;
-      }
-
       try {
-        const mainRef = doc(db, 'users', user.uid, 'progressi', 'main');
-        const mainSnap = await getDoc(mainRef);
-
-        let currentProgress = DEFAULT_PROGRESS;
-        let currentSrs: Record<string, SRSItem> = {};
-        let currentErrori: Record<string, ErroreLog> = {};
-
-        if (mainSnap.exists()) {
-          const data = mainSnap.data();
-          const result = GlobalProgressSchema.safeParse(data);
-          
-          if (result.success) {
-              currentProgress = result.data;
-              if (data.srs || data.errori) {
-                  console.log("Dati embedded rilevati nel documento main. Avvio migrazione...");
-                  currentSrs = data.srs || {};
-                  currentErrori = data.errori || {};
-                  await persistProgressData(currentProgress, currentSrs, currentErrori, true);
-              }
-          }
-        } else {
-            const legacyRef = doc(db, 'users', user.uid);
-            const legacySnap = await getDoc(legacyRef);
-            if (legacySnap.exists()) {
-                const legacyData = legacySnap.data();
-                const result = GlobalProgressSchema.safeParse(legacyData.progressi);
-                if (result.success) {
-                    currentProgress = result.data;
-                    currentSrs = legacyData.srs || {};
-                    currentErrori = legacyData.errori || {};
-                    await persistProgressData(currentProgress, currentSrs, currentErrori, true);
-                }
-            }
+        // 1. Migrazione atomica (one-time check)
+        if (isAuthenticated && user) {
+          await migrateProgressV1toV2(db, user.uid);
         }
 
-        const [srsSnap, erroriSnap] = await Promise.all([
-            getDocs(collection(db, 'users', user.uid, 'srsData')),
-            getDocs(collection(db, 'users', user.uid, 'errori'))
-        ]);
+        // 2. Caricamento dati puliti
+        const { progress, srs, errori } = await loadProgressData();
+        if (!active) return;
 
-        const srsMap: Record<string, SRSItem> = { ...currentSrs };
-        srsSnap.forEach(doc => { 
-            const data = doc.data() as any;
-            srsMap[doc.id] = {
-                ...data,
-                consecutiveCorrect: data.consecutiveCorrect ?? data.streak ?? 0
-            } as SRSItem;
-        });
-
-        const erroriMap: Record<string, ErroreLog> = { ...currentErrori };
-        erroriSnap.forEach(doc => { 
-            const data = doc.data() as any;
-            erroriMap[doc.id] = {
-                ...data,
-                indiceRispostaScelta: data.indiceRispostaScelta ?? data.rispostaData ?? 0
-            } as ErroreLog;
-        });
-
-        if (active) {
-            setProgressiGlobali(currentProgress);
-            setSrsData(srsMap);
-            setErroriLog(erroriMap);
-            localStorage.setItem(STORAGE_KEY, JSON.stringify({
-                progressi: currentProgress,
-                srs: srsMap,
-                errori: erroriMap
-            }));
-        }
-
+        setProgressiGlobali(progress);
+        setSrsData(srs);
+        setErroriLog(errori);
       } catch (e) {
-        console.error("Errore fetch Firebase Progress:", e);
-        if (active) {
-            const stored = localStorage.getItem(STORAGE_KEY);
-            if (stored) {
-                try {
-                    const raw = JSON.parse(stored);
-                    const result = LocalStorageProgressSchema.safeParse(raw);
-                    
-                    if (result.success) {
-                        setProgressiGlobali(result.data.progressi);
-                        setSrsData(result.data.srs);
-                        setErroriLog(result.data.errori);
-                    } else {
-                        console.warn('Cache localStorage corrotta o obsoleta, uso default');
-                        localStorage.removeItem(STORAGE_KEY);
-                        setProgressiGlobali(DEFAULT_PROGRESS);
-                    }
-                } catch {
-                    localStorage.removeItem(STORAGE_KEY);
-                    setProgressiGlobali(DEFAULT_PROGRESS);
-                }
-            } else {
-                setProgressiGlobali(DEFAULT_PROGRESS);
-            }
-        }
+        console.error('Errore boot progressi:', e);
+        if (active) setProgressiGlobali(DEFAULT_PROGRESS);
       } finally {
         if (active) setIsLoading(false);
       }
-    };
+    }
 
-    caricaDati();
+    boot();
     return () => { active = false; };
   }, [user, isAuthenticated]);
 
+  /**
+   * Salva progressi su localStorage + Firestore (subcollection).
+   * 
+   * - /users/{uid}/progressi/main       → solo dati scalari
+   * - /users/{uid}/srsData/{domandaId}   → un doc per domanda
+   * - /users/{uid}/errori/{domandaId}    → un doc per domanda
+   */
   const persistProgressData = async (
-      progress: GlobalProgress, 
-      srs: Record<string, SRSItem>, 
-      errori: Record<string, ErroreLog>,
-      cleanMainDoc: boolean = true
-  ) => {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({ progressi: progress, srs, errori }));
-    } catch (e) { console.warn('Errore localStorage backup:', e); }
+    progress: GlobalProgress,
+    srs: Record<string, SRSItem>,
+    errori: Record<string, ErroreLog>
+  ): Promise<void> => {
 
+    // === 1. localStorage (sempre, anche offline) ===
+    try {
+      const toStore = {
+        progressi: progress,
+        srs,
+        errori,
+        _savedAt: new Date().toISOString(),
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(toStore));
+    } catch (e) {
+      console.warn('Errore salvataggio localStorage:', e);
+    }
+
+    // === 2. Firestore (solo se autenticato) ===
     if (!isAuthenticated || !user) return;
 
     try {
+      const uid = user.uid;
       const operations: Array<(batch: WriteBatch) => void> = [];
-      const mainRef = doc(db, 'users', user.uid, 'progressi', 'main');
 
-      const mainData: any = { ...progress, lastUpdated: new Date().toISOString() };
-      if (cleanMainDoc) {
-          mainData.srs = deleteField();
-          mainData.errori = deleteField();
-      }
-      operations.push((batch) => batch.set(mainRef, mainData, { merge: true }));
+      // 2a. Documento progressi — SOLO dati scalari, NO srs/errori
+      const progressRef = doc(db, 'users', uid, 'progressi', 'main');
+      operations.push((batch) => {
+        batch.set(progressRef, {
+          ...progress,
+          lastUpdated: new Date().toISOString(),
+          // Forza la rimozione di eventuali dati legacy nel documento main
+          srs: deleteField(),
+          errori: deleteField()
+        }, { merge: true });
+      });
 
-      for (const [id, val] of Object.entries(srs)) {
-          const ref = doc(db, 'users', user.uid, 'srsData', id);
-          operations.push((batch) => batch.set(ref, val, { merge: true }));
-      }
+      // 2b. SRS — Solo modificati
+      srsModificati.forEach((domandaId) => {
+        const srsItem = srs[domandaId];
+        if (!srsItem) return;
+        const ref = doc(db, 'users', uid, 'srsData', domandaId);
+        operations.push((batch) => batch.set(ref, srsItem, { merge: true }));
+      });
 
-      for (const [id, val] of Object.entries(errori)) {
-          const ref = doc(db, 'users', user.uid, 'errori', id);
-          operations.push((batch) => batch.set(ref, val, { merge: true }));
-      }
+      // 2c. Errori — Solo modificati
+      erroriModificati.forEach((domandaId) => {
+        const errore = errori[domandaId];
+        const ref = doc(db, 'users', uid, 'errori', domandaId);
+        if (!errore) {
+          operations.push((batch) => batch.delete(ref));
+        } else {
+          operations.push((batch) => batch.set(ref, errore, { merge: true }));
+        }
+      });
 
+      // 2d. Commit e Reset tracking
       await commitInChunks(db, operations);
+      setSrsModificati(new Set());
+      setErroriModificati(new Set());
 
     } catch (e) {
-      console.error("Errore salvataggio Firebase (Sub-collections):", e);
+      console.error('Errore salvataggio Firestore:', e);
+      // localStorage è già salvato — l'utente non perde dati
     }
   };
 
@@ -237,7 +257,7 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
 
     const updatedSrs = { ...srsData };
     const updatedErrori = { ...erroriLog };
-    
+
     const oggi = new Date().toDateString();
     const ieri = new Date(Date.now() - 86400000).toDateString();
     const ultimoAccessoDate = progressiGlobali.ultimoAccesso ? new Date(progressiGlobali.ultimoAccesso).toDateString() : '';
@@ -288,12 +308,18 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
       const nextReviewDate = new Date();
       nextReviewDate.setDate(nextReviewDate.getDate() + newInterval);
 
-      updatedSrs[domandaId] = {
+      const srsItem: SRSItem = {
           ...prevSRS,
           consecutiveCorrect: newConsecutive,
           interval: newInterval,
           nextReview: nextReviewDate.toISOString()
       };
+
+      updatedSrs[domandaId] = srsItem;
+      tracciaSrs(domandaId, srsItem);
+      
+      // Se è un errore o una correzione di errore, tracciamo anche errori
+      tracciaErrore(domandaId, updatedErrori[domandaId] || null);
     });
 
     const XP_PER_RISPOSTA_CORRETTA = 10;
@@ -304,16 +330,14 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
     updatedProgress.livello = Math.floor(updatedProgress.xp / XP_PER_LIVELLO) + 1;
 
     const statsArray = Object.values(updatedProgress.perCategoria);
-    const totFatte = statsArray.reduce((acc, cat) => acc + cat.fatte, 0);
-    const totCorrette = statsArray.reduce((acc, cat) => acc + cat.corrette, 0);
+    const totFatte = statsArray.reduce((acc, cat) => acc + (cat as any).fatte, 0);
+    const totCorrette = statsArray.reduce((acc, cat) => acc + (cat as any).corrette, 0);
     
     updatedProgress.risposteCorrette = totCorrette;
     updatedProgress.mediaPercentuale = totFatte > 0 ? Math.round((totCorrette / totFatte) * 100) : 0;
     updatedProgress.ultimoAccesso = new Date().toISOString();
 
-    setProgressiGlobali(updatedProgress);
-    setSrsData(updatedSrs);
-    setErroriLog(updatedErrori);
+    // Persistiamo i cambiamenti scalari nel main doc e i dirty record nelle sub-collections
     await persistProgressData(updatedProgress, updatedSrs, updatedErrori);
   };
 
@@ -361,21 +385,19 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
 
   const rimuoviErrore = async (domandaId: string) => {
     if (!isAuthenticated || !user) return;
+    
     const newErrori = { ...erroriLog };
     delete newErrori[domandaId];
     setErroriLog(newErrori);
-    
-    // Aggiornamento cache locale
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ progressi: progressiGlobali, srs: srsData, errori: newErrori }));
-    
-    try {
-        const errorRef = doc(db, 'users', user.uid, 'errori', domandaId);
-        await deleteDoc(errorRef);
-    } catch (e) { console.error("Errore rimozione errore Firestore:", e); }
+    setErroriModificati(prev => new Set(prev).add(domandaId));
+
+    // Persistiamo subito il cambiamento
+    await persistProgressData(progressiGlobali!, srsData, newErrori);
   };
 
   const aggiungiErrore = async (domandaId: string, rispostaErrata: number) => {
-      if (!isAuthenticated || !user) return;
+      if (!isAuthenticated || !user || !progressiGlobali) return;
+      
       const newErrori = { ...erroriLog };
       const current = newErrori[domandaId] || { domandaId, count: 0, lastError: '', indiceRispostaScelta: rispostaErrata };
       
@@ -388,21 +410,9 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
       
       newErrori[domandaId] = updatedEntry;
       setErroriLog(newErrori);
+      setErroriModificati(prev => new Set(prev).add(domandaId));
 
-      localStorage.setItem(STORAGE_KEY, JSON.stringify({ progressi: progressiGlobali, srs: srsData, errori: newErrori }));
-
-      try {
-          const errorRef = doc(db, 'users', user.uid, 'errori', domandaId);
-          await updateDoc(errorRef, updatedEntry);
-      } catch (e) {
-          // Se non esiste, updateDoc fallisce, proviamo con setDoc tramite persistProgressData o diretto
-          const errorRef = doc(db, 'users', user.uid, 'errori', domandaId);
-          await updateDoc(errorRef, { ...updatedEntry } as any).catch(async () => {
-             // Fallback setDoc se non esiste (Firestore updateDoc richiede esistenza)
-             const { setDoc } = await import('firebase/firestore');
-             await setDoc(errorRef, updatedEntry);
-          });
-      }
+      await persistProgressData(progressiGlobali, srsData, newErrori);
   };
 
   return (
