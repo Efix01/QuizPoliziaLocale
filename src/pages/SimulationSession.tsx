@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { z } from 'zod';
 import { DomandaPLSchema, ParametriEsameSchema } from '../types/pl';
+import type { RisultatoRisposta } from '../types/progressi';
 import { useProgress } from '../context/ProgressContext';
 import { ResultCard } from '../components/simulation/ResultCard';
-import { ChevronLeft, ChevronRight, Flag } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Flag, Clock, Award, Shield } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 import './SimulationMode.css';
 
 const SimulationStateSchema = z.object({
@@ -12,17 +14,20 @@ const SimulationStateSchema = z.object({
     parametriEsame: ParametriEsameSchema
 });
 
+const getLayerLabel = (catId: string) => {
+    if (catId.startsWith('reg_')) return 'Regionale';
+    if (catId.startsWith('com_')) return 'Comunale';
+    return 'Core Nazionale';
+};
+
 const SimulationSession: React.FC = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    const { salvaRisultatoQuiz } = useProgress();
     
-    // Validazione dello stato tramite Zod
     const parsed = SimulationStateSchema.safeParse(location.state);
     const state = parsed.success ? parsed.data : null;
     
-    const { salvaRisultatoQuiz } = useProgress();
-
-    // Se mancano i parametri o si accede direttamente ricarichiamo ad home
     useEffect(() => {
         if (!state?.domande || !state?.parametriEsame) {
             navigate('/dashboard');
@@ -41,24 +46,20 @@ const SimulationSession: React.FC = () => {
 
     const SIMULATION_TIME = parametri.durataMinuti * 60;
     const MAX_SCORE = parametri.numeroDomande * parametri.punteggioCorretta;
-    const PASS_THRESHOLD = parametri.sogliaSuperamento ?? (MAX_SCORE * 0.6); // Default 60% se non definito
+    const PASS_THRESHOLD = parametri.sogliaSuperamento ?? (MAX_SCORE * 0.6);
 
     const [currentIdx, setCurrentIdx] = useState(0);
     const [answers, setAnswers] = useState<Record<string, number>>({});
     const [timeLeft, setTimeLeft] = useState(SIMULATION_TIME);
     const [isFinished, setIsFinished] = useState(false);
     const [flaggedQuestions, setFlaggedQuestions] = useState<string[]>([]);
+    const [isReviewing, setIsReviewing] = useState(false);
 
-    // Results
+    // Risultati finali
     const [score, setScore] = useState(0);
     const [correctCount, setCorrectCount] = useState(0);
     const [wrongCount, setWrongCount] = useState(0);
     const [skippedCount, setSkippedCount] = useState(0);
-
-    // Advanced Features
-    const [pointsLost, setPointsLost] = useState(0);
-    const [potentialScore, setPotentialScore] = useState(0);
-    const [isReviewing, setIsReviewing] = useState(false);
 
     useEffect(() => {
         if (isFinished || !state) return;
@@ -72,7 +73,6 @@ const SimulationSession: React.FC = () => {
             });
         }, 1000);
         return () => clearInterval(timer);
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isFinished, state]);
 
     const finishSimulation = () => {
@@ -80,18 +80,15 @@ const SimulationSession: React.FC = () => {
         let correct = 0;
         let wrong = 0;
         let skipped = 0;
-        
-        // Per loggare in ProgressContext
-        const risultatiList: any[] = []; // Usa il tipo equivalente a RisultatoRisposta se esportato, qui va bene un array di oggetti
+        const risultatiList: RisultatoRisposta[] = [];
 
         simQuestions.forEach(q => {
             const userAnswer = answers[q.id];
-            
-            const risultato = {
+            const risultato: RisultatoRisposta = {
                 domandaId: q.id,
                 categoriaId: q.categoriaId,
                 corretta: false,
-                indiceRispostaScelta: userAnswer !== undefined ? userAnswer : 0,
+                indiceRispostaScelta: userAnswer !== undefined ? userAnswer : -1,
                 timestamp: new Date().toISOString()
             };
 
@@ -104,42 +101,29 @@ const SimulationSession: React.FC = () => {
                 risultato.corretta = true;
             } else {
                 wrong++;
-                finalScore += parametri.punteggioErrata; // punteggioErrata è di solito negativo
+                finalScore += parametri.punteggioErrata;
             }
-            
             risultatiList.push(risultato);
         });
 
-        // Previene punteggi sotto zero estremi (a discrezione)
         if (finalScore < 0) finalScore = 0;
-
         setScore(finalScore);
         setCorrectCount(correct);
         setWrongCount(wrong);
         setSkippedCount(skipped);
-
-        // Fortune Teller Logic
-        const penaltyValue = Math.abs(parametri.punteggioErrata);
-        const pLost = wrong * penaltyValue;
-        setPointsLost(pLost);
-        setPotentialScore(finalScore + pLost);
-
         setIsFinished(true);
-
-        // SALVATAGGIO PROGRESSI TOTALI (Richiesto e Implementato)
         salvaRisultatoQuiz(risultatiList);
     };
 
     const formatTime = (seconds: number) => {
         const m = Math.floor(seconds / 60);
         const s = seconds % 60;
-        return `${m.toString().padStart(2, '0')}:${s.toString().padStart(2, '0')}`;
+        return `${m}:${s.toString().padStart(2, '0')}`;
     };
 
     const handleAnswer = (idx: number) => {
         if (isFinished && !isReviewing) return;
         if (isReviewing) return;
-
         if (answers[simQuestions[currentIdx].id] === idx) {
             setAnswers(prev => {
                 const next = { ...prev };
@@ -151,22 +135,11 @@ const SimulationSession: React.FC = () => {
         }
     };
 
-    const startReview = () => {
-        setIsReviewing(true);
-        setCurrentIdx(0);
-    };
-
-    const toggleFlag = () => {
-        if (isFinished) return;
-        const qId = simQuestions[currentIdx].id;
-        if (flaggedQuestions.includes(qId)) {
-            setFlaggedQuestions(prev => prev.filter(id => id !== qId));
-        } else {
-            setFlaggedQuestions(prev => [...prev, qId]);
-        }
-    };
-
-    if (!state || simQuestions.length === 0) return <div className="pl-page">Caricamento in corso...</div>;
+    if (!state || simQuestions.length === 0) return (
+        <div className="dashboard-elite" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+            <div className="pl-spinner" />
+        </div>
+    );
 
     if (isFinished && !isReviewing) {
         return (
@@ -177,9 +150,9 @@ const SimulationSession: React.FC = () => {
                 correctCount={correctCount}
                 wrongCount={wrongCount}
                 skippedCount={skippedCount}
-                pointsLost={pointsLost}
-                potentialScore={potentialScore}
-                onReviewClick={startReview}
+                pointsLost={0}
+                potentialScore={score}
+                onReviewClick={() => { setIsReviewing(true); setCurrentIdx(0); }}
                 onRetryClick={() => navigate('/simulation')}
                 onHomeClick={() => navigate('/')}
             />
@@ -187,141 +160,135 @@ const SimulationSession: React.FC = () => {
     }
 
     const currentQ = simQuestions[currentIdx];
-
-    const getOptionClass = (idx: number, questionId: string) => {
-        const userAnswer = answers[questionId];
-        const isCorrect = idx === currentQ.rispostaCorretta;
-        const isSelected = userAnswer === idx;
-
-        if (isReviewing) {
-            if (isCorrect) return 'option-item review-correct';
-            if (isSelected && !isCorrect) return 'option-item review-wrong';
-            if (isSelected && isCorrect) return 'option-item review-selected-correct';
-            return 'option-item';
-        } else {
-            return `option-item ${isSelected ? 'selected' : ''}`;
-        }
-    };
+    const layerLabel = getLayerLabel(currentQ.categoriaId);
 
     return (
-        <div className="simulation-container" style={{ margin: '0 auto', maxWidth: '800px', width: '100%', display: 'flex', flexDirection: 'column' }}>
-            <div className="sim-header">
-                <h2 style={{ margin: 0, fontSize: '1.25rem', fontWeight: 700 }}>Simulazione Esame</h2>
-                {!isReviewing ? (
-                    <div className={`timer-display ${timeLeft < 300 ? 'timer-warning' : ''}`}>
-                        {formatTime(timeLeft)}
-                    </div>
-                ) : (
-                    <div className="review-mode-indicator">REVISIONE</div>
-                )}
-            </div>
-
-            <div className="sim-content">
-                <div className="flashcard">
-                    <div className="category-tag">{currentQ.categoriaId || 'Generale'}</div>
-                    <h3 className="question-text">{currentQ.testo}</h3>
-
-                    <div className="options-list">
-                        {currentQ.opzioni.map((text, idx) => (
-                            <div
-                                key={idx}
-                                className={getOptionClass(idx, currentQ.id)}
-                                onClick={() => handleAnswer(idx)}
-                                style={{ cursor: isReviewing ? 'default' : 'pointer' }}
-                            >
-                                <span style={{ fontWeight: 600, marginRight: '0.5rem' }}>{String.fromCharCode(65 + idx)}.</span>
-                                {text}
-                            </div>
-                        ))}
-                    </div>
-                    {!isReviewing && (
-                        <p className="deselect-hint">
-                            💡 <strong>Suggerimento:</strong> Tocca la risposta selezionata per deselezionarla (lasciare in bianco).
-                        </p>
-                    )}
-
-                    {isReviewing && currentQ.spiegazione && (
-                        <div className="explanation-box" style={{ marginTop: '1rem' }}>
-                            <strong>Spiegazione:</strong> {currentQ.spiegazione}
-                        </div>
-                    )}
+        <div className="dashboard-elite" style={{ minHeight: '100vh', padding: '1rem' }}>
+            <header className="elite-header" style={{ marginBottom: '1.5rem' }}>
+                <div className="profile-section">
+                    <div className="profile-section__sub"><Shield size={14} /> Sessione d'Esame Ministeriale</div>
+                    <h1 className="profile-section__name">Simulazione Ufficiale</h1>
                 </div>
-            </div>
+                <div className="glass-card" style={{ padding: '0.75rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.75rem', borderColor: timeLeft < 300 ? '#ef4444' : 'var(--glass-border)' }}>
+                    <Clock size={18} color={timeLeft < 300 ? '#ef4444' : 'var(--pl-gold)'} />
+                    <span style={{ fontWeight: '800', fontSize: '1.2rem', color: timeLeft < 300 ? '#ef4444' : 'white', fontFamily: 'monospace' }}>
+                        {formatTime(timeLeft)}
+                    </span>
+                </div>
+            </header>
 
-            <div className="sim-controls">
-                <button
-                    className="btn-nav"
-                    onClick={() => setCurrentIdx(p => Math.max(0, p - 1))}
-                    disabled={currentIdx === 0}
-                >
-                    <ChevronLeft size={20} />
-                </button>
-
-                {!isReviewing && !isFinished && (
-                    <button
-                        className={`btn-nav ${flaggedQuestions.includes(simQuestions[currentIdx].id) ? 'btn-flag-active' : ''}`}
-                        onClick={toggleFlag}
-                        style={{ color: flaggedQuestions.includes(simQuestions[currentIdx].id) ? '#f59e0b' : 'inherit' }}
+            <main style={{ maxWidth: '800px', margin: '0 auto', width: '100%' }}>
+                <AnimatePresence mode="wait">
+                    <motion.div 
+                        key={currentIdx}
+                        initial={{ opacity: 0, x: 20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        exit={{ opacity: 0, x: -20 }}
+                        className="glass-card"
+                        style={{ padding: '2rem', marginBottom: '1.5rem' }}
                     >
-                        <Flag size={20} fill={flaggedQuestions.includes(simQuestions[currentIdx].id) ? "#f59e0b" : "none"} />
-                    </button>
-                )}
+                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem', alignItems: 'center' }}>
+                            <span className="rank-badge">Domanda {currentIdx + 1} di {parametri.numeroDomande}</span>
+                            <span style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--pl-gold)' }}>
+                                <Award size={14} style={{ verticalAlign: 'middle', marginRight: '4px' }} /> {layerLabel}
+                            </span>
+                        </div>
 
-                {currentIdx === parametri.numeroDomande - 1 ? (
-                    !isReviewing ? (
-                        <button className="btn-nav btn-submit" onClick={finishSimulation}>
-                            Consegna
+                        <h2 style={{ fontSize: '1.2rem', lineHeight: '1.5', color: 'white', marginBottom: '2rem' }}>
+                            {currentQ.testo}
+                        </h2>
+
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                            {currentQ.opzioni.map((text, idx) => {
+                                const isSelected = answers[currentQ.id] === idx;
+                                const isCorrect = idx === currentQ.rispostaCorretta;
+                                let bgColor = 'rgba(255,255,255,0.03)';
+                                let borderColor = 'rgba(255,255,255,0.1)';
+                                
+                                if (isReviewing) {
+                                    if (isCorrect) { bgColor = 'rgba(34,197,94,0.15)'; borderColor = '#22c55e'; }
+                                    else if (isSelected) { bgColor = 'rgba(239,68,68,0.15)'; borderColor = '#ef4444'; }
+                                } else if (isSelected) {
+                                    bgColor = 'rgba(212,175,55,0.1)';
+                                    borderColor = 'var(--pl-gold)';
+                                }
+
+                                return (
+                                    <button
+                                        key={idx}
+                                        onClick={() => handleAnswer(idx)}
+                                        style={{
+                                            textAlign: 'left',
+                                            padding: '1.15rem',
+                                            borderRadius: '12px',
+                                            border: `1px solid ${borderColor}`,
+                                            backgroundColor: bgColor,
+                                            color: 'white',
+                                            transition: 'all 0.2s',
+                                            display: 'flex',
+                                            gap: '1rem',
+                                            cursor: isReviewing ? 'default' : 'pointer'
+                                        }}
+                                    >
+                                        <span style={{ color: isSelected ? 'var(--pl-gold)' : 'var(--slate-text)', fontWeight: '800' }}>
+                                            {String.fromCharCode(65 + idx)}
+                                        </span>
+                                        {text}
+                                    </button>
+                                );
+                            })}
+                        </div>
+
+                        {isReviewing && currentQ.spiegazione && (
+                             <div style={{ marginTop: '2rem', padding: '1rem', borderRadius: '10px', background: 'rgba(212,175,55,0.05)', borderLeft: '4px solid var(--pl-gold)' }}>
+                                <strong style={{ color: 'var(--pl-gold)', fontSize: '0.9rem' }}>Spiegazione:</strong>
+                                <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.7)', marginTop: '0.5rem' }}>{currentQ.spiegazione}</p>
+                             </div>
+                        )}
+                    </motion.div>
+                </AnimatePresence>
+
+                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+                    <button className="glass-card" style={{ padding: '0.75rem 1.5rem' }} onClick={() => setCurrentIdx(p => Math.max(0, p - 1))} disabled={currentIdx === 0}>
+                        <ChevronLeft size={20} />
+                    </button>
+                    {!isReviewing && (
+                        <button className="glass-card" style={{ padding: '0.75rem 1.5rem', color: flaggedQuestions.includes(currentQ.id) ? '#f59e0b' : 'white' }} onClick={() => setFlaggedQuestions(prev => prev.includes(currentQ.id) ? prev.filter(id => id !== currentQ.id) : [...prev, currentQ.id])}>
+                            <Flag size={20} fill={flaggedQuestions.includes(currentQ.id) ? "#f59e0b" : "none"} />
+                        </button>
+                    )}
+                    {currentIdx === simQuestions.length - 1 ? (
+                        <button className="glass-card" style={{ padding: '0.75rem 2rem', background: 'var(--pl-gold)', color: 'black', fontWeight: '800' }} onClick={() => isReviewing ? navigate('/dashboard') : finishSimulation()}>
+                            {isReviewing ? 'Esci' : 'Consegna'}
                         </button>
                     ) : (
-                        <button className="btn-nav" onClick={() => navigate('/simulation')}>
-                            Esci
+                        <button className="glass-card" style={{ padding: '0.75rem 1.5rem' }} onClick={() => setCurrentIdx(p => Math.min(simQuestions.length - 1, p + 1))}>
+                            <ChevronRight size={20} />
                         </button>
-                    )
-                ) : (
-                    <button
-                        className="btn-nav"
-                        onClick={() => setCurrentIdx(p => Math.min(parametri.numeroDomande - 1, p + 1))}
-                    >
-                        <ChevronRight size={20} />
-                    </button>
-                )}
-            </div>
+                    )}
+                </div>
 
-            <div className="question-nav">
-                {simQuestions.map((q, idx) => {
-                    let dotClass = 'q-dot';
-                    if (currentIdx === idx) dotClass += ' active';
-
-                    if (isReviewing) {
-                        const ans = answers[q.id];
-                        let style = {};
-                        if (ans === q.rispostaCorretta) style = { backgroundColor: 'var(--color-success)', color: 'white', borderColor: 'transparent' };
-                        else if (ans !== undefined) style = { backgroundColor: 'var(--color-error)', color: 'white', borderColor: 'transparent' };
-                        else style = { backgroundColor: '#e5e7eb', color: '#6b7280' };
-
-                        if (currentIdx === idx) style = { ...style, border: '2px solid black' };
-
-                        return (
-                            <div key={q.id} className={dotClass} onClick={() => setCurrentIdx(idx)} style={style}>
-                                {idx + 1}
-                            </div>
-                        );
-                    } else {
-                        if (answers[q.id] !== undefined) dotClass += ' answered';
-                        if (flaggedQuestions.includes(q.id)) dotClass += ' flagged';
-
-                        const style: React.CSSProperties = flaggedQuestions.includes(q.id)
-                            ? { borderColor: '#f59e0b', color: '#d97706', backgroundColor: '#fffbeb' }
-                            : {};
-
-                        return (
-                            <div key={q.id} className={dotClass} onClick={() => setCurrentIdx(idx)} style={style}>
-                                {idx + 1}
-                            </div>
-                        );
-                    }
-                })}
-            </div>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', justifyContent: 'center', marginTop: '2rem' }}>
+                    {simQuestions.map((q, idx) => (
+                        <button
+                            key={idx}
+                            onClick={() => setCurrentIdx(idx)}
+                            style={{
+                                width: '32px',
+                                height: '32px',
+                                borderRadius: '6px',
+                                fontSize: '0.7rem',
+                                fontWeight: '700',
+                                backgroundColor: currentIdx === idx ? 'white' : (answers[q.id] !== undefined ? 'rgba(212,175,55,0.2)' : 'rgba(255,255,255,0.03)'),
+                                color: currentIdx === idx ? 'black' : 'white',
+                                border: '1px solid rgba(255,255,255,0.1)'
+                            }}
+                        >
+                            {idx + 1}
+                        </button>
+                    ))}
+                </div>
+            </main>
         </div>
     );
 };

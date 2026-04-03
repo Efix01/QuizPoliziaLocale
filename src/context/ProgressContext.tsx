@@ -68,23 +68,6 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
   const [srsModificati, setSrsModificati] = useState<Set<string>>(new Set());
   const [erroriModificati, setErroriModificati] = useState<Set<string>>(new Set());
 
-  /* Helper per tracciamento modifiche (Non utilizzati al momento)
-  const tracciaSrs = (id: string, item: SRSItem) => {
-    setSrsData(prev => ({ ...prev, [id]: item }));
-    setSrsModificati(prev => new Set(prev).add(id));
-  };
-
-  const tracciaErrore = (id: string, item: ErroreLog | null) => {
-    setErroriLog(prev => {
-      const next = { ...prev };
-      if (!item) delete next[id];
-      else next[id] = item;
-      return next;
-    });
-    setErroriModificati(prev => new Set(prev).add(id));
-  };
-  */
-
   // Derivazione del conteggio errori
   const erroriCount = useMemo(() => Object.keys(erroriLog).length, [erroriLog]);
 
@@ -457,7 +440,11 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
     const newErrori = { ...erroriLog };
     delete newErrori[domandaId];
     setErroriLog(newErrori);
-    setErroriModificati(prev => new Set(prev).add(domandaId));
+    setErroriModificati((prev: Set<string>) => {
+      const next = new Set(prev);
+      next.add(domandaId);
+      return next;
+    });
 
     // Persistiamo subito il cambiamento
     await persistProgressData(progressiGlobali!, srsData, newErrori, new Set(), new Set([domandaId]));
@@ -478,7 +465,11 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
       
       newErrori[domandaId] = updatedEntry;
       setErroriLog(newErrori);
-      setErroriModificati(prev => new Set(prev).add(domandaId));
+      setErroriModificati((prev: Set<string>) => {
+        const next = new Set(prev);
+        next.add(domandaId);
+        return next;
+      });
 
       await persistProgressData(progressiGlobali, srsData, newErrori, new Set(), new Set([domandaId]));
   };

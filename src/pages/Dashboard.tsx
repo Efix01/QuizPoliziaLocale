@@ -1,284 +1,245 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { usePL } from '../context/PLContext';
 import { useProgress } from '../context/ProgressContext';
 import { useQuizPL } from '../hooks/useQuizPL';
 import { motion, type Variants } from 'framer-motion';
-
 import { useAuth } from '../context/AuthContext';
 import { 
     MapPin, 
     Settings2, 
-    Zap, 
     ClipboardList, 
     RotateCcw, 
     BookOpen, 
     ChevronRight, 
-    Play,
     TrendingUp,
-    Clock,
-    Award
+    Shield,
+    TrendingDown,
+    Target
 } from 'lucide-react';
-
-import ReadinessGauge from '../components/dashboard/ReadinessGauge';
-import ExperienceProgress from '../components/dashboard/ExperienceProgress';
 
 import manualeData from '../data/manuale_pl.json';
 import '../styles/dashboard-elite.css';
 
-// Varianti per animazioni vellutate
-const containerVariants: Variants = {
-    hidden: { opacity: 0 },
-    visible: { 
-        opacity: 1,
-        transition: { staggerChildren: 0.1, delayChildren: 0.1 }
-    }
+// --- COMPONENTI INLINE PER EVITARE RIFERIMENTI ESTERNI (FIX STABILITÀ) ---
+
+const ExperienceProgressInline: React.FC<{ xp: number; level: number; xpPerLevel?: number }> = ({ 
+  xp, 
+  level, 
+  xpPerLevel = 500 
+}) => {
+  const currentXPPercent = Math.min(100, Math.max(0, ((xp % xpPerLevel) / xpPerLevel) * 100));
+  return (
+    <div className="xp-container">
+      <div className="xp-label-row" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
+        <div>
+          <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)', display: 'block', textTransform: 'uppercase' }}>ESPERIENZA</span>
+          <span style={{ fontSize: '1.2rem', fontWeight: '800', color: 'white' }}>
+            {xp.toLocaleString()} <span style={{ fontSize: '0.8rem', opacity: 0.5, fontWeight: '400' }}>XP</span>
+          </span>
+        </div>
+        <div style={{ textAlign: 'right' }}>
+          <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)', display: 'block', textTransform: 'uppercase' }}>GRADO</span>
+          <span className="xp-level-badge" style={{ backgroundColor: 'var(--pl-gold)', color: 'black', padding: '2px 8px', borderRadius: '4px', fontWeight: '800' }}>
+            {level}
+          </span>
+        </div>
+      </div>
+      <div style={{ height: '8px', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '100px', overflow: 'hidden', marginBottom: '8px' }}>
+        <motion.div
+          style={{ height: '100%', background: 'linear-gradient(90deg, var(--pl-gold), var(--pl-gold-light))' }}
+          initial={{ width: 0 }}
+          animate={{ width: `${currentXPPercent}%` }}
+          transition={{ duration: 1.2 }}
+        />
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.65rem', color: 'rgba(255,255,255,0.4)' }}>
+        <span>LVL {level}</span>
+        <span>{xpPerLevel - (xp % xpPerLevel)} XP AL PROSSIMO GRADO</span>
+        <span>LVL {level + 1}</span>
+      </div>
+    </div>
+  );
 };
 
-const itemVariants: Variants = {
-    hidden: { y: 15, opacity: 0 },
-    visible: { 
-        y: 0, 
-        opacity: 1, 
-        transition: { type: 'spring', stiffness: 260, damping: 20 } 
-    }
-};
+// --- COMPONENTE DASHBOARD PRINCIPALE ---
 
 const Dashboard: React.FC = () => {
-    const { profilo, isLoading } = usePL();
-    const { user } = useAuth();
+    const { profilo, isLoading, domandeRegionali, domandeComunali } = usePL();
     const { progressiGlobali, erroriLog, srsData } = useProgress();
-    const { generaQuizVeloce, generaQuizId } = useQuizPL();
+    const { generaQuizVeloce, generaQuizId, generaQuizStrato } = useQuizPL();
     const navigate = useNavigate();
+    const { user } = useAuth();
 
-    React.useEffect(() => {
-        if (!isLoading && !profilo) {
-            navigate('/welcome', { replace: true });
-        }
-    }, [profilo, isLoading, navigate]);
-
-    // Calcolo capitoli totali dal manuale
-    const totaleCapitoliManuale = useMemo(() => {
-        return Object.values(manualeData).reduce((acc, cat) => acc + (cat.capitoli?.length || 0), 0);
-    }, []);
-
-    const pg = progressiGlobali;
     const {
+        quizCompletati = 0,
+        mediaPercentuale = 0,
         streak = 0,
         perCategoria = {},
         xp = 0,
         livello = 1,
         capitoliLetti = []
-    } = pg || {};
+    } = progressiGlobali || {};
 
-    const erroriCount = Object.keys(erroriLog).length;
-    const capitoliLettiCount = capitoliLetti.length;
+    useEffect(() => {
+        if (!isLoading && !profilo) {
+            navigate('/welcome', { replace: true });
+        }
+    }, [profilo, isLoading, navigate]);
 
-    // Materie Nazionali
-    const materieNazionali = [
-        { id: 'cds', label: 'Codice della Strada' }, 
-        { id: 'tuel', label: 'TUEL (Enti Locali)' },
-        { id: 'l241', label: 'Proc. Amministrativo' }, 
-        { id: 'l689', label: 'Sanzioni Amm.' },
-        { id: 'penale', label: 'Diritto Penale' },
-    ];
+    const totaleCapitoliManuale = useMemo(() => {
+        return Object.values(manualeData).reduce((acc, cat) => acc + (cat.capitoli?.length || 0), 0);
+    }, []);
 
-    const regionePrefix = `reg_${profilo?.regioneId}`;
-    const comunePrefix  = profilo?.comuneId ? `com_${profilo.comuneId}` : '';
+    const { statsByLayer, totals } = useMemo(() => {
+      const stats = { core: { fatte: 0, corrette: 0 }, regionale: { fatte: 0, corrette: 0 }, comunale: { fatte: 0, corrette: 0 } };
+      const totalCounts = { core: 60, regionale: domandeRegionali.length || 0, comunale: domandeComunali.length || 0 };
 
-    // Calcolo Progressi
-    const totaleCorretteCore = materieNazionali.reduce((s, m) => s + (perCategoria[m.id]?.corrette ?? 0), 0);
-    const totaleFatteCore    = materieNazionali.reduce((s, m) => s + (perCategoria[m.id]?.fatte    ?? 0), 0);
-    const progressoCore      = totaleFatteCore > 0 ? Math.round((totaleCorretteCore / totaleFatteCore) * 100) : 0;
+      Object.entries(perCategoria).forEach(([catId, s]) => {
+          if (catId.startsWith('reg_')) {
+              stats.regionale.fatte += s.fatte;
+              stats.regionale.corrette += s.corrette;
+          } else if (catId.startsWith('com_')) {
+              stats.comunale.fatte += s.fatte;
+              stats.comunale.corrette += s.corrette;
+          } else {
+              stats.core.fatte += s.fatte;
+              stats.core.corrette += s.corrette;
+          }
+      });
+      return { statsByLayer: stats, totals: totalCounts };
+    }, [perCategoria, domandeRegionali.length, domandeComunali.length]);
 
-    const fatteRegionali     = perCategoria[regionePrefix]?.fatte    ?? 0;
-    const corretteRegionali  = perCategoria[regionePrefix]?.corrette ?? 0;
-    const progressoRegionale = fatteRegionali > 0 ? Math.round((corretteRegionali / fatteRegionali) * 100) : 0;
+    const pctCore = statsByLayer.core.fatte > 0 ? Math.round((statsByLayer.core.corrette / statsByLayer.core.fatte) * 100) : 0;
+    const pctRegionale = statsByLayer.regionale.fatte > 0 ? Math.round((statsByLayer.regionale.corrette / statsByLayer.regionale.fatte) * 100) : 0;
+    const pctComunale = statsByLayer.comunale.fatte > 0 ? Math.round((statsByLayer.comunale.corrette / statsByLayer.comunale.fatte) * 100) : 0;
 
-    const fatteComunali      = perCategoria[comunePrefix]?.fatte    ?? 0;
-    const corretteComunali   = perCategoria[comunePrefix]?.corrette ?? 0;
-    const progressoComunale  = fatteComunali > 0 ? Math.round((corretteComunali / fatteComunali) * 100) : 0;
+    const indiceProntezza = Math.round((pctCore * 0.70) + (pctRegionale * 0.25) + (pctComunale * 0.05));
 
-    // Prontezza (Core 60%, Reg 30%, Com 10%)
-    const indicePreparazione = Math.round(
-        progressoCore * 0.60 +
-        progressoRegionale * 0.30 +
-        progressoComunale * 0.10
-    );
-
-    // SRS Forecast: domande dovute oggi
     const srsDueToday = useMemo(() => {
         const now = new Date();
         return Object.values(srsData).filter(item => new Date(item.nextReview) <= now).length;
     }, [srsData]);
 
+    const smartCTA = useMemo(() => {
+        const errCount = Object.keys(erroriLog).length;
+        if (errCount > 10) return { label: `Ripassa ${errCount} errori`, path: '/study', state: { mode: 'errori', domande: generaQuizId(Object.keys(erroriLog)) }, type: 'error', desc: 'Stabilizza le basi' };
+        if (pctRegionale < 50 && domandeRegionali.length > 0) return { label: 'Allenati sul Regionale', path: '/study', state: { mode: 'regionale', domande: generaQuizStrato('regionale', 20) }, type: 'warning', desc: `Focus su ${profilo?.nomeRegione}` };
+        if (pctComunale < 50 && domandeComunali.length > 0) return { label: 'Studia il Comunale', path: '/study', state: { mode: 'comunale', domande: generaQuizStrato('comunale', 20) }, type: 'warning', desc: `Focus su ${profilo?.nomeComune}` };
+        if (streak === 0) return { label: 'Inizia la tua Striscia', path: '/study', state: { mode: 'veloce', domande: generaQuizVeloce(20) }, type: 'info', desc: 'Fai il primo quiz' };
+        return { label: 'Quiz Veloce', path: '/study', state: { mode: 'veloce', domande: generaQuizVeloce(20) }, type: 'default', desc: 'Mantieni i riflessi' };
+    }, [erroriLog, pctRegionale, pctComunale, domandeRegionali.length, domandeComunali.length, streak, profilo, generaQuizId, generaQuizStrato, generaQuizVeloce]);
+
     const handlePrimaryCTA = (action: string) => {
-        if (action === 'mistakes') {
-            const errorIds = Object.keys(erroriLog);
-            const domande = generaQuizId(errorIds);
-            navigate('/study', { state: { domande, mode: 'errori' } });
-        } else if (action === 'simulation') {
-            navigate('/simulazione');
-        } else if (action === 'srs') {
-            const duoIds = Object.values(srsData)
-                .filter(item => new Date(item.nextReview) <= new Date())
-                .map(item => item.domandaId);
-            const domande = generaQuizId(duoIds);
-            navigate('/study', { state: { domande, mode: 'srs' } });
-        } else {
-            const domande = generaQuizVeloce(20);
-            navigate('/study', { state: { domande, mode: 'veloce' } });
-        }
+        if (action === 'smart') { navigate(smartCTA.path, { state: smartCTA.state }); return; }
+        if (action === 'mistakes') { navigate('/study', { state: { domande: generaQuizId(Object.keys(erroriLog)), mode: 'errori' } }); }
+        else if (action === 'simulation') { navigate('/simulation'); }
+        else { navigate('/study', { state: { domande: generaQuizVeloce(20), mode: 'veloce' } }); }
     };
 
-    if (isLoading || !profilo) {
-        return (
-            <div className="dashboard-elite" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <div className="pl-spinner" />
-            </div>
-        );
-    }
+    const getLayerColor = (pct: number) => {
+        if (pct >= 70) return '#22c55e';
+        if (pct >= 40) return '#f59e0b';
+        return '#ef4444';
+    };
 
     return (
-        <motion.div 
-            className="dashboard-elite"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-        >
-            {/* 1. ELITE HEADER */}
-            <motion.header className="elite-header" variants={itemVariants}>
+        <div className="dashboard-elite">
+            <header className="elite-header">
                 <div className="profile-section">
-                    <div className="profile-section__sub">
-                        <MapPin size={14} /> {profilo.nomeRegione} {profilo.nomeComune ? `— ${profilo.nomeComune}` : ''}
-                    </div>
+                    <div className="profile-section__sub">Comandante in Prova</div>
                     <h1 className="profile-section__name">{user?.displayName || 'Agente'}</h1>
-                    <div style={{ marginTop: '8px' }}>
-                        <span className="rank-badge">Grado {livello}</span>
+                    <div className="profile-section__location"><MapPin size={14} /> {profilo?.nomeComune}, {profilo?.nomeRegione}</div>
+                </div>
+                <div style={{ display: 'flex', gap: '1rem' }}>
+                    <div className="glass-card" style={{ padding: '0.75rem 1.25rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
+                        <span style={{ fontSize: '0.7rem', opacity: 0.6, textTransform: 'uppercase' }}>Livello</span>
+                        <span style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--pl-gold)' }}>{livello}</span>
                     </div>
+                    <button className="glass-card icon-btn" onClick={() => navigate('/settings')}><Settings2 size={20} /></button>
                 </div>
-                <button 
-                  className="glass-card" 
-                  style={{ padding: '10px', borderRadius: '12px' }}
-                  onClick={() => navigate('/settings')}
-                >
-                    <Settings2 size={20} className="insight-card__icon" />
-                </button>
-            </motion.header>
+            </header>
 
-            {/* 2. HERO STATS: READINESS & XP */}
-            <motion.div className="hero-stats-grid" variants={itemVariants}>
-                <div className="glass-card glass-card--gold readiness-gauge-container">
-                    <ReadinessGauge value={indicePreparazione} />
-                </div>
-                <div className="glass-card xp-container">
-                    <ExperienceProgress xp={xp} level={livello} />
-                </div>
-            </motion.div>
-
-            {/* 3. BENTO GRID ACTIONS */}
-            <div className="section-label-elite">
-                <TrendingUp size={16} /> Operazioni Rapide
-            </div>
-            <motion.div className="bento-grid" variants={containerVariants}>
-                {/* LARGE: Quick Quiz */}
-                <motion.button 
-                  className="glass-card bento-item bento-item--large" 
-                  onClick={() => handlePrimaryCTA('veloce')}
-                  variants={itemVariants}
-                  whileHover={{ filter: 'brightness(1.1)' }}
-                >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                        <div className="bento-item__icon" style={{ background: 'rgba(255,255,255,0.1)' }}>
-                            <Zap size={24} color="white" />
+            <main className="elite-grid">
+                <section className="elite-column">
+                    <div className="glass-card" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                        <h3 className="profile-section__sub" style={{ fontSize: '0.9rem', opacity: 0.8 }}>Prontezza Stimata</h3>
+                        <div style={{ textAlign: 'center', fontSize: '4.5rem', fontWeight: '900', lineHeight: '1', color: indiceProntezza >= 70 ? '#22c55e' : '#f59e0b', margin: '0.5rem 0' }}>
+                            {indiceProntezza}%
+                            <div style={{ fontSize: '0.8rem', fontWeight: '500', color: 'rgba(255,255,255,0.4)', marginTop: '0.5rem' }}>
+                                {indiceProntezza >= 70 ? 'IDONEO AL SERVIZIO' : 'REVISIONE NECESSARIA'}
+                            </div>
                         </div>
-                        <div style={{ textAlign: 'left' }}>
-                            <div className="bento-item__title" style={{ marginTop: 0 }}>Quiz Veloce</div>
-                            <div className="bento-item__sub" style={{ color: 'rgba(255,255,255,0.7)' }}>20 domande mix</div>
+
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+                            {[
+                                { label: 'Core Nazionale', pct: pctCore, fatte: statsByLayer.core.fatte, total: totals.core },
+                                { label: `Regionale · ${profilo?.nomeRegione}`, pct: pctRegionale, fatte: statsByLayer.regionale.fatte, total: totals.regionale },
+                                { label: `Comunale · ${profilo?.nomeComune}`, pct: pctComunale, fatte: statsByLayer.comunale.fatte, total: totals.comunale }
+                            ].map((layer, i) => (
+                                <div key={i} className="pl-layer-item">
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', fontSize: '0.85rem' }}>
+                                        <span style={{ fontWeight: '700', color: 'white' }}>{layer.label}</span>
+                                        <span style={{ color: 'rgba(255,255,255,0.6)' }}>{layer.fatte}/{layer.total} · <b style={{ color: getLayerColor(layer.pct) }}>{layer.pct}%</b></span>
+                                    </div>
+                                    <div style={{ height: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '100px', overflow: 'hidden' }}>
+                                        <motion.div initial={{ width: 0 }} animate={{ width: `${layer.pct}%` }} style={{ height: '100%', backgroundColor: getLayerColor(layer.pct) }} />
+                                    </div>
+                                </div>
+                            ))}
                         </div>
-                    </div>
-                    <ChevronRight size={20} color="rgba(255,255,255,0.5)" />
-                </motion.button>
 
-                {/* Simulation */}
-                <motion.button 
-                  className="glass-card bento-item" 
-                  onClick={() => handlePrimaryCTA('simulation')}
-                  variants={itemVariants}
-                >
-                    <div className="bento-item__icon"><ClipboardList size={22} color="var(--pl-blue-light)" /></div>
-                    <div>
-                        <div className="bento-item__title">Simulazione</div>
-                        <div className="bento-item__sub">Esame completo</div>
-                    </div>
-                </motion.button>
-
-                {/* mistakes */}
-                <motion.button 
-                  className={`glass-card bento-item ${erroriCount === 0 ? 'opacity-50' : ''}`}
-                  onClick={() => handlePrimaryCTA('mistakes')}
-                  disabled={erroriCount === 0}
-                  variants={itemVariants}
-                >
-                    <div className="bento-item__icon"><RotateCcw size={22} color="#ef4444" /></div>
-                    {erroriCount > 0 && <span className="bento-item__badge">{erroriCount}</span>}
-                    <div>
-                        <div className="bento-item__title">Errori</div>
-                        <div className="bento-item__sub">Ripassa sbagliati</div>
-                    </div>
-                </motion.button>
-            </motion.div>
-
-            {/* 4. INSIGHTS & SRS */}
-            <div className="section-label-elite">
-                <Clock size={16} /> Analisi Studio
-            </div>
-            <motion.div variants={itemVariants}>
-                {srsDueToday > 0 && (
-                    <div className="glass-card insight-card" onClick={() => handlePrimaryCTA('srs')} style={{ cursor: 'pointer' }}>
-                        <div className="bento-item__icon" style={{ background: 'rgba(212, 175, 55, 0.1)' }}>
-                             <Award size={20} color="var(--pl-gold)" />
+                        <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '1rem', marginTop: '0.5rem', borderTop: '1px solid rgba(255,255,255,0.05)', fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)' }}>
+                            <span>Quiz: <b>{quizCompletati}</b></span>
+                            <span>Media: <b>{mediaPercentuale}%</b></span>
+                            <span>Streak: <b>🔥 {streak} gg</b></span>
                         </div>
-                        <div className="insight-card__text">
-                            <div className="insight-card__title">Ripasso Programmato</div>
-                            <div className="insight-card__desc">Hai {srsDueToday} domande da rivedere per non dimenticare.</div>
-                        </div>
-                        <Play size={18} color="var(--pl-gold)" />
-                    </div>
-                )}
 
-                <div className="glass-card insight-card" onClick={() => navigate('/manual')} style={{ cursor: 'pointer' }}>
-                    <div className="bento-item__icon">
-                         <BookOpen size={20} color="var(--pl-blue-light)" />
+                        <button 
+                            onClick={() => handlePrimaryCTA('smart')}
+                            className="pl-btn"
+                            style={{
+                                marginTop: '1rem', width: '100%', padding: '1.25rem', fontSize: '1.1rem', fontWeight: '700', borderRadius: '12px', border: 'none', cursor: 'pointer',
+                                color: smartCTA.type === 'default' ? 'black' : 'white',
+                                backgroundColor: smartCTA.type === 'error' ? '#ef4444' : smartCTA.type === 'warning' ? '#f59e0b' : smartCTA.type === 'info' ? '#3b82f6' : 'var(--pl-gold)'
+                            }}
+                        >
+                            {smartCTA.label}
+                        </button>
                     </div>
-                    <div className="insight-card__text">
-                        <div className="insight-card__title">Materiale Istituzionale</div>
-                        <div className="insight-card__desc">Letto {capitoliLettiCount} di {totaleCapitoliManuale} capitoli del manuale.</div>
-                    </div>
-                    <ChevronRight size={18} color="var(--slate-text)" />
-                </div>
-            </motion.div>
 
-            {/* 5. FOOTER STATS */}
-            <motion.div 
-              className="pl-stats-row" 
-              variants={itemVariants}
-              style={{ marginTop: '2rem', borderTop: '1px solid var(--glass-border)', padding: '1.5rem 0.5rem' }}
-            >
-                <div style={{ textAlign: 'center' }}>
-                    <div style={{ color: 'var(--pl-gold)', fontSize: '1.1rem', fontWeight: '800' }}>🔥 {streak}</div>
-                    <div style={{ fontSize: '0.65rem', color: 'var(--slate-text)' }}>STREAK</div>
-                </div>
-                <div style={{ textAlign: 'center' }}>
-                    <div style={{ color: 'white', fontSize: '1.1rem', fontWeight: '800' }}>{totaleFatteCore}</div>
-                    <div style={{ fontSize: '0.65rem', color: 'var(--slate-text)' }}>QUESITI</div>
-                </div>
-                <div style={{ textAlign: 'center' }}>
-                    <div style={{ color: 'white', fontSize: '1.1rem', fontWeight: '800' }}>{progressoCore}%</div>
-                    <div style={{ fontSize: '0.65rem', color: 'var(--slate-text)' }}>PRECISIONE CORE</div>
-                </div>
-            </motion.div>
-        </motion.div>
+                    <div className="glass-card" style={{ padding: '1.5rem', marginTop: '1.5rem' }}>
+                        <ExperienceProgressInline xp={xp} level={livello} />
+                    </div>
+                </section>
+
+                <section className="elite-column">
+                    <div className="section-label"><TrendingUp size={16} /> Operazioni Rapide</div>
+                    <div className="bento-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
+                        <button className="glass-card bento-item" style={{ gridColumn: 'span 2', padding: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} onClick={() => handlePrimaryCTA('simulation')}>
+                            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+                                <ClipboardList size={24} color="var(--pl-gold)" />
+                                <div style={{ textAlign: 'left' }}>
+                                    <div style={{ fontWeight: '700', color: 'white' }}>Simulazione Ministeriale</div>
+                                    <div style={{ fontSize: '0.8rem', opacity: 0.6 }}>60 domande · 60 minuti</div>
+                                </div>
+                            </div>
+                            <ChevronRight size={20} />
+                        </button>
+                        <button className="glass-card bento-item" style={{ padding: '1rem', textAlign: 'left' }} onClick={() => handlePrimaryCTA('srs')}>
+                            <Target size={20} color="#3b82f6" />
+                            <div style={{ fontWeight: '700', marginTop: '0.5rem' }}>SRS</div>
+                            <div style={{ fontSize: '1.5rem', fontWeight: '800' }}>{srsDueToday}</div>
+                        </button>
+                        <button className="glass-card bento-item" style={{ padding: '1rem', textAlign: 'left' }} onClick={() => handlePrimaryCTA('mistakes')}>
+                            <TrendingDown size={20} color="#ef4444" />
+                            <div style={{ fontWeight: '700', marginTop: '0.5rem' }}>Errori</div>
+                            <div style={{ fontSize: '1.5rem', fontWeight: '800' }}>{Object.keys(erroriLog).length}</div>
+                        </button>
+                    </div>
+                </section>
+            </main>
+        </div>
     );
 };
 

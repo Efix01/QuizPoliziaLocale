@@ -83,6 +83,7 @@ function App() {
                         {/* Main app with Layout */}
                         <Route path="/" element={<Layout />}>
                           <Route index element={<Dashboard />} />
+                          <Route path="dashboard" element={<Dashboard />} />
                           <Route path="quiz-veloce" element={<QuickQuizMenu />} />
                           <Route path="simulazione" element={<SimulationMenu />} />
                           <Route path="physical" element={<PhysicalPrep />} />
