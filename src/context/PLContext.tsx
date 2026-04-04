@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { ProfileProvider, useProfile } from './ProfileContext';
 import { QuizDataProvider, useQuizData } from './QuizDataContext';
 import { type ProfiloPL, type DomandaPL } from '../types/pl';
@@ -51,8 +51,8 @@ export function usePL(): PLContextType {
   const profile = useProfile();
   const quizData = useQuizData();
 
-  return {
+  return useMemo(() => ({
     ...profile,
     ...quizData,
-  };
+  }), [profile, quizData]);
 }
