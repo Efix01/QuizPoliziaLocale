@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { usePL } from '../context/PLContext';
@@ -7,43 +8,90 @@ import { MapPin, BrainCircuit, Target, Timer, Flame, AlertCircle, TrendingUp, Bo
 export default function Dashboard() {
   const navigate = useNavigate();
   const { user } = useAuth();
-  const { profilo, domandeRegionali, domandeComunali } = usePL();
+  const { profilo, domandeCore, domandeRegionali, domandeComunali } = usePL();
   const { progressiGlobali, erroriLog } = useProgress();
 
   if (!progressiGlobali) return null;
 
-  const { quizCompletati, mediaPercentuale, streak, perCategoria } = progressiGlobali;
+  const { mediaPercentuale, streak, perCategoria } = progressiGlobali;
   const erroriCount = Object.keys(erroriLog || {}).length;
 
-  // --- Calcolo Statistiche per Layer ---
+  // --- Mappa categorie → layer da domande caricate ---
+  const categoriaDomandeMap = useMemo(() => {
+    const map = new Map<string, 'core' | 'regionale' | 'comunale'>();
+    
+    // Aggreghiamo tutte le domande disponibili per mappare le categorie ai rispettivi strati
+    [...domandeCore, ...domandeRegionali, ...domandeComunali].forEach(d => {
+      if (d.categoriaId && !map.has(d.categoriaId)) {
+        map.set(d.categoriaId, d.strato);
+      }
+    });
+    
+    return map;
+  }, [domandeCore, domandeRegionali, domandeComunali]);
+
   const getLayerFromCategoria = (catId: string): 'core' | 'regionale' | 'comunale' => {
+    // 1. Prova con prefissi (veloce per nuovi dati)
     if (catId.startsWith('reg_')) return 'regionale';
     if (catId.startsWith('com_')) return 'comunale';
+    
+    // 2. Cerca nella mappa costruita dalle domande caricate (robusto per legacy)
+    const layer = categoriaDomandeMap.get(catId);
+    if (layer) return layer;
+    
+    // 3. Fallback core
     return 'core';
   };
 
-  const statsByLayer = Object.entries(perCategoria || {}).reduce(
-    (acc, [catId, stats]) => {
-      const layer = getLayerFromCategoria(catId);
-      acc[layer].fatte += stats.fatte;
-      acc[layer].corrette += stats.corrette;
-      return acc;
-    },
-    {
-      core: { fatte: 0, corrette: 0 },
-      regionale: { fatte: 0, corrette: 0 },
-      comunale: { fatte: 0, corrette: 0 },
-    }
-  );
+  // --- Calcolo Statistiche per Layer (memoizzato) ---
+  const statsByLayer = useMemo(() => {
+    return Object.entries(perCategoria || {}).reduce(
+      (acc, [catId, stats]) => {
+        const layer = getLayerFromCategoria(catId);
+        acc[layer].fatte += stats.fatte;
+        acc[layer].corrette += stats.corrette;
+        return acc;
+      },
+      {
+        core: { fatte: 0, corrette: 0 },
+        regionale: { fatte: 0, corrette: 0 },
+        comunale: { fatte: 0, corrette: 0 },
+      }
+    );
+  }, [perCategoria, categoriaDomandeMap]);
 
-  const pctCore = statsByLayer.core.fatte > 0 ? Math.round((statsByLayer.core.corrette / statsByLayer.core.fatte) * 100) : 0;
-  const pctRegionale = statsByLayer.regionale.fatte > 0 ? Math.round((statsByLayer.regionale.corrette / statsByLayer.regionale.fatte) * 100) : 0;
-  const pctComunale = statsByLayer.comunale.fatte > 0 ? Math.round((statsByLayer.comunale.corrette / statsByLayer.comunale.fatte) * 100) : 0;
+  const pctCore = statsByLayer.core.fatte > 0 
+    ? Math.round((statsByLayer.core.corrette / statsByLayer.core.fatte) * 100) 
+    : 0;
+  
+  const pctRegionale = statsByLayer.regionale.fatte > 0 
+    ? Math.round((statsByLayer.regionale.corrette / statsByLayer.regionale.fatte) * 100) 
+    : 0;
+  
+  const pctComunale = statsByLayer.comunale.fatte > 0 
+    ? Math.round((statsByLayer.comunale.corrette / statsByLayer.comunale.fatte) * 100) 
+    : 0;
 
-  // Indice ponderato (70% core, 25% reg, 5% com)
-  const indiceProntezza = Math.round((pctCore * 0.70) + (pctRegionale * 0.25) + (pctComunale * 0.05));
+  // --- Indice ponderato normalizzato sui layer disponibili ---
+  const hasRegionali = (domandeRegionali?.length || 0) > 0;
+  const hasComunali = (domandeComunali?.length || 0) > 0;
+
+  let indiceProntezza: number;
+
+  if (!hasRegionali && !hasComunali) {
+    // Solo core → 100% del peso
+    indiceProntezza = pctCore;
+  } else if (hasRegionali && !hasComunali) {
+    // Core + Regionale → 75/25
+    indiceProntezza = Math.round((pctCore * 0.75) + (pctRegionale * 0.25));
+  } else {
+    // Tutti e tre i layer → 70/25/5
+    indiceProntezza = Math.round((pctCore * 0.70) + (pctRegionale * 0.25) + (pctComunale * 0.05));
+  }
 
   const getColor = (pct: number) => pct >= 75 ? '#22c55e' : pct >= 50 ? '#f59e0b' : '#ef4444';
+
+  const totDomandeFatte = statsByLayer.core.fatte + statsByLayer.regionale.fatte + statsByLayer.comunale.fatte;
 
   return (
     <div style={{ minHeight: '100vh', background: '#0f172a', color: '#f8fafc', padding: '2rem 1rem' }}>
@@ -73,7 +121,10 @@ export default function Dashboard() {
             
             {/* Prontezza Globale */}
             <div style={{ textAlign: 'center', flex: '1', minWidth: '200px' }}>
-              <h3 style={{ color: '#94a3b8', fontSize: '1rem', marginBottom: '0.5rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '1px' }}>Prontezza Stimata</h3>
+              <h3 style={{ color: '#94a3b8', fontSize: '1rem', marginBottom: '0.5rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '1px' }}>
+                Prontezza Stimata
+                {!hasRegionali && !hasComunali && <span style={{ fontSize: '0.75rem', display: 'block', marginTop: '0.25rem' }}>(solo Core)</span>}
+              </h3>
               <div style={{ fontSize: '4rem', fontWeight: '900', color: getColor(indiceProntezza), lineHeight: 1 }}>{indiceProntezza}%</div>
             </div>
 
@@ -92,7 +143,7 @@ export default function Dashboard() {
               </div>
 
               {/* Regionale */}
-              {(domandeRegionali?.length || 0) > 0 && (
+              {hasRegionali && (
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', fontSize: '0.95rem' }}>
                     <span style={{ fontWeight: '600' }}>Regionale</span>
@@ -105,7 +156,7 @@ export default function Dashboard() {
               )}
 
               {/* Comunale */}
-              {(domandeComunali?.length || 0) > 0 && (
+              {hasComunali && (
                 <div>
                   <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', fontSize: '0.95rem' }}>
                     <span style={{ fontWeight: '600' }}>Comunale</span>
@@ -123,18 +174,36 @@ export default function Dashboard() {
           <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid #334155' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <BookOpen size={20} color="#3b82f6" />
-              <span>Quiz: <strong>{quizCompletati}</strong></span>
+              <span>Domande: <strong>{totDomandeFatte}</strong></span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <TrendingUp size={20} color="#22c55e" />
               <span>Media: <strong>{mediaPercentuale}%</strong></span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-              <Flame size={20} color="#f59e0b" />
-              <span style={{ color: '#f59e0b', fontWeight: 'bold' }}>{streak} Giorni</span>
+              <Flame size={20} color={streak > 0 ? "#f59e0b" : "#64748b"} />
+              <span style={{ color: streak > 0 ? '#f59e0b' : '#64748b', fontWeight: 'bold' }}>
+                {streak > 0 ? `${streak} Giorni` : 'Inizia oggi!'}
+              </span>
             </div>
           </div>
         </section>
+
+        {/* Prossimi Obiettivi */}
+        {indiceProntezza < 75 && (
+          <section style={{ background: '#1e293b', borderRadius: '20px', padding: '1.5rem', border: '1px solid #334155' }}>
+            <h4 style={{ margin: 0, marginBottom: '1rem', color: '#f59e0b', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Target size={20} />
+              Per aumentare la tua prontezza:
+            </h4>
+            <ul style={{ margin: 0, paddingLeft: '1.5rem', color: '#94a3b8', lineHeight: 2 }}>
+              {pctCore < 75 && <li>Completa almeno il <strong>75%</strong> del Core Nazionale (ora al {pctCore}%)</li>}
+              {hasRegionali && pctRegionale < 75 && <li>Migliora il layer Regionale (ora al {pctRegionale}%)</li>}
+              {hasComunali && pctComunale < 75 && <li>Migliora il layer Comunale (ora al {pctComunale}%)</li>}
+              {erroriCount > 5 && <li>Rivedi i tuoi <strong>{erroriCount} errori</strong> prima di fare nuovi quiz</li>}
+            </ul>
+          </section>
+        )}
 
         {/* Modalità di Studio */}
         <section>

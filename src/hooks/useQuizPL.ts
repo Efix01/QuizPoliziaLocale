@@ -1,4 +1,4 @@
-import { useCallback, useMemo } from 'react';
+import { useCallback } from 'react';
 import { usePL } from '../context/PLContext';
 import type { DomandaPL } from '../types/pl';
 
@@ -15,18 +15,12 @@ function shuffle<T>(array: T[]): T[] {
 }
 
 export function useQuizPL() {
-  const { domandeCore, domandeRegionali, domandeComunali, profilo } = usePL();
-
-  // Pool completo memoizzato
-  const poolCompleto = useMemo(
-    () => [...domandeCore, ...domandeRegionali, ...domandeComunali],
-    [domandeCore, domandeRegionali, domandeComunali]
-  );
+  const { domandeCore, domandeRegionali, domandeComunali, tutteLeDomande, profilo } = usePL();
 
   // Quiz veloce: N domande dal pool completo
   const generaQuizVeloce = useCallback((numeroDomande: number = 20): DomandaPL[] => {
-    return shuffle(poolCompleto).slice(0, numeroDomande);
-  }, [poolCompleto]);
+    return shuffle(tutteLeDomande).slice(0, numeroDomande);
+  }, [tutteLeDomande]);
 
   // Quiz per categoria specifica
   const generaQuizCategoria = useCallback((
@@ -37,10 +31,10 @@ export function useQuizPL() {
     const base = strato === 'core' ? domandeCore
       : strato === 'regionale' ? domandeRegionali
       : strato === 'comunale' ? domandeComunali
-      : poolCompleto;
+      : tutteLeDomande;
 
-    return shuffle(base.filter(d => d.categoriaId === categoriaId)).slice(0, n);
-  }, [domandeCore, domandeRegionali, domandeComunali, poolCompleto]);
+    return shuffle(base.filter((d: DomandaPL) => d.categoriaId === categoriaId)).slice(0, n);
+  }, [domandeCore, domandeRegionali, domandeComunali, tutteLeDomande]);
 
   // Quiz per strato specifico
   const generaQuizStrato = useCallback((
@@ -90,17 +84,17 @@ export function useQuizPL() {
 
   // Quiz basato su un elenco di ID (es. per ripasso errori)
   const generaQuizId = useCallback((ids: string[]): DomandaPL[] => {
-    const map = new Map(poolCompleto.map(d => [d.id, d]));
+    const map = new Map(tutteLeDomande.map((d: DomandaPL) => [d.id, d]));
     return ids.map(id => map.get(id)).filter((d): d is DomandaPL => d !== undefined);
-  }, [poolCompleto]);
+  }, [tutteLeDomande]);
 
   // Quiz per difficoltà
   const generaQuizDifficolta = useCallback((
     livello: 1 | 2 | 3,
     n: number = 20
   ): DomandaPL[] => {
-    return shuffle(poolCompleto.filter(d => d.livelloDifficolta === livello)).slice(0, n);
-  }, [poolCompleto]);
+    return shuffle(tutteLeDomande.filter((d: DomandaPL) => d.livelloDifficolta === livello)).slice(0, n);
+  }, [tutteLeDomande]);
 
   return {
     generaQuizVeloce,
