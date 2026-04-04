@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
 import { type ProfiloPL, ProfiloPLSchema } from '../types/pl';
 import { profileStorage } from '../lib/profileStorage';
+import { useAuth } from './AuthContext'; // Importiamo useAuth per la sync futura
 
 interface ProfileContextType {
   profilo: ProfiloPL | null;
@@ -11,6 +12,7 @@ interface ProfileContextType {
 const ProfileContext = createContext<ProfileContextType | null>(null);
 
 export function ProfileProvider({ children }: { children: React.ReactNode }) {
+  const { user } = useAuth(); // Recuperiamo l'utente per la sync
   const [profilo, setProfiloState] = useState<ProfiloPL | null>(null);
 
   // Stabile — nessuna dipendenza esterna
@@ -25,7 +27,7 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
     []
   );
 
-  // Boot da storage con validazione Zod
+  // 1. Boot da storage con validazione Zod
   useEffect(() => {
     const data = profileStorage.load();
     if (!data) return;
@@ -37,6 +39,15 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
       profileStorage.clear?.();
     }
   }, []);
+
+  // 2. Punto di estensione per sincronizzazione Firestore futura
+  // Si attiva ogni volta che il profilo o l'utente cambiano
+  useEffect(() => {
+    if (!user || !profilo) return;
+    
+    // TODO: Implementare firestoreProfileSync(user.uid, profilo);
+    // console.log(`[Sync] Profilo di ${user.uid} pronto per il backup su Firestore`);
+  }, [profilo, user]);
 
   const value = useMemo<ProfileContextType>(() => ({
     profilo,
