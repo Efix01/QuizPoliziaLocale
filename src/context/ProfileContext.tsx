@@ -1,5 +1,5 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { type ProfiloPL } from '../types/pl';
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
+import { type ProfiloPL, ProfiloPLSchema } from '../types/pl';
 import { profileStorage } from '../lib/profileStorage';
 
 interface ProfileContextType {
@@ -13,32 +13,42 @@ const ProfileContext = createContext<ProfileContextType | null>(null);
 export function ProfileProvider({ children }: { children: React.ReactNode }) {
   const [profilo, setProfiloState] = useState<ProfiloPL | null>(null);
 
-  // Wrapper per salvare anche in storage persistente con supporto functional update
-  const setProfilo = (update: ProfiloPL | ((prev: ProfiloPL | null) => ProfiloPL | null)) => {
-    setProfiloState(prev => {
+  // Stabile — nessuna dipendenza esterna
+  const setProfilo = useCallback(
+    (update: ProfiloPL | ((prev: ProfiloPL | null) => ProfiloPL | null)) => {
+      setProfiloState(prev => {
         const next = typeof update === 'function' ? update(prev) : update;
-        if (next) {
-            profileStorage.save(next);
-        }
+        if (next) profileStorage.save(next);
         return next;
-    });
-  };
+      });
+    },
+    []
+  );
 
-  // Carica profilo dallo storage al boot
+  // Boot da storage con validazione Zod
   useEffect(() => {
     const data = profileStorage.load();
-    if (data) {
-        setProfiloState(data);
+    if (!data) return;
+    const result = ProfiloPLSchema.safeParse(data);
+    if (result.success) {
+      setProfiloState(result.data);
+    } else {
+      console.warn('Profilo in storage non valido, reset a null:', result.error.issues);
+      profileStorage.clear?.();
     }
   }, []);
 
-  const value: ProfileContextType = {
+  const value = useMemo<ProfileContextType>(() => ({
     profilo,
     setProfilo,
     profiloConfigurato: profilo !== null,
-  };
+  }), [profilo, setProfilo]);
 
-  return <ProfileContext.Provider value={value}>{children}</ProfileContext.Provider>;
+  return (
+    <ProfileContext.Provider value={value}>
+      {children}
+    </ProfileContext.Provider>
+  );
 }
 
 export function useProfile() {
