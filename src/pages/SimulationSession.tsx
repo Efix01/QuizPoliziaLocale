@@ -1,296 +1,79 @@
-import React, { useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { z } from 'zod';
-import { DomandaPLSchema, ParametriEsameSchema } from '../types/pl';
-import type { RisultatoRisposta } from '../types/progressi';
-import { useProgress } from '../context/ProgressContext';
-import { ResultCard } from '../components/simulation/ResultCard';
-import { ChevronLeft, ChevronRight, Flag, Clock, Award, Shield } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import './SimulationMode.css';
+import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useQuizPL } from '../hooks/useQuizPL';
+import { AlertTriangle, Clock, Target, PlayCircle, ArrowLeft } from 'lucide-react';
 
-const SimulationStateSchema = z.object({
-    domande: z.array(DomandaPLSchema).min(1),
-    parametriEsame: ParametriEsameSchema
-});
+export default function SimulationSession() {
+  const navigate = useNavigate();
+  const { generaSimulazione, parametriEsame } = useQuizPL();
+  
+  const [domandeDisponibili, setDomandeDisponibili] = useState<any[]>([]);
 
-const getLayerLabel = (catId: string) => {
-    if (catId.startsWith('reg_')) return 'Regionale';
-    if (catId.startsWith('com_')) return 'Comunale';
-    return 'Core Nazionale';
-};
+  // Carica le domande subito per vedere se ce ne sono abbastanza
+  useEffect(() => {
+    const domande = generaSimulazione();
+    setDomandeDisponibili(domande);
+  }, [generaSimulazione]);
 
-const SimulationSession: React.FC = () => {
-    const location = useLocation();
-    const navigate = useNavigate();
-    const { salvaRisultatoQuiz } = useProgress();
-    
-    const parsed = SimulationStateSchema.safeParse(location.state);
-    const state = parsed.success ? parsed.data : null;
-    
-    useEffect(() => {
-        if (!state?.domande || !state?.parametriEsame) {
-            navigate('/dashboard');
-        }
-    }, [state, navigate]);
+  const handleAvvia = () => {
+    if (domandeDisponibili.length === 0) return alert("Nessuna domanda disponibile.");
+    // Navighiamo verso lo study mode passando la modalità simulazione
+    navigate('/study', { 
+      state: { 
+        domande: domandeDisponibili, 
+        mode: 'simulazione' 
+      } 
+    });
+  };
 
-    const simQuestions = state?.domande || [];
-    const parametri = state?.parametriEsame || {
-        numeroDomande: 20,
-        durataMinuti: 20,
-        punteggioCorretta: 1,
-        punteggioErrata: 0,
-        punteggioNonData: 0,
-        sogliaSuperamento: 12
-    };
+  return (
+    <div style={{ minHeight: '100vh', background: '#0f172a', color: '#f8fafc', padding: '2rem 1rem', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+      
+      <div style={{ maxWidth: '600px', width: '100%', background: '#1e293b', border: '1px solid #334155', borderRadius: '24px', padding: '3rem', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5)' }}>
+        
+        <button onClick={() => navigate('/dashboard')} style={{ background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '2rem' }}>
+          <ArrowLeft size={20} /> Torna indietro
+        </button>
 
-    const SIMULATION_TIME = parametri.durataMinuti * 60;
-    const MAX_SCORE = parametri.numeroDomande * parametri.punteggioCorretta;
-    const PASS_THRESHOLD = parametri.sogliaSuperamento ?? (MAX_SCORE * 0.6);
+        <h1 style={{ fontSize: '2.5rem', fontWeight: '900', marginBottom: '1rem', color: '#fff' }}>Simulazione Esame Ufficiale</h1>
+        <p style={{ color: '#cbd5e1', fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '3rem' }}>
+          Questa modalità ricrea le condizioni esatte del tuo concorso. Le domande sono proporzionate in base alla normativa (70% Nazionale, 25% Regionale, 5% Comunale).
+        </p>
 
-    const [currentIdx, setCurrentIdx] = useState(0);
-    const [answers, setAnswers] = useState<Record<string, number>>({});
-    const [timeLeft, setTimeLeft] = useState(SIMULATION_TIME);
-    const [isFinished, setIsFinished] = useState(false);
-    const [flaggedQuestions, setFlaggedQuestions] = useState<string[]>([]);
-    const [isReviewing, setIsReviewing] = useState(false);
+        <div style={{ display: 'grid', gap: '1.5rem', marginBottom: '3rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: '#0f172a', padding: '1.5rem', borderRadius: '16px' }}>
+            <Target color="#3b82f6" size={32} />
+            <div>
+              <div style={{ color: '#94a3b8', fontSize: '0.9rem', fontWeight: 'bold', textTransform: 'uppercase' }}>Numero Domande</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>{domandeDisponibili.length} (su {parametriEsame?.numeroDomande || 100} previste)</div>
+            </div>
+          </div>
 
-    // Risultati finali
-    const [score, setScore] = useState(0);
-    const [correctCount, setCorrectCount] = useState(0);
-    const [wrongCount, setWrongCount] = useState(0);
-    const [skippedCount, setSkippedCount] = useState(0);
-
-    useEffect(() => {
-        if (isFinished || !state) return;
-        const timer = setInterval(() => {
-            setTimeLeft((prev) => {
-                if (prev <= 1) {
-                    finishSimulation();
-                    return 0;
-                }
-                return prev - 1;
-            });
-        }, 1000);
-        return () => clearInterval(timer);
-    }, [isFinished, state]);
-
-    const finishSimulation = () => {
-        let finalScore = 0;
-        let correct = 0;
-        let wrong = 0;
-        let skipped = 0;
-        const risultatiList: RisultatoRisposta[] = [];
-
-        simQuestions.forEach(q => {
-            const userAnswer = answers[q.id];
-            const risultato: RisultatoRisposta = {
-                domandaId: q.id,
-                categoriaId: q.categoriaId,
-                corretta: false,
-                indiceRispostaScelta: userAnswer !== undefined ? userAnswer : -1,
-                timestamp: new Date().toISOString()
-            };
-
-            if (userAnswer === undefined) {
-                skipped++;
-                finalScore += parametri.punteggioNonData;
-            } else if (userAnswer === q.rispostaCorretta) {
-                correct++;
-                finalScore += parametri.punteggioCorretta;
-                risultato.corretta = true;
-            } else {
-                wrong++;
-                finalScore += parametri.punteggioErrata;
-            }
-            risultatiList.push(risultato);
-        });
-
-        if (finalScore < 0) finalScore = 0;
-        setScore(finalScore);
-        setCorrectCount(correct);
-        setWrongCount(wrong);
-        setSkippedCount(skipped);
-        setIsFinished(true);
-        salvaRisultatoQuiz(risultatiList);
-    };
-
-    const formatTime = (seconds: number) => {
-        const m = Math.floor(seconds / 60);
-        const s = seconds % 60;
-        return `${m}:${s.toString().padStart(2, '0')}`;
-    };
-
-    const handleAnswer = (idx: number) => {
-        if (isFinished && !isReviewing) return;
-        if (isReviewing) return;
-        if (answers[simQuestions[currentIdx].id] === idx) {
-            setAnswers(prev => {
-                const next = { ...prev };
-                delete next[simQuestions[currentIdx].id];
-                return next;
-            });
-        } else {
-            setAnswers(prev => ({ ...prev, [simQuestions[currentIdx].id]: idx }));
-        }
-    };
-
-    if (!state || simQuestions.length === 0) return (
-        <div className="dashboard-elite" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
-            <div className="pl-spinner" />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: '#0f172a', padding: '1.5rem', borderRadius: '16px' }}>
+            <Clock color="#f59e0b" size={32} />
+            <div>
+              <div style={{ color: '#94a3b8', fontSize: '0.9rem', fontWeight: 'bold', textTransform: 'uppercase' }}>Tempo a disposizione</div>
+              <div style={{ fontSize: '1.25rem', fontWeight: 'bold' }}>{parametriEsame?.durataMinuti || 90} Minuti</div>
+            </div>
+          </div>
         </div>
-    );
 
-    if (isFinished && !isReviewing) {
-        return (
-            <ResultCard
-                score={score}
-                maxScore={MAX_SCORE}
-                passThreshold={PASS_THRESHOLD}
-                correctCount={correctCount}
-                wrongCount={wrongCount}
-                skippedCount={skippedCount}
-                pointsLost={0}
-                potentialScore={score}
-                onReviewClick={() => { setIsReviewing(true); setCurrentIdx(0); }}
-                onRetryClick={() => navigate('/simulation')}
-                onHomeClick={() => navigate('/')}
-            />
-        );
-    }
-
-    const currentQ = simQuestions[currentIdx];
-    const layerLabel = getLayerLabel(currentQ.categoriaId);
-
-    return (
-        <div className="dashboard-elite" style={{ minHeight: '100vh', padding: '1rem' }}>
-            <header className="elite-header" style={{ marginBottom: '1.5rem' }}>
-                <div className="profile-section">
-                    <div className="profile-section__sub"><Shield size={14} /> Sessione d'Esame Ministeriale</div>
-                    <h1 className="profile-section__name">Simulazione Ufficiale</h1>
-                </div>
-                <div className="glass-card" style={{ padding: '0.75rem 1.25rem', display: 'flex', alignItems: 'center', gap: '0.75rem', borderColor: timeLeft < 300 ? '#ef4444' : 'var(--glass-border)' }}>
-                    <Clock size={18} color={timeLeft < 300 ? '#ef4444' : 'var(--pl-gold)'} />
-                    <span style={{ fontWeight: '800', fontSize: '1.2rem', color: timeLeft < 300 ? '#ef4444' : 'white', fontFamily: 'monospace' }}>
-                        {formatTime(timeLeft)}
-                    </span>
-                </div>
-            </header>
-
-            <main style={{ maxWidth: '800px', margin: '0 auto', width: '100%' }}>
-                <AnimatePresence mode="wait">
-                    <motion.div 
-                        key={currentIdx}
-                        initial={{ opacity: 0, x: 20 }}
-                        animate={{ opacity: 1, x: 0 }}
-                        exit={{ opacity: 0, x: -20 }}
-                        className="glass-card"
-                        style={{ padding: '2rem', marginBottom: '1.5rem' }}
-                    >
-                        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '1.5rem', alignItems: 'center' }}>
-                            <span className="rank-badge">Domanda {currentIdx + 1} di {parametri.numeroDomande}</span>
-                            <span style={{ fontSize: '0.75rem', fontWeight: '700', color: 'var(--pl-gold)' }}>
-                                <Award size={14} style={{ verticalAlign: 'middle', marginRight: '4px' }} /> {layerLabel}
-                            </span>
-                        </div>
-
-                        <h2 style={{ fontSize: '1.2rem', lineHeight: '1.5', color: 'white', marginBottom: '2rem' }}>
-                            {currentQ.testo}
-                        </h2>
-
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                            {currentQ.opzioni.map((text, idx) => {
-                                const isSelected = answers[currentQ.id] === idx;
-                                const isCorrect = idx === currentQ.rispostaCorretta;
-                                let bgColor = 'rgba(255,255,255,0.03)';
-                                let borderColor = 'rgba(255,255,255,0.1)';
-                                
-                                if (isReviewing) {
-                                    if (isCorrect) { bgColor = 'rgba(34,197,94,0.15)'; borderColor = '#22c55e'; }
-                                    else if (isSelected) { bgColor = 'rgba(239,68,68,0.15)'; borderColor = '#ef4444'; }
-                                } else if (isSelected) {
-                                    bgColor = 'rgba(212,175,55,0.1)';
-                                    borderColor = 'var(--pl-gold)';
-                                }
-
-                                return (
-                                    <button
-                                        key={idx}
-                                        onClick={() => handleAnswer(idx)}
-                                        style={{
-                                            textAlign: 'left',
-                                            padding: '1.15rem',
-                                            borderRadius: '12px',
-                                            border: `1px solid ${borderColor}`,
-                                            backgroundColor: bgColor,
-                                            color: 'white',
-                                            transition: 'all 0.2s',
-                                            display: 'flex',
-                                            gap: '1rem',
-                                            cursor: isReviewing ? 'default' : 'pointer'
-                                        }}
-                                    >
-                                        <span style={{ color: isSelected ? 'var(--pl-gold)' : 'var(--slate-text)', fontWeight: '800' }}>
-                                            {String.fromCharCode(65 + idx)}
-                                        </span>
-                                        {text}
-                                    </button>
-                                );
-                            })}
-                        </div>
-
-                        {isReviewing && currentQ.spiegazione && (
-                             <div style={{ marginTop: '2rem', padding: '1rem', borderRadius: '10px', background: 'rgba(212,175,55,0.05)', borderLeft: '4px solid var(--pl-gold)' }}>
-                                <strong style={{ color: 'var(--pl-gold)', fontSize: '0.9rem' }}>Spiegazione:</strong>
-                                <p style={{ fontSize: '0.85rem', color: 'rgba(255,255,255,0.7)', marginTop: '0.5rem' }}>{currentQ.spiegazione}</p>
-                             </div>
-                        )}
-                    </motion.div>
-                </AnimatePresence>
-
-                <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
-                    <button className="glass-card" style={{ padding: '0.75rem 1.5rem' }} onClick={() => setCurrentIdx(p => Math.max(0, p - 1))} disabled={currentIdx === 0}>
-                        <ChevronLeft size={20} />
-                    </button>
-                    {!isReviewing && (
-                        <button className="glass-card" style={{ padding: '0.75rem 1.5rem', color: flaggedQuestions.includes(currentQ.id) ? '#f59e0b' : 'white' }} onClick={() => setFlaggedQuestions(prev => prev.includes(currentQ.id) ? prev.filter(id => id !== currentQ.id) : [...prev, currentQ.id])}>
-                            <Flag size={20} fill={flaggedQuestions.includes(currentQ.id) ? "#f59e0b" : "none"} />
-                        </button>
-                    )}
-                    {currentIdx === simQuestions.length - 1 ? (
-                        <button className="glass-card" style={{ padding: '0.75rem 2rem', background: 'var(--pl-gold)', color: 'black', fontWeight: '800' }} onClick={() => isReviewing ? navigate('/dashboard') : finishSimulation()}>
-                            {isReviewing ? 'Esci' : 'Consegna'}
-                        </button>
-                    ) : (
-                        <button className="glass-card" style={{ padding: '0.75rem 1.5rem' }} onClick={() => setCurrentIdx(p => Math.min(simQuestions.length - 1, p + 1))}>
-                            <ChevronRight size={20} />
-                        </button>
-                    )}
-                </div>
-
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', justifyContent: 'center', marginTop: '2rem' }}>
-                    {simQuestions.map((q, idx) => (
-                        <button
-                            key={idx}
-                            onClick={() => setCurrentIdx(idx)}
-                            style={{
-                                width: '32px',
-                                height: '32px',
-                                borderRadius: '6px',
-                                fontSize: '0.7rem',
-                                fontWeight: '700',
-                                backgroundColor: currentIdx === idx ? 'white' : (answers[q.id] !== undefined ? 'rgba(212,175,55,0.2)' : 'rgba(255,255,255,0.03)'),
-                                color: currentIdx === idx ? 'black' : 'white',
-                                border: '1px solid rgba(255,255,255,0.1)'
-                            }}
-                        >
-                            {idx + 1}
-                        </button>
-                    ))}
-                </div>
-            </main>
+        <div style={{ background: '#450a0a', border: '1px solid #991b1b', padding: '1.5rem', borderRadius: '16px', display: 'flex', gap: '1rem', marginBottom: '3rem' }}>
+          <AlertTriangle color="#ef4444" size={24} style={{ flexShrink: 0 }} />
+          <p style={{ margin: 0, color: '#fca5a5', fontSize: '0.95rem', lineHeight: '1.5' }}>
+            Attenzione: le risposte errate applicano una penalità di <strong>{parametriEsame?.punteggioErrata || -0.25} punti</strong>. Se non sei sicuro, è meglio non rispondere (zero punti).
+          </p>
         </div>
-    );
-};
 
-export default SimulationSession;
+        <button 
+          onClick={handleAvvia}
+          style={{ width: '100%', background: '#3b82f6', color: 'white', border: 'none', padding: '1.25rem', borderRadius: '16px', fontSize: '1.25rem', fontWeight: '800', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', boxShadow: '0 10px 15px -3px rgba(59, 130, 246, 0.3)' }}
+        >
+          <PlayCircle size={28} />
+          AVVIA LA PROVA
+        </button>
+
+      </div>
+    </div>
+  );
+}

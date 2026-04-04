@@ -49,6 +49,7 @@ interface ProgressContextProps {
   segnaComeLetto: (capitoloId: string) => Promise<void>;
   rimuoviErrore: (domandaId: string) => Promise<void>;
   aggiungiErrore: (domandaId: string, rispostaErrata: number) => Promise<void>;
+  resetErrori: () => Promise<void>;
 }
 
 const ProgressContext = createContext<ProgressContextProps | undefined>(undefined);
@@ -474,6 +475,18 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
       await persistProgressData(progressiGlobali, srsData, newErrori, new Set(), new Set([domandaId]));
   };
 
+  const resetErrori = async () => {
+    if (!isAuthenticated || !user || !progressiGlobali) return;
+
+    // 1. Prepara reset locale
+    const idsModificati = new Set(Object.keys(erroriLog));
+    setErroriLog({});
+    setErroriModificati(idsModificati);
+
+    // 2. Persistenza: persistiamo una mappa vuota con tracking di tutti gli ID rimosssi
+    await persistProgressData(progressiGlobali, srsData, {}, new Set(), idsModificati);
+  };
+
   return (
     <ProgressContext.Provider value={{ 
         progressiGlobali, 
@@ -484,7 +497,8 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
         salvaRisultatoQuiz, 
         segnaComeLetto,
         rimuoviErrore,
-        aggiungiErrore
+        aggiungiErrore,
+        resetErrori
     }}>
       {children}
     </ProgressContext.Provider>

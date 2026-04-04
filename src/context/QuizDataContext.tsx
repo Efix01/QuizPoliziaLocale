@@ -147,7 +147,7 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
   // 3. Logica di cambio dati (Imperativa)
   // NOTA: Vite esegue automaticamente il caching modulare degli import dinamici.
   // Non è quindi necessario implementare un layer di cache manuale per i file JSON già caricati.
-   const cambiaRegione = useCallback(async (regioneId: string, nomeRegione: string) => {
+  const cambiaRegione = useCallback(async (regioneId: string, nomeRegione: string) => {
     const requestId = ++regioneRequestRef.current;
     setLoadingLayers(prev => ({ ...prev, regionale: true }));
     setError(null);
@@ -155,18 +155,23 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
     // Reset comunale quando cambi regione
     setDomandeComunali([]);
 
-    try {
-      // Valida che la regione esista nel config
-      const regioneValida = regioniData.regioni.find(r => r.id === regioneId);
-      if (!regioneValida) {
-        throw new Error(`Regione non riconosciuta: ${regioneId}`);
-      }
+    // 1. AGGIORNA IL PROFILO SUBITO (Così la UI cambia all'istante)
+    setProfilo(prev => ({
+      ...(prev || { 
+        parametriEsame: { numeroDomande: 100, durataMinuti: 90, punteggioCorretta: 1, punteggioErrata: -0.25, punteggioNonData: 0 } 
+      }),
+      regioneId,
+      nomeRegione,
+      comuneId: undefined,
+      nomeComune: undefined,
+    } as any));
 
+    try {
       const modulePath = `/src/data/regioni/${regioneId}/domanderegionali.json`;
       const loader = regioniModules[modulePath];
 
       if (!loader) {
-        throw new Error(`File non trovato per regione: ${regioneId}`);
+        throw new Error(`Nessun file trovato per regione: ${regioneId}`);
       }
 
       const data = await loader();
@@ -174,7 +179,7 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
       // Se nel frattempo è arrivata un'altra richiesta, ignora questa
       if (requestId !== regioneRequestRef.current) return;
 
-      const rawDomande = data.domande || data.default?.domande || [];
+      const rawDomande = (data as any).domande || (data as any).default?.domande || [];
       const withMeta = rawDomande.map((d: unknown) => ({
         ...(d as object),
         strato: 'regionale' as const,
@@ -190,20 +195,11 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
         setDomandeRegionali([]);
       }
 
-      // Aggiorna profilo con nomeRegione corretto
-      setProfilo(prev => prev ? {
-        ...prev,
-        regioneId,
-        nomeRegione,
-        comuneId: undefined,
-        nomeComune: undefined,
-      } : null);
-
     } catch (e) {
       if (requestId !== regioneRequestRef.current) return;
-      console.warn(`Errore caricamento regione ${regioneId}:`, e);
+      console.warn(`Nessun quiz trovato per ${nomeRegione}:`, e);
       setDomandeRegionali([]);
-      setError(`Impossibile caricare le domande per ${nomeRegione}`);
+      // Non impostiamo l'errore bloccante, lasciamo che l'utente navighi
     } finally {
       if (requestId === regioneRequestRef.current) {
         setLoadingLayers(prev => ({ ...prev, regionale: false }));
@@ -224,12 +220,19 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
     setLoadingLayers(prev => ({ ...prev, comunale: true }));
     setError(null);
 
+    // 1. AGGIORNA IL PROFILO SUBITO
+    setProfilo(prev => prev ? {
+      ...prev,
+      comuneId,
+      nomeComune,
+    } : null);
+
     try {
       const modulePath = `/src/data/comuni/${comuneId}/domandecomunali.json`;
       const loader = comuniModules[modulePath];
 
       if (!loader) {
-        throw new Error(`File non trovato per comune: ${comuneId}`);
+        throw new Error(`Nessun file trovato per comune: ${comuneId}`);
       }
 
       const data = await loader();
@@ -237,7 +240,7 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
       // Se nel frattempo è arrivata un'altra richiesta, ignora questa
       if (requestId !== comuneRequestRef.current) return;
 
-      const rawDomande = data.domande || data.default?.domande || [];
+      const rawDomande = (data as any).domande || (data as any).default?.domande || [];
       const regioneId = profilo?.regioneId || '';
 
       const withMeta = rawDomande.map((d: unknown) => ({
@@ -256,18 +259,10 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
         setDomandeComunali([]);
       }
 
-      // Aggiorna profilo con nomeComune corretto
-      setProfilo(prev => prev ? {
-        ...prev,
-        comuneId,
-        nomeComune,
-      } : null);
-
     } catch (e) {
       if (requestId !== comuneRequestRef.current) return;
-      console.warn(`Errore caricamento comune ${comuneId}:`, e);
+      console.warn(`Nessun quiz trovato per ${nomeComune}:`, e);
       setDomandeComunali([]);
-      setError(`Impossibile caricare le domande per ${nomeComune}`);
     } finally {
       if (requestId === comuneRequestRef.current) {
         setLoadingLayers(prev => ({ ...prev, comunale: false }));

@@ -1,246 +1,196 @@
-import React, { useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 import { usePL } from '../context/PLContext';
 import { useProgress } from '../context/ProgressContext';
-import { useQuizPL } from '../hooks/useQuizPL';
-import { motion, type Variants } from 'framer-motion';
-import { useAuth } from '../context/AuthContext';
-import { 
-    MapPin, 
-    Settings2, 
-    ClipboardList, 
-    RotateCcw, 
-    BookOpen, 
-    ChevronRight, 
-    TrendingUp,
-    Shield,
-    TrendingDown,
-    Target
-} from 'lucide-react';
+import { MapPin, BrainCircuit, Target, Timer, Flame, AlertCircle, TrendingUp, BookOpen } from 'lucide-react';
 
-import manualeData from '../data/manuale_pl.json';
-import '../styles/dashboard-elite.css';
+export default function Dashboard() {
+  const navigate = useNavigate();
+  const { user } = useAuth();
+  const { profilo, domandeRegionali, domandeComunali } = usePL();
+  const { progressiGlobali, erroriLog } = useProgress();
 
-// --- COMPONENTI INLINE PER EVITARE RIFERIMENTI ESTERNI (FIX STABILITÀ) ---
+  if (!progressiGlobali) return null;
 
-const ExperienceProgressInline: React.FC<{ xp: number; level: number; xpPerLevel?: number }> = ({ 
-  xp, 
-  level, 
-  xpPerLevel = 500 
-}) => {
-  const currentXPPercent = Math.min(100, Math.max(0, ((xp % xpPerLevel) / xpPerLevel) * 100));
+  const { quizCompletati, mediaPercentuale, streak, perCategoria } = progressiGlobali;
+  const erroriCount = Object.keys(erroriLog || {}).length;
+
+  // --- Calcolo Statistiche per Layer ---
+  const getLayerFromCategoria = (catId: string): 'core' | 'regionale' | 'comunale' => {
+    if (catId.startsWith('reg_')) return 'regionale';
+    if (catId.startsWith('com_')) return 'comunale';
+    return 'core';
+  };
+
+  const statsByLayer = Object.entries(perCategoria || {}).reduce(
+    (acc, [catId, stats]) => {
+      const layer = getLayerFromCategoria(catId);
+      acc[layer].fatte += stats.fatte;
+      acc[layer].corrette += stats.corrette;
+      return acc;
+    },
+    {
+      core: { fatte: 0, corrette: 0 },
+      regionale: { fatte: 0, corrette: 0 },
+      comunale: { fatte: 0, corrette: 0 },
+    }
+  );
+
+  const pctCore = statsByLayer.core.fatte > 0 ? Math.round((statsByLayer.core.corrette / statsByLayer.core.fatte) * 100) : 0;
+  const pctRegionale = statsByLayer.regionale.fatte > 0 ? Math.round((statsByLayer.regionale.corrette / statsByLayer.regionale.fatte) * 100) : 0;
+  const pctComunale = statsByLayer.comunale.fatte > 0 ? Math.round((statsByLayer.comunale.corrette / statsByLayer.comunale.fatte) * 100) : 0;
+
+  // Indice ponderato (70% core, 25% reg, 5% com)
+  const indiceProntezza = Math.round((pctCore * 0.70) + (pctRegionale * 0.25) + (pctComunale * 0.05));
+
+  const getColor = (pct: number) => pct >= 75 ? '#22c55e' : pct >= 50 ? '#f59e0b' : '#ef4444';
+
   return (
-    <div className="xp-container">
-      <div className="xp-label-row" style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '8px' }}>
-        <div>
-          <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)', display: 'block', textTransform: 'uppercase' }}>ESPERIENZA</span>
-          <span style={{ fontSize: '1.2rem', fontWeight: '800', color: 'white' }}>
-            {xp.toLocaleString()} <span style={{ fontSize: '0.8rem', opacity: 0.5, fontWeight: '400' }}>XP</span>
-          </span>
-        </div>
-        <div style={{ textAlign: 'right' }}>
-          <span style={{ fontSize: '0.7rem', color: 'rgba(255,255,255,0.4)', display: 'block', textTransform: 'uppercase' }}>GRADO</span>
-          <span className="xp-level-badge" style={{ backgroundColor: 'var(--pl-gold)', color: 'black', padding: '2px 8px', borderRadius: '4px', fontWeight: '800' }}>
-            {level}
-          </span>
-        </div>
-      </div>
-      <div style={{ height: '8px', background: 'rgba(255, 255, 255, 0.05)', borderRadius: '100px', overflow: 'hidden', marginBottom: '8px' }}>
-        <motion.div
-          style={{ height: '100%', background: 'linear-gradient(90deg, var(--pl-gold), var(--pl-gold-light))' }}
-          initial={{ width: 0 }}
-          animate={{ width: `${currentXPPercent}%` }}
-          transition={{ duration: 1.2 }}
-        />
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.65rem', color: 'rgba(255,255,255,0.4)' }}>
-        <span>LVL {level}</span>
-        <span>{xpPerLevel - (xp % xpPerLevel)} XP AL PROSSIMO GRADO</span>
-        <span>LVL {level + 1}</span>
+    <div style={{ minHeight: '100vh', background: '#0f172a', color: '#f8fafc', padding: '2rem 1rem' }}>
+      <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+        
+        {/* Header */}
+        <header style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '1rem' }}>
+          <div>
+            <h1 style={{ fontSize: '2rem', fontWeight: '800', margin: 0 }}>Bentornato, {user?.displayName?.split(' ')[0] || 'Agente'}!</h1>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#94a3b8', marginTop: '0.5rem', fontSize: '1.1rem' }}>
+              <MapPin size={18} color="#3b82f6" />
+              <span>{profilo?.nomeRegione}</span>
+              {profilo?.nomeComune && <span> • {profilo.nomeComune}</span>}
+            </div>
+          </div>
+          <button 
+            onClick={() => navigate('/onboarding')} 
+            style={{ background: 'transparent', border: '1px solid #334155', color: '#cbd5e1', padding: '0.5rem 1rem', borderRadius: '8px', cursor: 'pointer', fontWeight: '600' }}
+          >
+            Cambia Concorso
+          </button>
+        </header>
+
+        {/* Card Statistiche Principali */}
+        <section style={{ background: '#1e293b', borderRadius: '24px', padding: '2rem', border: '1px solid #334155', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.2)' }}>
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '3rem', alignItems: 'center' }}>
+            
+            {/* Prontezza Globale */}
+            <div style={{ textAlign: 'center', flex: '1', minWidth: '200px' }}>
+              <h3 style={{ color: '#94a3b8', fontSize: '1rem', marginBottom: '0.5rem', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '1px' }}>Prontezza Stimata</h3>
+              <div style={{ fontSize: '4rem', fontWeight: '900', color: getColor(indiceProntezza), lineHeight: 1 }}>{indiceProntezza}%</div>
+            </div>
+
+            {/* Barre per Layer */}
+            <div style={{ flex: '2', minWidth: '300px', display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              
+              {/* Core Nazionale */}
+              <div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', fontSize: '0.95rem' }}>
+                  <span style={{ fontWeight: '600' }}>Core Nazionale</span>
+                  <span style={{ color: '#94a3b8' }}>{statsByLayer.core.corrette}/{statsByLayer.core.fatte} ({pctCore}%)</span>
+                </div>
+                <div style={{ height: '10px', background: '#0f172a', borderRadius: '5px', overflow: 'hidden' }}>
+                  <div style={{ width: `${pctCore}%`, height: '100%', background: getColor(pctCore), transition: 'width 0.5s ease' }} />
+                </div>
+              </div>
+
+              {/* Regionale */}
+              {(domandeRegionali?.length || 0) > 0 && (
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', fontSize: '0.95rem' }}>
+                    <span style={{ fontWeight: '600' }}>Regionale</span>
+                    <span style={{ color: '#94a3b8' }}>{statsByLayer.regionale.corrette}/{statsByLayer.regionale.fatte} ({pctRegionale}%)</span>
+                  </div>
+                  <div style={{ height: '10px', background: '#0f172a', borderRadius: '5px', overflow: 'hidden' }}>
+                    <div style={{ width: `${pctRegionale}%`, height: '100%', background: getColor(pctRegionale), transition: 'width 0.5s ease' }} />
+                  </div>
+                </div>
+              )}
+
+              {/* Comunale */}
+              {(domandeComunali?.length || 0) > 0 && (
+                <div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', fontSize: '0.95rem' }}>
+                    <span style={{ fontWeight: '600' }}>Comunale</span>
+                    <span style={{ color: '#94a3b8' }}>{statsByLayer.comunale.corrette}/{statsByLayer.comunale.fatte} ({pctComunale}%)</span>
+                  </div>
+                  <div style={{ height: '10px', background: '#0f172a', borderRadius: '5px', overflow: 'hidden' }}>
+                    <div style={{ width: `${pctComunale}%`, height: '100%', background: getColor(pctComunale), transition: 'width 0.5s ease' }} />
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Quick Stats Row */}
+          <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid #334155' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <BookOpen size={20} color="#3b82f6" />
+              <span>Quiz: <strong>{quizCompletati}</strong></span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <TrendingUp size={20} color="#22c55e" />
+              <span>Media: <strong>{mediaPercentuale}%</strong></span>
+            </div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Flame size={20} color="#f59e0b" />
+              <span style={{ color: '#f59e0b', fontWeight: 'bold' }}>{streak} Giorni</span>
+            </div>
+          </div>
+        </section>
+
+        {/* Modalità di Studio */}
+        <section>
+          <h2 style={{ fontSize: '1.5rem', marginBottom: '1.5rem' }}>Cosa vuoi fare oggi?</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem' }}>
+            
+            {/* Quiz Builder */}
+            <div 
+              onClick={() => navigate('/quiz-builder')}
+              style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '20px', padding: '2rem', cursor: 'pointer', transition: 'transform 0.2s', display: 'flex', flexDirection: 'column', gap: '1rem' }}
+              onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
+              onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+            >
+              <div style={{ background: '#0f172a', width: '60px', height: '60px', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <BrainCircuit size={32} color="#3b82f6" />
+              </div>
+              <h3 style={{ fontSize: '1.3rem', margin: 0 }}>Quiz Personalizzato</h3>
+              <p style={{ color: '#94a3b8', margin: 0, lineHeight: 1.5 }}>Crea una sessione su misura: scegli la materia, il layer o fai un mix veloce.</p>
+            </div>
+
+            {/* Simulazione Esame */}
+            <div 
+              onClick={() => navigate('/simulation')}
+              style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '20px', padding: '2rem', cursor: 'pointer', transition: 'transform 0.2s', display: 'flex', flexDirection: 'column', gap: '1rem' }}
+              onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
+              onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+            >
+              <div style={{ background: '#0f172a', width: '60px', height: '60px', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Timer size={32} color="#f59e0b" />
+              </div>
+              <h3 style={{ fontSize: '1.3rem', margin: 0 }}>Simulazione Esame</h3>
+              <p style={{ color: '#94a3b8', margin: 0, lineHeight: 1.5 }}>Ricrea le condizioni reali del bando: {profilo?.parametriEsame?.numeroDomande || 100} domande, timer e punteggio penalizzato.</p>
+            </div>
+
+            {/* Ripasso Errori */}
+            <div 
+              onClick={() => erroriCount > 0 ? navigate('/mistakes') : null}
+              style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '20px', padding: '2rem', cursor: erroriCount > 0 ? 'pointer' : 'default', opacity: erroriCount > 0 ? 1 : 0.6, transition: 'transform 0.2s', display: 'flex', flexDirection: 'column', gap: '1rem' }}
+              onMouseOver={(e) => erroriCount > 0 && (e.currentTarget.style.transform = 'translateY(-5px)')}
+              onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+            >
+              <div style={{ background: '#0f172a', width: '60px', height: '60px', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <AlertCircle size={32} color={erroriCount > 0 ? "#ef4444" : "#64748b"} />
+              </div>
+              <h3 style={{ fontSize: '1.3rem', margin: 0 }}>Ripasso Errori</h3>
+              <p style={{ color: '#94a3b8', margin: 0, lineHeight: 1.5 }}>
+                {erroriCount > 0 
+                  ? `Hai ${erroriCount} domande da rivedere. Fissale nella memoria prima dell'esame.` 
+                  : `Nessun errore da ripassare. Ottimo lavoro, continua così!`}
+              </p>
+            </div>
+
+          </div>
+        </section>
+
       </div>
     </div>
   );
-};
-
-// --- COMPONENTE DASHBOARD PRINCIPALE ---
-
-const Dashboard: React.FC = () => {
-    const { profilo, isLoading, domandeRegionali, domandeComunali } = usePL();
-    const { progressiGlobali, erroriLog, srsData } = useProgress();
-    const { generaQuizVeloce, generaQuizId, generaQuizStrato } = useQuizPL();
-    const navigate = useNavigate();
-    const { user } = useAuth();
-
-    const {
-        quizCompletati = 0,
-        mediaPercentuale = 0,
-        streak = 0,
-        perCategoria = {},
-        xp = 0,
-        livello = 1,
-        capitoliLetti = []
-    } = progressiGlobali || {};
-
-    useEffect(() => {
-        if (!isLoading && !profilo) {
-            navigate('/welcome', { replace: true });
-        }
-    }, [profilo, isLoading, navigate]);
-
-    const totaleCapitoliManuale = useMemo(() => {
-        return Object.values(manualeData).reduce((acc, cat) => acc + (cat.capitoli?.length || 0), 0);
-    }, []);
-
-    const { statsByLayer, totals } = useMemo(() => {
-      const stats = { core: { fatte: 0, corrette: 0 }, regionale: { fatte: 0, corrette: 0 }, comunale: { fatte: 0, corrette: 0 } };
-      const totalCounts = { core: 60, regionale: domandeRegionali.length || 0, comunale: domandeComunali.length || 0 };
-
-      Object.entries(perCategoria).forEach(([catId, s]) => {
-          if (catId.startsWith('reg_')) {
-              stats.regionale.fatte += s.fatte;
-              stats.regionale.corrette += s.corrette;
-          } else if (catId.startsWith('com_')) {
-              stats.comunale.fatte += s.fatte;
-              stats.comunale.corrette += s.corrette;
-          } else {
-              stats.core.fatte += s.fatte;
-              stats.core.corrette += s.corrette;
-          }
-      });
-      return { statsByLayer: stats, totals: totalCounts };
-    }, [perCategoria, domandeRegionali.length, domandeComunali.length]);
-
-    const pctCore = statsByLayer.core.fatte > 0 ? Math.round((statsByLayer.core.corrette / statsByLayer.core.fatte) * 100) : 0;
-    const pctRegionale = statsByLayer.regionale.fatte > 0 ? Math.round((statsByLayer.regionale.corrette / statsByLayer.regionale.fatte) * 100) : 0;
-    const pctComunale = statsByLayer.comunale.fatte > 0 ? Math.round((statsByLayer.comunale.corrette / statsByLayer.comunale.fatte) * 100) : 0;
-
-    const indiceProntezza = Math.round((pctCore * 0.70) + (pctRegionale * 0.25) + (pctComunale * 0.05));
-
-    const srsDueToday = useMemo(() => {
-        const now = new Date();
-        return Object.values(srsData).filter(item => new Date(item.nextReview) <= now).length;
-    }, [srsData]);
-
-    const smartCTA = useMemo(() => {
-        const errCount = Object.keys(erroriLog).length;
-        if (errCount > 10) return { label: `Ripassa ${errCount} errori`, path: '/study', state: { mode: 'errori', domande: generaQuizId(Object.keys(erroriLog)) }, type: 'error', desc: 'Stabilizza le basi' };
-        if (pctRegionale < 50 && domandeRegionali.length > 0) return { label: 'Allenati sul Regionale', path: '/study', state: { mode: 'regionale', domande: generaQuizStrato('regionale', 20) }, type: 'warning', desc: `Focus su ${profilo?.nomeRegione}` };
-        if (pctComunale < 50 && domandeComunali.length > 0) return { label: 'Studia il Comunale', path: '/study', state: { mode: 'comunale', domande: generaQuizStrato('comunale', 20) }, type: 'warning', desc: `Focus su ${profilo?.nomeComune}` };
-        if (streak === 0) return { label: 'Inizia la tua Striscia', path: '/study', state: { mode: 'veloce', domande: generaQuizVeloce(20) }, type: 'info', desc: 'Fai il primo quiz' };
-        return { label: 'Quiz Veloce', path: '/study', state: { mode: 'veloce', domande: generaQuizVeloce(20) }, type: 'default', desc: 'Mantieni i riflessi' };
-    }, [erroriLog, pctRegionale, pctComunale, domandeRegionali.length, domandeComunali.length, streak, profilo, generaQuizId, generaQuizStrato, generaQuizVeloce]);
-
-    const handlePrimaryCTA = (action: string) => {
-        if (action === 'smart') { navigate(smartCTA.path, { state: smartCTA.state }); return; }
-        if (action === 'mistakes') { navigate('/study', { state: { domande: generaQuizId(Object.keys(erroriLog)), mode: 'errori' } }); }
-        else if (action === 'simulation') { navigate('/simulation'); }
-        else { navigate('/study', { state: { domande: generaQuizVeloce(20), mode: 'veloce' } }); }
-    };
-
-    const getLayerColor = (pct: number) => {
-        if (pct >= 70) return '#22c55e';
-        if (pct >= 40) return '#f59e0b';
-        return '#ef4444';
-    };
-
-    return (
-        <div className="dashboard-elite">
-            <header className="elite-header">
-                <div className="profile-section">
-                    <div className="profile-section__sub">Comandante in Prova</div>
-                    <h1 className="profile-section__name">{user?.displayName || 'Agente'}</h1>
-                    <div className="profile-section__location"><MapPin size={14} /> {profilo?.nomeComune}, {profilo?.nomeRegione}</div>
-                </div>
-                <div style={{ display: 'flex', gap: '1rem' }}>
-                    <div className="glass-card" style={{ padding: '0.75rem 1.25rem', display: 'flex', flexDirection: 'column', alignItems: 'flex-end' }}>
-                        <span style={{ fontSize: '0.7rem', opacity: 0.6, textTransform: 'uppercase' }}>Livello</span>
-                        <span style={{ fontSize: '1.25rem', fontWeight: '800', color: 'var(--pl-gold)' }}>{livello}</span>
-                    </div>
-                    <button className="glass-card icon-btn" onClick={() => navigate('/settings')}><Settings2 size={20} /></button>
-                </div>
-            </header>
-
-            <main className="elite-grid">
-                <section className="elite-column">
-                    <div className="glass-card" style={{ padding: '2rem', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-                        <h3 className="profile-section__sub" style={{ fontSize: '0.9rem', opacity: 0.8 }}>Prontezza Stimata</h3>
-                        <div style={{ textAlign: 'center', fontSize: '4.5rem', fontWeight: '900', lineHeight: '1', color: indiceProntezza >= 70 ? '#22c55e' : '#f59e0b', margin: '0.5rem 0' }}>
-                            {indiceProntezza}%
-                            <div style={{ fontSize: '0.8rem', fontWeight: '500', color: 'rgba(255,255,255,0.4)', marginTop: '0.5rem' }}>
-                                {indiceProntezza >= 70 ? 'IDONEO AL SERVIZIO' : 'REVISIONE NECESSARIA'}
-                            </div>
-                        </div>
-
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                            {[
-                                { label: 'Core Nazionale', pct: pctCore, fatte: statsByLayer.core.fatte, total: totals.core },
-                                { label: `Regionale · ${profilo?.nomeRegione}`, pct: pctRegionale, fatte: statsByLayer.regionale.fatte, total: totals.regionale },
-                                { label: `Comunale · ${profilo?.nomeComune}`, pct: pctComunale, fatte: statsByLayer.comunale.fatte, total: totals.comunale }
-                            ].map((layer, i) => (
-                                <div key={i} className="pl-layer-item">
-                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', fontSize: '0.85rem' }}>
-                                        <span style={{ fontWeight: '700', color: 'white' }}>{layer.label}</span>
-                                        <span style={{ color: 'rgba(255,255,255,0.6)' }}>{layer.fatte}/{layer.total} · <b style={{ color: getLayerColor(layer.pct) }}>{layer.pct}%</b></span>
-                                    </div>
-                                    <div style={{ height: '8px', background: 'rgba(255,255,255,0.05)', borderRadius: '100px', overflow: 'hidden' }}>
-                                        <motion.div initial={{ width: 0 }} animate={{ width: `${layer.pct}%` }} style={{ height: '100%', backgroundColor: getLayerColor(layer.pct) }} />
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-
-                        <div style={{ display: 'flex', justifyContent: 'space-between', paddingTop: '1rem', marginTop: '0.5rem', borderTop: '1px solid rgba(255,255,255,0.05)', fontSize: '0.8rem', color: 'rgba(255,255,255,0.5)' }}>
-                            <span>Quiz: <b>{quizCompletati}</b></span>
-                            <span>Media: <b>{mediaPercentuale}%</b></span>
-                            <span>Streak: <b>🔥 {streak} gg</b></span>
-                        </div>
-
-                        <button 
-                            onClick={() => handlePrimaryCTA('smart')}
-                            className="pl-btn"
-                            style={{
-                                marginTop: '1rem', width: '100%', padding: '1.25rem', fontSize: '1.1rem', fontWeight: '700', borderRadius: '12px', border: 'none', cursor: 'pointer',
-                                color: smartCTA.type === 'default' ? 'black' : 'white',
-                                backgroundColor: smartCTA.type === 'error' ? '#ef4444' : smartCTA.type === 'warning' ? '#f59e0b' : smartCTA.type === 'info' ? '#3b82f6' : 'var(--pl-gold)'
-                            }}
-                        >
-                            {smartCTA.label}
-                        </button>
-                    </div>
-
-                    <div className="glass-card" style={{ padding: '1.5rem', marginTop: '1.5rem' }}>
-                        <ExperienceProgressInline xp={xp} level={livello} />
-                    </div>
-                </section>
-
-                <section className="elite-column">
-                    <div className="section-label"><TrendingUp size={16} /> Operazioni Rapide</div>
-                    <div className="bento-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1rem' }}>
-                        <button className="glass-card bento-item" style={{ gridColumn: 'span 2', padding: '1.5rem', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }} onClick={() => handlePrimaryCTA('simulation')}>
-                            <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
-                                <ClipboardList size={24} color="var(--pl-gold)" />
-                                <div style={{ textAlign: 'left' }}>
-                                    <div style={{ fontWeight: '700', color: 'white' }}>Simulazione Ministeriale</div>
-                                    <div style={{ fontSize: '0.8rem', opacity: 0.6 }}>60 domande · 60 minuti</div>
-                                </div>
-                            </div>
-                            <ChevronRight size={20} />
-                        </button>
-                        <button className="glass-card bento-item" style={{ padding: '1rem', textAlign: 'left' }} onClick={() => handlePrimaryCTA('srs')}>
-                            <Target size={20} color="#3b82f6" />
-                            <div style={{ fontWeight: '700', marginTop: '0.5rem' }}>SRS</div>
-                            <div style={{ fontSize: '1.5rem', fontWeight: '800' }}>{srsDueToday}</div>
-                        </button>
-                        <button className="glass-card bento-item" style={{ padding: '1rem', textAlign: 'left' }} onClick={() => handlePrimaryCTA('mistakes')}>
-                            <TrendingDown size={20} color="#ef4444" />
-                            <div style={{ fontWeight: '700', marginTop: '0.5rem' }}>Errori</div>
-                            <div style={{ fontSize: '1.5rem', fontWeight: '800' }}>{Object.keys(erroriLog).length}</div>
-                        </button>
-                    </div>
-                </section>
-            </main>
-        </div>
-    );
-};
-
-export default Dashboard;
+}

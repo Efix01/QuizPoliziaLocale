@@ -1,109 +1,64 @@
-import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { Layout } from './components/Layout';
-import ScrollToTop from './components/ScrollToTop';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useAuth } from './context/AuthContext';
+import { usePL } from './context/PLContext';
 
-// Lazy-loaded Pages
-const Dashboard = React.lazy(() => import('./pages/Dashboard'));
-const Profile = React.lazy(() => import('./pages/Profile'));
-const StudyLibrary = React.lazy(() => import('./pages/StudyLibrary'));
-const LessonReader = React.lazy(() => import('./pages/LessonReader'));
-const Login = React.lazy(() => import('./pages/Login'));
-const ForgotPassword = React.lazy(() => import('./pages/ForgotPassword'));
-const Onboarding = React.lazy(() => import('./pages/Onboarding'));
-const TermsOfService = React.lazy(() => import('./pages/TermsOfService'));
-const PrivacyPolicy = React.lazy(() => import('./pages/PrivacyPolicy'));
-const ChiSiamo = React.lazy(() => import('./pages/ChiSiamo'));
-const PhysicalPrep = React.lazy(() => import('./pages/PhysicalPrep'));
+// Pagine
+import Landing from './pages/Landing';
+import Login from './pages/Login';
+import Register from './pages/Register';
+import Onboarding from './pages/Onboarding';
+import Dashboard from './pages/Dashboard';
+import QuizBuilder from './pages/QuizBuilder';
+import StudyMode from './pages/StudyMode';
+import SimulationSession from './pages/SimulationSession';
+import ProgressStats from './pages/ProgressStats';
+import StudyLibrary from './pages/StudyLibrary';
+import Layout from './components/Layout'; // IL NUOVO MENU
 
-// Pagine PL
-const Settings = React.lazy(() => import('./pages/Settings'));
-const QuickQuizMenu = React.lazy(() => import('./pages/QuickQuizMenu'));
-const SimulationMenu = React.lazy(() => import('./pages/SimulationMenu'));
-const SimulationSession = React.lazy(() => import('./pages/SimulationSession'));
-const StudyMode = React.lazy(() => import('./pages/StudyMode'));
+export default function App() {
+  const { user, loading: authLoading } = useAuth();
+  const { profilo, isLoading: plLoading } = usePL();
 
-import LoadingSpinner from './components/ui/LoadingSpinner';
-import { ToastProvider } from './context/ToastProvider';
-import { AuthProvider } from './context/AuthProvider';
-import { NotificationProvider } from './context/NotificationProvider';
-import { CookieProvider } from './context/CookieProvider';
-import CookieBanner from './components/ui/CookieBanner';
-import { PLProvider } from './context/PLContext';
-import { ProgressProvider } from './context/ProgressContext';
-import WhatsNewModal from './components/ui/WhatsNewModal';
-import './components/ui/Toast.css';
-import ErrorBoundary from './components/ui/ErrorBoundary';
-
-function App() {
-  // PULIZIA LEGACY ETREMA (Per risolvere pagina bianca da vecchi dati)
-  React.useEffect(() => {
-    const LEGACY_KEYS = ['quiz_cfva_auth', 'user_progress', 'cfva_study_state', 'last_quiz_results'];
-    let cleaned = false;
-    LEGACY_KEYS.forEach(key => {
-      if (localStorage.getItem(key)) {
-        localStorage.removeItem(key);
-        cleaned = true;
-      }
-    });
-    if (cleaned) {
-      console.log('🧹 Puliti dati legacy CFVA per prevenire crash.');
-    }
-  }, []);
+  if (authLoading || plLoading) {
+    return (
+      <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0f172a', color: '#fff' }}>
+        <div className="loader">Caricamento...</div>
+      </div>
+    );
+  }
 
   return (
-    <ErrorBoundary>
-      <CookieProvider>
-        <AuthProvider>
-          <NotificationProvider>
-            <PLProvider>
-              <ProgressProvider>
-                <ToastProvider>
-                  <Router>
-                    <ScrollToTop />
+    <Routes>
+      {/* Rotte Pubbliche senza Menu */}
+      <Route path="/" element={user ? <Navigate to="/dashboard" replace /> : <Landing />} />
+      <Route path="/login" element={user ? <Navigate to="/dashboard" replace /> : <Login />} />
+      <Route path="/register" element={user ? <Navigate to="/dashboard" replace /> : <Register />} />
 
-                    <Suspense fallback={<LoadingSpinner />}>
-                      <Routes>
-                        {/* Onboarding */}
-                        <Route path="/welcome" element={<Onboarding />} />
-                        <Route path="/terms" element={<TermsOfService />} />
-                        <Route path="/privacy" element={<PrivacyPolicy />} />
-                        <Route path="/chi-siamo" element={<ChiSiamo />} />
+      {/* Onboarding senza Menu */}
+      <Route path="/onboarding" element={
+        user ? <Onboarding /> : <Navigate to="/login" replace />
+      } />
 
-                        {/* Auth */}
-                        <Route path="/login" element={<Login />} />
-                        <Route path="/forgot-password" element={<ForgotPassword />} />
+      {/* === ROTTE PROTETTE CON MENU (LAYOUT) === */}
+      <Route element={user && profilo?.regioneId ? <Layout /> : <Navigate to={user ? "/onboarding" : "/"} replace />}>
+        
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/quiz-builder" element={<QuizBuilder />} />
+        <Route path="/progress" element={<ProgressStats />} /> 
+        <Route path="/library" element={<StudyLibrary />} />
 
-                        {/* Lesson Reader & Simulation & Study - Full screen (No Tabs) */}
-                        <Route path="/manual/:subjectId/:chapterId" element={<LessonReader />} />
-                        <Route path="/manual/:subjectId" element={<LessonReader />} />
-                        <Route path="/simulazione/sessione/:id?" element={<SimulationSession />} />
-                        <Route path="/study" element={<StudyMode />} />
+      </Route>
 
-                        {/* Main app with Layout */}
-                        <Route path="/" element={<Layout />}>
-                          <Route index element={<Dashboard />} />
-                          <Route path="dashboard" element={<Dashboard />} />
-                          <Route path="quiz-veloce" element={<QuickQuizMenu />} />
-                          <Route path="simulazione" element={<SimulationMenu />} />
-                          <Route path="physical" element={<PhysicalPrep />} />
-                          <Route path="manual" element={<StudyLibrary />} />
-                          <Route path="profile" element={<Profile />} />
-                          <Route path="settings" element={<Settings />} />
-                        </Route>
-                      </Routes>
-                    </Suspense>
-                    <CookieBanner />
-                    <WhatsNewModal />
-                  </Router>
-                </ToastProvider>
-              </ProgressProvider>
-            </PLProvider>
-          </NotificationProvider>
-        </AuthProvider>
-      </CookieProvider>
-    </ErrorBoundary>
+      {/* === ROTTE PROTETTE SENZA MENU (Per non distrarre durante lo studio) === */}
+      <Route path="/study" element={
+        user && profilo?.regioneId ? <StudyMode /> : <Navigate to="/dashboard" replace />
+      } />
+      <Route path="/simulation" element={
+        user && profilo?.regioneId ? <SimulationSession /> : <Navigate to="/dashboard" replace />
+      } />
+
+      {/* Fallback */}
+      <Route path="*" element={<Navigate to="/" replace />} />
+    </Routes>
   );
 }
-
-export default App;

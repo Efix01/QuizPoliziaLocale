@@ -1,91 +1,94 @@
-import React from 'react';
-import { NavLink, Outlet, useNavigate } from 'react-router-dom';
-import { Home, BookOpen, ClipboardList, FileText, LogIn } from 'lucide-react';
-import { useAuth } from '../context/AuthContext';
-import './layout.css';
+import { Outlet, useNavigate, useLocation } from 'react-router-dom';
+import { Home, BrainCircuit, BarChart3, LogOut, BookOpen } from 'lucide-react';
+import { getAuth, signOut } from 'firebase/auth';
 
-export const Layout: React.FC = () => {
-    const { isAuthenticated, user } = useAuth();
-    const navigate = useNavigate();
+export default function Layout() {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const auth = getAuth();
 
-    // Get user initials for avatar
-    const getInitials = () => {
-        if (!user?.displayName) return user?.email?.charAt(0).toUpperCase() || '?';
-        return user.displayName
-            .split(' ')
-            .map(n => n.charAt(0))
-            .join('')
-            .toUpperCase()
-            .slice(0, 2);
-    };
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate('/');
+    } catch (error) {
+      console.error('Errore durante il logout', error);
+    }
+  };
 
-    return (
-        <div className="app-container">
-            <main className="content">
-                <Outlet />
-            </main>
-            <nav className="bottom-nav" aria-label="Navigazione principale">
-                <NavLink
-                    to="/"
-                    className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-                    end
-                    aria-label="Home"
-                >
-                    <Home />
-                    <span>Home</span>
-                </NavLink>
-                <NavLink
-                    to="/quiz-veloce"
-                    className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-                    aria-label="Quiz"
-                >
-                    <BookOpen />
-                    <span>Quiz</span>
-                </NavLink>
-                <NavLink
-                    to="/manual"
-                    className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-                    aria-label="Studio"
-                >
-                    <FileText />
-                    <span>Studio</span>
-                </NavLink>
-                <NavLink
-                    to="/simulazione"
-                    className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-                    aria-label="Simulazione"
-                >
-                    <ClipboardList />
-                    <span>Test</span>
-                </NavLink>
+  const navItems = [
+    { path: '/dashboard', label: 'Home', icon: Home },
+    { path: '/quiz-builder', label: 'Quiz', icon: BrainCircuit },
+    { path: '/progress', label: 'Statistiche', icon: BarChart3 },
+    { path: '/library', label: 'Libreria', icon: BookOpen },
+  ];
 
-                {/* Profile or Login based on auth state */}
-                {isAuthenticated ? (
-                    <NavLink
-                        to="/profile"
-                        className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}
-                        aria-label="Profilo"
-                    >
-                        <div className="nav-avatar">
-                            {user?.photoURL ? (
-                                <img src={user.photoURL} alt="" className="nav-avatar-img" />
-                            ) : (
-                                <span className="nav-avatar-initials">{getInitials()}</span>
-                            )}
-                        </div>
-                        <span>Profilo</span>
-                    </NavLink>
-                ) : (
-                    <button
-                        className="nav-item nav-login"
-                        onClick={() => navigate('/login')}
-                        aria-label="Accedi"
-                    >
-                        <LogIn />
-                        <span>Accedi</span>
-                    </button>
-                )}
-            </nav>
+  return (
+    <div style={{ minHeight: '100vh', background: '#0f172a', display: 'flex', flexDirection: 'column' }}>
+      
+      {/* Navbar fissa in alto */}
+      <nav style={{ 
+        position: 'sticky', top: 0, zIndex: 50, 
+        background: 'rgba(15, 23, 42, 0.85)', backdropFilter: 'blur(10px)', 
+        borderBottom: '1px solid #1e293b', padding: '0.75rem 1.5rem',
+        display: 'flex', justifyContent: 'space-between', alignItems: 'center'
+      }}>
+        {/* Logo visivo */}
+        <div 
+          onClick={() => navigate('/dashboard')} 
+          style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 'bold', fontSize: '1.2rem', color: '#f8fafc', cursor: 'pointer' }}
+        >
+          <div style={{ background: '#3b82f6', color: 'white', padding: '0.4rem', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <span style={{ fontSize: '1rem', lineHeight: 1 }}>PL</span>
+          </div>
+          <span className="hide-on-mobile">Quiz Polizia Locale</span>
         </div>
-    );
-};
+
+        {/* Link di navigazione */}
+        <div style={{ display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+          {navItems.map((item) => {
+            const isActive = location.pathname.startsWith(item.path);
+            const Icon = item.icon;
+            return (
+              <button
+                key={item.path}
+                onClick={() => navigate(item.path)}
+                style={{
+                  display: 'flex', alignItems: 'center', gap: '0.4rem',
+                  background: isActive ? '#1e293b' : 'transparent',
+                  color: isActive ? '#3b82f6' : '#94a3b8',
+                  border: 'none', padding: '0.5rem 0.75rem', borderRadius: '8px',
+                  cursor: 'pointer', fontWeight: isActive ? '600' : '500',
+                  transition: 'all 0.2s'
+                }}
+                onMouseOver={(e) => !isActive && (e.currentTarget.style.color = '#f8fafc')}
+                onMouseOut={(e) => !isActive && (e.currentTarget.style.color = '#94a3b8')}
+                title={item.label}
+              >
+                <Icon size={20} />
+                <span style={{ display: 'none' }} className="show-on-desktop">{item.label}</span>
+              </button>
+            );
+          })}
+
+          <div style={{ width: '1px', height: '24px', background: '#334155', margin: '0 0.5rem' }} />
+
+          {/* Tasto Logout */}
+          <button 
+            onClick={handleLogout}
+            style={{ background: 'transparent', border: 'none', color: '#ef4444', cursor: 'pointer', padding: '0.5rem', display: 'flex', alignItems: 'center', borderRadius: '8px' }}
+            title="Esci"
+          >
+            <LogOut size={20} />
+          </button>
+        </div>
+      </nav>
+
+      {/* Contenuto dinamico della pagina */}
+      <main style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+        <Outlet />
+      </main>
+
+    </div>
+  );
+}
