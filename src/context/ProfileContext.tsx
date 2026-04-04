@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
-import { type ProfiloPL, ProfiloPLSchema } from '../types/pl';
+import { type ProfiloPL } from '../types/pl';
 import { profileStorage } from '../lib/profileStorage';
 import { useAuth } from './AuthContext'; // Importiamo useAuth per la sync futura
 
@@ -27,17 +27,10 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
     []
   );
 
-  // 1. Boot da storage con validazione Zod
+  // Boot da storage — la validazione Zod è già interna a profileStorage.load()
   useEffect(() => {
     const data = profileStorage.load();
-    if (!data) return;
-    const result = ProfiloPLSchema.safeParse(data);
-    if (result.success) {
-      setProfiloState(result.data);
-    } else {
-      console.warn('Profilo in storage non valido, reset a null:', result.error.issues);
-      profileStorage.clear?.();
-    }
+    if (data) setProfiloState(data);
   }, []);
 
   // 2. Punto di estensione per sincronizzazione Firestore futura
