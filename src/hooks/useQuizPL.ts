@@ -33,7 +33,13 @@ export function useQuizPL() {
       : strato === 'comunale' ? domandeComunali
       : tutteLeDomande;
 
-    return shuffle(base.filter((d: DomandaPL) => d.categoriaId === categoriaId)).slice(0, n);
+    const filtered = base.filter((d: DomandaPL) => d.categoriaId === categoriaId);
+    
+    if (filtered.length === 0) {
+      console.warn(`Nessuna domanda trovata per categoria ${categoriaId} in strato ${strato ?? 'tutti'}`);
+    }
+
+    return shuffle(filtered).slice(0, n);
   }, [domandeCore, domandeRegionali, domandeComunali, tutteLeDomande]);
 
   // Quiz per strato specifico
@@ -49,7 +55,7 @@ export function useQuizPL() {
     return shuffle(map[strato]).slice(0, n);
   }, [domandeCore, domandeRegionali, domandeComunali]);
 
-  // Simulazione d'esame: rispetta le proporzioni reali
+  // Simulazione d'esame: rispetta le proporzioni dal profilo
   const generaSimulazione = useCallback((): DomandaPL[] => {
     const params = profilo?.parametriEsame ?? {
       numeroDomande: 100,
@@ -60,17 +66,49 @@ export function useQuizPL() {
     };
 
     const totale = params.numeroDomande;
-    const nComunale = domandeComunali.length > 0 
-      ? Math.min(Math.round(totale * 0.05), domandeComunali.length) 
-      : 0;
-    const nRegionale = domandeRegionali.length > 0 
-      ? Math.min(Math.round(totale * 0.25), domandeRegionali.length) 
-      : 0;
-    const nCore = Math.min(totale - nRegionale - nComunale, domandeCore.length);
 
-    const totaleEffettivo = nCore + nRegionale + nComunale;
+    // ✅ Leggi le proporzioni dal profilo, con fallback standard 70/25/5
+    const composizione = profilo?.composizioneQuiz ?? {
+      percentualeCore: 70,
+      percentualeRegionale: 25,
+      percentualeComunale: 5,
+    };
+
+    // Calcola il numero di domande target per layer
+    const nCoreTarget = Math.round(totale * (composizione.percentualeCore / 100));
+    const nRegionaleTarget = Math.round(totale * (composizione.percentualeRegionale / 100));
+    const nComunaleTarget = Math.round(totale * (composizione.percentualeComunale / 100));
+
+    // Limita ai disponibili
+    let nCore = Math.min(nCoreTarget, domandeCore.length);
+    let nRegionale = Math.min(nRegionaleTarget, domandeRegionali.length);
+    let nComunale = Math.min(nComunaleTarget, domandeComunali.length);
+
+    let totaleEffettivo = nCore + nRegionale + nComunale;
+
+    // Se mancano domande, compensa dagli altri layer (priorità: core > regionale > comunale)
     if (totaleEffettivo < totale) {
-      console.warn(`Simulazione ridotta: ${totaleEffettivo}/${totale} domande disponibili`);
+      const deficit = totale - totaleEffettivo;
+      
+      const coreExtra = Math.min(deficit, domandeCore.length - nCore);
+      nCore += coreExtra;
+
+      const regionaleExtra = Math.min(deficit - coreExtra, domandeRegionali.length - nRegionale);
+      nRegionale += regionaleExtra;
+
+      const comunaleExtra = Math.min(deficit - coreExtra - regionaleExtra, domandeComunali.length - nComunale);
+      nComunale += comunaleExtra;
+
+      totaleEffettivo = nCore + nRegionale + nComunale;
+
+      if (totaleEffettivo < totale) {
+        console.warn(
+          `Simulazione ridotta: ${totaleEffettivo}/${totale} domande disponibili.\n` +
+          `Richieste (${composizione.percentualeCore}/${composizione.percentualeRegionale}/${composizione.percentualeComunale}%): ` +
+          `core=${nCoreTarget}, reg=${nRegionaleTarget}, com=${nComunaleTarget}\n` +
+          `Disponibili: core=${domandeCore.length}, reg=${domandeRegionali.length}, com=${domandeComunali.length}`
+        );
+      }
     }
 
     const simulazione: DomandaPL[] = [
@@ -80,12 +118,19 @@ export function useQuizPL() {
     ];
 
     return shuffle(simulazione);
-  }, [domandeCore, domandeRegionali, domandeComunali, profilo?.parametriEsame]);
+  }, [domandeCore, domandeRegionali, domandeComunali, profilo?.parametriEsame, profilo?.composizioneQuiz]);
 
   // Quiz basato su un elenco di ID (es. per ripasso errori)
   const generaQuizId = useCallback((ids: string[]): DomandaPL[] => {
     const map = new Map(tutteLeDomande.map((d: DomandaPL) => [d.id, d]));
-    return ids.map(id => map.get(id)).filter((d): d is DomandaPL => d !== undefined);
+    const domande = ids.map(id => map.get(id)).filter((d): d is DomandaPL => d !== undefined);
+    
+    const mancanti = ids.length - domande.length;
+    if (mancanti > 0) {
+      console.warn(`${mancanti} domande non trovate nel pool disponibile (forse rimosse o non caricate)`);
+    }
+
+    return domande;
   }, [tutteLeDomande]);
 
   // Quiz per difficoltà
@@ -104,5 +149,6 @@ export function useQuizPL() {
     generaQuizId,
     generaQuizDifficolta,
     parametriEsame: profilo?.parametriEsame,
+    composizioneQuiz: profilo?.composizioneQuiz, // ✅ Esponi anche questo
   };
 }
