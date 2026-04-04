@@ -1,4 +1,4 @@
-import { CheckCircle2, XCircle, Clock, TrendingUp, AlertTriangle, ArrowRight, BarChart3 } from 'lucide-react';
+import { XCircle, Clock, AlertTriangle, ArrowRight, BarChart3 } from 'lucide-react';
 
 interface ResultsViewProps {
   risultati: {
@@ -20,6 +20,11 @@ interface ResultsViewProps {
       corrette: number;
       totali: number;
     }>;
+    parametri: {
+      punteggioCorretta: number;
+      punteggioErrata: number;
+      punteggioNonData: number;
+    };
   };
   onRevisione: () => void;
   onNuovoQuiz: () => void;
@@ -60,6 +65,20 @@ export default function ResultsView({ risultati, onRevisione, onNuovoQuiz }: Res
             Punteggio: <strong>{punteggioTotale}</strong> / {totali} • {corrette} corrette, {errate} errate
             {nonDate > 0 && `, ${nonDate} non date`}
           </p>
+          
+          {/* Breakdown del calcolo (UX Improvement) */}
+          <div style={{ 
+            marginTop: '0.75rem', 
+            fontSize: '0.85rem', 
+            color: 'rgba(255,255,255,0.6)', 
+            fontFamily: 'monospace',
+            background: 'rgba(0,0,0,0.1)',
+            display: 'inline-block',
+            padding: '4px 12px',
+            borderRadius: '99px'
+          }}>
+            {corrette}×({risultati.parametri.punteggioCorretta}) + {errate}×({risultati.parametri.punteggioErrata}) {nonDate > 0 && `+ ${nonDate}×(${risultati.parametri.punteggioNonData})`} = {punteggioTotale}
+          </div>
           <div style={{ marginTop: '1rem', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '0.5rem', color: 'rgba(255,255,255,0.7)' }}>
             <Clock size={18} />
             <span>{tempoMinuti}:{tempoSecondi.toString().padStart(2, '0')}</span>

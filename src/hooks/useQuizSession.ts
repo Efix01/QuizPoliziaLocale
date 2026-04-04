@@ -55,6 +55,11 @@ export type QuizRisultati = {
     corrette: number;
     totali: number;
   }>;
+  parametri: {
+    punteggioCorretta: number;
+    punteggioErrata: number;
+    punteggioNonData: number;
+  };
 };
 
 // ===================================================
@@ -273,6 +278,7 @@ export const useQuizSession = () => {
       tempo: tempoTrascorso,
       statsByLayer,
       categorieDeboli,
+      parametri: params,
     };
   }, [isFinished, risposteDate, sessionQuestions, profilo?.parametriEsame]);
 
