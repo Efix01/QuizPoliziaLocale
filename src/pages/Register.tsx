@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { ShieldCheck, Mail, Lock, User, Eye, EyeOff, ArrowRight, CheckCircle, AlertCircle, Building2, MapPin } from 'lucide-react';
+import { Mail, Lock, User, Eye, EyeOff, ArrowRight, CheckCircle, AlertCircle, Building2, MapPin } from 'lucide-react';
 
 interface FormData {
   email: string;

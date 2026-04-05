@@ -18,7 +18,7 @@ import Layout from './components/Layout'; // IL NUOVO MENU
 
 export default function App() {
   const { user, loading: authLoading } = useAuth();
-  const { profilo, isLoading: plLoading } = usePL();
+  const { profilo } = usePL();
 
   // Mostriamo il loader globale solo al primo accesso o durante il caricamento Auth
   if (authLoading) {
