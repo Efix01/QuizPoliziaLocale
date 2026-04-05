@@ -1,6 +1,7 @@
-import React from 'react';
-import { ArrowLeft, CheckCircle, XCircle, AlertTriangle } from 'lucide-react';
+import React, { useState } from 'react';
+import { ArrowLeft, CheckCircle, XCircle, AlertTriangle, Star, Type, Maximize, Minimize, Landmark } from 'lucide-react';
 import type { DomandaPL } from '../../types/pl';
+import { useProgress } from '../../context/ProgressContext';
 
 interface QuizViewProps {
   currentQuestion: DomandaPL;
@@ -34,6 +35,15 @@ export default function QuizView({
   isSimulationMode = false, // Default: modalità pratica
 }: QuizViewProps) {
   
+  const { progressiGlobali, toggleSegnalibro } = useProgress();
+  const [zenMode, setZenMode] = useState(false);
+  const [fontLevel, setFontLevel] = useState(1); // 0 = piccolo, 1 = medio, 2 = grande
+
+  const fontSizes = ['1.1rem', '1.3rem', '1.6rem'];
+  const currentFontSize = fontSizes[fontLevel];
+  
+  const isSaved = progressiGlobali.domandeSalvate?.includes(currentQuestion.id);
+
   // Handler per modalità simulazione (avanzamento senza feedback)
   const handleNextInSimulation = () => {
     handleFeedback(true); // Registra la risposta ma non mostra feedback
@@ -45,58 +55,88 @@ export default function QuizView({
     <div style={{ minHeight: '100vh', background: '#0f172a', color: '#f8fafc', padding: '1rem' }}>
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
         
-        {/* Header e Progresso */}
-        <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
-          <button 
-            onClick={onAbandon} 
-            style={{ 
-              background: 'transparent', 
-              border: 'none', 
-              color: '#94a3b8', 
-              cursor: 'pointer', 
-              display: 'flex', 
-              alignItems: 'center', 
-              gap: '0.5rem',
-              fontSize: '1rem',
-              fontWeight: '600',
-            }}
-          >
-            <ArrowLeft size={20} /> {isSimulationMode ? 'Abbandona Esame' : 'Abbandona'}
-          </button>
-          <div style={{ color: '#cbd5e1', fontWeight: '600' }}>
-            Domanda {currentIndex + 1} di {totalQuestions}
-          </div>
-        </header>
+        {/* Header e Progresso (nascosti in Zen Mode per ridurre le distrazioni) */}
+        {!zenMode && (
+          <>
+            <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
+              <button 
+                onClick={onAbandon} 
+                style={{ 
+                  background: 'transparent', 
+                  border: 'none', 
+                  color: '#94a3b8', 
+                  cursor: 'pointer', 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '0.5rem',
+                  fontSize: '1rem',
+                  fontWeight: '600',
+                }}
+              >
+                <ArrowLeft size={20} /> {isSimulationMode ? 'Abbandona Esame' : 'Abbandona'}
+              </button>
+              <div style={{ color: '#cbd5e1', fontWeight: '600' }}>
+                Domanda {currentIndex + 1} di {totalQuestions}
+              </div>
+            </header>
 
-        {/* Banner Modalità Esame */}
-        {isSimulationMode && (
-          <div style={{
-            background: '#92400e',
-            border: '1px solid #c2410c',
-            borderRadius: '12px',
-            padding: '1rem',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '0.75rem',
-            marginBottom: '2rem',
-          }}>
-            <AlertTriangle size={20} color="#f59e0b" />
-            <div style={{ fontSize: '0.95rem', color: '#fef3c7' }}>
-              <strong style={{ color: '#fde68a' }}>Modalità Esame:</strong> Non vedrai le correzioni fino alla fine.
+            {/* Banner Modalità Esame */}
+            {isSimulationMode && (
+              <div style={{
+                background: '#92400e',
+                border: '1px solid #c2410c',
+                borderRadius: '12px',
+                padding: '1rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                marginBottom: '2rem',
+              }}>
+                <AlertTriangle size={20} color="#f59e0b" />
+                <div style={{ fontSize: '0.95rem', color: '#fef3c7' }}>
+                  <strong style={{ color: '#fde68a' }}>Modalità Esame:</strong> Non vedrai le correzioni fino alla fine.
+                </div>
+              </div>
+            )}
+
+            <div style={{ height: '6px', background: '#1e293b', borderRadius: '3px', overflow: 'hidden', marginBottom: '2rem' }}>
+              <div style={{ width: `${progressPercentage}%`, height: '100%', background: '#3b82f6', transition: 'width 0.3s ease' }} />
             </div>
-          </div>
+          </>
         )}
-
-        <div style={{ height: '6px', background: '#1e293b', borderRadius: '3px', overflow: 'hidden', marginBottom: '2rem' }}>
-          <div style={{ width: `${progressPercentage}%`, height: '100%', background: '#3b82f6', transition: 'width 0.3s ease' }} />
-        </div>
 
         {/* Domanda */}
         <div style={{ background: '#1e293b', padding: '2rem', borderRadius: '24px', border: '1px solid #334155', marginBottom: '2rem', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.1)' }}>
-          <div style={{ display: 'inline-block', background: '#334155', color: '#cbd5e1', padding: '0.25rem 0.75rem', borderRadius: '99px', fontSize: '0.85rem', fontWeight: 'bold', marginBottom: '1rem' }}>
-            {currentQuestion.categoriaId.toUpperCase()}
+          
+          {/* Toolbar UX Intensiva: Categoria, Font, Zen Mode, Segnalibro */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1.5rem' }}>
+            {!zenMode ? (
+              <div style={{ display: 'inline-block', background: '#334155', color: '#cbd5e1', padding: '0.25rem 0.75rem', borderRadius: '99px', fontSize: '0.85rem', fontWeight: 'bold' }}>
+                {currentQuestion.categoriaId.toUpperCase()}
+              </div>
+            ) : <div />}
+
+            <div style={{ display: 'flex', gap: '0.5rem', background: '#0f172a', padding: '0.5rem', borderRadius: '12px', border: '1px solid #334155' }}>
+              <button onClick={() => setFontLevel((f) => (f + 1) % 3)} style={{ background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer', padding: '0.25rem', display: 'flex', alignItems: 'center' }} title="Cambia Dimensione Testo">
+                <Type size={18} />
+              </button>
+              <button onClick={() => setZenMode(!zenMode)} style={{ background: 'transparent', border: 'none', color: zenMode ? '#3b82f6' : '#94a3b8', cursor: 'pointer', padding: '0.25rem', display: 'flex', alignItems: 'center' }} title="Toggle Zen Mode">
+                {zenMode ? <Minimize size={18} /> : <Maximize size={18} />}
+              </button>
+              <button onClick={async () => await toggleSegnalibro(currentQuestion.id)} style={{ background: 'transparent', border: 'none', color: isSaved ? '#d4af37' : '#94a3b8', cursor: 'pointer', padding: '0.25rem', display: 'flex', alignItems: 'center', transition: 'color 0.2s' }} title="Salva nei Segnalibri">
+                <Star size={20} fill={isSaved ? '#d4af37' : 'none'} />
+              </button>
+            </div>
           </div>
-          <h2 style={{ fontSize: '1.3rem', lineHeight: '1.6', margin: 0 }}>{currentQuestion.testo}</h2>
+
+          <h2 style={{ fontSize: currentFontSize, lineHeight: '1.6', margin: 0, transition: 'font-size 0.2s ease' }}>{currentQuestion.testo}</h2>
+
+          {currentQuestion.fonte && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginTop: '1.5rem', color: '#64748b', fontSize: '0.85rem', fontWeight: 600 }}>
+              <Landmark size={14} />
+              <span>Fonte: {currentQuestion.fonte}</span>
+            </div>
+          )}
         </div>
 
         {/* Opzioni */}

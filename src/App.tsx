@@ -14,7 +14,16 @@ import SimulationSession from './pages/SimulationSession';
 import ProgressStats from './pages/ProgressStats';
 import StudyLibrary from './pages/StudyLibrary';
 import StudyManual from './pages/StudyManual';
+import ReviewSession from './pages/ReviewSession';
 import Layout from './components/Layout'; // IL NUOVO MENU
+
+// Moduli ADMIN
+import AdminRoute from './components/admin/AdminRoute';
+import AdminLayout from './components/admin/AdminLayout';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminQuizEditor from './pages/admin/AdminQuizEditor';
+import AiInbox from './pages/admin/AiInbox';
+import PdfIngestor from './pages/admin/PdfIngestor';
 
 export default function App() {
   const { user, loading: authLoading } = useAuth();
@@ -62,6 +71,25 @@ export default function App() {
       <Route path="/simulation" element={
         user && profilo?.regioneId ? <SimulationSession /> : <Navigate to="/dashboard" replace />
       } />
+      <Route path="/mistakes" element={
+        user && profilo?.regioneId ? <ReviewSession /> : <Navigate to="/dashboard" replace />
+      } />
+      <Route path="/bookmarks" element={
+        user && profilo?.regioneId ? <ReviewSession /> : <Navigate to="/dashboard" replace />
+      } />
+      <Route path="/srs" element={
+        user && profilo?.regioneId ? <ReviewSession /> : <Navigate to="/dashboard" replace />
+      } />
+
+      {/* === ROTTE ADMIN CYBORG (PROTETTE DA WHITELIST) === */}
+      <Route path="/admin" element={<AdminRoute />}>
+        <Route element={<AdminLayout />}>
+          <Route index element={<AdminDashboard />} />
+          <Route path="editor-domande" element={<AdminQuizEditor />} />
+          <Route path="cyborg-inbox" element={<AiInbox />} />
+          <Route path="ingestor-pdf" element={<PdfIngestor />} />
+        </Route>
+      </Route>
 
       {/* Fallback */}
       <Route path="*" element={<Navigate to="/" replace />} />

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { z } from 'zod';
 import { AuthContext, type AuthContextType, type User } from './AuthContext';
+import { isUserAdmin } from '../config/adminWhitelist';
 import { auth, googleProvider } from '../lib/firebase';
 import { 
     signInWithEmailAndPassword, 
@@ -144,6 +145,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         loading,
         error,
         isAuthenticated: !!user,
+        isAdmin: isUserAdmin(user?.email),
         login,
         register,
         loginWithGoogle,

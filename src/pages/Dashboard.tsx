@@ -3,18 +3,24 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { usePL } from '../context/PLContext';
 import { useProgress } from '../context/ProgressContext';
-import { MapPin, BrainCircuit, Target, Timer, Flame, AlertCircle, TrendingUp, BookOpen } from 'lucide-react';
+import { MapPin, BrainCircuit, Target, Timer, Flame, AlertCircle, TrendingUp, BookOpen, Star, Brain } from 'lucide-react';
 
 export default function Dashboard() {
   const navigate = useNavigate();
   const { user } = useAuth();
   const { profilo, domandeCore, domandeRegionali, domandeComunali } = usePL();
-  const { progressiGlobali, erroriLog } = useProgress();
+  const { progressiGlobali, erroriLog, srsData } = useProgress();
 
   if (!progressiGlobali) return null;
 
   const { mediaPercentuale, streak, perCategoria } = progressiGlobali;
   const erroriCount = Object.keys(erroriLog || {}).length;
+
+  const srsCount = useMemo(() => {
+    if (!srsData) return 0;
+    const now = new Date();
+    return Object.values(srsData).filter(item => item && new Date(item.nextReview) <= now).length;
+  }, [srsData]);
 
   // --- Mappa categorie → layer da domande caricate ---
   const categoriaDomandeMap = useMemo(() => {
@@ -238,6 +244,29 @@ export default function Dashboard() {
               <p style={{ color: '#94a3b8', margin: 0, lineHeight: 1.5 }}>Ricrea le condizioni reali del bando: {profilo?.parametriEsame?.numeroDomande || 100} domande, timer e punteggio penalizzato.</p>
             </div>
 
+            {/* Ripasso Intelligente SRS */}
+            <div 
+              onClick={() => srsCount > 0 ? navigate('/srs') : null}
+              style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '20px', padding: '2rem', cursor: srsCount > 0 ? 'pointer' : 'default', opacity: srsCount > 0 ? 1 : 0.6, transition: 'transform 0.2s', display: 'flex', flexDirection: 'column', gap: '1rem', position: 'relative', overflow: 'hidden' }}
+              onMouseOver={(e) => srsCount > 0 && (e.currentTarget.style.transform = 'translateY(-5px)')}
+              onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+            >
+              {srsCount > 0 && (
+                <div style={{ position: 'absolute', top: 0, right: 0, background: '#10b981', color: '#fff', fontSize: '0.7rem', fontWeight: 700, padding: '4px 12px', borderBottomLeftRadius: '10px' }}>
+                  CONSIGLIATO OGGI
+                </div>
+              )}
+              <div style={{ background: '#0f172a', width: '60px', height: '60px', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center', marginTop: srsCount > 0 ? '0.5rem' : 0 }}>
+                <Brain size={32} color={srsCount > 0 ? "#10b981" : "#64748b"} />
+              </div>
+              <h3 style={{ fontSize: '1.3rem', margin: 0 }}>Addestramento Sniper</h3>
+              <p style={{ color: '#94a3b8', margin: 0, lineHeight: 1.5 }}>
+                {srsCount > 0 
+                  ? `Hai ${srsCount} domande in scadenza mnemonica. Alleniamole ora prima che svaniscano!` 
+                  : `Tutte le tue conoscenze sono salde. Nessun decadimento mnemonico rilevato oggi.`}
+              </p>
+            </div>
+
             {/* Ripasso Errori */}
             <div 
               onClick={() => erroriCount > 0 ? navigate('/mistakes') : null}
@@ -253,6 +282,24 @@ export default function Dashboard() {
                 {erroriCount > 0 
                   ? `Hai ${erroriCount} domande da rivedere. Fissale nella memoria prima dell'esame.` 
                   : `Nessun errore da ripassare. Ottimo lavoro, continua così!`}
+              </p>
+            </div>
+
+            {/* Domande Salvate */}
+            <div 
+              onClick={() => (progressiGlobali?.domandeSalvate?.length || 0) > 0 ? navigate('/bookmarks') : null}
+              style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '20px', padding: '2rem', cursor: (progressiGlobali?.domandeSalvate?.length || 0) > 0 ? 'pointer' : 'default', opacity: (progressiGlobali?.domandeSalvate?.length || 0) > 0 ? 1 : 0.6, transition: 'transform 0.2s', display: 'flex', flexDirection: 'column', gap: '1rem' }}
+              onMouseOver={(e) => (progressiGlobali?.domandeSalvate?.length || 0) > 0 && (e.currentTarget.style.transform = 'translateY(-5px)')}
+              onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
+            >
+              <div style={{ background: '#0f172a', width: '60px', height: '60px', borderRadius: '15px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <Star size={32} color={(progressiGlobali?.domandeSalvate?.length || 0) > 0 ? "#f59e0b" : "#64748b"} />
+              </div>
+              <h3 style={{ fontSize: '1.3rem', margin: 0 }}>Domande Salvate</h3>
+              <p style={{ color: '#94a3b8', margin: 0, lineHeight: 1.5 }}>
+                {(progressiGlobali?.domandeSalvate?.length || 0) > 0 
+                  ? `Hai ${progressiGlobali?.domandeSalvate?.length} domande nei segnalibri pronti da ripassare.` 
+                  : `Nessuna domanda salvata. Clicca la stella durante i quiz.`}
               </p>
             </div>
 

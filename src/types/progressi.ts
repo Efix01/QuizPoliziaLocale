@@ -44,6 +44,7 @@ export const GlobalProgressSchema = z.object({
   xp: z.number().nonnegative().default(0),
   
   capitoliLetti: z.array(z.string()).default([]),
+  domandeSalvate: z.array(z.string()).default([]), // Segnalibri
 
   // Mappa delle materie: "cds" -> { fatte: 120, corrette: 94 }
   // Include anche regionali: "reg_lazio" -> { fatte: 15, corrette: 11 }

@@ -31,6 +31,7 @@ const DEFAULT_PROGRESS: GlobalProgress = {
   livello: 1,
   xp: 0,
   capitoliLetti: [],
+  domandeSalvate: [],
   perCategoria: {},
   ultimoAccesso: new Date().toISOString(),
 };
@@ -45,6 +46,7 @@ interface ProgressContextProps {
   isLoading: boolean;
   salvaRisultatoQuiz: (risultati: RisultatoRisposta[]) => Promise<void>;
   segnaComeLetto: (capitoloId: string) => Promise<void>;
+  toggleSegnalibro: (domandaId: string) => Promise<void>;
   resetErrori: () => Promise<void>;
 }
 const ProgressContext = createContext<ProgressContextProps | undefined>(undefined);
@@ -349,7 +351,37 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
     );
   }, [progressiGlobali, srsData, erroriLog, persistProgressData]);
   // ===================================================
-  // 5. Context value
+  // 5. toggleSegnalibro (Bookmark)
+  // ===================================================
+  const toggleSegnalibro = useCallback(async (domandaId: string): Promise<void> => {
+    const salvateAttuali = progressiGlobali.domandeSalvate || [];
+    const index = salvateAttuali.indexOf(domandaId);
+    
+    let nuoveSalvate;
+    if (index >= 0) {
+      nuoveSalvate = salvateAttuali.filter(id => id !== domandaId);
+    } else {
+      nuoveSalvate = [...salvateAttuali, domandaId];
+    }
+
+    const updatedProgress: GlobalProgress = {
+      ...progressiGlobali,
+      domandeSalvate: nuoveSalvate,
+      ultimoAccesso: new Date().toISOString(),
+    };
+
+    setProgressiGlobali(updatedProgress);
+    await persistProgressData(
+      updatedProgress,
+      srsData,
+      erroriLog,
+      new Set(),
+      new Set(),
+    );
+  }, [progressiGlobali, srsData, erroriLog, persistProgressData]);
+
+  // ===================================================
+  // 6. Context value
   // ===================================================
   const erroriCount = Object.keys(erroriLog).length;
   return (
@@ -361,6 +393,7 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
       isLoading,
       salvaRisultatoQuiz,
       segnaComeLetto,
+      toggleSegnalibro,
       resetErrori,
     }}>
       {children}

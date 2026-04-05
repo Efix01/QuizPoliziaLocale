@@ -55,6 +55,7 @@ const BaseDomandaSchema = z.object({
     comma: z.string().optional(),
   }),
   livelloDifficolta: z.union([z.literal(1), z.literal(2), z.literal(3)]),
+  fonte: z.string().optional(),
   tags: z.array(z.string()).default([]),
 });
 
