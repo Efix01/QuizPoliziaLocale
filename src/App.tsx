@@ -13,16 +13,21 @@ import StudyMode from './pages/StudyMode';
 import SimulationSession from './pages/SimulationSession';
 import ProgressStats from './pages/ProgressStats';
 import StudyLibrary from './pages/StudyLibrary';
+import StudyManual from './pages/StudyManual';
 import Layout from './components/Layout'; // IL NUOVO MENU
 
 export default function App() {
   const { user, loading: authLoading } = useAuth();
   const { profilo, isLoading: plLoading } = usePL();
 
-  if (authLoading || plLoading) {
+  // Mostriamo il loader globale solo al primo accesso o durante il caricamento Auth
+  if (authLoading) {
     return (
       <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0f172a', color: '#fff' }}>
-        <div className="loader">Caricamento...</div>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ width: '40px', height: '40px', border: '4px solid #f3f4f6', borderTop: '4px solid #3b82f6', borderRadius: '50%', animation: 'spin 1s linear infinite', margin: '0 auto 1rem' }}></div>
+          <p>Preparazione Elite in corso...</p>
+        </div>
       </div>
     );
   }
@@ -46,6 +51,7 @@ export default function App() {
         <Route path="/quiz-builder" element={<QuizBuilder />} />
         <Route path="/progress" element={<ProgressStats />} /> 
         <Route path="/library" element={<StudyLibrary />} />
+        <Route path="/manual/:categoryId" element={<StudyManual />} />
 
       </Route>
 

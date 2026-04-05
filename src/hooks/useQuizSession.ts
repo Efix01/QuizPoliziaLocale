@@ -74,6 +74,9 @@ export const useQuizSession = () => {
   // Validazione state con Zod
   const parsedState = QuizSessionStateSchema.safeParse(location.state);
   const validState = parsedState.success ? parsedState.data : null;
+  
+  // 🆕 Identifica se siamo in modalità simulazione ufficiale
+  const isSimulationMode = validState?.mode === 'simulation_esame';
 
   const [sessionQuestions] = useState<DomandaPL[]>(() => {
     if (!validState?.domande || validState.domande.length === 0) return [];
@@ -131,7 +134,7 @@ export const useQuizSession = () => {
       domandaId: currentQuestion.id,
       categoriaId: currentQuestion.categoriaId,
       corretta: isActuallyCorrect,
-      indiceRispostaScelta: selectedOption !== null ? selectedOption : 0,
+      indiceRispostaScelta: selectedOption !== null ? selectedOption : -1,
       timestamp: new Date().toISOString(),
     };
 
@@ -228,7 +231,7 @@ export const useQuizSession = () => {
       const catStats = statsByCategoria.get(catKey)!;
       catStats.totali++;
 
-      if (!risposta) {
+      if (!risposta || risposta.indiceRispostaScelta === -1) {
         // Non data
         nonDate++;
         punteggioTotale += params.punteggioNonData;
@@ -312,11 +315,9 @@ export const useQuizSession = () => {
     progressDisplay,
     progressPercentage,
 
-    sessionMode: validState?.mode ?? 'free',
-    sessionCategoriaId: validState?.categoriaId ?? null,
-    sessionStrato: validState?.strato ?? null,
-
-    // 🆕 Risultati calcolati
+    // 🆕 Risultati e modalità
     risultati,
+    isSimulationMode,
+    sessionMode: validState?.mode ?? 'free',
   };
 };

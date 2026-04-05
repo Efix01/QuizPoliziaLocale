@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuizPL } from '../hooks/useQuizPL';
 import { AlertTriangle, Clock, Target, PlayCircle, ArrowLeft } from 'lucide-react';
@@ -21,7 +21,7 @@ export default function SimulationSession() {
     navigate('/study', { 
       state: { 
         domande: domandeDisponibili, 
-        mode: 'simulazione' 
+        mode: 'simulation_esame' 
       } 
     });
   };

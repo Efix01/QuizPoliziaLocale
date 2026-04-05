@@ -42,7 +42,7 @@ export default defineConfig({
       output: {
         manualChunks: {
           'vendor-react': ['react', 'react-dom', 'react-router-dom'],
-          'vendor-ui': ['lucide-react', 'recharts', 'clsx', 'tailwind-merge'],
+          'vendor-ui': ['lucide-react', 'recharts', 'clsx'],
         }
       }
     }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { z } from 'zod';
 import { AuthContext, type AuthContextType, type User } from './AuthContext';
-import { auth, googleProvider } from '../firebase';
+import { auth, googleProvider } from '../lib/firebase';
 import { 
     signInWithEmailAndPassword, 
     createUserWithEmailAndPassword, 

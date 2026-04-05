@@ -1,162 +1,427 @@
-import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { motion } from 'framer-motion';
-import { z } from 'zod'; // Skill sicurezza-quiz
-import { Mail, Lock, User, ArrowRight } from 'lucide-react';
+import { ShieldCheck, Mail, Lock, User, Eye, EyeOff, ArrowRight, CheckCircle, AlertCircle, Building2, MapPin } from 'lucide-react';
 
-// Schema di validazione Zod (Skill sicurezza-quiz)
-const RegisterSchema = z.object({
-  displayName: z.string().min(3, "Il nome deve contenere almeno 3 caratteri"),
-  email: z.string().email("Inserisci un'email valida"),
-  password: z.string().min(6, "La password deve contenere almeno 6 caratteri"),
-  confirmPassword: z.string()
-}).refine((data) => data.password === data.confirmPassword, {
-  message: "Le password non coincidono",
-  path: ["confirmPassword"],
-});
+interface FormData {
+  email: string;
+  password: string;
+  confirmPassword: string;
+  firstName: string;
+  lastName: string;
+}
 
-export default function Register() {
+const Register = () => {
   const navigate = useNavigate();
   const { register } = useAuth();
   
-  const [displayName, setDisplayName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-  const [error, setError] = useState<string | null>(null);
+  const [formData, setFormData] = useState<FormData>({
+    email: '',
+    password: '',
+    confirmPassword: '',
+    firstName: '',
+    lastName: '',
+  });
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [isSuccess, setIsSuccess] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  // Stili comuni Elite
+  const inputStyle = (withIcon?: boolean): React.CSSProperties => ({
+    width: '100%',
+    padding: withIcon ? '1rem 3rem 1rem 3rem' : '1rem 1.25rem',
+    background: '#0f172a',
+    border: '1px solid #334155',
+    borderRadius: '12px',
+    color: '#f8fafc',
+    fontSize: '1rem',
+    outline: 'none',
+    transition: 'border-color 0.2s, box-shadow 0.2s',
+  });
+
+  const labelStyle: React.CSSProperties = {
+    display: 'block',
+    marginBottom: '0.5rem',
+    color: '#cbd5e1',
+    fontWeight: '600',
+    fontSize: '0.95rem',
+  };
+
+  const buttonBaseStyle: React.CSSProperties = {
+    width: '100%',
+    padding: '1rem',
+    borderRadius: '12px',
+    fontWeight: '700',
+    fontSize: '1.05rem',
+    cursor: isLoading ? 'not-allowed' : 'pointer',
+    transition: 'all 0.3s ease',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '0.75rem',
+    border: 'none',
+  };
+
+  const handleChange = (field: keyof FormData, value: string) => {
+    setFormData(prev => ({ ...prev, [field]: field === 'email' ? value.toLowerCase().trim() : value }));
     setError(null);
+  };
 
-    // Validazione Zod
-    const result = RegisterSchema.safeParse({ displayName, email, password, confirmPassword });
-    if (!result.success) {
-      setError(result.error.issues[0].message);
-      return;
+  const validateForm = (): boolean => {
+    // Email validation
+    if (!formData.email.includes('@') || !formData.email.includes('.')) {
+      setError('Inserisci un indirizzo email valido');
+      return false;
+    }
+    
+    // Password validation (min 8 characters)
+    if (formData.password.length < 8) {
+      setError('La password deve avere almeno 8 caratteri');
+      return false;
+    }
+    
+    // Confirm password must match
+    if (formData.password !== formData.confirmPassword) {
+      setError('Le password non coincidono');
+      return false;
     }
 
+    // Name validation
+    if (formData.firstName.trim().length < 2) {
+      setError('Inserisci il tuo nome (almeno 2 caratteri)');
+      return false;
+    }
+
+    if (formData.lastName.trim().length < 2) {
+      setError('Inserisci il tuo cognome (almeno 2 caratteri)');
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleRegister = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    
+    if (!validateForm()) return;
+
     setIsLoading(true);
+
     try {
-      await register(email, password, displayName);
-      navigate('/setup'); // Onboarding dopo registrazione
+      const displayName = `${formData.firstName} ${formData.lastName}`.trim();
+      await register(formData.email, formData.password, displayName);
+      setIsSuccess(true);
+      
+      setTimeout(() => {
+        navigate('/onboarding');
+      }, 1500);
+
     } catch (err: any) {
-      setError("Errore durante la creazione dell'account. Email già in uso?");
-    } finally {
+      console.error('Errore registrazione:', err);
+      setError(err.message || 'Errore nella creazione dell\'account. Riprova.');
       setIsLoading(false);
     }
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 flex items-center justify-center p-6 font-sans">
-      <motion.div 
-        initial={{ opacity: 0, scale: 0.98 }}
-        animate={{ opacity: 1, scale: 1 }}
-        className="w-full max-w-lg"
-      >
-        <div className="text-center mb-10">
-          <h1 className="text-4xl font-black text-slate-900 tracking-tighter uppercase italic">Elite <span className="text-blue-600">PLUS</span></h1>
-          <p className="text-slate-500 font-medium mt-2">Crea il tuo profilo agente gratuito.</p>
-        </div>
+    <div style={{ minHeight: '100vh', background: '#0f172a', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem 1rem', overflowY: 'auto' }}>
+      {/* Sfondo decorativo */}
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', overflow: 'hidden', zIndex: 0 }}>
+        <div style={{ position: 'absolute', top: '-30%', right: '-10%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%)', borderRadius: '50%' }} />
+        <div style={{ position: 'absolute', bottom: '-20%', left: '-20%', width: '450px', height: '450px', background: 'radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%)', borderRadius: '50%' }} />
+      </div>
 
-        <div className="bg-white p-10 rounded-[2.5rem] shadow-xl border border-slate-200">
-          <form onSubmit={handleSubmit} className="space-y-5">
+      <div style={{ 
+        position: 'relative', 
+        zIndex: 1,
+        maxWidth: '500px', 
+        width: '100%',
+      }}>
+        
+        {/* Card principale */}
+        <div style={{
+          background: 'linear-gradient(180deg, rgba(30, 41, 59, 0.95) 0%, rgba(15, 23, 42, 0.95) 100%)',
+          backdropFilter: 'blur(20px)',
+          border: '1px solid #334155',
+          borderRadius: '24px',
+          padding: '2.5rem',
+          boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(59, 130, 246, 0.1)',
+        }}>
+          
+          {/* Header */}
+          <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
+            <div style={{ 
+              display: 'inline-flex',
+              alignItems: 'center', 
+              justifyContent: 'center',
+              width: '72px', 
+              height: '72px', 
+              background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+              borderRadius: '20px',
+              marginBottom: '1.5rem',
+              boxShadow: '0 10px 20px -5px rgba(34, 197, 94, 0.4)'
+            }}>
+              <User size={36} color="#fff" />
+            </div>
             
-            <div className="space-y-2">
-              <label className="text-sm font-bold text-slate-400 uppercase tracking-widest ml-1">Nome Completo</label>
-              <div className="relative group">
-                <User className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-blue-500 transition-colors" size={20} />
-                <input 
-                  type="text"
-                  value={displayName}
-                  onChange={(e) => setDisplayName(e.target.value)}
-                  className="w-full pl-12 pr-4 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-blue-500 focus:bg-white outline-none transition-all font-medium"
-                  placeholder="Nome Cognome"
-                  required
-                />
-              </div>
-            </div>
+            <h1 style={{ fontSize: '2rem', fontWeight: '800', margin: '0 0 0.5rem 0', color: '#f8fafc', letterSpacing: '-0.02em' }}>
+              Crea il tuo account
+            </h1>
+            <p style={{ color: '#94a3b8', margin: 0, fontSize: '1.05rem', lineHeight: 1.5 }}>
+              Inizia subito la tua preparazione al concorso
+            </p>
+          </div>
 
-            <div className="space-y-2">
-              <label className="text-sm font-bold text-slate-400 uppercase tracking-widest ml-1">Email Istituzionale / Privata</label>
-              <div className="relative group">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-blue-500 transition-colors" size={20} />
-                <input 
-                  type="email"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  className="w-full pl-12 pr-4 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-blue-500 focus:bg-white outline-none transition-all font-medium"
-                  placeholder="agente@polizialocale.it"
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-400 uppercase tracking-widest ml-1">Password</label>
-                <div className="relative group">
-                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-blue-500 transition-colors" size={20} />
-                  <input 
-                    type="password"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}
-                    className="w-full pl-12 pr-4 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-blue-500 focus:bg-white outline-none transition-all font-medium"
-                    placeholder="••••••••"
-                    required
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <label className="text-sm font-bold text-slate-400 uppercase tracking-widest ml-1">Conferma</label>
-                <div className="relative group">
-                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-300 group-focus-within:text-blue-500 transition-colors" size={20} />
-                  <input 
-                    type="password"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    className="w-full pl-12 pr-4 py-4 bg-slate-50 border-2 border-slate-100 rounded-2xl focus:border-blue-500 focus:bg-white outline-none transition-all font-medium"
-                    placeholder="••••••••"
-                    required
-                  />
-                </div>
-              </div>
-            </div>
-
+          {/* Form */}
+          <form onSubmit={handleRegister}>
             {error && (
-              <motion.div 
-                initial={{ opacity: 0, x: -10 }} 
-                animate={{ opacity: 1, x: 0 }}
-                className="p-4 bg-red-50 border border-red-100 text-red-600 rounded-xl text-sm font-bold"
-              >
-                ⚠️ {error}
-              </motion.div>
+              <div style={{
+                background: '#ef444415',
+                border: '1px solid #ef4444',
+                borderRadius: '12px',
+                padding: '1rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                marginBottom: '1.5rem',
+                color: '#fecaca',
+                fontSize: '0.95rem',
+              }}>
+                <AlertCircle size={20} color="#ef4444" />
+                <span>{error}</span>
+              </div>
             )}
 
+            {isSuccess && (
+              <div style={{
+                background: '#10b98115',
+                border: '1px solid #10b981',
+                borderRadius: '12px',
+                padding: '1rem',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.75rem',
+                marginBottom: '1.5rem',
+                color: '#bbf7d0',
+                fontSize: '0.95rem',
+              }}>
+                <CheckCircle size={20} color="#10b981" />
+                <span>Account creato! Reindirizzamento...</span>
+              </div>
+            )}
+
+            {/* Nome e Cognome in riga */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem', marginBottom: '1.5rem' }}>
+              <div>
+                <label htmlFor="firstName" style={labelStyle}>
+                  Nome
+                </label>
+                <div style={{ position: 'relative' }}>
+                  <User size={20} color="#64748b" style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)' }} />
+                  <input
+                    id="firstName"
+                    type="text"
+                    placeholder="Mario"
+                    value={formData.firstName}
+                    onChange={(e) => handleChange('firstName', e.target.value)}
+                    style={{ ...inputStyle(true), paddingLeft: '3rem' }}
+                    required
+                    disabled={isLoading}
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <label htmlFor="lastName" style={labelStyle}>
+                  Cognome
+                </label>
+                <div style={{ position: 'relative' }}>
+                  <Building2 size={20} color="#64748b" style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)' }} />
+                  <input
+                    id="lastName"
+                    type="text"
+                    placeholder="Rossi"
+                    value={formData.lastName}
+                    onChange={(e) => handleChange('lastName', e.target.value)}
+                    style={{ ...inputStyle(true), paddingLeft: '3rem' }}
+                    required
+                    disabled={isLoading}
+                  />
+                </div>
+              </div>
+            </div>
+
+            {/* Email */}
+            <div style={{ marginBottom: '1.5rem' }}>
+              <label htmlFor="email" style={labelStyle}>
+                Indirizzo Email
+              </label>
+              <div style={{ position: 'relative' }}>
+                <Mail size={20} color="#64748b" style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)' }} />
+                <input
+                  id="email"
+                  type="email"
+                  placeholder="nome@esempio.it"
+                  value={formData.email}
+                  onChange={(e) => handleChange('email', e.target.value)}
+                  style={{ ...inputStyle(true), paddingLeft: '3rem' }}
+                  required
+                  disabled={isLoading}
+                />
+              </div>
+            </div>
+
+            {/* Password */}
+            <div style={{ marginBottom: '1.5rem' }}>
+              <label htmlFor="password" style={labelStyle}>
+                Password
+              </label>
+              <div style={{ position: 'relative' }}>
+                <Lock size={20} color="#64748b" style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)' }} />
+                <input
+                  id="password"
+                  type={showPassword ? 'text' : 'password'}
+                  placeholder="Minimo 8 caratteri"
+                  value={formData.password}
+                  onChange={(e) => handleChange('password', e.target.value)}
+                  style={{ ...inputStyle(true), paddingRight: '3rem' }}
+                  required
+                  disabled={isLoading}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  style={{
+                    position: 'absolute',
+                    right: '1rem',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: 'transparent',
+                    border: 'none',
+                    color: '#64748b',
+                    cursor: 'pointer',
+                    padding: '0.5rem',
+                  }}
+                  tabIndex={-1}
+                >
+                  {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
+              {/* Info sicurezza */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginTop: '0.75rem', fontSize: '0.85rem', color: formData.password.length >= 8 ? '#22c55e' : '#ef4444' }}>
+                <MapPin size={14} />
+                <span>{formData.password.length >= 8 ? '✅ Password sicura' : '⚠️ Usa almeno 8 caratteri'}</span>
+              </div>
+            </div>
+
+            {/* Conferma Password */}
+            <div style={{ marginBottom: '2rem' }}>
+              <label htmlFor="confirmPassword" style={labelStyle}>
+                Conferma Password
+              </label>
+              <div style={{ position: 'relative' }}>
+                <Lock size={20} color="#64748b" style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)' }} />
+                <input
+                  id="confirmPassword"
+                  type={showConfirmPassword ? 'text' : 'password'}
+                  placeholder="Ripeti la password"
+                  value={formData.confirmPassword}
+                  onChange={(e) => handleChange('confirmPassword', e.target.value)}
+                  style={{ ...inputStyle(true), paddingRight: '3rem' }}
+                  required
+                  disabled={isLoading}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                  style={{
+                    position: 'absolute',
+                    right: '1rem',
+                    top: '50%',
+                    transform: 'translateY(-50%)',
+                    background: 'transparent',
+                    border: 'none',
+                    color: '#64748b',
+                    cursor: 'pointer',
+                    padding: '0.5rem',
+                  }}
+                  tabIndex={-1}
+                >
+                  {showConfirmPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                </button>
+              </div>
+            </div>
+
+            {/* Pulsante Registrati */}
             <button
+              className="btn-register"
               type="submit"
+              style={{
+                ...buttonBaseStyle,
+                background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
+                color: '#fff',
+                boxShadow: isLoading ? 'none' : '0 10px 20px -5px rgba(34, 197, 94, 0.3)',
+                opacity: isLoading ? 0.7 : 1,
+                pointerEvents: isLoading ? 'none' : 'auto',
+              }}
               disabled={isLoading}
-              className="w-full mt-4 py-5 bg-blue-600 text-white rounded-3xl font-black text-xl hover:bg-blue-700 transition-all flex items-center justify-center gap-3 shadow-xl shadow-blue-200 hover:shadow-blue-300 disabled:opacity-50 group active:scale-95"
             >
-              {isLoading ? 'Creazione Account...' : (
+              {isLoading ? (
                 <>
-                  Inizia il Percorso <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+                  <div style={{ width: '24px', height: '24px', border: '3px solid rgba(255,255,255,0.3)', borderTopColor: '#fff', borderRadius: '50%', animation: 'spin 1s linear infinite' }} />
+                  Creazione Account...
+                </>
+              ) : (
+                <>
+                  Registrati
+                  <ArrowRight size={20} />
                 </>
               )}
             </button>
-          </form>
 
-          <div className="mt-8 pt-8 border-t border-slate-100 text-center">
-             <p className="text-slate-500 font-medium">Fai già parte degli agenti?</p>
-             <Link to="/login" className="text-slate-900 font-bold hover:underline mt-1 inline-block">
-                Accedi al tuo account
-             </Link>
-          </div>
+            {/* Footer links */}
+            <div style={{ marginTop: '2rem', textAlign: 'center', fontSize: '0.95rem', color: '#94a3b8' }}>
+              Hai già un account?{' '}
+              <button
+                type="button"
+                onClick={() => navigate('/login')}
+                style={{
+                  background: 'transparent',
+                  border: 'none',
+                  color: '#3b82f6',
+                  cursor: 'pointer',
+                  fontWeight: '600',
+                  textDecoration: 'underline',
+                  padding: '0',
+                }}
+              >
+                Accedi
+              </button>
+            </div>
+          </form>
         </div>
-      </motion.div>
+
+        {/* Footer info */}
+        <div style={{ textAlign: 'center', marginTop: '2rem', color: '#64748b', fontSize: '0.9rem' }}>
+          I tuoi dati sono protetti • Criptazione end-to-end
+        </div>
+      </div>
+
+      {/* CSS Animation */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        @keyframes spin {
+          to { transform: rotate(360deg); }
+        }
+        .btn-register:hover {
+          transform: translateY(-2px);
+          filter: brightness(1.1);
+        }
+      `}} />
     </div>
   );
-}
+};
+
+export default Register;

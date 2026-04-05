@@ -1,193 +1,94 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ShieldCheck, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { useCookieConsent, type CookiePreferences } from '../../context/CookieContext';
-import './CookieBanner.css';
 
-export const CookieBanner: React.FC = () => {
-    const {
-        showBanner,
-        showPreferences,
-        preferences,
-        acceptAll,
-        rejectNonEssential,
-        savePreferences,
-        openPreferences,
-        closePreferences,
-    } = useCookieConsent();
+const CookieBanner: React.FC = () => {
+    const [isVisible, setIsVisible] = useState(false);
 
-    const [tempPreferences, setTempPreferences] = useState<CookiePreferences>(preferences);
+    useEffect(() => {
+        const consent = localStorage.getItem('quiz-pl-cookie-consent');
+        if (!consent) {
+            const timer = setTimeout(() => setIsVisible(true), 1500);
+            return () => clearTimeout(timer);
+        }
+    }, []);
 
-    // Update temp preferences when preferences change
-    React.useEffect(() => {
-        setTempPreferences(preferences);
-    }, [preferences]);
-
-    if (!showBanner) return null;
-
-    const handleToggle = (key: keyof CookiePreferences) => {
-        if (key === 'necessary') return; // Cannot toggle necessary cookies
-        setTempPreferences(prev => ({
-            ...prev,
-            [key]: !prev[key],
-        }));
-    };
-
-    const handleSavePreferences = () => {
-        savePreferences(tempPreferences);
+    const handleAccept = () => {
+        localStorage.setItem('quiz-pl-cookie-consent', 'accepted');
+        setIsVisible(false);
     };
 
     return (
-        <div className="cookie-banner-overlay">
-            <div className={`cookie-banner ${showPreferences ? 'cookie-banner--expanded' : ''}`}>
-                {!showPreferences ? (
-                    // Main banner view
-                    <>
-                        <div className="cookie-banner__icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                <circle cx="12" cy="12" r="10" />
-                                <circle cx="8" cy="9" r="1" fill="currentColor" />
-                                <circle cx="15" cy="8" r="1" fill="currentColor" />
-                                <circle cx="10" cy="14" r="1" fill="currentColor" />
-                                <circle cx="16" cy="14" r="1" fill="currentColor" />
-                                <circle cx="12" cy="11" r="1" fill="currentColor" />
-                            </svg>
-                        </div>
-
-                        <div className="cookie-banner__content">
-                            <h3 className="cookie-banner__title">Utilizziamo i cookie 🍪</h3>
-                            <p className="cookie-banner__text">
-                                Questo sito utilizza cookie tecnici necessari e, con il tuo consenso, cookie di analisi
-                                per migliorare la tua esperienza. Puoi accettare tutti i cookie, rifiutare quelli non
-                                essenziali o personalizzare le tue preferenze.
-                            </p>
-                            <Link to="/privacy" className="cookie-banner__link">
-                                Leggi la Privacy Policy
-                            </Link>
-                        </div>
-
-                        <div className="cookie-banner__actions">
-                            <button
-                                className="cookie-btn cookie-btn--primary"
-                                onClick={acceptAll}
+        <AnimatePresence>
+            {isVisible && (
+                <motion.div
+                    initial={{ y: 100, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: 100, opacity: 0 }}
+                    style={{
+                        position: 'fixed',
+                        bottom: '1.5rem',
+                        left: '1.5rem',
+                        right: '1.5rem',
+                        maxWidth: '500px',
+                        zIndex: 3000,
+                        margin: '0 auto',
+                    }}
+                >
+                    <div style={{
+                        background: 'rgba(30, 41, 59, 0.95)',
+                        backdropFilter: 'blur(16px)',
+                        border: '1px solid #334155',
+                        borderRadius: '24px',
+                        padding: '1.5rem',
+                        boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.5)',
+                        display: 'flex',
+                        flexDirection: 'column',
+                        gap: '1rem',
+                    }}>
+                        <div style={{ display: 'flex', alignItems: 'flex-start', gap: '1rem' }}>
+                            <div style={{ background: 'rgba(59, 130, 246, 0.1)', color: '#3b82f6', borderRadius: '50%', padding: '0.75rem', flexShrink: 0 }}>
+                                <ShieldCheck size={24} />
+                            </div>
+                            <div style={{ flex: 1 }}>
+                                <h3 style={{ fontSize: '1rem', fontWeight: '800', color: '#fff', margin: '0 0 0.5rem 0' }}>La tua privacy conta</h3>
+                                <p style={{ fontSize: '0.85rem', color: '#94a3b8', lineHeight: 1.5, margin: 0 }}>
+                                    Utilizziamo solo cookie tecnici per salvare i tuoi progressi di studio. 
+                                    Leggi la nostra <Link to="/privacy" style={{ color: '#3b82f6', textDecoration: 'none', fontWeight: '600' }}>Privacy Policy</Link>.
+                                </p>
+                            </div>
+                            <button 
+                                onClick={() => setIsVisible(false)}
+                                style={{ background: 'transparent', border: 'none', color: '#64748b', cursor: 'pointer', padding: '0.25rem' }}
                             >
-                                Accetta tutti
-                            </button>
-                            <button
-                                className="cookie-btn cookie-btn--secondary"
-                                onClick={rejectNonEssential}
-                            >
-                                Rifiuta non essenziali
-                            </button>
-                            <button
-                                className="cookie-btn cookie-btn--tertiary"
-                                onClick={openPreferences}
-                            >
-                                Personalizza
+                                <X size={20} />
                             </button>
                         </div>
-                    </>
-                ) : (
-                    // Preferences view
-                    <>
-                        <div className="cookie-preferences">
-                            <div className="cookie-preferences__header">
-                                <h3 className="cookie-banner__title">Preferenze Cookie</h3>
-                                <button
-                                    className="cookie-preferences__close"
-                                    onClick={closePreferences}
-                                    aria-label="Chiudi preferenze"
-                                >
-                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                                        <line x1="18" y1="6" x2="6" y2="18" />
-                                        <line x1="6" y1="6" x2="18" y2="18" />
-                                    </svg>
-                                </button>
-                            </div>
 
-                            <div className="cookie-preferences__list">
-                                {/* Necessary cookies */}
-                                <div className="cookie-category">
-                                    <div className="cookie-category__header">
-                                        <div className="cookie-category__info">
-                                            <h4 className="cookie-category__title">Cookie Necessari</h4>
-                                            <p className="cookie-category__desc">
-                                                Essenziali per il funzionamento del sito. Non possono essere disabilitati.
-                                            </p>
-                                        </div>
-                                        <div className="cookie-toggle cookie-toggle--disabled">
-                                            <input
-                                                type="checkbox"
-                                                checked={true}
-                                                disabled
-                                                id="necessary-cookies"
-                                            />
-                                            <label htmlFor="necessary-cookies" className="cookie-toggle__slider"></label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Analytics cookies */}
-                                <div className="cookie-category">
-                                    <div className="cookie-category__header">
-                                        <div className="cookie-category__info">
-                                            <h4 className="cookie-category__title">Cookie Analitici</h4>
-                                            <p className="cookie-category__desc">
-                                                Ci aiutano a capire come utilizzi il sito per migliorare l'esperienza.
-                                            </p>
-                                        </div>
-                                        <div className="cookie-toggle">
-                                            <input
-                                                type="checkbox"
-                                                checked={tempPreferences.analytics}
-                                                onChange={() => handleToggle('analytics')}
-                                                id="analytics-cookies"
-                                            />
-                                            <label htmlFor="analytics-cookies" className="cookie-toggle__slider"></label>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* Marketing cookies */}
-                                <div className="cookie-category">
-                                    <div className="cookie-category__header">
-                                        <div className="cookie-category__info">
-                                            <h4 className="cookie-category__title">Cookie di Marketing</h4>
-                                            <p className="cookie-category__desc">
-                                                Utilizzati per mostrarti contenuti personalizzati in base ai tuoi interessi.
-                                            </p>
-                                        </div>
-                                        <div className="cookie-toggle">
-                                            <input
-                                                type="checkbox"
-                                                checked={tempPreferences.marketing}
-                                                onChange={() => handleToggle('marketing')}
-                                                id="marketing-cookies"
-                                            />
-                                            <label htmlFor="marketing-cookies" className="cookie-toggle__slider"></label>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="cookie-preferences__actions">
-                                <button
-                                    className="cookie-btn cookie-btn--primary"
-                                    onClick={handleSavePreferences}
-                                >
-                                    Salva preferenze
-                                </button>
-                                <button
-                                    className="cookie-btn cookie-btn--secondary"
-                                    onClick={acceptAll}
-                                >
-                                    Accetta tutti
-                                </button>
-                            </div>
-                        </div>
-                    </>
-                )}
-            </div>
-        </div>
+                        <button
+                            onClick={handleAccept}
+                            style={{
+                                width: '100%',
+                                background: '#3b82f6',
+                                color: '#fff',
+                                border: 'none',
+                                padding: '0.85rem',
+                                borderRadius: '12px',
+                                fontWeight: '700',
+                                fontSize: '0.9rem',
+                                cursor: 'pointer',
+                                transition: 'transform 0.2s',
+                            }}
+                            onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.02)'}
+                            onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                        >
+                            Accetto, iniziamo!
+                        </button>
+                    </div>
+                </motion.div>
+            )}
+        </AnimatePresence>
     );
 };
 

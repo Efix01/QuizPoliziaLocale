@@ -3,9 +3,12 @@ import { useProgress } from '../context/ProgressContext';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { 
-    LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, BarChart, Bar, Cell
+    LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, 
+    BarChart, Bar, Cell
 } from 'recharts';
-import { ChevronLeft, TrendingUp, Target, Award, Clock, ArrowRight } from 'lucide-react';
+import { 
+    ChevronLeft, TrendingUp, Target, Award, Clock, ArrowRight, BarChart3, Zap
+} from 'lucide-react';
 
 export default function ProgressStats() {
     const { progressiGlobali } = useProgress();
@@ -20,119 +23,327 @@ export default function ProgressStats() {
         perCategoria = {}
     } = progressiGlobali || {};
 
+    // Dati per grafici
     const chartData = useMemo(() => {
-        return Object.entries(perCategoria).map(([id, stats]) => ({
-            name: id.toUpperCase().slice(0, 5),
-            score: Math.round((stats.corrette / (stats.fatte || 1)) * 100),
-            full: 100
-        })).slice(0, 6);
+        return Object.entries(perCategoria)
+            .map(([id, stats]: [string, any]) => ({
+                name: id.toUpperCase().slice(0, 8),
+                score: Math.round((stats.corrette / (stats.fatte || 1)) * 100),
+                fatte: stats.fatte,
+            }))
+            .sort((a, b) => b.fatte - a.fatte) // Più fatte prima
+            .slice(0, 8); // Top 8 categorie
     }, [perCategoria]);
 
-    return (
-        <div className="min-h-screen bg-slate-50 p-6 md:p-10 font-sans">
-            
-            <header className="max-w-6xl mx-auto mb-10 flex items-center justify-between">
-                <div className="flex items-center gap-4">
-                    <button onClick={() => navigate('/dashboard')} className="p-3 bg-white border border-slate-200 rounded-2xl text-slate-400 hover:text-slate-900 shadow-sm transition-all">
-                        <ChevronLeft size={24} />
-                    </button>
-                    <h1 className="text-3xl font-black text-slate-900 tracking-tighter italic uppercase underline decoration-blue-600 decoration-4 underline-offset-8">Analisi <span className="text-blue-600">Performance</span></h1>
-                </div>
-                <div className="hidden md:flex gap-4">
-                     <div className="bg-slate-900 text-white px-6 py-2 rounded-full font-black text-xs tracking-widest uppercase shadow-xl">
-                        Livello {livello} · {xp} XP
-                     </div>
-                </div>
-            </header>
+    // XP necessari per prossimo livello (esempio: livello * 1000)
+    const xpPerLivello = livello * 1000;
+    const xpProgresso = (xp % xpPerLivello) / xpPerLivello * 100;
 
-            <main className="max-w-6xl mx-auto space-y-8">
+    return (
+        <div style={{ minHeight: '100vh', background: '#0f172a', color: '#f8fafc', padding: '2rem 1rem' }}>
+            <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
                 
-                {/* Top Metrics */}
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                    {[
-                        { label: 'Quiz Svolti', val: quizCompletati, icon: Target, color: 'text-blue-600', bg: 'bg-blue-50' },
-                        { label: 'Media Voto', val: `${mediaPercentuale}%`, icon: TrendingUp, color: 'text-emerald-600', bg: 'bg-emerald-50' },
-                        { label: 'Gioni Consecutivi', val: streak, icon: Clock, color: 'text-amber-600', bg: 'bg-amber-50' },
-                        { label: 'Rango Agente', val: 'SCELTO', icon: Award, color: 'text-slate-600', bg: 'bg-slate-100' }
-                    ].map((m, i) => (
-                        <motion.div 
-                            key={i} 
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ delay: i * 0.1 }}
-                            className="bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm flex flex-col items-center text-center group hover:shadow-xl transition-all"
+                {/* Header */}
+                <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                        <button
+                            onClick={() => navigate('/dashboard')}
+                            style={{
+                                background: '#1e293b',
+                                border: '1px solid #334155',
+                                color: '#fff',
+                                padding: '0.75rem',
+                                borderRadius: '12px',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                            }}
                         >
-                            <div className={`${m.bg} ${m.color} p-4 rounded-2xl mb-4 group-hover:scale-110 transition-transform`}>
-                                <m.icon size={24} />
+                            <ChevronLeft size={24} />
+                        </button>
+                        <div>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '0.25rem' }}>
+                                <BarChart3 size={32} color="#3b82f6" />
+                                <h1 style={{ fontSize: '2rem', fontWeight: '800', margin: 0 }}>
+                                    Analisi Performance
+                                </h1>
                             </div>
-                            <span className="text-3xl font-black text-slate-900 mb-1">{m.val}</span>
-                            <span className="text-[10px] font-black text-slate-400 uppercase tracking-widest leading-none">{m.label}</span>
+                            <p style={{ color: '#94a3b8', margin: 0, fontSize: '0.95rem' }}>
+                                Statistiche dettagliate del tuo percorso di studio
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Badge livello */}
+                    <div style={{
+                        background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+                        color: '#fff',
+                        padding: '0.75rem 1.5rem',
+                        borderRadius: '99px',
+                        fontWeight: '700',
+                        fontSize: '0.95rem',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        boxShadow: '0 4px 6px -1px rgba(59, 130, 246, 0.3)',
+                    }}>
+                        <Zap size={18} />
+                        Livello {livello} • {xp} XP
+                    </div>
+                </header>
+
+                {/* Barra progresso XP */}
+                <div style={{
+                    background: '#1e293b',
+                    border: '1px solid #334155',
+                    borderRadius: '16px',
+                    padding: '1.5rem',
+                }}>
+                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.75rem', fontSize: '0.9rem' }}>
+                        <span style={{ color: '#94a3b8', fontWeight: '600' }}>
+                            Progresso verso Livello {livello + 1}
+                        </span>
+                        <span style={{ color: '#cbd5e1', fontWeight: '700' }}>
+                            {xp % xpPerLivello} / {xpPerLivello} XP
+                        </span>
+                    </div>
+                    <div style={{ height: '12px', background: '#0f172a', borderRadius: '6px', overflow: 'hidden' }}>
+                        <div style={{
+                            width: `${xpProgresso}%`,
+                            height: '100%',
+                            background: 'linear-gradient(90deg, #3b82f6 0%, #60a5fa 100%)',
+                            transition: 'width 0.5s ease',
+                        }} />
+                    </div>
+                </div>
+
+                {/* Metriche principali */}
+                <section style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                    gap: '1.5rem',
+                }}>
+                    {[
+                        { label: 'Quiz Completati', val: quizCompletati, icon: Target, color: '#3b82f6', bg: '#1e40af' },
+                        { label: 'Media Percentuale', val: `${mediaPercentuale}%`, icon: TrendingUp, color: '#22c55e', bg: '#065f46' },
+                        { label: 'Giorni Consecutivi', val: streak > 0 ? streak : 'Inizia oggi!', icon: Clock, color: '#f59e0b', bg: '#92400e' },
+                        { label: 'Rango', val: livello >= 10 ? 'Veterano' : livello >= 5 ? 'Esperto' : 'Agente', icon: Award, color: '#a855f7', bg: '#581c87' },
+                    ].map((m, i) => (
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: i * 0.1 }}
+                            style={{
+                                background: '#1e293b',
+                                border: '1px solid #334155',
+                                borderRadius: '20px',
+                                padding: '2rem',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                textAlign: 'center',
+                                transition: 'transform 0.2s, box-shadow 0.2s',
+                            }}
+                            whileHover={{ scale: 1.05, boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.3)' }}
+                        >
+                            <div style={{
+                                background: m.bg,
+                                color: m.color,
+                                borderRadius: '16px',
+                                width: '60px',
+                                height: '60px',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                marginBottom: '1rem',
+                            }}>
+                                <m.icon size={28} />
+                            </div>
+                            <div style={{ fontSize: '2.5rem', fontWeight: '900', color: '#f8fafc', marginBottom: '0.5rem', lineHeight: 1 }}>
+                                {m.val}
+                            </div>
+                            <div style={{ fontSize: '0.85rem', fontWeight: '600', color: '#94a3b8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                                {m.label}
+                            </div>
                         </motion.div>
                     ))}
-                </div>
+                </section>
 
-                {/* Charts Area */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Grafici */}
+                <section style={{
+                    display: 'grid',
+                    gridTemplateColumns: 'repeat(auto-fit, minmax(400px, 1fr))',
+                    gap: '2rem',
+                }}>
                     
-                    {/* Performance Evolution */}
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white p-10 rounded-[2.5rem] border border-slate-200 shadow-sm">
-                        <h3 className="text-xl font-bold text-slate-900 mb-8 flex items-center gap-2">
-                            <TrendingUp size={20} className="text-blue-600" /> Andamento Temporale
+                    {/* Andamento temporale */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        style={{
+                            background: '#1e293b',
+                            border: '1px solid #334155',
+                            borderRadius: '24px',
+                            padding: '2rem',
+                        }}
+                    >
+                        <h3 style={{
+                            fontSize: '1.3rem',
+                            fontWeight: '700',
+                            margin: '0 0 1.5rem 0',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.75rem',
+                        }}>
+                            <TrendingUp size={24} color="#3b82f6" />
+                            Andamento per Categoria
                         </h3>
-                        <div className="h-64 w-full">
+                        <div style={{ height: '280px', width: '100%' }}>
                             <ResponsiveContainer width="100%" height="100%">
                                 <LineChart data={chartData}>
-                                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f1f5f9" />
-                                    <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 10, fontWeight: 700}} dy={10} />
-                                    <YAxis hide domain={[0, 100]} />
-                                    <Tooltip 
-                                      contentStyle={{ borderRadius: '1rem', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)', fontWeight: 700 }}
-                                      labelStyle={{ color: '#0f172a' }}
+                                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#334155" />
+                                    <XAxis
+                                        dataKey="name"
+                                        axisLine={false}
+                                        tickLine={false}
+                                        tick={{ fill: '#94a3b8', fontSize: 11, fontWeight: 600 }}
+                                        dy={10}
                                     />
-                                    <Line type="monotone" dataKey="score" stroke="#2563eb" strokeWidth={4} dot={{r: 6, fill: '#2563eb', strokeWidth: 2, stroke: '#fff'}} activeDot={{r: 8, strokeWidth: 0}} />
+                                    <YAxis hide domain={[0, 100]} />
+                                    <Tooltip
+                                        contentStyle={{
+                                            borderRadius: '12px',
+                                            border: 'none',
+                                            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.3)',
+                                            fontWeight: 700,
+                                            background: '#1e293b',
+                                            color: '#f8fafc',
+                                        }}
+                                        labelStyle={{ color: '#f8fafc' }}
+                                    />
+                                    <Line
+                                        type="monotone"
+                                        dataKey="score"
+                                        stroke="#3b82f6"
+                                        strokeWidth={3}
+                                        dot={{ r: 5, fill: '#3b82f6', strokeWidth: 2, stroke: '#1e293b' }}
+                                        activeDot={{ r: 7, strokeWidth: 0 }}
+                                    />
                                 </LineChart>
                             </ResponsiveContainer>
                         </div>
                     </motion.div>
 
-                    {/* Category mastery */}
-                    <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="bg-white p-10 rounded-[2.5rem] border border-slate-200 shadow-sm">
-                        <h3 className="text-xl font-bold text-slate-900 mb-8 flex items-center gap-2">
-                           <Award size={20} className="text-amber-500" /> Padronanza Materie
+                    {/* Padronanza materie */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        style={{
+                            background: '#1e293b',
+                            border: '1px solid #334155',
+                            borderRadius: '24px',
+                            padding: '2rem',
+                        }}
+                    >
+                        <h3 style={{
+                            fontSize: '1.3rem',
+                            fontWeight: '700',
+                            margin: '0 0 1.5rem 0',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.75rem',
+                        }}>
+                            <Award size={24} color="#f59e0b" />
+                            Padronanza per Materia
                         </h3>
-                        <div className="h-64 w-full">
+                        <div style={{ height: '280px', width: '100%' }}>
                             <ResponsiveContainer width="100%" height="100%">
                                 <BarChart data={chartData} layout="vertical">
                                     <XAxis type="number" hide domain={[0, 100]} />
-                                    <YAxis dataKey="name" type="category" axisLine={false} tickLine={false} tick={{fill: '#94a3b8', fontSize: 10, fontWeight: 700}} width={60} />
-                                    <Tooltip cursor={{fill: 'transparent'}} contentStyle={{ borderRadius: '1rem', border: 'none', boxShadow: '0 10px 15px -3px rgb(0 0 0 / 0.1)', fontWeight: 700 }} />
-                                    <Bar dataKey="score" radius={[0, 10, 10, 0]} barSize={24}>
+                                    <YAxis
+                                        dataKey="name"
+                                        type="category"
+                                        axisLine={false}
+                                        tickLine={false}
+                                        tick={{ fill: '#94a3b8', fontSize: 11, fontWeight: 600 }}
+                                        width={80}
+                                    />
+                                    <Tooltip
+                                        cursor={{ fill: 'transparent' }}
+                                        contentStyle={{
+                                            borderRadius: '12px',
+                                            border: 'none',
+                                            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.3)',
+                                            fontWeight: 700,
+                                            background: '#1e293b',
+                                            color: '#f8fafc',
+                                        }}
+                                    />
+                                    <Bar dataKey="score" radius={[0, 12, 12, 0]} barSize={28}>
                                         {chartData.map((entry, index) => (
-                                            <Cell key={`cell-${index}`} fill={entry.score >= 70 ? '#10b981' : entry.score >= 40 ? '#f59e0b' : '#ef4444'} />
+                                            <Cell
+                                                key={`cell-${index}`}
+                                                fill={entry.score >= 75 ? '#22c55e' : entry.score >= 50 ? '#f59e0b' : '#ef4444'}
+                                            />
                                         ))}
                                     </Bar>
                                 </BarChart>
                             </ResponsiveContainer>
                         </div>
                     </motion.div>
-                </div>
+                </section>
 
-                {/* Bottom CTA */}
-                <div 
+                {/* CTA Errori */}
+                <motion.div
                     onClick={() => navigate('/mistakes')}
-                    className="bg-slate-900 p-10 rounded-[2.5rem] shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8 cursor-pointer group hover:scale-[1.01] transition-all relative overflow-hidden"
+                    whileHover={{ scale: 1.02 }}
+                    style={{
+                        background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+                        border: '1px solid #334155',
+                        borderRadius: '24px',
+                        padding: '2.5rem',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'space-between',
+                        flexWrap: 'wrap',
+                        gap: '1.5rem',
+                        boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.2)',
+                    }}
                 >
-                    <div className="absolute top-0 left-0 w-full h-full bg-blue-600/5 blur-3xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                    <div className="text-center md:text-left z-10">
-                        <h4 className="text-2xl font-black text-white mb-2 italic">Analisi Critica Errori</h4>
-                        <p className="text-slate-400 font-medium">Hai domande da revisionare? Concentrati sulle tue lacune per massimizzare l'Indice di Prontezza.</p>
+                    <div style={{ flex: 1, minWidth: '250px' }}>
+                        <h4 style={{ fontSize: '1.5rem', fontWeight: '800', margin: '0 0 0.5rem 0', color: '#f8fafc' }}>
+                            🎯 Analisi Critica Errori
+                        </h4>
+                        <p style={{ color: '#94a3b8', margin: 0, fontSize: '1.05rem' }}>
+                            Hai domande da revisionare? Concentrati sulle tue lacune per massimizzare l'Indice di Prontezza.
+                        </p>
                     </div>
-                    <div className="flex items-center gap-3 px-8 py-4 bg-white text-slate-900 rounded-2xl font-black text-lg transition-transform group-hover:translate-x-2 z-10">
-                        Revisiona Ora <ArrowRight size={20} />
-                    </div>
-                </div>
-
-            </main>
+                    <button
+                        style={{
+                            background: '#3b82f6',
+                            color: '#fff',
+                            border: 'none',
+                            padding: '1rem 2rem',
+                            borderRadius: '12px',
+                            fontSize: '1.1rem',
+                            fontWeight: '700',
+                            cursor: 'pointer',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '0.75rem',
+                            transition: 'transform 0.2s',
+                        }}
+                        onMouseOver={(e) => e.currentTarget.style.transform = 'translateX(5px)'}
+                        onMouseOut={(e) => e.currentTarget.style.transform = 'translateX(0)'}
+                    >
+                        Revisiona Ora
+                        <ArrowRight size={20} />
+                    </button>
+                </motion.div>
+            </div>
         </div>
     );
 }

@@ -18,7 +18,7 @@ export default function Onboarding() {
   
   // Ora calcoliamo i comuni basandoci sulla scelta appena cliccata, non aspettiamo il Context
   const comuniDisponibili = selectedRegioneId 
-    ? regioni.find((r: any) => r.id === selectedRegioneId)?.comuni || []
+    ? regioni.find((r: any) => r.id === selectedRegioneId)?.citta || []
     : [];
 
   const handleRegioneSelect = async (regioneId: string, nomeRegione: string) => {

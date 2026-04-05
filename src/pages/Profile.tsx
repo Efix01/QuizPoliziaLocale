@@ -6,8 +6,11 @@ import { useToast } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
 import { useNotifications } from '../context/NotificationContext';
 import { useProgress } from '../context/ProgressContext';
-import { User, LogOut, Trash2, ChevronRight, Info, FileText } from 'lucide-react';
-import './Profile.css';
+// Import rimosso per build pulita
+import { 
+    LogOut, Trash2, ChevronRight, Info, FileText, 
+    Award, Target, TrendingUp, Zap
+} from 'lucide-react';
 
 const Profile: React.FC = () => {
     const { showToast } = useToast();
@@ -16,39 +19,29 @@ const Profile: React.FC = () => {
     const { progressiGlobali } = useProgress();
     const navigate = useNavigate();
 
-    // Materie Nazionali Core (coerente con Dashboard e QuizDataContext)
+    // Materie Nazionali Core
     const materieNazionali = useMemo(() => ['cds', 'tuel', 'l241', 'l689', 'penale'], []);
 
-    // Calcolo statistiche reali filtrate per layer
+    // Calcolo statistiche reali
     const stats = useMemo(() => {
         const pg = progressiGlobali;
         if (!pg) return { level: 1, xp: 0, totalAnswered: 0, correctCount: 0, currentStreak: 0, accuracy: 0 };
 
         const { perCategoria } = pg;
-        
-        // Calcolo Core (Nazionale)
         const totalAnsweredCore = materieNazionali.reduce((sum, id) => sum + (perCategoria[id]?.fatte ?? 0), 0);
         const correctCountCore = materieNazionali.reduce((sum, id) => sum + (perCategoria[id]?.corrette ?? 0), 0);
-        
-        // Calcolo Totale (per riferimento)
-        const totalAnsweredAll = Object.values(perCategoria).reduce((sum, cat) => sum + cat.fatte, 0);
 
         return {
             level: pg.livello ?? 1,
             xp: pg.xp ?? 0,
-            totalAnswered: totalAnsweredCore, // Mostriamo le domande core come primarie
+            totalAnswered: totalAnsweredCore,
             correctCount: correctCountCore,
             currentStreak: pg.streak ?? 0,
             accuracy: totalAnsweredCore > 0 ? Math.round((correctCountCore / totalAnsweredCore) * 100) : 0,
-            totalAnsweredGlobal: totalAnsweredAll
         };
     }, [progressiGlobali, materieNazionali]);
 
-    const [settings, setSettings] = useState({
-        sound: true
-    });
-
-    // Modal states
+    const [settings, setSettings] = useState({ sound: true });
     const [showLogoutModal, setShowLogoutModal] = useState(false);
     const [showDeleteModal, setShowDeleteModal] = useState(false);
 
@@ -63,202 +56,204 @@ const Profile: React.FC = () => {
     const handleNotificationsToggle = () => {
         const newVal = !notificationsEnabled;
         setNotificationsEnabled(newVal);
-        if (newVal) {
-            showToast("Notifiche studio attivate!", "success");
-        } else {
-            showToast("Notifiche disattivate", "info");
-        }
+        showToast(newVal ? "Notifiche studio attivate!" : "Notifiche disattivate", newVal ? "success" : "info");
     };
 
-    // accuracy is now in stats object
-    const accuracy = stats.accuracy;
-
-    // Get user initials for avatar fallback
-    // Get user initials for avatar fallback
     const initials = useMemo(() => {
         if (!user?.displayName) return user?.email?.charAt(0).toUpperCase() || '?';
-        return user.displayName
-            .split(' ')
-            .map(n => n.charAt(0))
-            .join('')
-            .toUpperCase()
-            .slice(0, 2);
+        return user.displayName.split(' ').map(n => n.charAt(0)).join('').toUpperCase().slice(0, 2);
     }, [user]);
 
     return (
-        <div className="profile-container">
-            <h1 className="profile-title">Profilo</h1>
+        <div style={{ minHeight: '100vh', background: '#0f172a', color: '#f8fafc', padding: '2rem 1rem' }}>
+            <div style={{ maxWidth: '800px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+                
+                <h1 style={{ fontSize: '2rem', fontWeight: '800', margin: 0 }}>Il Tuo Profilo</h1>
 
-            {/* User Card */}
-            <div className="user-card">
-                <div className="user-header">
-                    <div className="user-avatar">
+                {/* User Card */}
+                <div style={{
+                    background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+                    border: '1px solid #334155',
+                    borderRadius: '24px',
+                    padding: '2.5rem',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    gap: '1.5rem',
+                    textAlign: 'center',
+                    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.2)',
+                }}>
+                    <div style={{
+                        width: '100px',
+                        height: '100px',
+                        background: 'linear-gradient(135deg, #3b82f6 0%, #a855f7 100%)',
+                        borderRadius: '50%',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: '2rem',
+                        fontWeight: '800',
+                        color: '#fff',
+                        boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)',
+                        overflow: 'hidden',
+                    }}>
                         {isAuthenticated && user?.photoURL ? (
-                            <img src={user.photoURL} alt="" className="user-avatar-img" />
-                        ) : isAuthenticated ? (
-                            <span className="user-avatar-initials">{initials}</span>
-                        ) : (
-                            <User />
-                        )}
+                            <img src={user.photoURL} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                        ) : initials}
                     </div>
-                    <div className="user-info">
-                        <h2>{isAuthenticated ? (user?.displayName || 'Utente') : 'Ospite'}</h2>
-                        <span className="user-id">
+                    
+                    <div>
+                        <h2 style={{ fontSize: '1.5rem', fontWeight: '800', margin: '0 0 0.25rem 0' }}>
+                            {isAuthenticated ? (user?.displayName || 'Agente Scelto') : 'Ospite'}
+                        </h2>
+                        <span style={{ color: '#94a3b8', fontSize: '1rem', fontWeight: '500' }}>
                             {isAuthenticated ? user?.email : 'Non registrato'}
                         </span>
                     </div>
-                </div>
 
-                {!isAuthenticated && (
-                    <button
-                        className="user-details-btn"
-                        onClick={() => navigate('/login')}
-                    >
-                        Accedi o Registrati
-                    </button>
-                )}
-            </div>
-
-            {/* Stats Card */}
-            <span className="section-label">Le tue Statistiche</span>
-            <div className="stats-card">
-                <div className="stats-grid">
-                    <div className="stats-item">
-                        <span className="stats-item-value">{stats.level}</span>
-                        <span className="stats-item-label">Livello</span>
-                    </div>
-                    <div className="stats-item">
-                        <span className="stats-item-value">{stats.xp}</span>
-                        <span className="stats-item-label">XP Totali</span>
-                    </div>
-                    <div className="stats-item">
-                        <span className="stats-item-value">{stats.totalAnswered}</span>
-                        <span className="stats-item-label">Domande</span>
-                    </div>
-                    <div className="stats-item">
-                        <span className="stats-item-value">{accuracy}%</span>
-                        <span className="stats-item-label">Precisione</span>
-                    </div>
-                </div>
-
-                {/* Level Progress Bar */}
-                <div className="level-progress-container" style={{ marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid rgba(255,255,255,0.1)' }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.8rem', marginBottom: '0.5rem', color: '#94a3b8' }}>
-                        <span>Progresso Livello</span>
-                        <span>{stats.xp % 1000} / 1000 XP</span>
-                    </div>
-                    <div className="pl-progress" style={{ height: '8px' }}>
-                        <div 
-                            className="pl-progress__fill pl-progress__fill--blue" 
-                            style={{ width: `${(stats.xp % 1000) / 10}%` }} 
-                        />
-                    </div>
-                </div>
-            </div>
-
-            {/* Settings */}
-            <span className="section-label">Impostazioni</span>
-            <div className="settings-card">
-                <Toggle
-                    label="Suoni Effetti"
-                    checked={settings.sound}
-                    onChange={handleSoundToggle}
-                />
-                <Toggle
-                    label="Notifiche Studio"
-                    checked={notificationsEnabled}
-                    onChange={handleNotificationsToggle}
-                />
-            </div>
-
-            {/* Account Section - Only for authenticated users */}
-            {isAuthenticated && (
-                <>
-                    <span className="section-label">Account</span>
-                    <div className="account-card">
+                    {!isAuthenticated && (
                         <button
-                            className="account-row"
-                            onClick={() => setShowLogoutModal(true)}
+                            onClick={() => navigate('/login')}
+                            style={{
+                                background: '#3b82f6',
+                                color: '#fff',
+                                border: 'none',
+                                padding: '0.75rem 2rem',
+                                borderRadius: '12px',
+                                fontWeight: '700',
+                                cursor: 'pointer',
+                                transition: 'transform 0.2s',
+                            }}
+                            onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                            onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
                         >
-                            <div className="account-row-left">
-                                <LogOut className="account-icon" />
-                                <span>Esci dall'app</span>
-                            </div>
-                            <ChevronRight className="account-chevron" />
+                            Accedi o Registrati
                         </button>
+                    )}
+                </div>
 
-                        <button
-                            className="account-row account-row--danger"
-                            onClick={() => setShowDeleteModal(true)}
-                        >
-                            <div className="account-row-left">
-                                <Trash2 className="account-icon" />
-                                <span>Elimina account</span>
+                {/* Stats Grid */}
+                <section>
+                    <div style={{ fontSize: '0.8rem', fontWeight: '700', color: '#64748b', letterSpacing: '0.1em', marginBottom: '1rem' }}>
+                        LA TUA PERFORMANCE
+                    </div>
+                    <div style={{
+                        display: 'grid',
+                        gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))',
+                        gap: '1rem',
+                    }}>
+                        {[
+                            { label: 'Livello', val: stats.level, icon: Award, color: '#3b82f6' },
+                            { label: 'XP Totali', val: stats.xp, icon: Zap, color: '#f59e0b' },
+                            { label: 'Domande', val: stats.totalAnswered, icon: Target, color: '#ef4444' },
+                            { label: 'Precisione', val: `${stats.accuracy}%`, icon: TrendingUp, color: '#22c55e' },
+                        ].map((m, i) => (
+                            <div key={i} style={{
+                                background: '#1e293b',
+                                border: '1px solid #334155',
+                                borderRadius: '20px',
+                                padding: '1.5rem',
+                                textAlign: 'center',
+                                display: 'flex',
+                                flexDirection: 'column',
+                                alignItems: 'center',
+                                gap: '0.5rem',
+                            }}>
+                                <m.icon size={20} color={m.color} />
+                                <div style={{ fontSize: '1.5rem', fontWeight: '800' }}>{m.val}</div>
+                                <div style={{ fontSize: '0.75rem', fontWeight: '600', color: '#94a3b8', textTransform: 'uppercase' }}>{m.label}</div>
                             </div>
-                            <ChevronRight className="account-chevron" />
-                        </button>
+                        ))}
                     </div>
-                </>
-            )}
+                </section>
 
-            {/* Info Section */}
-            <span className="section-label">Informazioni</span>
-            <div className="account-card">
-                <button
-                    className="account-row"
-                    onClick={() => navigate('/chi-siamo')}
-                >
-                    <div className="account-row-left">
-                        <Info className="account-icon account-icon--info" />
-                        <span>Chi Siamo</span>
+                {/* Preferences */}
+                <section>
+                    <div style={{ fontSize: '0.8rem', fontWeight: '700', color: '#64748b', letterSpacing: '0.1em', marginBottom: '1rem' }}>
+                        IMPOSTAZIONI APP
                     </div>
-                    <ChevronRight className="account-chevron" />
-                </button>
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                        <Toggle label="Suoni Effetti" checked={settings.sound} onChange={handleSoundToggle} />
+                        <Toggle label="Notifiche Studio" checked={notificationsEnabled} onChange={handleNotificationsToggle} />
+                    </div>
+                </section>
 
-                <button
-                    className="account-row"
-                    onClick={() => navigate('/privacy')}
-                >
-                    <div className="account-row-left">
-                        <FileText className="account-icon account-icon--info" />
-                        <span>Privacy Policy</span>
-                    </div>
-                    <ChevronRight className="account-chevron" />
-                </button>
+                {/* Account & Information */}
+                {[
+                    {
+                        label: 'ACCOUNT',
+                        visible: isAuthenticated,
+                        items: [
+                            { label: 'Esci dall\'app', icon: LogOut, action: () => setShowLogoutModal(true), color: '#94a3b8' },
+                            { label: 'Elimina account', icon: Trash2, action: () => setShowDeleteModal(true), color: '#ef4444' },
+                        ]
+                    },
+                    {
+                        label: 'INFORMAZIONI',
+                        visible: true,
+                        items: [
+                            { label: 'Chi Siamo', icon: Info, action: () => navigate('/chi-siamo') },
+                            { label: 'Privacy Policy', icon: FileText, action: () => navigate('/privacy') },
+                            { label: 'Termini di Servizio', icon: FileText, action: () => navigate('/terms') },
+                        ]
+                    }
+                ].filter(s => s.visible).map((section, idx) => (
+                    <section key={idx}>
+                        <div style={{ fontSize: '0.8rem', fontWeight: '700', color: '#64748b', letterSpacing: '0.1em', marginBottom: '1rem' }}>
+                            {section.label}
+                        </div>
+                        <div style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '24px', overflow: 'hidden' }}>
+                            {section.items.map((item, i) => (
+                                <button
+                                    key={i}
+                                    onClick={item.action}
+                                    style={{
+                                        width: '100%',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        padding: '1.25rem 1.5rem',
+                                        background: 'transparent',
+                                        border: 'none',
+                                        borderBottom: i < section.items.length - 1 ? '1px solid #334155' : 'none',
+                                        cursor: 'pointer',
+                                        transition: 'background 0.2s',
+                                        textAlign: 'left',
+                                    }}
+                                    onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.03)'}
+                                    onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}
+                                >
+                                    <item.icon size={20} color={(item as any).color || '#3b82f6'} style={{ marginRight: '1rem' }} />
+                                    <span style={{ flex: 1, fontWeight: '600', color: (item as any).color === '#ef4444' ? '#ef4444' : '#cbd5e1' }}>
+                                        {item.label}
+                                    </span>
+                                    <ChevronRight size={18} color="#475569" />
+                                </button>
+                            ))}
+                        </div>
+                    </section>
+                ))}
 
-                <button
-                    className="account-row"
-                    onClick={() => navigate('/terms')}
-                >
-                    <div className="account-row-left">
-                        <FileText className="account-icon account-icon--info" />
-                        <span>Termini di Servizio</span>
-                    </div>
-                    <ChevronRight className="account-chevron" />
-                </button>
+                {/* Promise Card */}
+                <div style={{
+                    background: 'rgba(59, 130, 246, 0.05)',
+                    border: '1px dashed #3b82f6',
+                    borderRadius: '24px',
+                    padding: '2rem',
+                    textAlign: 'center',
+                    marginTop: '1rem',
+                }}>
+                    <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🍀</div>
+                    <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#f8fafc', marginBottom: '0.75rem' }}>Fiducia e Impegno</h3>
+                    <p style={{ color: '#94a3b8', fontSize: '0.95rem', lineHeight: 1.6, margin: 0 }}>
+                        Il nostro database è in continua espansione. Mi impegno a implementare nuove
+                        <strong style={{ color: '#3b82f6' }}> Pillole di Studio</strong> e <strong style={{ color: '#3b82f6' }}>Quiz</strong> con cadenza settimanale per massimizzare la tua preparazione.
+                    </p>
+                </div>
+
+                {/* Modals */}
+                <LogoutModal isOpen={showLogoutModal} onClose={() => setShowLogoutModal(false)} />
+                <DeleteAccountModal isOpen={showDeleteModal} onClose={() => setShowDeleteModal(false)} />
             </div>
-
-            {/* Weekly Promise */}
-            <div className="promise-card">
-                <div className="promise-icon">🗓️</div>
-                <h3 className="promise-title">Sempre Aggiornato</h3>
-                <p className="promise-text">
-                    Se l'app dovesse avere un buon riscontro, mi impegno a implementare nuove
-                    <strong> Pillole di Studio</strong> e <strong>Quiz</strong> con cadenza settimanale,
-                    per accompagnarti fino al concorso!
-                </p>
-                <p className="promise-signature">In bocca al lupo! 🍀</p>
-            </div>
-
-            {/* Modals */}
-            <LogoutModal
-                isOpen={showLogoutModal}
-                onClose={() => setShowLogoutModal(false)}
-            />
-            <DeleteAccountModal
-                isOpen={showDeleteModal}
-                onClose={() => setShowDeleteModal(false)}
-            />
         </div>
     );
 };

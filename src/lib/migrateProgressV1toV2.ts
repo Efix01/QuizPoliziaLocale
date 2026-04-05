@@ -54,7 +54,7 @@ export async function migrateProgressV1toV2(db: Firestore, uid: string): Promise
   });
 
   // 4. Esecuzione batch (gestisce il limite di 500 ops)
-  await commitInChunks(db, operations);
+  await commitInChunks(operations);
 
   console.info('Migrazione V1→V2 completata con successo');
   return true;

@@ -1,110 +1,482 @@
+import { useMemo, useState } from 'react';
 import { useProgress } from '../context/ProgressContext';
+import { usePL } from '../context/PLContext';
+import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, RotateCcw, ShieldCheck, ArrowRight, Trash2, BookOpen } from 'lucide-react';
+import { 
+  ChevronLeft, 
+  RotateCcw, 
+  ShieldCheck, 
+  ArrowRight, 
+  Trash2, 
+  BookOpen,
+  AlertCircle,
+  Filter
+} from 'lucide-react';
+import { commitInChunks } from '../lib/firestoreHelpers';
+import { doc } from 'firebase/firestore';
+import { db } from '../lib/firebase';
+
+type LayerFilter = 'all' | 'core' | 'regionale' | 'comunale';
 
 export default function MistakeReview() {
   const { erroriLog, resetErrori } = useProgress();
+  const { tutteLeDomande } = usePL();
+  const { user } = useAuth();
   const navigate = useNavigate();
 
-  const mistakesList = Object.entries(erroriLog).map(([id, stats]) => ({
-      id,
-      ...stats
-  })).sort((a, b) => b.lastError.localeCompare(a.lastError));
+  const [layerFilter, setLayerFilter] = useState<LayerFilter>('all');
+  const [isDeleting, setIsDeleting] = useState(false);
 
-  const handleReviewAll = () => {
-    // In un'app reale, filtreremmo le domande del database per caricare solo gli errori.
-    // Qui navigheremo al QuizBuilder o simuleremo l'avvio.
-    navigate('/quiz-builder');
+  // ===================================================
+  // Stats per layer
+  // ===================================================
+
+  const statsByLayer = useMemo(() => {
+    const stats = {
+      core: 0,
+      regionale: 0,
+      comunale: 0,
+    };
+
+    Object.keys(erroriLog || {}).forEach(id => {
+      const domanda = tutteLeDomande.find(d => d.id === id);
+      if (domanda) stats[domanda.strato]++;
+    });
+
+    return stats;
+  }, [erroriLog, tutteLeDomande]);
+
+  const totaleErrori = statsByLayer.core + statsByLayer.regionale + statsByLayer.comunale;
+
+  // ===================================================
+  // Lista errori ordinata per priorità (SRS)
+  // ===================================================
+
+  const erroriOrdinati = useMemo(() => {
+    return Object.entries(erroriLog || {})
+      .map(([id, log]) => {
+        const domanda = tutteLeDomande.find(d => d.id === id);
+        if (!domanda) return null;
+
+        return {
+          id,
+          domanda,
+          count: log.count,
+          lastError: new Date(log.lastError),
+        };
+      })
+      .filter((e): e is NonNullable<typeof e> => e !== null)
+      .filter(e => {
+        // Applica filtro layer
+        if (layerFilter === 'all') return true;
+        return e.domanda.strato === layerFilter;
+      })
+      .sort((a, b) => {
+        // Prima per frequenza (più errori = priorità alta)
+        if (b.count !== a.count) return b.count - a.count;
+        // Poi per recenza (più recente = priorità alta)
+        return b.lastError.getTime() - a.lastError.getTime();
+      });
+  }, [erroriLog, tutteLeDomande, layerFilter]);
+
+  // ===================================================
+  // Navigazione al ripasso
+  // ===================================================
+
+  const avviaRipasso = (layer?: 'core' | 'regionale' | 'comunale') => {
+    const erroriDaRipassare = layer
+      ? erroriOrdinati.filter(e => e.domanda.strato === layer)
+      : erroriOrdinati;
+
+    if (erroriDaRipassare.length === 0) return;
+
+    const domande = erroriDaRipassare.map(e => e.domanda);
+
+    navigate('/study', {
+      state: {
+        domande,
+        mode: 'mistakes',
+        categoriaId: undefined,
+        strato: layer,
+      },
+    });
   };
 
+  // ===================================================
+  // Reset errori con batch chunking
+  // ===================================================
+
+  const azzeraErrori = async () => {
+    if (!user || !erroriLog) return;
+
+    const conferma = window.confirm(
+      `Sei sicuro di voler cancellare ${totaleErrori} errori? Questa azione non è reversibile.`
+    );
+    if (!conferma) return;
+
+    setIsDeleting(true);
+
+    try {
+      const operations = Object.keys(erroriLog).map(id => ({
+        type: 'delete' as const,
+        ref: doc(db, `users/${user.uid}/errori/${id}`),
+      }));
+
+      await commitInChunks(operations);
+
+      // Aggiorna stato locale
+      resetErrori();
+
+      alert('Tutti gli errori sono stati cancellati.');
+    } catch (e) {
+      console.error('Errore durante l\'azzeramento:', e);
+      alert('Errore durante la cancellazione. Riprova.');
+    } finally {
+      setIsDeleting(false);
+    }
+  };
+
+  // ===================================================
+  // Tempo relativo (es. "3 giorni fa")
+  // ===================================================
+
+  const formatRelativeTime = (date: Date) => {
+    const now = new Date();
+    const diffMs = now.getTime() - date.getTime();
+    const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+
+    if (diffDays === 0) return 'oggi';
+    if (diffDays === 1) return 'ieri';
+    if (diffDays < 7) return `${diffDays} giorni fa`;
+    if (diffDays < 30) return `${Math.floor(diffDays / 7)} settimane fa`;
+    return `${Math.floor(diffDays / 30)} mesi fa`;
+  };
+
+  // ===================================================
+  // Render
+  // ===================================================
+
   return (
-    <div className="min-h-screen bg-slate-50 p-6 md:p-10 font-sans">
-      
-      <header className="max-w-4xl mx-auto mb-10 flex items-center justify-between">
-        <div className="flex items-center gap-4">
-          <button onClick={() => navigate('/dashboard')} className="p-3 bg-white border border-slate-200 rounded-2xl text-slate-400 hover:text-slate-900 shadow-sm transition-all">
-            <ChevronLeft size={24} />
-          </button>
-          <h1 className="text-3xl font-black text-slate-900 tracking-tighter italic uppercase underline decoration-red-500 decoration-4 underline-offset-8">Centro <span className="text-red-500">Revisione</span></h1>
-        </div>
-        {mistakesList.length > 0 && (
-          <button 
-            onClick={resetErrori}
-            className="flex items-center gap-2 text-slate-400 font-bold hover:text-red-600 transition-colors p-2 text-sm uppercase tracking-widest"
-          >
-            <Trash2 size={16} /> Pulisci Log
-          </button>
-        )}
-      </header>
+    <div style={{ minHeight: '100vh', background: '#0f172a', color: '#f8fafc', padding: '2rem 1rem' }}>
+      <div style={{ maxWidth: '1000px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
 
-      <main className="max-w-4xl mx-auto space-y-8">
-        
-        {/* Intro Card */}
-        <div className="bg-slate-900 rounded-[2.5rem] p-10 text-white relative overflow-hidden shadow-2xl">
-           <div className="absolute top-0 right-0 w-64 h-64 bg-red-600/10 blur-3xl rounded-full" />
-           <div className="flex flex-col md:flex-row justify-between items-center gap-8 relative z-10">
-              <div className="text-center md:text-left">
-                  <h3 className="text-sm font-black text-red-400 uppercase tracking-[0.2em] mb-2">Analisi Critica Lacune</h3>
-                  <div className="text-6xl font-black mb-4 tracking-tighter">{mistakesList.length} <span className="text-2xl text-slate-400">Errori Attivi</span></div>
-                  <p className="text-slate-400 font-medium max-w-sm">Revisionare i propri errori è il modo più veloce per aumentare l'Indice di Prontezza Nazionale.</p>
+        {/* Header */}
+        <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+            <button
+              onClick={() => navigate('/dashboard')}
+              style={{
+                background: '#1e293b',
+                border: '1px solid #334155',
+                borderRadius: '12px',
+                padding: '0.75rem',
+                color: '#94a3b8',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <ChevronLeft size={24} />
+            </button>
+            <div>
+              <h1 style={{ fontSize: '2rem', fontWeight: '800', margin: 0, display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                <AlertCircle size={32} color="#ef4444" />
+                Revisione Errori
+              </h1>
+              <p style={{ color: '#94a3b8', marginTop: '0.25rem', fontSize: '1rem' }}>
+                {totaleErrori} {totaleErrori === 1 ? 'domanda' : 'domande'} da rivedere
+              </p>
+            </div>
+          </div>
+
+          {totaleErrori > 0 && (
+            <button
+              onClick={azzeraErrori}
+              disabled={isDeleting}
+              style={{
+                background: 'transparent',
+                border: '1px solid #334155',
+                borderRadius: '12px',
+                padding: '0.75rem 1.5rem',
+                color: isDeleting ? '#64748b' : '#ef4444',
+                cursor: isDeleting ? 'not-allowed' : 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                fontWeight: '600',
+                opacity: isDeleting ? 0.5 : 1,
+              }}
+            >
+              <Trash2 size={16} />
+              {isDeleting ? 'Cancellazione...' : 'Azzera errori'}
+            </button>
+          )}
+        </header>
+
+        {/* Card Stats */}
+        <section
+          style={{
+            background: '#1e293b',
+            borderRadius: '24px',
+            padding: '2rem',
+            border: '1px solid #334155',
+            boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.2)',
+          }}
+        >
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '2rem', alignItems: 'center', justifyContent: 'space-between' }}>
+            {/* Totale errori */}
+            <div style={{ textAlign: 'center', flex: '1', minWidth: '150px' }}>
+              <h3 style={{ color: '#94a3b8', fontSize: '0.9rem', marginBottom: '0.5rem', fontWeight: '600', textTransform: 'uppercase' }}>
+                Errori Totali
+              </h3>
+              <div style={{ fontSize: '3rem', fontWeight: '900', color: '#ef4444', lineHeight: 1 }}>{totaleErrori}</div>
+            </div>
+
+            {/* Stats per layer */}
+            <div style={{ display: 'flex', gap: '2rem', flexWrap: 'wrap', flex: '2' }}>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ color: '#94a3b8', fontSize: '0.85rem', marginBottom: '0.25rem' }}>Core</div>
+                <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#f8fafc' }}>{statsByLayer.core}</div>
               </div>
-              <button 
-                disabled={mistakesList.length === 0}
-                onClick={handleReviewAll}
-                className="px-10 py-5 bg-white text-slate-900 rounded-3xl font-black text-xl hover:bg-slate-50 transition-all flex items-center gap-3 shadow-xl active:scale-95 disabled:opacity-20"
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ color: '#94a3b8', fontSize: '0.85rem', marginBottom: '0.25rem' }}>Regionale</div>
+                <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#f8fafc' }}>{statsByLayer.regionale}</div>
+              </div>
+              <div style={{ textAlign: 'center' }}>
+                <div style={{ color: '#94a3b8', fontSize: '0.85rem', marginBottom: '0.25rem' }}>Comunale</div>
+                <div style={{ fontSize: '1.5rem', fontWeight: '700', color: '#f8fafc' }}>{statsByLayer.comunale}</div>
+              </div>
+            </div>
+
+            {/* Azioni rapide */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+              <button
+                onClick={() => avviaRipasso()}
+                disabled={totaleErrori === 0}
+                style={{
+                  background: totaleErrori > 0 ? 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)' : '#334155',
+                  border: 'none',
+                  borderRadius: '12px',
+                  padding: '0.75rem 1.5rem',
+                  color: '#fff',
+                  cursor: totaleErrori > 0 ? 'pointer' : 'not-allowed',
+                  fontWeight: '700',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.5rem',
+                }}
               >
-                Ripassa Ora <RotateCcw size={24} />
+                <RotateCcw size={18} />
+                Ripassa tutto
               </button>
-           </div>
-        </div>
+            </div>
+          </div>
+        </section>
 
-        {/* List Areas */}
-        <div className="space-y-4 pb-20">
-            <AnimatePresence mode="popLayout">
-                {mistakesList.length > 0 ? (
-                    mistakesList.map((m, i) => (
-                        <motion.div 
-                            key={m.id}
-                            initial={{ opacity: 0, y: 15 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, scale: 0.9 }}
-                            transition={{ delay: i * 0.05 }}
-                            className="bg-white border border-slate-200 p-6 rounded-3xl flex items-center justify-between group hover:shadow-xl transition-all"
-                        >
-                            <div className="flex items-center gap-6">
-                                <div className="w-14 h-14 bg-red-50 text-red-500 rounded-2xl flex items-center justify-center text-2xl font-black">
-                                   !
-                                </div>
-                                <div>
-                                    <h4 className="text-lg font-bold text-slate-900 leading-none mb-1 uppercase tracking-tight">ID: {m.id.split('-')[0]}</h4>
-                                    <div className="flex items-center gap-3 text-[10px] font-black text-slate-400 uppercase tracking-widest mt-2">
-                                        <span className="flex items-center gap-1"><BookOpen size={10} /> {m.count} Occorrenze</span>
-                                        <span className="w-1 h-1 bg-slate-200 rounded-full" />
-                                        <span>Ultimo errore: {new Date(m.lastError).toLocaleDateString()}</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <button onClick={() => navigate('/quiz-builder')} className="p-3 bg-slate-50 text-slate-300 rounded-xl hover:bg-slate-900 hover:text-white transition-all group-hover:translate-x-1">
-                                <ArrowRight size={20} />
-                            </button>
-                        </motion.div>
-                    ))
-                ) : (
-                    <div className="py-20 text-center space-y-6">
-                        <div className="w-24 h-24 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
-                            <ShieldCheck size={48} />
-                        </div>
-                        <div>
-                            <h3 className="text-2xl font-black text-slate-900 mb-2 italic">Registro Pulito</h3>
-                            <p className="text-slate-400 font-medium">Nessun errore rilevato nelle ultime sessioni. Sei sulla strada giusta per il concorso.</p>
-                        </div>
+        {/* Filtro layer */}
+        {totaleErrori > 0 && (
+          <section style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap', alignItems: 'center' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#94a3b8', fontWeight: '600' }}>
+              <Filter size={18} />
+              Filtra:
+            </div>
+            {(['all', 'core', 'regionale', 'comunale'] as const).map(layer => (
+              <button
+                key={layer}
+                onClick={() => setLayerFilter(layer)}
+                style={{
+                  background: layerFilter === layer ? '#3b82f6' : '#1e293b',
+                  border: '1px solid #334155',
+                  borderRadius: '12px',
+                  padding: '0.5rem 1rem',
+                  color: layerFilter === layer ? '#fff' : '#cbd5e1',
+                  cursor: 'pointer',
+                  fontWeight: '600',
+                  textTransform: 'capitalize',
+                }}
+              >
+                {layer === 'all' ? 'Tutti' : layer}
+              </button>
+            ))}
+          </section>
+        )}
+
+        {/* Lista errori */}
+        <section style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <AnimatePresence mode="popLayout">
+            {erroriOrdinati.length > 0 ? (
+              erroriOrdinati.map((errore, i) => (
+                <motion.div
+                  key={errore.id}
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ delay: i * 0.03 }}
+                  style={{
+                    background: '#1e293b',
+                    border: '1px solid #334155',
+                    borderRadius: '20px',
+                    padding: '1.5rem',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: '1rem',
+                    flexWrap: 'wrap',
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', flex: '1', minWidth: '250px' }}>
+                    {/* Badge priorità */}
+                    <div
+                      style={{
+                        background: errore.count >= 3 ? '#7f1d1d' : '#334155',
+                        color: errore.count >= 3 ? '#ef4444' : '#94a3b8',
+                        borderRadius: '12px',
+                        width: '50px',
+                        height: '50px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        fontSize: '1.5rem',
+                        fontWeight: '900',
+                        flexShrink: 0,
+                      }}
+                    >
+                      {errore.count}
                     </div>
-                )}
-            </AnimatePresence>
-        </div>
 
-      </main>
+                    <div style={{ flex: '1' }}>
+                      {/* Categoria */}
+                      <div
+                        style={{
+                          display: 'inline-block',
+                          background: '#334155',
+                          color: '#cbd5e1',
+                          padding: '0.25rem 0.75rem',
+                          borderRadius: '99px',
+                          fontSize: '0.75rem',
+                          fontWeight: '700',
+                          textTransform: 'uppercase',
+                          marginBottom: '0.5rem',
+                        }}
+                      >
+                        {(errore.domanda as any).categoria || errore.domanda.categoriaId} ({errore.domanda.strato})
+                      </div>
+
+                      {/* Testo domanda */}
+                      <h4
+                        style={{
+                          fontSize: '1.05rem',
+                          fontWeight: '600',
+                          color: '#f8fafc',
+                          margin: 0,
+                          lineHeight: 1.4,
+                          maxWidth: '600px',
+                        }}
+                      >
+                        {errore.domanda.testo.length > 120
+                          ? errore.domanda.testo.slice(0, 120) + '...'
+                          : errore.domanda.testo}
+                      </h4>
+
+                      {/* Metadata */}
+                      <div
+                        style={{
+                          display: 'flex',
+                          alignItems: 'center',
+                          gap: '0.75rem',
+                          marginTop: '0.5rem',
+                          fontSize: '0.85rem',
+                          color: '#64748b',
+                        }}
+                      >
+                        <span style={{ display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                          <BookOpen size={14} />
+                          {errore.count} {errore.count === 1 ? 'volta' : 'volte'}
+                        </span>
+                        <span>•</span>
+                        <span>Ultimo: {formatRelativeTime(errore.lastError)}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Azione */}
+                  <button
+                    onClick={() => avviaRipasso(errore.domanda.strato)}
+                    style={{
+                      background: '#334155',
+                      border: 'none',
+                      borderRadius: '12px',
+                      padding: '0.75rem',
+                      color: '#94a3b8',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transition: 'all 0.2s',
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.background = '#3b82f6';
+                      e.currentTarget.style.color = '#fff';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.background = '#334155';
+                      e.currentTarget.style.color = '#94a3b8';
+                    }}
+                  >
+                    <ArrowRight size={20} />
+                  </button>
+                </motion.div>
+              ))
+            ) : (
+              <div style={{ textAlign: 'center', padding: '4rem 2rem' }}>
+                <div
+                  style={{
+                    width: '80px',
+                    height: '80px',
+                    background: '#065f46',
+                    color: '#22c55e',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    margin: '0 auto 1.5rem auto',
+                  }}
+                >
+                  <ShieldCheck size={40} />
+                </div>
+                <h3 style={{ fontSize: '1.5rem', fontWeight: '700', marginBottom: '0.5rem', margin: 0 }}>
+                  {layerFilter === 'all' ? 'Nessun errore!' : `Nessun errore nel layer ${layerFilter}`}
+                </h3>
+                <p style={{ color: '#94a3b8', fontSize: '1.05rem', marginTop: '0.5rem' }}>
+                  {layerFilter === 'all'
+                    ? 'Continua così — il tuo registro è pulito.'
+                    : 'Ottimo lavoro su questo layer. Prova con gli altri!'}
+                </p>
+                {layerFilter !== 'all' && (
+                  <button
+                    onClick={() => setLayerFilter('all')}
+                    style={{
+                      background: '#3b82f6',
+                      border: 'none',
+                      borderRadius: '12px',
+                      padding: '0.75rem 1.5rem',
+                      color: '#fff',
+                      cursor: 'pointer',
+                      fontWeight: '600',
+                      marginTop: '1.5rem',
+                    }}
+                  >
+                    Mostra tutti
+                  </button>
+                )}
+              </div>
+            )}
+          </AnimatePresence>
+        </section>
+      </div>
     </div>
   );
 }

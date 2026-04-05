@@ -1,106 +1,151 @@
 import React, { useState, useEffect } from 'react';
-import { Sparkles, BookOpen } from 'lucide-react';
-import './WhatsNewModal.css';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Sparkles, X, CheckCircle2, Zap, Trophy, Shield } from 'lucide-react';
 
-const VERSION_KEY = 'whats_new_v14_mar_2026_commissione'; // Aggiornato per annuncio commissione
+const APP_VERSION = '1.2.0';
 
-const WhatsNewModal: React.FC = () => {
-    const [isOpen, setIsOpen] = useState(false);
+interface WhatsNewModalProps {
+    isOpen: boolean;
+    onClose: () => void;
+}
+
+const WhatsNewModal: React.FC<WhatsNewModalProps> = ({ isOpen, onClose }) => {
+    // Gestione interna della visibilità automatica (opzionale se non passato da props)
+    const [shouldShow, setShouldShow] = useState(isOpen);
 
     useEffect(() => {
-        try {
-            // Check if user has already seen this update
-            const hasSeen = localStorage.getItem(VERSION_KEY);
-            if (!hasSeen) {
-                // Small delay to appear after app load
-                const timer = setTimeout(() => {
-                    setIsOpen(true);
-                }, 1000);
-                return () => clearTimeout(timer);
-            }
-        } catch (error) {
-            console.warn('LocalStorage access blocked:', error);
-        }
-    }, []);
+        setShouldShow(isOpen);
+    }, [isOpen]);
 
-    const handleClose = () => {
-        setIsOpen(false);
-        try {
-            localStorage.setItem(VERSION_KEY, 'true');
-        } catch (error) {
-            console.warn('Could not save to LocalStorage:', error);
-        }
-    };
-
-    if (!isOpen) return null;
-
-    const PDF_LINK = "https://files.regione.sardegna.it/squidex/api/assets/redazionaleras/421a3ee7-e8bc-4f76-882d-b3a7330e5ce7/determinazione-nomina-prima-commissione-esaminatrice-n.-469-10363-12.03.2026-.pdf";
-
-    const features = [
-        {
-            icon: <BookOpen size={24} color="#3B82F6" />, // Blu per comunicazioni ufficiali
-            title: "Preparazione Concorso Polizia Locale! ⚖️",
-            description: (
-                <>
-                    Inizia la preparazione per le prove scritte, pratiche e titoli del nuovo concorso.
-                    <br />
-                    <a
-                        href={PDF_LINK}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        style={{
-                            display: 'inline-block',
-                            marginTop: '8px',
-                            color: '#60A5FA',
-                            textDecoration: 'underline',
-                            fontWeight: '500'
-                        }}
-                    >
-                        📄 Scarica PDF Ufficiale
-                    </a>
-                </>
-            )
-        },
-        {
-            icon: <BookOpen size={24} color="#F59E0B" />, // Ambra per il fuoco/incendi
-            title: "Nuovi Quiz Disponibili! 🔥",
-            description: "Aggiunte ben 54 nuove domande sulla normativa Antincendio (L. 353/2000): definizioni di legge, lotta attiva, catasto incendi e sistema sanzionatorio penale."
-        },
-        {
-            icon: <Sparkles size={24} color="#10B981" />, // Smeraldo per il design nuovo
-            title: 'Nuovissimo Design "Glass" ✨',
-            description: "L'app ha un look nuovo! Modalità Studio e pop-up ora sfruttano un elegante design scuro semi-transparente (Glassmorphism), progettato per non affaticare gli occhi."
-        }
+    const updates = [
+        { icon: <Zap size={20} color="#f59e0b" />, title: 'Elite UI Sweep', text: 'Nuovo design Midnight Blue con animazioni fluide per un\'esperienza d\'élite.' },
+        { icon: <Shield size={20} color="#3b82f6" />, title: 'Domande Regionali', text: 'Nuova banca dati aggiornata per Sardegna, Lazio e Lombardia.' },
+        { icon: <Trophy size={20} color="#22c55e" />, title: 'Dashboard Statistiche', text: 'Monitora la tua precisione con grafici in tempo reale e streak di studio.' },
     ];
 
     return (
-        <div className="whats-new-overlay">
-            <div className="whats-new-content">
-                <div className="whats-new-icon">
-                    <Sparkles size={36} />
+        <AnimatePresence>
+            {shouldShow && (
+                <div style={{
+                    position: 'fixed',
+                    inset: 0,
+                    zIndex: 5000,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'rgba(15, 23, 42, 0.8)',
+                    backdropFilter: 'blur(12px)',
+                    padding: '1.5rem',
+                }}
+                onClick={onClose}
+                >
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9, y: 30 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                        onClick={(e) => e.stopPropagation()}
+                        style={{
+                            width: '100%',
+                            maxWidth: '480px',
+                            background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+                            border: '1px solid #334155',
+                            borderRadius: '32px',
+                            padding: '2.5rem',
+                            position: 'relative',
+                            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+                        }}
+                    >
+                        {/* Header */}
+                        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
+                            <div style={{ 
+                                display: 'inline-flex', 
+                                alignItems: 'center', 
+                                justifyContent: 'center', 
+                                background: 'rgba(59, 130, 246, 0.1)', 
+                                color: '#3b82f6', 
+                                borderRadius: '20px', 
+                                padding: '1rem', 
+                                marginBottom: '1.5rem' 
+                            }}>
+                                <Sparkles size={32} />
+                            </div>
+                            <h2 style={{ fontSize: '1.75rem', fontWeight: '900', color: '#fff', margin: '0 0 0.5rem 0' }}>Cosa c'è di nuovo?</h2>
+                            <span style={{ color: '#64748b', fontSize: '0.9rem', fontWeight: '700', letterSpacing: '0.1em' }}>VERSIONE {APP_VERSION}</span>
+                        </div>
+
+                        {/* Update List */}
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', marginBottom: '2.5rem' }}>
+                            {updates.map((upd, i) => (
+                                <div key={i} style={{ display: 'flex', gap: '1.25rem', alignItems: 'flex-start' }}>
+                                    <div style={{ 
+                                        padding: '0.75rem', 
+                                        background: 'rgba(255,255,255,0.03)', 
+                                        borderRadius: '16px', 
+                                        border: '1px solid rgba(255,255,255,0.05)',
+                                        flexShrink: 0 
+                                    }}>
+                                        {upd.icon}
+                                    </div>
+                                    <div>
+                                        <h4 style={{ fontSize: '1.05rem', fontWeight: '800', color: '#f8fafc', margin: '0 0 0.25rem 0' }}>{upd.title}</h4>
+                                        <p style={{ fontSize: '0.9rem', color: '#94a3b8', lineHeight: 1.5, margin: 0 }}>{upd.text}</p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                        {/* CTA */}
+                        <button
+                            onClick={onClose}
+                            style={{
+                                width: '100%',
+                                background: '#3b82f6',
+                                color: '#fff',
+                                border: 'none',
+                                padding: '1.1rem',
+                                borderRadius: '16px',
+                                fontWeight: '800',
+                                fontSize: '1rem',
+                                cursor: 'pointer',
+                                display: 'flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                gap: '0.75rem',
+                                boxShadow: '0 10px 15px -3px rgba(59, 130, 246, 0.3)',
+                                transition: 'all 0.2s',
+                            }}
+                            onMouseOver={(e) => {
+                                e.currentTarget.style.transform = 'translateY(-2px)';
+                                e.currentTarget.style.background = '#2563eb';
+                            }}
+                            onMouseOut={(e) => {
+                                e.currentTarget.style.transform = 'translateY(0)';
+                                e.currentTarget.style.background = '#3b82f6';
+                            }}
+                        >
+                            <CheckCircle2 size={20} />
+                            Ottimo, andiamo!
+                        </button>
+
+                        <button 
+                            onClick={onClose}
+                            style={{ 
+                                position: 'absolute', 
+                                top: '1.25rem', 
+                                right: '1.25rem', 
+                                background: 'transparent', 
+                                border: 'none', 
+                                color: '#475569', 
+                                cursor: 'pointer',
+                                padding: '0.5rem'
+                            }}
+                        >
+                            <X size={24} />
+                        </button>
+                    </motion.div>
                 </div>
-
-                <h2 className="whats-new-title">Aggiornamento ✨</h2>
-
-                <ul className="whats-new-list">
-                    {features.map((feature, index) => (
-                        <li key={index} className="whats-new-item">
-                            <div className="item-icon">
-                                {feature.icon}
-                            </div>
-                            <div className="item-content">
-                                <h4>{feature.title}</h4>
-                                <p>{feature.description}</p>
-                            </div>
-                        </li>
-                    ))}
-                </ul>
-
-                <button className="whats-new-btn" onClick={handleClose}>
-                    OK..vado a studiare! 📚
-                </button>
-            </div>
-        </div>
+            )}
+        </AnimatePresence>
     );
 };
 

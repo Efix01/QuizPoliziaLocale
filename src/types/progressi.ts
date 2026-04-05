@@ -87,7 +87,7 @@ export const RisultatoRispostaSchema = z.object({
   domandaId: z.string(),
   categoriaId: z.string(),
   corretta: z.boolean(),
-  indiceRispostaScelta: z.number().min(0).max(3),
+  indiceRispostaScelta: z.number().min(-1).max(3),
   timestamp: isoDateString,
 });
 export type RisultatoRisposta = z.infer<typeof RisultatoRispostaSchema>;

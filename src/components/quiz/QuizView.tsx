@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, CheckCircle, XCircle } from 'lucide-react';
+import { ArrowLeft, CheckCircle, XCircle, AlertTriangle } from 'lucide-react';
 import type { DomandaPL } from '../../types/pl';
 
 interface QuizViewProps {
@@ -15,6 +15,7 @@ interface QuizViewProps {
   handleCheck: () => void;
   handleFeedback: (isSelfDeclaredCorrect: boolean) => void;
   onAbandon: () => void;
+  isSimulationMode?: boolean; // 🆕 Flag per modalità esame
 }
 
 export default function QuizView({
@@ -30,7 +31,16 @@ export default function QuizView({
   handleCheck,
   handleFeedback,
   onAbandon,
+  isSimulationMode = false, // Default: modalità pratica
 }: QuizViewProps) {
+  
+  // Handler per modalità simulazione (avanzamento senza feedback)
+  const handleNextInSimulation = () => {
+    handleFeedback(true); // Registra la risposta ma non mostra feedback
+  };
+
+  const isLastQuestion = currentIndex === totalQuestions - 1;
+
   return (
     <div style={{ minHeight: '100vh', background: '#0f172a', color: '#f8fafc', padding: '1rem' }}>
       <div style={{ maxWidth: '800px', margin: '0 auto' }}>
@@ -39,14 +49,43 @@ export default function QuizView({
         <header style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '2rem' }}>
           <button 
             onClick={onAbandon} 
-            style={{ background: 'transparent', border: 'none', color: '#94a3b8', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+            style={{ 
+              background: 'transparent', 
+              border: 'none', 
+              color: '#94a3b8', 
+              cursor: 'pointer', 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '0.5rem',
+              fontSize: '1rem',
+              fontWeight: '600',
+            }}
           >
-            <ArrowLeft size={20} /> Abbandona
+            <ArrowLeft size={20} /> {isSimulationMode ? 'Abbandona Esame' : 'Abbandona'}
           </button>
           <div style={{ color: '#cbd5e1', fontWeight: '600' }}>
             Domanda {currentIndex + 1} di {totalQuestions}
           </div>
         </header>
+
+        {/* Banner Modalità Esame */}
+        {isSimulationMode && (
+          <div style={{
+            background: '#92400e',
+            border: '1px solid #c2410c',
+            borderRadius: '12px',
+            padding: '1rem',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.75rem',
+            marginBottom: '2rem',
+          }}>
+            <AlertTriangle size={20} color="#f59e0b" />
+            <div style={{ fontSize: '0.95rem', color: '#fef3c7' }}>
+              <strong style={{ color: '#fde68a' }}>Modalità Esame:</strong> Non vedrai le correzioni fino alla fine.
+            </div>
+          </div>
+        )}
 
         <div style={{ height: '6px', background: '#1e293b', borderRadius: '3px', overflow: 'hidden', marginBottom: '2rem' }}>
           <div style={{ width: `${progressPercentage}%`, height: '100%', background: '#3b82f6', transition: 'width 0.3s ease' }} />
@@ -65,23 +104,42 @@ export default function QuizView({
           {currentQuestion.opzioni.map((opzione, index) => {
             const isSelected = selectedOption === index;
             const isExcluded = excludedOptions.includes(index);
-            const isCorrect = showAnswer && index === currentQuestion.rispostaCorretta;
-            const isWrong = showAnswer && isSelected && index !== currentQuestion.rispostaCorretta;
+            const isCorrect = showAnswer && !isSimulationMode && index === currentQuestion.rispostaCorretta;
+            const isWrong = showAnswer && !isSimulationMode && isSelected && index !== currentQuestion.rispostaCorretta;
 
             let bgColor = '#1e293b';
             let borderColor = '#334155';
-            if (isSelected && !showAnswer) { bgColor = '#1e40af'; borderColor = '#3b82f6'; }
-            if (isCorrect) { bgColor = '#14532d'; borderColor = '#22c55e'; }
-            if (isWrong) { bgColor = '#7f1d1d'; borderColor = '#ef4444'; }
+            
+            // Solo in modalità pratica mostra i colori di feedback
+            if (!isSimulationMode) {
+              if (isSelected && !showAnswer) { bgColor = '#1e40af'; borderColor = '#3b82f6'; }
+              if (isCorrect) { bgColor = '#14532d'; borderColor = '#22c55e'; }
+              if (isWrong) { bgColor = '#7f1d1d'; borderColor = '#ef4444'; }
+            } else {
+              // In modalità esame, solo evidenzia la selezione corrente
+              if (isSelected) { bgColor = '#1e40af'; borderColor = '#3b82f6'; }
+            }
 
             return (
               <div key={index} style={{ display: 'flex', gap: '0.5rem', opacity: (isExcluded && !showAnswer) ? 0.4 : 1 }}>
                 
-                {/* Bottone Esclusione (X) */}
-                {!showAnswer && (
+                {/* Bottone Esclusione (X) - Solo in modalità pratica */}
+                {!showAnswer && !isSimulationMode && (
                   <button 
                     onClick={(e) => toggleExclusion(e, index)}
-                    style={{ background: isExcluded ? '#ef4444' : '#334155', border: 'none', borderRadius: '12px', width: '50px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#fff', fontSize: '1.2rem', fontWeight: 'bold' }}
+                    style={{ 
+                      background: isExcluded ? '#ef4444' : '#334155', 
+                      border: 'none', 
+                      borderRadius: '12px', 
+                      width: '50px', 
+                      cursor: 'pointer', 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      justifyContent: 'center', 
+                      color: '#fff', 
+                      fontSize: '1.2rem', 
+                      fontWeight: 'bold' 
+                    }}
                   >
                     ×
                   </button>
@@ -90,8 +148,19 @@ export default function QuizView({
                 {/* Bottone Opzione */}
                 <button
                   onClick={() => handleOptionSelect(index)}
-                  disabled={showAnswer || isExcluded}
-                  style={{ flex: 1, textAlign: 'left', padding: '1.25rem', borderRadius: '12px', background: bgColor, border: `2px solid ${borderColor}`, color: '#f8fafc', fontSize: '1.1rem', cursor: (showAnswer || isExcluded) ? 'default' : 'pointer', transition: 'all 0.2s' }}
+                  disabled={(showAnswer && !isSimulationMode) || isExcluded}
+                  style={{ 
+                    flex: 1, 
+                    textAlign: 'left', 
+                    padding: '1.25rem', 
+                    borderRadius: '12px', 
+                    background: bgColor, 
+                    border: `2px solid ${borderColor}`, 
+                    color: '#f8fafc', 
+                    fontSize: '1.1rem', 
+                    cursor: ((showAnswer && !isSimulationMode) || isExcluded) ? 'default' : 'pointer', 
+                    transition: 'all 0.2s' 
+                  }}
                 >
                   {opzione}
                 </button>
@@ -100,39 +169,102 @@ export default function QuizView({
           })}
         </div>
 
-        {/* Azioni: Conferma o Feedback */}
-        {!showAnswer ? (
-          <button 
-            onClick={handleCheck}
-            disabled={selectedOption === null}
-            style={{ width: '100%', background: selectedOption !== null ? '#3b82f6' : '#334155', color: '#fff', border: 'none', padding: '1.25rem', borderRadius: '12px', fontSize: '1.1rem', fontWeight: 'bold', cursor: selectedOption !== null ? 'pointer' : 'not-allowed' }}
-          >
-            CONFERMA RISPOSTA
-          </button>
-        ) : (
-          <div style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '16px', padding: '1.5rem' }}>
-            <h3 style={{ margin: '0 0 1rem 0', display: 'flex', alignItems: 'center', gap: '0.5rem', color: selectedOption === currentQuestion.rispostaCorretta ? '#22c55e' : '#ef4444', fontSize: '1.2rem' }}>
-              {selectedOption === currentQuestion.rispostaCorretta ? <CheckCircle /> : <XCircle />}
-              {selectedOption === currentQuestion.rispostaCorretta ? 'Risposta Esatta!' : 'Risposta Errata'}
-            </h3>
-            <p style={{ color: '#cbd5e1', lineHeight: '1.6', marginBottom: '1.5rem', fontSize: '1.05rem' }}>
-              {currentQuestion.spiegazione}
-            </p>
-            <div style={{ display: 'flex', gap: '1rem' }}>
-              <button 
-                onClick={() => handleFeedback(false)} 
-                style={{ flex: 1, background: '#ef4444', color: '#fff', border: 'none', padding: '1rem', borderRadius: '12px', fontWeight: 'bold', cursor: 'pointer', transition: 'opacity 0.2s' }}
-              >
-                Non lo sapevo
-              </button>
-              <button 
-                onClick={() => handleFeedback(true)} 
-                style={{ flex: 1, background: '#22c55e', color: '#fff', border: 'none', padding: '1rem', borderRadius: '12px', fontWeight: 'bold', cursor: 'pointer', transition: 'opacity 0.2s' }}
-              >
-                Lo sapevo!
-              </button>
+        {/* Azioni: Modalità Pratica vs Simulazione */}
+        {!isSimulationMode ? (
+          /* MODALITÀ PRATICA: Mostra feedback e pulsanti "Lo sapevo" */
+          !showAnswer ? (
+            <button 
+              onClick={handleCheck}
+              disabled={selectedOption === null}
+              style={{ 
+                width: '100%', 
+                background: selectedOption !== null ? '#3b82f6' : '#334155', 
+                color: '#fff', 
+                border: 'none', 
+                padding: '1.25rem', 
+                borderRadius: '12px', 
+                fontSize: '1.1rem', 
+                fontWeight: 'bold', 
+                cursor: selectedOption !== null ? 'pointer' : 'not-allowed' 
+              }}
+            >
+              CONFERMA RISPOSTA
+            </button>
+          ) : (
+            <div style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '16px', padding: '1.5rem' }}>
+              <h3 style={{ 
+                margin: '0 0 1rem 0', 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '0.5rem', 
+                color: selectedOption === currentQuestion.rispostaCorretta ? '#22c55e' : '#ef4444', 
+                fontSize: '1.2rem' 
+              }}>
+                {selectedOption === currentQuestion.rispostaCorretta ? <CheckCircle /> : <XCircle />}
+                {selectedOption === currentQuestion.rispostaCorretta ? 'Risposta Esatta!' : 'Risposta Errata'}
+              </h3>
+              <p style={{ color: '#cbd5e1', lineHeight: '1.6', marginBottom: '1.5rem', fontSize: '1.05rem' }}>
+                {currentQuestion.spiegazione}
+              </p>
+              <div style={{ display: 'flex', gap: '1rem' }}>
+                <button 
+                  onClick={() => handleFeedback(false)} 
+                  style={{ 
+                    flex: 1, 
+                    background: '#ef4444', 
+                    color: '#fff', 
+                    border: 'none', 
+                    padding: '1rem', 
+                    borderRadius: '12px', 
+                    fontWeight: 'bold', 
+                    cursor: 'pointer', 
+                    transition: 'opacity 0.2s' 
+                  }}
+                >
+                  Non lo sapevo
+                </button>
+                <button 
+                  onClick={() => handleFeedback(true)} 
+                  style={{ 
+                    flex: 1, 
+                    background: '#22c55e', 
+                    color: '#fff', 
+                    border: 'none', 
+                    padding: '1rem', 
+                    borderRadius: '12px', 
+                    fontWeight: 'bold', 
+                    cursor: 'pointer', 
+                    transition: 'opacity 0.2s' 
+                  }}
+                >
+                  Lo sapevo!
+                </button>
+              </div>
             </div>
-          </div>
+          )
+        ) : (
+          /* MODALITÀ SIMULAZIONE: Solo avanzamento, nessun feedback */
+          <button
+            onClick={handleNextInSimulation}
+            disabled={selectedOption === null}
+            style={{
+              width: '100%',
+              background: selectedOption !== null ? '#3b82f6' : '#334155',
+              color: '#fff',
+              border: 'none',
+              padding: '1.25rem',
+              borderRadius: '12px',
+              fontSize: '1.1rem',
+              fontWeight: 'bold',
+              cursor: selectedOption !== null ? 'pointer' : 'not-allowed',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.75rem',
+            }}
+          >
+            {isLastQuestion ? '✅ TERMINA ESAME' : '➡️ PROSSIMA DOMANDA'}
+          </button>
         )}
       </div>
     </div>

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { useAuth } from '../../context/AuthContext';
 import { useToast } from '../../context/ToastContext';
-import { AlertTriangle, ShieldCheck, Check } from 'lucide-react';
-import './AccountModals.css';
+import { AlertTriangle, ShieldCheck, Check, X } from 'lucide-react';
 
 interface LogoutModalProps {
     isOpen: boolean;
@@ -32,29 +32,94 @@ export const LogoutModal: React.FC<LogoutModalProps> = ({ isOpen, onClose }) => 
         }
     };
 
-    if (!isOpen) return null;
-
     return (
-        <div className="modal-overlay" onClick={onClose}>
-            <div className="modal-card" onClick={e => e.stopPropagation()}>
-                <h2 className="modal-title">Vuoi uscire?</h2>
-                <p className="modal-message">
-                    Potrai accedere di nuovo in qualsiasi momento.
-                </p>
-                <div className="modal-buttons">
-                    <button className="btn-secondary" onClick={onClose}>
-                        Annulla
-                    </button>
-                    <button
-                        className={`btn-primary ${isLoading ? 'loading' : ''}`}
-                        onClick={handleLogout}
-                        disabled={isLoading}
+        <AnimatePresence>
+            {isOpen && (
+                <div 
+                    style={{
+                        position: 'fixed',
+                        inset: 0,
+                        zIndex: 1000,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        background: 'rgba(15, 23, 42, 0.8)',
+                        backdropFilter: 'blur(8px)',
+                        padding: '1rem',
+                    }}
+                    onClick={onClose}
+                >
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                        style={{
+                            width: '100%',
+                            maxWidth: '400px',
+                            background: '#1e293b',
+                            border: '1px solid #334155',
+                            borderRadius: '24px',
+                            padding: '2rem',
+                            position: 'relative',
+                            boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+                        }}
+                        onClick={e => e.stopPropagation()}
                     >
-                        {isLoading ? <span className="spinner" /> : 'Esci'}
-                    </button>
+                        <button 
+                            onClick={onClose}
+                            style={{ position: 'absolute', top: '1rem', right: '1rem', background: 'transparent', border: 'none', color: '#64748b', cursor: 'pointer' }}
+                        >
+                            <X size={20} />
+                        </button>
+
+                        <h2 style={{ fontSize: '1.5rem', fontWeight: '800', color: '#f8fafc', marginBottom: '1rem', marginTop: '0.5rem' }}>
+                            Vuoi uscire?
+                        </h2>
+                        <p style={{ color: '#94a3b8', marginBottom: '2rem', lineHeight: 1.6 }}>
+                            Potrai accedere di nuovo in qualsiasi momento per riprendere i tuoi studi.
+                        </p>
+
+                        <div style={{ display: 'flex', gap: '1rem' }}>
+                            <button 
+                                onClick={onClose}
+                                style={{
+                                    flex: 1,
+                                    padding: '0.9rem',
+                                    borderRadius: '12px',
+                                    border: '1px solid #334155',
+                                    background: 'transparent',
+                                    color: '#cbd5e1',
+                                    fontWeight: '600',
+                                    cursor: 'pointer',
+                                }}
+                            >
+                                Annulla
+                            </button>
+                            <button
+                                onClick={handleLogout}
+                                disabled={isLoading}
+                                style={{
+                                    flex: 1,
+                                    padding: '0.9rem',
+                                    borderRadius: '12px',
+                                    border: 'none',
+                                    background: '#3b82f6',
+                                    color: '#fff',
+                                    fontWeight: '700',
+                                    cursor: isLoading ? 'default' : 'pointer',
+                                    opacity: isLoading ? 0.7 : 1,
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                }}
+                            >
+                                {isLoading ? <div className="loader-small" /> : 'Esce ora'}
+                            </button>
+                        </div>
+                    </motion.div>
                 </div>
-            </div>
-        </div>
+            )}
+        </AnimatePresence>
     );
 };
 
@@ -78,10 +143,6 @@ export const DeleteAccountModal: React.FC<DeleteAccountModalProps> = ({ isOpen, 
         onClose();
     };
 
-    const handleConfirmWarning = () => {
-        setStep('confirm');
-    };
-
     const performDeletion = async () => {
         setIsLoading(true);
         setError(null);
@@ -93,83 +154,110 @@ export const DeleteAccountModal: React.FC<DeleteAccountModalProps> = ({ isOpen, 
                 handleClose();
             }, 2500);
         } catch (err: any) {
-            setError(err.message || 'Errore durante l\'eliminazione dell\'account.');
+            setError(err.message || 'Errore durante l\'eliminazione.');
             showToast('Errore durante l\'eliminazione', 'error');
         } finally {
             setIsLoading(false);
         }
     };
 
-    if (!isOpen) return null;
-
     return (
-        <div className="modal-overlay" onClick={handleClose}>
-            <div className="modal-card modal-card--delete" onClick={e => e.stopPropagation()}>
+        <AnimatePresence>
+            {isOpen && (
+                <div 
+                    style={{
+                        position: 'fixed',
+                        inset: 0,
+                        zIndex: 1000,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        background: 'rgba(15, 23, 42, 0.8)',
+                        backdropFilter: 'blur(8px)',
+                        padding: '1rem',
+                    }}
+                    onClick={handleClose}
+                >
+                    <motion.div 
+                        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                        animate={{ opacity: 1, scale: 1, y: 0 }}
+                        exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                        style={{
+                            width: '100%',
+                            maxWidth: '400px',
+                            background: '#1e293b',
+                            border: `1px solid ${step === 'warning' ? '#ef4444' : '#334155'}`,
+                            borderRadius: '24px',
+                            padding: '2rem',
+                            textAlign: 'center',
+                        }}
+                        onClick={e => e.stopPropagation()}
+                    >
+                        {step === 'warning' && (
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <div style={{ background: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', borderRadius: '50%', padding: '1rem', marginBottom: '1.5rem' }}>
+                                    <AlertTriangle size={48} />
+                                </div>
+                                <h2 style={{ fontSize: '1.5rem', fontWeight: '800', color: '#f8fafc', marginBottom: '1rem' }}>Eliminare l'account?</h2>
+                                <p style={{ color: '#94a3b8', marginBottom: '2rem', lineHeight: 1.6 }}>
+                                    Questa azione è <strong style={{ color: '#ef4444' }}>IRREVERSIBILE</strong>.<br />
+                                    Tutti i tuoi dati verranno cancellati definitivamente.
+                                </p>
+                                <button 
+                                    onClick={handleClose}
+                                    style={{ width: '100%', padding: '1rem', borderRadius: '12px', background: '#3b82f6', color: '#fff', border: 'none', fontWeight: '700', marginBottom: '1rem', cursor: 'pointer' }}
+                                >
+                                    Annulla e Rimani
+                                </button>
+                                <button
+                                    onClick={() => setStep('confirm')}
+                                    style={{ background: 'transparent', border: 'none', color: '#ef4444', fontWeight: '600', cursor: 'pointer', textDecoration: 'underline' }}
+                                >
+                                    Sì, voglio procedere
+                                </button>
+                            </div>
+                        )}
 
-                {/* Step 1: Warning */}
-                {step === 'warning' && (
-                    <div className="modal-content">
-                        <div className="modal-icon modal-icon--warning">
-                            <AlertTriangle />
-                        </div>
-                        <h2 className="modal-title">Eliminare l'account?</h2>
-                        <p className="modal-message">
-                            Questa azione è <strong className="text-danger">IRREVERSIBILE</strong>.<br />
-                            Tutti i tuoi dati verranno cancellati definitivamente.
-                        </p>
-                        <button className="btn-primary btn-full" onClick={handleClose}>
-                            Annulla
-                        </button>
-                        <button
-                            className="link-danger"
-                            onClick={handleConfirmWarning}
-                        >
-                            Sì, voglio eliminare
-                        </button>
-                    </div>
-                )}
+                        {step === 'confirm' && (
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <div style={{ background: 'rgba(168, 85, 247, 0.1)', color: '#a855f7', borderRadius: '50%', padding: '1rem', marginBottom: '1.5rem' }}>
+                                    <ShieldCheck size={48} />
+                                </div>
+                                <h2 style={{ fontSize: '1.5rem', fontWeight: '800', color: '#f8fafc', marginBottom: '1rem' }}>Sei proprio sicuro?</h2>
+                                <p style={{ color: '#94a3b8', marginBottom: '2rem', lineHeight: 1.6 }}>
+                                    Perderai tutti i progressi e le statistiche accumulate finora sui nostri server.
+                                </p>
+                                {error && <div style={{ color: '#ef4444', fontSize: '0.9rem', marginBottom: '1rem' }}>{error}</div>}
+                                <button
+                                    onClick={performDeletion}
+                                    disabled={isLoading}
+                                    style={{ width: '100%', padding: '1rem', borderRadius: '12px', background: '#ef4444', color: '#fff', border: 'none', fontWeight: '700', marginBottom: '1rem', cursor: isLoading ? 'default' : 'pointer' }}
+                                >
+                                    {isLoading ? 'Cancellazione in corso...' : 'Sì, elimina tutto'}
+                                </button>
+                                <button
+                                    onClick={handleClose}
+                                    style={{ background: 'transparent', border: 'none', color: '#64748b', fontWeight: '600', cursor: 'pointer' }}
+                                >
+                                    Annulla
+                                </button>
+                            </div>
+                        )}
 
-                {/* Step 2: Final Confirmation */}
-                {step === 'confirm' && (
-                    <div className="modal-content">
-                        <div className="modal-icon modal-icon--auth">
-                            <ShieldCheck size={48} />
-                        </div>
-                        <h2 className="modal-title">Conferma Finale</h2>
-
-                        <p className="modal-message">
-                            Tutti i tuoi progressi, statistice e dati di studio verranno <strong className="text-danger">ELIMINATI PER SEMPRE</strong> dai nostri server.
-                        </p>
-
-                        {error && <div className="modal-error" style={{ color: '#ef4444', fontSize: '0.9rem', marginBottom: '1rem' }}>{error}</div>}
-
-                        <button
-                            className={`btn-danger btn-full ${isLoading ? 'loading' : ''}`}
-                            onClick={performDeletion}
-                            disabled={isLoading}
-                        >
-                            {isLoading ? <span className="spinner" /> : 'Sì, elimina tutto'}
-                        </button>
-
-                        <button className="link-muted" onClick={handleClose}>
-                            Annulla e Torna Indietro
-                        </button>
-                    </div>
-                )}
-
-                {/* Step 3: Success */}
-                {step === 'success' && (
-                    <div className="modal-content">
-                        <div className="modal-icon modal-icon--success">
-                            <Check />
-                        </div>
-                        <h2 className="modal-title">Account eliminato</h2>
-                        <p className="modal-message">
-                            Il tuo account è stato rimosso con successo.
-                        </p>
-                    </div>
-                )}
-            </div>
-        </div>
+                        {step === 'success' && (
+                            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                <div style={{ background: 'rgba(34, 197, 94, 0.1)', color: '#22c55e', borderRadius: '50%', padding: '1rem', marginBottom: '1.5rem' }}>
+                                    <Check size={48} />
+                                </div>
+                                <h2 style={{ fontSize: '1.5rem', fontWeight: '800', color: '#f8fafc', marginBottom: '1rem' }}>Account eliminato</h2>
+                                <p style={{ color: '#94a3b8', lineHeight: 1.6 }}>
+                                    Il tuo account è stato rimosso con successo. A presto.
+                                </p>
+                            </div>
+                        )}
+                    </motion.div>
+                </div>
+            )}
+        </AnimatePresence>
     );
 };

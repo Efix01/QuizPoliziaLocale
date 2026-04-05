@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Mail, ArrowLeft, KeyRound, MailCheck, AlertCircle } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
-import { ForgotPasswordSchema } from '../context/AuthProvider';
-import { Mail, ArrowLeft, KeyRound, MailCheck } from 'lucide-react';
-import './ForgotPassword.css';
+// Mock schema per compatibilità (normalmente importato da context/AuthProvider)
+const ForgotPasswordSchema = {
+    safeParse: (data: { email: string }) => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(data.email)) {
+            return { success: false, error: { issues: [{ message: 'Email non valida' }] } };
+        }
+        return { success: true };
+    }
+};
 
 const ForgotPassword: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -15,7 +24,6 @@ const ForgotPassword: React.FC = () => {
 
     const navigate = useNavigate();
 
-    // Resend timer countdown
     useEffect(() => {
         if (resendTimer > 0) {
             const timer = setTimeout(() => setResendTimer(resendTimer - 1), 1000);
@@ -23,11 +31,10 @@ const ForgotPassword: React.FC = () => {
         }
     }, [resendTimer]);
 
-    // Validate email
     const validateEmail = (emailValue: string): boolean => {
         const result = ForgotPasswordSchema.safeParse({ email: emailValue });
         if (!result.success) {
-            setEmailError(result.error.issues[0].message);
+            setEmailError(result.error?.issues[0]?.message || 'Email non valida');
             return false;
         }
         setEmailError(null);
@@ -41,45 +48,13 @@ const ForgotPassword: React.FC = () => {
         if (!validateEmail(email)) return;
 
         setIsSubmitting(true);
-
         try {
-            // Simulate network request
+            // Simulazione invio (Sostituire con logica Auth reale se necessario)
             await new Promise(resolve => setTimeout(resolve, 1500));
-            // Simulate 50% chance of unknown user for demonstration, or just succeed
-            if (email === 'unknown@test.com') {
-                throw { code: 'auth/user-not-found' };
-            }
             setIsSuccess(true);
             setResendTimer(60);
-        } catch (error: unknown) {
-            if (error && typeof error === 'object' && 'code' in error) {
-                const code = (error as { code: string }).code;
-                if (code === 'auth/user-not-found') {
-                    setGlobalError('Nessun account trovato con questa email.');
-                } else if (code === 'auth/invalid-email') {
-                    setEmailError('Email non valida.');
-                } else if (code === 'auth/too-many-requests') {
-                    setGlobalError('Troppi tentativi. Riprova più tardi.');
-                } else {
-                    setGlobalError('Errore durante l\'invio. Riprova.');
-                }
-            } else {
-                setGlobalError('Errore sconosciuto. Riprova.');
-            }
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
-
-    const handleResend = async () => {
-        if (resendTimer > 0) return;
-
-        setIsSubmitting(true);
-        try {
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            setResendTimer(60);
-        } catch {
-            setGlobalError('Errore durante l\'invio. Riprova.');
+        } catch (error: any) {
+            setGlobalError(error.message || 'Errore durante l\'invio. Riprova.');
         } finally {
             setIsSubmitting(false);
         }
@@ -91,124 +66,145 @@ const ForgotPassword: React.FC = () => {
     };
 
     return (
-        <div className="forgot-page">
-            {/* Background Layers */}
-            <div className="forgot-background">
-                <div className="forgot-pattern" />
-                <div className="forgot-particles">
-                    <div className="particle" />
-                    <div className="particle" />
-                    <div className="particle" />
-                    <div className="particle" />
-                </div>
-            </div>
+        <div style={{ minHeight: '100vh', background: '#0f172a', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '1.5rem', position: 'relative', overflow: 'hidden' }}>
+            
+            {/* Background Decorative Element */}
+            <div style={{ position: 'absolute', top: '-10%', right: '-10%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%)', pointerEvents: 'none' }} />
+            <div style={{ position: 'absolute', bottom: '-10%', left: '-10%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%)', pointerEvents: 'none' }} />
 
-            <div className="forgot-container">
-                {/* Back to Login */}
-                <button className="back-link" onClick={() => navigate('/login')}>
-                    <ArrowLeft />
-                    <span>Torna al login</span>
-                </button>
+            <div style={{ width: '100%', maxWidth: '440px', position: 'relative', zIndex: 1 }}>
+                
+                {/* Back Button */}
+                <motion.button 
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    onClick={() => navigate('/login')}
+                    style={{ background: 'transparent', border: 'none', color: '#94a3b8', display: 'flex', alignItems: 'center', gap: '0.75rem', fontWeight: '700', fontSize: '0.9rem', marginBottom: '2rem', cursor: 'pointer', outline: 'none' }}
+                >
+                    <ArrowLeft size={18} />
+                    Torna al login
+                </motion.button>
 
-                {/* Card */}
-                <div className="forgot-card">
-                    {!isSuccess ? (
-                        /* ═══════ STATO 1: RICHIESTA ═══════ */
-                        <div className="forgot-content request-state">
-                            {/* Icon */}
-                            <div className="forgot-icon-wrapper">
-                                <KeyRound className="forgot-icon" />
-                            </div>
-
-                            {/* Title */}
-                            <h1 className="forgot-title">Password dimenticata?</h1>
-                            <p className="forgot-description">
-                                Non preoccuparti, capita a tutti.<br />
-                                Inserisci la tua email e ti invieremo le istruzioni.
-                            </p>
-
-                            {/* Global Error */}
-                            {globalError && (
-                                <div className="forgot-error">
-                                    {globalError}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    style={{
+                        background: '#1e293b',
+                        border: '1px solid #334155',
+                        borderRadius: '32px',
+                        padding: '3rem 2.5rem',
+                        boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5)',
+                        textAlign: 'center'
+                    }}
+                >
+                    <AnimatePresence mode="wait">
+                        {!isSuccess ? (
+                            <motion.div
+                                key="request"
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.95 }}
+                            >
+                                <div style={{ 
+                                    display: 'inline-flex', 
+                                    alignItems: 'center', 
+                                    justifyContent: 'center', 
+                                    background: 'rgba(59, 130, 246, 0.1)', 
+                                    color: '#3b82f6', 
+                                    borderRadius: '20px', 
+                                    padding: '1rem', 
+                                    marginBottom: '1.5rem' 
+                                }}>
+                                    <KeyRound size={32} />
                                 </div>
-                            )}
+                                
+                                <h1 style={{ fontSize: '1.75rem', fontWeight: '900', color: '#fff', margin: '0 0 0.75rem 0' }}>Password dimenticata?</h1>
+                                <p style={{ color: '#94a3b8', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '2rem' }}>
+                                    Non preoccuparti. Inserisci la tua email e ti invieremo le istruzioni per il recupero.
+                                </p>
 
-                            {/* Form */}
-                            <form onSubmit={handleSubmit} className="forgot-form">
-                                <div className={`input-group ${emailError ? 'has-error' : ''}`}>
-                                    <label htmlFor="email">Email</label>
-                                    <Mail className="input-icon" />
-                                    <input
-                                        id="email"
-                                        type="email"
-                                        placeholder="nome@esempio.com"
-                                        value={email}
-                                        onChange={handleEmailChange}
-                                        autoFocus
-                                        autoComplete="email"
-                                    />
-                                    {emailError && (
-                                        <div className="input-error">
-                                            <span>{emailError}</span>
+                                {globalError && (
+                                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', background: 'rgba(239, 68, 68, 0.1)', color: '#ef4444', padding: '1rem', borderRadius: '12px', fontSize: '0.9rem', fontWeight: '700', marginBottom: '1.5rem', border: '1px solid rgba(239, 68, 68, 0.1)' }}>
+                                        <AlertCircle size={18} />
+                                        {globalError}
+                                    </div>
+                                )}
+
+                                <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', textAlign: 'left' }}>
+                                    <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                                        <label htmlFor="email" style={{ fontSize: '0.85rem', fontWeight: '800', color: '#64748b', letterSpacing: '0.1em' }}>EMAIL</label>
+                                        <div style={{ position: 'relative' }}>
+                                            <Mail size={18} color="#475569" style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)' }} />
+                                            <input
+                                                id="email"
+                                                type="email"
+                                                placeholder="nome@esempio.it"
+                                                value={email}
+                                                onChange={handleEmailChange}
+                                                style={{ width: '100%', padding: '1rem 1rem 1rem 3rem', background: '#0f172a', border: `1px solid ${emailError ? '#ef4444' : '#334155'}`, borderRadius: '16px', color: '#fff', fontSize: '1rem', outline: 'none', transition: 'border-color 0.2s' }}
+                                                onFocus={(e) => !emailError && (e.currentTarget.style.borderColor = '#3b82f6')}
+                                                onBlur={(e) => !emailError && (e.currentTarget.style.borderColor = '#334155')}
+                                            />
                                         </div>
-                                    )}
+                                        {emailError && <span style={{ color: '#ef4444', fontSize: '0.8rem', fontWeight: '700' }}>{emailError}</span>}
+                                    </div>
+
+                                    <button
+                                        type="submit"
+                                        disabled={isSubmitting}
+                                        style={{ width: '100%', padding: '1.1rem', borderRadius: '16px', background: '#3b82f6', color: '#fff', border: 'none', fontWeight: '800', fontSize: '1rem', cursor: isSubmitting ? 'default' : 'pointer', transition: 'all 0.2s', marginTop: '0.5rem', boxShadow: '0 10px 15px -3px rgba(59, 130, 246, 0.3)' }}
+                                        onMouseOver={(e) => !isSubmitting && (e.currentTarget.style.background = '#2563eb', e.currentTarget.style.transform = 'translateY(-2px)')}
+                                        onMouseOut={(e) => !isSubmitting && (e.currentTarget.style.background = '#3b82f6', e.currentTarget.style.transform = 'translateY(0)')}
+                                    >
+                                        {isSubmitting ? 'Invio in corso...' : 'Invia Link di Recupero'}
+                                    </button>
+                                </form>
+                            </motion.div>
+                        ) : (
+                            <motion.div
+                                key="success"
+                                initial={{ opacity: 0, scale: 0.95 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                            >
+                                <div style={{ 
+                                    display: 'inline-flex', 
+                                    alignItems: 'center', 
+                                    justifyContent: 'center', 
+                                    background: 'rgba(34, 197, 94, 0.1)', 
+                                    color: '#22c55e', 
+                                    borderRadius: '20px', 
+                                    padding: '1rem', 
+                                    marginBottom: '1.5rem' 
+                                }}>
+                                    <MailCheck size={32} />
+                                </div>
+                                <h1 style={{ fontSize: '1.75rem', fontWeight: '900', color: '#fff', margin: '0 0 0.75rem 0' }}>Controlla la posta</h1>
+                                <p style={{ color: '#94a3b8', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '2.5rem' }}>
+                                    Abbiamo inviato le istruzioni a:<br />
+                                    <strong style={{ color: '#fff' }}>{email}</strong>
+                                </p>
+                                
+                                <div style={{ background: 'rgba(255,255,255,0.03)', padding: '1.5rem', borderRadius: '16px', border: '1px solid rgba(255,255,255,0.05)', marginBottom: '2.5rem' }}>
+                                    <p style={{ margin: 0, color: '#64748b', fontSize: '0.85rem' }}>
+                                        Non hai ricevuto l'email? Controlla lo spam oppure 
+                                        {resendTimer > 0 ? (
+                                            <span style={{ fontWeight: '700', color: '#3b82f6' }}> riprova tra {resendTimer}s</span>
+                                        ) : (
+                                            <button onClick={handleSubmit} style={{ background: 'transparent', border: 'none', padding: 0, color: '#3b82f6', fontWeight: '800', cursor: 'pointer', textDecoration: 'underline' }}> invia di nuovo</button>
+                                        )}
+                                    </p>
                                 </div>
 
                                 <button
-                                    type="submit"
-                                    className={`submit-button ${isSubmitting ? 'loading' : ''}`}
-                                    disabled={isSubmitting}
+                                    onClick={() => navigate('/login')}
+                                    style={{ width: '100%', padding: '1rem', background: 'transparent', border: '1px solid #334155', borderRadius: '16px', color: '#cbd5e1', fontWeight: '700', cursor: 'pointer' }}
                                 >
-                                    {isSubmitting ? (
-                                        <span className="spinner" />
-                                    ) : (
-                                        'Invia Link di Recupero'
-                                    )}
+                                    Torna al login
                                 </button>
-                            </form>
-                        </div>
-                    ) : (
-                        /* ═══════ STATO 2: SUCCESSO ═══════ */
-                        <div className="forgot-content success-state">
-                            {/* Icon */}
-                            <div className="forgot-icon-wrapper success">
-                                <MailCheck className="forgot-icon" />
-                            </div>
-
-                            {/* Title */}
-                            <h1 className="forgot-title">Controlla la posta</h1>
-                            <p className="forgot-description">
-                                Abbiamo inviato un link di recupero a:<br />
-                                <strong className="email-highlight">{email}</strong>
-                            </p>
-
-                            {/* Spam Notice */}
-                            <p className="spam-notice">
-                                Non l'hai ricevuta? Controlla la cartella Spam
-                                {resendTimer > 0 ? (
-                                    <span className="resend-timer"> o riprova tra {resendTimer}s</span>
-                                ) : (
-                                    <button
-                                        className="resend-link"
-                                        onClick={handleResend}
-                                        disabled={isSubmitting}
-                                    >
-                                        {' '}o <span className="resend-text">invia di nuovo</span>
-                                    </button>
-                                )}
-                            </p>
-
-                            {/* Back to Login Button */}
-                            <button
-                                className="secondary-button"
-                                onClick={() => navigate('/login')}
-                            >
-                                Torna al login
-                            </button>
-                        </div>
-                    )}
-                </div>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
+                </motion.div>
             </div>
         </div>
     );

@@ -23,7 +23,7 @@ export default function SetupProfile() {
 
   const regioni = regioniData.regioni || [];
   const comuniDisponibili = selectedRegione
-    ? regioni.find(r => r.id === selectedRegione)?.comuni || []
+    ? (regioni.find((r: any) => r.id === selectedRegione) as any)?.citta || []
     : [];
 
   const handleRegioneSelect = async (regioneId: string) => {
@@ -41,7 +41,7 @@ export default function SetupProfile() {
   };
 
   const handleComuneSelect = async (comuneId: string) => {
-    const comune = comuniDisponibili.find(c => c.id === comuneId);
+    const comune = comuniDisponibili.find((c: any) => c.id === comuneId);
     if (!comune) return;
 
     setSelectedComune(comuneId);
@@ -58,7 +58,7 @@ export default function SetupProfile() {
     // Validazione finale con Zod
     const result = ProfileSchema.safeParse({ regioneId: selectedRegione, comuneId: selectedComune });
     if (!result.success) {
-      setError(result.error.errors[0].message);
+      setError(result.error.issues[0].message);
       return;
     }
     navigate('/dashboard');
@@ -121,7 +121,7 @@ export default function SetupProfile() {
                 className="flex flex-col gap-6"
               >
                 <div className="flex flex-wrap gap-3">
-                  {comuniDisponibili.map(c => (
+                  {comuniDisponibili.map((c: any) => (
                     <button
                       key={c.id}
                       onClick={() => handleComuneSelect(c.id)}

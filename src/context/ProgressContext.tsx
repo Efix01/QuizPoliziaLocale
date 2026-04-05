@@ -9,8 +9,8 @@ import {
   type ErroreLog,
   type RisultatoRisposta,
 } from '../types/progressi';
-import { db } from '../firebase';
-import { doc, getDoc, collection, getDocs, increment, arrayUnion } from 'firebase/firestore';
+import { db } from '../lib/firebase';
+import { doc, getDoc, collection, getDocs } from 'firebase/firestore';
 import { commitInChunks } from '../lib/firestoreHelpers';
 import type { WriteBatch } from 'firebase/firestore';
 // ===================================================
@@ -45,6 +45,7 @@ interface ProgressContextProps {
   isLoading: boolean;
   salvaRisultatoQuiz: (risultati: RisultatoRisposta[]) => Promise<void>;
   segnaComeLetto: (capitoloId: string) => Promise<void>;
+  resetErrori: () => Promise<void>;
 }
 const ProgressContext = createContext<ProgressContextProps | undefined>(undefined);
 // ===================================================
@@ -109,7 +110,7 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
           operations.push((batch) => batch.delete(ref));
         }
       });
-      await commitInChunks(db, operations);
+      await commitInChunks(operations);
     } catch (e) {
       console.error('Errore salvataggio Firestore:', e);
       // localStorage è già salvato — nessuna perdita dati
@@ -229,6 +230,10 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
       };
       if (ris.corretta) totCorretteInTurn++;
       const domandaId = ris.domandaId;
+      
+      // 🆕 Se la risposta è omessa (-1), non aggiornare SRS né il registro errori
+      if (ris.indiceRispostaScelta === -1) return;
+
       if (ris.corretta) {
         // SRS — risposta corretta: incrementa interval e easeFactor
         const existing = updatedSrs[domandaId];
@@ -307,6 +312,20 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
     // 3j. Persisti
     await persistProgressData(updatedProgress, updatedSrs, updatedErrori, srsModificati, erroriModificati);
   }, [progressiGlobali, srsData, erroriLog, persistProgressData]);
+
+  // ===================================================
+  // 5. resetErrori
+  // ===================================================
+  const resetErrori = useCallback(async (): Promise<void> => {
+    setErroriLog({});
+    await persistProgressData(
+      progressiGlobali,
+      srsData,
+      {},
+      new Set(),
+      new Set(Object.keys(erroriLog))
+    );
+  }, [progressiGlobali, srsData, erroriLog, persistProgressData]);
   // ===================================================
   // 4. segnaComeLetto
   // ===================================================
@@ -342,6 +361,7 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
       isLoading,
       salvaRisultatoQuiz,
       segnaComeLetto,
+      resetErrori,
     }}>
       {children}
     </ProgressContext.Provider>
