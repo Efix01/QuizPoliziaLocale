@@ -12,6 +12,7 @@ import { useProfile } from './ProfileContext';
 import { db } from '../lib/firebase';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { z } from 'zod';
+import localData from '../data/domandecore.json';
 
 const ArrayDomandeSchema = z.array(DomandaPLSchema);
 
@@ -67,7 +68,7 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
   );
 
   // ===================================================
-  // 1. Boot Core Da Firestore
+  // 1. Boot Core: Firestore → fallback JSON locale
   // ===================================================
   useEffect(() => {
     let active = true;
@@ -78,19 +79,34 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
         const snapshot = await getDocs(q);
         
         if (!active) return;
-        
-        const raw = snapshot.docs.map(doc => doc.data());
-        const result = ArrayDomandeSchema.safeParse(raw);
-        
-        if (result.success) {
-          setDomandeCore(result.data);
+
+        if (!snapshot.empty) {
+          // ✅ Firestore ha dati: li usa
+          const raw = snapshot.docs.map(doc => doc.data());
+          const result = ArrayDomandeSchema.safeParse(raw);
+          if (result.success) {
+            setDomandeCore(result.data);
+            return;
+          }
+          console.warn('Firestore dati non validi, fallback a JSON locale');
+        }
+
+        // 📦 Fallback: carica dal JSON locale
+        const localResult = ArrayDomandeSchema.safeParse(localData.domande);
+        if (localResult.success) {
+          setDomandeCore(localResult.data);
         } else {
-          console.error('Core Firebase Dati Falliti:', result.error.issues.slice(0, 5));
-          setError('Dati nazionali non validi. Riprova.');
+          console.error('JSON locale non valido:', localResult.error.issues.slice(0, 3));
+          setError('Impossibile caricare le domande.');
         }
       } catch (err) {
-        console.error('Errore caricamento Firestore Core:', err);
-        if (active) setError('Impossibile caricare le domande dal Cloud.');
+        console.error('Errore Firestore Core:', err);
+        // Anche in caso di errore di rete → JSON locale
+        if (active) {
+          const localResult = ArrayDomandeSchema.safeParse(localData.domande);
+          if (localResult.success) setDomandeCore(localResult.data);
+          else setError('Impossibile caricare le domande dal Cloud.');
+        }
       } finally {
         if (active) setLoadingLayers(prev => ({ ...prev, core: false }));
       }
@@ -98,6 +114,7 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
     caricaCore();
     return () => { active = false; };
   }, []);
+
 
   // ===================================================
   // 2. Boot Layer Locali da Firestore

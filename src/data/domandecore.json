@@ -2,7 +2,459 @@
   "meta": {
     "version": "3.0.0",
     "lastUpdate": "2026-04-08",
-    "note": "Database vuoto — in attesa dei quiz ufficiali da ID 0001."
+    "totalQuestions": 25,
+    "note": "Blocco 0001-0025 — Elementi di diritto penale e procedura penale"
   },
-  "domande": []
+  "domande": [
+    {
+      "id": "0001",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "In quale delle seguenti ipotesi gli ufficiali e gli agenti di polizia giudiziaria sono tenuti a procedere all'arresto obbligatorio in flagranza?",
+      "opzioni": [
+        "Danneggiamento aggravato (art. 635, co. 2, c.p.)",
+        "Violenza o minaccia a pubblico ufficiale (art. 336, co. 2, c.p.)",
+        "Lesioni personali colpose lievi in occasione di sinistro stradale",
+        "Omicidio colposo stradale aggravato (art. 589-bis, co. 2 e 3, c.p.)"
+      ],
+      "rispostaCorretta": 3,
+      "spiegazione": "L'art. 380 co. 2 lett. m-quater c.p.p. prevede l'arresto obbligatorio in flagranza per l'omicidio colposo stradale aggravato (art. 589-bis co. 2 e 3 c.p.). Attenzione: la L. 138/2023 ha introdotto un'eccezione — l'arresto non si applica se il conducente si ferma immediatamente e si adopera per prestare o attivare i soccorsi.",
+      "riferimentoNormativo": { "legge": "Art. 380 co. 2 lett. m-quater c.p.p.; L. 138/2023", "articolo": "380" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 380 co. 2 lett. m-quater c.p.p.; L. 138/2023",
+      "tags": []
+    },
+    {
+      "id": "0002",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "Chi viene sorpreso subito dopo la commissione del reato con cose o tracce che rivelano la sua responsabilità si trova in stato di flagranza?",
+      "opzioni": [
+        "Sì, ma solo se il reato è un delitto e non una contravvenzione.",
+        "No, la flagranza sussiste solo per chi è colto nell'atto stesso di commettere il reato.",
+        "Sì, si tratta di quasi flagranza prevista dall'art. 382 c.p.p.",
+        "No, è necessario che si trovi nelle immediate adiacenze del luogo del fatto."
+      ],
+      "rispostaCorretta": 2,
+      "spiegazione": "L'art. 382 c.p.p. disciplina la quasi flagranza: è in tale stato chi è sorpreso con cose o tracce che rivelano che ha appena commesso il reato, oppure chi è inseguito subito dopo il fatto dalla polizia giudiziaria, dalla persona offesa o da altre persone.",
+      "riferimentoNormativo": { "legge": "Art. 382 c.p.p.", "articolo": "382" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 382 c.p.p.",
+      "tags": []
+    },
+    {
+      "id": "0003",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "Quale dei seguenti reati rientra nei delitti dei pubblici ufficiali contro la Pubblica Amministrazione, disciplinati nel Capo I, Titolo II, Libro II del Codice Penale?",
+      "opzioni": [
+        "Oltraggio a pubblico ufficiale",
+        "Millantato credito presso un pubblico ufficiale",
+        "Turbata libertà degli incanti",
+        "Rivelazione e utilizzazione di segreti d'ufficio"
+      ],
+      "rispostaCorretta": 3,
+      "spiegazione": "La rivelazione e utilizzazione di segreti d'ufficio (art. 326 c.p.) è inserita nel Capo I del Titolo II del Libro II del c.p., che raccoglie i delitti dei pubblici ufficiali contro la P.A. Il soggetto attivo è un p.u. o incaricato di pubblico servizio.",
+      "riferimentoNormativo": { "legge": "Art. 326 c.p., Capo I Titolo II Libro II c.p.", "articolo": "326" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 326 c.p., Capo I Titolo II Libro II c.p.",
+      "tags": []
+    },
+    {
+      "id": "0004",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "In quale categoria di reati si colloca il delitto di falsità ideologica commessa dal privato in atto pubblico (art. 483 c.p.)?",
+      "opzioni": [
+        "Delitti contro la fede pubblica – falsità personali",
+        "Delitti dei pubblici ufficiali contro la pubblica amministrazione",
+        "Delitti contro la fede pubblica – falsità in atti",
+        "Delitti contro l'amministrazione della giustizia"
+      ],
+      "rispostaCorretta": 2,
+      "spiegazione": "L'art. 483 c.p. è collocato nel Titolo VII del Libro II (delitti contro la fede pubblica), Capo III (falsità in atti). Punisce il privato che attesta falsamente al pubblico ufficiale fatti dei quali l'atto è destinato a provare la verità.",
+      "riferimentoNormativo": { "legge": "Art. 483 c.p., Titolo VII Capo III Libro II c.p.", "articolo": "483" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 483 c.p., Titolo VII Capo III Libro II c.p.",
+      "tags": []
+    },
+    {
+      "id": "0005",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "Quali sono le pene detentive o restrittive della libertà personale previste dall'art. 18 del codice penale?",
+      "opzioni": [
+        "Ergastolo e reclusione soltanto",
+        "Reclusione e arresto soltanto",
+        "Ergastolo, reclusione, arresto e multa",
+        "Ergastolo, reclusione e arresto"
+      ],
+      "rispostaCorretta": 3,
+      "spiegazione": "L'art. 18 c.p. classifica come pene detentive l'ergastolo, la reclusione (per i delitti) e l'arresto (per le contravvenzioni). La multa è una pena pecuniaria, non detentiva, e non rientra in questo elenco.",
+      "riferimentoNormativo": { "legge": "Art. 18 c.p.", "articolo": "18" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 18 c.p.",
+      "tags": []
+    },
+    {
+      "id": "0006",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "Quale delle seguenti conseguenze deriva dall'interdizione perpetua dai pubblici uffici ai sensi dell'art. 28 c.p.?",
+      "opzioni": [
+        "Divieto di esercitare qualsiasi professione",
+        "Sospensione dalla potestà genitoriale per la durata della pena",
+        "Divieto di contrarre matrimonio per cinque anni",
+        "Privazione dell'ufficio di tutore o di curatore, anche provvisorio"
+      ],
+      "rispostaCorretta": 3,
+      "spiegazione": "L'art. 28 co. 2 n. 3 c.p. prevede espressamente, tra gli effetti dell'interdizione perpetua dai pubblici uffici, la privazione dell'ufficio di tutore o di curatore, anche provvisorio, e di ogni altro ufficio attinente alla tutela o alla cura.",
+      "riferimentoNormativo": { "legge": "Art. 28 co. 2 n. 3 c.p.", "articolo": "28" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 28 co. 2 n. 3 c.p.",
+      "tags": []
+    },
+    {
+      "id": "0007",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "Quale pena è classificata come pena principale per le contravvenzioni dall'art. 17 del codice penale?",
+      "opzioni": [
+        "Reclusione",
+        "Ergastolo",
+        "Ammenda",
+        "Multa"
+      ],
+      "rispostaCorretta": 2,
+      "spiegazione": "L'art. 17 c.p. prevede per le contravvenzioni due pene principali: l'arresto (detentiva) e l'ammenda (pecuniaria). L'ammenda è l'unica pena pecuniaria per le contravvenzioni, distinta dalla multa che è invece la pena pecuniaria dei delitti.",
+      "riferimentoNormativo": { "legge": "Art. 17 c.p.", "articolo": "17" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 17 c.p.",
+      "tags": []
+    },
+    {
+      "id": "0008",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "In quale categoria di illeciti si inquadra il peculato mediante profitto dell'errore altrui previsto dall'art. 316 c.p.?",
+      "opzioni": [
+        "Delitti contro la fede pubblica",
+        "Delitti contro il patrimonio mediante frode",
+        "Delitti contro la pubblica amministrazione",
+        "Delitti contro l'amministrazione della giustizia"
+      ],
+      "rispostaCorretta": 2,
+      "spiegazione": "L'art. 316 c.p. è inserito nel Capo I del Titolo II del Libro II del c.p. (delitti dei pubblici ufficiali contro la P.A.). Punisce il p.u. o incaricato di p.s. che, nell'esercizio delle funzioni, riceve o ritiene indebitamente denaro o altra cosa dal privato che versa in errore.",
+      "riferimentoNormativo": { "legge": "Art. 316 c.p.", "articolo": "316" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 316 c.p.",
+      "tags": []
+    },
+    {
+      "id": "0009",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "Chi può essere soggetto attivo del delitto di corruzione per un atto contrario ai doveri d'ufficio (art. 319 c.p.)?",
+      "opzioni": [
+        "Solo il pubblico ufficiale",
+        "Il pubblico ufficiale o l'incaricato di pubblico servizio",
+        "Chiunque, anche estraneo alla pubblica amministrazione",
+        "Solo l'incaricato di pubblico servizio"
+      ],
+      "rispostaCorretta": 0,
+      "spiegazione": "L'art. 319 c.p. individua come soggetto attivo esclusivamente il pubblico ufficiale. L'incaricato di pubblico servizio risponde per estensione ai sensi dell'art. 320 c.p. (con pena ridotta), mentre il privato corruttore risponde ex art. 321 c.p.",
+      "riferimentoNormativo": { "legge": "Artt. 319, 320 e 321 c.p.", "articolo": "319" },
+      "livelloDifficolta": 2,
+      "fonte": "Artt. 319, 320 e 321 c.p.",
+      "tags": []
+    },
+    {
+      "id": "0010",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "In quale circostanza l'art. 112 c.p. prevede l'aumento di pena nel concorso di persone nel reato?",
+      "opzioni": [
+        "Solo per chi ha organizzato la cooperazione nel reato",
+        "Per chi ha partecipato al reato con ruolo meramente esecutivo",
+        "Per chi ha determinato a commettere il reato un minore degli anni 18 o una persona in stato di infermità psichica, fuori dal caso dell'art. 111 c.p.",
+        "Se il numero dei concorrenti è pari a tre"
+      ],
+      "rispostaCorretta": 2,
+      "spiegazione": "L'art. 112 n. 2 c.p. aggrava la pena per chi determina a commettere il reato un minore di anni 18 o una persona in stato di infermità o deficienza psichica, fuori dai casi dell'art. 111 c.p. La soglia numerica che aggrava ex art. 112 n. 1 è di cinque concorrenti, non tre.",
+      "riferimentoNormativo": { "legge": "Art. 112 c.p.", "articolo": "112" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 112 c.p.",
+      "tags": []
+    },
+    {
+      "id": "0011",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "Il soggetto A vuole percuotere B, ma la condotta gli cagiona la morte. A quale titolo risponde A?",
+      "opzioni": [
+        "Delitto secondo l'intenzione",
+        "Delitto doloso",
+        "Delitto colposo",
+        "Delitto preterintenzionale"
+      ],
+      "rispostaCorretta": 3,
+      "spiegazione": "Si tratta di omicidio preterintenzionale (art. 584 c.p.): il soggetto agisce con dolo di percosse o lesioni, ma dall'azione deriva la morte, evento più grave non voluto. L'art. 43 c.p. definisce il delitto preterintenzionale come quello che va 'oltre l'intenzione' dell'agente.",
+      "riferimentoNormativo": { "legge": "Art. 43 c.p.; art. 584 c.p.", "articolo": "43" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 43 c.p.; art. 584 c.p.",
+      "tags": []
+    },
+    {
+      "id": "0012",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "In quale categoria di reati si inquadra la corruzione per l'esercizio della funzione prevista dall'art. 318 c.p.?",
+      "opzioni": [
+        "Delitti contro il patrimonio",
+        "Delitti contro l'amministrazione della giustizia",
+        "Delitti contro la fede pubblica",
+        "Delitti contro la pubblica amministrazione"
+      ],
+      "rispostaCorretta": 3,
+      "spiegazione": "L'art. 318 c.p. (corruzione per l'esercizio della funzione) è collocato nel Capo I del Titolo II del Libro II del c.p., dedicato ai delitti dei pubblici ufficiali contro la pubblica amministrazione, insieme agli artt. 319 e 320 c.p.",
+      "riferimentoNormativo": { "legge": "Art. 318 c.p., Capo I Titolo II Libro II c.p.", "articolo": "318" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 318 c.p., Capo I Titolo II Libro II c.p.",
+      "tags": []
+    },
+    {
+      "id": "0013",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "Entro quale limite temporale si estingue la pena della reclusione per decorso del tempo, ai sensi dell'art. 172 c.p.?",
+      "opzioni": [
+        "In un tempo pari al triplo della pena inflitta, non superiore a trenta anni e non inferiore a dieci",
+        "In un tempo pari al doppio della pena inflitta, non superiore a venti anni e non inferiore a dieci",
+        "In un tempo pari al doppio della pena inflitta, non superiore a trenta anni e non inferiore a dieci",
+        "In un tempo pari al doppio della pena inflitta, non superiore a trenta anni e non inferiore a venti"
+      ],
+      "rispostaCorretta": 2,
+      "spiegazione": "L'art. 172 c.p. stabilisce che la pena della reclusione si estingue per decorso del tempo in un periodo pari al doppio della pena inflitta, con un massimo di trenta anni e un minimo di dieci anni.",
+      "riferimentoNormativo": { "legge": "Art. 172 c.p.", "articolo": "172" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 172 c.p.",
+      "tags": []
+    },
+    {
+      "id": "0014",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "Cosa prevede l'art. 380 c.p.p. per il delitto di devastazione e saccheggio di cui all'art. 419 c.p.?",
+      "opzioni": [
+        "Gli ufficiali e gli agenti di polizia giudiziaria possono procedere all'arresto solo previa autorizzazione del pubblico ministero",
+        "Gli ufficiali e gli agenti di polizia giudiziaria procedono all'arresto obbligatorio in flagranza",
+        "Solo gli ufficiali di polizia giudiziaria procedono all'arresto obbligatorio in flagranza",
+        "È in facoltà degli ufficiali e degli agenti di polizia giudiziaria procedere all'arresto facoltativo in flagranza"
+      ],
+      "rispostaCorretta": 1,
+      "spiegazione": "L'art. 380 co. 2 lett. l) c.p.p. include il delitto di devastazione e saccheggio (art. 419 c.p.) tra i reati per i quali sia gli ufficiali sia gli agenti di polizia giudiziaria sono obbligati a procedere all'arresto in flagranza, senza distinzione di grado.",
+      "riferimentoNormativo": { "legge": "Art. 380 co. 2 lett. l) c.p.p.; art. 419 c.p.", "articolo": "380" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 380 co. 2 lett. l) c.p.p.; art. 419 c.p.",
+      "tags": []
+    },
+    {
+      "id": "0015",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "Quale condotta integra il reato di corruzione per un atto contrario ai doveri d'ufficio previsto dall'art. 319 c.p.?",
+      "opzioni": [
+        "L'incaricato di pubblico servizio che, avendo il possesso di una cosa mobile altrui per ragioni d'ufficio, se ne appropria",
+        "Il pubblico ufficiale che rivela notizie d'ufficio destinate a restare segrete al fine di procurare a sé un vantaggio patrimoniale",
+        "L'incaricato di pubblico servizio che, abusando della sua qualità, costringe taluno a promettergli indebitamente denaro",
+        "Il pubblico ufficiale che, per aver omesso o ritardato un atto del suo ufficio o per aver compiuto un atto contrario ai doveri d'ufficio, riceve o accetta la promessa di denaro o altra utilità"
+      ],
+      "rispostaCorretta": 3,
+      "spiegazione": "L'art. 319 c.p. punisce il pubblico ufficiale che riceve, per sé o per un terzo, denaro o altra utilità, o ne accetta la promessa, per omettere o ritardare un atto del suo ufficio, ovvero per compiere un atto contrario ai doveri d'ufficio. Le opzioni C e A descrivono rispettivamente la concussione (art. 317 c.p.) e il peculato (art. 314 c.p.); la B descrive la rivelazione di segreti d'ufficio (art. 326 c.p.).",
+      "riferimentoNormativo": { "legge": "Art. 319 c.p.", "articolo": "319" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 319 c.p.",
+      "tags": []
+    },
+    {
+      "id": "0016",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "Chi commette il reato di falsità ideologica in certificati o autorizzazioni amministrative previsto dall'art. 480 c.p.?",
+      "opzioni": [
+        "Il pubblico ufficiale che contraffà o altera certificati o autorizzazioni amministrative per far apparire adempiute le condizioni di validità",
+        "Il privato che, in una dichiarazione sostitutiva, attesta falsamente fatti dei quali l'atto è destinato a provare la verità",
+        "Il pubblico ufficiale che, ricevendo o formando un atto, attesta falsamente fatti avvenuti alla sua presenza o dichiara come ricevute dichiarazioni mai rese",
+        "Il pubblico ufficiale che, nell'esercizio delle sue funzioni, attesta falsamente in certificati o autorizzazioni amministrative fatti dei quali l'atto è destinato a provare la verità"
+      ],
+      "rispostaCorretta": 3,
+      "spiegazione": "L'art. 480 c.p. punisce il pubblico ufficiale che, nell'esercizio delle sue funzioni, attesta falsamente in certificati o autorizzazioni amministrative fatti dei quali l'atto è destinato a provare la verità (reclusione da 3 mesi a 2 anni). L'opzione C descrive la falsità ideologica in atti pubblici (art. 479 c.p.); la A descrive la falsità materiale (art. 476 c.p.); la B è riconducibile all'art. 483 c.p.",
+      "riferimentoNormativo": { "legge": "Art. 480 c.p.", "articolo": "480" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 480 c.p.",
+      "tags": []
+    },
+    {
+      "id": "0017",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "Se una persona pone altri in stato di incapacità di intendere o di volere al fine di fargli commettere un reato, chi risponde del reato commesso dall'incapace?",
+      "opzioni": [
+        "Entrambi in concorso, in parti uguali",
+        "Nessuno, salvo prova che chi ha commesso materialmente il reato era imputabile",
+        "Colui che ha commesso materialmente il reato",
+        "Colui che ha cagionato lo stato di incapacità"
+      ],
+      "rispostaCorretta": 3,
+      "spiegazione": "L'art. 86 c.p. prevede che, quando il reato è commesso da chi si trovava in stato di incapacità determinato da altri al fine di fargli commettere il reato, del reato risponde esclusivamente colui che ha cagionato lo stato di incapacità. L'incapace è strumento inconsapevole: si configura la c.d. autoria mediata.",
+      "riferimentoNormativo": { "legge": "Art. 86 c.p.", "articolo": "86" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 86 c.p.",
+      "tags": []
+    },
+    {
+      "id": "0018",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "Come è punito il reato di impiego di beni culturali provenienti da delitto previsto dall'art. 518-quinquies c.p.?",
+      "opzioni": [
+        "Con la sola multa, senza pena detentiva",
+        "Con sanzione amministrativa pecuniaria",
+        "Con la reclusione da cinque a tredici anni e con la multa da euro 6.000 a euro 30.000",
+        "Con l'ergastolo"
+      ],
+      "rispostaCorretta": 2,
+      "spiegazione": "L'art. 518-quinquies c.p. (introdotto dal D.Lgs. 8 novembre 2021, n. 184, in vigore dal 23 marzo 2022) punisce chiunque impieghi in attività economiche o finanziarie beni culturali provenienti da delitto con la reclusione da cinque a tredici anni e con la multa da euro 6.000 a euro 30.000.",
+      "riferimentoNormativo": { "legge": "Art. 518-quinquies c.p.; D.Lgs. 184/2021", "articolo": "518-quinquies" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 518-quinquies c.p., introdotto da D.Lgs. 184/2021",
+      "tags": []
+    },
+    {
+      "id": "0019",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "In quale categoria si colloca il delitto di falsità materiale commessa dal pubblico ufficiale in atti pubblici (art. 476 c.p.)?",
+      "opzioni": [
+        "Delitti contro l'amministrazione della giustizia",
+        "Delitti contro la fede pubblica – falsità in atti",
+        "Delitti dei pubblici ufficiali contro la pubblica amministrazione",
+        "Delitti contro la fede pubblica – falsità personali"
+      ],
+      "rispostaCorretta": 1,
+      "spiegazione": "L'art. 476 c.p. è collocato nel Titolo VII del Libro II (delitti contro la fede pubblica), Capo III (falsità in atti). La falsità materiale consiste nel contraffare o alterare un atto pubblico da parte del pubblico ufficiale che lo forma.",
+      "riferimentoNormativo": { "legge": "Art. 476 c.p., Titolo VII Capo III Libro II c.p.", "articolo": "476" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 476 c.p., Titolo VII Capo III Libro II c.p.",
+      "tags": []
+    },
+    {
+      "id": "0020",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "Chi commette il reato di falsità in foglio firmato in bianco – atto pubblico – previsto dall'art. 487 c.p.?",
+      "opzioni": [
+        "Il privato che abusa di un foglio firmato in bianco consegnatogli fiducialmente per farvi scrivere un atto diverso da quello concordato",
+        "Il pubblico ufficiale che, supponendo esistente un atto pubblico, ne simula una copia e la rilascia in forma legale",
+        "Il pubblico ufficiale che attesta falsamente che un fatto è avvenuto alla sua presenza o omette dichiarazioni da lui ricevute",
+        "Il pubblico ufficiale che, abusando di un foglio firmato in bianco di cui ha il possesso per ragioni d'ufficio, vi scrive un atto pubblico diverso da quello a cui era obbligato o autorizzato"
+      ],
+      "rispostaCorretta": 3,
+      "spiegazione": "L'art. 487 c.p. punisce il pubblico ufficiale che, avendo il possesso per ragioni d'ufficio di un foglio firmato in bianco, vi scrive un atto pubblico diverso da quello a cui era obbligato o autorizzato. L'opzione C descrive l'art. 479 c.p.; la B l'art. 478 c.p.; la A è la fattispecie del privato ex art. 488 c.p.",
+      "riferimentoNormativo": { "legge": "Art. 487 c.p.", "articolo": "487" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 487 c.p.",
+      "tags": []
+    },
+    {
+      "id": "0021",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "Quale delle seguenti conseguenze deriva dall'interdizione perpetua dai pubblici uffici ai sensi dell'art. 28 c.p.?",
+      "opzioni": [
+        "Divieto di contrarre matrimonio per cinque anni",
+        "Privazione dell'ufficio di tutore o di curatore, anche provvisorio",
+        "Divieto di accedere ai servizi della pubblica amministrazione",
+        "Sospensione dall'esercizio della professione per la durata della pena"
+      ],
+      "rispostaCorretta": 1,
+      "spiegazione": "L'art. 28 co. 2 n. 3 c.p. include espressamente, tra gli effetti dell'interdizione perpetua dai pubblici uffici, la privazione dell'ufficio di tutore o di curatore, anche provvisorio, e di ogni altro ufficio attinente alla tutela o alla cura.",
+      "riferimentoNormativo": { "legge": "Art. 28 co. 2 n. 3 c.p.", "articolo": "28" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 28 co. 2 n. 3 c.p.",
+      "tags": []
+    },
+    {
+      "id": "0022",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "Quale effetto produce la condanna per istigazione alla corruzione (art. 322 c.p.) ai sensi dell'art. 317-bis, co. 1, c.p.?",
+      "opzioni": [
+        "Sospensione temporanea dai pubblici uffici per la durata della pena principale",
+        "Interdizione perpetua dai pubblici uffici e incapacità in perpetuo di contrattare con la pubblica amministrazione",
+        "Incapacità di contrattare con la pubblica amministrazione ma non interdizione dai pubblici uffici",
+        "Interdizione dai pubblici uffici ma non incapacità di contrattare con la pubblica amministrazione"
+      ],
+      "rispostaCorretta": 1,
+      "spiegazione": "L'art. 317-bis co. 1 c.p. (nel testo vigente dopo la L. 9 gennaio 2019, n. 3, c.d. Spazza-Corrotti) prevede che la condanna per i reati di cui agli artt. 314, 317, 318, 319, 319-bis, 319-ter, 319-quater co. 1, 320, 321, 322, 322-bis e 346-bis c.p. importi l'interdizione perpetua dai pubblici uffici e l'incapacità in perpetuo di contrattare con la pubblica amministrazione.",
+      "riferimentoNormativo": { "legge": "Art. 317-bis co. 1 c.p.; L. 3/2019", "articolo": "317-bis" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 317-bis co. 1 c.p.; L. 3/2019 (Spazza-Corrotti)",
+      "tags": []
+    },
+    {
+      "id": "0023",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "Quale tra i seguenti è un delitto dei pubblici ufficiali contro la pubblica amministrazione?",
+      "opzioni": [
+        "Attentato contro la Costituzione dello Stato (art. 283 c.p.)",
+        "Esercizio arbitrario delle proprie ragioni con violenza alle persone (art. 393 c.p.)",
+        "Appropriazione indebita (art. 646 c.p.)",
+        "Corruzione per un atto contrario ai doveri d'ufficio (art. 319 c.p.)"
+      ],
+      "rispostaCorretta": 3,
+      "spiegazione": "L'art. 319 c.p. è collocato nel Capo I del Titolo II del Libro II del c.p., dedicato ai delitti dei pubblici ufficiali contro la P.A. Le altre opzioni appartengono a titoli diversi: appropriazione indebita (art. 646) ai delitti contro il patrimonio; attentato alla Costituzione (art. 283) ai delitti contro la personalità dello Stato; esercizio arbitrario (art. 393) ai delitti contro l'amministrazione della giustizia.",
+      "riferimentoNormativo": { "legge": "Art. 319 c.p., Capo I Titolo II Libro II c.p.", "articolo": "319" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 319 c.p., Capo I Titolo II Libro II c.p.",
+      "tags": []
+    },
+    {
+      "id": "0024",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "Tra quali categorie di delitti è compreso il reato di appropriazione indebita (art. 646 c.p.)?",
+      "opzioni": [
+        "Delitti contro la fede pubblica",
+        "Delitti contro la pubblica amministrazione",
+        "Delitti contro il patrimonio",
+        "Delitti contro la persona"
+      ],
+      "rispostaCorretta": 2,
+      "spiegazione": "L'art. 646 c.p. è collocato nel Titolo XIII del Libro II del c.p. (delitti contro il patrimonio), Capo II (delitti contro il patrimonio mediante frode). Punisce chi si appropria del denaro o della cosa mobile altrui di cui ha il possesso a titolo diverso dalla proprietà.",
+      "riferimentoNormativo": { "legge": "Art. 646 c.p., Titolo XIII Libro II c.p.", "articolo": "646" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 646 c.p., Titolo XIII Libro II c.p.",
+      "tags": []
+    },
+    {
+      "id": "0025",
+      "strato": "core",
+      "categoriaId": "penale",
+      "testo": "Quale reato commette il pubblico ufficiale che indebitamente rifiuta un atto del suo ufficio che, per ragioni di sicurezza pubblica, deve essere compiuto senza ritardo?",
+      "opzioni": [
+        "Omissione di atti d'ufficio per negligenza inescusabile (art. 328, co. 3, c.p.)",
+        "Rifiuto di uffici legalmente dovuti (art. 366 c.p.)",
+        "Rifiuto di atti d'ufficio – atti qualificati (art. 328, co. 1, c.p.)",
+        "Rifiuto di atti d'ufficio – atti non qualificati (art. 328, co. 2, c.p.)"
+      ],
+      "rispostaCorretta": 2,
+      "spiegazione": "L'art. 328 co. 1 c.p. punisce il pubblico ufficiale o l'incaricato di pubblico servizio che indebitamente rifiuta un atto del suo ufficio che, per ragioni di giustizia, sicurezza pubblica, ordine pubblico o igiene e sanità, deve essere compiuto senza ritardo (reclusione da 6 mesi a 2 anni). Il co. 2 disciplina invece il caso residuale dell'omissione o del ritardo di atti non urgenti, previa richiesta scritta dell'interessato senza risposta entro 30 giorni.",
+      "riferimentoNormativo": { "legge": "Art. 328 co. 1 c.p.", "articolo": "328" },
+      "livelloDifficolta": 2,
+      "fonte": "Art. 328 co. 1 c.p.",
+      "tags": []
+    }
+  ]
 }
