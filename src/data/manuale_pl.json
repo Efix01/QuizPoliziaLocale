@@ -73,5 +73,18 @@
         ]
       }
     ]
+  },
+  "costituzionale": {
+    "titolo": "Diritto Costituzionale",
+    "descrizione": "Costituzione Italiana — Principi, organi, diritti e doveri",
+    "capitoli": [
+      {
+        "id": "cost_1",
+        "titolo": "I Principi Fondamentali",
+        "testo": [
+          "I primi 12 articoli della Costituzione contengono i principi supremi dell'ordinamento che non possono essere oggetto di revisione costituzionale."
+        ]
+      }
+    ]
   }
 }

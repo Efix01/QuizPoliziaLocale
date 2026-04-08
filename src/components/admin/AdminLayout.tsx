@@ -1,5 +1,5 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import { Cpu, Edit3, Shield, LogOut, FileText } from 'lucide-react';
+import { Cpu, Edit3, Shield, LogOut, Upload } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 export default function AdminLayout() {
@@ -15,9 +15,9 @@ export default function AdminLayout() {
   };
 
   const navItems = [
-    { name: 'Dashboard', path: '/admin', icon: <Shield size={20} /> },
+    { name: 'Panoramica', path: '/admin', icon: <Shield size={20} /> },
     { name: 'Cyborg Inbox', path: '/admin/cyborg-inbox', icon: <Cpu size={20} /> },
-    { name: 'Ingestore PDF', path: '/admin/ingestor-pdf', icon: <FileText size={20} /> },
+    { name: 'Carica Quiz', path: '/admin/carica-quiz', icon: <Upload size={20} /> },
     { name: 'Editor Domande', path: '/admin/editor-domande', icon: <Edit3 size={20} /> },
   ];
 

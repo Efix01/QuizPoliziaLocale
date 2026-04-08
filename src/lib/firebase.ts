@@ -1,13 +1,6 @@
 import { initializeApp } from 'firebase/app';
-import { initializeAppCheck, ReCaptchaV3Provider } from 'firebase/app-check';
 import { getAuth, GoogleAuthProvider, connectAuthEmulator } from 'firebase/auth';
-import {
-  initializeFirestore,
-  persistentLocalCache,
-  persistentMultipleTabManager,
-  CACHE_SIZE_UNLIMITED,
-  connectFirestoreEmulator,
-} from 'firebase/firestore';
+import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore';
 
 // === Validazione variabili d'ambiente ===
 const requiredEnvVars = {
@@ -30,7 +23,8 @@ if (missingVars.length > 0) {
 // === Inizializzazione ===
 const app = initializeApp(requiredEnvVars);
 
-// === App Check (reCAPTCHA v3) ===
+// === App Check (Disabilitato Temporaneamente per Sync) ===
+/*
 if (typeof window !== 'undefined') {
   if (import.meta.env.DEV) {
     (window as any).FIREBASE_APPCHECK_DEBUG_TOKEN = true;
@@ -44,6 +38,7 @@ if (typeof window !== 'undefined') {
     });
   }
 }
+*/
 
 // === Auth ===
 export const auth = getAuth(app);
@@ -52,13 +47,8 @@ googleProvider.addScope('email');
 googleProvider.addScope('profile');
 googleProvider.setCustomParameters({ prompt: 'select_account' });
 
-// === Firestore con persistenza offline (PWA) ===
-export const db = initializeFirestore(app, {
-  localCache: persistentLocalCache({
-    tabManager: persistentMultipleTabManager(),
-    cacheSizeBytes: CACHE_SIZE_UNLIMITED,
-  }),
-});
+// === Firestore ===
+export const db = getFirestore(app);
 
 // === Emulator in sviluppo ===
 if (import.meta.env.DEV && import.meta.env.VITE_USE_EMULATOR === 'true') {

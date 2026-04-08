@@ -9,7 +9,8 @@ export type { ParametriEsame } from './common';
 
 export const CategoriaIdSchema = z.enum([
   'cds', 'tuel', 'l241', 'l689', 'penale',
-  'reg_generale', 'com_generale'
+  'reg_generale', 'com_generale',
+  'costituzionale', 'amministrativo', 'enti_locali'
 ]);
 export type CategoriaId = z.infer<typeof CategoriaIdSchema>;
 

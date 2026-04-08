@@ -23,7 +23,7 @@ import AdminLayout from './components/admin/AdminLayout';
 import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminQuizEditor from './pages/admin/AdminQuizEditor';
 import AiInbox from './pages/admin/AiInbox';
-import PdfIngestor from './pages/admin/PdfIngestor';
+import CaricaQuiz from './pages/admin/CaricaQuiz';
 
 export default function App() {
   const { user, loading: authLoading } = useAuth();
@@ -87,7 +87,7 @@ export default function App() {
           <Route index element={<AdminDashboard />} />
           <Route path="editor-domande" element={<AdminQuizEditor />} />
           <Route path="cyborg-inbox" element={<AiInbox />} />
-          <Route path="ingestor-pdf" element={<PdfIngestor />} />
+          <Route path="carica-quiz" element={<CaricaQuiz />} />
         </Route>
       </Route>
 

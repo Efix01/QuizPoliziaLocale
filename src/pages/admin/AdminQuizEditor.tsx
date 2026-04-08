@@ -51,7 +51,7 @@ export default function AdminQuizEditor() {
       await updateDoc(quizRef, {
         testo: editForm.testo,
         opzioni: editForm.opzioni,
-        rispostaEsatta: editForm.rispostaEsatta,
+        rispostaCorretta: editForm.rispostaCorretta,
         spiegazione: editForm.spiegazione || null,
         fonte: editForm.fonte || null
       });
