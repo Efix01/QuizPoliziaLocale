@@ -1,5 +1,5 @@
 import { Outlet, Link, useLocation } from 'react-router-dom';
-import { Cpu, Edit3, Shield, LogOut, Upload } from 'lucide-react';
+import { Cpu, Edit3, Shield, LogOut, Upload, RefreshCw } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 
 export default function AdminLayout() {
@@ -19,6 +19,7 @@ export default function AdminLayout() {
     { name: 'Cyborg Inbox', path: '/admin/cyborg-inbox', icon: <Cpu size={20} /> },
     { name: 'Carica Quiz', path: '/admin/carica-quiz', icon: <Upload size={20} /> },
     { name: 'Editor Domande', path: '/admin/editor-domande', icon: <Edit3 size={20} /> },
+    { name: 'Migrazione Categorie', path: '/admin/migrazione-categorie', icon: <RefreshCw size={20} /> },
   ];
 
   return (
