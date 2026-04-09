@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { db } from '../../lib/firebase';
-import { collection, query, getDocs, doc, updateDoc, deleteDoc, setDoc } from 'firebase/firestore';
+import { collection, query, getDocs, doc, deleteDoc, setDoc } from 'firebase/firestore';
 import { AlertTriangle, CheckCircle, ArrowRight, Trash2, Cpu, PlusCircle } from 'lucide-react';
 
 export default function AiInbox() {
@@ -62,17 +62,13 @@ export default function AiInbox() {
           fonte: draft.fonte || nuova.fonte || null
         });
       } else {
-        // UPDATE di un quiz esistente
+        // SOVRASCRITTURA di un quiz esistente: setDoc garantisce create-or-replace
         const quizRef = doc(db, 'domande_core', draft.domandaOriginaleId);
-        await updateDoc(quizRef, {
-          testo: nuova.testo,
-          opzioni: nuova.opzioni,
-          rispostaCorretta: nuova.rispostaCorretta ?? nuova.rispostaEsatta ?? 0,
-          spiegazione: nuova.spiegazione || null,
-          fonte: draft.fonte || nuova.fonte || null,
-          riferimentoNormativo: nuova.riferimentoNormativo || null,
-          livelloDifficolta: nuova.livelloDifficolta || 2,
-          tags: nuova.tags || []
+        await setDoc(quizRef, {
+          ...nuova,
+          id: draft.domandaOriginaleId,
+          updatedAt: new Date().toISOString(),
+          fonte: draft.fonte || nuova.fonte || null
         });
       }
       

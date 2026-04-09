@@ -65,6 +65,7 @@ export default function CaricaQuiz() {
   const [status, setStatus] = useState<'idle' | 'processing' | 'completed' | 'error'>('idle');
   const [log, setLog] = useState<string[]>([]);
   const [stats, setStats] = useState({ nuovi: 0, duplicati: 0, errori: 0 });
+  const [modalitaAggiornamento, setModalitaAggiornamento] = useState(false);
 
   const addLog = (msg: string, tipo: 'info' | 'warn' | 'error' = 'info') => {
     const prefix = tipo === 'error' ? '❌' : tipo === 'warn' ? '⚠️' : '✓';
@@ -97,12 +98,14 @@ export default function CaricaQuiz() {
         if (!testo) { addLog(`ID ${id || '?'}: campo "domanda" mancante`, 'error'); errori++; continue; }
         if (!item.opzioni || item.opzioni.length < 4) { addLog(`ID ${id}: opzioni insufficienti (servono 4)`, 'error'); errori++; continue; }
 
-        // Controllo duplicato per testo
-        const qSnap = await getDocs(query(collection(db, 'domande_core'), where('testo', '==', testo)));
-        if (!qSnap.empty) {
-          addLog(`ID ${id}: già presente in archivio (salto)`, 'warn');
-          duplicati++;
-          continue;
+        // Controllo duplicato (saltato in modalità aggiornamento)
+        if (!modalitaAggiornamento) {
+          const qSnap = await getDocs(query(collection(db, 'domande_core'), where('testo', '==', testo)));
+          if (!qSnap.empty) {
+            addLog(`ID ${id}: già presente in archivio (salto)`, 'warn');
+            duplicati++;
+            continue;
+          }
         }
 
         const opzioniPulite = item.opzioni.slice(0, 4).map(stripPrefix);
@@ -110,11 +113,15 @@ export default function CaricaQuiz() {
         const catId = mapCategoria(item.categoria || '');
 
         const docId = id ? `CORE-${id}` : `CORE-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
+        const tipoOperazione = modalitaAggiornamento ? 'UPDATE' : 'NEW_IMPORT';
+        const motivazione = modalitaAggiornamento
+          ? `Aggiornamento manuale — sostituzione quiz categoria: ${catId}`
+          : `Caricamento manuale — categoria: ${catId}`;
 
         await addDoc(collection(db, 'bozze_aggiornamenti'), {
-          tipo: 'NEW_IMPORT',
+          tipo: tipoOperazione,
           domandaOriginaleId: docId,
-          motivoVariazione: `Caricamento manuale — categoria: ${catId}`,
+          motivoVariazione: motivazione,
           fonte: item.source || item.categoria || 'Manuale',
           createdAt: new Date().toISOString(),
           nuovaDomanda: {
@@ -135,7 +142,7 @@ export default function CaricaQuiz() {
           }
         });
 
-        addLog(`ID ${id}: inviato in Inbox ✓`);
+        addLog(`ID ${id}: ${modalitaAggiornamento ? 'inviato per SOSTITUZIONE ✓' : 'inviato in Inbox ✓'}`);
         nuovi++;
       }
 
@@ -185,12 +192,50 @@ export default function CaricaQuiz() {
             )}
           </div>
 
+          {/* Toggle Modalità Aggiornamento */}
+          <div
+            onClick={() => setModalitaAggiornamento(m => !m)}
+            style={{
+              display: 'flex', alignItems: 'center', gap: '0.8rem',
+              padding: '0.8rem 1.2rem', borderRadius: '12px', cursor: 'pointer',
+              background: modalitaAggiornamento ? 'rgba(251, 146, 60, 0.15)' : '#1e293b',
+              border: `1px solid ${modalitaAggiornamento ? '#f97316' : '#334155'}`,
+              transition: 'all 0.2s',
+            }}
+          >
+            {/* Toggle switch visuale */}
+            <div style={{
+              width: '40px', height: '22px', borderRadius: '11px',
+              background: modalitaAggiornamento ? '#f97316' : '#334155',
+              position: 'relative', transition: 'background 0.2s', flexShrink: 0
+            }}>
+              <div style={{
+                position: 'absolute', top: '3px',
+                left: modalitaAggiornamento ? '21px' : '3px',
+                width: '16px', height: '16px', borderRadius: '50%',
+                background: '#fff', transition: 'left 0.2s'
+              }} />
+            </div>
+            <div>
+              <div style={{ fontWeight: 700, fontSize: '0.9rem', color: modalitaAggiornamento ? '#f97316' : '#94a3b8' }}>
+                {modalitaAggiornamento ? '⚡ Modalità SOSTITUZIONE attiva' : 'Modalità Sostituzione'}
+              </div>
+              <div style={{ fontSize: '0.75rem', color: '#64748b', marginTop: '0.1rem' }}>
+                {modalitaAggiornamento
+                  ? 'I quiz con lo stesso ID sovrascriveranno i documenti esistenti'
+                  : 'Attiva per sostituire quiz già presenti'}
+              </div>
+            </div>
+          </div>
+
           <button
             onClick={handleCarica}
             disabled={status === 'processing' || !text.trim()}
             style={{
               padding: '1rem', borderRadius: '12px', border: 'none',
-              background: (!text.trim() || status === 'processing') ? '#1e293b' : '#10b981',
+              background: (!text.trim() || status === 'processing')
+                ? '#1e293b'
+                : modalitaAggiornamento ? '#f97316' : '#10b981',
               color: (!text.trim() || status === 'processing') ? '#64748b' : '#020617',
               fontWeight: 700, fontSize: '1rem', cursor: !text.trim() ? 'not-allowed' : 'pointer',
               display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.6rem',
@@ -198,7 +243,11 @@ export default function CaricaQuiz() {
             }}
           >
             <Upload size={18} />
-            {status === 'processing' ? 'Caricamento in corso...' : 'Invia in Inbox per Approvazione'}
+            {status === 'processing'
+              ? 'Caricamento in corso...'
+              : modalitaAggiornamento
+                ? 'Invia per Sostituzione'
+                : 'Invia in Inbox per Approvazione'}
           </button>
         </div>
 
