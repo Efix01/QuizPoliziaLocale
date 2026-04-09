@@ -9,14 +9,22 @@ import type { CategoriaId } from '../../types/pl';
 // ================================================
 const mapCategoria = (cat: string): CategoriaId => {
   const c = (cat || '').toLowerCase().trim();
-  if (c.includes('strada') || c.includes('cds')) return 'cds';
-  if (c.includes('tuel') || c.includes('enti') || c.includes('comune') || c.includes('sindaco')) return 'enti_locali';
-  if (c.includes('241') || c.includes('amministrativo') || c.includes('procedimento')) return 'amministrativo';
-  if (c.includes('penale') || c.includes('sequestro') || c.includes('arresto') || c.includes('reato')) return 'penale';
-  if (c.includes('costituzione') || c.includes('costituzional')) return 'costituzionale';
-  if (c.includes('reg') || c.includes('regionale')) return 'reg_generale';
-  if (c.includes('com') || c.includes('comunale') || c.includes('locale')) return 'com_generale';
-  return 'com_generale';
+  
+  // Categorie NAZIONALI — check specifici e precisi
+  if (c === 'cds' || c.includes('codice della strada') || c.includes('codice stradale')) return 'cds';
+  if (c === 'penale' || c.includes('diritto penale') || c.includes('proc. penale') || c.includes('procedura penale') || c.includes('cpp') || c.includes('c.p.p') || c.includes('sequestro') || c.includes('arresto') || c.includes('reato')) return 'penale';
+  if (c === 'l689' || c.includes('689') || c.includes('depenalizzazione') || c.includes('sanzioni amministrative')) return 'l689';
+  if (c === 'l241' || c.includes('241') || c.includes('procedimento amministrativo') || c.includes('legge sul procedimento')) return 'l241';
+  if (c === 'tuel' || c.includes('tuel') || c.includes('d.lgs. 267') || c.includes('267/2000') || c.includes('ordinamento degli enti locali') || c.includes('enti locali')) return 'enti_locali';
+  if (c === 'costituzionale' || c.includes('costituzione') || c.includes('costituzional')) return 'costituzionale';
+  if (c === 'amministrativo' || c.includes('diritto amministrativo')) return 'amministrativo';
+  
+  // Categorie LOCALI (regolamenti specifici)
+  if (c === 'reg_generale' || c.includes('regolamento regionale') || c.includes('normativa regionale')) return 'reg_generale';
+  if (c === 'com_generale' || c.includes('regolamento comunale') || c.includes('normativa comunale') || c.includes('comune di')) return 'com_generale';
+  
+  // Fallback sicuro → materia generica nazionale
+  return 'amministrativo';
 };
 
 // "A. Testo risposta" → "Testo risposta"

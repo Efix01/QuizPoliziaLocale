@@ -4,6 +4,21 @@ import { useQuizPL } from '../hooks/useQuizPL';
 import { usePL } from '../context/PLContext';
 import { ArrowLeft, Zap, FolderTree, Layers, PlayCircle, AlertTriangle, Info, ShieldCheck } from 'lucide-react';
 
+// Nomi leggibili per i categoriaId interni
+const CATEGORIA_LABELS: Record<string, string> = {
+  cds:              'Codice della Strada (CdS)',
+  penale:           'Diritto Penale e Proc. Penale',
+  l689:             'Legge 689/81 — Sanzioni Amm.',
+  l241:             'Legge 241/90 — Procedimento Amm.',
+  tuel:             'TUEL — D.Lgs. 267/2000',
+  enti_locali:      'TUEL — Ordinamento Enti Locali',
+  costituzionale:   'Diritto Costituzionale',
+  amministrativo:   'Diritto Amministrativo Generale',
+  reg_generale:     'Normativa Regionale',
+  com_generale:     'Regolamento Comunale',
+};
+
+
 export default function QuizBuilder() {
   const navigate = useNavigate();
   const { generaQuizCategoria, generaQuizStrato, generaQuizVeloce, generaSimulazione, composizioneQuiz } = useQuizPL();
@@ -47,14 +62,18 @@ export default function QuizBuilder() {
 
     domandeCore.forEach(d => {
       if (!categorie.has(d.categoriaId)) {
-        categorie.set(d.categoriaId, { nome: (d as any).categoria || d.categoriaId, count: 0 });
+        // Usa il nome leggibile, con fallback al campo categoria o all'ID
+        const nomeLeggibile = CATEGORIA_LABELS[d.categoriaId]
+          || (d as any).categoria
+          || d.categoriaId;
+        categorie.set(d.categoriaId, { nome: nomeLeggibile, count: 0 });
       }
       categorie.get(d.categoriaId)!.count++;
     });
 
     return Array.from(categorie.entries())
       .map(([id, data]) => ({ id, ...data }))
-      .sort((a, b) => b.count - a.count); // Più domande prima
+      .sort((a, b) => b.count - a.count);
   }, [domandeCore]);
 
   // ===================================================

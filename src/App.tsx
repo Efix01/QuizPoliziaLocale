@@ -24,6 +24,7 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminQuizEditor from './pages/admin/AdminQuizEditor';
 import AiInbox from './pages/admin/AiInbox';
 import CaricaQuiz from './pages/admin/CaricaQuiz';
+import AdminMigrazioneCategorie from './pages/admin/AdminMigrazioneCategorie';
 
 export default function App() {
   const { user, loading: authLoading } = useAuth();
@@ -88,6 +89,7 @@ export default function App() {
           <Route path="editor-domande" element={<AdminQuizEditor />} />
           <Route path="cyborg-inbox" element={<AiInbox />} />
           <Route path="carica-quiz" element={<CaricaQuiz />} />
+          <Route path="migrazione-categorie" element={<AdminMigrazioneCategorie />} />
         </Route>
       </Route>
 
