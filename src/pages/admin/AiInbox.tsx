@@ -24,12 +24,12 @@ export default function AiInbox() {
               vecchiaDomanda: {
                 testo: "Qual è il limite di velocità in autostrada per un neopatentato nei primi 3 anni?",
                 opzioni: ["130 km/h", "110 km/h", "100 km/h", "90 km/h"],
-                rispostaEsatta: 2,
+                rispostaCorretta: 2,
               },
               nuovaDomanda: {
                 testo: "Qual è il limite di velocità in autostrada per un neopatentato (Cat. B) nei primi 3 anni dal conseguimento?",
                 opzioni: ["130 km/h", "110 km/h", "100 km/h", "90 km/h"],
-                rispostaEsatta: 2,
+                rispostaCorretta: 2,
                 spiegazione: "Art. 117 C.d.S. limite fissato a 100 km/h in autostrada e 90 km/h su extraurbane principali per i primi 3 anni."
               }
             }
@@ -49,38 +49,47 @@ export default function AiInbox() {
   const approvaDraft = async (draft: any) => {
     setProcessingId(draft.id);
     try {
+      const isNewImport = draft.tipo === 'NEW_IMPORT';
+      const nuova = draft.nuovaDomanda;
+      
+      if (isNewImport) {
+        const newId = draft.domandaOriginaleId || `IMPORT-${Date.now()}`;
+        const quizRef = doc(db, 'domande_core', newId);
+        await setDoc(quizRef, {
+          ...nuova,
+          id: newId,
+          createdAt: new Date().toISOString(),
+          fonte: draft.fonte || nuova.fonte || null
+        });
+      } else {
+        // UPDATE di un quiz esistente
+        const quizRef = doc(db, 'domande_core', draft.domandaOriginaleId);
+        await updateDoc(quizRef, {
+          testo: nuova.testo,
+          opzioni: nuova.opzioni,
+          rispostaCorretta: nuova.rispostaCorretta ?? nuova.rispostaEsatta ?? 0,
+          spiegazione: nuova.spiegazione || null,
+          fonte: draft.fonte || nuova.fonte || null,
+          riferimentoNormativo: nuova.riferimentoNormativo || null,
+          livelloDifficolta: nuova.livelloDifficolta || 2,
+          tags: nuova.tags || []
+        });
+      }
+      
+      // Rimuovi la bozza dopo l'approvazione (se non è il mock locale)
       if (draft.id !== 'mock-draft-1') {
-        const isNewImport = draft.tipo === 'NEW_IMPORT';
-        
-        if (isNewImport) {
-          const newId = draft.domandaOriginaleId || `IMPORT-${Date.now()}`;
-          const quizRef = doc(db, 'domande_core', newId);
-          await setDoc(quizRef, {
-            ...draft.nuovaDomanda,
-            id: newId,
-            createdAt: new Date().toISOString(),
-            fonte: draft.fonte || null
-          });
-        } else {
-          const quizRef = doc(db, 'domande_core', draft.domandaOriginaleId);
-          await updateDoc(quizRef, {
-            testo: draft.nuovaDomanda.testo,
-            opzioni: draft.nuovaDomanda.opzioni,
-            rispostaEsatta: draft.nuovaDomanda.rispostaEsatta,
-            spiegazione: draft.nuovaDomanda.spiegazione || null,
-            fonte: draft.fonte || null
-          });
-        }
         await deleteDoc(doc(db, 'bozze_aggiornamenti', draft.id));
       }
+      
       setDrafts(prev => prev.filter(d => d.id !== draft.id));
     } catch (e) {
       console.error("Errore approvazione bozza:", e);
-      alert("Errore. Controlla i permessi o la connessione.");
+      alert("Errore durante l'aggiornamento. Verifica che il quiz originale esista ancora nel database.");
     } finally {
       setProcessingId(null);
     }
   };
+
 
   const rifiutaDraft = async (draftId: string) => {
     setProcessingId(draftId);
@@ -137,7 +146,7 @@ export default function AiInbox() {
                       <p style={{ fontWeight: 600, fontSize: '1.1rem', marginBottom: '1.5rem' }}>{draft.vecchiaDomanda?.testo}</p>
                       <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
                         {draft.vecchiaDomanda?.opzioni.map((opz: string, i: number) => (
-                          <li key={i} style={{ padding: '0.8rem', background: '#1e293b', borderLeft: draft.vecchiaDomanda.rispostaEsatta === i ? '4px solid #10b981' : '4px solid #334155', borderRadius: '4px', fontSize: '0.9rem' }}>
+                          <li key={i} style={{ padding: '0.8rem', background: '#1e293b', borderLeft: (draft.vecchiaDomanda.rispostaCorretta ?? draft.vecchiaDomanda.rispostaEsatta) === i ? '4px solid #10b981' : '4px solid #334155', borderRadius: '4px', fontSize: '0.9rem' }}>
                             {opz}
                           </li>
                         ))}
@@ -151,7 +160,7 @@ export default function AiInbox() {
                     <p style={{ fontWeight: 600, fontSize: '1.1rem', marginBottom: '1.5rem', color: isNewImport ? '#fff' : '#10b981' }}>{draft.nuovaDomanda.testo}</p>
                     <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
                       {draft.nuovaDomanda.opzioni.map((opz: string, i: number) => (
-                        <li key={i} style={{ padding: '0.8rem', background: '#1e293b', borderLeft: draft.nuovaDomanda.rispostaEsatta === i ? '4px solid #10b981' : '4px solid #334155', borderRadius: '4px', fontSize: '0.9rem' }}>
+                        <li key={i} style={{ padding: '0.8rem', background: '#1e293b', borderLeft: (draft.nuovaDomanda.rispostaCorretta ?? draft.nuovaDomanda.rispostaEsatta) === i ? '4px solid #10b981' : '4px solid #334155', borderRadius: '4px', fontSize: '0.9rem' }}>
                           {opz}
                         </li>
                       ))}

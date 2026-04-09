@@ -32,7 +32,12 @@ export default function AdminQuizEditor() {
 
   const startEdit = (quiz: any) => {
     setEditingQuizId(quiz.id);
-    setEditForm(JSON.parse(JSON.stringify(quiz))); // Deep copy
+    const data = JSON.parse(JSON.stringify(quiz));
+    // Garantiamo che rispostaCorretta sia presente (fallback per legacy)
+    if (data.rispostaCorretta === undefined && data.rispostaEsatta !== undefined) {
+      data.rispostaCorretta = data.rispostaEsatta;
+    }
+    setEditForm(data);
   };
 
   const cancelEdit = () => {
@@ -160,9 +165,9 @@ export default function AdminQuizEditor() {
                   <div key={index} style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                     <input 
                       type="radio" 
-                      name="rispostaEsatta" 
-                      checked={editForm.rispostaEsatta === index}
-                      onChange={() => setEditForm({...editForm, rispostaEsatta: index})}
+                      name="rispostaCorretta" 
+                      checked={editForm.rispostaCorretta === index}
+                      onChange={() => setEditForm({...editForm, rispostaCorretta: index})}
                       style={{ cursor: 'pointer', transform: 'scale(1.2)' }}
                     />
                     <input 
@@ -173,7 +178,7 @@ export default function AdminQuizEditor() {
                         nuoveOpzioni[index] = e.target.value;
                         setEditForm({...editForm, opzioni: nuoveOpzioni});
                       }}
-                      style={{ flex: 1, background: '#0f172a', border: editForm.rispostaEsatta === index ? '1px solid #10b981' : '1px solid #334155', color: '#fff', padding: '0.8rem', borderRadius: '10px', outline: 'none' }}
+                      style={{ flex: 1, background: '#0f172a', border: editForm.rispostaCorretta === index ? '1px solid #10b981' : '1px solid #334155', color: '#fff', padding: '0.8rem', borderRadius: '10px', outline: 'none' }}
                     />
                   </div>
                 ))}
