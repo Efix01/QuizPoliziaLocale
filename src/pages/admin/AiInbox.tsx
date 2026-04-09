@@ -14,29 +14,7 @@ export default function AiInbox() {
         const q = query(collection(db, 'bozze_aggiornamenti'));
         const snap = await getDocs(q);
         const data = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-        
-        if (data.length === 0) {
-          setDrafts([
-            {
-              id: 'mock-draft-1',
-              domandaOriginaleId: 'CDS-042',
-              motivoVariazione: 'Aggiornamento al Codice della Strada (Decreto Legge Salvini) sui limiti di velocità per neopatentati.',
-              vecchiaDomanda: {
-                testo: "Qual è il limite di velocità in autostrada per un neopatentato nei primi 3 anni?",
-                opzioni: ["130 km/h", "110 km/h", "100 km/h", "90 km/h"],
-                rispostaCorretta: 2,
-              },
-              nuovaDomanda: {
-                testo: "Qual è il limite di velocità in autostrada per un neopatentato (Cat. B) nei primi 3 anni dal conseguimento?",
-                opzioni: ["130 km/h", "110 km/h", "100 km/h", "90 km/h"],
-                rispostaCorretta: 2,
-                spiegazione: "Art. 117 C.d.S. limite fissato a 100 km/h in autostrada e 90 km/h su extraurbane principali per i primi 3 anni."
-              }
-            }
-          ]);
-        } else {
-          setDrafts(data);
-        }
+        setDrafts(data);
       } catch (e) {
         console.error("Errore caricamento bozze:", e);
       } finally {
