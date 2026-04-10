@@ -10,7 +10,7 @@
 .dashboard-container {
     min-height: 100vh;
     min-height: 100dvh;
-    background: radial-gradient(ellipse at top, #1E293B, #0F172A);
+    background: radial-gradient(ellipse at top, #1e293b, #0f172a);
     color: white;
     padding-bottom: 90px;
     /* Space for Navbar */
@@ -642,7 +642,7 @@
 }
 
 .category-card--diritto {
-    background: linear-gradient(145deg, #4B5563, #1f2937);
+    background: linear-gradient(145deg, #cbd5e1, #1f2937);
 }
 
 .category-card--incendi {
@@ -650,7 +650,7 @@
 }
 
 .category-card--geografia {
-    background: linear-gradient(145deg, #6B7280, #374151);
+    background: linear-gradient(145deg, #94a3b8, #374151);
 }
 
 .category-card--inglese {

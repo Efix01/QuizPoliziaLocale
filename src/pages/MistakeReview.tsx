@@ -362,7 +362,7 @@ export default function MistakeReview() {
                           marginBottom: '0.5rem',
                         }}
                       >
-                        {(errore.domanda as any).categoria || errore.domanda.categoriaId} ({errore.domanda.strato})
+                        {('categoria' in errore.domanda ? String(errore.domanda.categoria) : errore.domanda.categoriaId)} ({errore.domanda.strato})
                       </div>
 
                       {/* Testo domanda */}

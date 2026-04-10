@@ -3,8 +3,22 @@ import { db } from '../../lib/firebase';
 import { collection, query, getDocs, doc, deleteDoc, setDoc } from 'firebase/firestore';
 import { AlertTriangle, CheckCircle, ArrowRight, Trash2, Cpu, PlusCircle } from 'lucide-react';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AnyValue = any;
+
+interface AiDraft {
+  id: string;
+  tipo?: string;
+  nuovaDomanda?: Record<string, AnyValue>;
+  vecchiaDomanda?: Record<string, AnyValue>;
+  domandaOriginaleId?: string;
+  fonte?: string;
+  differenze?: string[];
+  [key: string]: AnyValue;
+}
+
 export default function AiInbox() {
-  const [drafts, setDrafts] = useState<any[]>([]);
+  const [drafts, setDrafts] = useState<AiDraft[]>([]);
   const [loading, setLoading] = useState(true);
   const [processingId, setProcessingId] = useState<string | null>(null);
 
@@ -24,11 +38,11 @@ export default function AiInbox() {
     fetchDrafts();
   }, []);
 
-  const approvaDraft = async (draft: any) => {
+  const approvaDraft = async (draft: AiDraft) => {
     setProcessingId(draft.id);
     try {
       const isNewImport = draft.tipo === 'NEW_IMPORT';
-      const nuova = draft.nuovaDomanda;
+      const nuova = draft.nuovaDomanda! || {};
       
       if (isNewImport) {
         const newId = draft.domandaOriginaleId || `IMPORT-${Date.now()}`;
@@ -41,6 +55,7 @@ export default function AiInbox() {
         });
       } else {
         // SOVRASCRITTURA di un quiz esistente: setDoc garantisce create-or-replace
+        if (!draft.domandaOriginaleId) throw new Error("ID originale mancante per sovrascrittura");
         const quizRef = doc(db, 'domande_core', draft.domandaOriginaleId);
         await setDoc(quizRef, {
           ...nuova,
@@ -120,7 +135,7 @@ export default function AiInbox() {
                       <p style={{ fontWeight: 600, fontSize: '1.1rem', marginBottom: '1.5rem' }}>{draft.vecchiaDomanda?.testo}</p>
                       <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
                         {draft.vecchiaDomanda?.opzioni.map((opz: string, i: number) => (
-                          <li key={i} style={{ padding: '0.8rem', background: '#1e293b', borderLeft: (draft.vecchiaDomanda.rispostaCorretta ?? draft.vecchiaDomanda.rispostaEsatta) === i ? '4px solid #10b981' : '4px solid #334155', borderRadius: '4px', fontSize: '0.9rem' }}>
+                          <li key={i} style={{ padding: '0.8rem', background: '#1e293b', borderLeft: (draft.vecchiaDomanda!.rispostaCorretta ?? draft.vecchiaDomanda!.rispostaEsatta) === i ? '4px solid #10b981' : '4px solid #334155', borderRadius: '4px', fontSize: '0.9rem' }}>
                             {opz}
                           </li>
                         ))}
@@ -131,17 +146,17 @@ export default function AiInbox() {
                     <div style={{ fontSize: '0.8rem', color: isNewImport ? '#3b82f6' : '#10b981', fontWeight: 700, marginBottom: '1rem', letterSpacing: '1px' }}>
                       {isNewImport ? 'CONTENUTO ESTRATTO' : 'NUOVA PROPOSTA AI'}
                     </div>
-                    <p style={{ fontWeight: 600, fontSize: '1.1rem', marginBottom: '1.5rem', color: isNewImport ? '#fff' : '#10b981' }}>{draft.nuovaDomanda.testo}</p>
+                    <p style={{ fontWeight: 600, fontSize: '1.1rem', marginBottom: '1.5rem', color: isNewImport ? '#fff' : '#10b981' }}>{draft.nuovaDomanda!.testo}</p>
                     <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
-                      {draft.nuovaDomanda.opzioni.map((opz: string, i: number) => (
-                        <li key={i} style={{ padding: '0.8rem', background: '#1e293b', borderLeft: (draft.nuovaDomanda.rispostaCorretta ?? draft.nuovaDomanda.rispostaEsatta) === i ? '4px solid #10b981' : '4px solid #334155', borderRadius: '4px', fontSize: '0.9rem' }}>
+                      {draft.nuovaDomanda!.opzioni.map((opz: string, i: number) => (
+                        <li key={i} style={{ padding: '0.8rem', background: '#1e293b', borderLeft: (draft.nuovaDomanda!.rispostaCorretta ?? draft.nuovaDomanda!.rispostaEsatta) === i ? '4px solid #10b981' : '4px solid #334155', borderRadius: '4px', fontSize: '0.9rem' }}>
                           {opz}
                         </li>
                       ))}
                     </ul>
-                    {(draft.nuovaDomanda.spiegazione || draft.fonte) && (
+                    {(draft.nuovaDomanda!.spiegazione || draft.fonte) && (
                       <div style={{ marginTop: '1.5rem', padding: '1rem', background: 'rgba(16, 185, 129, 0.1)', borderRadius: '8px', border: '1px dashed #10b981', fontSize: '0.85rem' }}>
-                        {draft.nuovaDomanda.spiegazione && <div><strong>Spiegazione:</strong> {draft.nuovaDomanda.spiegazione}</div>}
+                        {draft.nuovaDomanda!.spiegazione && <div><strong>Spiegazione:</strong> {draft.nuovaDomanda!.spiegazione}</div>}
                         {draft.fonte && <div style={{ marginTop: '0.5rem' }}><strong>Fonte Tag:</strong> {draft.fonte}</div>}
                       </div>
                     )}

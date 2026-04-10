@@ -267,6 +267,7 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useQuizData(): QuizDataContextType {
   const context = useContext(QuizDataContext);
   if (!context) throw new Error('useQuizData deve essere usato dentro QuizDataProvider');

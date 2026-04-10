@@ -23,7 +23,7 @@ export default function SetupProfile() {
 
   const regioni = regioniData.regioni || [];
   const comuniDisponibili = selectedRegione
-    ? (regioni.find((r: any) => r.id === selectedRegione) as any)?.citta || []
+    ? (regioni.find((r) => r.id === selectedRegione))?.citta || []
     : [];
 
   const handleRegioneSelect = async (regioneId: string) => {
@@ -35,13 +35,13 @@ export default function SetupProfile() {
     try {
       await cambiaRegione(regioneId, regione.nome);
       setStep('comune');
-    } catch (err) {
+    } catch {
       setError("Errore nel caricamento dei dati regionali.");
     }
   };
 
   const handleComuneSelect = async (comuneId: string) => {
-    const comune = comuniDisponibili.find((c: any) => c.id === comuneId);
+    const comune = comuniDisponibili.find((c) => c.id === comuneId);
     if (!comune) return;
 
     setSelectedComune(comuneId);
@@ -49,7 +49,7 @@ export default function SetupProfile() {
     try {
       await cambiaComune(comuneId, comune.nome);
       setStep('conferma');
-    } catch (err) {
+    } catch {
       setError("Errore nel caricamento dei dati comunali.");
     }
   };
@@ -121,7 +121,7 @@ export default function SetupProfile() {
                 className="flex flex-col gap-6"
               >
                 <div className="flex flex-wrap gap-3">
-                  {comuniDisponibili.map((c: any) => (
+                  {comuniDisponibili.map((c: {id: string, nome: string}) => (
                     <button
                       key={c.id}
                       onClick={() => handleComuneSelect(c.id)}

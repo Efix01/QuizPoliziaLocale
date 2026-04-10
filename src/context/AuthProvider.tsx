@@ -58,9 +58,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         try {
             await signInWithEmailAndPassword(auth, email, password);
             // Non serve setUser qui, onAuthStateChanged scatterà da solo
-        } catch (err: any) {
+        } catch (err) {
             console.error("Login err:", err);
-            setError(err.message || "Errore durante il login. Controlla le credenziali.");
+            const errorMsg = err instanceof Error ? err.message : "Errore durante il login. Controlla le credenziali.";
+            setError(errorMsg);
         } finally {
             setLoading(false);
         }
@@ -82,9 +83,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                     displayName
                 });
             }
-        } catch (err: any) {
+        } catch (err) {
             console.error("Register err:", err);
-            setError(err.message || "Errore durante la registrazione.");
+            const errorMsg = err instanceof Error ? err.message : "Errore durante la registrazione.";
+            setError(errorMsg);
         } finally {
             setLoading(false);
         }
@@ -96,9 +98,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         setLoading(true);
         try {
             await signInWithPopup(auth, googleProvider);
-        } catch (err: any) {
+        } catch (err) {
             console.error("Google login err:", err);
-            setError(err.message || "Errore durante il login con Google.");
+            const errorMsg = err instanceof Error ? err.message : "Errore durante il login con Google.";
+            setError(errorMsg);
         } finally {
             setLoading(false);
         }
@@ -112,9 +115,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             setUser(null);
             // Ripulisce il fallback storage legacy se presente (cleanup opzionale)
             localStorage.removeItem('quiz_pl_auth');
-        } catch (err: any) {
+        } catch (err) {
             console.error("Logout err:", err);
-            setError(err.message || "Errore durante il logout.");
+            const errorMsg = err instanceof Error ? err.message : "Errore durante il logout.";
+            setError(errorMsg);
         }
     };
 
@@ -129,9 +133,10 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
                 setUser(null);
                 localStorage.clear(); // Cleanup completo
             }
-        } catch (err: any) {
+        } catch (err) {
             console.error("Delete account err:", err);
-            setError(err.message || "Errore durante l'eliminazione. Potrebbe essere necessario ri-effettuare il login per motivi di sicurezza.");
+            const errorMsg = err instanceof Error ? err.message : "Errore durante l'eliminazione. Potrebbe essere necessario ri-effettuare il login per motivi di sicurezza.";
+            setError(errorMsg);
             throw err; // Rilancio per gestirlo nel modal
         } finally {
             setLoading(false);
@@ -157,7 +162,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     return (
         <AuthContext.Provider value={value}>
             {loading ? (
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', color: '#111827' }}>
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', color: '#f8fafc' }}>
                     <div style={{ textAlign: 'center' }}>
                         <div style={{ width: '40px', height: '40px', border: '4px solid #f3f4f6', borderTop: '4px solid var(--oro-sardegna)', borderRadius: '50%', animation: 'spin 1s linear infinite', margin: '0 auto 1rem' }}></div>
                         Verifica sessione...

@@ -1,18 +1,24 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuizPL } from '../hooks/useQuizPL';
+import type { DomandaPL } from '../types/pl';
 import { AlertTriangle, Clock, Target, PlayCircle, ArrowLeft } from 'lucide-react';
 
 export default function SimulationSession() {
   const navigate = useNavigate();
   const { generaSimulazione, parametriEsame } = useQuizPL();
   
-  const [domandeDisponibili, setDomandeDisponibili] = useState<any[]>([]);
+  const [domandeDisponibili, setDomandeDisponibili] = useState<DomandaPL[]>([]);
 
   // Carica le domande subito per vedere se ce ne sono abbastanza
   useEffect(() => {
-    const domande = generaSimulazione();
-    setDomandeDisponibili(domande);
+    let mounted = true;
+    const load = async () => {
+        const domande = await generaSimulazione();
+        if (mounted) setDomandeDisponibili(domande);
+    };
+    load();
+    return () => { mounted = false; };
   }, [generaSimulazione]);
 
   const handleAvvia = () => {

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Mail, Lock, User, Eye, EyeOff, ArrowRight, CheckCircle, AlertCircle, Building2, MapPin } from 'lucide-react';
+import Footer from '../components/Footer';
 
 interface FormData {
   email: string;
@@ -119,9 +120,10 @@ const Register = () => {
         navigate('/onboarding');
       }, 1500);
 
-    } catch (err: any) {
+    } catch (err) {
       console.error('Errore registrazione:', err);
-      setError(err.message || 'Errore nella creazione dell\'account. Riprova.');
+      const errorMsg = err instanceof Error ? err.message : 'Errore nella creazione dell\'account. Riprova.';
+      setError(errorMsg);
       setIsLoading(false);
     }
   };
@@ -409,6 +411,8 @@ const Register = () => {
           I tuoi dati sono protetti • Criptazione end-to-end
         </div>
       </div>
+
+      <Footer />
 
       {/* CSS Animation */}
       <style dangerouslySetInnerHTML={{ __html: `

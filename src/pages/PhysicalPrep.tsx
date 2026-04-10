@@ -62,7 +62,7 @@ const PhysicalPrep: React.FC = () => {
         try {
             const saved = localStorage.getItem('physical_bests');
             return saved ? JSON.parse(saved) : {};
-        } catch (e) { return {}; }
+        } catch { return {}; }
     });
 
     const [runTime, setRunTime] = useState(0);

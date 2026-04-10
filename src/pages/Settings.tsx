@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { usePL } from '../context/PLContext';
 import type { ParametriEsame } from '../types/progressi';
@@ -20,13 +20,15 @@ export default function Settings() {
     });
     const [isSaving, setIsSaving] = useState(false);
 
-    useEffect(() => {
+    const [prevProfilo, setPrevProfilo] = useState(profilo);
+    if (profilo !== prevProfilo) {
+        setPrevProfilo(profilo);
         if (profilo) {
             setRegione(profilo.regioneId);
             setComune(profilo.comuneId || 'nessuno');
             setParametri(profilo.parametriEsame);
         }
-    }, [profilo]);
+    }
 
     if (!profilo) {
         return (

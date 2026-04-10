@@ -17,6 +17,10 @@ import StudyManual from './pages/StudyManual';
 import ReviewSession from './pages/ReviewSession';
 import Layout from './components/Layout'; // IL NUOVO MENU
 
+import ChiSiamo from './pages/ChiSiamo';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsOfService from './pages/TermsOfService';
+
 // Moduli ADMIN
 import AdminRoute from './components/admin/AdminRoute';
 import AdminLayout from './components/admin/AdminLayout';
@@ -33,9 +37,9 @@ export default function App() {
   // Mostriamo il loader globale solo al primo accesso o durante il caricamento Auth
   if (authLoading) {
     return (
-      <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0f172a', color: '#fff' }}>
+      <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#0f172a', color: '#f8fafc' }}>
         <div style={{ textAlign: 'center' }}>
-          <div style={{ width: '40px', height: '40px', border: '4px solid #f3f4f6', borderTop: '4px solid #3b82f6', borderRadius: '50%', animation: 'spin 1s linear infinite', margin: '0 auto 1rem' }}></div>
+          <div style={{ width: '40px', height: '40px', border: '4px solid #334155', borderTop: '4px solid #3b82f6', borderRadius: '50%', animation: 'spin 1s linear infinite', margin: '0 auto 1rem' }}></div>
           <p>Preparazione Elite in corso...</p>
         </div>
       </div>
@@ -48,6 +52,11 @@ export default function App() {
       <Route path="/" element={user ? <Navigate to="/dashboard" replace /> : <Landing />} />
       <Route path="/login" element={user ? <Navigate to="/dashboard" replace /> : <Login />} />
       <Route path="/register" element={user ? <Navigate to="/dashboard" replace /> : <Register />} />
+
+      {/* Pagine Informative Pubbliche */}
+      <Route path="/chi-siamo" element={<ChiSiamo />} />
+      <Route path="/privacy" element={<PrivacyPolicy />} />
+      <Route path="/terms" element={<TermsOfService />} />
 
       {/* Onboarding senza Menu */}
       <Route path="/onboarding" element={

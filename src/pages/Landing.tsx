@@ -1,5 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { ShieldCheck, Target, BarChart3 } from 'lucide-react';
+import Footer from '../components/Footer';
 
 export default function Landing() {
   const navigate = useNavigate();
@@ -51,6 +52,7 @@ export default function Landing() {
           </div>
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

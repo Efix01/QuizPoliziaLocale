@@ -1,12 +1,9 @@
 
 import { DomandaPLSchema } from './src/types/pl';
 import fs from 'fs';
-import { z } from 'zod';
 
 const data = JSON.parse(fs.readFileSync('./src/data/domandecore.json', 'utf8'));
 const domande = data.domande;
-
-const ArrayDomandeSchema = z.array(DomandaPLSchema);
 
 console.log(`Validazione di ${domande.length} domande...`);
 

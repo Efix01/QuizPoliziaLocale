@@ -56,20 +56,20 @@ export const Slide2Illustration = () => (
                 <line x1="26" y1="24" x2="36" y2="27" stroke="#4A3728" strokeWidth="2" />
                 <line x1="54" y1="24" x2="44" y2="27" stroke="#4A3728" strokeWidth="2" />
                 <path d="M32,45 Q40,42 48,45" stroke="#2D3436" strokeWidth="2" fill="none" />
-                <rect x="20" y="55" width="40" height="50" rx="5" fill="#6B7280" />
+                <rect x="20" y="55" width="40" height="50" rx="5" fill="#94a3b8" />
                 <ellipse cx="10" cy="20" rx="8" ry="12" fill="#FFDAB9" />
                 <ellipse cx="70" cy="20" rx="8" ry="12" fill="#FFDAB9" />
             </g>
 
             <g className="paper paper-1" transform="rotate(-20, 40, 150)">
-                <rect x="20" y="130" width="30" height="40" rx="2" fill="white" stroke="#E5E7EB" />
+                <rect x="20" y="130" width="30" height="40" rx="2" fill="white" stroke="#334155" />
                 <line x1="25" y1="140" x2="45" y2="140" stroke="#D1D5DB" strokeWidth="2" />
                 <line x1="25" y1="148" x2="42" y2="148" stroke="#D1D5DB" strokeWidth="2" />
                 <line x1="25" y1="156" x2="40" y2="156" stroke="#D1D5DB" strokeWidth="2" />
             </g>
 
             <g className="paper paper-2" transform="rotate(15, 270, 100)">
-                <rect x="250" y="80" width="35" height="45" rx="2" fill="white" stroke="#E5E7EB" />
+                <rect x="250" y="80" width="35" height="45" rx="2" fill="white" stroke="#334155" />
                 <line x1="255" y1="92" x2="280" y2="92" stroke="#D1D5DB" strokeWidth="2" />
                 <line x1="255" y1="102" x2="275" y2="102" stroke="#D1D5DB" strokeWidth="2" />
                 <line x1="255" y1="112" x2="278" y2="112" stroke="#D1D5DB" strokeWidth="2" />
@@ -124,22 +124,22 @@ export const Slide3Illustration = () => (
                 <rect x="15" y="35" width="100" height="25" rx="8" fill="#1E5631" />
                 <text x="65" y="52" fontSize="10" fill="white" textAnchor="middle" fontWeight="bold">QUIZ P.L.</text>
 
-                <rect x="15" y="70" width="100" height="50" rx="10" fill="white" stroke="#E5E7EB" />
+                <rect x="15" y="70" width="100" height="50" rx="10" fill="white" stroke="#334155" />
                 <circle cx="35" cy="95" r="12" fill="#E8F5E9" />
                 <path d="M30,95 L34,100 L42,88" stroke="#22C55E" strokeWidth="3" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-                <rect x="52" y="85" width="55" height="6" rx="3" fill="#E5E7EB" />
-                <rect x="52" y="97" width="40" height="6" rx="3" fill="#E5E7EB" />
+                <rect x="52" y="85" width="55" height="6" rx="3" fill="#334155" />
+                <rect x="52" y="97" width="40" height="6" rx="3" fill="#334155" />
 
-                <rect x="15" y="130" width="100" height="10" rx="5" fill="#E5E7EB" />
+                <rect x="15" y="130" width="100" height="10" rx="5" fill="#334155" />
                 <rect x="15" y="130" width="70" height="10" rx="5" fill="#1E5631" />
 
                 <rect x="15" y="150" width="45" height="40" rx="8" fill="#E8F5E9" />
                 <text x="37" y="172" fontSize="14" fill="#1E5631" textAnchor="middle" fontWeight="bold">78%</text>
-                <text x="37" y="183" fontSize="7" fill="#6B7280" textAnchor="middle">Precisione</text>
+                <text x="37" y="183" fontSize="7" fill="#94a3b8" textAnchor="middle">Precisione</text>
 
                 <rect x="70" y="150" width="45" height="40" rx="8" fill="#FFF8E1" />
                 <text x="92" y="172" fontSize="14" fill="#C9A227" textAnchor="middle" fontWeight="bold">32</text>
-                <text x="92" y="183" fontSize="7" fill="#6B7280" textAnchor="middle">Quiz fatti</text>
+                <text x="92" y="183" fontSize="7" fill="#94a3b8" textAnchor="middle">Quiz fatti</text>
 
                 <rect x="15" y="200" width="100" height="25" rx="8" fill="#F3F4F6" />
                 <circle cx="35" cy="212" r="6" fill="#1E5631" />

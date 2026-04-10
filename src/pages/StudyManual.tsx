@@ -43,7 +43,8 @@ export default function StudyManual() {
     );
   }
 
-  const categoria = (manualeData as any)[jsonKey];
+  type ManualeDataKey = keyof typeof manualeData;
+  const categoria = manualeData[jsonKey as ManualeDataKey];
   const categoryColor = CATEGORY_COLORS[categoryId] || '#3b82f6';
   const currentChapter = categoria.capitoli[currentChapterIndex];
 

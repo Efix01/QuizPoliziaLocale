@@ -53,8 +53,9 @@ const ForgotPassword: React.FC = () => {
             await new Promise(resolve => setTimeout(resolve, 1500));
             setIsSuccess(true);
             setResendTimer(60);
-        } catch (error: any) {
-            setGlobalError(error.message || 'Errore durante l\'invio. Riprova.');
+        } catch (error) {
+            const errorMsg = error instanceof Error ? error.message : 'Errore durante l\'invio. Riprova.';
+            setGlobalError(errorMsg);
         } finally {
             setIsSubmitting(false);
         }

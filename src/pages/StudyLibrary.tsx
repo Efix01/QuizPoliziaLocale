@@ -11,7 +11,7 @@ import type { CategoriaId } from '../types/pl';
 // Categorie di studio per Polizia Locale
 // ===================================================
 
-const STUDY_CATEGORIES: { id: CategoriaId; title: string; icon: any; color: string; description: string }[] = [
+const STUDY_CATEGORIES: { id: CategoriaId; title: string; icon: React.ElementType; color: string; description: string }[] = [
     { 
       id: 'cds', 
       title: 'Codice della Strada', 

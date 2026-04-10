@@ -4,6 +4,19 @@ import { Search, Edit2, Save, X } from 'lucide-react';
 import { db } from '../../lib/firebase';
 import { doc, updateDoc } from 'firebase/firestore';
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+type AnyValue = any;
+
+interface QuizEditForm {
+  id: string;
+  testo?: string;
+  spiegazione?: string;
+  rispostaCorretta?: number;
+  rispostaEsatta?: number;
+  opzioni?: string[];
+  [key: string]: AnyValue;
+}
+
 export default function AdminQuizEditor() {
   const { domandeCore } = usePL();
   const [searchTerm, setSearchTerm] = useState('');
@@ -12,7 +25,7 @@ export default function AdminQuizEditor() {
 
   // Stato Modale di Modifica
   const [editingQuizId, setEditingQuizId] = useState<string | null>(null);
-  const [editForm, setEditForm] = useState<any>(null);
+  const [editForm, setEditForm] = useState<QuizEditForm | null>(null);
   const [isSaving, setIsSaving] = useState(false);
 
   // Filtro
@@ -30,7 +43,7 @@ export default function AdminQuizEditor() {
   const totalPages = Math.ceil(filteredQuizzes.length / itemsPerPage);
   const paginatedQuizzes = filteredQuizzes.slice((page - 1) * itemsPerPage, page * itemsPerPage);
 
-  const startEdit = (quiz: any) => {
+  const startEdit = (quiz: QuizEditForm) => {
     setEditingQuizId(quiz.id);
     const data = JSON.parse(JSON.stringify(quiz));
     // Garantiamo che rispostaCorretta sia presente (fallback per legacy)
@@ -51,11 +64,11 @@ export default function AdminQuizEditor() {
     try {
       const quizRef = doc(db, 'domande_core', editingQuizId);
       // Validazione base
-      if (!editForm.testo || editForm.opzioni.length < 2) throw new Error("Dati non validi");
+      if (!editForm.testo || editForm.opzioni!.length < 2) throw new Error("Dati non validi");
       
       await updateDoc(quizRef, {
         testo: editForm.testo,
-        opzioni: editForm.opzioni,
+        opzioni: editForm.opzioni!,
         rispostaCorretta: editForm.rispostaCorretta,
         spiegazione: editForm.spiegazione || null,
         fonte: editForm.fonte || null
@@ -161,7 +174,7 @@ export default function AdminQuizEditor() {
 
               <label style={{ display: 'block', color: '#94a3b8', marginBottom: '0.5rem', fontWeight: 600 }}>Opzioni e Risposta Esatta</label>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '0.8rem', marginBottom: '1.5rem' }}>
-                {editForm.opzioni.map((opz: string, index: number) => (
+                {editForm.opzioni!.map((opz: string, index: number) => (
                   <div key={index} style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
                     <input 
                       type="radio" 
@@ -174,7 +187,7 @@ export default function AdminQuizEditor() {
                       type="text" 
                       value={opz}
                       onChange={e => {
-                        const nuoveOpzioni = [...editForm.opzioni];
+                        const nuoveOpzioni = [...editForm.opzioni!];
                         nuoveOpzioni[index] = e.target.value;
                         setEditForm({...editForm, opzioni: nuoveOpzioni});
                       }}

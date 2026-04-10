@@ -400,6 +400,8 @@ export const ProgressProvider: React.FC<{ children: ReactNode }> = ({ children }
     </ProgressContext.Provider>
   );
 };
+
+// eslint-disable-next-line react-refresh/only-export-components
 export const useProgress = () => {
   const context = useContext(ProgressContext);
   if (context === undefined) {

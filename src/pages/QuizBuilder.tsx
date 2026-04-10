@@ -18,6 +18,42 @@ const CATEGORIA_LABELS: Record<string, string> = {
   com_generale:     'Regolamento Comunale',
 };
 
+// ===================================================
+// Card opzione modalità
+// ===================================================
+const OptionCard = ({ icon: Icon, title, desc, active, onClick }: { icon: React.ElementType, title: string, desc?: string, active: boolean, onClick: () => void, id?: string }) => (
+  <div
+    onClick={onClick}
+    style={{
+      background: active ? '#1e40af' : '#1e293b',
+      border: `2px solid ${active ? '#3b82f6' : '#334155'}`,
+      borderRadius: '16px',
+      padding: '1.5rem',
+      cursor: 'pointer',
+      transition: 'all 0.2s',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '1rem',
+    }}
+  >
+    <div
+      style={{
+        background: active ? '#3b82f6' : '#0f172a',
+        padding: '0.75rem',
+        borderRadius: '12px',
+        flexShrink: 0,
+      }}
+    >
+      <Icon color={active ? '#fff' : '#94a3b8'} size={24} />
+    </div>
+    <div style={{ flex: 1 }}>
+      <h4 style={{ margin: '0 0 0.25rem 0', fontSize: '1.1rem', color: active ? '#fff' : '#cbd5e1' }}>
+        {title}
+      </h4>
+      {desc && <h5 style={{ margin: 0, fontSize: '0.9rem', color: active ? '#bfdbfe' : '#64748b', fontWeight: 'normal' }}>{desc}</h5>}
+    </div>
+  </div>
+);
 
 export default function QuizBuilder() {
   const navigate = useNavigate();
@@ -64,7 +100,7 @@ export default function QuizBuilder() {
       if (!categorie.has(d.categoriaId)) {
         // Usa il nome leggibile, con fallback al campo categoria o all'ID
         const nomeLeggibile = CATEGORIA_LABELS[d.categoriaId]
-          || (d as any).categoria
+          || ('categoria' in d ? String(d.categoria) : null)
           || d.categoriaId;
         categorie.set(d.categoriaId, { nome: nomeLeggibile, count: 0 });
       }
@@ -129,42 +165,6 @@ export default function QuizBuilder() {
   };
 
   // ===================================================
-  // Card opzione modalità
-  // ===================================================
-
-  const OptionCard = ({ icon: Icon, title, desc, active, onClick }: any) => (
-    <div
-      onClick={onClick}
-      style={{
-        background: active ? '#1e40af' : '#1e293b',
-        border: `2px solid ${active ? '#3b82f6' : '#334155'}`,
-        borderRadius: '16px',
-        padding: '1.5rem',
-        cursor: 'pointer',
-        transition: 'all 0.2s',
-        display: 'flex',
-        alignItems: 'center',
-        gap: '1rem',
-      }}
-    >
-      <div
-        style={{
-          background: active ? '#3b82f6' : '#0f172a',
-          padding: '0.75rem',
-          borderRadius: '12px',
-          flexShrink: 0,
-        }}
-      >
-        <Icon color={active ? '#fff' : '#94a3b8'} size={24} />
-      </div>
-      <div style={{ flex: 1 }}>
-        <h4 style={{ margin: '0 0 0.25rem 0', fontSize: '1.1rem', color: active ? '#fff' : '#cbd5e1' }}>
-          {title}
-        </h4>
-        <h5 style={{ margin: 0, fontSize: '0.9rem', color: active ? '#bfdbfe' : '#64748b', fontWeight: 'normal' }}>{desc}</h5>
-      </div>
-    </div>
-  );
 
   return (
     <div style={{ minHeight: '100vh', background: '#0f172a', color: '#f8fafc', padding: '2rem 1rem' }}>
@@ -221,7 +221,10 @@ export default function QuizBuilder() {
               title="Per Normativa Locale"
               desc="Studia solo le leggi Regionali o i regolamenti del tuo Comune."
               active={mode === 'strato'}
-              onClick={() => setMode('strato')}
+              onClick={() => {
+                setMode('strato');
+                setSelectedStrato(domandeRegionali.length > 0 ? 'regionale' : 'comunale');
+              }}
             />
             <OptionCard
               id="simulation_esame"
@@ -286,24 +289,6 @@ export default function QuizBuilder() {
                 gap: '1rem',
               }}
             >
-              <button
-                onClick={() => setSelectedStrato('core')}
-                style={{
-                  padding: '1rem',
-                  borderRadius: '12px',
-                  background: selectedStrato === 'core' ? '#3b82f6' : '#0f172a',
-                  color: '#fff',
-                  border: `1px solid ${selectedStrato === 'core' ? '#3b82f6' : '#334155'}`,
-                  cursor: 'pointer',
-                  fontWeight: 'bold',
-                }}
-              >
-                Core Nazionale
-                <br />
-                <span style={{ fontWeight: 'normal', fontSize: '0.9rem', opacity: 0.8 }}>
-                  ({domandeCore.length} dom.)
-                </span>
-              </button>
               <button
                 disabled={domandeRegionali.length === 0}
                 onClick={() => setSelectedStrato('regionale')}
@@ -393,25 +378,29 @@ export default function QuizBuilder() {
             style={{
               marginTop: '1.5rem',
               padding: '1rem',
-              background: numeroDomande > poolDisponibile ? '#7f1d1d' : '#065f46',
-              border: `1px solid ${numeroDomande > poolDisponibile ? '#991b1b' : '#047857'}`,
+              background: (mode === 'categoria' && !selectedCategoria) ? '#1e293b' : (numeroDomande > poolDisponibile ? '#7f1d1d' : '#065f46'),
+              border: `1px solid ${(mode === 'categoria' && !selectedCategoria) ? '#3b82f6' : (numeroDomande > poolDisponibile ? '#991b1b' : '#047857')}`,
               borderRadius: '12px',
               display: 'flex',
               alignItems: 'center',
               gap: '0.75rem',
             }}
           >
-            {numeroDomande > poolDisponibile ? (
+            {(mode === 'categoria' && !selectedCategoria) ? (
+              <Info size={20} color="#3b82f6" />
+            ) : numeroDomande > poolDisponibile ? (
               <AlertTriangle size={20} color="#ef4444" />
             ) : (
               <Info size={20} color="#22c55e" />
             )}
             <div style={{ flex: 1 }}>
               <div style={{ fontWeight: '600', marginBottom: '0.25rem' }}>
-                {numeroDomande > poolDisponibile ? '⚠️ Attenzione' : '✅ Pronto'}
+                {(mode === 'categoria' && !selectedCategoria) ? 'In attesa di selezione' : (numeroDomande > poolDisponibile ? '⚠️ Attenzione' : '✅ Pronto')}
               </div>
               <div style={{ fontSize: '0.9rem', opacity: 0.9 }}>
-                {numeroDomande > poolDisponibile
+                {(mode === 'categoria' && !selectedCategoria)
+                  ? 'Seleziona una materia dal menu a tendina qui sopra per vedere le domande disponibili.'
+                  : numeroDomande > poolDisponibile
                   ? `Hai selezionato ${numeroDomande} domande, ma solo ${poolDisponibile} sono disponibili. Riduci il numero.`
                   : `${poolDisponibile} domande disponibili per i criteri scelti.`}
               </div>
@@ -457,29 +446,29 @@ export default function QuizBuilder() {
         {/* CTA Avvio */}
         <button
           onClick={handleStart}
-          disabled={numeroDomande > poolDisponibile}
+          disabled={numeroDomande > poolDisponibile || (mode === 'categoria' && !selectedCategoria)}
           style={{
             width: '100%',
-            background: numeroDomande > poolDisponibile ? '#64748b' : '#22c55e',
+            background: (mode === 'categoria' && !selectedCategoria) ? '#334155' : numeroDomande > poolDisponibile ? '#64748b' : '#22c55e',
             color: 'white',
             border: 'none',
             padding: '1.25rem',
             borderRadius: '16px',
             fontSize: '1.25rem',
             fontWeight: '800',
-            cursor: numeroDomande > poolDisponibile ? 'not-allowed' : 'pointer',
+            cursor: (numeroDomande > poolDisponibile || (mode === 'categoria' && !selectedCategoria)) ? 'not-allowed' : 'pointer',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             gap: '0.75rem',
-            boxShadow: numeroDomande > poolDisponibile
+            boxShadow: (numeroDomande > poolDisponibile || (mode === 'categoria' && !selectedCategoria))
               ? 'none'
               : '0 10px 15px -3px rgba(34, 197, 94, 0.3)',
             transition: 'transform 0.2s',
-            opacity: numeroDomande > poolDisponibile ? 0.6 : 1,
+            opacity: (numeroDomande > poolDisponibile || (mode === 'categoria' && !selectedCategoria)) ? 0.6 : 1,
           }}
           onMouseOver={(e) => {
-            if (numeroDomande <= poolDisponibile) e.currentTarget.style.transform = 'translateY(-3px)';
+            if (!(numeroDomande > poolDisponibile || (mode === 'categoria' && !selectedCategoria))) e.currentTarget.style.transform = 'translateY(-3px)';
           }}
           onMouseOut={(e) => {
             e.currentTarget.style.transform = 'translateY(0)';

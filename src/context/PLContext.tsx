@@ -40,6 +40,7 @@ export function PLProvider({ children }: { children: React.ReactNode }) {
 // Hook facade — fonde i due context specializzati
 // useMemo stabilizza il riferimento dell'oggetto risultante
 // ===================================================
+// eslint-disable-next-line react-refresh/only-export-components
 export function usePL(): PLContextType {
   const profile = useProfile();
   const quizData = useQuizData();

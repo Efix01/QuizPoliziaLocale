@@ -11,14 +11,17 @@ export function useQuizTimer(durataMinuti: number, onExpired: () => void) {
     const [isActive, setIsActive] = useState(durataMinuti > 0);
 
     useEffect(() => {
-        // Se il timer non è attivo o ha raggiunto zero, non avviare intervalli
-        if (!isActive || secondiRimasti <= 0) {
-            if (secondiRimasti === 0 && isActive) {
-                onExpired();
+        // Se il timer ha raggiunto zero mentre è attivo, completalo asincronamente
+        if (secondiRimasti <= 0 && isActive) {
+            const timeoutId = setTimeout(() => {
                 setIsActive(false);
-            }
-            return;
+                onExpired();
+            }, 0);
+            return () => clearTimeout(timeoutId);
         }
+
+        // Se non è attivo o già scaduto, non fare nulla
+        if (!isActive || secondiRimasti <= 0) return;
 
         const id = setInterval(() => {
             setSecondiRimasti(s => {

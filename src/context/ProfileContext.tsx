@@ -13,7 +13,7 @@ const ProfileContext = createContext<ProfileContextType | null>(null);
 
 export function ProfileProvider({ children }: { children: React.ReactNode }) {
   const { user } = useAuth(); // Recuperiamo l'utente per la sync
-  const [profilo, setProfiloState] = useState<ProfiloPL | null>(null);
+  const [profilo, setProfiloState] = useState<ProfiloPL | null>(() => profileStorage.load() || null);
 
   // Stabile — nessuna dipendenza esterna
   const setProfilo = useCallback(
@@ -26,12 +26,6 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
     },
     []
   );
-
-  // Boot da storage — la validazione Zod è già interna a profileStorage.load()
-  useEffect(() => {
-    const data = profileStorage.load();
-    if (data) setProfiloState(data);
-  }, []);
 
   // 2. Punto di estensione per sincronizzazione Firestore futura
   // Si attiva ogni volta che il profilo o l'utente cambiano
@@ -55,6 +49,7 @@ export function ProfileProvider({ children }: { children: React.ReactNode }) {
   );
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useProfile() {
   const context = useContext(ProfileContext);
   if (!context) throw new Error('useProfile deve essere usato dentro ProfileProvider');

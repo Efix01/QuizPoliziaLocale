@@ -12,7 +12,7 @@
     min-height: 100dvh;
     display: flex;
     flex-direction: column;
-    background: radial-gradient(ellipse at top, #1E293B, #0F172A);
+    background: radial-gradient(ellipse at top, #1e293b, #0f172a);
     color: white;
     padding-bottom: calc(var(--bottom-nav-height) + var(--safe-area-bottom));
 }
@@ -308,7 +308,7 @@
 /* Force dark gray for skipped instead of light gray */
 .q-dot.stat-skipped {
     background: #374151 !important;
-    color: #9CA3AF !important;
+    color: #64748b !important;
 }
 
 /* ─────────────────────────────────────────────
@@ -420,7 +420,7 @@
 }
 
 .stat-skipped {
-    color: #9CA3AF;
+    color: #64748b;
 }
 
 .stat-label-small {

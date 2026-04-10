@@ -157,8 +157,8 @@ export default function CaricaQuiz() {
       setStats({ nuovi, duplicati, errori });
       setStatus(errori > 0 && nuovi === 0 ? 'error' : 'completed');
       addLog(`Fatto! Nuovi: ${nuovi} | Duplicati: ${duplicati} | Errori: ${errori}`);
-    } catch (err: any) {
-      addLog(`ERRORE FATALE: ${err.message}`, 'error');
+    } catch (err) {
+      addLog(`ERRORE FATALE: ${err instanceof Error ? err.message : 'Sconosciuto'}`, 'error');
       setStatus('error');
     }
   };

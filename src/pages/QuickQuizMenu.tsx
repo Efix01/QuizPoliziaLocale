@@ -32,8 +32,12 @@ const QuickQuizMenu = () => {
                 navigate('/study', { state: { domande, mode: 'errori' } });
             }
         } else {
-            setAnimazioneSaluto(true);
-            setTimeout(() => setAnimazioneSaluto(false), 2000);
+            const t1 = setTimeout(() => setAnimazioneSaluto(true), 0);
+            const t2 = setTimeout(() => setAnimazioneSaluto(false), 2000);
+            return () => {
+                clearTimeout(t1);
+                clearTimeout(t2);
+            };
         }
     }, [searchParams, erroriLog, generaQuizId, navigate]);
 

@@ -9,7 +9,7 @@ import { useProgress } from '../context/ProgressContext';
 // Import rimosso per build pulita
 import { 
     LogOut, Trash2, ChevronRight, Info, FileText, 
-    Award, Target, TrendingUp, Zap
+    Award, Target, TrendingUp, Zap, Settings
 } from 'lucide-react';
 
 const Profile: React.FC = () => {
@@ -72,43 +72,41 @@ const Profile: React.FC = () => {
 
                 {/* User Card */}
                 <div style={{
-                    background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)',
+                    background: '#1e293b',
                     border: '1px solid #334155',
-                    borderRadius: '24px',
-                    padding: '2.5rem',
+                    borderRadius: '20px',
+                    padding: '2rem',
                     display: 'flex',
-                    flexDirection: 'column',
                     alignItems: 'center',
                     gap: '1.5rem',
-                    textAlign: 'center',
-                    boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.2)',
                 }}>
                     <div style={{
-                        width: '100px',
-                        height: '100px',
-                        background: 'linear-gradient(135deg, #3b82f6 0%, #a855f7 100%)',
+                        width: '80px',
+                        height: '80px',
+                        background: '#0f172a',
+                        border: '2px solid #3b82f6',
                         borderRadius: '50%',
                         display: 'flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        fontSize: '2rem',
+                        fontSize: '1.75rem',
                         fontWeight: '800',
-                        color: '#fff',
-                        boxShadow: '0 0 20px rgba(59, 130, 246, 0.3)',
+                        color: '#3b82f6',
                         overflow: 'hidden',
+                        flexShrink: 0
                     }}>
                         {isAuthenticated && user?.photoURL ? (
                             <img src={user.photoURL} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                         ) : initials}
                     </div>
                     
-                    <div>
-                        <h2 style={{ fontSize: '1.5rem', fontWeight: '800', margin: '0 0 0.25rem 0' }}>
+                    <div style={{ flex: 1 }}>
+                        <h2 style={{ fontSize: '1.5rem', fontWeight: '800', margin: '0 0 0.25rem 0', color: '#f8fafc' }}>
                             {isAuthenticated ? (user?.displayName || 'Agente Scelto') : 'Ospite'}
                         </h2>
-                        <span style={{ color: '#94a3b8', fontSize: '1rem', fontWeight: '500' }}>
-                            {isAuthenticated ? user?.email : 'Non registrato'}
-                        </span>
+                        <div style={{ color: '#94a3b8', fontSize: '0.95rem' }}>
+                            {isAuthenticated ? user?.email : 'Account non registrato'}
+                        </div>
                     </div>
 
                     {!isAuthenticated && (
@@ -118,16 +116,16 @@ const Profile: React.FC = () => {
                                 background: '#3b82f6',
                                 color: '#fff',
                                 border: 'none',
-                                padding: '0.75rem 2rem',
+                                padding: '0.75rem 1.5rem',
                                 borderRadius: '12px',
                                 fontWeight: '700',
                                 cursor: 'pointer',
-                                transition: 'transform 0.2s',
+                                transition: 'background 0.2s',
                             }}
-                            onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
-                            onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                            onMouseOver={(e) => e.currentTarget.style.background = '#2563eb'}
+                            onMouseOut={(e) => e.currentTarget.style.background = '#3b82f6'}
                         >
-                            Accedi o Registrati
+                            Accedi
                         </button>
                     )}
                 </div>
@@ -181,20 +179,27 @@ const Profile: React.FC = () => {
                 {/* Account & Information */}
                 {[
                     {
-                        label: 'ACCOUNT',
+                        label: 'PREFERENZE STUDIO',
                         visible: isAuthenticated,
                         items: [
-                            { label: 'Esci dall\'app', icon: LogOut, action: () => setShowLogoutModal(true), color: '#94a3b8' },
-                            { label: 'Elimina account', icon: Trash2, action: () => setShowDeleteModal(true), color: '#ef4444' },
+                            { label: 'Impostazioni Materie e Concorso', icon: Settings, action: () => navigate('/settings'), color: undefined }
                         ]
                     },
                     {
                         label: 'INFORMAZIONI',
                         visible: true,
                         items: [
-                            { label: 'Chi Siamo', icon: Info, action: () => navigate('/chi-siamo') },
-                            { label: 'Privacy Policy', icon: FileText, action: () => navigate('/privacy') },
-                            { label: 'Termini di Servizio', icon: FileText, action: () => navigate('/terms') },
+                            { label: 'Chi Siamo', icon: Info, action: () => navigate('/chi-siamo'), color: undefined },
+                            { label: 'Privacy Policy', icon: FileText, action: () => navigate('/privacy'), color: undefined },
+                            { label: 'Termini di Servizio', icon: FileText, action: () => navigate('/terms'), color: undefined },
+                        ]
+                    },
+                    {
+                        label: 'ACCOUNT E SICUREZZA',
+                        visible: isAuthenticated,
+                        items: [
+                            { label: 'Esci dall\'app', icon: LogOut, action: () => setShowLogoutModal(true), color: '#94a3b8' },
+                            { label: 'Elimina account', icon: Trash2, action: () => setShowDeleteModal(true), color: '#ef4444' },
                         ]
                     }
                 ].filter(s => s.visible).map((section, idx) => (
@@ -222,8 +227,8 @@ const Profile: React.FC = () => {
                                     onMouseOver={(e) => e.currentTarget.style.background = 'rgba(255,255,255,0.03)'}
                                     onMouseOut={(e) => e.currentTarget.style.background = 'transparent'}
                                 >
-                                    <item.icon size={20} color={(item as any).color || '#3b82f6'} style={{ marginRight: '1rem' }} />
-                                    <span style={{ flex: 1, fontWeight: '600', color: (item as any).color === '#ef4444' ? '#ef4444' : '#cbd5e1' }}>
+                                    <item.icon size={20} color={item.color || '#3b82f6'} style={{ marginRight: '1rem' }} />
+                                    <span style={{ flex: 1, fontWeight: '600', color: item.color === '#ef4444' ? '#ef4444' : '#cbd5e1' }}>
                                         {item.label}
                                     </span>
                                     <ChevronRight size={18} color="#475569" />
@@ -235,19 +240,25 @@ const Profile: React.FC = () => {
 
                 {/* Promise Card */}
                 <div style={{
-                    background: 'rgba(59, 130, 246, 0.05)',
-                    border: '1px dashed #3b82f6',
-                    borderRadius: '24px',
-                    padding: '2rem',
-                    textAlign: 'center',
+                    background: '#1e293b',
+                    border: '1px solid #334155',
+                    borderRadius: '16px',
+                    padding: '1.5rem',
+                    textAlign: 'left',
                     marginTop: '1rem',
+                    display: 'flex',
+                    alignItems: 'flex-start',
+                    gap: '1rem'
                 }}>
-                    <div style={{ fontSize: '2rem', marginBottom: '1rem' }}>🍀</div>
-                    <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#f8fafc', marginBottom: '0.75rem' }}>Fiducia e Impegno</h3>
-                    <p style={{ color: '#94a3b8', fontSize: '0.95rem', lineHeight: 1.6, margin: 0 }}>
-                        Il nostro database è in continua espansione. Mi impegno a implementare nuove
-                        <strong style={{ color: '#3b82f6' }}> Pillole di Studio</strong> e <strong style={{ color: '#3b82f6' }}>Quiz</strong> con cadenza settimanale per massimizzare la tua preparazione.
-                    </p>
+                    <div style={{ color: '#3b82f6', marginTop: '0.25rem' }}>
+                        <Target size={24} />
+                    </div>
+                    <div>
+                        <h3 style={{ fontSize: '1rem', fontWeight: '700', color: '#f8fafc', margin: '0 0 0.5rem 0' }}>Sempre Aggiornato</h3>
+                        <p style={{ color: '#94a3b8', fontSize: '0.9rem', lineHeight: 1.5, margin: 0 }}>
+                            Il database viene costantemente espanso con nuove normative e quiz. Il nostro impegno è fornire la migliore preparazione possibile per il tuo esame.
+                        </p>
+                    </div>
                 </div>
 
                 {/* Modals */}

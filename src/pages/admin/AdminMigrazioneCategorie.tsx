@@ -95,8 +95,8 @@ export default function AdminMigrazioneCategorie() {
 
       setPreview(items);
       setPreviewing(true);
-    } catch (e: any) {
-      setErrore(`Errore analisi: ${e.message}`);
+    } catch (e) {
+      setErrore(`Errore analisi: ${e instanceof Error ? e.message : 'Sconosciuto'}`);
     } finally {
       setLoading(false);
     }
@@ -123,8 +123,8 @@ export default function AdminMigrazioneCategorie() {
         await batch.commit();
       }
       setDone(true);
-    } catch (e: any) {
-      setErrore(`Errore applicazione: ${e.message}`);
+    } catch (e) {
+      setErrore(`Errore applicazione: ${e instanceof Error ? e.message : 'Sconosciuto'}`);
     } finally {
       setApplying(false);
     }

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { ShieldCheck, Mail, Lock, Eye, EyeOff, ArrowRight, CheckCircle, AlertCircle } from 'lucide-react';
 import { loginUserSchema } from '../types/auth'; 
+import Footer from '../components/Footer';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -52,9 +53,10 @@ const Login = () => {
       setTimeout(() => {
         navigate('/dashboard');
       }, 1000);
-    } catch (err: any) {
+    } catch (err) {
       console.error('Errore Google login:', err);
-      setError(err.message || 'Errore durante l\'accesso con Google.');
+      const errorMsg = err instanceof Error ? err.message : 'Errore durante l\'accesso con Google.';
+      setError(errorMsg);
       setIsLoading(false);
     }
   };
@@ -331,6 +333,8 @@ const Login = () => {
           Protocollato • Tutti i dati sono criptati e sicuri
         </div>
       </div>
+
+      <Footer />
 
       {/* CSS Animation & Hover */}
       <style dangerouslySetInnerHTML={{ __html: `

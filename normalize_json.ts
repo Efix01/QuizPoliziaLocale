@@ -1,14 +1,13 @@
 
 import { DomandaPLSchema } from './src/types/pl';
 import fs from 'fs';
-import { z } from 'zod';
 
 const data = JSON.parse(fs.readFileSync('./src/data/domandecore.json', 'utf8'));
 const domande = data.domande;
 
 console.log(`Normalizzazione di ${domande.length} domande...`);
 
-const domandeNormalizzate = domande.map((q, index) => {
+const domandeNormalizzate = domande.map((q) => {
   // Pulizia e normalizzazione forzata
   return {
     ...q,

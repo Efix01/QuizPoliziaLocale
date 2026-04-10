@@ -11,11 +11,6 @@ export default function Dashboard() {
   const { profilo, domandeCore, domandeRegionali, domandeComunali } = usePL();
   const { progressiGlobali, erroriLog, srsData } = useProgress();
 
-  if (!progressiGlobali) return null;
-
-  const { mediaPercentuale, streak, perCategoria } = progressiGlobali;
-  const erroriCount = Object.keys(erroriLog || {}).length;
-
   const srsCount = useMemo(() => {
     if (!srsData) return 0;
     const now = new Date();
@@ -36,22 +31,22 @@ export default function Dashboard() {
     return map;
   }, [domandeCore, domandeRegionali, domandeComunali]);
 
-  const getLayerFromCategoria = (catId: string): 'core' | 'regionale' | 'comunale' => {
-    // 1. Prova con prefissi (veloce per nuovi dati)
-    if (catId.startsWith('reg_')) return 'regionale';
-    if (catId.startsWith('com_')) return 'comunale';
-    
-    // 2. Cerca nella mappa costruita dalle domande caricate (robusto per legacy)
-    const layer = categoriaDomandeMap.get(catId);
-    if (layer) return layer;
-    
-    // 3. Fallback core
-    return 'core';
-  };
-
   // --- Calcolo Statistiche per Layer (memoizzato) ---
   const statsByLayer = useMemo(() => {
-    return Object.entries(perCategoria || {}).reduce(
+    const getLayerFromCategoria = (catId: string): 'core' | 'regionale' | 'comunale' => {
+      // 1. Prova con prefissi (veloce per nuovi dati)
+      if (catId.startsWith('reg_')) return 'regionale';
+      if (catId.startsWith('com_')) return 'comunale';
+      
+      // 2. Cerca nella mappa costruita dalle domande caricate (robusto per legacy)
+      const layer = categoriaDomandeMap.get(catId);
+      if (layer) return layer;
+      
+      // 3. Fallback core
+      return 'core';
+    };
+
+    return Object.entries(progressiGlobali?.perCategoria || {}).reduce(
       (acc, [catId, stats]) => {
         const layer = getLayerFromCategoria(catId);
         acc[layer].fatte += stats.fatte;
@@ -64,7 +59,12 @@ export default function Dashboard() {
         comunale: { fatte: 0, corrette: 0 },
       }
     );
-  }, [perCategoria, categoriaDomandeMap]);
+  }, [progressiGlobali?.perCategoria, categoriaDomandeMap]);
+
+  if (!progressiGlobali) return null;
+
+  const { mediaPercentuale, streak } = progressiGlobali;
+  const erroriCount = Object.keys(erroriLog || {}).length;
 
   const pctCore = statsByLayer.core.fatte > 0 
     ? Math.round((statsByLayer.core.corrette / statsByLayer.core.fatte) * 100) 
@@ -122,7 +122,7 @@ export default function Dashboard() {
         </header>
 
         {/* Card Statistiche Principali */}
-        <section style={{ background: '#1e293b', borderRadius: '24px', padding: '2rem', border: '1px solid #334155', boxShadow: '0 10px 15px -3px rgba(0, 0, 0, 0.2)' }}>
+        <section style={{ background: '#1e293b', borderRadius: '24px', padding: '2rem', border: '1px solid #334155', boxShadow: '0 4px 20px rgba(0, 0, 0, 0.03)' }}>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '3rem', alignItems: 'center' }}>
             
             {/* Prontezza Globale */}

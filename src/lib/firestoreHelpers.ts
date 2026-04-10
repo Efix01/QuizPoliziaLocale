@@ -1,9 +1,9 @@
-import { writeBatch, type DocumentReference } from 'firebase/firestore';
+import { writeBatch, type DocumentReference, type WriteBatch } from 'firebase/firestore';
 import { db } from './firebase';
 
 export type FirestoreOperation = 
-  | { type: 'set'; ref: DocumentReference; data: any; options?: { merge: boolean } }
-  | { type: 'update'; ref: DocumentReference; data: any }
+  | { type: 'set'; ref: DocumentReference; data: Record<string, unknown>; options?: { merge: boolean } }
+  | { type: 'update'; ref: DocumentReference; data: Record<string, unknown> }
   | { type: 'delete'; ref: DocumentReference };
 
 /**
@@ -12,7 +12,7 @@ export type FirestoreOperation =
  * Supporta sia il formato array di funzioni che l'array di oggetti operazione.
  */
 export async function commitInChunks(
-  operations: FirestoreOperation[] | Array<(batch: any) => void>,
+  operations: FirestoreOperation[] | Array<(batch: WriteBatch) => void>,
   chunkSize = 450
 ): Promise<void> {
   if (operations.length === 0) return;

@@ -34,15 +34,15 @@ export default function ReviewSession() {
     if (isMistakes) {
       if (!erroriLog) return [];
       return Object.entries(erroriLog)
-        .filter(([_, log]) => log && log.count > 0)
-        .sort(([_, a], [__, b]) => b.count - a.count) 
+        .filter(([, log]) => log && log.count > 0)
+        .sort(([, a], [, b]) => b.count - a.count) 
         .map(([id]) => id);
     } else if (isSrs) {
       if (!srsData) return [];
       const now = new Date();
       return Object.entries(srsData)
-        .filter(([_, log]) => log && new Date(log.nextReview) <= now)
-        .sort(([_, a], [__, b]) => new Date(a.nextReview).getTime() - new Date(b.nextReview).getTime())
+        .filter(([, log]) => log && new Date(log.nextReview) <= now)
+        .sort(([, a], [, b]) => new Date(a.nextReview).getTime() - new Date(b.nextReview).getTime())
         .map(([id]) => id);
     } else {
       return progressiGlobali?.domandeSalvate || [];

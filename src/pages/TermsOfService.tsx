@@ -1,63 +1,75 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowLeft, AlertCircle } from 'lucide-react';
+import { ArrowLeft, AlertCircle, CheckCircle } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 const TermsOfService: React.FC = () => {
     const navigate = useNavigate();
 
     return (
-        <div style={{ minHeight: '100vh', background: '#0f172a', color: '#cbd5e1', padding: '2rem 1rem' }}>
-            <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+        <div style={{ minHeight: '100vh', background: '#0f172a', color: '#f8fafc', padding: '2rem 1rem' }}>
+            <div style={{ maxWidth: '700px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '3rem' }}>
                 
-                <header style={{ marginBottom: '3rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <header style={{ display: 'flex', alignItems: 'center', gap: '1rem', paddingTop: '2rem' }}>
                     <button 
                         onClick={() => navigate(-1)} 
-                        style={{ background: '#1e293b', border: '1px solid #334155', color: '#fff', padding: '0.6rem', borderRadius: '12px', cursor: 'pointer' }}
+                        style={{ background: 'transparent', border: '1px solid #334155', color: '#cbd5e1', padding: '0.6rem', borderRadius: '12px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem' }}
                     >
-                        <ArrowLeft size={20} />
+                        <ArrowLeft size={18} /> Torna indietro
                     </button>
-                    <h1 style={{ fontSize: '1.5rem', fontWeight: '800', color: '#fff', margin: 0 }}>Termini di Servizio</h1>
                 </header>
 
-                <main style={{ display: 'flex', flexDirection: 'column', gap: '2.5rem' }}>
-                    <section>
-                        <h1 style={{ fontSize: '2rem', fontWeight: '900', color: '#3b82f6', marginBottom: '0.5rem' }}>QUIZ POLIZIA LOCALE</h1>
-                        <p style={{ color: '#64748b', fontSize: '0.9rem' }}>Ultimo aggiornamento: 04.04.2026</p>
-                        <p style={{ fontSize: '1.1rem', lineHeight: 1.6, color: '#f8fafc', marginTop: '1.5rem' }}>
-                            Benvenuto in "Quiz Polizia Locale". Ti preghiamo di leggere attentamente i presenti Termini di Servizio prima di utilizzare l'applicazione.
+                <section style={{ textAlign: 'left' }}>
+                    <motion.div 
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}
+                    >
+                        <h1 style={{ fontSize: '3rem', fontWeight: '900', color: '#f8fafc', lineHeight: 1.1, letterSpacing: '-0.03em', margin: 0 }}>
+                            Termini di Servizio
+                        </h1>
+                        <p style={{ fontSize: '1.1rem', color: '#94a3b8', margin: 0 }}>
+                            Ultimo aggiornamento: 04.04.2026
                         </p>
-                    </section>
+                    </motion.div>
+                </section>
 
-                    <div style={{ padding: '1.5rem', background: 'rgba(245, 158, 11, 0.05)', border: '1px solid rgba(245, 158, 11, 0.2)', borderRadius: '16px', display: 'flex', gap: '1rem' }}>
-                        <AlertCircle color="#f59e0b" style={{ flexShrink: 0 }} />
-                        <p style={{ margin: 0, fontSize: '0.95rem', color: '#d97706', lineHeight: 1.5 }}>
-                            <strong>DISCLAIMER:</strong> I contenuti sono forniti a scopo puramente didattico. L'uso dell'app non garantisce il superamento del concorso e non sostituisce lo studio sui testi ufficiali.
-                        </p>
-                    </div>
+                <div style={{ padding: '1.5rem', background: '#fef3c7', border: '1px solid #fde68a', borderRadius: '16px', display: 'flex', gap: '1rem', alignItems: 'flex-start' }}>
+                    <AlertCircle color="#d97706" size={24} style={{ flexShrink: 0, marginTop: '0.1rem' }} />
+                    <p style={{ margin: 0, fontSize: '0.95rem', color: '#b45309', lineHeight: 1.6 }}>
+                        <strong style={{ display: 'block', marginBottom: '0.25rem', fontSize: '1rem' }}>Disclaimer Importante</strong>
+                        I contenuti di questa applicazione sono forniti a scopo puramente didattico. L'uso dell'app non garantisce il superamento del concorso e non sostituisce in alcun modo lo studio accurato sui testi ufficiali e sulle normative vigenti.
+                    </p>
+                </div>
 
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
                     {[
-                        { title: '1. Il Servizio', content: 'Quiz Polizia Locale è una piattaforma web indipendente dedicata alla preparazione tecnica per i concorsi pubblici negli Enti Locali. Forniamo simulazioni, quiz tematici e strumenti di monitoraggio.' },
-                        { title: '2. Accettazione', content: 'Utilizzando il Servizio, dichiari di avere almeno 18 anni e di aver letto integralmente la nostra Privacy Policy.' },
-                        { title: '3. Proprietà Intellettuale', content: 'Tutti i contenuti (testi, loghi, banca dati dei quiz) sono di proprietà esclusiva di Quiz Polizia Locale e sono protetti dalle leggi sul diritto d\'autore. È vietata la riproduzione o lo scraping dei dati.' },
-                        { title: '4. Limitazione di Responsabilità', content: 'Il Proprietario non è responsabile per eventuali inesattezze nei quiz o per esiti negativi nelle prove concorsuali. L\'utente è tenuto a verificare la validità delle risposte nei testi di legge vigenti.' },
+                        { title: '1. Il Servizio', content: 'Quiz Polizia Locale è una piattaforma web indipendente dedicata alla preparazione tecnica per i concorsi pubblici negli Enti Locali. Forniamo simulazioni, quiz tematici e strumenti di monitoraggio delle prestazioni.' },
+                        { title: '2. Accettazione', content: 'Utilizzando il Servizio, dichiari di aver letto e compreso i presenti Termini e la nostra Privacy Policy, accettandoli integralmente.' },
+                        { title: '3. Proprietà Intellettuale', content: 'La struttura dell\'app, il codice sorgente e il database dei quiz elaborato sono di proprietà esclusiva di Quiz Polizia Locale. È severamente vietato lo scraping o l\'esportazione automatizzata dei dati per riutilizzo non autorizzato.' },
+                        { title: '4. Limitazione di Responsabilità', content: 'Nonostante l\'impegno nel mantenere aggiornato il database, l\'autore non è responsabile per eventuali inesattezze nei quiz, refusi, o per esiti negativi nelle prove concorsuali. L\'utente è l\'unico responsabile della verifica delle risposte.' },
                     ].map((s, i) => (
-                        <section key={i} style={{ background: '#1e293b', padding: '2rem', borderRadius: '24px', border: '1px solid #334155' }}>
-                            <h2 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#fff', marginBottom: '1rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                                <span style={{ color: '#3b82f6', opacity: 0.5 }}>#</span> {s.title}
-                            </h2>
-                            <p style={{ lineHeight: 1.7, margin: 0 }}>{s.content}</p>
-                        </section>
+                        <div key={i} style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '16px', padding: '2rem' }}>
+                            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                                <CheckCircle size={20} color="#3b82f6" />
+                                <h2 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#f8fafc', margin: 0 }}>
+                                    {s.title}
+                                </h2>
+                            </div>
+                            <p style={{ lineHeight: 1.7, color: '#cbd5e1', margin: 0 }}>{s.content}</p>
+                        </div>
                     ))}
+                </div>
 
-                    <section style={{ textAlign: 'center', paddingTop: '2rem', borderTop: '1px solid #334155' }}>
-                        <p style={{ color: '#64748b', fontSize: '0.9rem', marginBottom: '1.5rem' }}>
-                            Per domande o segnalazioni riguardo ai Termini:
-                        </p>
-                        <a href="mailto:efix01@gmail.com" style={{ color: '#3b82f6', fontWeight: '700', textDecoration: 'none', fontSize: '1.1rem' }}>
-                            efix01@gmail.com
-                        </a>
-                    </section>
-                </main>
+                <footer style={{ textAlign: 'center', paddingTop: '3rem', borderTop: '1px solid #334155', paddingBottom: '4rem' }}>
+                    <p style={{ color: '#94a3b8', fontSize: '1rem', marginBottom: '1rem' }}>
+                        Hai dubbi sui Termini di Servizio?
+                    </p>
+                    <a href="mailto:efix01@gmail.com" style={{ color: '#3b82f6', fontWeight: '700', textDecoration: 'none', fontSize: '1.15rem' }}>
+                        efix01@gmail.com
+                    </a>
+                </footer>
+
             </div>
         </div>
     );

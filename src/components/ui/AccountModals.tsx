@@ -153,8 +153,9 @@ export const DeleteAccountModal: React.FC<DeleteAccountModalProps> = ({ isOpen, 
                 navigate('/');
                 handleClose();
             }, 2500);
-        } catch (err: any) {
-            setError(err.message || 'Errore durante l\'eliminazione.');
+        } catch (err) {
+            const errorMsg = err instanceof Error ? err.message : 'Errore durante l\'eliminazione.';
+            setError(errorMsg);
             showToast('Errore durante l\'eliminazione', 'error');
         } finally {
             setIsLoading(false);

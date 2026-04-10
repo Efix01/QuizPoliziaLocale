@@ -16,7 +16,7 @@
     position: relative;
     overflow: hidden;
     padding: 24px;
-    background: radial-gradient(ellipse at top, #1E293B, #0F172A);
+    background: radial-gradient(ellipse at top, #1e293b, #0f172a);
     color: white;
 }
 
@@ -481,7 +481,7 @@
 }
 
 .submit-button:disabled {
-    background: #4B5563;
+    background: #cbd5e1;
     cursor: not-allowed;
     box-shadow: none;
 }

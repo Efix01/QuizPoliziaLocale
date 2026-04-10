@@ -26,11 +26,14 @@ export default function ProgressStats() {
     // Dati per grafici
     const chartData = useMemo(() => {
         return Object.entries(perCategoria)
-            .map(([id, stats]: [string, any]) => ({
-                name: id.toUpperCase().slice(0, 8),
-                score: Math.round((stats.corrette / (stats.fatte || 1)) * 100),
-                fatte: stats.fatte,
-            }))
+            .map(([id, stats]) => {
+                const s = stats as { corrette: number; fatte: number };
+                return {
+                    name: id.toUpperCase().slice(0, 8),
+                    score: Math.round((s.corrette / (s.fatte || 1)) * 100),
+                    fatte: s.fatte,
+                };
+            })
             .sort((a, b) => b.fatte - a.fatte) // Più fatte prima
             .slice(0, 8); // Top 8 categorie
     }, [perCategoria]);

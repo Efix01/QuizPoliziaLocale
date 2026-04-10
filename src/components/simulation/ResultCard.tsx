@@ -80,7 +80,7 @@ export const ResultCard: React.FC<ResultCardProps> = ({
                 )}
 
                 <div style={{ marginTop: '1rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                    <button className="btn-submit" onClick={onReviewClick} style={{ backgroundColor: 'var(--oro-sardegna)', color: '#ffffff' }}>
+                    <button className="btn-submit" onClick={onReviewClick} style={{ backgroundColor: 'var(--oro-sardegna)', color: '#1e293b' }}>
                         <Eye size={18} style={{ marginRight: 8, verticalAlign: 'middle' }} /> Rivedi Risposte (Correzione)
                     </button>
                     <button className="btn-submit" onClick={onRetryClick}>

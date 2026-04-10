@@ -30,7 +30,7 @@ export default function Layout() {
       <nav style={{ 
         position: 'sticky', top: 0, zIndex: 50, 
         background: 'rgba(15, 23, 42, 0.85)', backdropFilter: 'blur(10px)', 
-        borderBottom: '1px solid #1e293b', padding: '0.75rem 1.5rem',
+        borderBottom: '1px solid #334155', padding: '0.75rem 1.5rem',
         display: 'flex', justifyContent: 'space-between', alignItems: 'center'
       }}>
         {/* Logo visivo */}
