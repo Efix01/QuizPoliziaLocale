@@ -1,10 +1,10 @@
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate, useNavigate, useLocation } from 'react-router-dom';
 import { useQuizSession } from '../hooks/useQuizSession';
 import { QuizView, ResultsView } from '../components/quiz';
 import { AlertTriangle } from 'lucide-react';
 import { useState } from 'react';
 
-export default function StudyMode() {
+function StudyModeComponent() {
   const navigate = useNavigate();
 
   const {
@@ -22,6 +22,7 @@ export default function StudyMode() {
     handleFeedback,
     progressPercentage,
     risultati,
+    risposteDate,
     isSimulationMode
   } = useQuizSession();
 
@@ -38,7 +39,24 @@ export default function StudyMode() {
       <ResultsView
         risultati={risultati}
         onRevisione={() => {
-          navigate('/dashboard');
+          if (!risposteDate || risposteDate.length !== sessionQuestions.length) {
+            navigate('/dashboard');
+            return;
+          }
+          const erroriSessione = sessionQuestions.filter((_, idx) => !risposteDate[idx]?.corretta);
+          
+          if (erroriSessione.length === 0) {
+            alert("Ottimo lavoro! Non ci sono errori da rivedere.");
+            navigate('/dashboard');
+            return;
+          }
+          
+          navigate('/study', {
+            state: {
+              domande: erroriSessione,
+              mode: 'review_session' // eviterà il modale della simulazione
+            }
+          });
         }}
         onNuovoQuiz={() => {
           navigate('/quiz-builder');
@@ -95,4 +113,9 @@ export default function StudyMode() {
       onAbandon={() => navigate('/dashboard')}
     />
   );
+}
+
+export default function StudyMode() {
+  const location = useLocation();
+  return <StudyModeComponent key={location.key} />;
 }

@@ -317,6 +317,7 @@ export const useQuizSession = () => {
 
     // 🆕 Risultati e modalità
     risultati,
+    risposteDate,
     isSimulationMode,
     sessionMode: validState?.mode ?? 'free',
   };
