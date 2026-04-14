@@ -7,7 +7,7 @@ import { MapPin, BrainCircuit, Target, Timer, Flame, AlertCircle, TrendingUp, Bo
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const { user } = useAuth();
+  const { user, isAdmin } = useAuth();
   const { profilo, domandeCore, domandeRegionali, domandeComunali } = usePL();
   const { progressiGlobali, erroriLog, srsData } = useProgress();
 

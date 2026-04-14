@@ -10,6 +10,8 @@ import type { CategoriaId } from '../../types/pl';
 const mapCategoria = (cat: string): CategoriaId => {
   const c = (cat || '').toLowerCase().trim();
   
+  if (c === 'logica') return 'logica';
+  
   // Categorie NAZIONALI — check specifici e precisi
   if (c === 'cds' || c.includes('codice della strada') || c.includes('codice stradale')) return 'cds';
   if (c === 'penale' || c.includes('diritto penale') || c.includes('proc. penale') || c.includes('procedura penale') || c.includes('cpp') || c.includes('c.p.p') || c.includes('sequestro') || c.includes('arresto') || c.includes('reato')) return 'penale';
@@ -31,10 +33,11 @@ const mapCategoria = (cat: string): CategoriaId => {
 const stripPrefix = (s: string) => s.replace(/^[A-D][.)]\s*/i, '').trim();
 
 // "D" | "d" | 3 → 0..3
-const letteraToIndex = (v: string | number): number => {
+const letteraToIndex = (v: string | number | undefined): number => {
+  if (v === undefined || v === null) return 0;
   if (typeof v === 'number') return Math.max(0, Math.min(3, v));
   const map: Record<string, number> = { A: 0, B: 1, C: 2, D: 3 };
-  return map[v.trim().toUpperCase()] ?? 0;
+  return map[String(v).trim().toUpperCase()] ?? 0;
 };
 
 // ================================================
@@ -117,8 +120,13 @@ export default function CaricaQuiz() {
         }
 
         const opzioniPulite = item.opzioni.slice(0, 4).map(stripPrefix);
-        const risposta = letteraToIndex(item.corretta);
-        const catId = mapCategoria(item.categoria || '');
+        
+        // Supporto per JSON "pure" generati programmaticamente
+        const correttaRaw = (item.corretta !== undefined) ? item.corretta : (item as any).rispostaCorretta;
+        const risposta = letteraToIndex(correttaRaw);
+        
+        const catDaAnalizzare = item.categoria || (item as any).categoriaId || '';
+        const catId = mapCategoria(catDaAnalizzare);
 
         const docId = id ? `CORE-${id}` : `CORE-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
         const tipoOperazione = modalitaAggiornamento ? 'UPDATE' : 'NEW_IMPORT';

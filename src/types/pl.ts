@@ -10,7 +10,7 @@ export type { ParametriEsame } from './common';
 export const CategoriaIdSchema = z.enum([
   'cds', 'tuel', 'l241', 'l689', 'penale',
   'reg_generale', 'com_generale',
-  'costituzionale', 'amministrativo', 'enti_locali'
+  'costituzionale', 'amministrativo', 'enti_locali', 'logica'
 ]);
 export type CategoriaId = z.infer<typeof CategoriaIdSchema>;
 
@@ -58,6 +58,10 @@ const BaseDomandaSchema = z.object({
   livelloDifficolta: z.union([z.literal(1), z.literal(2), z.literal(3)]),
   fonte: z.string().optional(),
   tags: z.array(z.string()).default([]),
+  layoutGrafico: z.object({
+    tipo: z.enum(['cubi', 'torta', 'struttura', 'griglia', 'vassoio']),
+    dati: z.any(),
+  }).optional(),
 });
 
 export const DomandaPLSchema = z.discriminatedUnion('strato', [

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { ArrowLeft, CheckCircle, XCircle, AlertTriangle, Star, Type, Maximize, Minimize, Landmark } from 'lucide-react';
 import type { DomandaPL } from '../../types/pl';
 import { useProgress } from '../../context/ProgressContext';
+import LogicRenderer from './graphics/LogicRenderer';
 
 interface QuizViewProps {
   currentQuestion: DomandaPL;
@@ -129,7 +130,11 @@ export default function QuizView({
             </div>
           </div>
 
-          <h2 style={{ fontSize: currentFontSize, lineHeight: '1.6', margin: 0, transition: 'font-size 0.2s ease' }}>{currentQuestion.testo}</h2>
+          <h2 style={{ fontSize: currentFontSize, lineHeight: '1.6', margin: 0, transition: 'font-size 0.2s ease', whiteSpace: 'pre-wrap' }}>{currentQuestion.testo}</h2>
+
+          {currentQuestion.layoutGrafico && (
+            <LogicRenderer layout={currentQuestion.layoutGrafico} />
+          )}
 
           {currentQuestion.fonte && (
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.4rem', marginTop: '1.5rem', color: '#64748b', fontSize: '0.85rem', fontWeight: 600 }}>
