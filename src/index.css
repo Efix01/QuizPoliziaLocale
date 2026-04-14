@@ -1,5 +1,5 @@
 /* ===================================================
-   Elite Polizia Locale — CSS Reset + Design System
+   Elite Polizia Locale — CSS Reset + Design System v2
    =================================================== */
 
 /* Reset base */
@@ -14,107 +14,118 @@
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background: #0f172a;
+  font-family: "Outfit", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #020617;
   color: #f8fafc;
   line-height: 1.6;
-  -webkit-font-smoothing: antialiased;
-}
-
-button,
-input,
-select,
-textarea {
-  font-family: inherit;
-  font-size: inherit;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-  background: none;
+  overflow-x: hidden;
 }
 
 /* ===================================================
-   Variabili Elite (opzionali — usate se serve)
+   Variabili Elite v2
    =================================================== */
 
 :root {
-  /* Colori primari */
-  --elite-blue: #3b82f6;
-  --elite-blue-dark: #2563eb;
-  --elite-blue-light: #60a5fa;
+  --elite-primary: #3b82f6;
+  --elite-primary-glow: rgba(59, 130, 246, 0.5);
+  --elite-accent: #6366f1;
+  --elite-success: #10b981;
+  --elite-warning: #f59e0b;
   
-  --elite-gold: #f59e0b;
-  --elite-gold-dark: #d97706;
-  --elite-gold-light: #fbbf24;
-
-  /* Background */
-  --bg-dark: #0f172a;
-  --bg-card: #1e293b;
-  --bg-card-hover: #334155;
-
-  /* Bordi */
-  --border-color: #334155;
-  --border-color-light: #475569;
-
-  /* Testo */
-  --text-primary: #f8fafc;
-  --text-secondary: #cbd5e1;
-  --text-muted: #94a3b8;
-  --text-dark: #64748b;
-
-  /* Status */
-  --success: #22c55e;
-  --success-dark: #16a34a;
-  --warning: #f59e0b;
-  --error: #ef4444;
-  --error-dark: #dc2626;
+  --bg-deep: #020617;
+  --bg-card: rgba(15, 23, 42, 0.7);
+  --border-elite: rgba(51, 65, 85, 0.5);
+  
+  --glass-bg: rgba(15, 23, 42, 0.8);
+  --glass-border: rgba(255, 255, 255, 0.1);
 }
 
 /* ===================================================
-   Utility classes (se servono in componenti legacy)
+   Utility Classes Premium
    =================================================== */
 
-.text-center {
-  text-align: center;
+.glass-header {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--glass-border);
 }
 
-.flex {
-  display: flex;
+.glass-card {
+  background: var(--bg-card);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border-elite);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  transition: all 0.3s ease;
 }
 
-.flex-col {
-  flex-direction: column;
+.glass-card:hover {
+  border-color: var(--elite-primary);
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.2);
+  transform: translateY(-4px);
 }
 
-.items-center {
-  align-items: center;
+.text-gradient {
+  background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.justify-center {
-  justify-content: center;
+.text-gradient-primary {
+  background: linear-gradient(135deg, #60a5fa 0%, #6366f1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
-.gap-1 { gap: 0.25rem; }
-.gap-2 { gap: 0.5rem; }
-.gap-3 { gap: 0.75rem; }
-.gap-4 { gap: 1rem; }
-
-.w-full {
-  width: 100%;
+.glow-blue {
+  filter: drop-shadow(0 0 10px var(--elite-primary-glow));
 }
 
-.hidden {
-  display: none;
+.btn-elite-primary {
+  background: linear-gradient(135deg, var(--elite-primary) 0%, var(--elite-accent) 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-/* ===================================================
-   Reset stili Framer Motion (se usato)
-   =================================================== */
+.btn-elite-primary:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px rgba(59, 130, 246, 0.6);
+}
+
+.btn-elite-outline {
+  background: transparent;
+  border: 1px solid var(--border-elite);
+  color: #f8fafc;
+  transition: all 0.3s ease;
+}
+
+.btn-elite-outline:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: #f8fafc;
+}
+
+/* Animazioni */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Supporto Tailwind center utilities */
+.text-center { text-align: center; }
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
 
 [data-framer-motion] {
   transform-origin: center;

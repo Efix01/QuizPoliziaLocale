@@ -15,11 +15,14 @@ import ProgressStats from './pages/ProgressStats';
 import StudyLibrary from './pages/StudyLibrary';
 import StudyManual from './pages/StudyManual';
 import ReviewSession from './pages/ReviewSession';
+import Profile from './pages/Profile';
+import Settings from './pages/Settings';
 import Layout from './components/Layout'; // IL NUOVO MENU
 
 import ChiSiamo from './pages/ChiSiamo';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
+import ForgotPassword from './pages/ForgotPassword';
 
 // Moduli ADMIN
 import AdminRoute from './components/admin/AdminRoute';
@@ -57,6 +60,7 @@ export default function App() {
       <Route path="/chi-siamo" element={<ChiSiamo />} />
       <Route path="/privacy" element={<PrivacyPolicy />} />
       <Route path="/terms" element={<TermsOfService />} />
+      <Route path="/forgot-password" element={<ForgotPassword />} />
 
       {/* Onboarding senza Menu */}
       <Route path="/onboarding" element={
@@ -71,6 +75,8 @@ export default function App() {
         <Route path="/progress" element={<ProgressStats />} /> 
         <Route path="/library" element={<StudyLibrary />} />
         <Route path="/manual/:categoryId" element={<StudyManual />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/settings" element={<Settings />} />
 
       </Route>
 

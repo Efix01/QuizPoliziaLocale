@@ -1,5 +1,5 @@
 import { Outlet, useNavigate, useLocation } from 'react-router-dom';
-import { Home, BrainCircuit, BarChart3, LogOut, BookOpen } from 'lucide-react';
+import { Home, BrainCircuit, BarChart3, LogOut, BookOpen, User } from 'lucide-react';
 import { getAuth, signOut } from 'firebase/auth';
 
 export default function Layout() {
@@ -21,6 +21,7 @@ export default function Layout() {
     { path: '/quiz-builder', label: 'Quiz', icon: BrainCircuit },
     { path: '/progress', label: 'Statistiche', icon: BarChart3 },
     { path: '/library', label: 'Libreria', icon: BookOpen },
+    { path: '/profile', label: 'Profilo', icon: User },
   ];
 
   return (
@@ -34,14 +35,13 @@ export default function Layout() {
         display: 'flex', justifyContent: 'space-between', alignItems: 'center'
       }}>
         {/* Logo visivo */}
-        <div 
-          onClick={() => navigate('/dashboard')} 
-          style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: 'bold', fontSize: '1.2rem', color: '#f8fafc', cursor: 'pointer' }}
+        <div
+          onClick={() => navigate('/dashboard')}
+          style={{ cursor: 'pointer', transition: 'opacity 0.2s, transform 0.2s' }}
+          onMouseOver={e => { e.currentTarget.style.opacity = '0.85'; e.currentTarget.style.transform = 'scale(1.03)'; }}
+          onMouseOut={e => { e.currentTarget.style.opacity = '1'; e.currentTarget.style.transform = 'scale(1)'; }}
         >
-          <div style={{ background: '#3b82f6', color: 'white', padding: '0.4rem', borderRadius: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <span style={{ fontSize: '1rem', lineHeight: 1 }}>PL</span>
-          </div>
-          <span className="hide-on-mobile">Quiz Polizia Locale</span>
+          <img src="/logo_quiz_pol_locale.png" alt="Quiz Polizia Locale" style={{ height: '44px', objectFit: 'contain', display: 'block' }} />
         </div>
 
         {/* Link di navigazione */}

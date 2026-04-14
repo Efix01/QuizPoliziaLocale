@@ -18,7 +18,7 @@ export interface AuthContextType {
     register: (email: string, password: string, displayName: string) => Promise<void>;
     loginWithGoogle: () => Promise<void>;
     logout: () => Promise<void>;
-    deleteAccount: () => Promise<void>;
+    deleteAccount: (password?: string) => Promise<void>;
     clearError: () => void;
 }
 

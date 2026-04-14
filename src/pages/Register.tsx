@@ -129,9 +129,10 @@ const Register = () => {
   };
 
   return (
-    <div style={{ minHeight: '100vh', background: '#0f172a', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '2rem 1rem', overflowY: 'auto' }}>
+    <div style={{ minHeight: '100vh', background: '#0f172a', display: 'flex', flexDirection: 'column' }}>
+      <main style={{ flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '5rem 1.5rem 3rem', position: 'relative', overflow: 'hidden' }}>
       {/* Sfondo decorativo */}
-      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', overflow: 'hidden', zIndex: 0 }}>
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', overflow: 'hidden', zIndex: 0, pointerEvents: 'none' }}>
         <div style={{ position: 'absolute', top: '-30%', right: '-10%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%)', borderRadius: '50%' }} />
         <div style={{ position: 'absolute', bottom: '-20%', left: '-20%', width: '450px', height: '450px', background: 'radial-gradient(circle, rgba(59, 130, 246, 0.05) 0%, transparent 70%)', borderRadius: '50%' }} />
       </div>
@@ -155,19 +156,7 @@ const Register = () => {
           
           {/* Header */}
           <div style={{ textAlign: 'center', marginBottom: '2.5rem' }}>
-            <div style={{ 
-              display: 'inline-flex',
-              alignItems: 'center', 
-              justifyContent: 'center',
-              width: '72px', 
-              height: '72px', 
-              background: 'linear-gradient(135deg, #22c55e 0%, #16a34a 100%)',
-              borderRadius: '20px',
-              marginBottom: '1.5rem',
-              boxShadow: '0 10px 20px -5px rgba(34, 197, 94, 0.4)'
-            }}>
-              <User size={36} color="#fff" />
-            </div>
+            <img src="/logo_quiz_pol_locale.png" alt="Quiz Polizia Locale" style={{ height: '72px', objectFit: 'contain', marginBottom: '1.25rem' }} />
             
             <h1 style={{ fontSize: '2rem', fontWeight: '800', margin: '0 0 0.5rem 0', color: '#f8fafc', letterSpacing: '-0.02em' }}>
               Crea il tuo account
@@ -274,6 +263,10 @@ const Register = () => {
                   disabled={isLoading}
                 />
               </div>
+              <p style={{ marginTop: '0.5rem', fontSize: '0.78rem', color: '#64748b', display: 'flex', alignItems: 'center', gap: '0.4rem' }}>
+                <span style={{ color: '#f59e0b' }}>⚠</span>
+                Usa un'email personale (Gmail, ecc.). Le email istituzionali potrebbero non ricevere le notifiche.
+              </p>
             </div>
 
             {/* Password */}
@@ -411,6 +404,7 @@ const Register = () => {
           I tuoi dati sono protetti • Criptazione end-to-end
         </div>
       </div>
+      </main>
 
       <Footer />
 

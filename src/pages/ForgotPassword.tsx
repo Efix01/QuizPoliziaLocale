@@ -2,17 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Mail, ArrowLeft, KeyRound, MailCheck, AlertCircle } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-
-// Mock schema per compatibilità (normalmente importato da context/AuthProvider)
-const ForgotPasswordSchema = {
-    safeParse: (data: { email: string }) => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(data.email)) {
-            return { success: false, error: { issues: [{ message: 'Email non valida' }] } };
-        }
-        return { success: true };
-    }
-};
+import { getAuth, sendPasswordResetEmail } from 'firebase/auth';
 
 const ForgotPassword: React.FC = () => {
     const [email, setEmail] = useState('');
@@ -32,33 +22,51 @@ const ForgotPassword: React.FC = () => {
     }, [resendTimer]);
 
     const validateEmail = (emailValue: string): boolean => {
-        const result = ForgotPasswordSchema.safeParse({ email: emailValue });
-        if (!result.success) {
-            setEmailError(result.error?.issues[0]?.message || 'Email non valida');
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(emailValue)) {
+            setEmailError('Email non valida');
             return false;
         }
         setEmailError(null);
         return true;
     };
 
-    const handleSubmit = async (e: React.FormEvent) => {
-        e.preventDefault();
-        setGlobalError(null);
-
-        if (!validateEmail(email)) return;
-
+    const sendReset = async () => {
+        if (!validateEmail(email)) return false;
         setIsSubmitting(true);
+        setGlobalError(null);
         try {
-            // Simulazione invio (Sostituire con logica Auth reale se necessario)
-            await new Promise(resolve => setTimeout(resolve, 1500));
+            const auth = getAuth();
+            await sendPasswordResetEmail(auth, email);
             setIsSuccess(true);
             setResendTimer(60);
+            return true;
         } catch (error) {
-            const errorMsg = error instanceof Error ? error.message : 'Errore durante l\'invio. Riprova.';
-            setGlobalError(errorMsg);
+            const err = error as { code?: string };
+            if (err.code === 'auth/user-not-found') {
+                setGlobalError('Nessun account trovato con questa email.');
+            } else if (err.code === 'auth/invalid-email') {
+                setEmailError('Email non valida');
+            } else if (err.code === 'auth/too-many-requests') {
+                setGlobalError('Troppe richieste. Riprova tra qualche minuto.');
+            } else {
+                setGlobalError('Errore durante l\'invio. Riprova.');
+            }
+            return false;
         } finally {
             setIsSubmitting(false);
         }
+    };
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        await sendReset();
+    };
+
+    const handleResend = async () => {
+        if (resendTimer > 0) return;
+        setIsSuccess(false);
+        await sendReset();
     };
 
     const handleEmailChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -191,7 +199,7 @@ const ForgotPassword: React.FC = () => {
                                         {resendTimer > 0 ? (
                                             <span style={{ fontWeight: '700', color: '#3b82f6' }}> riprova tra {resendTimer}s</span>
                                         ) : (
-                                            <button onClick={handleSubmit} style={{ background: 'transparent', border: 'none', padding: 0, color: '#3b82f6', fontWeight: '800', cursor: 'pointer', textDecoration: 'underline' }}> invia di nuovo</button>
+                                            <button onClick={handleResend} style={{ background: 'transparent', border: 'none', padding: 0, color: '#3b82f6', fontWeight: '800', cursor: 'pointer', textDecoration: 'underline' }}> invia di nuovo</button>
                                         )}
                                     </p>
                                 </div>

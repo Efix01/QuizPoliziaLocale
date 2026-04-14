@@ -10,7 +10,11 @@ import {
     signOut, 
     onAuthStateChanged,
     updateProfile,
-    deleteUser
+    deleteUser,
+    reauthenticateWithCredential,
+    EmailAuthProvider,
+    reauthenticateWithPopup,
+    GoogleAuthProvider
 } from 'firebase/auth';
 
 // Schema di validazione Zod
@@ -122,22 +126,45 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         }
     };
 
-    // Firebase Account Deletion
-    const deleteAccount = async () => {
+    // Firebase Account Deletion con gestione re-autenticazione
+    const deleteAccount = async (password?: string) => {
         setError(null);
         setLoading(true);
         try {
             const currentUser = auth.currentUser;
-            if (currentUser) {
+            if (!currentUser) throw new Error('Nessun utente loggato.');
+
+            // Tenta eliminazione diretta
+            try {
                 await deleteUser(currentUser);
-                setUser(null);
-                localStorage.clear(); // Cleanup completo
+            } catch (firstErr) {
+                // Se Firebase richiede ri-autenticazione
+                if ((firstErr as {code?: string}).code === 'auth/requires-recent-login') {
+                    const providerId = currentUser.providerData[0]?.providerId;
+
+                    if (providerId === 'google.com') {
+                        // Ri-autentica con Google
+                        await reauthenticateWithPopup(currentUser, new GoogleAuthProvider());
+                    } else if (password) {
+                        // Ri-autentica con email+password fornita
+                        const credential = EmailAuthProvider.credential(currentUser.email!, password);
+                        await reauthenticateWithCredential(currentUser, credential);
+                    } else {
+                        throw new Error('Per motivi di sicurezza devi inserire la password per eliminare l\'account.');
+                    }
+                    // Secondo tentativo dopo ri-autenticazione
+                    await deleteUser(currentUser);
+                } else {
+                    throw firstErr;
+                }
             }
+
+            setUser(null);
+            localStorage.clear();
         } catch (err) {
-            console.error("Delete account err:", err);
-            const errorMsg = err instanceof Error ? err.message : "Errore durante l'eliminazione. Potrebbe essere necessario ri-effettuare il login per motivi di sicurezza.";
+            const errorMsg = err instanceof Error ? err.message : "Errore durante l'eliminazione.";
             setError(errorMsg);
-            throw err; // Rilancio per gestirlo nel modal
+            throw err;
         } finally {
             setLoading(false);
         }

@@ -4,7 +4,6 @@ import Toggle from '../components/ui/Toggle';
 import { LogoutModal, DeleteAccountModal } from '../components/ui/AccountModals';
 import { useToast } from '../context/ToastContext';
 import { useAuth } from '../context/AuthContext';
-import { useNotifications } from '../context/NotificationContext';
 import { useProgress } from '../context/ProgressContext';
 // Import rimosso per build pulita
 import { 
@@ -15,9 +14,9 @@ import {
 const Profile: React.FC = () => {
     const { showToast } = useToast();
     const { user, isAuthenticated } = useAuth();
-    const { notificationsEnabled, setNotificationsEnabled } = useNotifications();
     const { progressiGlobali } = useProgress();
     const navigate = useNavigate();
+    const [notificationsEnabled, setNotificationsEnabled] = useState(false);
 
     // Materie Nazionali Core
     const materieNazionali = useMemo(() => ['cds', 'tuel', 'l241', 'l689', 'penale'], []);
@@ -27,7 +26,7 @@ const Profile: React.FC = () => {
         const pg = progressiGlobali;
         if (!pg) return { level: 1, xp: 0, totalAnswered: 0, correctCount: 0, currentStreak: 0, accuracy: 0 };
 
-        const { perCategoria } = pg;
+        const perCategoria = pg.perCategoria || {};
         const totalAnsweredCore = materieNazionali.reduce((sum, id) => sum + (perCategoria[id]?.fatte ?? 0), 0);
         const correctCountCore = materieNazionali.reduce((sum, id) => sum + (perCategoria[id]?.corrette ?? 0), 0);
 
