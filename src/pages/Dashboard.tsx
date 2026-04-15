@@ -1,16 +1,13 @@
-import { useMemo, useEffect } from 'react';
+import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { usePL } from '../context/PLContext';
-import { db } from '../lib/firebase';
-import { collection, query, where, getDocs } from 'firebase/firestore';
-import { DomandaPLSchema } from '../types/pl';
 import { useProgress } from '../context/ProgressContext';
 import { MapPin, BrainCircuit, Target, Timer, Flame, AlertCircle, TrendingUp, BookOpen, Star, Brain } from 'lucide-react';
 
 export default function Dashboard() {
   const navigate = useNavigate();
-  const { user, isAdmin } = useAuth();
+  const { user } = useAuth();
   const { profilo, domandeCore, domandeRegionali, domandeComunali } = usePL();
   const { progressiGlobali, erroriLog, srsData } = useProgress();
 

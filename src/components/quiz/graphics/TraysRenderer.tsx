@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 // Esempio dato ingresso vassoio:
 // [ { 'pizza': 2, 'hotdog': 1 }, { 'pizza': 1, 'bibita': 3 } ]

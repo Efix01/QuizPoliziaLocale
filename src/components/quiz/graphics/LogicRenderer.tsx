@@ -1,4 +1,4 @@
-import React from 'react';
+
 import IsometricCubes from './IsometricCubes';
 import PieChartRenderer from './PieChartRenderer';
 import TraysRenderer from './TraysRenderer';
