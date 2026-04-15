@@ -98,6 +98,7 @@ export default function Dashboard() {
   const getColor = (pct: number) => pct >= 75 ? '#22c55e' : pct >= 50 ? '#f59e0b' : '#ef4444';
 
   const totDomandeFatte = statsByLayer.core.fatte + statsByLayer.regionale.fatte + statsByLayer.comunale.fatte;
+  const totDomandeDisponibili = (domandeCore?.length || 0) + (domandeRegionali?.length || 0) + (domandeComunali?.length || 0);
 
   return (
     <div style={{ minHeight: '100vh', background: '#0f172a', color: '#f8fafc', padding: '2rem 1rem' }}>
@@ -180,7 +181,7 @@ export default function Dashboard() {
           <div style={{ display: 'flex', justifyContent: 'space-around', marginTop: '2.5rem', paddingTop: '1.5rem', borderTop: '1px solid #334155' }}>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <BookOpen size={20} color="#3b82f6" />
-              <span>Domande: <strong>{totDomandeFatte}</strong></span>
+              <span>Biblioteca: <strong>{totDomandeFatte} su {totDomandeDisponibili}</strong></span>
             </div>
             <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <TrendingUp size={20} color="#22c55e" />
