@@ -83,12 +83,29 @@ export function QuizDataProvider({ children }: { children: React.ReactNode }) {
         if (!snapshot.empty) {
           // ✅ Firestore ha dati: li usa
           const raw = snapshot.docs.map(doc => doc.data());
-          const result = ArrayDomandeSchema.safeParse(raw);
-          if (result.success) {
-            setDomandeCore(result.data);
+          // 🛡️ Filtro resiliente: se un quiz su 1000 ha un difetto, scarta solo lui e salva gli altri!
+          const validDomande: DomandaPL[] = [];
+          const brokenDomande: any[] = [];
+          
+          for (const doc of raw) {
+            const result = DomandaPLSchema.safeParse(doc);
+            if (result.success) {
+              validDomande.push(result.data);
+            } else {
+              brokenDomande.push({ id: doc.id, error: result.error.issues });
+            }
+          }
+
+          if (brokenDomande.length > 0) {
+            console.error(`⚠️ Trovati ${brokenDomande.length} quiz malformati su Firebase:`, brokenDomande.slice(0, 3));
+          }
+
+          if (validDomande.length > 0) {
+            // ✅ Usa i quiz che hanno superato il test
+            setDomandeCore(validDomande);
             return;
           }
-          console.warn('Firestore dati non validi, fallback a JSON locale');
+          console.warn('Tutti i dati su Firebase sono non validi, fallback a JSON locale');
         }
 
         // 📦 Fallback: carica dal JSON locale

@@ -1,7 +1,10 @@
-import { useMemo } from 'react';
+import { useMemo, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { usePL } from '../context/PLContext';
+import { db } from '../lib/firebase';
+import { collection, query, where, getDocs } from 'firebase/firestore';
+import { DomandaPLSchema } from '../types/pl';
 import { useProgress } from '../context/ProgressContext';
 import { MapPin, BrainCircuit, Target, Timer, Flame, AlertCircle, TrendingUp, BookOpen, Star, Brain } from 'lucide-react';
 
