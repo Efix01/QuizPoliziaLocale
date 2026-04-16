@@ -219,7 +219,11 @@ export default function Dashboard() {
             
             {/* Quiz Builder */}
             <div 
+              role="button"
+              tabIndex={0}
               onClick={() => navigate('/quiz-builder')}
+              onKeyDown={(e) => e.key === 'Enter' && navigate('/quiz-builder')}
+              aria-label="Vai al Quiz Personalizzato"
               style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '20px', padding: '2rem', cursor: 'pointer', transition: 'transform 0.2s', display: 'flex', flexDirection: 'column', gap: '1rem' }}
               onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
               onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
@@ -233,7 +237,11 @@ export default function Dashboard() {
 
             {/* Simulazione Esame */}
             <div 
+              role="button"
+              tabIndex={0}
               onClick={() => navigate('/simulation')}
+              onKeyDown={(e) => e.key === 'Enter' && navigate('/simulation')}
+              aria-label="Vai alla Simulazione Esame"
               style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '20px', padding: '2rem', cursor: 'pointer', transition: 'transform 0.2s', display: 'flex', flexDirection: 'column', gap: '1rem' }}
               onMouseOver={(e) => e.currentTarget.style.transform = 'translateY(-5px)'}
               onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
@@ -247,7 +255,12 @@ export default function Dashboard() {
 
             {/* Ripasso Intelligente SRS */}
             <div 
+              role="button"
+              tabIndex={srsCount > 0 ? 0 : -1}
               onClick={() => srsCount > 0 ? navigate('/srs') : null}
+              onKeyDown={(e) => e.key === 'Enter' && srsCount > 0 && navigate('/srs')}
+              aria-label={srsCount > 0 ? `Addestramento Sniper — ${srsCount} domande da ripassare` : 'Addestramento Sniper — nessuna domanda in scadenza'}
+              aria-disabled={srsCount === 0}
               style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '20px', padding: '2rem', cursor: srsCount > 0 ? 'pointer' : 'default', opacity: srsCount > 0 ? 1 : 0.6, transition: 'transform 0.2s', display: 'flex', flexDirection: 'column', gap: '1rem', position: 'relative', overflow: 'hidden' }}
               onMouseOver={(e) => srsCount > 0 && (e.currentTarget.style.transform = 'translateY(-5px)')}
               onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
@@ -270,7 +283,12 @@ export default function Dashboard() {
 
             {/* Ripasso Errori */}
             <div 
+              role="button"
+              tabIndex={erroriCount > 0 ? 0 : -1}
               onClick={() => erroriCount > 0 ? navigate('/mistakes') : null}
+              onKeyDown={(e) => e.key === 'Enter' && erroriCount > 0 && navigate('/mistakes')}
+              aria-label={erroriCount > 0 ? `Ripasso Errori — ${erroriCount} domande da rivedere` : 'Ripasso Errori — nessun errore'}
+              aria-disabled={erroriCount === 0}
               style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '20px', padding: '2rem', cursor: erroriCount > 0 ? 'pointer' : 'default', opacity: erroriCount > 0 ? 1 : 0.6, transition: 'transform 0.2s', display: 'flex', flexDirection: 'column', gap: '1rem' }}
               onMouseOver={(e) => erroriCount > 0 && (e.currentTarget.style.transform = 'translateY(-5px)')}
               onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}
@@ -288,7 +306,12 @@ export default function Dashboard() {
 
             {/* Domande Salvate */}
             <div 
+              role="button"
+              tabIndex={(progressiGlobali?.domandeSalvate?.length || 0) > 0 ? 0 : -1}
               onClick={() => (progressiGlobali?.domandeSalvate?.length || 0) > 0 ? navigate('/bookmarks') : null}
+              onKeyDown={(e) => e.key === 'Enter' && (progressiGlobali?.domandeSalvate?.length || 0) > 0 && navigate('/bookmarks')}
+              aria-label={`Domande Salvate — ${progressiGlobali?.domandeSalvate?.length || 0} segnalibri`}
+              aria-disabled={(progressiGlobali?.domandeSalvate?.length || 0) === 0}
               style={{ background: '#1e293b', border: '1px solid #334155', borderRadius: '20px', padding: '2rem', cursor: (progressiGlobali?.domandeSalvate?.length || 0) > 0 ? 'pointer' : 'default', opacity: (progressiGlobali?.domandeSalvate?.length || 0) > 0 ? 1 : 0.6, transition: 'transform 0.2s', display: 'flex', flexDirection: 'column', gap: '1rem' }}
               onMouseOver={(e) => (progressiGlobali?.domandeSalvate?.length || 0) > 0 && (e.currentTarget.style.transform = 'translateY(-5px)')}
               onMouseOut={(e) => e.currentTarget.style.transform = 'translateY(0)'}

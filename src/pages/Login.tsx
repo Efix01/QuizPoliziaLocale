@@ -4,6 +4,7 @@ import { useAuth } from '../context/AuthContext';
 import { Mail, Lock, Eye, EyeOff, ArrowRight, CheckCircle, AlertCircle } from 'lucide-react';
 import { loginUserSchema } from '../types/auth';
 import Footer from '../components/Footer';
+import './Login.css';
 
 const Login = () => {
   const navigate = useNavigate();
@@ -242,11 +243,6 @@ const Login = () => {
 
       <Footer />
 
-      <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .login-submit-btn:not(:disabled):hover { background: #2563eb !important; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(59,130,246,0.45) !important; }
-        .login-google-btn:not(:disabled):hover { background: #f8fafc !important; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.1); }
-      `}} />
     </div>
   );
 };

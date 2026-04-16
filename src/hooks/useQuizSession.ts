@@ -94,6 +94,7 @@ export const useQuizSession = () => {
 
   // Registro risposte
   const [risposteDate, setRisposteDate] = useState<RisultatoRisposta[]>([]);
+  const risposteRef = useRef<RisultatoRisposta[]>([]); // Ref parallelo per accesso sincrono
   const isSavingRef = useRef(false);
 
   // Tracking tempo
@@ -138,8 +139,11 @@ export const useQuizSession = () => {
       timestamp: new Date().toISOString(),
     };
 
+    // Aggiorna il ref sincrono PRIMA dello state
+    risposteRef.current = [...risposteRef.current, nuovoRisultato];
+
     if (currentIndex < sessionQuestions.length - 1) {
-      setRisposteDate(prev => [...prev, nuovoRisultato]);
+      setRisposteDate(risposteRef.current);
       setCurrentIndex(prev => prev + 1);
       setShowAnswer(false);
       setSelectedOption(null);
@@ -148,12 +152,9 @@ export const useQuizSession = () => {
     } else {
       isSavingRef.current = true;
 
-      let registroFinale: RisultatoRisposta[] = [];
-      setRisposteDate(prev => {
-        registroFinale = [...prev, nuovoRisultato];
-        return registroFinale;
-      });
-
+      // Usa il ref — garantito contenere tutti i risultati senza dipendere dallo state
+      const registroFinale = risposteRef.current;
+      setRisposteDate(registroFinale);
       setIsFinished(true);
 
       try {

@@ -684,3 +684,25 @@
 .login-toast-close:hover {
     color: white;
 }
+
+/* ─────────────────────────────────────────────
+   BUTTON HOVER INTERACTIONS
+   Queste regole sostituiscono il dangerouslySetInnerHTML rimosso da Login.tsx e Register.tsx
+   ───────────────────────────────────────────── */
+
+.login-submit-btn:not(:disabled):hover {
+    background: #2563eb !important;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(59, 130, 246, 0.45) !important;
+}
+
+.login-google-btn:not(:disabled):hover {
+    background: #f8fafc !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-register:not(:disabled):hover {
+    transform: translateY(-2px);
+    filter: brightness(1.1);
+}

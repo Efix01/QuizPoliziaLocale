@@ -35,3 +35,8 @@ batch_*.json
 new_quizzes.json
 update_quizzes.py
 extract_batch.py
+
+# Firebase Admin credentials — MAI committare nel repo!
+serviceAccountKey.json
+serviceAccountKey*.json
+*serviceAccount*.json

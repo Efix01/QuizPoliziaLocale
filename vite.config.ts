@@ -45,6 +45,12 @@ export default defineConfig({
           'vendor-ui': ['lucide-react', 'recharts', 'clsx'],
         }
       }
-    }
+    },
+    // Rimuove console.log e debugger in produzione (no information leak)
+    minify: 'esbuild',
+  },
+  esbuild: {
+    // Rimuove console.* e debugger dal bundle di produzione
+    drop: process.env.NODE_ENV === 'production' ? ['console', 'debugger'] : [],
   }
 })

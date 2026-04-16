@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import { Mail, Lock, User, Eye, EyeOff, ArrowRight, CheckCircle, AlertCircle, Building2, MapPin } from 'lucide-react';
+import { LoginSchema } from '../context/AuthProvider';
+import { Mail, Lock, User, Eye, EyeOff, ArrowRight, CheckCircle, AlertCircle, MapPin } from 'lucide-react';
 import Footer from '../components/Footer';
 
 interface FormData {
@@ -71,9 +72,10 @@ const Register = () => {
   };
 
   const validateForm = (): boolean => {
-    // Email validation
-    if (!formData.email.includes('@') || !formData.email.includes('.')) {
-      setError('Inserisci un indirizzo email valido');
+    // Email validation tramite Zod (SSOT)
+    const emailResult = LoginSchema.shape.email.safeParse(formData.email);
+    if (!emailResult.success) {
+      setError(emailResult.error.errors[0]?.message || 'Email non valida');
       return false;
     }
     
@@ -230,7 +232,7 @@ const Register = () => {
                   Cognome
                 </label>
                 <div style={{ position: 'relative' }}>
-                  <Building2 size={20} color="#64748b" style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)' }} />
+                  <User size={20} color="#64748b" style={{ position: 'absolute', left: '1rem', top: '50%', transform: 'translateY(-50%)' }} />
                   <input
                     id="lastName"
                     type="text"
@@ -408,16 +410,6 @@ const Register = () => {
 
       <Footer />
 
-      {/* CSS Animation */}
-      <style dangerouslySetInnerHTML={{ __html: `
-        @keyframes spin {
-          to { transform: rotate(360deg); }
-        }
-        .btn-register:hover {
-          transform: translateY(-2px);
-          filter: brightness(1.1);
-        }
-      `}} />
     </div>
   );
 };

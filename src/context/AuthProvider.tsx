@@ -20,7 +20,7 @@ import {
 // Schema di validazione Zod
 export const LoginSchema = z.object({
     email: z.string().email('Email non valida'),
-    password: z.string().min(6, 'La password deve avere almeno 6 caratteri')
+    password: z.string().min(8, 'La password deve avere almeno 8 caratteri')
 });
 
 export const RegisterSchema = LoginSchema.extend({
@@ -160,7 +160,9 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
             }
 
             setUser(null);
-            localStorage.clear();
+            // Rimuove solo le chiavi specifiche dell'app
+            const APP_KEYS = ['pl_progress_v2', 'pl_user_profile', 'quiz_pl_auth'];
+            APP_KEYS.forEach(key => localStorage.removeItem(key));
         } catch (err) {
             const errorMsg = err instanceof Error ? err.message : "Errore durante l'eliminazione.";
             setError(errorMsg);
@@ -188,16 +190,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
     return (
         <AuthContext.Provider value={value}>
-            {loading ? (
-                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', color: '#f8fafc' }}>
-                    <div style={{ textAlign: 'center' }}>
-                        <div style={{ width: '40px', height: '40px', border: '4px solid #f3f4f6', borderTop: '4px solid var(--oro-sardegna)', borderRadius: '50%', animation: 'spin 1s linear infinite', margin: '0 auto 1rem' }}></div>
-                        Verifica sessione...
-                    </div>
-                </div>
-            ) : (
-                children
-            )}
+            {children}
         </AuthContext.Provider>
     );
 };

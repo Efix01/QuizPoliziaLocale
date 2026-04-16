@@ -59,7 +59,7 @@ const BaseDomandaSchema = z.object({
   fonte: z.string().optional(),
   tags: z.array(z.string()).default([]),
   layoutGrafico: z.object({
-    tipo: z.enum(['cubi', 'torta', 'struttura', 'griglia', 'vassoio']),
+    tipo: z.enum(['cubi', 'torta', 'struttura', 'griglia', 'vassoio', 'ruota', 'poligoni', 'punto-mobile', 'matrice-raven']),
     dati: z.any(),
   }).optional(),
 });

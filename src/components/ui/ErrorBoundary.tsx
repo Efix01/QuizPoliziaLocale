@@ -25,9 +25,10 @@ class ErrorBoundary extends Component<Props, State> {
   }
 
   private handleReset = () => {
-    // Pulisci localStorage per risolvere conflitti dati legacy
-    localStorage.clear();
-    window.location.href = '/welcome';
+    // Rimuove solo le chiavi specifiche dell'app (non tutto il localStorage)
+    const APP_KEYS = ['pl_progress_v2', 'pl_user_profile', 'quiz_pl_auth'];
+    APP_KEYS.forEach(key => localStorage.removeItem(key));
+    window.location.href = '/';
   };
 
   private handleReload = () => {
