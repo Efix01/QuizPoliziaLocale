@@ -40,6 +40,7 @@ export const GlobalProgressSchema = z.object({
   mediaPercentuale: z.number().min(0).max(100).default(0),
 
   streak: z.number().nonnegative().default(0),
+  streakFreezeCount: z.number().nonnegative().default(0),
   livello: z.number().positive().default(1),
   xp: z.number().nonnegative().default(0),
   
@@ -50,7 +51,23 @@ export const GlobalProgressSchema = z.object({
   // Include anche regionali: "reg_lazio" -> { fatte: 15, corrette: 11 }
   perCategoria: z.record(z.string(), CategoriaStatsSchema),
 
+  // Record domandaId -> tempo medio speso in secondi
+  tempiRisposta: z.record(z.string(), z.number()).default({}),
+
   ultimoAccesso: z.string(),
+  domandeRisposteOggi: z.number().nonnegative().default(0),
+  ultimoGiornoStudio: z.string().optional(),
+  spiegazioniAiOggi: z.number().nonnegative().default(0),
+  isPremium: z.boolean().default(false),
+  sfidaOggiCompletata: z.boolean().default(false),
+  
+  // Storico delle risposte giornaliere raggruppate per categoria
+  storicoQuiz: z.array(z.object({
+    data: z.string(), // YYYY-MM-DD
+    risposteFatte: z.number().nonnegative(),
+    risposteCorrette: z.number().nonnegative(),
+    categoriaId: z.string(),
+  })).default([]),
 });
 export type GlobalProgress = z.infer<typeof GlobalProgressSchema>;
 
@@ -75,6 +92,8 @@ export const ErroreLogSchema = z.object({
   count: z.number().positive().default(1),
   lastError: isoDateString,
   indiceRispostaScelta: z.number().min(0).max(3),
+  livelloErrore: z.union([z.literal(1), z.literal(2), z.literal(3)]).default(1),
+  ultimoRipasso: isoDateString.optional(),
 });
 export type ErroreLog = z.infer<typeof ErroreLogSchema>;
 
@@ -90,6 +109,8 @@ export const RisultatoRispostaSchema = z.object({
   corretta: z.boolean(),
   indiceRispostaScelta: z.number().min(-1).max(3),
   timestamp: isoDateString,
+  srsDifficulty: z.enum(['difficile', 'medio', 'facile']).optional(),
+  tempoSpeso: z.number().optional(),
 });
 export type RisultatoRisposta = z.infer<typeof RisultatoRispostaSchema>;
 // ==========================================

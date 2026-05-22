@@ -2,7 +2,9 @@ import { useState, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useQuizPL } from '../hooks/useQuizPL';
 import { usePL } from '../context/PLContext';
-import { ArrowLeft, Zap, FolderTree, Layers, PlayCircle, AlertTriangle, Info, ShieldCheck } from 'lucide-react';
+import { useProgress } from '../context/ProgressContext';
+import PaywallModal from '../components/dashboard/PaywallModal';
+import { ArrowLeft, Zap, FolderTree, Layers, PlayCircle, AlertTriangle, Info, ShieldCheck, BrainCircuit, Lock } from 'lucide-react';
 
 // Nomi leggibili per i categoriaId interni
 const CATEGORIA_LABELS: Record<string, string> = {
@@ -21,12 +23,12 @@ const CATEGORIA_LABELS: Record<string, string> = {
 // ===================================================
 // Card opzione modalità
 // ===================================================
-const OptionCard = ({ icon: Icon, title, desc, active, onClick }: { icon: React.ElementType, title: string, desc?: string, active: boolean, onClick: () => void, id?: string }) => (
+const OptionCard = ({ icon: Icon, title, desc, active, onClick, locked }: { icon: React.ElementType, title: string, desc?: string, active: boolean, onClick: () => void, id?: string, locked?: boolean }) => (
   <div
     onClick={onClick}
     style={{
       background: active ? '#1e40af' : '#1e293b',
-      border: `2px solid ${active ? '#3b82f6' : '#334155'}`,
+      border: `2px solid ${active ? '#3b82f6' : (locked ? 'rgba(245, 158, 11, 0.3)' : '#334155')}`,
       borderRadius: '16px',
       padding: '1.5rem',
       cursor: 'pointer',
@@ -34,21 +36,24 @@ const OptionCard = ({ icon: Icon, title, desc, active, onClick }: { icon: React.
       display: 'flex',
       alignItems: 'center',
       gap: '1rem',
+      position: 'relative',
+      opacity: locked ? 0.85 : 1,
     }}
   >
     <div
       style={{
-        background: active ? '#3b82f6' : '#0f172a',
+        background: active ? '#3b82f6' : (locked ? 'rgba(245, 158, 11, 0.1)' : '#0f172a'),
         padding: '0.75rem',
         borderRadius: '12px',
         flexShrink: 0,
       }}
     >
-      <Icon color={active ? '#fff' : '#94a3b8'} size={24} />
+      <Icon color={active ? '#fff' : (locked ? '#f59e0b' : '#94a3b8')} size={24} />
     </div>
     <div style={{ flex: 1 }}>
-      <h4 style={{ margin: '0 0 0.25rem 0', fontSize: '1.1rem', color: active ? '#fff' : '#cbd5e1' }}>
+      <h4 style={{ margin: '0 0 0.25rem 0', fontSize: '1.1rem', color: active ? '#fff' : (locked ? '#fef3c7' : '#cbd5e1'), display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
         {title}
+        {locked && <Lock size={16} color="#f59e0b" style={{ flexShrink: 0 }} />}
       </h4>
       {desc && <h5 style={{ margin: 0, fontSize: '0.9rem', color: active ? '#bfdbfe' : '#64748b', fontWeight: 'normal' }}>{desc}</h5>}
     </div>
@@ -57,20 +62,35 @@ const OptionCard = ({ icon: Icon, title, desc, active, onClick }: { icon: React.
 
 export default function QuizBuilder() {
   const navigate = useNavigate();
-  const { generaQuizCategoria, generaQuizStrato, generaQuizVeloce, generaSimulazione, composizioneQuiz } = useQuizPL();
-  const { domandeCore, domandeRegionali, domandeComunali, tutteLeDomande } = usePL();
+  const { generaQuizCategoria, generaQuizStrato, generaQuizVeloce, generaSimulazione, generaQuizIntelligente, composizioneQuiz } = useQuizPL();
+  const { domandeCore, domandeRegionali, domandeComunali, tutteLeDomande, profilo } = usePL();
+  const { progressiGlobali } = useProgress();
+  const isPremium = progressiGlobali?.isPremium || false;
 
-  const [mode, setMode] = useState<'veloce' | 'categoria' | 'strato' | 'simulation_esame'>('veloce');
+  const [mode, setMode] = useState<'veloce' | 'categoria' | 'strato' | 'simulation_esame' | 'intelligent'>('veloce');
   const [selectedCategoria, setSelectedCategoria] = useState('');
   const [selectedStrato, setSelectedStrato] = useState<'core' | 'regionale' | 'comunale'>('core');
   const [numeroDomande, setNumeroDomande] = useState(20);
+  const [isPaywallOpen, setIsPaywallOpen] = useState(false);
+  const [antiAnxietyMode, setAntiAnxietyMode] = useState(false);
+  const [escludiLogica, setEscludiLogica] = useState(false);
+
+  const qtaDomandeEffettiva = useMemo(() => {
+    return mode === 'simulation_esame' ? (profilo?.parametriEsame?.numeroDomande || 100) : numeroDomande;
+  }, [mode, numeroDomande, profilo?.parametriEsame]);
 
   // ===================================================
   // Calcola pool disponibile per mode/categoria/strato
   // ===================================================
 
   const poolDisponibile = useMemo(() => {
-    if (mode === 'veloce' || mode === 'simulation_esame') return tutteLeDomande.length;
+    if (mode === 'veloce' || mode === 'intelligent') return tutteLeDomande.length;
+    
+    if (mode === 'simulation_esame') {
+      return escludiLogica 
+        ? tutteLeDomande.filter(d => d.categoriaId !== 'logica').length 
+        : tutteLeDomande.length;
+    }
     
     if (mode === 'categoria') {
       if (!selectedCategoria) return 0;
@@ -87,7 +107,7 @@ export default function QuizBuilder() {
     }
 
     return 0;
-  }, [mode, selectedCategoria, selectedStrato, tutteLeDomande, domandeCore, domandeRegionali, domandeComunali]);
+  }, [mode, selectedCategoria, selectedStrato, tutteLeDomande, domandeCore, domandeRegionali, domandeComunali, escludiLogica]);
 
   // ===================================================
   // Calcola categorie disponibili (per dropdown "Per Materia")
@@ -117,16 +137,17 @@ export default function QuizBuilder() {
   // ===================================================
 
   const previewProporzioni = useMemo(() => {
-    if (mode !== 'veloce') return null;
+    if (mode !== 'veloce' && mode !== 'simulation_esame') return null;
 
     const comp = composizioneQuiz ?? { percentualeCore: 70, percentualeRegionale: 25, percentualeComunale: 5 };
+    const n = qtaDomandeEffettiva;
 
-    const nCore = Math.round(numeroDomande * (comp.percentualeCore / 100));
-    const nRegionale = Math.round(numeroDomande * (comp.percentualeRegionale / 100));
-    const nComunale = Math.round(numeroDomande * (comp.percentualeComunale / 100));
+    const nCore = Math.round(n * (comp.percentualeCore / 100));
+    const nRegionale = Math.round(n * (comp.percentualeRegionale / 100));
+    const nComunale = Math.round(n * (comp.percentualeComunale / 100));
 
     return { nCore, nRegionale, nComunale };
-  }, [mode, numeroDomande, composizioneQuiz]);
+  }, [mode, qtaDomandeEffettiva, composizioneQuiz]);
 
   // ===================================================
   // Validazione e avvio
@@ -134,16 +155,23 @@ export default function QuizBuilder() {
 
   const handleStart = () => {
     // Validazione: numero domande > pool disponibile
-    if (numeroDomande > poolDisponibile) {
-      alert(`Hai selezionato ${numeroDomande} domande, ma solo ${poolDisponibile} sono disponibili. Riduci il numero o cambia i filtri.`);
+    if (qtaDomandeEffettiva > poolDisponibile) {
+      alert(`Hai selezionato ${qtaDomandeEffettiva} domande, ma solo ${poolDisponibile} sono disponibili. Riduci il numero o cambia i filtri.`);
+      return;
+    }
+
+    if (mode === 'strato' && !isPremium) {
+      setIsPaywallOpen(true);
       return;
     }
 
     let domande;
     if (mode === 'veloce') {
       domande = generaQuizVeloce(numeroDomande);
+    } else if (mode === 'intelligent') {
+      domande = generaQuizIntelligente(numeroDomande);
     } else if (mode === 'simulation_esame') {
-      domande = generaSimulazione();
+      domande = generaSimulazione(escludiLogica);
     } else if (mode === 'categoria') {
       if (!selectedCategoria) {
         alert('Seleziona una materia prima di iniziare.');
@@ -160,7 +188,14 @@ export default function QuizBuilder() {
     }
 
     navigate('/study', {
-      state: { domande, mode, categoriaId: selectedCategoria, strato: selectedStrato },
+      state: { 
+        domande, 
+        mode, 
+        categoriaId: selectedCategoria, 
+        strato: selectedStrato,
+        antiAnxietyMode: mode !== 'simulation_esame' && antiAnxietyMode,
+        escludiLogica: mode === 'simulation_esame' && escludiLogica
+      },
     });
   };
 
@@ -208,6 +243,14 @@ export default function QuizBuilder() {
               onClick={() => setMode('veloce')}
             />
             <OptionCard
+              id="intelligent"
+              icon={BrainCircuit}
+              title="Allenamento Intelligente"
+              desc="Ottimizza lo studio dando priorità a errori passati, materie deboli e domande lente."
+              active={mode === 'intelligent'}
+              onClick={() => setMode('intelligent')}
+            />
+            <OptionCard
               id="categoria"
               icon={FolderTree}
               title="Per Materia (Nazionale)"
@@ -221,9 +264,14 @@ export default function QuizBuilder() {
               title="Per Normativa Locale"
               desc="Studia solo le leggi Regionali o i regolamenti del tuo Comune."
               active={mode === 'strato'}
+              locked={!isPremium}
               onClick={() => {
-                setMode('strato');
-                setSelectedStrato(domandeRegionali.length > 0 ? 'regionale' : 'comunale');
+                if (!isPremium) {
+                  setIsPaywallOpen(true);
+                } else {
+                  setMode('strato');
+                  setSelectedStrato(domandeRegionali.length > 0 ? 'regionale' : 'comunale');
+                }
               }}
             />
             <OptionCard
@@ -373,13 +421,119 @@ export default function QuizBuilder() {
             </div>
           )}
 
+          {/* Modalità Anti-Ansia (Studio Calmo) Toggle */}
+          {mode !== 'simulation_esame' && (
+            <div
+              onClick={() => setAntiAnxietyMode(!antiAnxietyMode)}
+              style={{
+                marginTop: '1.5rem',
+                padding: '1.25rem',
+                background: antiAnxietyMode ? 'rgba(59, 130, 246, 0.1)' : '#0f172a',
+                border: `1.5px solid ${antiAnxietyMode ? '#3b82f6' : '#334155'}`,
+                borderRadius: '16px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '1rem',
+                transition: 'all 0.2s',
+              }}
+            >
+              <div style={{ flex: 1 }}>
+                <h4 style={{ margin: '0 0 0.25rem 0', fontSize: '1.05rem', color: '#f8fafc', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  🧘 Modalità Anti-Ansia (Studio Calmo)
+                </h4>
+                <p style={{ margin: 0, fontSize: '0.85rem', color: '#94a3b8', lineHeight: '1.4' }}>
+                  Nessun timer, feedback positivi incoraggianti, risultati protetti e privati che non influiscono sulle statistiche pubbliche.
+                </p>
+              </div>
+              <div
+                style={{
+                  width: '50px',
+                  height: '28px',
+                  background: antiAnxietyMode ? '#3b82f6' : '#475569',
+                  borderRadius: '99px',
+                  position: 'relative',
+                  transition: 'background-color 0.2s',
+                  flexShrink: 0,
+                }}
+              >
+                <div
+                  style={{
+                    width: '20px',
+                    height: '20px',
+                    background: '#fff',
+                    borderRadius: '50%',
+                    position: 'absolute',
+                    top: '4px',
+                    left: antiAnxietyMode ? '26px' : '4px',
+                    transition: 'left 0.2s',
+                  }}
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Esclusione Quiz Logica Toggle (visibile solo per simulazione) */}
+          {mode === 'simulation_esame' && (
+            <div
+              onClick={() => setEscludiLogica(!escludiLogica)}
+              style={{
+                marginTop: '1.5rem',
+                padding: '1.25rem',
+                background: escludiLogica ? 'rgba(59, 130, 246, 0.1)' : '#0f172a',
+                border: `1.5px solid ${escludiLogica ? '#3b82f6' : '#334155'}`,
+                borderRadius: '16px',
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'space-between',
+                gap: '1rem',
+                transition: 'all 0.2s',
+              }}
+            >
+              <div style={{ flex: 1 }}>
+                <h4 style={{ margin: '0 0 0.25rem 0', fontSize: '1.05rem', color: '#f8fafc', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                  ⚖️ Escludi quiz di logica e matematici
+                </h4>
+                <p style={{ margin: 0, fontSize: '0.85rem', color: '#94a3b8', lineHeight: '1.4' }}>
+                  Affronta la simulazione concentrandoti solo sulle materie giuridico-amministrative e quiz testuali.
+                </p>
+              </div>
+              <div
+                style={{
+                  width: '50px',
+                  height: '28px',
+                  background: escludiLogica ? '#3b82f6' : '#475569',
+                  borderRadius: '99px',
+                  position: 'relative',
+                  transition: 'background-color 0.2s',
+                  flexShrink: 0,
+                }}
+              >
+                <div
+                  style={{
+                    width: '20px',
+                    height: '20px',
+                    background: '#fff',
+                    borderRadius: '50%',
+                    position: 'absolute',
+                    top: '4px',
+                    left: escludiLogica ? '26px' : '4px',
+                    transition: 'left 0.2s',
+                  }}
+                />
+              </div>
+            </div>
+          )}
+
           {/* ✅ Indicatore domande disponibili */}
           <div
             style={{
               marginTop: '1.5rem',
               padding: '1rem',
-              background: (mode === 'categoria' && !selectedCategoria) ? '#1e293b' : (numeroDomande > poolDisponibile ? '#7f1d1d' : '#065f46'),
-              border: `1px solid ${(mode === 'categoria' && !selectedCategoria) ? '#3b82f6' : (numeroDomande > poolDisponibile ? '#991b1b' : '#047857')}`,
+              background: (mode === 'categoria' && !selectedCategoria) ? '#1e293b' : (qtaDomandeEffettiva > poolDisponibile ? '#7f1d1d' : '#065f46'),
+              border: `1px solid ${(mode === 'categoria' && !selectedCategoria) ? '#3b82f6' : (qtaDomandeEffettiva > poolDisponibile ? '#991b1b' : '#047857')}`,
               borderRadius: '12px',
               display: 'flex',
               alignItems: 'center',
@@ -388,20 +542,20 @@ export default function QuizBuilder() {
           >
             {(mode === 'categoria' && !selectedCategoria) ? (
               <Info size={20} color="#3b82f6" />
-            ) : numeroDomande > poolDisponibile ? (
+            ) : qtaDomandeEffettiva > poolDisponibile ? (
               <AlertTriangle size={20} color="#ef4444" />
             ) : (
               <Info size={20} color="#22c55e" />
             )}
             <div style={{ flex: 1 }}>
               <div style={{ fontWeight: '600', marginBottom: '0.25rem' }}>
-                {(mode === 'categoria' && !selectedCategoria) ? 'In attesa di selezione' : (numeroDomande > poolDisponibile ? '⚠️ Attenzione' : '✅ Pronto')}
+                {(mode === 'categoria' && !selectedCategoria) ? 'In attesa di selezione' : (qtaDomandeEffettiva > poolDisponibile ? '⚠️ Attenzione' : '✅ Pronto')}
               </div>
               <div style={{ fontSize: '0.9rem', opacity: 0.9 }}>
                 {(mode === 'categoria' && !selectedCategoria)
                   ? 'Seleziona una materia dal menu a tendina qui sopra per vedere le domande disponibili.'
-                  : numeroDomande > poolDisponibile
-                  ? `Hai selezionato ${numeroDomande} domande, ma solo ${poolDisponibile} sono disponibili. Riduci il numero.`
+                  : qtaDomandeEffettiva > poolDisponibile
+                  ? `Hai selezionato ${qtaDomandeEffettiva} domande, ma solo ${poolDisponibile} sono disponibili. Riduci il numero.`
                   : `${poolDisponibile} domande disponibili per i criteri scelti.`}
               </div>
             </div>
@@ -446,29 +600,29 @@ export default function QuizBuilder() {
         {/* CTA Avvio */}
         <button
           onClick={handleStart}
-          disabled={numeroDomande > poolDisponibile || (mode === 'categoria' && !selectedCategoria)}
+          disabled={qtaDomandeEffettiva > poolDisponibile || (mode === 'categoria' && !selectedCategoria)}
           style={{
             width: '100%',
-            background: (mode === 'categoria' && !selectedCategoria) ? '#334155' : numeroDomande > poolDisponibile ? '#64748b' : '#22c55e',
+            background: (mode === 'categoria' && !selectedCategoria) ? '#334155' : qtaDomandeEffettiva > poolDisponibile ? '#64748b' : '#22c55e',
             color: 'white',
             border: 'none',
             padding: '1.25rem',
             borderRadius: '16px',
             fontSize: '1.25rem',
             fontWeight: '800',
-            cursor: (numeroDomande > poolDisponibile || (mode === 'categoria' && !selectedCategoria)) ? 'not-allowed' : 'pointer',
+            cursor: (qtaDomandeEffettiva > poolDisponibile || (mode === 'categoria' && !selectedCategoria)) ? 'not-allowed' : 'pointer',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
             gap: '0.75rem',
-            boxShadow: (numeroDomande > poolDisponibile || (mode === 'categoria' && !selectedCategoria))
+            boxShadow: (qtaDomandeEffettiva > poolDisponibile || (mode === 'categoria' && !selectedCategoria))
               ? 'none'
               : '0 10px 15px -3px rgba(34, 197, 94, 0.3)',
             transition: 'transform 0.2s',
-            opacity: (numeroDomande > poolDisponibile || (mode === 'categoria' && !selectedCategoria)) ? 0.6 : 1,
+            opacity: (qtaDomandeEffettiva > poolDisponibile || (mode === 'categoria' && !selectedCategoria)) ? 0.6 : 1,
           }}
           onMouseOver={(e) => {
-            if (!(numeroDomande > poolDisponibile || (mode === 'categoria' && !selectedCategoria))) e.currentTarget.style.transform = 'translateY(-3px)';
+            if (!(qtaDomandeEffettiva > poolDisponibile || (mode === 'categoria' && !selectedCategoria))) e.currentTarget.style.transform = 'translateY(-3px)';
           }}
           onMouseOut={(e) => {
             e.currentTarget.style.transform = 'translateY(0)';
@@ -478,6 +632,8 @@ export default function QuizBuilder() {
           INIZIA IL QUIZ
         </button>
       </div>
+
+      <PaywallModal isOpen={isPaywallOpen} onClose={() => setIsPaywallOpen(false)} reason="locale" />
     </div>
   );
 }

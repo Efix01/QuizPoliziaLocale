@@ -75,7 +75,7 @@ const Register = () => {
     // Email validation tramite Zod (SSOT)
     const emailResult = LoginSchema.shape.email.safeParse(formData.email);
     if (!emailResult.success) {
-      setError(emailResult.error.errors[0]?.message || 'Email non valida');
+      setError(emailResult.error.issues[0]?.message || 'Email non valida');
       return false;
     }
     

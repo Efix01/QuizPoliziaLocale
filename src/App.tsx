@@ -17,12 +17,15 @@ import StudyManual from './pages/StudyManual';
 import ReviewSession from './pages/ReviewSession';
 import Profile from './pages/Profile';
 import Settings from './pages/Settings';
+import StudyPlan from './pages/StudyPlan';
+import Leaderboard from './pages/Leaderboard';
 import Layout from './components/Layout'; // IL NUOVO MENU
 
 import ChiSiamo from './pages/ChiSiamo';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsOfService from './pages/TermsOfService';
 import ForgotPassword from './pages/ForgotPassword';
+import ConcorsiMonitor from './pages/ConcorsiMonitor';
 
 // Moduli ADMIN
 import AdminRoute from './components/admin/AdminRoute';
@@ -61,6 +64,7 @@ export default function App() {
       <Route path="/privacy" element={<PrivacyPolicy />} />
       <Route path="/terms" element={<TermsOfService />} />
       <Route path="/forgot-password" element={<ForgotPassword />} />
+      <Route path="/concorsi" element={<ConcorsiMonitor />} />
 
       {/* Onboarding senza Menu */}
       <Route path="/onboarding" element={
@@ -75,26 +79,20 @@ export default function App() {
         <Route path="/progress" element={<ProgressStats />} /> 
         <Route path="/library" element={<StudyLibrary />} />
         <Route path="/manual/:categoryId" element={<StudyManual />} />
+        <Route path="/study-plan" element={<StudyPlan />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/settings" element={<Settings />} />
+        <Route path="/leaderboard" element={<Leaderboard />} />
+        <Route path="/simulation" element={<SimulationSession />} />
+        <Route path="/mistakes" element={<ReviewSession />} />
+        <Route path="/bookmarks" element={<ReviewSession />} />
+        <Route path="/srs" element={<ReviewSession />} />
 
       </Route>
 
       {/* === ROTTE PROTETTE SENZA MENU (Per non distrarre durante lo studio) === */}
       <Route path="/study" element={
         user && profilo?.regioneId ? <StudyMode /> : <Navigate to="/dashboard" replace />
-      } />
-      <Route path="/simulation" element={
-        user && profilo?.regioneId ? <SimulationSession /> : <Navigate to="/dashboard" replace />
-      } />
-      <Route path="/mistakes" element={
-        user && profilo?.regioneId ? <ReviewSession /> : <Navigate to="/dashboard" replace />
-      } />
-      <Route path="/bookmarks" element={
-        user && profilo?.regioneId ? <ReviewSession /> : <Navigate to="/dashboard" replace />
-      } />
-      <Route path="/srs" element={
-        user && profilo?.regioneId ? <ReviewSession /> : <Navigate to="/dashboard" replace />
       } />
 
       {/* === ROTTE ADMIN CYBORG (PROTETTE DA WHITELIST) === */}

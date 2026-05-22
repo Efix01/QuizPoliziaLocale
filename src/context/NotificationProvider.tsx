@@ -93,6 +93,85 @@ export const NotificationProvider: React.FC<{ children: ReactNode }> = ({ childr
             // First time user - set initial study time
             localStorage.setItem(STORAGE_KEYS.LAST_STUDY, now.toString());
         }
+
+        // 🆕 Notifiche Smart Contestuali
+        const smartTimeout = setTimeout(() => {
+            try {
+                // Notifica errori accumulati
+                const progressRaw = localStorage.getItem('pl_progress_v2');
+                if (progressRaw) {
+                    const progressData = JSON.parse(progressRaw);
+                    const erroriCount = progressData?.erroriLog ? Object.keys(progressData.erroriLog).length : 0;
+                    if (erroriCount > 3) {
+                        setNotifications(prev => {
+                            const hasRecentError = prev.some(n =>
+                                n.type === 'reminder' &&
+                                n.title === 'Errori da Correggere' &&
+                                (now - n.timestamp) < 24 * 60 * 60 * 1000
+                            );
+                            if (hasRecentError) return prev;
+                            const newNotif: StudyNotification = {
+                                id: `smart-errors-${now}`,
+                                type: 'reminder',
+                                title: 'Errori da Correggere',
+                                message: `Hai ${erroriCount} errori accumulati nell'archivio. Ripassali per consolidare la preparazione!`,
+                                icon: '🩹',
+                                timestamp: now,
+                            };
+                            return [newNotif, ...prev].slice(0, 10);
+                        });
+                    }
+                }
+
+                // Notifica streak attivo
+                const progressForStreak = localStorage.getItem('pl_progress_v2');
+                if (progressForStreak) {
+                    const data = JSON.parse(progressForStreak);
+                    const streak = data?.streak || 0;
+                    if (streak >= 3) {
+                        setNotifications(prev => {
+                            const hasRecentStreak = prev.some(n =>
+                                n.type === 'achievement' &&
+                                n.title === 'Streak Attivo' &&
+                                (now - n.timestamp) < 24 * 60 * 60 * 1000
+                            );
+                            if (hasRecentStreak) return prev;
+                            const newNotif: StudyNotification = {
+                                id: `smart-streak-${now}`,
+                                type: 'achievement',
+                                title: 'Streak Attivo',
+                                message: `Ottimo ritmo! Mantieni attivo lo streak di ${streak} giorni! Non fermarti ora.`,
+                                icon: '🔥',
+                                timestamp: now,
+                            };
+                            return [newNotif, ...prev].slice(0, 10);
+                        });
+                    }
+                }
+
+                // Notifica sorpresa periodica (1 volta a settimana)
+                const lastSurprise = localStorage.getItem('pl_last_surprise_notif');
+                const daysSinceSurprise = lastSurprise ? (now - parseInt(lastSurprise)) / (1000 * 60 * 60 * 24) : 999;
+                if (daysSinceSurprise >= 7) {
+                    localStorage.setItem('pl_last_surprise_notif', String(now));
+                    setNotifications(prev => {
+                        const newNotif: StudyNotification = {
+                            id: `smart-surprise-${now}`,
+                            type: 'reminder',
+                            title: 'Nuovi Quiz Disponibili',
+                            message: 'Nuove domande CDS aggiunte! Mettiti alla prova sulle novità del Codice della Strada.',
+                            icon: '🚗',
+                            timestamp: now,
+                        };
+                        return [newNotif, ...prev].slice(0, 10);
+                    });
+                }
+            } catch (e) {
+                console.warn('Errore nelle notifiche smart:', e);
+            }
+        }, 2000);
+
+        return () => clearTimeout(smartTimeout);
     }, [notificationsEnabled]);
 
     const addNotification = useCallback((notification: Omit<StudyNotification, 'id' | 'timestamp'>) => {

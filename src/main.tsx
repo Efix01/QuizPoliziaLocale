@@ -5,6 +5,7 @@ import { AuthProvider } from './context/AuthProvider';
 import { PLProvider } from './context/PLContext';
 import { ProgressProvider } from './context/ProgressContext';
 import { ToastProvider } from './context/ToastProvider';
+import { NotificationProvider } from './context/NotificationProvider';
 import ErrorBoundary from './components/ui/ErrorBoundary';
 import App from './App.tsx';
 import './index.css';
@@ -16,9 +17,11 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
         <AuthProvider>
           <PLProvider>
             <ProgressProvider>
-              <ToastProvider>
-                <App />
-              </ToastProvider>
+              <NotificationProvider>
+                <ToastProvider>
+                  <App />
+                </ToastProvider>
+              </NotificationProvider>
             </ProgressProvider>
           </PLProvider>
         </AuthProvider>

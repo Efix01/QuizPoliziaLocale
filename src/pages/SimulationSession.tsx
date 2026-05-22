@@ -3,23 +3,43 @@ import { useNavigate } from 'react-router-dom';
 import { useQuizPL } from '../hooks/useQuizPL';
 import type { DomandaPL } from '../types/pl';
 import { AlertTriangle, Clock, Target, PlayCircle, ArrowLeft } from 'lucide-react';
+import { useProgress } from '../context/ProgressContext';
+import PaywallModal from '../components/dashboard/PaywallModal';
 
 export default function SimulationSession() {
   const navigate = useNavigate();
   const { generaSimulazione, parametriEsame } = useQuizPL();
+  const { progressiGlobali } = useProgress();
   
+  const isPremium = progressiGlobali?.isPremium || false;
+  const countSimulazioni = Number(localStorage.getItem('simulazioni_completate') || '0');
+  const isLimitReached = !isPremium && countSimulazioni >= 3;
+
+  const [isPaywallOpen, setIsPaywallOpen] = useState(isLimitReached);
   const [domandeDisponibili, setDomandeDisponibili] = useState<DomandaPL[]>([]);
+  const [escludiLogica, setEscludiLogica] = useState(false);
+
+  useEffect(() => {
+    if (isLimitReached) {
+      setIsPaywallOpen(true);
+    }
+  }, [isLimitReached]);
+
+  const handleClosePaywall = () => {
+    setIsPaywallOpen(false);
+    navigate('/dashboard');
+  };
 
   // Carica le domande subito per vedere se ce ne sono abbastanza
   useEffect(() => {
     let mounted = true;
     const load = async () => {
-        const domande = await generaSimulazione();
+        const domande = await generaSimulazione(escludiLogica);
         if (mounted) setDomandeDisponibili(domande);
     };
     load();
     return () => { mounted = false; };
-  }, [generaSimulazione]);
+  }, [generaSimulazione, escludiLogica]);
 
   const handleAvvia = () => {
     if (domandeDisponibili.length === 0) return alert("Nessuna domanda disponibile.");
@@ -27,7 +47,8 @@ export default function SimulationSession() {
     navigate('/study', { 
       state: { 
         domande: domandeDisponibili, 
-        mode: 'simulation_esame' 
+        mode: 'simulation_esame',
+        escludiLogica
       } 
     });
   };
@@ -45,6 +66,54 @@ export default function SimulationSession() {
         <p style={{ color: '#cbd5e1', fontSize: '1.1rem', lineHeight: '1.6', marginBottom: '3rem' }}>
           Questa modalità ricrea le condizioni esatte del tuo concorso. Le domande sono proporzionate in base alla normativa (70% Nazionale, 25% Regionale, 5% Comunale).
         </p>
+
+        {/* Tipologia Domande */}
+        <div style={{ marginBottom: '3rem' }}>
+          <div style={{ color: '#e2e8f0', fontSize: '1rem', fontWeight: '700', marginBottom: '1rem' }}>
+            Tipologia domande della simulazione:
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '1rem' }}>
+            <div
+              onClick={() => setEscludiLogica(false)}
+              style={{
+                padding: '1.25rem',
+                background: !escludiLogica ? 'rgba(59, 130, 246, 0.1)' : '#0f172a',
+                border: `2px solid ${!escludiLogica ? '#3b82f6' : '#334155'}`,
+                borderRadius: '16px',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.25rem',
+              }}
+            >
+              <div style={{ fontSize: '1.1rem', fontWeight: '700', color: '#fff' }}>Completa 📊</div>
+              <div style={{ fontSize: '0.85rem', color: '#94a3b8', lineHeight: '1.4' }}>
+                Include quiz testuali e quesiti di logica/matematica.
+              </div>
+            </div>
+            
+            <div
+              onClick={() => setEscludiLogica(true)}
+              style={{
+                padding: '1.25rem',
+                background: escludiLogica ? 'rgba(59, 130, 246, 0.1)' : '#0f172a',
+                border: `2px solid ${escludiLogica ? '#3b82f6' : '#334155'}`,
+                borderRadius: '16px',
+                cursor: 'pointer',
+                transition: 'all 0.2s',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.25rem',
+              }}
+            >
+              <div style={{ fontSize: '1.1rem', fontWeight: '700', color: '#fff' }}>Solo Testo ⚖️</div>
+              <div style={{ fontSize: '0.85rem', color: '#94a3b8', lineHeight: '1.4' }}>
+                Esclude i quiz di logica e ragionamento matematico.
+              </div>
+            </div>
+          </div>
+        </div>
 
         <div style={{ display: 'grid', gap: '1.5rem', marginBottom: '3rem' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', background: '#0f172a', padding: '1.5rem', borderRadius: '16px' }}>
@@ -80,6 +149,8 @@ export default function SimulationSession() {
         </button>
 
       </div>
+      
+      <PaywallModal isOpen={isPaywallOpen} onClose={handleClosePaywall} reason="simulation" />
     </div>
   );
 }

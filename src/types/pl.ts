@@ -37,6 +37,9 @@ export const ProfiloPLSchema = z.object({
   parametriEsame: ParametriEsameSchema,
   composizioneQuiz: ComposizioneQuizSchemaPL.optional(),
   updatedAt: isoDateString.optional(),
+  obiettivoStudio: z.enum(['agente', 'ufficiale', 'professionale']).optional(),
+  tempoStudioGiornaliero: z.number().optional(),
+  livelloIniziale: z.enum(['base', 'intermedio', 'avanzato']).optional(),
 });
 export type ProfiloPL = z.infer<typeof ProfiloPLSchema>;
 

@@ -94,7 +94,7 @@ export default function MatriceRaven({ data }: { data: MatriceData }) {
       {/* Cells */}
       {celle.map((cell, i) => {
         const { x, y } = cellPos(i);
-        const isNull = cell === null || cell.forma === '?' || cell.fill === -1;
+        const isNull = cell === null || (cell.forma as string) === '?' || cell.fill === -1;
         return (
           <g key={i}>
             <rect

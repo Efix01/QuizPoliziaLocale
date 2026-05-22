@@ -6,6 +6,12 @@ const Footer: React.FC = () => {
     <footer className="w-full py-12 px-6 bg-[#0f172a] border-t border-slate-800/50 flex flex-col items-center gap-8 mt-auto">
       <div className="flex gap-8 flex-wrap justify-center">
         <Link 
+          to="/concorsi" 
+          className="text-slate-400 hover:text-white text-sm font-medium transition-colors"
+        >
+          Monitor Concorsi
+        </Link>
+        <Link 
           to="/chi-siamo" 
           className="text-slate-400 hover:text-white text-sm font-medium transition-colors"
         >

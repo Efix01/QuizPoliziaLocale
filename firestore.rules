@@ -64,24 +64,26 @@ service cloud.firestore {
                       && request.resource.size < 20480
                       && request.resource.data.keys().hasOnly([
                         '_schemaVersion', 'quizCompletati', 'risposteCorrette', 
-                        'mediaPercentuale', 'streak', 'livello', 'xp', 
+                        'mediaPercentuale', 'streak', 'streakFreezeCount', 'livello', 'xp', 
                         'capitoliLetti', 'domandeSalvate', 'perCategoria', 'ultimoAccesso', 'lastUpdated'
                       ])
                       && isNonNegativeInt(request.resource.data.quizCompletati)
                       && isValidPercentage(request.resource.data.mediaPercentuale)
                       && isNonNegativeInt(request.resource.data.streak)
+                      && isNonNegativeInt(request.resource.data.streakFreezeCount)
                       && isNonNegativeInt(request.resource.data.xp);
 
         allow update: if isOwner(userId)
                       && request.resource.size < 20480
                       && request.resource.data.keys().hasOnly([
                         '_schemaVersion', 'quizCompletati', 'risposteCorrette', 
-                        'mediaPercentuale', 'streak', 'livello', 'xp', 
+                        'mediaPercentuale', 'streak', 'streakFreezeCount', 'livello', 'xp', 
                         'capitoliLetti', 'domandeSalvate', 'perCategoria', 'ultimoAccesso', 'lastUpdated'
                       ])
                       && isNonNegativeInt(request.resource.data.quizCompletati)
                       && isValidPercentage(request.resource.data.mediaPercentuale)
                       && isNonNegativeInt(request.resource.data.streak)
+                      && isNonNegativeInt(request.resource.data.streakFreezeCount)
                       && isNonNegativeInt(request.resource.data.xp)
                       // ANTI-CHEAT XP: Non puoi saltare più di 5000 XP in un singolo blocco di salvataggio
                       && (request.resource.data.xp - resource.data.xp) <= 5000;
@@ -120,6 +122,11 @@ service cloud.firestore {
     // =========================================================
     // DATI PUBBLICI
     // =========================================================
+    match /metadata/{docId} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin();
+    }
+
     match /domande_core/{docId} {
       allow read: if isAuthenticated();
       allow write: if isAdmin();

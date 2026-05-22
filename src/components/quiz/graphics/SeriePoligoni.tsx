@@ -1,4 +1,3 @@
-import React from 'react';
 
 interface PoligoniData {
   sequenza: number[];        // lati delle figure visibili

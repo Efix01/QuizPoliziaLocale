@@ -40,3 +40,7 @@ extract_batch.py
 serviceAccountKey.json
 serviceAccountKey*.json
 *serviceAccount*.json
+
+# IDE local configuration
+.antigravitycli/
+
